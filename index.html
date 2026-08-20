@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>跨市场复盘报告</title>
 <style>
-:root{--bg:#f1f5f9;--card:#fff;--border:#e2e8f0;--text:#1e293b;--text2:#64748b;--accent:#1e3a5f;--accent2:#2563eb;--red:#dc2626;--green:#16a34a;--amber:#d97706}
+:root{--bg:#f1f5f9;--card:#fff;--border:#e2e8f0;--text:#1e293b;--text2:#64748b;--accent:#1e3a5f;--accent2:#2563eb;--green:#16a34a;--amber:#d97706}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.6;font-size:14px;min-height:100vh}
 .container{max-width:960px;margin:0 auto;padding:32px 20px}
@@ -17,8 +17,12 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .stat{text-align:center}
 .stat .num{font-size:24px;font-weight:800;color:var(--accent2)}
 .stat .label{font-size:12px;color:var(--text2)}
+#loading{text-align:center;padding:60px 0;color:var(--text2)}
+#loading .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent2);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+#content{display:none}
 .date-group{margin-bottom:28px}
-.date-header{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px}
+.date-header{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .date-header .tag{font-size:11px;font-weight:600;padding:2px 10px;border-radius:10px;color:#fff}
 .tag-today{background:var(--green)}
 .tag-past{background:var(--text2)}
@@ -34,6 +38,8 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .report-card .desc{font-size:12.5px;color:var(--text2);line-height:1.5;flex:1}
 .report-card .arrow{color:var(--accent2);font-size:13px;margin-top:8px;font-weight:600}
 .footer{text-align:center;padding:32px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
+#error{display:none;text-align:center;padding:60px 20px;color:var(--text2)}
+#error .icon{font-size:40px;margin-bottom:12px}
 @media(max-width:600px){.report-grid{grid-template-columns:1fr}.stats{gap:16px}}
 </style>
 </head>
@@ -44,78 +50,25 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 <h1>跨市场复盘报告</h1>
 <div class="subtitle">美股复盘 · A股复盘 · 盘前分析 · 盘前视频</div>
 <div class="badge">自动同步 · 每日更新</div>
-<div class="stats">
-<div class="stat"><div class="num">8</div><div class="label">报告总数</div></div>
-<div class="stat"><div class="num">6</div><div class="label">交易日</div></div>
-<div class="stat"><div class="num">2</div><div class="label">市场</div></div>
+<div id="stats" class="stats">
+<div class="stat"><div class="num" id="countReports">-</div><div class="label">报告总数</div></div>
+<div class="stat"><div class="num" id="countDays">-</div><div class="label">交易日</div></div>
+<div class="stat"><div class="num" id="countMarkets">-</div><div class="label">市场</div></div>
 </div>
 </div>
 
-<div class="date-group">
-<div class="date-header">2026-08-20 <span class="tag tag-today">今日</span></div>
-<div class="report-grid">
-<a class="report-card" href="./a-share-premarket-20260820/盘前分析_20260820.html">
-<div class="type type-premarket">盘前分析</div>
-<div class="title">A股盘前分析 · 8月20日</div>
-<div class="desc">利空源头逆转（美债回购），恐慌后迎修复窗口，高开概率大</div>
-<div class="arrow">查看报告 →</div>
-</a>
-<a class="report-card" href="./premarket-video-20260820/视频制作提示词.txt">
-<div class="type type-video">视频脚本</div>
-<div class="title">盘前视频提示词 · 8月20日</div>
-<div class="desc">美债回购/美伊局势/存储涨价/算力政策，约7分钟</div>
-<div class="arrow">查看提示词 →</div>
-</a>
-</div>
+<div id="loading">
+<div class="spinner"></div>
+正在加载报告列表...
 </div>
 
-<div class="date-group">
-<div class="date-header">2026-08-19 <span class="tag tag-past">已归档</span></div>
-<div class="report-grid">
-<a class="report-card" href="./a-share-review-20260819/全景复盘_20260819.html">
-<div class="type type-ashare">A股复盘</div>
-<div class="title">A股全景复盘 · 8月19日</div>
-<div class="desc">恐慌出清日：上证-2.40%，创业板-6.26%，130家跌停，成交额25110亿</div>
-<div class="arrow">查看报告 →</div>
-</a>
-<a class="report-card" href="./us-market-review-20260819/us-market-review-20260819.html">
-<div class="type type-us">美股复盘</div>
-<div class="title">美股收盘复盘 · 8月19日</div>
-<div class="desc">三大指数结束三连跌，中概涨1.51%，30Y美债回落至5.19%</div>
-<div class="arrow">查看报告 →</div>
-</a>
-<a class="report-card" href="./a-share-premarket-20260819/a-share-premarket-20260819.html">
-<div class="type type-premarket">盘前分析</div>
-<div class="title">A股盘前分析 · 8月19日</div>
-<div class="desc">美债5.32%创19年新高，全球无风险利率锚上移，高估值成长股承压</div>
-<div class="arrow">查看报告 →</div>
-</a>
-<a class="report-card" href="./premarket-video-20260819/视频制作提示词.txt">
-<div class="type type-video">视频脚本</div>
-<div class="title">盘前视频提示词 · 8月19日</div>
-<div class="desc">美债收益率19年新高/费城半导体-5.6%/AI产业链/朱雀三号回收</div>
-<div class="arrow">查看提示词 →</div>
-</a>
-</div>
+<div id="error">
+<div class="icon">⚠️</div>
+<p>加载失败，请稍后刷新重试</p>
+<p id="errorMsg" style="font-size:12px;margin-top:8px"></p>
 </div>
 
-<div class="date-group">
-<div class="date-header">2026-08-18 <span class="tag tag-past">已归档</span></div>
-<div class="report-grid">
-<a class="report-card" href="./a-share-review-20260818/a-share-review-20260818.html">
-<div class="type type-ashare">A股复盘</div>
-<div class="title">A股收盘复盘 · 8月18日</div>
-<div class="desc">上证微涨0.19%收3990点，创业板跌0.93%，中证1000继续领跑</div>
-<div class="arrow">查看报告 →</div>
-</a>
-<a class="report-card" href="./us-market-review-20260818/us-market-review-20260818.html">
-<div class="type type-us">美股复盘</div>
-<div class="title">美股收盘复盘 · 8月18日</div>
-<div class="desc">三大指数连跌三日，费城半导体-5.6%，30Y美债收益率飙至5.32%</div>
-<div class="arrow">查看报告 →</div>
-</a>
-</div>
-</div>
+<div id="content"></div>
 
 <div class="footer">
 <p>market-review-suite · 跨市场复盘工具集</p>
@@ -123,5 +76,129 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 </div>
+
+<script>
+const OWNER = 'Tim0thy1';
+const REPO = 'market-review-suite';
+const BRANCH = 'master';
+const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents?ref=${BRANCH}`;
+
+const TYPE_CONFIG = {
+  'a-share-review':    { label: 'A股复盘',   cls: 'type-ashare',    icon: '📊' },
+  'us-market-review':  { label: '美股复盘',   cls: 'type-us',        icon: '🇺🇸' },
+  'a-share-premarket': { label: '盘前分析',   cls: 'type-premarket', icon: '🔮' },
+  'premarket-video':   { label: '视频脚本',   cls: 'type-video',     icon: '🎬' },
+};
+
+async function load() {
+  try {
+    const res = await fetch(API);
+    if (!res.ok) throw new Error(`GitHub API ${res.status}: ${res.statusText}`);
+    const items = await res.json();
+    if (!Array.isArray(items)) throw new Error('unexpected response');
+
+    const dirs = items.filter(i => i.type === 'dir');
+    const reportDirs = dirs.filter(d => /^(a-share-review|us-market-review|a-share-premarket|premarket-video)-\d{8}$/.test(d.name));
+
+    // 按日期分组
+    const groups = {};
+    for (const dir of reportDirs) {
+      const match = dir.name.match(/^(\w+)-(\d{8})$/);
+      if (!match) continue;
+      const prefix = match[1];
+      const dateStr = match[2];
+      const dateObj = new Date(dateStr.replace(/^(\d{4})(\d{2})(\d{2})$/, '$1-$2-$3'));
+      if (!groups[dateStr]) groups[dateStr] = { dateObj, reports: [] };
+      groups[dateStr].reports.push({ prefix, dirName: dir.name, dirUrl: dir.url });
+    }
+
+    // 获取每个目录内的 html/txt 文件
+    const allEntries = [];
+    for (const [dateStr, group] of Object.entries(groups)) {
+      for (const r of group.reports) {
+        try {
+          const sub = await fetch(r.dirUrl);
+          if (!sub.ok) continue;
+          const files = await sub.json();
+          if (!Array.isArray(files)) continue;
+          const targets = files.filter(f => f.type === 'file' && /\.(html|txt)$/.test(f.name));
+          for (const f of targets) {
+            allEntries.push({ dateStr, dateObj: group.dateObj, prefix: r.prefix, dirName: r.dirName, file: f });
+          }
+        } catch (_) {}
+      }
+    }
+
+    // 按日期降序排列
+    const dateMap = {};
+    for (const e of allEntries) {
+      if (!dateMap[e.dateStr]) dateMap[e.dateStr] = { dateObj: e.dateObj, entries: [] };
+      dateMap[e.dateStr].entries.push(e);
+    }
+
+    const sortedDates = Object.keys(dateMap).sort((a, b) => b.localeCompare(a));
+
+    // 今日日期
+    const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().slice(0, 10).replace(/-/g, '');
+
+    // 渲染
+    const container = document.getElementById('content');
+    let totalReports = 0;
+    const markets = new Set();
+
+    for (const dateStr of sortedDates) {
+      const g = dateMap[dateStr];
+      g.entries.sort((a, b) => {
+        const order = ['a-share-review', 'us-market-review', 'a-share-premarket', 'premarket-video'];
+        return order.indexOf(a.prefix) - order.indexOf(b.prefix);
+      });
+
+      const isToday = dateStr === todayStr;
+      const isYesterday = dateStr === yesterdayStr;
+      let tag = '';
+      if (isToday) tag = '<span class="tag tag-today">今日</span>';
+      else if (isYesterday) tag = '<span class="tag tag-past">昨日</span>';
+
+      const y = g.dateObj.getFullYear();
+      const m = String(g.dateObj.getMonth() + 1).padStart(2, '0');
+      const d = String(g.dateObj.getDate()).padStart(2, '0');
+      const weekday = ['日', '一', '二', '三', '四', '五', '六'][g.dateObj.getDay()];
+
+      totalReports += g.entries.length;
+
+      let html = `<div class="date-group"><div class="date-header">${y}-${m}-${d} （周${weekday}） ${tag}</div><div class="report-grid">`;
+      for (const e of g.entries) {
+        const cfg = TYPE_CONFIG[e.prefix] || { label: e.prefix, cls: '', icon: '📄' };
+        const filePath = e.dirName + '/' + e.file.name;
+        markets.add(cfg.label);
+        html += `<a class="report-card" href="./${filePath}">
+          <div class="type ${cfg.cls}">${cfg.icon} ${cfg.label}</div>
+          <div class="title">${cfg.label} · ${m}月${d}日</div>
+          <div class="desc">${e.file.name.replace(/\.(html|txt)$/, '')}</div>
+          <div class="arrow">查看报告 →</div>
+        </a>`;
+      }
+      html += '</div></div>';
+      container.innerHTML += html;
+    }
+
+    document.getElementById('countReports').textContent = totalReports;
+    document.getElementById('countDays').textContent = sortedDates.length;
+    document.getElementById('countMarkets').textContent = markets.size;
+    document.getElementById('loading').style.display = 'none';
+    container.style.display = 'block';
+
+  } catch (err) {
+    document.getElementById('loading').style.display = 'none';
+    const el = document.getElementById('error');
+    document.getElementById('errorMsg').textContent = err.message;
+    el.style.display = 'block';
+  }
+}
+
+load();
+</script>
 </body>
 </html>
