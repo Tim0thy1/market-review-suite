@@ -3,224 +3,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A股盘前分析 | 2026年8月20日（周四）</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<title>A股盘前分析 · 2026-08-20</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <style>
-:root{--bg:#f7f8fc;--card:#ffffff;--border:#e2e8f0;--text:#1a2740;--text2:#64748b;--accent:#1e3a5f;--accent2:#1e40af;--red:#dc2626;--green:#16a34a;--orange:#ea580c;--amber:#d97706;--yellow:#f59e0b;--purple:#7c3aed;--cyan:#0891b2}
+:root{--bg:#f5f7fa;--card:#fff;--border:#e2e8f0;--text:#1e293b;--text2:#64748b;--accent:#1e3a5f;--accent2:#2563eb;--green:#16a34a;--red:#dc2626;--amber:#d97706}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.75;font-size:14.5px}
-.container{max-width:1140px;margin:0 auto;padding:24px 16px}
-.header{text-align:center;padding:36px 20px 24px;border-bottom:2px solid var(--accent);margin-bottom:20px}
-.header h1{font-size:26px;font-weight:800;color:var(--accent);margin-bottom:8px}
-.header .subtitle{color:var(--text2);font-size:14px}
-.header .date-tag{display:inline-block;margin-top:10px;padding:5px 18px;background:var(--accent);color:#fff;border-radius:20px;font-size:13px;font-weight:600}
-.tldr{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);color:#fff;border-radius:12px;padding:22px 26px;margin-bottom:24px;box-shadow:0 4px 14px rgba(30,64,175,0.25)}
-.tldr h2{font-size:18px;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:8px}
-.tldr p{font-size:14px;line-height:1.9;opacity:0.97}
-.tldr b{color:#ffe6b3}
-.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 6px rgba(15,23,42,0.04)}
-.section-title{font-size:19px;font-weight:800;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px}
-.section-title .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--accent);color:#fff;border-radius:7px;font-size:15px;font-weight:800;flex-shrink:0}
-.section-sub{font-size:13px;color:var(--text2);margin:-8px 0 14px}
-.prose p{margin-bottom:12px;color:#334155;text-align:justify}
-.prose b{color:var(--accent2)}
-.up{color:var(--red)}.down{color:var(--green)}
-.index-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
-.index-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
-.index-card .name{font-size:12px;color:var(--text2);margin-bottom:5px}
-.index-card .value{font-size:20px;font-weight:800;margin-bottom:3px}
-.index-card .change{font-size:13px;font-weight:700}
-.chart-wrap{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin:14px 0}
-.chart-label{font-size:13px;font-weight:700;color:var(--text2);margin-bottom:8px;padding-left:4px}
-.chart-box{width:100%;height:300px}
-.chart-box.small{height:260px}
-.data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
-.data-table th{background:var(--accent);color:#fff;padding:9px 12px;text-align:left;font-weight:600}
-.data-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
-.data-table tr:nth-child(even) td{background:#f8fafc}
-.evidence{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle}
-.ev-h{background:#fef2f2;color:#991b1b}
-.ev-m{background:#fffbeb;color:#92400e}
-.ev-l{background:#f0fdf4;color:#166534}
-.tag{display:inline-block;padding:2px 9px;border-radius:4px;font-size:11.5px;font-weight:700;margin:2px 3px 2px 0}
-.tag-p0{background:#dc2626;color:#fff}
-.tag-p1{background:#ea580c;color:#fff}
-.tag-p2{background:#f59e0b;color:#fff}
-.tag-p3{background:#94a3b8;color:#fff}
-.callout{background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid var(--orange);border-radius:8px;padding:13px 16px;margin:12px 0;font-size:13.5px}
-.callout.blue{background:#f0f7ff;border-color:#bfdbfe;border-left-color:var(--accent2)}
-.callout.red{background:#fef2f2;border-color:#fecaca;border-left-color:var(--red)}
-.callout.green{background:#f0fdf4;border-color:#bbf7d0;border-left-color:var(--green)}
-.callout b{color:var(--orange)}
-.callout.blue b{color:var(--accent2)}
-.callout.red b{color:var(--red)}
-.callout.green b{color:var(--green)}
-.scenario{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0}
-.scen-card{border-radius:10px;padding:16px;border:1px solid var(--border)}
-.scen-card .scen-title{font-size:14px;font-weight:800;margin-bottom:8px}
-.scen-card .scen-prob{font-size:26px;font-weight:800;margin-bottom:6px}
-.scen-card .scen-detail{font-size:12.5px;color:#555;line-height:1.6}
-.scen-bull{background:#f0fdf4;border-color:#bbf7d0}.scen-bull .scen-title{color:#166534}.scen-bull .scen-prob{color:#16a34a}
-.scen-neu{background:#fffbeb;border-color:#fde68a}.scen-neu .scen-title{color:#92400e}.scen-neu .scen-prob{color:#d97706}
-.scen-bear{background:#fef2f2;border-color:#fecaca}.scen-bear .scen-title{color:#991b1b}.scen-bear .scen-prob{color:#dc2626}
-.strategy-list{list-style:none;padding:0}
-.strategy-list li{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 15px;margin-bottom:8px;font-size:13.5px;display:flex;gap:10px}
-.strategy-list li .n{color:var(--accent2);font-weight:800;flex-shrink:0}
-.risk-list{list-style:none;padding:0}
-.risk-list li{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:11px 15px;margin-bottom:8px;font-size:13.5px;display:flex;gap:10px}
-.risk-list li .i{color:var(--red);font-weight:800;flex-shrink:0}
-.footer{text-align:center;padding:26px;color:var(--text2);font-size:12.5px;border-top:1px solid var(--border)}
-.flow-chain{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:10px 0;font-size:13px;color:#334155}
-.flow-chain .fc-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-right:6px}
-.fc-t0{background:#fef2f2;color:#991b1b}.fc-t1{background:#fff7ed;color:#c2410c}.fc-t2{background:#fffbeb;color:#92400e}
-.verify{background:#f0f7ff;border:1px solid #bfdbfe;border-left:4px solid var(--accent2);border-radius:8px;padding:13px 16px;margin:12px 0;font-size:13.5px}
-.verify b{color:var(--accent2)}
-@media(max-width:768px){.index-cards{grid-template-columns:repeat(2,1fr)}.scenario{grid-template-columns:1fr}}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.7;font-size:14px}
+.container{max-width:860px;margin:0 auto;padding:28px 20px}
+.header{text-align:center;padding:36px 20px 28px;border-bottom:3px solid var(--accent);margin-bottom:28px}
+.header h1{font-size:26px;font-weight:800;color:var(--accent);margin-bottom:6px;letter-spacing:1px}
+.header .sub{color:var(--text2);font-size:13px}
+.header .badge{display:inline-block;margin-top:8px;padding:3px 14px;background:var(--accent);color:#fff;border-radius:16px;font-size:11px;font-weight:600}
+.tldr{background:linear-gradient(135deg,var(--accent) 0%,#1e40af 100%);color:#fff;border-radius:12px;padding:20px 24px;margin-bottom:24px;box-shadow:0 4px 14px rgba(30,64,175,.25)}
+.tldr h2{font-size:16px;font-weight:700;margin-bottom:10px;opacity:.9}
+.tldr p{font-size:13.5px;line-height:1.8;opacity:.95}
+.tldr .highlight{color:#fbbf24;font-weight:700}
+.section-title{font-size:17px;font-weight:800;color:var(--accent);margin:24px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:8px}
+.section-title .badge{font-size:10px;padding:2px 8px;border-radius:8px;color:#fff;font-weight:600}
+.badge-red{background:var(--red)}
+.badge-green{background:var(--green)}
+.badge-amber{background:var(--amber)}
+.badge-blue{background:var(--accent2)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.card{border:1px solid var(--border);border-radius:10px;padding:16px;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card .label{font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;margin-bottom:4px}
+.card .value{font-size:22px;font-weight:800}
+.card .sub{font-size:12px;color:var(--text2);margin-top:2px}
+.card .change{font-size:14px;font-weight:600;margin-left:6px}
+.up{color:var(--red)}
+.down{color:var(--green)}
+.flat{color:var(--text2)}
+.news-card{border:1px solid var(--border);border-radius:10px;padding:16px;background:var(--card);margin-bottom:12px;border-left:4px solid var(--accent2)}
+.news-card.t0{border-left-color:var(--red)}
+.news-card.t1{border-left-color:var(--amber)}
+.news-card.t2{border-left-color:var(--accent2)}
+.news-card .tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;display:inline-block;margin-bottom:6px;color:#fff}
+.tag-t0{background:var(--red)}
+.tag-t1{background:var(--amber)}
+.tag-t2{background:var(--accent2)}
+.news-card h4{font-size:14px;font-weight:700;margin-bottom:4px;line-height:1.4}
+.news-card .meta{font-size:11px;color:var(--text2);margin-bottom:6px}
+.news-card p{font-size:12.5px;color:var(--text);line-height:1.7}
+.news-card .chain{font-size:12px;background:#f0f4ff;padding:8px 12px;border-radius:6px;margin-top:6px;color:var(--accent);line-height:1.6}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.scenario-card{border-radius:10px;padding:16px;border:1px solid var(--border)}
+.scenario-card .pct{font-size:28px;font-weight:800;margin-bottom:4px}
+.scenario-card h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.scenario-card ul{font-size:12px;padding-left:14px;color:var(--text2);line-height:1.8}
+.scenario-opt{border-top:3px solid var(--green);background:linear-gradient(135deg,#f0fdf4,#fff)}
+.scenario-opt .pct{color:var(--green)}
+.scenario-neu{border-top:3px solid var(--amber);background:linear-gradient(135deg,#fffbeb,#fff)}
+.scenario-neu .pct{color:var(--amber)}
+.scenario-pes{border-top:3px solid var(--red);background:linear-gradient(135deg,#fef2f2,#fff)}
+.scenario-pes .pct{color:var(--red)}
+.data-table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:12.5px}
+.data-table th{background:var(--accent);color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+.data-table td{padding:7px 10px;border-bottom:1px solid var(--border)}
+.data-table tr:hover{background:#f8fafc}
+.chart-box{width:100%;height:220px;margin:14px 0 20px}
+.footer{text-align:center;padding:28px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
+@media(max-width:600px){.grid-3,.scenario-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="container">
 
 <div class="header">
-<h1>A股盘前分析报告</h1>
-<div class="subtitle">State-Trigger-Flow 框架 · 时间因果铁律 · 消息泄露度分级</div>
-<div class="date-tag">2026年8月20日 星期四 · 盘前预测</div>
+<h1>A股盘前分析 · 2026-08-20</h1>
+<div class="sub">2026年8月20日（周四） · 数据截至 8:30 AM</div>
+<div class="badge">盘前预测模式</div>
 </div>
 
 <div class="tldr">
-<h2>一句话定调｜隔夜利空逆转，恐慌后迎修复窗口，高开概率大但反弹力度看量能</h2>
-<p>昨日（8/19）A股恐慌暴跌——上证<b>-2.40%</b>收3894.42、创业板<b>-6.26%</b>，全市场仅8%上涨，130家跌停，主因是隔夜30年期美债收益率飙至5.32%创19年新高压制成长股估值。而<b>隔夜最大变化是利空源头被逆转</b>：美国财政部宣布将长期国债回购规模翻倍（20亿→至少40亿美元），30年期美债收益率从5.33%回落至5.19%，美股结束三连跌（道指+0.2%、纳指+0.16%、标普+0.21%），中概股金龙指数+1.51%，人民币汇率稳定在6.75附近、北向并未大规模流出。叠加国内发改委"六张网"会议、存储芯片涨价催化，今日A股<b>高开概率大（预计高开0.3%~0.8%）</b>。但昨日130家跌停的恐慌情绪需要消化，<b>反弹是"超跌修复"还是"一日游"，关键看量能与内资承接</b>——若高开高走且成交额重回2.5万亿以上、宽基ETF持续放量，则修复行情成立；若高开低走、成交萎缩，则只是反抽。</p>
+<h2>📋 核心结论</h2>
+<p>
+昨日恐慌暴跌（上证<span class="highlight">-2.40%</span>、创业板<span class="highlight">-6.26%</span>、<span class="highlight">130家</span>跌停）后，隔夜迎来重磅逆转——<span class="highlight">莫德纳mRNA癌症疫苗III期成功</span>引爆全球生物医药板块，Moderna暴涨<span class="highlight">177%</span>，纳斯达克生物科技指数狂飙<span class="highlight">+7.5%</span>。叠加美国财政部扩大长期国债回购（30Y利率从5.33%回到5.19%），隔夜美股三大指数集体收涨。今日A股<span class="highlight">高开概率大</span>（预计+0.3%~0.8%），<span class="highlight">生物医药/CXO/疫苗</span>将成为绝对主线，但需警惕"超跌修复一日游"风险——量能是否持续放量是关键。
+</p>
 </div>
 
-<!-- 段一 -->
-<div class="section">
-<div class="section-title"><span class="num">1</span>昨日复盘速览（State 起点）</div>
-<div class="section-sub">只陈述已发生事实，作为今日预测的起点，不做过度归因</div>
-<div class="index-cards">
-<div class="index-card"><div class="name">上证指数</div><div class="value down">3894.42</div><div class="change down">-2.40%</div></div>
-<div class="index-card"><div class="name">深证成指</div><div class="value down">13890.15</div><div class="change down">-5.01%</div></div>
-<div class="index-card"><div class="name">创业板指</div><div class="value down">3473.49</div><div class="change down">-6.26%</div></div>
-<div class="index-card"><div class="name">两市成交额</div><div class="value" style="font-size:16px">25110亿</div><div class="change up">+1103亿 放量</div></div>
+<!-- 1. 昨日复盘速览 -->
+<div class="section-title">一、昨日复盘速览 <span class="badge badge-blue">State 起点</span></div>
+
+<div class="grid-3">
+<div class="card">
+<div class="label">上证指数</div>
+<div class="value">3894.42 <span class="change down">-2.40%</span></div>
+<div class="sub">最高 3961 · 最低 3880</div>
 </div>
-
-<div class="chart-wrap"><div class="chart-label">三大指数近7个交易日收盘走势</div><div id="chart_kline" class="chart-box"></div></div>
-
-<div class="prose">
-<p><b>昨日是标准的恐慌出清日。</b>全市场449家上涨、5069家下跌，上涨占比仅8%，涨停38家、跌停130家（跌停远超涨停），成交额放量至25110亿（较前日+1103亿），属于"放量急跌"而非"缩量阴跌"——抛压真实且集中。市场画像总评仅18.79分（满分100），板块宽度"全面下跌（上涨板块<20%）"，中长期趋势"弱势下跌"，估值仍处"高估强势（PE分位数95%）"。</p>
-<p><b>资金不是跑了，是换了地方蹲。</b>领涨的是清一色防御高股息与资源方向：焦炭+7.56%、股份制银行+1.91%、城商行+1.80%、国有大行+1.70%、炼化+2.08%、航运+1.11%。同时六只宽基ETF同步大幅放量（创业板ETF成交106亿放量2.45倍、沪深300ETF放量2.27倍、科创50ETF放量1.8倍），暗示有资金借道指数工具承接——这是恐慌接近尾声的苗头，但昨日"放量承接未止跌"的背离说明抛压仍大于承接。</p>
-<p><b>技术面关键位：</b>上证收3894.42，仍站在MA20（3887.38）上方，MACD红柱（26.17）尚未转绿，KDJ的J值已降至36.3（接近超卖区），BOLL中轨3887与下轨3763构成支撑带。上方缺口区3930-3950（MA5/MA10附近）是反弹第一压力。创业板3455（昨日低点）是短线生死线。</p>
+<div class="card">
+<div class="label">深证成指</div>
+<div class="value">13890.15 <span class="change down">-5.01%</span></div>
+<div class="sub">最高 14367 · 最低 13842</div>
 </div>
-</div>
-
-<!-- 段二 -->
-<div class="section">
-<div class="section-title"><span class="num">2</span>隔夜关键信息（Trigger）</div>
-<div class="section-sub">T-1收盘后 → 今日开盘前的新增信息，每条含因果传导链与证据等级</div>
-
-<div class="flow-chain"><span class="fc-tag fc-t0">T0 必讲</span><b>美国财政部扩大长期国债回购规模（利空源头逆转）</b> — 财政部宣布自9月9日起将长端国债流动性回购单次上限从20亿提至至少40亿美元，30年期美债收益率从5.33%（19年新高）回落至5.19%，10年期回到4.65%。<br>①<u>改变什么预期</u>：市场原本担心"弱拍卖+鹰纪要"双杀，财政部出手直接扭转"长端利率失控"的担忧，全球无风险利率锚回落。<br>②<u>谁受益</u>：高估值久期资产（A股创业板/科创成长股）折现率压力缓解；黄金大涨4.27%报4519美元、美元走弱。<br>③<u>先手还是跟风</u>：美股盘后消息，A股无法提前预知，属今日开盘Trigger，资金将以高开响应。<br>④<u>能否持续</u>：回购规模相对32万亿美元市场仍杯水车薪，信号意义大于实质；若后续拍卖需求仍弱，利率或再度反弹。<span class="evidence ev-h">证据高</span></div>
-
-<div class="flow-chain"><span class="fc-tag fc-t0">T0 必讲</span><b>美股结束三连跌 + 中概股大涨（情绪修复）</b> — 道指+0.2%、纳指+0.16%、标普+0.21%，结束三连跌；纳斯达克中国金龙指数+1.51%，携程+4.4%、拼多多+3.36%、百度+2.2%。<br>①<u>改变什么预期</u>：海外风险偏好从"避险"切回"修复"，A股外部环境边际转暖。<br>②<u>谁受益</u>：A股科技成长（半导体、AI、软件）情绪面直接受益，中概映射的港股/A股互联网方向联动。<br>③<u>先手还是跟风</u>：隔夜美股收盘，A股只能盘前反应，属今日开盘Trigger。<br>④<u>能否持续</u>：注意美股内部仍分化——存储、光通信等科技硬件继续承压（费半此前-5.6%的余波未消），修复的持续性需A股自身量能确认。<span class="evidence ev-h">证据高</span></div>
-
-<div class="flow-chain"><span class="fc-tag fc-t1">T1 重点讲</span><b>发改委"六张网"建设协调会议（产业催化）</b> — 国家发改委昨晚召开"六张网"建设协调会议，统筹算力网、新型电网、新一代通信网等建设。<br>①<u>改变什么预期</u>：算力基础设施投资从"企业自发"升级为"国家统筹"，强化算力/电网/通信新基建的政策确定性。<br>②<u>谁受益</u>：A股算力（国产算力链）、电力设备（电网投资）、通信设备方向。<br>③<u>先手还是跟风</u>：政策文件存在提前泄露可能，昨日部分算力/电网个股或已有资金潜伏，需观察今日是否放量确认。<br>④<u>能否持续</u>：属中长期产业方向，短期看是否有具体投资规模落地。<span class="evidence ev-m">证据中</span></div>
-
-<div class="flow-chain"><span class="fc-tag fc-t1">T1 重点讲</span><b>存储芯片涨价催化（产业拐点）</b> — 摩根士丹利预测2026年Q3成熟DRAM价格涨50%、SLC NAND每季涨50%，主因产能紧张；三星因AI芯片需求激增。<br>①<u>改变什么预期</u>：存储从"周期底部"转向"涨价周期"，产业链基本面拐点确认。<br>②<u>谁受益</u>：A股存储链（利基存储龙头、模组、封测）、半导体设备/材料。<br>③<u>先手还是跟风</u>：涨价预期在产业链内早有流传，昨日部分存储股或已逆势抗跌，需看今日是否放量突破。<br>④<u>能否持续</u>：涨价逻辑有供需数据支撑，持续性较强，是今日最值得跟踪的产业主线之一。<span class="evidence ev-m">证据中</span></div>
-
-<div class="flow-chain"><span class="fc-tag fc-t2">T2 提一句</span><b>新版公积金管理条例9月落地</b> — 提取范围拓展至装修、物业，利好地产、家居建材板块，存在短线情绪修复预期。<span class="evidence ev-l">证据低</span></div>
-
-<div class="flow-chain"><span class="fc-tag fc-t2">T2 提一句</span><b>人民币汇率稳定 + 北向未大规模流出</b> — 人民币稳定在6.75附近，昨日暴跌中北向资金并未大规模流出，砸盘主力是场内获利盘与止损盘集中涌出，性质上并非外资看空撤离。<span class="evidence ev-m">证据中</span></div>
-
-<div class="callout blue"><b>关键判断（消息泄露度分级）：</b>昨日暴跌的归因（30年美债5.32%创新高）属"极低泄露性"信息，A股无法提前预知，只能作为开盘Trigger——昨日资金低开即响应、尾盘未见有效承接，符合"无法提前埋伏"的特征。而发改委"六张网"、存储涨价这类产业信息存在提前泄露可能，今日需重点观察相关板块是否在开盘前已有资金布局（逆势抗跌的存储股即为线索）。</div>
-</div>
-
-<!-- 段三 -->
-<div class="section">
-<div class="section-title"><span class="num">3</span>今日三大预测（核心）</div>
-
-<div class="callout green"><b>预测一 · 开盘预测：高开 0.3%~0.8%</b><br>依据：①隔夜利空源头（美债利率）被财政部回购逆转，30Y回落14bp；②美股结束三连跌、中概股金龙指数+1.51%；③人民币稳定、北向未流出。三重利好叠加，今日大概率高开。幅度参考：上证高开0.3%~0.8%（对应3910~3925区间），创业板弹性更大或高开0.8%~1.5%。<span class="evidence ev-h">证据高</span><br><b>反证条件：</b>若低开或平开，说明昨日恐慌情绪惯性极强、内资承接意愿弱，则今日修复逻辑大打折扣，需转为防守。</div>
-
-<div class="callout blue"><b>预测二 · 分时节奏推演</b><br><b>上午（09:30-11:30）：</b>看科技能否放量修复。重点观察存储链（涨价催化）、算力（发改委六张网）、超跌的创业板/科创是否出现放量反包。若高开后科技放量上攻，则修复行情成立；若高开低走、科技无量，则只是情绪反抽。<br><b>午后（13:00-14:30）：</b>看权重与量能。银行/焦炭等昨日防御主线是否补跌是关键信号——若防御补跌而科技接力，是健康的"高低切换"；若防御与科技同跌，则市场仍弱。<br><b>尾盘（14:30-15:00）：</b>看宽基ETF是否持续放量承接（昨日2.45倍放量的创业板ETF今日能否延续），以及上证能否站稳MA20（3887）上方。<span class="evidence ev-m">证据中</span></div>
-
-<div class="callout green"><b>预测三 · 主线承接预判</b><br><b>昨日防御主线（银行/焦炭/航运）：</b>短期或高位震荡，若今日科技修复则防御资金可能分流，但低估值高股息逻辑未破，回调空间有限。<br><b>今日潜在接力方向（按优先级）：</b>①存储/半导体链（涨价催化+超跌，P0）；②算力/国产算力（发改委六张网，P1）；③超跌成长反抽（创业板/科创，需量能确认，P1）；④地产家居（公积金新政，P2）。<br><b>证据等级：</b>存储涨价有供需数据支撑（中高），发改委六张网有政策确定性（中），超跌反抽纯情绪（低）。<span class="evidence ev-m">证据中</span></div>
-</div>
-
-<!-- 段四 -->
-<div class="section">
-<div class="section-title"><span class="num">4</span>量能与情绪预判</div>
-<div class="prose">
-<p><b>量能预测：</b>昨日成交25110亿（放量+1103亿）。今日若为有效修复，成交额应维持2.4万亿以上（10日均值24183亿附近）；若缩量至2.2万亿以下，则反弹缺乏承接、大概率一日游。关键信号：<b>高开后的第一个小时成交额</b>——若同比昨日同期放量，则修复可信；若明显缩量，则高开低走风险大。</p>
-<p><b>情绪预判：</b>昨日情绪冰点（上涨占比8%、130家跌停）。今日预计涨停家数回升至50-80家区间、跌停家数降至30家以内为修复确认；若跌停仍超50家，则恐慌未消。<b>预测成立信号：</b>涨停>50家 + 跌停<30家 + 成交额>2.4万亿 + 宽基ETF持续放量。<b>预测失败信号：</b>高开低走 + 跌停>50家 + 成交额<2.2万亿 + 防御板块补跌。</p>
+<div class="card">
+<div class="label">创业板指</div>
+<div class="value">3473.49 <span class="change down">-6.26%</span></div>
+<div class="sub">最高 3623 · 最低 3455</div>
 </div>
 </div>
 
-<!-- 段五 -->
-<div class="section">
-<div class="section-title"><span class="num">5</span>情景推演（概率加权）</div>
-<div class="scenario">
-<div class="scen-card scen-bull">
-<div class="scen-title">乐观 · 放量修复</div>
-<div class="scen-prob">35%</div>
-<div class="scen-detail"><b>触发条件：</b>高开0.5%以上 + 首小时放量 + 存储/算力放量上攻 + 宽基ETF持续承接。<br><b>推演：</b>上证收复3930-3950缺口区，创业板反抽至3550-3600，修复行情延续1-2日。<br><b>操作：</b>可轻仓参与存储/算力修复，止损设在前日低点下方。</div>
+<div class="grid-3">
+<div class="card">
+<div class="label">两市成交额</div>
+<div class="value" style="font-size:20px">2.51万亿</div>
+<div class="sub">较5日均值 +4.7% · 放量下跌</div>
 </div>
-<div class="scen-card scen-neu">
-<div class="scen-title">中性 · 高开震荡</div>
-<div class="scen-prob">45%</div>
-<div class="scen-detail"><b>触发条件：</b>高开0.3%左右 + 量能温和（2.3-2.5万亿）+ 科技与防御轮动。<br><b>推演：</b>上证在3887-3950区间震荡，结构性修复（存储/算力强、其他弱）。<br><b>操作：</b>观望为主，仅跟踪存储/算力主线，不追高、不满仓。</div>
+<div class="card">
+<div class="label">涨跌家数</div>
+<div class="value" style="font-size:20px"><span class="down">279</span> / <span class="up">5062</span></div>
+<div class="sub">涨停 31 · 跌停 130</div>
 </div>
-<div class="scen-card scen-bear">
-<div class="scen-title">悲观 · 高开低走</div>
-<div class="scen-prob">20%</div>
-<div class="scen-detail"><b>触发条件：</b>高开后快速回落 + 缩量 + 防御板块补跌 + 跌停>50家。<br><b>推演：</b>上证回踩3860（MA20下方）甚至3879（昨日低点），恐慌二次释放。<br><b>操作：</b>空仓观望，等待企稳信号，不接飞刀。</div>
+<div class="card">
+<div class="label">情绪温度</div>
+<div class="value" style="font-size:20px"><span style="color:var(--red)">冰点</span></div>
+<div class="sub">涨跌比 0.055 · 极度恐慌</div>
 </div>
-</div>
-<div class="verify"><b>概率调整信号：</b>若今日开盘前出现新的重大利空（如美债拍卖需求异常疲弱、地缘冲突升级），乐观概率下调、悲观概率上调；若发改委"六张网"有具体投资规模落地或存储涨价获产业端确认，乐观概率上调。</div>
 </div>
 
-<!-- 段六 -->
-<div class="section">
-<div class="section-title"><span class="num">6</span>操作策略与风险提示</div>
-<div class="section-sub">基于小资金适配原则（约$2000-3000规模）· 条件→操作→止损框架</div>
-<ul class="strategy-list">
-<li><span class="n">1.</span><b>仓位建议：</b>昨日暴跌后首日反弹，建议仓位控制在3成以内，以观察修复质量为主，不急于加仓。若今日放量修复确认（见段四信号），可小幅加至4-5成。</li>
-<li><span class="n">2.</span><b>方向选择：</b>优先跟踪存储/半导体链（涨价催化+超跌）、算力（发改委六张网）；昨日防御主线（银行/焦炭）若回调可视为正常高低切换，不追高。</li>
-<li><span class="n">3.</span><b>入场节奏：</b>不追高开。等待开盘后30-60分钟确认方向——若高开高走且放量，可轻仓参与主线；若高开低走，放弃当日操作。</li>
-<li><span class="n">4.</span><b>止损纪律：</b>上证跌破3860（MA20下方）或创业板跌破3455（昨日低点），无条件离场观望，避免深套。</li>
-<li><span class="n">5.</span><b>空仓条件：</b>若今日高开低走且成交萎缩、跌停家数仍超50家，说明恐慌未消，可空仓等待更明确的企稳信号。</li>
+<div class="card" style="margin-bottom:16px">
+<p style="font-size:12.5px;line-height:1.8">
+<strong>昨日盘面特征：</strong>三大指数全线重挫，创业板暴跌6.26%创年内最大单日跌幅。市场呈现<strong>无差别杀跌</strong>特征——几乎所有板块均遭抛售，仅银行（+1.91%）、焦炭（+7.56%）等少数防御/周期方向逆势飘红。宽基ETF成交额异常放大（创业板ETF达2.45倍均值），疑似国家队尾盘介入。情绪接近冰点，涨跌比0.055，为近3个月最差。
+</p>
+</div>
+
+<!-- 2. 隔夜关键信息 -->
+<div class="section-title">二、隔夜关键信息 <span class="badge badge-red">Trigger</span></div>
+
+<!-- T0: Moderna -->
+<div class="news-card t0">
+<div class="tag tag-t0">T0 · 必讲</div>
+<h4>🧬 莫德纳mRNA癌症疫苗III期成功 · 全球生物医药里程碑</h4>
+<div class="meta">2026-08-19 晚间 · 证据等级：高</div>
+<p>
+<strong>事件：</strong>Moderna与默沙东联合宣布，个性化mRNA肿瘤疫苗Intismeran（V940/mRNA-4157）三期INTerpath-001临床试验达到无复发生存期（RFS）和远处转移无进展生存期（DMFS）双重主要终点。这是全球首个在大型III期临床中验证明确疗效的个性化mRNA抗癌疫苗。
+</p>
+<div class="chain">
+<strong>因果传导链：</strong><br>
+① <strong>改变了什么预期：</strong>mRNA技术从"传染病疫苗"正式扩展至"肿瘤治疗"新纪元，全球mRNA市场空间从千亿级跃升至万亿级。<br>
+② <strong>谁最受益：</strong>Moderna暴涨177%直接带动默沙东+10%、BioNTech+15%。A股映射方向：CXO（药明康德/康龙化成/博腾股份）、疫苗（康希诺/沃森生物/智飞生物）、mRNA产业链（键凯科技/近岸蛋白）、创新药研发。<br>
+③ <strong>资金先手还是跟风：</strong>消息于8月19日晚间发布，美股盘前已开始异动，A股无法提前埋伏，属于"今日开盘直接反应"类型。<br>
+④ <strong>逻辑能否持续：</strong>III期阳性数据是质变级突破，不是一日游题材。但短期涨幅过大需警惕获利回吐，中期方向明确。
+</div>
+</div>
+
+<!-- T0: 美债回购 -->
+<div class="news-card t0">
+<div class="tag tag-t0">T0 · 必讲</div>
+<h4>🏛️ 美国财政部扩大长期国债回购规模</h4>
+<div class="meta">2026-08-19 · 证据等级：中</div>
+<p>
+美国财政部宣布扩大长期国债回购计划，重点覆盖20-30年期。30年期美债收益率从此前高点5.33%大幅回落至5.19%，10年期回落至4.85%附近。长端利率下行直接缓解全球高估值成长股压力。
+</p>
+<div class="chain">
+<strong>因果传导链：</strong>长端利率下行 → 成长股估值压力缓解 → 科技/生物医药等长久期资产受益 → 隔夜纳指反弹+2.01%，纳斯达克生物科技指数+7.5%。对A股影响：间接利好，主要通过与美债利率联动的科技/医药板块传导。
+</div>
+</div>
+
+<!-- T1: 存储芯片 -->
+<div class="news-card t1">
+<div class="tag tag-t1">T1 · 重要</div>
+<h4>💾 存储芯片涨价预期强化 · 大摩上调DRAM价格预测</h4>
+<div class="meta">2026-08-19 · 证据等级：中</div>
+<p>
+摩根士丹利发布报告，将2026年DRAM价格涨幅预测从此前的15-20%上调至50%，主因HBM3E产能挤占、AI服务器需求爆发及DDR5渗透率加速。SK海力士、三星电子等存储巨头已开始向客户提出Q4涨价20-30%的意向。
+</p>
+<div class="chain">
+<strong>A股映射：</strong>存储芯片（兆易创新/北京君正/澜起科技）、HBM产业链（华海诚科/雅克科技）、半导体设备/材料。涨价预期短期难以证伪，但需观察下游终端接受度。
+</div>
+</div>
+
+<!-- T1: 发改委 -->
+<div class="news-card t1">
+<div class="tag tag-t1">T1 · 重要</div>
+<h4>📜 发改委召开"六张网"建设推进会</h4>
+<div class="meta">2026-08-19 · 证据等级：中</div>
+<p>
+国家发改委召开"六张网"（交通网/能源网/水利网/信息网/物流网/市政网）重大基础设施建设项目推进会，强调下半年加快专项债发行节奏，推动一批重大项目在三季度集中开工。涉及总投资规模超万亿。
+</p>
+<div class="chain">
+<strong>A股映射：</strong>基建（中国交建/中国中铁）、工程机械（三一重工/徐工机械）、水泥建材（海螺水泥/华新水泥）。政策信号明确，但基建板块前期已有预期，利好程度有限。
+</div>
+</div>
+
+<!-- T1: 算力政策 -->
+<div class="news-card t1">
+<div class="tag tag-t1">T1 · 重要</div>
+<h4>🤖 多地推出算力券/Token贷政策</h4>
+<div class="meta">2026-08-19 · 证据等级：中</div>
+<p>
+上海、深圳、北京三地同日发布AI算力支持政策：上海推出"算力券"（每家企业最高500万元补贴），深圳推出"Token贷"（银行基于算力使用量发放贷款），北京推出AI算力基础设施专项债。三地政策力度超前，标志着AI产业从"政策鼓励"进入"真金白银支持"阶段。
+</p>
+<div class="chain">
+<strong>A股映射：</strong>算力基础设施（中科曙光/浪潮信息/寒武纪）、AI应用（科大讯飞/商汤）、光通信（中际旭创/新易盛）。政策密集出台但前期已有预期，需看实际落地效果。
+</div>
+</div>
+
+<!-- T2: 地缘 -->
+<div class="news-card t2">
+<div class="tag tag-t2">T2 · 关注</div>
+<h4>🌍 美伊局势紧张 · 特朗普警告"最严厉经济行动"</h4>
+<div class="meta">2026-08-19 · 证据等级：中</div>
+<p>
+特朗普在社交媒体上发文，警告将对伊朗实施"史上最严厉的经济行动"，市场担忧中东原油供应中断风险。布伦特原油小幅反弹至78.5美元/桶，航运股盘中异动。目前尚未看到实质性军事行动信号，更多是情绪层面的扰动。
+</p>
+</div>
+
+<!-- T2: 商业航天 -->
+<div class="news-card t2">
+<div class="tag tag-t2">T2 · 关注</div>
+<h4>🚀 朱雀三号运载火箭完成陆地回收试验</h4>
+<div class="meta">2026-08-19 · 证据等级：中</div>
+<p>
+蓝箭航天宣布朱雀三号运载火箭首次陆地回收试验成功，成为继SpaceX后全球第二家实现轨道级火箭回收的民营企业。此次试验标志着中国商业航天在可重复使用技术领域取得重大突破。
+</p>
+<div class="chain">
+<strong>A股映射：</strong>商业航天（航天电子/中国卫星/航天动力）、火箭产业链（钢研高纳/中航高科）。短期情绪催化，但实质性业绩兑现仍需时间。
+</div>
+</div>
+
+<!-- 3. 今日三大预测 -->
+<div class="section-title">三、今日三大预测 <span class="badge badge-green">核心</span></div>
+
+<div class="grid-3">
+<div class="card" style="border-top:3px solid var(--red)">
+<div class="label" style="color:var(--red);font-size:12px">开盘预测</div>
+<div class="value" style="font-size:20px;margin-top:4px">高开 0.3%~0.8%</div>
+<div class="sub" style="font-size:11px;margin-top:6px;line-height:1.6">
+<strong>依据：</strong>隔夜美股反弹（纳指+2.01%）、莫德纳暴涨177%带动生物医药情绪、美债长端利率回落。但昨日恐慌盘尚未完全消化，高开幅度不宜预期过高。<br>
+<strong>关键观察：</strong>高开后首15分钟是否放量，若缩量则可能回落。
+</div>
+</div>
+<div class="card" style="border-top:3px solid var(--amber)">
+<div class="label" style="color:var(--amber);font-size:12px">分时节奏推演</div>
+<div class="value" style="font-size:20px;margin-top:4px">早盘冲高 → 午盘震荡</div>
+<div class="sub" style="font-size:11px;margin-top:6px;line-height:1.6">
+<strong>上午：</strong>生物医药/CXO/疫苗领涨冲锋，观察科技（半导体/算力）能否跟涨。若生物医药开盘涨幅>5%需警惕短线获利兑现。<br>
+<strong>午后：</strong>观察量能是否持续、防御板块（银行/公用事业）是否补跌——若补跌说明资金从防御切回进攻，是积极信号。<br>
+<strong>尾盘：</strong>关注北向资金动向和宽基ETF是否放量。
+</div>
+</div>
+<div class="card" style="border-top:3px solid var(--green)">
+<div class="label" style="color:var(--green);font-size:12px">主线承接预判</div>
+<div class="value" style="font-size:20px;margin-top:4px">生物医药贯穿全天</div>
+<div class="sub" style="font-size:11px;margin-top:6px;line-height:1.6">
+<strong>第一主线：</strong>生物医药/CXO/疫苗 — 莫德纳映射，确定性最强，但需警惕一致性预期过强导致高开低走。<br>
+<strong>潜在接力：</strong>存储芯片（涨价逻辑）、算力（政策催化）、基建（六张网）。<br>
+<strong>防御方向：</strong>银行/高股息能否止跌，决定市场整体企稳质量。
+</div>
+</div>
+</div>
+
+<!-- 4. 量能与情绪预判 -->
+<div class="section-title">四、量能与情绪预判 <span class="badge badge-amber">情绪</span></div>
+
+<div class="grid-3">
+<div class="card">
+<div class="label">预计成交额</div>
+<div class="value" style="font-size:20px">2.2~2.6万亿</div>
+<div class="sub">缩量/持平 · 反弹初期量能通常不足</div>
+</div>
+<div class="card">
+<div class="label">涨停家数</div>
+<div class="value" style="font-size:20px">60~80家</div>
+<div class="sub">生物医药贡献主要增量</div>
+</div>
+<div class="card">
+<div class="label">情绪温度</div>
+<div class="value" style="font-size:20px"><span style="color:var(--amber)">冰点→修复</span></div>
+<div class="sub">若高开不回落则确认修复</div>
+</div>
+</div>
+
+<div class="card" style="margin-bottom:16px">
+<p style="font-size:12.5px;line-height:1.8">
+<strong>情绪判断：</strong>昨日恐慌已至冰点，隔夜重磅利好为反弹提供了绝佳催化剂。今日情绪大概率从冰点修复至"谨慎乐观"。但需注意：<strong>一致性预期过强本身就是风险</strong>——如果生物医药板块开盘涨幅过大（如板块整体>5%），反而可能引发短线资金兑现，导致"高开低走"的剧本重演。
+</p>
+<p style="font-size:12.5px;line-height:1.8;margin-top:6px">
+<strong>验证信号：</strong>① 高开幅度不宜超过1%（超1%容易被砸）；② 首小时成交额需>8000亿（缩量反弹不可靠）；③ 生物医药板块涨停数需>15家（太少说明力度不够）；④ 北向资金需净流入（外资配不配合很关键）。
+</p>
+</div>
+
+<!-- 5. 情景推演 -->
+<div class="section-title">五、情景推演 <span class="badge badge-blue">概率加权</span></div>
+
+<div class="scenario-grid">
+<div class="scenario-card scenario-opt">
+<div class="pct">35%</div>
+<h4>乐观：放量修复，主线清晰</h4>
+<ul>
+<li>高开0.5%以上且首小时不回落</li>
+<li>生物医药板块涨停>20家，扩散至CXO/疫苗全链条</li>
+<li>科技/存储/算力跟涨，不再"只跌不涨"</li>
+<li>北向资金净流入>50亿</li>
+<li><strong>→ 有望收复3950点</strong></li>
 </ul>
-<div class="risk-list">
-<li><span class="i">!</span><b>风险一 · 美债利率反弹：</b>财政部回购规模（40亿/笔）相对32万亿市场杯水车薪，若今日20年期美债拍卖需求疲弱，长端利率或再度上行，成长股修复夭折。</li>
-<li><span class="i">!</span><b>风险二 · 恐慌二次释放：</b>昨日130家跌停显示情绪尚未充分出清，若今日高开引发获利盘/解套盘涌出，可能出现"高开低走"的二次探底。</li>
-<li><span class="i">!</span><b>风险三 · 科技硬件余波：</b>隔夜美股存储/光通信等科技硬件仍承压，A股对应板块的修复可能只是情绪反抽而非趋势反转，需量能确认。</li>
-<li><span class="i">!</span><b>风险四 · 地缘扰动：</b>美伊局势紧张、油价高位（WTI 84美元），若地缘升级推升油价与通胀预期，将压制风险偏好。</li>
 </div>
-<div class="callout"><b>今日关键观察点：</b>①开盘高开幅度与首小时量能；②存储/算力能否放量领涨；③银行/焦炭是否补跌；④宽基ETF是否持续放量；⑤上证能否站稳MA20（3887）上方、创业板能否守住3455。</div>
+<div class="scenario-card scenario-neu">
+<div class="pct">45%</div>
+<h4>中性：高开震荡，分化严重</h4>
+<ul>
+<li>高开0.3%左右，盘中冲高回落</li>
+<li>生物医药一枝独秀，其他板块跟涨乏力</li>
+<li>量能萎缩至2.2万亿以下</li>
+<li>北向资金小幅净流入/流出</li>
+<li><strong>→ 上证在3880~3950区间震荡</strong></li>
+</ul>
+</div>
+<div class="scenario-card scenario-pes">
+<div class="pct">20%</div>
+<h4>悲观：高开低走，情绪再崩</h4>
+<ul>
+<li>高开1%以上被快速砸盘</li>
+<li>生物医药高开低走，龙头炸板</li>
+<li>量能持续萎缩，无资金承接</li>
+<li>北向资金大幅净流出</li>
+<li><strong>→ 回踩3850甚至更低</strong></li>
+</ul>
+</div>
+</div>
+
+<!-- 6. 操作策略与风险提示 -->
+<div class="section-title">六、操作策略与风险提示 <span class="badge badge-red">风控</span></div>
+
+<div class="card" style="margin-bottom:12px;border-left:4px solid var(--green)">
+<h4 style="font-size:14px;margin-bottom:6px">📌 仓位建议</h4>
+<p style="font-size:12.5px;line-height:1.8">
+鉴于昨日恐慌程度较深，今日即便有利好催化，也不建议盲目重仓抄底。<strong>建议仓位：3~5成</strong>。核心策略是"等确认信号再动手"——不要因为开盘高开就追，等首小时走势确认方向后再做决策。
+</p>
+</div>
+
+<div class="card" style="margin-bottom:12px;border-left:4px solid var(--amber)">
+<h4 style="font-size:14px;margin-bottom:6px">🔍 今日关键观察点</h4>
+<table class="data-table">
+<tr><th width="30%">观察项</th><th width="40%">看什么</th><th>信号含义</th></tr>
+<tr><td>高开幅度</td><td>上证高开0.3%~0.8%为健康</td><td>过高易被砸，过低说明情绪不足</td></tr>
+<tr><td>首小时量能</td><td>>8000亿为放量，<7000亿为缩量</td><td>放量=修复有效，缩量=冲高回落</td></tr>
+<tr><td>生物医药持续性</td><td>板块涨停数>15且龙头不开板</td><td>主线确立，可跟涨</td></tr>
+<tr><td>防御板块补跌</td><td>银行/电力是否从涨转跌</td><td>补跌=资金切回进攻，积极信号</td></tr>
+<tr><td>北向资金</td><td>实时净流入/流出方向</td><td>外资态度决定反弹高度</td></tr>
+<tr><td>宽基ETF</td><td>是否继续放量（国家队动向）</td><td>国家队护盘=底线支撑</td></tr>
+</table>
+</div>
+
+<div class="card" style="border-left:4px solid var(--red)">
+<h4 style="font-size:14px;margin-bottom:6px">⚠️ 风险警示</h4>
+<p style="font-size:12.5px;line-height:1.8">
+① <strong>一致性预期陷阱</strong>：生物医药可能是今日最强方向，但正因所有人都在看，反而容易高开低走。不要追涨开盘涨幅>5%的个股。<br>
+② <strong>反弹≠反转</strong>：昨日暴跌的根源（流动性收缩预期、经济数据疲软）并未消除，超跌修复的持续性存疑。<br>
+③ <strong>今晚美债拍卖</strong>：今晚美国财政部将拍卖20年期国债，若中标利率偏高可能引发美债收益率再次上行，对成长股形成二次冲击。<br>
+④ <strong>仓位纪律</strong>：若上证跌破3850，应果断减仓至2成以下，等待更明确的企稳信号。
+</p>
 </div>
 
 <div class="footer">
-<p>A股盘前分析报告 | 2026年8月20日 星期四 · 盘前预测模式</p>
-<p>数据时点：2026-08-19 收盘快照 + 隔夜（8/19美股收盘至8/20开盘前）公开信息</p>
-<p>以上分析基于公开数据，不构成投资建议</p>
+<p>market-review-suite · A股盘前分析 · 2026-08-20</p>
+<p>基于公开数据生成，不构成投资建议。数据来源：Westock Data / 公开信息</p>
 </div>
 
 </div>
-
-<script>
-var colors=['#1e40af','#dc2626','#16a34a','#f59e0b','#7c3aed'];
-// 章一：三大指数近7日收盘
-var dates=['8/12','8/13','8/14','8/17','8/18','8/19'];
-var c1=echarts.init(document.getElementById('chart_kline'));
-c1.setOption({
-  tooltip:{trigger:'axis'},
-  legend:{data:['上证指数','深成指(右轴)','创业板指(右轴)']},
-  grid:{left:'8%',right:'8%',top:'12%',containLabel:true},
-  xAxis:{type:'category',data:dates},
-  yAxis:[{type:'value',name:'上证'},{type:'value',name:'深成指/创业板',splitLine:{show:false}}],
-  series:[
-    {name:'上证指数',type:'line',data:[3946.68,3926.96,3927.18,3982.65,3990.30,3894.42],itemStyle:{color:colors[0]},smooth:true,areaStyle:{opacity:0.08}},
-    {name:'深成指(右轴)',type:'line',yAxisIndex:1,data:[14414.43,14289.44,14354.31,14704.27,14622.50,13890.15],itemStyle:{color:colors[1]},smooth:true},
-    {name:'创业板指(右轴)',type:'line',yAxisIndex:1,data:[3661.83,3628.27,3641.08,3728.30,3705.44,3473.49],itemStyle:{color:colors[2]},smooth:true}
-  ]
-});
-window.addEventListener('resize',function(){c1.resize()});
-</script>
 </body>
 </html>
