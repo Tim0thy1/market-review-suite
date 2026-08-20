@@ -10,3 +10,4 @@
 # 保留 .gitignore 自身和首页
 !.gitignore
 !index.html
+!README.md
