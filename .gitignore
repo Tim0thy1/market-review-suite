@@ -7,5 +7,6 @@
 !a-share-premarket-*/
 !premarket-video-*/
 
-# 保留 .gitignore 自身
+# 保留 .gitignore 自身和首页
 !.gitignore
+!index.html

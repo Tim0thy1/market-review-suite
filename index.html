@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨市场复盘报告</title>
+<style>
+:root{--bg:#f1f5f9;--card:#fff;--border:#e2e8f0;--text:#1e293b;--text2:#64748b;--accent:#1e3a5f;--accent2:#2563eb;--red:#dc2626;--green:#16a34a;--amber:#d97706}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.6;font-size:14px;min-height:100vh}
+.container{max-width:960px;margin:0 auto;padding:32px 20px}
+.header{text-align:center;padding:40px 20px 32px;border-bottom:2px solid var(--accent);margin-bottom:32px}
+.header h1{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:8px;letter-spacing:1px}
+.header .subtitle{color:var(--text2);font-size:14px}
+.header .badge{display:inline-block;margin-top:10px;padding:4px 16px;background:var(--accent);color:#fff;border-radius:20px;font-size:12px;font-weight:600}
+.stats{display:flex;justify-content:center;gap:32px;margin:18px 0 0}
+.stat{text-align:center}
+.stat .num{font-size:24px;font-weight:800;color:var(--accent2)}
+.stat .label{font-size:12px;color:var(--text2)}
+.date-group{margin-bottom:28px}
+.date-header{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px}
+.date-header .tag{font-size:11px;font-weight:600;padding:2px 10px;border-radius:10px;color:#fff}
+.tag-today{background:var(--green)}
+.tag-past{background:var(--text2)}
+.report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.report-card{border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--card);transition:all .2s;text-decoration:none;color:var(--text);display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.report-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(30,58,95,.12);border-color:var(--accent2)}
+.report-card .type{font-size:11px;font-weight:700;padding:2px 10px;border-radius:6px;display:inline-block;width:fit-content;margin-bottom:8px}
+.type-us{background:#eff6ff;color:#1d4ed8}
+.type-ashare{background:#fef2f2;color:#b91c1c}
+.type-premarket{background:#f0fdf4;color:#15803d}
+.type-video{background:#fffbeb;color:#92400e}
+.report-card .title{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.4}
+.report-card .desc{font-size:12.5px;color:var(--text2);line-height:1.5;flex:1}
+.report-card .arrow{color:var(--accent2);font-size:13px;margin-top:8px;font-weight:600}
+.footer{text-align:center;padding:32px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
+@media(max-width:600px){.report-grid{grid-template-columns:1fr}.stats{gap:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>跨市场复盘报告</h1>
+<div class="subtitle">美股复盘 · A股复盘 · 盘前分析 · 盘前视频</div>
+<div class="badge">自动同步 · 每日更新</div>
+<div class="stats">
+<div class="stat"><div class="num">8</div><div class="label">报告总数</div></div>
+<div class="stat"><div class="num">6</div><div class="label">交易日</div></div>
+<div class="stat"><div class="num">2</div><div class="label">市场</div></div>
+</div>
+</div>
+
+<div class="date-group">
+<div class="date-header">2026-08-20 <span class="tag tag-today">今日</span></div>
+<div class="report-grid">
+<a class="report-card" href="./a-share-premarket-20260820/盘前分析_20260820.html">
+<div class="type type-premarket">盘前分析</div>
+<div class="title">A股盘前分析 · 8月20日</div>
+<div class="desc">利空源头逆转（美债回购），恐慌后迎修复窗口，高开概率大</div>
+<div class="arrow">查看报告 →</div>
+</a>
+<a class="report-card" href="./premarket-video-20260820/视频制作提示词.txt">
+<div class="type type-video">视频脚本</div>
+<div class="title">盘前视频提示词 · 8月20日</div>
+<div class="desc">美债回购/美伊局势/存储涨价/算力政策，约7分钟</div>
+<div class="arrow">查看提示词 →</div>
+</a>
+</div>
+</div>
+
+<div class="date-group">
+<div class="date-header">2026-08-19 <span class="tag tag-past">已归档</span></div>
+<div class="report-grid">
+<a class="report-card" href="./a-share-review-20260819/全景复盘_20260819.html">
+<div class="type type-ashare">A股复盘</div>
+<div class="title">A股全景复盘 · 8月19日</div>
+<div class="desc">恐慌出清日：上证-2.40%，创业板-6.26%，130家跌停，成交额25110亿</div>
+<div class="arrow">查看报告 →</div>
+</a>
+<a class="report-card" href="./us-market-review-20260819/us-market-review-20260819.html">
+<div class="type type-us">美股复盘</div>
+<div class="title">美股收盘复盘 · 8月19日</div>
+<div class="desc">三大指数结束三连跌，中概涨1.51%，30Y美债回落至5.19%</div>
+<div class="arrow">查看报告 →</div>
+</a>
+<a class="report-card" href="./a-share-premarket-20260819/a-share-premarket-20260819.html">
+<div class="type type-premarket">盘前分析</div>
+<div class="title">A股盘前分析 · 8月19日</div>
+<div class="desc">美债5.32%创19年新高，全球无风险利率锚上移，高估值成长股承压</div>
+<div class="arrow">查看报告 →</div>
+</a>
+<a class="report-card" href="./premarket-video-20260819/视频制作提示词.txt">
+<div class="type type-video">视频脚本</div>
+<div class="title">盘前视频提示词 · 8月19日</div>
+<div class="desc">美债收益率19年新高/费城半导体-5.6%/AI产业链/朱雀三号回收</div>
+<div class="arrow">查看提示词 →</div>
+</a>
+</div>
+</div>
+
+<div class="date-group">
+<div class="date-header">2026-08-18 <span class="tag tag-past">已归档</span></div>
+<div class="report-grid">
+<a class="report-card" href="./a-share-review-20260818/a-share-review-20260818.html">
+<div class="type type-ashare">A股复盘</div>
+<div class="title">A股收盘复盘 · 8月18日</div>
+<div class="desc">上证微涨0.19%收3990点，创业板跌0.93%，中证1000继续领跑</div>
+<div class="arrow">查看报告 →</div>
+</a>
+<a class="report-card" href="./us-market-review-20260818/us-market-review-20260818.html">
+<div class="type type-us">美股复盘</div>
+<div class="title">美股收盘复盘 · 8月18日</div>
+<div class="desc">三大指数连跌三日，费城半导体-5.6%，30Y美债收益率飙至5.32%</div>
+<div class="arrow">查看报告 →</div>
+</a>
+</div>
+</div>
+
+<div class="footer">
+<p>market-review-suite · 跨市场复盘工具集</p>
+<p>基于公开数据生成，不构成投资建议</p>
+</div>
+
+</div>
+</body>
+</html>
