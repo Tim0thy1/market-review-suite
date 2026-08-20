@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 | 2026年8月19日</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#e6edf3;--text2:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--yellow:#d29922;--orange:#db6d28;--purple:#bc8cff;--cyan:#39c5cf}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.7;font-size:15px}
+.container{max-width:1200px;margin:0 auto;padding:24px 16px}
+.header{text-align:center;padding:40px 20px 30px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .subtitle{color:var(--text2);font-size:14px}
+.header .date-tag{display:inline-block;margin-top:12px;padding:4px 16px;background:var(--card);border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--accent)}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.section-title{font-size:20px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.section-title .num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--accent);color:var(--bg);border-radius:8px;font-size:16px;font-weight:700}
+.section-title.green .num{background:var(--green)}
+.section-title.red .num{background:var(--red)}
+.section-title.yellow .num{background:var(--yellow)}
+.section-title.purple .num{background:var(--purple)}
+.section-title.cyan .num{background:var(--cyan)}
+.section-title.orange .num{background:var(--orange)}
+.index-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.index-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.index-card .name{font-size:13px;color:var(--text2);margin-bottom:6px}
+.index-card .value{font-size:22px;font-weight:700;margin-bottom:4px}
+.index-card .change{font-size:14px;font-weight:600}
+.up{color:var(--green)}.down{color:var(--red)}
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+.data-table th{background:var(--bg);padding:10px 12px;text-align:left;font-weight:600;color:var(--text2);border-bottom:2px solid var(--border);font-size:13px}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
+.data-table tr:hover td{background:rgba(88,166,255,0.05)}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;margin-right:4px}
+.tag-t0{background:rgba(248,81,73,0.15);color:var(--red);border:1px solid rgba(248,81,73,0.3)}
+.tag-t1{background:rgba(210,153,34,0.15);color:var(--yellow);border:1px solid rgba(210,153,34,0.3)}
+.tag-t2{background:rgba(88,166,255,0.15);color:var(--accent);border:1px solid rgba(88,166,255,0.3)}
+.tag-t3{background:rgba(139,148,158,0.15);color:var(--text2);border:1px solid rgba(139,148,158,0.3)}
+.tag-low{background:rgba(63,185,80,0.15);color:var(--green);border:1px solid rgba(63,185,80,0.3);font-size:11px}
+.tag-mid{background:rgba(210,153,34,0.15);color:var(--yellow);border:1px solid rgba(210,153,34,0.3);font-size:11px}
+.tag-high{background:rgba(248,81,73,0.15);color:var(--red);border:1px solid rgba(248,81,73,0.3);font-size:11px}
+.news-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.news-item .news-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.news-item .news-title{font-size:15px;font-weight:600}
+.news-item .news-body{font-size:14px;color:var(--text2);margin-bottom:8px}
+.news-item .chain{font-size:13px;color:var(--text);background:rgba(88,166,255,0.05);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:8px}
+.news-item .chain b{color:var(--accent)}
+.analysis-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin:16px 0}
+.analysis-box .ab-title{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:10px}
+.analysis-box p{font-size:14px;margin-bottom:8px}
+.analysis-box .highlight{color:var(--yellow);font-weight:600}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
+.scenario-card{background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:16px}
+.scenario-card.optimistic{border-color:rgba(63,185,80,0.3)}
+.scenario-card.neutral{border-color:rgba(210,153,34,0.3)}
+.scenario-card.pessimistic{border-color:rgba(248,81,73,0.3)}
+.scenario-card .sc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.scenario-card .sc-name{font-size:16px;font-weight:700}
+.scenario-card .sc-prob{font-size:13px;font-weight:600;padding:2px 10px;border-radius:12px}
+.scenario-card.optimistic .sc-prob{background:rgba(63,185,80,0.15);color:var(--green)}
+.scenario-card.neutral .sc-prob{background:rgba(210,153,34,0.15);color:var(--yellow)}
+.scenario-card.pessimistic .sc-prob{background:rgba(248,81,73,0.15);color:var(--red)}
+.scenario-card .sc-desc{font-size:13px;color:var(--text2);margin-bottom:8px}
+.scenario-card .sc-trigger{font-size:13px;color:var(--text)}
+.scenario-card .sc-trigger b{color:var(--accent)}
+.strategy-list{list-style:none;padding:0}
+.strategy-list li{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.strategy-list li .num{color:var(--accent);font-weight:700;flex-shrink:0}
+.risk-list{list-style:none;padding:0}
+.risk-list li{background:rgba(248,81,73,0.05);border:1px solid rgba(248,81,73,0.2);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.risk-list li .icon{color:var(--red);flex-shrink:0}
+.chart-container{width:100%;height:320px;margin:16px 0;border-radius:8px;background:var(--bg);border:1px solid var(--border)}
+.chart-container.small{height:280px}
+.chart-container.tall{height:380px}
+.chart-title{font-size:14px;font-weight:600;color:var(--text2);margin-bottom:8px;padding-left:4px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.summary-bar{background:linear-gradient(135deg,rgba(88,166,255,0.1),rgba(188,140,255,0.1));border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px;font-size:15px}
+.summary-bar b{color:var(--accent)}
+.footer{text-align:center;padding:24px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:32px}
+.metric-row{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}
+.metric-pill{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:6px 16px;font-size:13px}
+.metric-pill b{color:var(--accent)}
+@media(max-width:768px){
+.index-cards{grid-template-columns:1fr}
+.scenario-grid{grid-template-columns:1fr}
+.two-col{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+<h1>A股盘前分析报告</h1>
+<div class="subtitle">State-Trigger-Flow 框架 | 盘前预测模式</div>
+<div class="date-tag">2026年8月19日 周三</div>
+</div>
+
+<!-- Summary Bar -->
+<div class="summary-bar">
+<b>核心判断：</b>8/18 A股V型反弹后小幅分化，赚钱效应偏弱（上涨占比仅20%），中小盘风格延续强势。隔夜<b>美债收益率创19年新高</b>叠加美股纳指-1.33%构成双重利空传导，8/19早盘三大指数大幅跳空低开（上证-0.80%/深成指-2.19%/创业板-2.88%）。但多重产业催化（宇树科技上市/朱雀三号火箭回收/功率半导体涨价/AI硬件走强）有望在盘中提供结构性行情。
+</div>
+
+<!-- Section 1: 昨日复盘速览 -->
+<div class="section">
+<div class="section-title"><span class="num">1</span>昨日复盘速览（8/18 收盘 State）</div>
+
+<div class="index-cards">
+<div class="index-card">
+<div class="name">上证指数</div>
+<div class="value">3990.30</div>
+<div class="change up">+0.19%</div>
+</div>
+<div class="index-card">
+<div class="name">深成指</div>
+<div class="value">14622.50</div>
+<div class="change down">-0.56%</div>
+</div>
+<div class="index-card">
+<div class="name">创业板指</div>
+<div class="value">3705.56</div>
+<div class="change down">-0.93%</div>
+</div>
+</div>
+
+<div id="chart-index-compare" class="chart-container"></div>
+
+<div class="analysis-box">
+<div class="ab-title">State 总结</div>
+<p>8/18 A股呈V型反弹后小幅分化格局：上证微涨0.19%收3990.30，深成指跌0.56%，创业板跌0.93%。<span class="highlight">指数层面虽有反弹但分化明显</span>，大盘蓝筹撑住上证，中小盘成长股回调。</p>
+<p><b>成交额</b>24007.75亿，与5日均（23268.83亿，+103.18%）和20日均（23302.92亿，+103.02%）基本持平，量能维持高位但未进一步放大。</p>
+<p><b>赚钱效应极弱</b>：仅1140只上涨/4128只下跌/279只平盘，上涨占比仅20%，11涨停/4跌停。指数反弹但个股普跌，市场呈"赚了指数不赚钱"特征。</p>
+</div>
+
+<div class="chart-title">涨跌分布</div>
+<div id="chart-breadth" class="chart-container small"></div>
+
+<div class="chart-title">风格轮动（5日涨幅对比）</div>
+<div id="chart-style" class="chart-container small"></div>
+
+<div class="analysis-box">
+<div class="ab-title">风格与板块特征</div>
+<p><b>中小盘远强于大盘</b>：中证1000 5日+9.16% vs 沪深300 5日+2.71%，全指成长5日+7.21% vs 全指价值5日-1.20%。资金明显偏好中小盘成长股，大盘价值股承压。</p>
+<p><b>领涨板块</b>：焦炭+2.91%、房地产服务+2.79%、风电设备+1.93%。资金流入居前：风电设备(1.75亿)、装修装饰(0.83亿)、焦炭(0.76亿)。</p>
+<p><b>估值高位</b>：中证全指PETTM 21.99，处10年历史百分位95.28%。<span class="highlight">估值已处高位区域，对利空敏感度上升</span>。</p>
+</div>
+</div>
+
+<!-- Section 2: 隔夜关键信息 -->
+<div class="section">
+<div class="section-title red"><span class="num">2</span>隔夜关键信息（Trigger）</div>
+
+<p style="color:var(--text2);font-size:13px;margin-bottom:16px">时间窗口：8/18收盘后 → 8/19开盘前 | 按消息泄露度分级</p>
+
+<!-- T0 -->
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t0">T0 必讲</span>
+<span class="tag tag-high">泄露度：极低</span>
+<span class="news-title">30年期美债收益率升至5.311%，创2007年以来新高</span>
+</div>
+<div class="news-body">30年期美债收益率突破5.3%关口，创近19年新高。10年期美债同步走高。全球主权债遭遇抛售，美国银行Hartnett指出美债抛售潮可能持续。</div>
+<div class="chain"><b>传导链：</b>美债收益率飙升 → 全球无风险利率锚上移 → 高估值成长股估值承压（DCF折现率上升）→ A股创业板/科技板块首当其冲 → <b>触发宏观利率T0信号</b></div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t0">T0 必讲</span>
+<span class="tag tag-high">泄露度：极低</span>
+<span class="news-title">美股三大指数收跌，纳指-1.33%领跌</span>
+</div>
+<div class="news-body">道指-0.22%，纳指-1.33%，标普-0.69%。半导体板块暴跌，AI商业模式受质疑。纳指三连跌。</div>
+<div class="chain"><b>传导链：</b>美股下跌（尤其纳指/半导体） → 风险偏好下降 → A股科技板块开盘承压 → 与美债收益率形成双重利空</div>
+</div>
+
+<!-- T1 -->
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t1">T1 重点</span>
+<span class="tag tag-mid">泄露度：中</span>
+<span class="news-title">宇树科技科创板上市，人形机器人第一股</span>
+</div>
+<div class="news-body">宇树科技登陆科创板，发行价150.80元。作为人形机器人赛道标杆企业，上市表现将影响整个机器人产业链估值。</div>
+<div class="chain"><b>传导链：</b>宇树科技上市 → 机器人产业链关注度提升 → 相关零部件/传感器/减速器公司可能受到资金关注 → 但需关注上市首日定价是否过高</div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t1">T1 重点</span>
+<span class="tag tag-low">泄露度：低</span>
+<span class="news-title">朱雀三号火箭回收成功，商业航天里程碑</span>
+</div>
+<div class="news-body">蓝箭航天朱雀三号火箭首次回收成功，成为全球第二个实现火箭回收的私营航天公司。商业航天产业化进程加速。</div>
+<div class="chain"><b>传导链：</b>火箭回收成功 → 商业航天可行性验证 → 卫星互联网/太空经济预期升温 → A股商业航天概念可能活跃</div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t1">T1 重点</span>
+<span class="tag tag-mid">泄露度：中</span>
+<span class="news-title">功率半导体第三波涨价，10月起10-15%</span>
+</div>
+<div class="news-body">功率半导体行业启动第三波涨价，10月起MOSFET/IGBT等器件价格上调10-15%。产业景气度持续回升。</div>
+<div class="chain"><b>传导链：</b>功率半导体涨价 → 半导体周期上行信号 → 相关公司盈利预期改善 → A股功率半导体板块可能受益</div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t1">T1 重点</span>
+<span class="tag tag-low">泄露度：低</span>
+<span class="news-title">美伊局势紧张升级</span>
+</div>
+<div class="news-body">中东局势持续紧张，美伊关系恶化。地缘风险上升推动避险情绪。</div>
+<div class="chain"><b>传导链：</b>美伊局势紧张 → 避险情绪升温 → 黄金/石油可能受益，风险资产承压 → A股军工板块可能活跃，但整体风险偏好下降</div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t1">T1 重点</span>
+<span class="tag tag-low">泄露度：低</span>
+<span class="news-title">AI硬件板块走强：CPO/液冷/PCB</span>
+</div>
+<div class="news-body">8/19午盘回顾显示CPO、液冷、PCB等AI硬件股集体走强，AI基础设施投资主线持续。</div>
+<div class="chain"><b>传导链：</b>AI硬件走强 → AI基础设施投资持续 → 相关产业链公司可能延续活跃 → 但需关注在大盘低开背景下能否持续</div>
+</div>
+
+<!-- T2 -->
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t2">T2 提一句</span>
+<span class="tag tag-mid">泄露度：中</span>
+<span class="news-title">公积金条例修订，9月20日施行</span>
+</div>
+<div class="news-body">国务院修订住房公积金条例，9月20日起施行。涉及缴存比例和使用范围调整。</div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t2">T2 提一句</span>
+<span class="tag tag-low">泄露度：低</span>
+<span class="news-title">兆易创新半年报：营收+178.67%，净利润+1091.5%</span>
+</div>
+<div class="news-body">兆易创新披露半年报，业绩暴增。半导体周期复苏信号明确。</div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t2">T2 提一句</span>
+<span class="tag tag-low">泄露度：低</span>
+<span class="news-title">7月工业增加值+4.5%，李强召开国务院全体会议</span>
+</div>
+<div class="news-body">7月工业增加值同比增长4.5%。国务院总理李强召开全体会议，强调发改委新型政策性金融工具、下沉市场消费等。</div>
+</div>
+
+<div class="news-item">
+<div class="news-header">
+<span class="tag tag-t2">T2 提一句</span>
+<span class="tag tag-low">泄露度：低</span>
+<span class="news-title">国际贵金属走弱，布伦特原油92美元</span>
+</div>
+<div class="news-body">国际贵金属价格走弱，布伦特原油报92美元/桶。比特币跌至65000美元。</div>
+</div>
+
+<div class="analysis-box">
+<div class="ab-title">Trigger 小结</div>
+<p><span class="highlight">核心利空</span>：美债收益率创19年新高 + 美股纳指三连跌 = 海外双重传导。高估值A股（尤其创业板）对利率最敏感，低开压力最大。</p>
+<p><span class="highlight">核心利多</span>：多重产业催化（宇树科技上市/朱雀三号/功率半导体涨价/AI硬件走强）可能在大盘低开后提供结构性行情。</p>
+<p><b>净影响判断</b>：利空来自宏观层面（利率+风险偏好），利多来自产业层面。宏观利空的传导速度更快、范围更广；产业利多的发酵需要时间，且在大盘低开环境下可能被系统性抛压掩盖。<b>短期偏空，但结构性机会值得关注</b>。</p>
+</div>
+</div>
+
+<!-- Section 3: 今日三大预测 -->
+<div class="section">
+<div class="section-title yellow"><span class="num">3</span>今日三大预测</div>
+
+<div class="analysis-box">
+<div class="ab-title">预测一：开盘预测（已验证）</div>
+<p><b>8/19早盘三大指数大幅跳空低开</b>：上证3958.42（-0.80%），深成指14302.08（-2.19%），创业板3598.77（-2.88%）。</p>
+<p><b>低开原因</b>：隔夜美股纳指-1.33% + 30年期美债收益率5.311%创19年新高 = 双重利空传导。创业板跌幅最大（-2.88%），完全符合"高估值成长股对利率最敏感"的逻辑推演。</p>
+<p><b>开盘缺口分析</b>：上证跳空约32点（3990→3958），深成指跳空约320点（14622→14302），创业板跳空约107点（3705→3598）。创业板缺口最大，反映成长股抛压最重。</p>
+</div>
+
+<div class="analysis-box">
+<div class="ab-title">预测二：分时节奏推演</div>
+<p><b>09:30-10:00</b>：开盘后可能继续探底。恐慌盘涌出，但8/18已处20%上涨占比的低位，部分个股可能已经超卖，探底幅度有限。</p>
+<p><b>10:00-10:30</b>：关注技术性反抽。若成交量温和放大且北向资金转为净流入，可能出现超跌反弹。重点关注AI硬件/机器人/商业航天题材能否逆势活跃。</p>
+<p><b>10:30-11:30</b>：分化期。强势题材（宇树科技映射/朱雀三号映射）可能走出独立行情，但大部分个股将随大盘弱势震荡。</p>
+<p><b>13:00-14:30</b>：关键观察期。若上午探底企稳，下午可能有资金入场抄底；若上午持续走弱，下午可能加速下跌。</p>
+<p><b>14:30-15:00</b>：尾盘博弈。关注是否有资金抢筹（看好次日反弹）或尾盘抛压（止损盘涌出）。</p>
+</div>
+
+<div class="analysis-box">
+<div class="ab-title">预测三：主线承接预判</div>
+<p><b>潜在主线一：AI硬件（CPO/液冷/PCB）</b> — 8/19午盘已观察到走强信号。若能在大盘低开后延续强势，可能成为今日最强结构性主线。催化剂：AI基础设施投资持续，海外AI叙事虽有波动但产业趋势未变。</p>
+<p><b>潜在主线二：人形机器人产业链</b> — 宇树科技科创板上市的映射效应。关注减速器、传感器、伺服电机等核心零部件公司。风险：上市首日定价过高可能透支预期。</p>
+<p><b>潜在主线三：商业航天</b> — 朱雀三号火箭回收成功的映射效应。但商业航天概念股较少，资金容量有限，可能仅为脉冲式行情。</p>
+<p><b>潜在主线四：功率半导体</b> — 第三波涨价10-15%的产业催化。但半导体板块受美股半导体暴跌拖累，可能存在多空博弈。</p>
+<p><b>风险主线</b>：高估值成长股（创业板）对美债收益率最敏感，可能持续承压。中小盘风格如果出现拥挤度反转，也可能引发踩踏。</p>
+</div>
+
+<div id="chart-gap" class="chart-container"></div>
+</div>
+
+<!-- Section 4: 量能与情绪预判 -->
+<div class="section">
+<div class="section-title purple"><span class="num">4</span>量能与情绪预判</div>
+
+<div class="two-col">
+<div>
+<div class="chart-title">成交额5日趋势（亿元）</div>
+<div id="chart-volume" class="chart-container small"></div>
+</div>
+<div>
+<div class="chart-title">情绪温度计</div>
+<div id="chart-sentiment" class="chart-container small"></div>
+</div>
+</div>
+
+<div class="analysis-box">
+<div class="ab-title">量能预判</div>
+<p><b>预计成交额区间：22000-25000亿</b>。8/18成交24007.75亿，8/19大幅低开后可能有两种情景：若恐慌性抛售放量，成交可能突破25000亿；若投资者观望情绪浓厚，成交可能缩至22000亿附近。</p>
+<p><b>量能信号</b>：放量下跌 = 筹码松动，短期仍有压力；缩量下跌 = 抛压有限，可能接近底部。关注开盘前30分钟量能变化。</p>
+</div>
+
+<div class="analysis-box">
+<div class="ab-title">情绪预判</div>
+<p><b>预计涨停家数：15-25家</b>。8/18仅11家涨停，处低位。8/19低开后涨停家数可能进一步减少，但AI硬件/机器人等题材股可能贡献部分涨停。</p>
+<p><b>预计跌停家数：5-15家</b>。低开后高位股可能补跌，前期涨幅过大的中小盘股存在获利了结压力。</p>
+<p><b>情绪温度：偏冷（30/100）</b>。8/18已处低位（上涨占比20%），8/19低开后将进一步降温。但多重产业催化可能在局部维持热度，不至于全面冰冻。</p>
+</div>
+
+<div class="metric-row">
+<div class="metric-pill">8/18成交额：<b>24008亿</b></div>
+<div class="metric-pill">5日均量：<b>23269亿</b></div>
+<div class="metric-pill">20日均量：<b>23303亿</b></div>
+<div class="metric-pill">8/18涨停：<b>11家</b></div>
+<div class="metric-pill">8/18跌停：<b>4家</b></div>
+<div class="metric-pill">8/18上涨占比：<b>20%</b></div>
+</div>
+</div>
+
+<!-- Section 5: 情景推演 -->
+<div class="section">
+<div class="section-title cyan"><span class="num">5</span>情景推演</div>
+
+<div class="scenario-grid">
+<div class="scenario-card optimistic">
+<div class="sc-header">
+<span class="sc-name">乐观情景</span>
+<span class="sc-prob">25%</span>
+</div>
+<div class="sc-desc">低开后V型反弹，AI硬件/机器人/商业航天题材活跃，收盘跌幅收窄至-0.3%以内。创业板可能翻红。</div>
+<div class="sc-trigger"><b>触发条件：</b>成交量温和放大（>24000亿），北向资金净流入，AI硬件主线持续强势，10:00前探底成功</div>
+</div>
+<div class="scenario-card neutral">
+<div class="sc-header">
+<span class="sc-name">中性情景</span>
+<span class="sc-prob">50%</span>
+</div>
+<div class="sc-desc">低开后弱势震荡，部分题材活跃但持续性不强，收盘上证-0.5%至-1.0%，深成指-1.5%至-2.5%。</div>
+<div class="sc-trigger"><b>触发条件：</b>成交量持平（22000-24000亿），北向资金小幅波动，题材股脉冲后回落</div>
+</div>
+<div class="scenario-card pessimistic">
+<div class="sc-header">
+<span class="sc-name">悲观情景</span>
+<span class="sc-prob">25%</span>
+</div>
+<div class="sc-desc">低开后继续探底，恐慌情绪蔓延，收盘上证-1.5%以下，创业板可能跌超-3.5%。全面杀跌。</div>
+<div class="sc-trigger"><b>触发条件：</b>成交量放大且持续抛压（>25000亿），北向资金大幅净流出，美债收益率继续走高</div>
+</div>
+</div>
+
+<div id="chart-scenario" class="chart-container small"></div>
+
+<div class="analysis-box">
+<div class="ab-title">情景分析</div>
+<p><b>中性情景概率最高（50%）</b>：隔夜利空明确但市场已有一定预期（8/18已反映部分），多重产业催化提供局部支撑，大盘弱势震荡但不至于全面崩盘。</p>
+<p><b>乐观与悲观情景对称（各25%）</b>：乐观情景需要量能配合+北向流入+主线持续三重条件共振；悲观情景需要美债收益率继续飙升+北向大幅流出+恐慌性抛售三重利空叠加。两者概率对称，反映市场方向不确定性较高。</p>
+<p><b>关键观察指标</b>：①开盘前30分钟成交量 ②北向资金流向 ③AI硬件板块能否逆势走强 ④创业板是否企稳 ⑤涨停家数变化</p>
+</div>
+</div>
+
+<!-- Section 6: 操作策略与风险提示 -->
+<div class="section">
+<div class="section-title orange"><span class="num">6</span>操作策略与风险提示</div>
+
+<div class="analysis-box">
+<div class="ab-title">操作策略</div>
+<ul class="strategy-list">
+<li><span class="num">1</span><div><b>不追高低开</b>：大幅低开后的第一波反弹通常不可持续，避免在开盘30分钟内追高。等待10:00后观察量能和方向再决策。</div></li>
+<li><span class="num">2</span><div><b>关注AI硬件/机器人/商业航天题材的低吸机会</b>：若这些板块在大盘低开后仍能保持相对强势，说明资金认可度高，可在企稳后轻仓参与。</div></li>
+<li><span class="num">3</span><div><b>控制仓位，避免重仓抄底</b>：当前估值处95.28%历史百分位高位，美债收益率创新高，系统性风险未消除。建议仓位不超过5成，保留弹药。</div></li>
+<li><span class="num">4</span><div><b>关注成交量变化</b>：放量下跌需警惕（筹码松动），缩量下跌可观察（抛压有限）。若全天成交突破25000亿且指数未企稳，需进一步减仓。</div></li>
+<li><span class="num">5</span><div><b>规避高估值成长股的追高</b>：创业板对美债收益率最敏感，低开后可能仍有探底空间。不宜在开盘阶段抄底创业板高估值品种。</div></li>
+</ul>
+</div>
+
+<div class="analysis-box">
+<div class="ab-title">风险提示</div>
+<ul class="risk-list">
+<li><span class="icon">!</span><div><b>美债收益率持续飙升</b>：30年期已破5.3%，若继续上行可能引发全球risk-off，A股高估值板块承压加大。</div></li>
+<li><span class="icon">!</span><div><b>估值高位回调风险</b>：中证全指PETTM处10年95.28%百分位，任何利空都可能引发较大幅度回调。</div></li>
+<li><span class="icon">!</span><div><b>美伊局势不确定性</b>：地缘风险若进一步升级，可能引发避险情绪骤升，冲击风险资产。</div></li>
+<li><span class="icon">!</span><div><b>中小盘风格拥挤度</b>：中证1000 5日+9.16%远强于沪深300，风格过度拥挤后可能引发风格切换和踩踏。</div></li>
+<li><span class="icon">!</span><div><b>美股半导体暴跌传导</b>：纳指-1.33%，半导体板块领跌，A股半导体/科技板块可能受拖累。</div></li>
+</ul>
+</div>
+
+<div class="analysis-box" style="border-left:3px solid var(--accent)">
+<div class="ab-title">免责声明</div>
+<p style="font-size:13px;color:var(--text2)">本报告基于公开数据和信息均进行分析，不构成任何投资建议。市场有风险，投资需谨慎。所有预测均为概率化推演，实际走势可能与分析存在偏差。</p>
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<p>A股盘前分析报告 | 2026年8月19日 | 基于State-Trigger-Flow框架</p>
+<p>数据来源：westock-data结构化数据 + 公开市场信息 | 报告生成时间：盘前</p>
+</div>
+
+</div>
+
+<script>
+// Chart 1: Index Comparison
+var chart1 = echarts.init(document.getElementById('chart-index-compare'));
+chart1.setOption({
+  title:{text:'三大指数：8/18收盘 vs 8/19早盘',textStyle:{color:'#8b949e',fontSize:13},left:'center'},
+  legend:{data:['8/18收盘','8/19早盘'],textStyle:{color:'#8b949e'},top:25},
+  tooltip:{trigger:'axis',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
+  grid:{left:'8%',right:'8%',bottom:'10%',top:'18%'},
+  xAxis:{type:'category',data:['上证指数','深成指','创业板指'],axisLabel:{color:'#8b949e'},axisLine:{lineStyle:{color:'#30363d'}}},
+  yAxis:{type:'value',axisLabel:{color:'#8b949e',formatter:'{value}%'},splitLine:{lineStyle:{color:'rgba(48,54,61,0.5)'}},axisLine:{lineStyle:{color:'#30363d'}}},
+  series:[
+    {name:'8/18收盘',type:'bar',data:[0.19,-0.56,-0.93],itemStyle:{color:'#58a6ff'},barWidth:'30%'},
+    {name:'8/19早盘',type:'bar',data:[-0.80,-2.19,-2.88],itemStyle:{color:'#f85149'},barWidth:'30%'}
+  ]
+});
+
+// Chart 2: Breadth
+var chart2 = echarts.init(document.getElementById('chart-breadth'));
+chart2.setOption({
+  title:{text:'8/18涨跌分布（共5547只）',textStyle:{color:'#8b949e',fontSize:13},left:'center'},
+  tooltip:{trigger:'item',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
+  legend:{textStyle:{color:'#8b949e'},bottom:0},
+  series:[{
+    type:'pie',radius:['40%','65%'],center:['50%','45%'],
+    data:[
+      {value:1140,name:'上涨',itemStyle:{color:'#3fb950'}},
+      {value:4128,name:'下跌',itemStyle:{color:'#f85149'}},
+      {value:279,name:'平盘',itemStyle:{color:'#8b949e'}}
+    ],
+    label:{color:'#e6edf3',formatter:'{b}\n{c} ({d}%)'}
+  }]
+});
+
+// Chart 3: Style Rotation
+var chart3 = echarts.init(document.getElementById('chart-style'));
+chart3.setOption({
+  title:{text:'风格轮动：5日涨幅对比',textStyle:{color:'#8b949e',fontSize:13},left:'center'},
+  tooltip:{trigger:'axis',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
+  grid:{left:'15%',right:'8%',bottom:'10%',top:'15%'},
+  xAxis:{type:'value',axisLabel:{color:'#8b949e',formatter:'{value}%'},splitLine:{lineStyle:{color:'rgba(48,54,61,0.5)'}}},
+  yAxis:{type:'category',data:['全指价值','沪深300','全指成长','中证1000'],axisLabel:{color:'#8b949e'},axisLine:{lineStyle:{color:'#30363d'}}},
+  series:[{
+    type:'bar',
+    data:[
+      {value:-1.20,itemStyle:{color:'#f85149'}},
+      {value:2.71,itemStyle:{color:'#58a6ff'}},
+      {value:7.21,itemStyle:{color:'#3fb950'}},
+      {value:9.16,itemStyle:{color:'#3fb950'}}
+    ],
+    barWidth:'50%',
+    label:{show:true,position:'right',color:'#e6edf3',formatter:'{c}%',fontSize:12}
+  }]
+});
+
+// Chart 4: Gap Analysis
+var chart4 = echarts.init(document.getElementById('chart-gap'));
+chart4.setOption({
+  title:{text:'8/18收盘 → 8/19早盘跳空幅度',textStyle:{color:'#8b949e',fontSize:13},left:'center'},
+  tooltip:{trigger:'axis',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
+  grid:{left:'8%',right:'8%',bottom:'10%',top:'15%'},
+  xAxis:{type:'category',data:['上证指数','深成指','创业板指'],axisLabel:{color:'#8b949e'},axisLine:{lineStyle:{color:'#30363d'}}},
+  yAxis:{type:'value',axisLabel:{color:'#8b949e',formatter:'{value}%'},splitLine:{lineStyle:{color:'rgba(48,54,61,0.5)'}}},
+  series:[{
+    type:'bar',
+    data:[-0.80,-2.19,-2.88],
+    itemStyle:{color:function(p){return p.value<-2?'#f85149':p.value<-1?'#db6d28':'#d29922'}},
+    barWidth:'40%',
+    label:{show:true,position:'bottom',color:'#e6edf3',formatter:'{c}%',fontSize:13}
+  }]
+});
+
+// Chart 5: Volume Trend
+var chart5 = echarts.init(document.getElementById('chart-volume'));
+chart5.setOption({
+  title:{text:'成交额（亿元）',textStyle:{color:'#8b949e',fontSize:13},left:'center'},
+  tooltip:{trigger:'axis',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
+  grid:{left:'10%',right:'8%',bottom:'10%',top:'15%'},
+  xAxis:{type:'category',data:['8/13','8/14','8/15','8/18','8/19(预)'],axisLabel:{color:'#8b949e'},axisLine:{lineStyle:{color:'#30363d'}}},
+  yAxis:{type:'value',axisLabel:{color:'#8b949e'},splitLine:{lineStyle:{color:'rgba(48,54,61,0.5)'}}},
+  series:[{
+    type:'bar',
+    data:[22500,23800,24100,24008,23500],
+    itemStyle:{color:function(p){return p.dataIndex===4?'#d29922':'#58a6ff'}},
+    barWidth:'40%',
+    label:{show:true,position:'top',color:'#8b949e',fontSize:11}
+  },{
+    type:'line',
+    data:[23269,23269,23269,23269,23269],
+    name:'5日均量',
+    itemStyle:{color:'#bc8cff'},
+    lineStyle:{type:'dashed'},
+    symbol:'none'
+  }]
+});
+
+// Chart 6: Sentiment Gauge
+var chart6 = echarts.init(document.getElementById('chart-sentiment'));
+chart6.setOption({
+  series:[{
+    type:'gauge',
+    min:0,max:100,
+    axisLine:{lineStyle:{width:18,color:[[0.2,'#f85149'],[0.5,'#d29922'],[0.8,'#3fb950'],[1,'#3fb950']]}},
+    pointer:{itemStyle:{color:'#e6edf3'}},
+    axisTick:{distance:-18,lineStyle:{color:'#8b949e'}},
+    splitLine:{distance:-18,lineStyle:{color:'#8b949e'}},
+    axisLabel:{color:'#8b949e',distance:25},
+    detail:{valueAnimation:true,formatter:'{value}/100',color:'#e6edf3',fontSize:18},
+    title:{text:'情绪温度',color:'#8b949e',fontSize:14,offsetCenter:[0,'-30%']},
+    data:[{value:30}]
+  }]
+});
+
+// Chart 7: Scenario Probability
+var chart7 = echarts.init(document.getElementById('chart-scenario'));
+chart7.setOption({
+  title:{text:'情景概率分布',textStyle:{color:'#8b949e',fontSize:13},left:'center'},
+  tooltip:{trigger:'item',backgroundColor:'#161b22',borderColor:'#30363d',textStyle:{color:'#e6edf3'}},
+  legend:{textStyle:{color:'#8b949e'},bottom:0},
+  series:[{
+    type:'pie',radius:['35%','60%'],center:['50%','45%'],
+    data:[
+      {value:25,name:'乐观情景',itemStyle:{color:'#3fb950'}},
+      {value:50,name:'中性情景',itemStyle:{color:'#d29922'}},
+      {value:25,name:'悲观情景',itemStyle:{color:'#f85149'}}
+    ],
+    label:{color:'#e6edf3',formatter:'{b}\n{d}%'}
+  }]
+});
+
+// Resize
+window.addEventListener('resize',function(){
+  chart1.resize();chart2.resize();chart3.resize();chart4.resize();
+  chart5.resize();chart6.resize();chart7.resize();
+});
+</script>
+</body>
+</html>

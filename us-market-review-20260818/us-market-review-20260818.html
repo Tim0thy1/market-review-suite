@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股复盘报告 | 2026年8月18日（周二）</title>
+<script src="_shared/js/echarts.min.js"></script>
+<style>
+:root{--bg0:#0a0e17;--bg1:#111827;--bg2:#1a2035;--bg3:#1e2842;--bd:#2a3550;--t0:#e2e8f0;--t1:#94a3b8;--t2:#64748b;--red:#ef4444;--grn:#22c55e;--blu:#3b82f6;--blu2:#60a5fa;--ylw:#f59e0b;--dng:#dc2626;--gld:#eab308}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg0);color:var(--t0);font-family:'Segoe UI','Microsoft YaHei',sans-serif;line-height:1.7;font-size:15px}
+.ctn{max-width:1400px;margin:0 auto;padding:20px}
+.hdr{background:linear-gradient(135deg,#1a2035,#0d1321);border:1px solid var(--bd);border-radius:12px;padding:40px;margin-bottom:30px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--dng),var(--ylw),var(--grn))}
+.hdr h1{font-size:32px;margin-bottom:10px;font-weight:700}
+.hdr .sub{color:var(--t1);font-size:16px;margin-bottom:20px}
+.badge{display:inline-block;background:var(--dng);color:#fff;padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-right:10px}
+.tag2{display:inline-block;background:rgba(239,68,68,.15);border:1px solid var(--dng);color:var(--dng);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:16px 20px;text-align:center}
+.card .lb{font-size:12px;color:var(--t2);margin-bottom:6px;text-transform:uppercase}
+.card .vl{font-size:24px;font-weight:700}
+.card .ch{font-size:14px;margin-top:4px}
+.chp{background:var(--bg1);border:1px solid var(--bd);border-radius:12px;padding:30px;margin-bottom:24px}
+.cht{font-size:22px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--bd);display:flex;align-items:center;gap:10px}
+.cht .n{background:var(--blu);color:#fff;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.dt{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+.dt th{background:var(--bg2);color:var(--t1);padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid var(--bd);font-size:13px}
+.dt td{padding:8px 12px;border-bottom:1px solid var(--bd)}
+.dt tr:hover{background:var(--bg3)}
+.r{color:var(--red)}.g{color:var(--grn)}.b{font-weight:700}
+.chart-box{margin:20px 0}
+.chart{width:100%;height:400px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd)}
+.chart-sm{height:300px}.chart-lg{height:500px}
+.ct{font-size:16px;font-weight:600;margin-bottom:10px;color:var(--blu2)}
+.gc{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0}
+.ic{background:var(--bg2);border:1px solid var(--bd);border-radius:8px;padding:14px 18px}
+.ic .il{font-size:12px;color:var(--t2);margin-bottom:4px}
+.ic .iv{font-size:18px;font-weight:700}
+.ic .is{font-size:12px;color:var(--t1);margin-top:4px}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0}
+.bp{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:20px}
+.kp{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:20px}
+.bp h4{color:var(--grn);margin-bottom:12px;font-size:16px}.kp h4{color:var(--red);margin-bottom:12px;font-size:16px}
+.bp ul,.kp ul{list-style:none;padding-left:0}.bp li,.kp li{padding:6px 0;font-size:14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.bp li::before{content:"+ ";color:var(--grn);font-weight:bold}.kp li::before{content:"- ";color:var(--red);font-weight:bold}
+.tl{position:relative;padding-left:30px;margin:16px 0}
+.tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--bd)}
+.ti{position:relative;margin-bottom:16px}.ti::before{content:'';position:absolute;left:-25px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--blu);border:2px solid var(--bg1)}
+.tt{font-size:12px;color:var(--blu2);font-weight:600}.tcc{font-size:14px;color:var(--t0);margin-top:2px}
+.tg{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;margin-right:4px}
+.tg-r{background:rgba(239,68,68,.15);color:var(--red)}.tg-g{background:rgba(34,197,94,.15);color:var(--grn)}.tg-n{background:rgba(59,130,246,.15);color:var(--blu2)}.tg-w{background:rgba(245,158,11,.15);color:var(--ylw)}
+.st{font-size:16px;font-weight:600;color:var(--blu2);margin:20px 0 10px;padding-left:12px;border-left:3px solid var(--blu)}
+.hb{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:16px;margin:12px 0;font-size:14px}
+.wb{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:16px;margin:12px 0;font-size:14px}
+.db{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:8px;padding:16px;margin:12px 0;font-size:14px}
+.ftr{text-align:center;color:var(--t2);font-size:12px;padding:30px;border-top:1px solid var(--bd);margin-top:30px}
+@media(max-width:768px){.cards{grid-template-columns:repeat(2,1fr)}.bb{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ctn">
+
+<!-- HEADER -->
+<div class="hdr">
+<h1>美股复盘报告</h1>
+<div class="sub">2026年8月18日（周二）| 美东时间收盘数据 | 数据来源：Sentinel_Daily_Pro + 公开新闻</div>
+<div><span class="badge">2026.08.18</span><span class="tag2">三连跌 | AI硬件抛售 | 长端利率飙升</span></div>
+<div class="cards">
+<div class="card"><div class="lb">纳斯达克</div><div class="vl r">26,289.71</div><div class="ch r">-355.20 (-1.33%)</div></div>
+<div class="card"><div class="lb">标普500</div><div class="vl r">7,691.76</div><div class="ch r">-53.30 (-0.69%)</div></div>
+<div class="card"><div class="lb">道琼斯</div><div class="vl r">53,343.40</div><div class="ch r">-116.38 (-0.22%)</div></div>
+<div class="card"><div class="lb">VIX（恐慌指数）</div><div class="vl" style="color:var(--ylw)">~15.75</div><div class="ch" style="color:var(--ylw)">+3.7%（盘中）</div></div>
+</div>
+</div>
+
+<!-- 章零 -->
+<div class="chp">
+<div class="cht"><span class="n">0</span>市场底层状态与仓位约束</div>
+<div class="wb"><strong>底层状态判定：</strong>市场处于<strong>"高位震荡回调期"</strong>--标普500自8月13日创下7,798.99历史新高后连续三个交易日下跌（-1.38%），纳斯达克三连跌累计-1.93%。核心矛盾从"AI叙事驱动"切换至"长端利率飙升+AI债务化担忧+地缘风险升温"三重压力。</div>
+<div class="st">仓位约束框架</div>
+<table class="dt"><tr><th>维度</th><th>状态</th><th>信号</th><th>建议</th></tr>
+<tr><td>趋势（20日）</td><td class="g">偏多</td><td>纳指20日+2.33%，标普+2.57%，道指+2.15%</td><td>趋势未破，但动能趋弱</td></tr>
+<tr><td>短期（5日）</td><td class="r">偏空</td><td>纳指5日-0.59%，标普-0.47%，道指-0.83%</td><td>短线回调中，不宜追多</td></tr>
+<tr><td>成交量</td><td class="r">萎缩</td><td>纳指18日成交量6.46B vs 13日7.49B</td><td>缩量下跌，抛压不算极端但买盘缺席</td></tr>
+<tr><td>VIX</td><td><span class="tg tg-w">低位回升</span></td><td>17日VIX收15.19(+6.6%)，18日盘中~15.75</td><td>恐慌尚在低位，但回升趋势确立</td></tr>
+<tr><td>长端利率</td><td class="r">极端利空</td><td>30Y ~5.33%（2007年来最高），10Y ~4.74%</td><td>对高估值成长股构成持续压制</td></tr>
+<tr><td>地缘政治</td><td class="r">风险升温</td><td>特朗普暂停与伊朗谈判，称霍尔木兹海峡为"美国新领土"</td><td>原油上行风险加剧，通胀预期抬头</td></tr>
+</table>
+<div class="hb"><strong>综合仓位建议：</strong>整体仓位从"偏高"下调至<strong>"中性偏防御"</strong>。科技/AI板块建议降仓至30%以下，防御板块（医疗、必需消费、能源）可适度增配。等待周三FOMC会议纪要及长端利率信号明朗后再考虑加仓。</div>
+</div>
+
+<!-- 章一 -->
+<div class="chp">
+<div class="cht"><span class="n">1</span>多时间维度全景 + 市场整体状态判断</div>
+<div class="st">1.1 三大指数20日走势</div>
+<div class="chart-box"><div id="c1" class="chart chart-lg"></div></div>
+<div class="st">1.2 多时间维度涨跌幅</div>
+<table class="dt"><tr><th>指数</th><th>收盘</th><th>1D</th><th>5D</th><th>20D</th><th>日内振幅</th></tr>
+<tr><td class="b">纳斯达克</td><td>26,289.71</td><td class="r">-1.33%</td><td class="r">-0.59%</td><td class="g">+2.33%</td><td>0.59%（26422~26267）</td></tr>
+<tr><td class="b">标普500</td><td>7,691.76</td><td class="r">-0.69%</td><td class="r">-0.47%</td><td class="g">+2.57%</td><td>0.33%（7714~7689）</td></tr>
+<tr><td class="b">道琼斯</td><td>53,343.40</td><td class="r">-0.22%</td><td class="r">-0.83%</td><td class="g">+2.15%</td><td>0.42%（53479~53256）</td></tr>
+</table>
+<div class="st">1.3 市场整体状态判断</div>
+<div class="bb">
+<div class="bp"><h4>多头视角</h4><ul>
+<li>20日维度三大指数仍录得正收益（+2%以上），中期趋势未破</li>
+<li>缩量下跌表明抛压并非恐慌性，纳指成交量6.46B低于13日7.49B</li>
+<li>防御板块（医疗+1.60%、必需消费+1.06%、能源+1.76%）资金轮动有序</li>
+<li>苹果逆势上涨1.45%，部分科技巨头抗跌能力强</li>
+<li>周三FOMC纪要或提供利率路径指引，若偏鸽可能触发反弹</li>
+<li>对冲基金连续五日买入美股，科技板块逼空行情仍在</li>
+</ul></div>
+<div class="kp"><h4>空头视角</h4><ul>
+<li>标普500自8月13日历史新高7,798.99已回落-1.38%，三连跌信号偏弱</li>
+<li>半导体板块全线暴跌（SOXX -4.96%，SOXL -14.80%），AI核心叙事动摇</li>
+<li>30年期美债收益率创2007年以来新高，对成长股估值构成直接压制</li>
+<li>美伊谈判暂停，地缘风险升温，油价触及三周高位</li>
+<li>OpenAI亏损扩大+AI表外负债3万亿美元，AI债务化担忧发酵</li>
+<li>美银调查显示"债市失控"已升至第二大尾部风险</li>
+<li>韩股KOSPI盘后暴跌5%触发侧车机制，亚太情绪恶化</li>
+</ul></div>
+</div>
+<div class="hb"><strong>状态结论：</strong>市场短期处于<strong>"技术性回调"</strong>阶段，尚未演变为趋势性下跌。关键观察点为纳指26,000支撑（20日均线上方）和标普7,650支撑。若周三FOMC纪要释放鸽派信号且长端利率回落，可能触发反弹；反之，若利率继续上行叠加地缘恶化，回调可能加深。</div>
+</div>
+
+<!-- 章二 -->
+<div class="chp">
+<div class="cht"><span class="n">2</span>宏观锚点与风险偏好</div>
+<div class="st">2.1 宏观四因子状态</div>
+<table class="dt"><tr><th>因子</th><th>当前状态</th><th>方向</th><th>对市场影响</th></tr>
+<tr><td class="b">长端利率</td><td>30Y ~5.33%（19年高），10Y ~4.74%</td><td class="r">上行</td><td class="r">高估值成长股承压，科技/AI首当其冲</td></tr>
+<tr><td class="b">原油</td><td>布伦特~$91，WTI~$84.5</td><td class="r">上行</td><td class="r">通胀预期升温，消费者支出压力</td></tr>
+<tr><td class="b">美元指数</td><td>DXY ~99.5-99.6</td><td><span class="tg tg-n">中性</span></td><td>对跨国企业盈利影响温和</td></tr>
+<tr><td class="b">VIX</td><td>~15.75（+3.7%盘中）</td><td class="r">回升</td><td>恐慌情绪从低位抬头，但尚未进入恐慌区（>20）</td></tr>
+</table>
+<div class="st">2.2 美联储利率预期</div>
+<div class="wb"><strong>关键背景：</strong>美联储当前基准利率3.75%。7月FOMC会议维持利率不变，三名区域联储主席投了反对票（历史上罕见）。市场对9月加息概率约31%，12月加息概率约68%。周三（8月19日）将公布7月FOMC会议纪要，为本周最重要宏观事件。美联储主席沃什在全球央行年会（杰克逊霍尔）的讲话也将在下周关注。<br><br><strong>利率市场信号：</strong>美债期权市场已开始押注2027年才会降息--长端利率的"结构性上行"叙事正在取代"周期性波动"叙事。30年期收益率突破5.3%，政府债务逼近40万亿美元，外国持有者（尤其是日本）正在减持美债。</div>
+<div class="st">2.3 风险偏好温度计</div>
+<div class="chart-box"><div id="c2" class="chart chart-sm"></div></div>
+<div class="gc">
+<div class="ic"><div class="il">避险资产</div><div class="iv g">走强</div><div class="is">XLP +1.06%, XLV +1.60%</div></div>
+<div class="ic"><div class="il">风险资产</div><div class="iv r">走弱</div><div class="is">SMH -4.09%, QQQ -1.69%</div></div>
+<div class="ic"><div class="il">黄金</div><div class="iv r">回调</div><div class="is">GLD -1.71%, GDX -3.20%</div></div>
+<div class="ic"><div class="il">原油</div><div class="iv g">走强</div><div class="is">USO +0.28%, XLE +1.76%</div></div>
+<div class="ic"><div class="il">加密货币</div><div class="iv r">走弱</div><div class="is">MARA -7.82%, MSTR -5.28%</div></div>
+<div class="ic"><div class="il">生物科技</div><div class="iv g">走强</div><div class="is">IBB +0.81%, XBI +0.36%</div></div>
+</div>
+</div>
+
+<!-- 章三 -->
+<div class="chp">
+<div class="cht"><span class="n">3</span>市场主线与资金流向</div>
+<div class="st">3.1 行业ETF涨跌幅排行</div>
+<div class="chart-box"><div id="c3" class="chart chart-lg"></div></div>
+<div class="st">3.2 核心主线梳理</div>
+<table class="dt"><tr><th>主线</th><th>方向</th><th>核心逻辑</th><th>代表标的</th></tr>
+<tr><td class="b">主线一：AI硬件/半导体抛售</td><td class="r">大幅做空</td><td>30Y美债收益率创19年新高，AI基础设施融资成本飙升；OpenAI亏损扩大引发AI商业模式质疑；科技巨头表外负债膨胀至3万亿美元</td><td>MRVL -7.82%, MU -7.02%, ARM -6.67%, INTC -6.57%</td></tr>
+<tr><td class="b">主线二：防御板块轮动</td><td class="g">做多</td><td>长端利率飙升+地缘风险升温，资金从高Beta科技股流向低估值防御板块</td><td>XLV +1.60%, XLP +1.06%, XLE +1.76%</td></tr>
+<tr><td class="b">主线三：医疗/减肥药走强</td><td class="g">做多</td><td>板块轮动+防御属性，强生创收盘新高，礼来大涨3.6%</td><td>LLY +3.60%, JNJ +3.33%, PFE +1.41%</td></tr>
+<tr><td class="b">主线四：能源/原油走强</td><td class="g">做多</td><td>美伊谈判暂停+霍尔木兹海峡紧张，油价触及三周高位</td><td>XOM +2.54%, COP +1.69%, CVX +1.50%</td></tr>
+<tr><td class="b">主线五：长端利率冲击</td><td class="r">系统性利空</td><td>30Y突破5.33%，10Y逼近4.74%，政府债务近40万亿</td><td>成长股承压，房地产XLRE -0.45%</td></tr>
+<tr><td class="b">暗线：Meta反垄断审判</td><td class="r">事件驱动</td><td>29州检察长联手追责Meta，败诉或面临1.4万亿美元罚款</td><td>META -4.45%（七巨头跌幅最大）</td></tr>
+</table>
+<div class="st">3.3 资金流向信号</div>
+<div class="hb"><strong>资金流入：</strong>医疗（XLV +1.60%）、能源（XLE +1.76%）、必需消费（XLP +1.06%）、金融（XLF +0.45%）、生物科技（IBB +0.81%）<br><strong>资金流出：</strong>半导体（SOXX -4.96%）、科技（XLK -2.47%）、创新（ARKK -3.18%）、金矿（GDX -3.20%）、纳指3x多（TQQQ -5.07%）<br><strong>反向信号：</strong>半导体3x空SOXS +15.20%、纳指3x空SQQQ +5.11%--做空力量在半导体板块最为集中。</div>
+</div>
+
+<!-- 章四 -->
+<div class="chp">
+<div class="cht"><span class="n">4</span>暗线与多空伏击点</div>
+<div class="st">4.1 关键暗线追踪</div>
+<div class="db"><strong>暗线一：AI债务化担忧</strong><br><strong>传导机制：</strong>30年期美债收益率突破5.33%（2007年来最高） -> AI基础设施融资成本飙升 -> 科技巨头表外负债膨胀至3万亿美元（约为年资本开支5倍） -> 市场质疑AI商业模式盈利能力 -> OpenAI Q2营收67亿美元但亏损扩大 -> 半导体/AI基建板块遭抛售<br><strong>关键证据：</strong>黑石QTS以垃圾债利率发行投资级债券，认购达6倍；美银称"债市失控"已成为第二大尾部风险。</div>
+<div class="db"><strong>暗线二：美伊地缘冲突升级</strong><br><strong>传导机制：</strong>特朗普要求谈判团队暂停与伊朗接触 -> 称霍尔木兹海峡为"美国新领土" -> 从"尽快重击"转向"扼住咽喉"长期策略 -> 原油价格上行风险加剧 -> 通胀预期升温 -> 长端利率进一步承压<br><strong>关键信号：</strong>布伦特原油触及$91，WTI约$84.5；能源板块XLE +1.76%逆势走强。</div>
+<div class="wb"><strong>暗线三：Meta反垄断审判</strong><br><strong>传导机制：</strong>29州检察长正式起诉Meta -> "生死官司"今日开审 -> 败诉或面临1.4万亿美元天价罚款 -> META -4.45%，为七巨头跌幅最大 -> 若判决不利可能波及整个大型科技股估值<br><strong>影响范围：</strong>不仅是Meta，还关系到大型科技平台的监管天花板。</div>
+<div class="wb"><strong>暗线四：亚太市场情绪恶化</strong><br><strong>传导机制：</strong>美股半导体暴跌 -> 韩国KOSPI盘后暴跌5%触发侧车机制 -> 三星电子-6.7%、SK海力士-7.4% -> 日本日经225跌超3% -> MSCI亚太指数跌2%<br><strong>前瞻影响：</strong>亚太开盘走弱可能对美股周三盘前形成负面反馈。</div>
+<div class="st">4.2 多空伏击点</div>
+<table class="dt"><tr><th>方向</th><th>伏击点</th><th>触发条件</th><th>预期影响</th></tr>
+<tr><td class="r">空头伏击</td><td>半导体板块若跌破20日均线</td><td>SOXX 531->520，SMH 570->560</td><td>可能引发系统性减仓，AI叙事全面动摇</td></tr>
+<tr><td class="r">空头伏击</td><td>30年期美债收益率突破5.5%</td><td>若FOMC纪要偏鹰或债务拍卖疲软</td><td>成长股估值进一步压缩，纳指可能测试26,000</td></tr>
+<tr><td class="g">多头伏击</td><td>FOMC纪要偏鸽+长端利率回落</td><td>周三会议纪要显示多数委员担忧经济放缓</td><td>可能触发空头回补反弹，标普有望重回7,750+</td></tr>
+<tr><td class="g">多头伏击</td><td>英伟达财报前预期管理</td><td>大摩预测"Beat &amp; Raise"，美银称低估50%</td><td>若财报前夕资金提前布局，可能带动半导体反弹</td></tr>
+<tr><td class="r">空头伏击</td><td>Meta审判不利判决</td><td>若法官做出不利于Meta的初步裁决</td><td>META可能暴跌10%+，波及大型科技股</td></tr>
+</table>
+</div>
+
+<!-- 章五 -->
+<div class="chp">
+<div class="cht"><span class="n">5</span>盘面成因拆解</div>
+<div class="st">5.1 盘前（00:00-09:30 EDT）-- 利率风暴设定基调</div>
+<div class="tl">
+<div class="ti"><div class="tt">02:15 EDT</div><div class="tcc"><strong>AI暗雷引爆：</strong>"AI暗雷！美科技巨头表外负债膨胀至3万亿美元，约为年资本开支的5倍"--市场开始关注AI巨额资本开支的可持续性。</div></div>
+<div class="ti"><div class="tt">02:51 EDT</div><div class="tcc"><strong>10年期美债收益率逼近5%：</strong>Yardeni警告已进入"关键警戒区"，"债券义警"蠢蠢欲动。</div></div>
+<div class="ti"><div class="tt">04:52 EDT</div><div class="tcc"><strong>美银调查：</strong>全球基金经理调查显示"债市失控"已升至第二大尾部风险，仅次于AI泡沫。</div></div>
+<div class="ti"><div class="tt">07:59 EDT</div><div class="tcc"><strong>全球"债风暴"呼啸：</strong>风险资产定价面临压力测试，三大期指盘前齐跌。</div></div>
+<div class="ti"><div class="tt">08:14 EDT</div><div class="tcc"><strong>盘前前瞻：</strong>30年美债收益率飙升，特朗普称霍尔木兹海峡为"美国新领土"，WTI原油微涨。</div></div>
+</div>
+<div class="st">5.2 盘中（09:30-16:00 EDT）-- AI硬件全线抛售</div>
+<div class="tl">
+<div class="ti"><div class="tt">09:31 EDT</div><div class="tcc"><strong>开盘：</strong>三大指数低开，纳指开盘26,346（前收26,644），标普7,700（前收7,745），道指53,354（前收53,459）。</div></div>
+<div class="ti"><div class="tt">10:43 EDT</div><div class="tcc"><strong>小米财报：</strong>Q2营收1089亿，存储涨价+需求疲软，手机出货量下降26.5%--存储芯片需求端信号偏弱。</div></div>
+<div class="ti"><div class="tt">11:22 EDT</div><div class="tcc"><strong>美银调查：</strong>基金经理股票配置升至近五年最高，空头几乎绝迹--反向指标信号。</div></div>
+<div class="ti"><div class="tt">12:02 EDT</div><div class="tcc"><strong>Meta审判：</strong>29州检察长联手追责的"生死官司"正式开审，败诉或面临1.4万亿美元罚款。META盘中跌超4%。</div></div>
+<div class="ti"><div class="tt">12:42 EDT</div><div class="tcc"><strong>地缘升级：</strong>特朗普声称不会与伊朗会谈，海军封锁仍全面有效--油价进一步走高。</div></div>
+<div class="ti"><div class="tt">13:20 EDT</div><div class="tcc"><strong>AI与苹果背离：</strong>美股AI行情与苹果股价背离，投资者重新审视技术布局。AAPL盘中逆势上涨。</div></div>
+<div class="ti"><div class="tt">16:07 EDT</div><div class="tcc"><strong>OpenAI动态：</strong>OpenAI宣布"暂缓前沿模型训练"--市场质疑AI竞争是否已进入降温期。</div></div>
+</div>
+<div class="st">5.3 盘后（16:00-20:00 EDT）-- 亚太恐慌蔓延</div>
+<div class="tl">
+<div class="ti"><div class="tt">17:09 EDT</div><div class="tcc"><strong>美银力挺英伟达：</strong>称AI融资风险定价过度，英伟达被低估50%--但市场未予理会。</div></div>
+<div class="ti"><div class="tt">18:24 EDT</div><div class="tcc"><strong>OpenAI财报：</strong>Q2营收67亿美元，环比增长18%，但亏损扩大--AI商业模式可持续性存疑。</div></div>
+<div class="ti"><div class="tt">18:31 EDT</div><div class="tcc"><strong>Anthropic IPO：</strong>预计将在数周内启动IPO流程，Q2营收环比翻倍--AI公司上市窗口开启。</div></div>
+<div class="ti"><div class="tt">18:48 EDT</div><div class="tcc"><strong>美伊升级：</strong>特朗普要求谈判团队暂停与伊朗接触，从"尽快重击"转向"扼住咽喉"长期策略。</div></div>
+<div class="ti"><div class="tt">18:54 EDT</div><div class="tcc"><strong>收盘总结：</strong>AI债务化担忧发酵，股指三连跌，芯片指数重挫6%；医药、红利板块轮动走强，强生创收盘新高；美长债走V；油价触及三周高位。</div></div>
+<div class="ti"><div class="tt">20:02 EDT</div><div class="tcc"><strong>亚太恐慌：</strong>韩国KOSPI盘初暴跌5%触发侧车机制，三星电子-6.7%、SK海力士-7.4%；日经225跌超3%。</div></div>
+</div>
+<div class="hb"><strong>成因总结：</strong>今日下跌并非单一事件驱动，而是<strong>"长端利率飙升 + AI债务化担忧 + 地缘风险升温 + 周一存储板块暴涨后的获利回吐"</strong>四重因素共振。其中，AI债务化担忧（表外负债3万亿+OpenAI亏损扩大+黑石QTS以垃圾债利率融资）是压垮半导体板块的核心催化剂。</div>
+</div>
+
+<!-- 章六 -->
+<div class="chp">
+<div class="cht"><span class="n">6</span>叙事如何映射到不同资产</div>
+<div class="st">6.1 叙事-资产映射矩阵</div>
+<table class="dt"><tr><th>叙事</th><th>受益资产</th><th>受损资产</th><th>传导逻辑</th></tr>
+<tr><td class="b">长端利率飙升</td><td>能源(XLE+1.76%)、金融(XLF+0.45%)</td><td>科技(XLK-2.47%)、房地产(XLRE-0.45%)</td><td>利率上行->贴现率升高->高久期资产估值压缩；银行净息差扩大</td></tr>
+<tr><td class="b">AI债务化担忧</td><td>防御板块、医疗(XLV+1.60%)</td><td>半导体(SOXX-4.96%)、AI基建(DELL-2.33%)、加密(MARA-7.82%)</td><td>AI融资成本上升->资本开支可持续性质疑->估值锚松动</td></tr>
+<tr><td class="b">美伊地缘冲突</td><td>原油(USO+0.28%)、能源股(XOM+2.54%)</td><td>航空(间接)、消费(成本压力)</td><td>霍尔木兹海峡风险->油价上升->通胀预期上升->利率进一步承压</td></tr>
+<tr><td class="b">Meta反垄断审判</td><td>（无直接受益）</td><td>META(-4.45%)、大型科技(间接监管风险)</td><td>29州AG诉讼->平台经济监管天花板->估值折价</td></tr>
+<tr><td class="b">防御轮动</td><td>医疗(LLY+3.60%, JNJ+3.33%)、必需消费(XLP+1.06%)</td><td>可选消费(XLY-0.33%)、创新(ARKK-3.18%)</td><td>风险偏好下降->资金从高Beta流入低Beta防御品种</td></tr>
+</table>
+<div class="st">6.2 资产间相关性观察</div>
+<div class="hb"><strong>关键分化：</strong>今日市场呈现典型的"避险分化"格局--<br>1. <strong>科技vs防御：</strong>XLK -2.47% vs XLV +1.60%，分化幅度4.07个百分点<br>2. <strong>半导体vs医疗：</strong>SOXX -4.96% vs LLY +3.60%，分化幅度8.56个百分点<br>3. <strong>原油vs黄金：</strong>USO +0.28% vs GLD -1.71%，油价受地缘支撑而黄金遭利率压制（实际利率上行）<br>4. <strong>美元资产内部分化：</strong>道指-0.22% vs 纳指-1.33%，传统行业抗跌而科技重挫</div>
+</div>
+
+<!-- 章七 -->
+<div class="chp">
+<div class="cht"><span class="n">7</span>多空力量对比</div>
+<div class="st">7.1 多空力量仪表盘</div>
+<div class="chart-box"><div id="c4" class="chart chart-sm"></div></div>
+<div class="st">7.2 七巨头涨跌幅对比</div>
+<div class="chart-box"><div id="c5" class="chart"></div></div>
+<div class="st">7.3 半导体个股涨跌幅</div>
+<div class="chart-box"><div id="c6" class="chart"></div></div>
+<div class="st">7.4 多空力量逐项对比</div>
+<table class="dt"><tr><th>维度</th><th>多头力量</th><th>空头力量</th><th>净评估</th></tr>
+<tr><td>指数层面</td><td>20日仍录正收益（+2%以上）</td><td>三连跌，5日转负</td><td class="tg tg-w">中性偏空</td></tr>
+<tr><td>板块层面</td><td>医疗+1.60%、能源+1.76%、必需消费+1.06%</td><td>半导体-4.96%、科技-2.47%、创新-3.18%</td><td class="r">偏空（下跌板块跌幅更大）</td></tr>
+<tr><td>七巨头</td><td>AAPL +1.45%、MSFT +0.27%</td><td>META -4.45%、NVDA -2.34%</td><td class="r">偏空（权重股分化严重）</td></tr>
+<tr><td>成交量</td><td>缩量下跌（6.46B vs 13日7.49B）</td><td>放量板块：SOXS +15.20%（做空集中）</td><td class="tg tg-w">中性（缩量说明非恐慌）</td></tr>
+<tr><td>资金流</td><td>对冲基金连续5日买入美股</td><td>美银调查空头"几乎绝迹"（反向指标）</td><td class="r">偏空（极乐观往往是顶部信号）</td></tr>
+<tr><td>宏观环境</td><td>美联储利率不变，9月加息概率仅31%</td><td>30Y收益率19年新高，地缘风险升温</td><td class="r">偏空</td></tr>
+<tr><td>情绪指标</td><td>VIX仍在低位（~15.75）</td><td>VIX回升中，恐慌尚未扩散</td><td class="tg tg-n">中性</td></tr>
+</table>
+<div class="hb"><strong>多空综合评估：</strong>空头力量明显占优（5/7维度偏空），但缩量下跌+VIX低位表明尚未进入恐慌阶段。<strong>周三FOMC纪要</strong>将是多空博弈的关键转折点--若偏鸽则可能触发空头回补反弹，若偏鹰则回调可能加深。</div>
+</div>
+
+<!-- 章八 -->
+<div class="chp">
+<div class="cht"><span class="n">8</span>24小时关键信息筛选</div>
+<div class="st">8.1 高优先级信息（直接影响盘面）</div>
+<table class="dt"><tr><th>时间(EDT)</th><th>事件</th><th>影响</th><th>传导机制</th></tr>
+<tr><td>18:54</td><td class="b">美股收盘：AI债务化担忧发酵，芯片指数重挫6%</td><td class="r">利空</td><td>AI融资成本上升->半导体估值压缩->三连跌</td></tr>
+<tr><td>18:48</td><td class="b">特朗普要求暂停与伊朗接触，从"重击"转向"扼喉"</td><td class="r">利空</td><td>地缘风险升级->油价上升->通胀预期上升->利率承压</td></tr>
+<tr><td>18:37</td><td class="b">OpenAI Q2营收67亿美元(+18%)，但亏损扩大</td><td class="r">利空AI</td><td>AI商业模式盈利性质疑->OpenAI估值锚松动</td></tr>
+<tr><td>18:31</td><td class="b">Anthropic预计数周内启动IPO，Q2营收环比翻倍</td><td class="tg tg-n">中性偏多</td><td>AI公司上市窗口开启->但可能分流存量资金</td></tr>
+<tr><td>17:42</td><td class="b">成交额TOP20：AI基建全线回调，闪迪/LITE双双跌超9%</td><td class="r">利空</td><td>存储/光通信暴涨后获利回吐->半导体全面回调</td></tr>
+<tr><td>16:07</td><td class="b">OpenAI宣布"暂缓前沿模型训练"</td><td class="r">利空AI</td><td>AI竞赛降温信号->算力需求预期下修</td></tr>
+<tr><td>12:02</td><td class="b">Meta"生死官司"开审：29州AG追责，天价1.4万亿美元罚款</td><td class="r">利空META</td><td>反垄断审判->平台经济监管天花板->META -4.45%</td></tr>
+<tr><td>02:15</td><td class="b">AI表外负债膨胀至3万亿美元，约为年资本开支5倍</td><td class="r">利空</td><td>AI"暗雷"->融资可持续性质疑->科技股承压</td></tr>
+</table>
+<div class="st">8.2 中优先级信息（间接影响）</div>
+<table class="dt"><tr><th>时间(EDT)</th><th>事件</th><th>影响</th></tr>
+<tr><td>18:14</td><td>苹果向欧盟监管让步：取消核心技术费，欧洲App Store佣金下调</td><td class="g">利多AAPL</td></tr>
+<tr><td>18:04</td><td>数据中心反对声浪成美国中期选举敏感议题，宾州出台最严格监管规则</td><td class="r">利空AI基建</td></tr>
+<tr><td>11:53</td><td>美股人力资源股强势反弹：AI简历泛滥，招聘公司反而更值钱</td><td class="tg tg-n">行业利多</td></tr>
+<tr><td>11:32</td><td>美银调查：基金经理股票配置升至近五年最高，空头几乎绝迹</td><td class="r">反向指标偏空</td></tr>
+<tr><td>10:50</td><td>苹果iPhone 17系列最高或涨近千元，股价上涨</td><td class="g">利多AAPL</td></tr>
+<tr><td>05:24</td><td>百度Q2营收313亿微逊预期，AI业务占比过半，GPU云增长283%</td><td class="r">利空中概</td></tr>
+<tr><td>00:55</td><td>对冲基金连续五日扫货美股，科技板块逼空行情主导</td><td class="g">短期利多</td></tr>
+<tr><td>20:02</td><td>韩股KOSPI盘初暴跌5%触发侧车机制，三星-6.7%，SK海力士-7.4%</td><td class="r">亚太利空</td></tr>
+</table>
+</div>
+
+<!-- 章九 -->
+<div class="chp">
+<div class="cht"><span class="n">9</span>市场状态更新库</div>
+<div class="st">9.1 当前市场状态标签</div>
+<div class="gc">
+<div class="ic"><div class="il">趋势状态</div><div class="iv" style="color:var(--ylw)">高位回调</div><div class="is">标普自8/13高点回落1.38%</div></div>
+<div class="ic"><div class="il">波动状态</div><div class="iv" style="color:var(--ylw)">低位回升</div><div class="is">VIX ~15.75，从15.19上升</div></div>
+<div class="ic"><div class="il">资金状态</div><div class="iv r">流出科技</div><div class="is">防御板块轮动</div></div>
+<div class="ic"><div class="il">情绪状态</div><div class="iv" style="color:var(--ylw)">谨慎偏空</div><div class="is">空头几乎绝迹=反向信号</div></div>
+<div class="ic"><div class="il">利率状态</div><div class="iv r">极端利空</div><div class="is">30Y 5.33%（19年高）</div></div>
+<div class="ic"><div class="il">地缘状态</div><div class="iv r">风险升温</div><div class="is">美伊谈判暂停</div></div>
+<div class="ic"><div class="il">AI叙事</div><div class="iv r">动摇</div><div class="is">债务化担忧+OpenAI亏损</div></div>
+<div class="ic"><div class="il">板块轮动</div><div class="iv g">防御>进攻</div><div class="is">XLV+1.60% vs XLK-2.47%</div></div>
+</div>
+<div class="st">9.2 关键技术位更新</div>
+<table class="dt"><tr><th>指数</th><th>收盘</th><th>20日均线(估)</th><th>支撑位</th><th>阻力位</th><th>趋势判断</th></tr>
+<tr><td>纳斯达克</td><td>26,289.71</td><td>~26,100</td><td>26,000 / 25,913（8/3低）</td><td>26,645（8/17收）/ 26,803（8/13高）</td><td class="tg tg-w">回调中，20日均线上方</td></tr>
+<tr><td>标普500</td><td>7,691.76</td><td>~7,680</td><td>7,650 / 7,600（8/3收）</td><td>7,745（8/17收）/ 7,799（8/13高）</td><td class="tg tg-w">回调中，20日均线附近</td></tr>
+<tr><td>道琼斯</td><td>53,343.40</td><td>~53,500</td><td>53,000 / 52,208（7/30收）</td><td>53,460（8/17收）/ 54,037（8/7高）</td><td class="tg tg-w">已破20日均线</td></tr>
+</table>
+<div class="wb"><strong>技术位警告：</strong>道琼斯已跌破20日均线（~53,500），纳斯达克和标普500也在20日均线附近挣扎。若周三继续下跌，三大指数可能同时确认20日均线破位，这将引发更多系统性减仓。</div>
+</div>
+
+<!-- 章十 -->
+<div class="chp">
+<div class="cht"><span class="n">10</span>前瞻观察与风险</div>
+<div class="st">10.1 周三（8/19）关键事件</div>
+<table class="dt"><tr><th>时间(EDT)</th><th>事件</th><th>重要性</th><th>市场预期</th></tr>
+<tr><td>14:00</td><td class="b">FOMC 7月会议纪要公布</td><td class="r">极高</td><td>关注三名反对票委员观点、利率路径前瞻指引</td></tr>
+<tr><td>盘前</td><td class="b">亚太开盘反应</td><td class="r">高</td><td>KOSPI已触发侧车，日经-3%+，可能拖累美股盘前</td></tr>
+<tr><td>全天</td><td class="b">30年期美债收益率走势</td><td class="r">高</td><td>若突破5.5%则成长股进一步承压</td></tr>
+<tr><td>全天</td><td>Meta反垄断审判进展</td><td class="tg tg-w">中</td><td>法官可能做出初步裁决</td></tr>
+<tr><td>盘后</td><td>Nvidia财报周（下周）</td><td class="tg tg-w">中</td><td>大摩预测"Beat &amp; Raise"，但市场标准已提高</td></tr>
+<tr><td>全天</td><td>美伊局势进展</td><td class="tg tg-w">中</td><td>若进一步升级，油价可能冲击$95</td></tr>
+</table>
+<div class="st">10.2 风险矩阵</div>
+<table class="dt"><tr><th>风险事件</th><th>概率</th><th>影响</th><th>应对策略</th></tr>
+<tr><td class="b">FOMC纪要偏鹰</td><td>30%</td><td class="r">高</td><td>若暗示加息可能，纳指可能测试26,000</td></tr>
+<tr><td class="b">30Y收益率破5.5%</td><td>25%</td><td class="r">高</td><td>成长股估值进一步压缩，半导体首当其冲</td></tr>
+<tr><td class="b">美伊冲突升级</td><td>20%</td><td class="r">中高</td><td>油价冲击$95+，通胀螺旋风险重现</td></tr>
+<tr><td class="b">Meta审判不利</td><td>15%</td><td class="r">中</td><td>META可能暴跌10%+，波及大型科技股</td></tr>
+<tr><td class="b">英伟达财报不及预期</td><td>15%</td><td class="r">极高</td><td>下周财报，若不及预期可能引发AI叙事全面崩溃</td></tr>
+<tr><td class="b">FOMC纪要偏鸽</td><td>25%</td><td class="g">高（多头）</td><td>若暗示降息可能，触发空头回补反弹</td></tr>
+</table>
+<div class="db"><strong>最大风险提示：</strong>本周三FOMC纪要 + 下周英伟达财报 = <strong>"双重催化剂"</strong>。若FOMC偏鹰且英伟达不及预期，可能引发AI叙事的系统性重估。30年期美债收益率已处于19年高位，任何鹰派信号都可能成为压垮骆驼的最后一根稻草。</div>
+</div>
+
+<!-- 章十一 -->
+<div class="chp">
+<div class="cht"><span class="n">11</span>风险可控的交易标的建议</div>
+<div class="st">11.1 防御型标的（低风险）</div>
+<table class="dt"><tr><th>标的</th><th>方向</th><th>逻辑</th><th>止损参考</th><th>仓位</th></tr>
+<tr><td class="b">XLV（医疗ETF）</td><td class="g">多</td><td>防御属性+减肥药叙事+利率敏感度低，今日+1.60%</td><td>前低165.5</td><td>5-8%</td></tr>
+<tr><td class="b">XLE（能源ETF）</td><td class="g">多</td><td>地缘风险溢价+油价三周高位，今日+1.76%</td><td>前低61.0</td><td>3-5%</td></tr>
+<tr><td class="b">XLP（必需消费ETF）</td><td class="g">多</td><td>纯防御品种，利率敏感度低，今日+1.06%</td><td>前低84.5</td><td>5%</td></tr>
+<tr><td class="b">JNJ（强生）</td><td class="g">多</td><td>创收盘新高+3.33%，防御+医疗双属性</td><td>265.0</td><td>3-5%</td></tr>
+</table>
+<div class="st">11.2 反弹型标的（中风险，需等待信号）</div>
+<table class="dt"><tr><th>标的</th><th>方向</th><th>逻辑</th><th>触发条件</th><th>仓位</th></tr>
+<tr><td class="b">AAPL（苹果）</td><td class="g">多</td><td>今日逆势+1.45%，iPhone 17涨价预期+欧盟让步，与AI板块脱钩</td><td>站稳305支撑</td><td>3-5%</td></tr>
+<tr><td class="b">ADBE（Adobe）</td><td class="g">多</td><td>AI基础设施板块中唯一大涨+3.58%，软件优于硬件</td><td>守住255支撑</td><td>2-3%</td></tr>
+<tr><td class="b">CRM（Salesforce）</td><td class="g">多</td><td>AI应用层标的+2.71%，利率敏感度低于硬件</td><td>守住190支撑</td><td>2-3%</td></tr>
+</table>
+<div class="st">11.3 规避/减仓标的</div>
+<table class="dt"><tr><th>标的</th><th>方向</th><th>逻辑</th></tr>
+<tr><td class="b">SOXL（半导体3x多）</td><td class="r">规避</td><td>今日-14.80%，杠杆放大风险，趋势不明</td></tr>
+<tr><td class="b">MRVL（迈威尔）</td><td class="r">减仓</td><td>今日-7.82%，昨日涨超5%今日全部回吐+更多</td></tr>
+<tr><td class="b">MU（美光）</td><td class="r">观望</td><td>今日-7.02%，存储芯片需求端信号偏弱（小米手机出货-26.5%）</td></tr>
+<tr><td class="b">META（Meta）</td><td class="r">规避</td><td>今日-4.45%，反垄断审判不确定性极大</td></tr>
+<tr><td class="b">GDX（金矿ETF）</td><td class="r">减仓</td><td>今日-3.20%，实际利率上行压制黄金矿业</td></tr>
+<tr><td class="b">MARA/RIOT（加密矿企）</td><td class="r">规避</td><td>今日-5.64%/-7.82%，风险偏好下降+比特币承压</td></tr>
+</table>
+<div class="wb"><strong>风险提示：</strong>以上建议基于8月18日收盘数据，市场状况可能随时变化。周三FOMC纪要公布前建议降低杠杆，不要在利率事件前重仓押方向。所有交易建议均需配合严格止损。</div>
+</div>
+
+<!-- 章十二 -->
+<div class="chp">
+<div class="cht"><span class="n">12</span>科技/AI板块深度扫描</div>
+<div class="st">12.1 七巨头全景</div>
+<div class="chart-box"><div id="c7" class="chart"></div></div>
+<table class="dt"><tr><th>标的</th><th>收盘</th><th>1D</th><th>5D</th><th>20D</th><th>核心逻辑</th></tr>
+<tr><td class="b">AAPL</td><td>$310.03</td><td class="g">+1.45%</td><td class="g">+1.68%</td><td class="r">-4.78%</td><td>iPhone 17涨价预期+欧盟让步，与AI板块脱钩</td></tr>
+<tr><td class="b">MSFT</td><td>$481.63</td><td class="g">+0.27%</td><td class="r">-4.40%</td><td class="g">+23.39%</td><td>利率敏感度相对低，AI应用层受益</td></tr>
+<tr><td class="b">GOOGL</td><td>$344.20</td><td class="g">+0.06%</td><td class="g">+0.12%</td><td class="g">+0.62%</td><td>基本持平，AI搜索竞争仍是不确定性</td></tr>
+<tr><td class="b">AMZN</td><td>$259.45</td><td class="r">-0.71%</td><td class="r">-4.71%</td><td class="g">+5.96%</td><td>利率上行压制，可选消费承压</td></tr>
+<tr><td class="b">TSLA</td><td>$336.87</td><td class="r">-0.72%</td><td class="g">+1.22%</td><td class="r">-9.93%</td><td>Cybercab月底推出预期，但整体风险偏好下降</td></tr>
+<tr><td class="b">NVDA</td><td>$219.74</td><td class="r">-2.34%</td><td class="g">+1.03%</td><td class="g">+3.62%</td><td>AI硬件抛售潮，OpenAI暂缓训练信号偏空</td></tr>
+<tr><td class="b">META</td><td>$543.67</td><td class="r">-4.45%</td><td class="r">-9.26%</td><td class="r">-13.31%</td><td>反垄断审判+利率上行双重打击，七巨头最弱</td></tr>
+</table>
+<div class="st">12.2 半导体板块深度</div>
+<div class="chart-box"><div id="c8" class="chart"></div></div>
+<table class="dt"><tr><th>标的</th><th>收盘</th><th>1D</th><th>5D</th><th>核心逻辑</th></tr>
+<tr><td class="b">MRVL</td><td>$216.00</td><td class="r">-7.82%</td><td class="r">-0.79%</td><td>昨日涨超5%今日全部回吐，AI芯片定制化竞争加剧</td></tr>
+<tr><td class="b">MU</td><td>$940.76</td><td class="r">-7.02%</td><td class="r">-2.66%</td><td>存储芯片需求端信号偏弱（小米手机出货-26.5%）</td></tr>
+<tr><td class="b">ARM</td><td>$253.32</td><td class="r">-6.67%</td><td class="r">-4.89%</td><td>AI芯片架构竞争+利率上行双重压力</td></tr>
+<tr><td class="b">INTC</td><td>$96.69</td><td class="r">-6.57%</td><td class="r">-5.69%</td><td>基本面弱势+板块联动下跌</td></tr>
+<tr><td class="b">KLAC</td><td>$194.79</td><td class="r">-5.33%</td><td class="r">-1.98%</td><td>半导体设备股，AI资本开支疑虑直接冲击</td></tr>
+<tr><td class="b">LRCX</td><td>$327.92</td><td class="r">-4.63%</td><td class="r">-1.68%</td><td>同上，设备股联动</td></tr>
+<tr><td class="b">AMD</td><td>$484.39</td><td class="r">-4.27%</td><td class="r">-4.15%</td><td>AI芯片竞争+利率上行</td></tr>
+<tr><td class="b">TSM</td><td>$413.41</td><td class="r">-4.07%</td><td class="r">-1.30%</td><td>台积电ADR，亚太连锁反应</td></tr>
+<tr><td class="b">AMAT</td><td>$514.33</td><td class="r">-3.92%</td><td class="r">-0.79%</td><td>设备股，AI资本开支敏感</td></tr>
+<tr><td class="b">TXN</td><td>$272.24</td><td class="r">-3.77%</td><td class="r">-1.50%</td><td>模拟芯片，板块联动</td></tr>
+<tr><td class="b">AVGO</td><td>$380.00</td><td class="r">-3.17%</td><td class="r">+2.23%</td><td>AI网络芯片龙头，利率上行压制</td></tr>
+<tr><td class="b">NVDA</td><td>$219.74</td><td class="r">-2.34%</td><td class="g">+1.03%</td><td>AI核心标的，OpenAI暂缓训练信号偏空</td></tr>
+<tr><td class="b">QCOM</td><td>$160.19</td><td class="r">-1.23%</td><td class="r">-1.47%</td><td>相对抗跌，手机芯片需求稳定</td></tr>
+</table>
+<div class="st">12.3 AI基础设施板块</div>
+<table class="dt"><tr><th>标的</th><th>收盘</th><th>1D</th><th>5D</th><th>核心逻辑</th></tr>
+<tr><td class="b">ADBE</td><td>$263.14</td><td class="g">+3.58%</td><td class="g">+5.26%</td><td>AI应用层优于硬件，软件估值受利率冲击较小</td></tr>
+<tr><td class="b">CRM</td><td>$196.14</td><td class="g">+2.71%</td><td class="g">+4.68%</td><td>AI Agent叙事，应用层标的</td></tr>
+<tr><td class="b">NFLX</td><td>$77.77</td><td class="g">+2.30%</td><td class="g">+3.87%</td><td>内容护城河，与AI硬件脱钩</td></tr>
+<tr><td class="b">NOW</td><td>$119.49</td><td class="g">+1.52%</td><td class="g">+2.44%</td><td>企业IT支出防御属性</td></tr>
+<tr><td class="b">DDOG</td><td>$246.00</td><td class="r">-0.53%</td><td class="r">-2.68%</td><td>微跌，相对抗跌</td></tr>
+<tr><td class="b">PLTR</td><td>$171.54</td><td class="r">-0.59%</td><td class="r">-3.20%</td><td>估值偏高，利率上行压制</td></tr>
+<tr><td class="b">SMCI</td><td>$37.41</td><td class="r">-2.27%</td><td class="r">-6.42%</td><td>AI服务器，硬件链承压</td></tr>
+<tr><td class="b">DELL</td><td>$468.65</td><td class="r">-2.33%</td><td class="r">-5.13%</td><td>AI服务器，利率上行+资本开支疑虑</td></tr>
+<tr><td class="b">ORCL</td><td>$142.79</td><td class="r">-2.63%</td><td class="r">-4.30%</td><td>云基础设施，利率敏感</td></tr>
+<tr><td class="b">COIN</td><td>$146.23</td><td class="r">-2.87%</td><td class="r">-6.53%</td><td>加密概念，风险偏好下降</td></tr>
+</table>
+<div class="hb"><strong>科技板块关键分化：</strong>今日最突出的特征是"软件>硬件"分化--AI应用层（ADBE +3.58%、CRM +2.71%、NFLX +2.30%）全线走强，而AI硬件/半导体（MRVL -7.82%、MU -7.02%、ARM -6.67%）全线暴跌。这一分化反映了市场从"AI基建叙事"向"AI应用变现"的叙事切换，也是利率上行环境下高久期资产重新定价的体现。</div>
+</div>
+
+<!-- 章十三 -->
+<div class="chp">
+<div class="cht"><span class="n">13</span>仓位管理建议</div>
+<div class="st">13.1 仓位调整建议</div>
+<table class="dt"><tr><th>板块</th><th>当前建议</th><th>vs 上周</th><th>逻辑</th></tr>
+<tr><td class="b">半导体/AI硬件</td><td><span class="tg tg-r">降仓至15%</span></td><td class="r">下调</td><td>SOXX -4.96%，AI债务化担忧，利率上行压制</td></tr>
+<tr><td class="b">七巨头（MAG7）</td><td><span class="tg tg-w">维持30%</span></td><td>不变</td><td>AAPL/MSFT抗跌，但META/NVDA拖累，分化严重</td></tr>
+<tr><td class="b">防御板块（医疗/消费）</td><td><span class="tg tg-g">增仓至20%</span></td><td class="g">上调</td><td>XLV +1.60%，XLP +1.06%，利率敏感度低</td></tr>
+<tr><td class="b">能源</td><td><span class="tg tg-g">增仓至10%</span></td><td class="g">上调</td><td>XLE +1.76%，地缘风险溢价</td></tr>
+<tr><td class="b">金融</td><td><span class="tg tg-n">维持10%</span></td><td>不变</td><td>XLF +0.45%，利率上行利好净息差</td></tr>
+<tr><td class="b">黄金/加密</td><td><span class="tg tg-r">降仓至5%</span></td><td class="r">下调</td><td>GLD -1.71%，GDX -3.20%，实际利率上行</td></tr>
+<tr><td class="b">现金/短债</td><td><span class="tg tg-g">增至10%</span></td><td class="g">上调</td><td>等待FOMC纪要明朗，保留抄底弹药</td></tr>
+</table>
+<div class="st">13.2 交易纪律</div>
+<div class="wb">
+<strong>DO（建议执行）：</strong><br>
+1. 周三FOMC纪要公布前降低杠杆至1x以下<br>
+2. 半导体持仓设置硬止损（SOXX跌破520即减仓）<br>
+3. 关注医疗/能源板块的防御性配置机会<br>
+4. 密切关注30年期美债收益率是否突破5.5%<br>
+5. 若VIX突破18，全面转入防御模式<br><br>
+<strong>DON'T（避免操作）：</strong><br>
+1. 不要在FOMC纪要前重仓押方向<br>
+2. 不要抄底半导体（趋势未明，等待企稳信号）<br>
+3. 不要忽视亚太盘前信号（KOSPI已触发侧车）<br>
+4. 不要在利率事件前加杠杆<br>
+5. 不要低估Meta审判的尾部风险
+</div>
+</div>
+
+<!-- 章十四 -->
+<div class="chp">
+<div class="cht"><span class="n">14</span>结论式总结</div>
+<div class="db" style="font-size:16px;line-height:2;">
+<strong>2026年8月18日美股复盘核心结论：</strong><br><br>
+<strong>1. 市场状态：</strong>三连跌，标普500从8月13日历史新高7,798.91回落至7,691.76（-1.38%），纳斯达克跌至26,289.71（-1.33%），道琼斯跌至53,343.40（-0.22%）。市场从"AI叙事驱动"切换至"利率+地缘+AI债务化"三重压力。<br><br>
+<strong>2. 核心矛盾：</strong>30年期美债收益率创19年新高（~5.33%），AI表外负债膨胀至3万亿美元，OpenAI亏损扩大--AI商业模式可持续性受到市场质疑。半导体板块全线暴跌（SOXX -4.96%，SOXL -14.80%），成为今日最大输家。<br><br>
+<strong>3. 板块分化：</strong>防御板块全面走强（医疗+1.60%、能源+1.76%、必需消费+1.06%），而科技板块全线承压（科技-2.47%、半导体-4.96%）。"软件>硬件"分化明显（ADBE +3.58% vs MRVL -7.82%）。<br><br>
+<strong>4. 关键催化剂：</strong>周三FOMC会议纪要（14:00 EDT）为本周最重要事件。若偏鸽可能触发反弹，若偏鹰则回调加深。下周英伟达财报将是AI叙事的终极检验。<br><br>
+<strong>5. 操作建议：</strong>整体仓位从"偏高"下调至"中性偏防御"。科技/AI降仓至15%，防御板块增至20%，现金增至10%。在FOMC纪要明朗前，保持低杠杆、严止损。
+</div>
+<div class="hb" style="margin-top:20px;">
+<strong>数据来源：</strong>Sentinel_Daily_Pro采集的Excel数据（指数K线、七巨头K线、行业ETF、半导体个股、AI基础设施、新闻快讯等）+ 联网搜索补充（AP、Reuters、华尔街见闻、36kr等公开来源）。所有数据截至2026年8月18日美东时间收盘。<br><br>
+<strong>免责声明：</strong>本报告仅供研究参考，不构成投资建议。投资有风险，入市需谨慎。
+</div>
+</div>
+
+<div class="ftr">
+<p>美股复盘报告 | 2026年8月18日（周二）| 生成时间：2026年8月19日</p>
+<p>数据来源：Sentinel_Daily_Pro + 公开新闻 | 报告框架：16章全景分析</p>
+</div>
+
+</div>
+
+<script>
+// Dark theme colors
+var bg = 'transparent';
+var textColor = '#e0e6ed';
+var axisColor = '#2a3447';
+var redColor = '#ef4444';
+var grnColor = '#22c55e';
+var ylwColor = '#f59e0b';
+var bluColor = '#3b82f6';
+var pplColor = '#a855f7';
+
+// Common grid
+var cgrid = { left: '3%', right: '4%', bottom: '8%', top: '15%', containLabel: true };
+
+// ===== Chart 1: Three Major Indices 20-Day Trend (Normalized) =====
+(function() {
+    var ndq = [25690.9, 25137.69, 24975.82, 24932.08, 24876.91, 24442.94, 25122.18, 25373.85, 25913.9, 26584.99, 26363.44, 26348.35, 26690.62, 26605.36, 26445.45, 26588.49, 26803.03, 26729.16, 26644.91, 26289.71];
+    var sp = [7498.96, 7408.3, 7411.98, 7413.18, 7428.78, 7316.15, 7437.63, 7489.72, 7600.5, 7736.52, 7723.55, 7709.96, 7757.64, 7753.11, 7728.2, 7748.5, 7798.99, 7785.76, 7745.06, 7691.76];
+    var dw = [52218.58, 51711.65, 51947.25, 52210.08, 52747.32, 51594.14, 52208.06, 52485.03, 53178.41, 54085.88, 54349.12, 53885.1, 54036.93, 53975.98, 53791.85, 53770.27, 53839.99, 53732.41, 53459.78, 53343.4];
+    // Normalize to 100
+    var ndqN = ndq.map(function(v){ return +(v/ndq[0]*100).toFixed(2); });
+    var spN = sp.map(function(v){ return +(v/sp[0]*100).toFixed(2); });
+    var dwN = dw.map(function(v){ return +(v/dw[0]*100).toFixed(2); });
+    var dt = ['07-22', '07-23', '07-24', '07-27', '07-28', '07-29', '07-30', '07-31', '08-03', '08-04', '08-05', '08-06', '08-07', '08-10', '08-11', '08-12', '08-13', '08-14', '08-17', '08-18'];
+    echarts.init(document.getElementById('c1')).setOption({
+        backgroundColor: bg,
+        title: { text: '三大指数20日走势（归一化=100）', left: 'center', textStyle: { color: textColor, fontSize: 14 } },
+        tooltip: { trigger: 'axis', backgroundColor: '#1a2030', borderColor: '#2a3447', textStyle: { color: textColor } },
+        legend: { data: ['纳斯达克','标普500','道琼斯'], bottom: 0, textStyle: { color: textColor } },
+        grid: cgrid,
+        xAxis: { type: 'category', data: dt, axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor } },
+        yAxis: { type: 'value', scale: true, axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor }, splitLine: { lineStyle: { color: '#1a2030' } } },
+        series: [
+            { name: '纳斯达克', type: 'line', data: ndqN, smooth: true, lineStyle: { width: 2 }, itemStyle: { color: pplColor }, symbol: 'circle', symbolSize: 4 },
+            { name: '标普500', type: 'line', data: spN, smooth: true, lineStyle: { width: 2 }, itemStyle: { color: bluColor }, symbol: 'circle', symbolSize: 4 },
+            { name: '道琼斯', type: 'line', data: dwN, smooth: true, lineStyle: { width: 2 }, itemStyle: { color: ylwColor }, symbol: 'circle', symbolSize: 4 }
+        ]
+    });
+})();
+
+// ===== Chart 2: Risk Preference Gauge =====
+(function() {
+    echarts.init(document.getElementById('c2')).setOption({
+        backgroundColor: bg,
+        title: { text: '风险偏好指数', left: 'center', top: '5%', textStyle: { color: textColor, fontSize: 14 } },
+        series: [{
+            type: 'gauge',
+            min: 0, max: 100,
+            splitNumber: 5,
+            axisLine: { lineStyle: { width: 15, color: [[20, '#ef4444'],[40, '#f59e0b'],[60, '#eab308'],[80, '#22c55e'],[100, '#10b981']] } },
+            pointer: { width: 5, itemStyle: { color: '#fff' } },
+            detail: { valueAnimation: true, formatter: '{value}', color: textColor, fontSize: 20, offsetCenter: [0, '70%'] },
+            data: [{ value: 35, name: '偏防御' }],
+            axisLabel: { color: textColor, fontSize: 10 },
+            title: { color: textColor, fontSize: 12, offsetCenter: [0, '90%'] }
+        }]
+    });
+})();
+
+// ===== Chart 3: Industry ETF 1D Change Ranking =====
+(function() {
+    var names = ['SOXL', 'TQQQ', 'SOXX', 'SMH', 'GDX', 'ARKK', 'XLK', 'GLD', 'QQQ', 'XLI', 'XLB', 'XLRE', 'XLU', 'XLY', 'XLC', 'USO', 'XBI', 'XLF', 'IBB', 'XLP', 'XLV', 'XLE', 'SQQQ', 'SOXS'];
+    var vals = [-14.8, -5.07, -4.96, -4.09, -3.2, -3.18, -2.47, -1.71, -1.69, -1.48, -0.88, -0.45, -0.36, -0.33, -0.31, 0.28, 0.36, 0.45, 0.81, 1.06, 1.6, 1.76, 5.11, 15.2];
+    var colors = vals.map(function(v){ return v >= 0 ? grnColor : redColor; });
+    echarts.init(document.getElementById('c3')).setOption({
+        backgroundColor: bg,
+        title: { text: '行业ETF当日涨跌幅排行（%）', left: 'center', textStyle: { color: textColor, fontSize: 14 } },
+        tooltip: { trigger: 'axis', backgroundColor: '#1a2030', borderColor: '#2a3447', textStyle: { color: textColor }, formatter: function(p){ return p[0].name + ': ' + p[0].value + '%'; } },
+        grid: { left: '3%', right: '6%', bottom: '3%', top: '12%', containLabel: true },
+        xAxis: { type: 'value', axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor, formatter: '{value}%' }, splitLine: { lineStyle: { color: '#1a2030' } } },
+        yAxis: { type: 'category', data: names, axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor } },
+        series: [{ type: 'bar', data: vals.map(function(v,i){ return {value: v, itemStyle: {color: colors[i]}}; }), barWidth: '60%', label: { show: true, position: 'right', color: textColor, formatter: '{c}%' } }]
+    });
+})();
+
+// ===== Chart 4: Bull/Bear Sentiment Gauge =====
+(function() {
+    echarts.init(document.getElementById('c4')).setOption({
+        backgroundColor: bg,
+        title: { text: '多空情绪温度计', left: 'center', top: '5%', textStyle: { color: textColor, fontSize: 14 } },
+        series: [{
+            type: 'gauge',
+            min: -100, max: 100,
+            splitNumber: 4,
+            axisLine: { lineStyle: { width: 18, color: [[0.25, '#ef4444'],[0.5, '#f59e0b'],[0.75, '#eab308'],[1, '#22c55e']] } },
+            pointer: { width: 5, itemStyle: { color: '#fff' } },
+            detail: { valueAnimation: true, formatter: '{value}', color: textColor, fontSize: 20, offsetCenter: [0, '70%'] },
+            data: [{ value: -25, name: '偏空' }],
+            axisLabel: { color: textColor, fontSize: 10, formatter: function(v){ if(v===0) return '中性'; if(v===-100) return '极空'; if(v===100) return '极多'; return v; } },
+            title: { color: textColor, fontSize: 12, offsetCenter: [0, '90%'] }
+        }]
+    });
+})();
+
+// ===== Chart 5: MAG7 1D Change =====
+(function() {
+    var names = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'NVDA', 'META'];
+    var vals = [1.45, 0.27, 0.06, -0.71, -0.72, -2.34, -4.45];
+    var colors = vals.map(function(v){ return v >= 0 ? grnColor : redColor; });
+    echarts.init(document.getElementById('c5')).setOption({
+        backgroundColor: bg,
+        title: { text: '七巨头当日涨跌幅（%）', left: 'center', textStyle: { color: textColor, fontSize: 14 } },
+        tooltip: { trigger: 'axis', backgroundColor: '#1a2030', borderColor: '#2a3447', textStyle: { color: textColor }, formatter: function(p){ return p[0].name + ': ' + p[0].value + '%'; } },
+        grid: { left: '3%', right: '6%', bottom: '3%', top: '12%', containLabel: true },
+        xAxis: { type: 'category', data: names, axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor } },
+        yAxis: { type: 'value', axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor, formatter: '{value}%' }, splitLine: { lineStyle: { color: '#1a2030' } } },
+        series: [{ type: 'bar', data: vals.map(function(v,i){ return {value: v, itemStyle: {color: colors[i]}}; }), barWidth: '50%', label: { show: true, position: 'top', color: textColor, formatter: '{c}%' } }]
+    });
+})();
+
+// ===== Chart 6: Semiconductor 1D Change =====
+(function() {
+    var names = ['MRVL', 'MU', 'ARM', 'INTC', 'KLAC', 'LRCX', 'AMD', 'TSM', 'AMAT', 'TXN', 'AVGO', 'NVDA', 'QCOM'];
+    var vals = [-7.82, -7.02, -6.67, -6.57, -5.33, -4.63, -4.27, -4.07, -3.92, -3.77, -3.17, -2.34, -1.23];
+    var colors = vals.map(function(v){ return v >= 0 ? grnColor : redColor; });
+    echarts.init(document.getElementById('c6')).setOption({
+        backgroundColor: bg,
+        title: { text: '半导体个股当日涨跌幅（%）', left: 'center', textStyle: { color: textColor, fontSize: 14 } },
+        tooltip: { trigger: 'axis', backgroundColor: '#1a2030', borderColor: '#2a3447', textStyle: { color: textColor }, formatter: function(p){ return p[0].name + ': ' + p[0].value + '%'; } },
+        grid: { left: '3%', right: '6%', bottom: '3%', top: '12%', containLabel: true },
+        xAxis: { type: 'category', data: names, axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor, rotate: 30 } },
+        yAxis: { type: 'value', axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor, formatter: '{value}%' }, splitLine: { lineStyle: { color: '#1a2030' } } },
+        series: [{ type: 'bar', data: vals.map(function(v,i){ return {value: v, itemStyle: {color: colors[i]}}; }), barWidth: '50%', label: { show: true, position: 'top', color: textColor, formatter: '{c}%', rotate: 90 } }]
+    });
+})();
+
+// ===== Chart 7: MAG7 1D vs 5D Comparison =====
+(function() {
+    var names = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'NVDA', 'META'];
+    var d1 = [1.45, 0.27, 0.06, -0.71, -0.72, -2.34, -4.45];
+    var d5 = [1.68, -4.4, 0.12, -4.71, 1.22, 1.03, -9.26];
+    echarts.init(document.getElementById('c7')).setOption({
+        backgroundColor: bg,
+        title: { text: '七巨头 1D vs 5D 涨跌幅对比（%）', left: 'center', textStyle: { color: textColor, fontSize: 14 } },
+        tooltip: { trigger: 'axis', backgroundColor: '#1a2030', borderColor: '#2a3447', textStyle: { color: textColor } },
+        legend: { data: ['1D涨跌','5D涨跌'], bottom: 0, textStyle: { color: textColor } },
+        grid: { left: '3%', right: '4%', bottom: '12%', top: '12%', containLabel: true },
+        xAxis: { type: 'category', data: names, axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor } },
+        yAxis: { type: 'value', axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor, formatter: '{value}%' }, splitLine: { lineStyle: { color: '#1a2030' } } },
+        series: [
+            { name: '1D涨跌', type: 'bar', data: d1, barWidth: '35%', itemStyle: { color: bluColor }, label: { show: true, position: 'top', color: textColor, fontSize: 10, formatter: '{c}%' } },
+            { name: '5D涨跌', type: 'bar', data: d5, barWidth: '35%', itemStyle: { color: pplColor }, label: { show: true, position: 'top', color: textColor, fontSize: 10, formatter: '{c}%' } }
+        ]
+    });
+})();
+
+// ===== Chart 8: Semiconductor 1D vs 5D Comparison =====
+(function() {
+    var names = ['MRVL', 'MU', 'ARM', 'INTC', 'KLAC', 'LRCX', 'AMD', 'TSM', 'AMAT', 'TXN', 'AVGO', 'NVDA', 'QCOM'];
+    var d1 = [-7.82, -7.02, -6.67, -6.57, -5.33, -4.63, -4.27, -4.07, -3.92, -3.77, -3.17, -2.34, -1.23];
+    var d5 = [1.74, 8.32, -5.8, -1.04, -2.73, 5.3, 2.12, -2.05, -2.15, -3.2, -8.67, 1.03, -1.53];
+    echarts.init(document.getElementById('c8')).setOption({
+        backgroundColor: bg,
+        title: { text: '半导体个股 1D vs 5D 涨跌幅对比（%）', left: 'center', textStyle: { color: textColor, fontSize: 14 } },
+        tooltip: { trigger: 'axis', backgroundColor: '#1a2030', borderColor: '#2a3447', textStyle: { color: textColor } },
+        legend: { data: ['1D涨跌','5D涨跌'], bottom: 0, textStyle: { color: textColor } },
+        grid: { left: '3%', right: '4%', bottom: '12%', top: '12%', containLabel: true },
+        xAxis: { type: 'category', data: names, axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor, rotate: 30 } },
+        yAxis: { type: 'value', axisLine: { lineStyle: { color: axisColor } }, axisLabel: { color: textColor, formatter: '{value}%' }, splitLine: { lineStyle: { color: '#1a2030' } } },
+        series: [
+            { name: '1D涨跌', type: 'bar', data: d1, barWidth: '35%', itemStyle: { color: bluColor }, label: { show: true, position: 'top', color: textColor, fontSize: 9, formatter: '{c}%', rotate: 90 } },
+            { name: '5D涨跌', type: 'bar', data: d5, barWidth: '35%', itemStyle: { color: pplColor }, label: { show: true, position: 'top', color: textColor, fontSize: 9, formatter: '{c}%', rotate: 90 } }
+        ]
+    });
+})();
+
+// Responsive
+window.addEventListener('resize', function() {
+    document.querySelectorAll('.chart').forEach(function(el) {
+        var inst = echarts.getInstanceByDom(el);
+        if (inst) inst.resize();
+    });
+});
+</script>
+</body>
+</html>

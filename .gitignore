@@ -1,26 +1,11 @@
-# 生成的分析报告
-a-share-review-*/
-us-market-review-*/
-a-share-premarket-*/
-premarket-video-*/
+# 忽略所有文件
+/*
 
-# Excel 数据文件
-result/
-*.xlsx
+# 但保留报告目录
+!a-share-review-*/
+!us-market-review-*/
+!a-share-premarket-*/
+!premarket-video-*/
 
-# Python 缓存
-__pycache__/
-*.pyc
-*.pyo
-*.egg-info/
-
-# node_modules
-node_modules/
-
-# 环境/配置文件
-.env
-*.local
-
-# 系统文件
-Thumbs.db
-.DS_Store
+# 保留 .gitignore 自身
+!.gitignore
