@@ -4,13 +4,11 @@
 
 ## 在线访问
 
-### 方式一（推荐）：GitHub Pages
+### 方式一：GitHub Pages（推荐）
 
 ```
 https://tim0thy1.github.io/market-review-suite/
 ```
-
-> 如果打不开，需要在仓库 Settings → Pages → 将 Source 设为 `master` 根目录，保存后等待几分钟即可生效。
 
 ### 方式二：htmlpreview 即时预览
 
@@ -26,22 +24,29 @@ https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/b
 
 ## 报告类型
 
-| 类型 | 目录前缀 | 说明 |
-|------|---------|------|
-| 📊 A股复盘 | `a-share-review-` | A股收盘全维复盘 |
-| 🇺🇸 美股复盘 | `us-market-review-` | 美股深度复盘 |
-| 🔮 盘前分析 | `a-share-premarket-` | A股盘前预测 |
-| 🎬 视频脚本 | `premarket-video-` | 盘前视频制作提示词 |
+| 类型 | 所属市场 | 目录命名 | 说明 |
+|------|---------|---------|------|
+| 🇺🇸 美股复盘 | 美股 | `美股复盘-YYYYMMDD` | 美股深度复盘 |
+| 📊 A股复盘 | A股 | `A股复盘-YYYYMMDD` | A股收盘全维复盘 |
+| 🔮 盘前分析 | A股 | `A股盘前分析-YYYYMMDD` | A股盘前预测 |
+| 🎬 视频脚本 | A股 | `A股视频提示词-YYYYMMDD` | 盘前视频制作提示词 |
 
 ## 目录结构
 
 ```
 market-review-suite/
 ├── index.html                  # 导航首页（自动扫描，无需手动更新）
-├── a-share-review-YYYYMMDD/    # A股复盘报告
-├── us-market-review-YYYYMMDD/  # 美股复盘报告
-├── a-share-premarket-YYYYMMDD/ # 盘前分析报告
-└── premarket-video-YYYYMMDD/   # 视频提示词
+├── 美股/
+│   ├── 美股复盘-20260818/      # 美股复盘报告
+│   └── 美股复盘-20260819/
+├── A股/
+│   ├── A股复盘-20260818/       # A股复盘报告
+│   ├── A股复盘-20260819/
+│   ├── A股盘前分析-20260819/   # 盘前分析报告
+│   ├── A股盘前分析-20260820/
+│   ├── A股视频提示词-20260819/ # 视频提示词
+│   └── A股视频提示词-20260820/
+└── generate_index.py           # 首页生成脚本（推送前运行）
 ```
 
 ## 声明
