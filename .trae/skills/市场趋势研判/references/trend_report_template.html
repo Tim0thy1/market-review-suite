@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股大盘研判 — YYYY-MM-DD</title>
+<style>
+  :root {
+    --bg: #f5f3ff; --card: #fff; --text: #1e1b4b; --muted: #6b7280;
+    --border: #ddd6fe; --accent: #4338ca; --red: #dc2626; --green: #16a34a;
+    --amber: #d97706;
+    --header-from: #312e81; --header-to: #6366f1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; padding: 24px 16px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, var(--header-from) 0%, var(--header-to) 100%);
+    color: #fff; border-radius: 12px; padding: 24px; margin-bottom: 16px;
+  }
+  .header h1 { font-size: 1.35rem; font-weight: 700; }
+  .header .meta { opacity: 0.88; font-size: 0.85rem; margin-top: 6px; }
+  .tldr {
+    background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+    border-radius: 10px; padding: 16px 18px; margin-bottom: 16px;
+  }
+  .tldr h2 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+  .tldr ul { padding-left: 1.1em; font-size: 0.9rem; }
+  .badge {
+    display: inline-block; font-size: 0.75rem; font-weight: 600;
+    padding: 3px 10px; border-radius: 999px; background: #eef2ff; color: var(--accent); margin: 0 6px 6px 0;
+  }
+  .badge.risk-h { background: #fef2f2; color: var(--red); }
+  .badge.risk-m { background: #fffbeb; color: var(--amber); }
+  .badge.risk-l { background: #f0fdf4; color: var(--green); }
+  /* 情绪/阶段：阶段色阶条 */
+  .stage-rail {
+    display: flex; gap: 4px; margin: 12px 0 16px; font-size: 0.72rem; text-align: center;
+  }
+  .stage-rail .s {
+    flex: 1; padding: 8px 4px; border-radius: 6px; background: #ede9fe; color: #4338ca; font-weight: 600;
+  }
+  .stage-rail .s.on { background: var(--accent); color: #fff; box-shadow: 0 0 0 2px #c7d2fe; }
+  h2.section {
+    font-size: 1.05rem; font-weight: 600; margin: 28px 0 12px;
+    padding-bottom: 6px; border-bottom: 2px solid var(--accent); color: var(--accent);
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; font-size: 0.9rem;
+  }
+  .card.mood { border-left: 4px solid var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 500; background: #f9fafb; }
+  .up { color: var(--red); } .down { color: var(--green); }
+  .footer {
+    margin-top: 28px; padding-top: 12px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 0.75rem; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>A股大盘多维度研判</h1>
+    <div class="meta">日期：YYYY-MM-DD · 分析路径：[量能催化 / 阶段模型 / 群体心理 / 组合]</div>
+  </div>
+
+  <div class="tldr">
+    <h2>一句话结论</h2>
+    <ul>
+      <li>[市场状态定性]</li>
+      <li>[主线或阶段位置]</li>
+      <li>[仓位取向：条件框架，非指令]</li>
+    </ul>
+  </div>
+
+  <div class="stage-rail" title="情绪周期示意：按需高亮当前阶段">
+    <div class="s">冰点</div><div class="s">修复</div><div class="s on">主升</div><div class="s">高位震荡</div><div class="s">退潮</div>
+  </div>
+
+  <!-- ===== 路径 A：量能→催化→结构→风控（按需保留） ===== -->
+  <h2 class="section">一、市场强度</h2>
+  <div class="card mood">
+    <p><span class="badge">状态</span>强势 / 震荡 / 弱势 / 退潮</p>
+    <p>证据：涨跌家数 … · 成交额 …（较5日均 ±…%）</p>
+  </div>
+
+  <h2 class="section">二、当前主线</h2>
+  <div class="card">
+    <p><strong>主线：</strong>…</p>
+    <p>情绪龙头 / 趋势中军 / 补涨 / 后排：…</p>
+    <p>持续性：强 / 较强 / 一般 / 弱 · 伪主线提醒：…</p>
+  </div>
+
+  <h2 class="section">三、情绪周期</h2>
+  <div class="card">
+    <p>当前：冰点 / 修复 / 主升 / 高位震荡 / 退潮</p>
+    <p>证据：连板高度 … · 炸板率 …</p>
+  </div>
+
+  <h2 class="section">四、次日观察</h2>
+  <div class="card">
+    <ol style="padding-left:1.2em">
+      <li>…</li>
+      <li>…</li>
+    </ol>
+  </div>
+
+  <!-- ===== 路径 B：阶段模型（按需） ===== -->
+  <!--
+  <h2 class="section">周线阶段判定</h2>
+  <div class="card">
+    <p>阶段 X · 名称 · 仓位取向 …</p>
+    <p>证据链：…</p>
+    <p>分叉路径与应急：…</p>
+  </div>
+  -->
+
+  <!-- ===== 路径 C：群体心理（按需） ===== -->
+  <!--
+  <h2 class="section">群体心理扫描</h2>
+  <div class="card">
+    <p>情绪周期：… <span class="badge risk-m">中风险</span></p>
+    <table>
+      <thead><tr><th>偏差</th><th>结果</th><th>证据</th></tr></thead>
+      <tbody><tr><td>…</td><td>…</td><td>…</td></tr></tbody>
+    </table>
+    <p>聪明钱 vs 散户：一致 / 背离</p>
+  </div>
+  -->
+
+  <div class="footer">
+    以上分析基于公开数据，不构成投资建议。仓位与操作须自行决策并自担风险。
+  </div>
+</div>
+</body>
+</html>
