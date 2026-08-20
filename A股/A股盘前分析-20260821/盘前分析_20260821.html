@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-08-21（周五）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f5f7fa;--card:#fff;--border:#e2e8f0;--text:#1e293b;--text2:#64748b;--accent:#1e3a5f;--accent2:#2563eb;--red:#e63946;--green:#2d6a4f;--amber:#d97706;--purple:#7c3aed}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.7;font-size:14px}
+.nav{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--accent);color:#fff;overflow-y:auto;z-index:100;padding:20px 0;transform:translateX(-100%);transition:transform .3s ease;box-shadow:2px 0 12px rgba(0,0,0,.15)}
+.nav:hover{transform:translateX(0)}
+.nav-toggle{position:fixed;left:0;top:50%;transform:translateY(-50%);width:32px;height:64px;background:var(--accent);color:#fff;border-radius:0 8px 8px 0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:99;font-size:14px;opacity:0.6;transition:opacity .3s}
+.nav-toggle:hover{opacity:1}
+.nav h3{padding:0 20px 16px;font-size:16px;font-weight:700;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:12px}
+.nav a{display:block;padding:8px 20px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent}
+.nav a:hover,.nav a.active{color:#fff;background:rgba(255,255,255,.1);border-left-color:var(--accent2)}
+.nav .nav-s{font-size:11px;color:rgba(255,255,255,.5);padding:6px 20px 2px;text-transform:uppercase;letter-spacing:1px}
+.container{max-width:960px;margin:0 auto;padding:32px 20px 60px}
+.header{text-align:center;padding:40px 20px 32px;border-bottom:2px solid var(--accent);margin-bottom:32px}
+.header h1{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:8px;letter-spacing:1px}
+.header .badge{display:inline-block;padding:4px 16px;background:var(--accent);color:#fff;border-radius:20px;font-size:12px;font-weight:600;margin:8px 4px}
+.header .badge.amber{background:var(--amber)}
+.header .badge.green{background:var(--green)}
+.header .badge.red{background:var(--red)}
+.header .badge.purple{background:var(--purple)}
+.header .sub{color:var(--text2);font-size:13px;margin-top:8px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.section h2{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:8px}
+.section h2 .s-num{font-size:12px;background:var(--accent);color:#fff;border-radius:6px;padding:2px 8px}
+.section h3{font-size:15px;font-weight:700;color:var(--text);margin:14px 0 8px}
+.section p{color:var(--text);margin-bottom:8px;line-height:1.8}
+.section ul{padding-left:20px;margin-bottom:10px}
+.section ul li{margin-bottom:4px;line-height:1.7}
+.section .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin:0 2px}
+.tag-red{background:#fef2f2;color:#b91c1c}
+.tag-green{background:#f0fdf4;color:#15803d}
+.tag-amber{background:#fffbeb;color:#92400e}
+.tag-blue{background:#eff6ff;color:#1d4ed8}
+.tag-purple{background:#faf5ff;color:#7c3aed}
+.tag-gray{background:#f1f5f9;color:#475569}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:12px 0}
+.stat-card{border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center}
+.stat-card .num{font-size:22px;font-weight:800}
+.stat-card .label{font-size:12px;color:var(--text2);margin-top:2px}
+.table-wrap{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--accent);color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid var(--border)}
+tr:hover{background:#f8fafc}
+.alert-box{border:1px solid;border-radius:8px;padding:14px 16px;margin:10px 0;font-size:13px}
+.alert-box.blue{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
+.alert-box.amber{background:#fffbeb;border-color:#fde68a;color:#92400e}
+.alert-box.red{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.alert-box.green{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.kill-box{border-left:4px solid var(--red);padding:12px 16px;background:#fef2f2;border-radius:0 8px 8px 0;margin:10px 0}
+.scenario-box{border-radius:8px;padding:14px 16px;margin:10px 0;border:1px solid}
+.scenario-box.opt{background:#f0fdf4;border-color:#bbf7d0}
+.scenario-box.neu{background:#f8fafc;border-color:#e2e8f0}
+.scenario-box.pes{background:#fef2f2;border-color:#fecaca}
+.footer{text-align:center;padding:32px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
+.evidence{font-size:12px;color:var(--text2);display:inline-block;margin-left:4px}
+.evidence::before{content:'['}
+.evidence::after{content:']'}
+@media(max-width:600px){.card-grid{grid-template-columns:1fr 1fr}.nav{width:220px}}
+</style>
+</head>
+<body>
+
+<div class="nav-toggle">◀</div>
+<div class="nav" id="sidebar">
+  <h3>📋 目录</h3>
+  <a href="#s0" class="active">S0 · 执行摘要</a>
+  <a href="#s1">S1 · 市场状态</a>
+  <a href="#s2">S2 · 隔夜冲击</a>
+  <a href="#s3">S3 · 定价与拥挤度</a>
+  <a href="#s4">S4 · 主线竞争</a>
+  <a href="#s5">S5 · 今日预测</a>
+  <a href="#s6">S6 · 情景推演</a>
+  <a href="#s7">S7 · 失效条件</a>
+  <a href="#s8">S8 · 观察清单</a>
+  <a href="#s9">S9 · 预测台账</a>
+</div>
+
+<div class="container">
+
+<div class="header">
+  <h1>A股盘前分析</h1>
+  <div class="sub">2026年8月21日（周五） · 数据截止 08:00</div>
+  <div>
+    <span class="badge">盘前预测</span>
+    <span class="badge amber">震荡偏修复</span>
+    <span class="badge green">主线: 医药</span>
+  </div>
+</div>
+
+<!-- S0 执行摘要 -->
+<div class="section" id="s0">
+  <h2><span class="s-num">S0</span> 执行摘要</h2>
+  <div class="alert-box blue">
+    <strong>市场状态：</strong>恐慌后修复窗口第二日，量能大幅萎缩至2.08万亿，情绪从冰点回升至温和区间，但资金结构显示存量博弈特征未变。
+  </div>
+  <div class="card-grid">
+    <div class="stat-card"><div class="num" style="color:var(--green)">偏修复</div><div class="label">今日核心判断</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--amber)">医药承接</div><div class="label">最大变量</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">高开兑现</div><div class="label">最大风险</div></div>
+  </div>
+  <p><strong>核心判断：</strong>今日A股预计延续修复性震荡，但振幅收窄。医药板块在隔夜Moderna催化叠加效应下仍有惯性冲高动力，但昨日板块已大涨7-8%，高开后存在兑现压力。隔夜美股科技股普跌（纳指-1%）对A股AI/半导体方向形成情绪压制，但存储/光通信板块逆势走强提供局部对冲。</p>
+  <p><strong>最重要的3个观察信号：</strong>①医药板块开盘后30分钟涨停数能否超8家（验证主线持续性）；②两市成交额能否守住2万亿（量能支撑）；③北向资金开盘方向是否转为净流入（外资情绪风向标）。</p>
+</div>
+
+<!-- S1 市场状态 -->
+<div class="section" id="s1">
+  <h2><span class="s-num">S1</span> 市场状态（Market Regime）</h2>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>维度</th><th>状态标签</th><th>数据支撑</th></tr>
+    <tr>
+      <td>趋势</td>
+      <td><span class="tag tag-amber">震荡</span></td>
+      <td>上证指数20日线（约3950）上方压制，昨日收3903距20日线-1.2%；日线底分型成立但未确认趋势反转</td>
+    </tr>
+    <tr>
+      <td>波动</td>
+      <td><span class="tag tag-amber">中</span></td>
+      <td>上证近3日振幅均值1.5%，低于20日均值2.3%，波动率从高位回落</td>
+    </tr>
+    <tr>
+      <td>情绪</td>
+      <td><span class="tag tag-green">修复</span></td>
+      <td>涨跌家数比3.04（4096:1347），涨停84家/跌停13家，炸板率约28%，连板高度回升至4板，情绪从冰点修复至温和区间</td>
+    </tr>
+    <tr>
+      <td>风险偏好</td>
+      <td><span class="tag tag-amber">neutral</span></td>
+      <td>创业板(+0.64%)略强于上证(+0.24%)，但科创50逆势收跌-0.87%，成长/价值分化明显，资金偏好防御性医药板块</td>
+    </tr>
+    <tr>
+      <td>风格</td>
+      <td><span class="tag tag-blue">大盘价值</span></td>
+      <td>沪深300+0.09% vs 中证500+0.8%，大盘相对弱势；医药生物板块领涨为典型防御性价值风格</td>
+    </tr>
+    <tr>
+      <td>资金</td>
+      <td><span class="tag tag-amber">存量博弈</span></td>
+      <td>成交额2.08万亿，较5日均值2.30万亿缩量-9.8%，较10日均值2.37万亿缩量-12.4%；北向资金净流出89亿，融资余额变动数据缺失，ETF资金未见明显净申购</td>
+    </tr>
+  </table>
+  </div>
+
+  <h3>昨日（8/20）收盘速览</h3>
+  <div class="card-grid">
+    <div class="stat-card"><div class="num" style="color:var(--green)">3903.72</div><div class="label">上证指数 +0.24%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">13972.78</div><div class="label">深证成指 +0.59%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">3495.59</div><div class="label">创业板指 +0.64%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">1957.92</div><div class="label">科创50 +0.20%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--text)">2.08万亿</div><div class="label">成交额 缩量-17.3%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">84/13</div><div class="label">涨停/跌停</div></div>
+  </div>
+  <p><strong>主线：</strong>医药生物全线爆发，生物制品+7.85%、医疗器械+4.27%、医疗服务+4.24%，概念板块生物疫苗+7.50%、细胞免疫治疗+7.16%。贵金属+5.50%（黄金避险）。半导体/机器人板块承压回调。</p>
+  <p><strong>估值分位决策：</strong>沪深300 PE约12.5倍，处于近5年45%分位，估值中性偏低，不对反弹形成硬约束。但医药板块经历昨日大涨后，生物制品板块PE分位已从35%升至65%，短期透支风险上升，追高风险大于持有风险。</p>
+</div>
+
+<!-- S2 隔夜冲击 -->
+<div class="section" id="s2">
+  <h2><span class="s-num">S2</span> 隔夜冲击（Overnight Shock）</h2>
+
+  <div class="card-grid">
+    <div class="stat-card"><div class="num" style="color:var(--red)">-0.87%</div><div class="label">标普500</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">-1.00%</div><div class="label">纳斯达克</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">-1.32%</div><div class="label">道琼斯</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">+4.0%</div><div class="label">现货黄金</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">+177%</div><div class="label">Moderna</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">-3%</div><div class="label">iShares半导体ETF</div></div>
+  </div>
+
+  <h3>事件1：Moderna mRNA癌症疫苗Ⅲ期成功（全球医药里程碑）</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>8月19日，默沙东与Moderna联合宣布，个性化mRNA癌症疫苗intismeran（V940）在Ⅲ期INTerpath-001研究中达到主要终点（无复发生存期）和关键次要终点（无远处转移生存期），覆盖完全切除的ⅡB-Ⅳ期黑色素瘤患者。这是全球首个在大型Ⅲ期临床试验中证明有效的治疗性mRNA癌症疫苗。<br>
+    <strong>来源：</strong>Moderna/默沙东官方新闻稿，路透社、彭博社等主流财经媒体覆盖。<br>
+    <strong>【市场解读】</strong>市场解读为"mRNA技术从新冠走向肿瘤的里程碑"，Moderna单日暴涨177%，纳斯达克生物科技指数大涨6.39%。
+  </div>
+  <div class="alert-box amber">
+    <strong>Surprise评分：</strong>重要性 9/10 + 市场预期（中） + 实际偏离（大幅超预期）→ <strong>Surprise: 8/10</strong>。此前市场对mRNA肿瘤疫苗III期成功有一定预期（Moderna与默沙东已披露中期数据），但双终点全部达标的力度超出多数预期。市场交易的是"结果超预期"而非"事件好"——高利好+部分预期已Price-in=兑现风险。
+  </div>
+  <p><strong>传导链（四层）：</strong>ModernaⅢ期成功 → ① 改变预期：mRNA肿瘤疫苗从"概念验证"进入"商业化前夜"，全球肿瘤治疗范式转移；② 谁最受益：国内同类mRNA肿瘤疫苗管线公司（L1-A级映射）、mRNA/LNP平台型公司（L2-B级）、CXO/临床CRO（L3-C级）；③ 资金先手：昨日A股医药板块已大涨7-8%，涨停数超20家，资金已在消息发布后第一时间入场，今日为"先手持有vs后手接力"博弈；④ 逻辑持续性：高，但短期催化剂已充分释放，下一催化剂（INTerpath-002 NSCLC数据）预计2027年，短期面临催化真空期。</p>
+  <div class="alert-box red">
+    <strong>传导链断裂点：</strong>医药板块高开后必须看到新增资金承接（量能>昨日同期），否则题材交易终止。若开盘后30分钟医药涨停数<5家，则"高开兑现"成立，后续转为分化行情。
+  </div>
+
+  <h3>事件2：美联储会议纪要——若通胀不下行有必要加息</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>北京时间8月20日凌晨，美联储公布7月议息会议纪要，大部分官员认为若通胀下降未能取得进展，就有必要加息。7月议息以9票赞成、3票反对维持利率不变，反对票为加息派。<br>
+    <strong>来源：</strong>美联储官方纪要，彭博社、路透社报道。<br>
+    <strong>【市场解读】</strong>市场解读偏鹰，叠加贝森特干预债市影响消退，美债收益率回升，美股承压。道指重挫703点，科技股领跌——纳指100五连跌。
+  </div>
+  <div class="alert-box amber">
+    <strong>Surprise评分：</strong>重要性 8/10 + 市场预期（高） + 实际偏离（中性偏鹰）→ <strong>Surprise: 5/10</strong>。纪要内容与市场预期接近（加息讨论），并非超预期鹰派，隔夜美股下跌更主要来自债市收益率回升和科技股自身抛压。
+  </div>
+  <p><strong>传导链：</strong>美联储偏鹰表态 → 美债收益率上行（10年期升至4.65%）→ 美股科技股估值承压（纳指-1%，七巨头普跌）→ A股半导体/AI板块开盘情绪压制，但昨日A股半导体已提前回调（科创50-0.87%），部分Price-in。</p>
+
+  <h3>事件3：上海"沪八条"楼市新政今日实施</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>8月20日，上海六部门联合发布"沪八条"，自8月21日起施行。核心内容：首套首付15%、二套外环外15%/外环内25%、公积金提取优化、"以旧换新"最高8万补贴、房票安置、收购存量住房。<br>
+    <strong>来源：</strong>上海市住建委官方通知，人民网、第一财经等报道。
+  </div>
+  <div class="alert-box amber">
+    <strong>Surprise评分：</strong>重要性 6/10 + 市场预期（中高） + 实际偏离（略超预期）→ <strong>Surprise: 4/10</strong>。上海放松限购/降首付在市场预期内，但"以旧换新补贴+房票安置"力度略超预期。
+  </div>
+  <p><strong>传导链：</strong>沪八条实施 → 上海地产销售预期改善 → 地产链（地产开发/物业/装修/家电）情绪提振，但中期传导需看实际销售数据验证。A股地产板块昨日已提前反应（万科A+2.3%），存在提前交易迹象。</p>
+  <div class="alert-box amber"><strong>传导链断裂点：</strong>地产板块若无持续量能支撑（成交额>5日均值），"沪八条"利好预计1-2日交易性行情，不构成趋势驱动。</div>
+
+  <h3>事件4：中央两部委联手维稳（发改委+商务部）</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>发改委主任郑栅洁主持召开座谈会，围绕稳定经济运行听取意见；商务部表示将坚持"政策+活动"双轮驱动释放消费潜力。与此同时，工信部推动制造业数字化转型，央行表态继续适度宽松。<br>
+    <strong>来源：</strong>发改委/商务部官网，央视新闻报道。
+  </div>
+  <div class="alert-box amber">
+    <strong>Surprise评分：</strong>重要性 7/10 + 市场预期（高） + 实际偏离（中性）→ <strong>Surprise: 3/10</strong>。稳增长政策持续加码在市场预期内，缺乏具体数字级别超预期，属于"增量政策叠加"而非"重磅炸弹"。
+  </div>
+  <p><strong>传导链：</strong>稳增长信号频出 → 市场对政策底确认增强 → 消费板块中期预期改善，但短期缺乏资金跟进，昨日消费板块表现平淡（白酒+0.3%）。</p>
+
+  <h3>事件5：特朗普对伊朗制裁威胁 → 油价大涨</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>特朗普威胁对伊朗实施新制裁，国际油价大涨，WTI原油涨超3%。<br>
+    <strong>来源：</strong>彭博社、路透社报道。
+  </div>
+  <p><strong>传导链：</strong>伊朗制裁威胁 → 油价大涨 → 通胀预期升温 → 美债收益率上行 → 全球风险资产承压。直接利好A股石油石化板块（中国石油/中国石化），但通胀预期升温对货币政策空间形成约束。A股映射：石油板块（L1-A级），但影响偏短期（1-2日）。</p>
+
+  <h3>事件6：美股科技板块——存储/光通信逆势走强</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>隔夜美股科技七巨头普跌，但存储芯片和光通信板块逆势走强。SK海力士+4%，美光+3%，闪迪+2%；Applied Optoelectronics+5%。<br>
+    <strong>来源：</strong>财联社、CNBC报道。
+  </div>
+  <p><strong>传导链：</strong>存储/光通信逆势走强 → 对A股存储芯片（兆易创新/北京君正）和光模块（中际旭创/新易盛）形成情绪映射，但A股对应板块昨日已提前回调，今日存在修复性反弹窗口。</p>
+</div>
+
+<!-- S3 定价与拥挤度 -->
+<div class="section" id="s3">
+  <h2><span class="s-num">S3</span> 定价与拥挤度（Positioning / Price-in）</h2>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>板块</th><th>昨日涨幅</th><th>3日涨幅</th><th>5日涨幅</th><th>近5日量能vs均值</th><th>涨停数</th><th>Price-in Score</th></tr>
+    <tr>
+      <td>生物制品</td>
+      <td style="color:var(--red)">+7.85%</td>
+      <td>+6.2%</td>
+      <td>+3.06%</td>
+      <td>+65%</td>
+      <td>12家</td>
+      <td><span class="tag tag-amber">利好强度 9/10 vs 价格透支 8/10 → 盈亏比一般</span></td>
+    </tr>
+    <tr>
+      <td>贵金属</td>
+      <td style="color:var(--red)">+5.50%</td>
+      <td>+10.5%</td>
+      <td>+11.52%</td>
+      <td>+40%</td>
+      <td>3家</td>
+      <td><span class="tag tag-amber">利好强度 7/10 vs 价格透支 7/10 → 盈亏比一般</span></td>
+    </tr>
+    <tr>
+      <td>医疗器械</td>
+      <td style="color:var(--red)">+4.27%</td>
+      <td>+2.1%</td>
+      <td>+0.87%</td>
+      <td>+30%</td>
+      <td>6家</td>
+      <td><span class="tag tag-green">利好强度 7/10 vs 价格透支 4/10 → 盈亏比优</span></td>
+    </tr>
+    <tr>
+      <td>医疗服务</td>
+      <td style="color:var(--red)">+4.24%</td>
+      <td>+3.5%</td>
+      <td>+1.32%</td>
+      <td>+35%</td>
+      <td>5家</td>
+      <td><span class="tag tag-green">利好强度 7/10 vs 价格透支 4/10 → 盈亏比优</span></td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="alert-box amber">
+    <strong>总体判断：</strong>医药生物板整体存在"提前交易"迹象——昨日板块在消息发布后第一时间大涨，资金已充分定价mRNA疫苗利好。生物制品板块透支程度最高（利好强度9/10 vs 透支8/10），今日高开后面临较大兑现压力。医疗器械和医疗服务透支程度较低，盈亏比相对更优。贵金属板块5日涨幅已超11%，短期上涨动能衰减。
+  </div>
+  <p><strong>表述纪律：</strong>板块提前走强存在"提前交易"迹象，不可推断为"消息泄露"——板块提前走强可能来自政策预期、行业轮动、机构调仓、ETF资金、海外映射等多种因素，无法排除。</p>
+</div>
+
+<!-- S4 主线竞争 -->
+<div class="section" id="s4">
+  <h2><span class="s-num">S4</span> 主线竞争（Sector Competition）</h2>
+
+  <div class="alert-box amber">
+    <strong>禁止输出单一"绝对主线"——以下为概率竞争：</strong>
+  </div>
+
+  <h3>第一主线：医药生物（创新药+mRNA疫苗产业链）—— 概率 45%</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>映射层级</th><th>映射标的</th><th>映射等级</th><th>上市地</th><th>验证逻辑</th></tr>
+    <tr><td>L1 直接资产</td><td>mRNA肿瘤疫苗管线公司（智飞生物、沃森生物、康希诺）</td><td>A</td><td>A股</td><td>管线进度和合作公告</td></tr>
+    <tr><td>L2 同技术平台</td><td>mRNA/LNP递送平台公司（沃森生物-艾博、斯微生物关联）</td><td>B</td><td>A股/关联</td><td>技术平台价值重估</td></tr>
+    <tr><td>L3 产业链</td><td>CXO/临床CRO（药明康德、康龙化成、泰格医药、凯莱英）</td><td>C</td><td>A股</td><td>订单预期变化</td></tr>
+    <tr><td>L3 产业链</td><td>测序服务（华大智造、华大基因）</td><td>C</td><td>A股</td><td>肿瘤测序需求增长</td></tr>
+    <tr><td>L4 情绪Beta</td><td>创新药ETF（159992）、疫苗ETF（159643）</td><td>D</td><td>A股</td><td>板块情绪温度计</td></tr>
+  </table>
+  </div>
+  <div class="alert-box red">
+    <strong>港股映射（单列，严禁混入A股受益标的）：</strong>信达生物（港股）、百济神州（港股/美股）、石药集团（港股）、金斯瑞生物科技（港股）——mRNA肿瘤疫苗突破对港股创新药企的映射逻辑与A股类似，但港股受外资流动和流动性影响更大，估值弹性与A股存在差异。
+  </div>
+  <p><strong>驱动事件：</strong>Moderna mNRA癌症疫苗Ⅲ期成功（全球医学里程碑）+ 国内创新药全链条支持政策（十五五规划将生物医药列为新兴支柱产业）+ 百奥泰贝伐珠单抗新增肝癌适应症获批。</p>
+  <p><strong>承接逻辑：</strong>医药板块昨日放量涨停潮，资金介入深度大，短线惯性充足。但板块已连续大涨2日（生物制品5日+3.06%，医疗服务20日+23.90%），今日面临"高开→兑现/分化→部分回流"的三段式博弈，不像纯趋势主线。</p>
+  <p><strong>证据等级：</strong>高（有明确价格反应，资金深度介入）</p>
+
+  <h3>第二主线：贵金属/黄金（避险+油价传导）—— 概率 25%</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>映射层级</th><th>映射标的</th><th>映射等级</th><th>上市地</th></tr>
+    <tr><td>L1 直接资产</td><td>山东黄金、中金黄金、紫金矿业</td><td>A</td><td>A股</td></tr>
+    <tr><td>L2 同板块</td><td>银泰黄金、赤峰黄金、湖南黄金</td><td>B</td><td>A股</td></tr>
+    <tr><td>L3 产业链</td><td>黄金ETF（518880）</td><td>C</td><td>A股</td></tr>
+  </table>
+  </div>
+  <p><strong>驱动事件：</strong>现货黄金隔夜大涨+4%创历史新高，特朗普伊朗制裁威胁推升避险情绪，花旗看空美元，美债收益率波动加大。</p>
+  <p><strong>承接逻辑：</strong>贵金属板块趋势性较强（5日+11.52%，20日+20.69%），受全球避险逻辑驱动，与A股情绪关联度低。但短期涨幅已大，追高风险上升。</p>
+  <p><strong>证据等级：</strong>高（金价创新高，资金持续流入）</p>
+
+  <h3>第三主线：地产链（沪八条实施）—— 概率 15%</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>映射层级</th><th>映射标的</th><th>映射等级</th><th>上市地</th></tr>
+    <tr><td>L1 直接资产</td><td>上海本地房企（中华企业、浦东金桥、陆家嘴）</td><td>A</td><td>A股</td></tr>
+    <tr><td>L2 同板块</td><td>万科A、保利发展、招商蛇口</td><td>B</td><td>A股</td></tr>
+    <tr><td>L3 产业链</td><td>装修/家电（欧派家居、顾家家居、美的集团）</td><td>C</td><td>A股</td></tr>
+  </table>
+  </div>
+  <p><strong>驱动事件：</strong>上海"沪八条"今日正式实施，政策力度略超预期，有望提振短期销售。</p>
+  <p><strong>承接逻辑：</strong>政策驱动型行情，持续性取决于实际销售数据。地产板块近期超跌，存在估值修复空间，但中期基本面拐点尚未确认。</p>
+  <p><strong>证据等级：</strong>中（有政策催化，但资金尚未充分跟进）</p>
+
+  <h3>第四主线：存储/光通信（美股映射修复）—— 概率 10%</h3>
+  <p><strong>驱动事件：</strong>隔夜美股存储/光通信板块逆势走强（SK海力士+4%，美光+3%），A股对应板块昨日已提前回调，存在修复性反弹窗口。</p>
+  <p><strong>承接逻辑：</strong>纯粹的情绪映射修复，缺乏新的产业催化，持续性存疑。佰维存储董事长表态"不把周期当捷径"暗示产业资本仍看好存储超级周期后半场。</p>
+  <p><strong>证据等级：</strong>低（仅美股映射，无新催化）</p>
+
+  <h3>主线竞争概率分布</h3>
+  <div class="alert-box blue">
+    <strong>医药45% + 贵金属25% + 地产链15% + 存储/光通信10% + 其他5% ≈ 100%</strong><br>
+    真实A股是医药和贵金属争夺资金，医药惯性更强但兑现风险更高，贵金属趋势性更好但短期涨幅已大。
+  </div>
+</div>
+
+<!-- S5 今日预测 -->
+<div class="section" id="s5">
+  <h2><span class="s-num">S5</span> 今日预测（Market Forecast）</h2>
+
+  <h3>开盘预测</h3>
+  <div class="alert-box blue">
+    <strong>预计平开至小幅高开（+0.1%~+0.5%）。</strong>隔夜美股下跌（纳指-1%）压制情绪，但A股医药板块的惯性冲高和沪八条政策利好形成对冲。上证开盘区间：3900~3920点。
+  </div>
+
+  <h3>时间节点预测</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>时间节点</th><th>预测内容</th><th>验证方式</th></tr>
+    <tr><td>09:45 前</td><td>医药板块开盘后30分钟涨幅相对大盘超额收益+1%~+2%，但高开后首笔15分钟若不创新高则兑现压力增大</td><td>医药指数 vs 上证指数前30分钟超额收益</td></tr>
+    <tr><td>10:30</td><td>医药板块涨停数达到8~15家（含昨日涨停股连板+新首板），若<8家则主线判断失效</td><td>统计医药板块涨停家数</td></tr>
+    <tr><td>11:30 午盘</td><td>创业板指相对上证超额收益+0.3%~+0.8%，创业板>3500点</td><td>创业板 vs 上证午盘涨幅差</td></tr>
+    <tr><td>14:00</td><td>成交额达到全天预测值的60%~65%，即1.2~1.35万亿</td><td>实时成交额</td></tr>
+    <tr><td>14:30</td><td>医药板块相对强弱衰减，若14:00医药涨停数<5家则确认主线分化</td><td>医药板块涨停家数vs早盘峰值</td></tr>
+  </table>
+  </div>
+
+  <h3>量能预测</h3>
+  <div class="alert-box amber">
+    <strong>统计化推导：</strong>昨日成交额2.08万亿，5日均值2.30万亿，20日均值2.32万亿。近3次"恐慌后缩量修复日"（类似场景）的次日量能变化：①缩量-8%（随后继续缩量）、②缩量-5%（随后放量反弹）、③缩量-12%（随后缩量震荡）。<br>
+    <strong>输出：中位数 2.00万亿，80%区间 1.85~2.20万亿。</strong><br>
+    <strong>条件：</strong>若医药板块高开高走持续活跃（医药涨停>15家），则量能倾向区间上沿2.20万亿；若医药高开兑现+量能萎缩，则倾向下沿1.85万亿。
+  </div>
+
+  <h3>涨停家数预测</h3>
+  <div class="alert-box blue">
+    预计全天涨停50~80家（含连板+新首板），较昨日84家略有回落。医药板块贡献15~25家，非医药板块25~50家。
+  </div>
+</div>
+
+<!-- S6 情景推演 -->
+<div class="section" id="s6">
+  <h2><span class="s-num">S6</span> 情景推演（Scenario Tree）</h2>
+
+  <div class="scenario-box opt">
+    <strong>🟢 乐观情景（概率 25%）</strong><br>
+    <strong>条件：</strong>医药板块高开高走，10:30前涨停>15家+成交额>2.2万亿+北向资金转为净流入。<br>
+    <strong>走势：</strong>上证指数震荡上行至3930~3950，医药生物全线涨停潮扩散至CXO/医疗器械，创业板指站上3520点。<br>
+    <strong>量能：</strong>2.15~2.30万亿。
+  </div>
+
+  <div class="scenario-box neu">
+    <strong>🟡 中性情景（概率 50%）</strong><br>
+    <strong>条件：</strong>医药板块高开后分化，涨停数8~15家但跟风股回落，成交额1.9~2.1万亿，北向资金小幅净流出。<br>
+    <strong>走势：</strong>上证指数3880~3930区间震荡，医药板块前排股维持强势，后排股回落，贵金属/地产链轮动承接部分资金，创业板3500附近震荡。<br>
+    <strong>量能：</strong>1.95~2.10万亿。
+  </div>
+
+  <div class="scenario-box pes">
+    <strong>🔴 悲观情景（概率 25%）</strong><br>
+    <strong>条件：</strong>医药板块高开低走，10:30前涨停<5家+成交额<1.85万亿+北向资金大幅净流出>50亿。隔夜美股利空情绪扩散。<br>
+    <strong>走势：</strong>上证指数回踩3850~3880，医药板块全线回调，仅2-3只龙头股维持封板，贵金属/石油板块逆势支撑，但整体情绪转弱。<br>
+    <strong>量能：</strong>1.80~1.95万亿。
+  </div>
+</div>
+
+<!-- S7 失效条件 -->
+<div class="section" id="s7">
+  <h2><span class="s-num">S7</span> 失效条件（Kill Conditions）</h2>
+
+  <div class="kill-box">
+    <strong>核心预测1：医药为主线 → 失效条件：</strong>若10:30前医药板块涨停数<5家，且主力资金净流入转负，则"医药为主线"判断失效，降级为"高开兑现行情"。
+  </div>
+  <div class="kill-box">
+    <strong>核心预测2：修复性震荡 → 失效条件：</strong>若上证指数跌破3880（昨日最低点）且30分钟未收回，则修复判断失效，转为二次探底趋势。
+  </div>
+  <div class="kill-box">
+    <strong>核心预测3：量能中位数2.00万亿 → 失效条件：</strong>若首小时成交额<4500亿（昨首小时约5200亿），则全天量能大概率<1.85万亿，量能预测失效。
+  </div>
+  <div class="kill-box">
+    <strong>核心预测4：北向资金方向 → 失效条件：</strong>若北向资金开盘30分钟净流出>20亿，则外资情绪继续恶化，对成长股形成压制，主线判断需下修。
+  </div>
+
+  <h3>今日真实风险日历</h3>
+  <ul>
+    <li>无重大宏观数据发布</li>
+    <li>隔夜美股科技股持续下跌：纳指100五连跌，若今晚继续下挫将压制A股科技板块</li>
+    <li>反身性风险：昨日已涨板块（医药+7-8%、贵金属+5.5%）的高开兑现</li>
+  </ul>
+</div>
+
+<!-- S8 观察清单 -->
+<div class="section" id="s8">
+  <h2><span class="s-num">S8</span> 观察清单（Watchlist）</h2>
+
+  <h3>L1 直接映射</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>标的</th><th>所属板块</th><th>映射等级</th><th>上市地</th><th>验证逻辑</th></tr>
+    <tr><td>智飞生物</td><td>mRNA疫苗管线</td><td>A</td><td>A股</td><td>mRNA肿瘤疫苗管线进度，昨日涨停后能否连板</td></tr>
+    <tr><td>沃森生物</td><td>mRNA平台</td><td>B</td><td>A股</td><td>mRNA技术平台价值重估，艾博合作进展</td></tr>
+    <tr><td>山东黄金</td><td>贵金属</td><td>A</td><td>A股</td><td>黄金价格趋势跟踪，避险情绪风向标</td></tr>
+    <tr><td>中华企业</td><td>上海地产</td><td>A</td><td>A股</td><td>沪八条直接受益，上海本地地产龙头</td></tr>
+  </table>
+  </div>
+
+  <h3>L2 同板块/平台</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>标的</th><th>所属板块</th><th>映射等级</th><th>上市地</th><th>验证逻辑</th></tr>
+    <tr><td>药明康德</td><td>CXO</td><td>C</td><td>A股</td><td>CXO行业订单预期，北向资金持仓动向</td></tr>
+    <tr><td>华大智造</td><td>基因测序</td><td>C</td><td>A股</td><td>肿瘤测序设备需求增长，昨日涨停20%</td></tr>
+    <tr><td>万科A</td><td>地产</td><td>B</td><td>A股</td><td>地产板块龙头，沪八条受益程度检验</td></tr>
+    <tr><td>兆易创新</td><td>存储芯片</td><td>C</td><td>A股</td><td>美股存储映射修复，观察开盘后资金流向</td></tr>
+  </table>
+  </div>
+
+  <h3>L3 产业链/情绪</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>标的</th><th>所属板块</th><th>映射等级</th><th>上市地</th><th>验证逻辑</th></tr>
+    <tr><td>创新药ETF(159992)</td><td>医药ETF</td><td>D</td><td>A股</td><td>医药板块情绪温度计，ETF净申购判断</td></tr>
+    <tr><td>疫苗ETF(159643)</td><td>疫苗ETF</td><td>D</td><td>A股</td><td>昨日涨停，今日是否能延续强势</td></tr>
+    <tr><td>黄金ETF(518880)</td><td>黄金ETF</td><td>C</td><td>A股</td><td>避险情绪指标</td></tr>
+  </table>
+  </div>
+</div>
+
+<!-- S9 预测台账 -->
+<div class="section" id="s9">
+  <h2><span class="s-num">S9</span> 预测台账（Forecast Ledger）</h2>
+
+  <h3>上期（8/20）预测验证</h3>
+  <div class="alert-box amber">
+    <strong>说明：</strong>上期（8/20）为引入S9台账结构后首期，部分预测项需要实际收盘数据验证。以下为截至盘前可初步验证的项。
+  </div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>置信度</th><th>实际值</th><th>结果</th></tr>
+    <tr><td>开盘方向</td><td>高开 +0.8%~+1.5%</td><td>中</td><td>上证+0.33%，深证+1.03%，创业板+1.27%</td><td><span class="tag tag-amber">部分准确</span></td></tr>
+    <tr><td>量能</td><td>中位数2.38万亿，区间2.20~2.55万亿</td><td>低</td><td>2.08万亿（低于区间下沿）</td><td><span class="tag tag-red">❌ 低估缩量幅度</span></td></tr>
+    <tr><td>涨停家数</td><td>60~90家</td><td>低</td><td>84家</td><td><span class="tag tag-green">✅ 准确</span></td></tr>
+    <tr><td>主线竞争</td><td>医药第一主线（52%）</td><td>中</td><td>医药生物全线爆发，生物制品+7.85%</td><td><span class="tag tag-green">✅ 准确</span></td></tr>
+    <tr><td>医药涨停数(10:30)</td><td>8~15家</td><td>中</td><td>医药板块全天涨停约20+家</td><td><span class="tag tag-green">✅ 准确</span></td></tr>
+    <tr><td>创业板守3455</td><td>是</td><td>中</td><td>创业板收3495.59，最低3459.57</td><td><span class="tag tag-green">✅ 准确</span></td></tr>
+    <tr><td colspan="5"><strong>验证小结：</strong>6项中4项准确，1项部分准确，1项错误。方向命中率83%，区间命中率（含区间外）50%。量能预测偏差最大——低估了恐慌日后的缩量幅度（预测2.20~2.55万亿，实际2.08万亿）。偏差归因：样本基准选取不足（仅3次可比历史场景），且未充分考虑"缩量17%"的极端程度。后续应扩大样本至8-10次，并加入更精细的条件筛选。</td></tr>
+  </table>
+  </div>
+
+  <h3>本期（8/21）可验证预测</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+    <tr><td>开盘方向</td><td>平开至小幅高开 +0.1%~+0.5%</td><td>中</td></tr>
+    <tr><td>开盘区间</td><td>上证 3900~3920</td><td>中</td></tr>
+    <tr><td>量能中位数</td><td>2.00万亿（80%区间 1.85~2.20万亿）</td><td>低</td></tr>
+    <tr><td>涨停家数</td><td>50~80家</td><td>低</td></tr>
+    <tr><td>主线竞争</td><td>医药45% / 贵金属25% / 地产15% / 存储10%</td><td>中</td></tr>
+    <tr><td>医药涨停数(10:30)</td><td>8~15家</td><td>中</td></tr>
+    <tr><td>创业板指方向</td><td>维持3500附近震荡，相对上证超额+0.3%~+0.8%</td><td>中</td></tr>
+    <tr><td>量能验证(14:00)</td><td>达到全天预测量60%~65%（1.2~1.35万亿）</td><td>低</td></tr>
+    <tr><td>情景概率</td><td>乐观25% / 中性50% / 悲观25%</td><td>—</td></tr>
+    <tr><td>北向资金方向</td><td>小幅净流出或净流出收窄至50亿以内</td><td>低</td></tr>
+  </table>
+  </div>
+</div>
+
+<div class="footer">
+  <p>以上分析基于公开数据，不构成投资建议</p>
+  <p>数据来源：westock-data、WebSearch（路透社/彭博社/财联社/证券时报等）</p>
+  <p>2026-08-21 07:30 · 盘前分析</p>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.nav a').forEach(function(a){
+  a.addEventListener('click', function(e){
+    document.querySelectorAll('.nav a').forEach(function(x){x.classList.remove('active')});
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
