@@ -17,10 +17,6 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .stat{text-align:center}
 .stat .num{font-size:24px;font-weight:800;color:var(--accent2)}
 .stat .label{font-size:12px;color:var(--text2)}
-#loading{text-align:center;padding:60px 0;color:var(--text2)}
-#loading .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent2);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
-@keyframes spin{to{transform:rotate(360deg)}}
-#content{display:none}
 .date-group{margin-bottom:28px}
 .date-header{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .date-header .tag{font-size:11px;font-weight:600;padding:2px 10px;border-radius:10px;color:#fff}
@@ -38,8 +34,6 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .report-card .desc{font-size:12.5px;color:var(--text2);line-height:1.5;flex:1}
 .report-card .arrow{color:var(--accent2);font-size:13px;margin-top:8px;font-weight:600}
 .footer{text-align:center;padding:32px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
-#error{display:none;text-align:center;padding:60px 20px;color:var(--text2)}
-#error .icon{font-size:40px;margin-bottom:12px}
 @media(max-width:600px){.report-grid{grid-template-columns:1fr}.stats{gap:16px}}
 </style>
 </head>
@@ -50,136 +44,60 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 <h1>跨市场复盘报告</h1>
 <div class="subtitle">美股复盘 · A股复盘 · 盘前分析 · 盘前视频</div>
 <div class="badge">自动同步 · 每日更新</div>
-<div id="stats" class="stats">
-<div class="stat"><div class="num" id="countReports">-</div><div class="label">报告总数</div></div>
-<div class="stat"><div class="num" id="countDays">-</div><div class="label">交易日</div></div>
-<div class="stat"><div class="num" id="countMarkets">-</div><div class="label">市场</div></div>
+<div class="stats">
+<div class="stat"><div class="num">8</div><div class="label">报告总数</div></div>
+<div class="stat"><div class="num">3</div><div class="label">交易日</div></div>
+<div class="stat"><div class="num">4</div><div class="label">市场</div></div>
 </div>
 </div>
 
-<div id="loading">
-<div class="spinner"></div>
-正在加载报告列表...
-</div>
-
-<div id="error">
-<div class="icon">⚠️</div>
-<p>加载失败，请稍后刷新重试</p>
-<p id="errorMsg" style="font-size:12px;margin-top:8px;color:#999"></p>
-</div>
-
-<div id="content"></div>
+<div class="date-group"><div class="date-header">2026-08-20（周三） <span class="tag tag-today">今日</span></div><div class="report-grid"><a class="report-card" href="./a-share-premarket-20260820/盘前分析_20260820.html">
+          <div class="type type-premarket">🔮 盘前分析</div>
+          <div class="title">盘前分析 · 8月20日</div>
+          <div class="desc">盘前分析_20260820</div>
+          <div class="arrow">查看报告 →</div>
+        </a><a class="report-card" href="./premarket-video-20260820/视频制作提示词.txt">
+          <div class="type type-video">🎬 视频脚本</div>
+          <div class="title">视频脚本 · 8月20日</div>
+          <div class="desc">视频制作提示词</div>
+          <div class="arrow">查看报告 →</div>
+        </a></div></div><div class="date-group"><div class="date-header">2026-08-19（周二） <span class="tag tag-past">昨日</span></div><div class="report-grid"><a class="report-card" href="./a-share-review-20260819/全景复盘_20260819.html">
+          <div class="type type-ashare">📊 A股复盘</div>
+          <div class="title">A股复盘 · 8月19日</div>
+          <div class="desc">全景复盘_20260819</div>
+          <div class="arrow">查看报告 →</div>
+        </a><a class="report-card" href="./us-market-review-20260819/us-market-review-20260819.html">
+          <div class="type type-us">🇺🇸 美股复盘</div>
+          <div class="title">美股复盘 · 8月19日</div>
+          <div class="desc">us-market-review-20260819</div>
+          <div class="arrow">查看报告 →</div>
+        </a><a class="report-card" href="./a-share-premarket-20260819/a-share-premarket-20260819.html">
+          <div class="type type-premarket">🔮 盘前分析</div>
+          <div class="title">盘前分析 · 8月19日</div>
+          <div class="desc">a-share-premarket-20260819</div>
+          <div class="arrow">查看报告 →</div>
+        </a><a class="report-card" href="./premarket-video-20260819/视频制作提示词.txt">
+          <div class="type type-video">🎬 视频脚本</div>
+          <div class="title">视频脚本 · 8月19日</div>
+          <div class="desc">视频制作提示词</div>
+          <div class="arrow">查看报告 →</div>
+        </a></div></div><div class="date-group"><div class="date-header">2026-08-18（周一） </div><div class="report-grid"><a class="report-card" href="./a-share-review-20260818/a-share-review-20260818.html">
+          <div class="type type-ashare">📊 A股复盘</div>
+          <div class="title">A股复盘 · 8月18日</div>
+          <div class="desc">a-share-review-20260818</div>
+          <div class="arrow">查看报告 →</div>
+        </a><a class="report-card" href="./us-market-review-20260818/us-market-review-20260818.html">
+          <div class="type type-us">🇺🇸 美股复盘</div>
+          <div class="title">美股复盘 · 8月18日</div>
+          <div class="desc">us-market-review-20260818</div>
+          <div class="arrow">查看报告 →</div>
+        </a></div></div>
 
 <div class="footer">
 <p>market-review-suite · 跨市场复盘工具集</p>
-<p>基于公开数据生成，不构成投资建议</p>
+<p>数据时点：2026-08-20 10:03 · 基于公开数据生成，不构成投资建议</p>
 </div>
 
 </div>
-
-<script>
-(async function() {
-  const TYPE_MAP = {
-    'a-share-review':    { label: 'A股复盘',   cls: 'type-ashare',    icon: '📊' },
-    'us-market-review':  { label: '美股复盘',   cls: 'type-us',        icon: '🇺🇸' },
-    'a-share-premarket': { label: '盘前分析',   cls: 'type-premarket', icon: '🔮' },
-    'premarket-video':   { label: '视频脚本',   cls: 'type-video',     icon: '🎬' },
-  };
-  const DIR_PATTERN = /^(a-share-review|us-market-review|a-share-premarket|premarket-video)-(\d{8})$/;
-
-  try {
-    // 单次调用 Tree API 获取完整文件树
-    const url = 'https://api.github.com/repos/Tim0thy1/market-review-suite/git/trees/master?recursive=1';
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`API ${res.status}: ${res.statusText}`);
-
-    const data = await res.json();
-    if (!data.tree || !Array.isArray(data.tree)) throw new Error('返回数据格式异常');
-
-    // 解析所有文件，按目录分组
-    const dirMap = {};
-    for (const item of data.tree) {
-      if (item.type !== 'blob') continue;
-      const parts = item.path.split('/');
-      if (parts.length < 2) continue;
-      const dirName = parts[0];
-      const fileName = parts.slice(1).join('/');
-      if (!DIR_PATTERN.test(dirName)) continue;
-      if (!/\.(html|txt)$/i.test(fileName)) continue;
-      if (!dirMap[dirName]) dirMap[dirName] = [];
-      dirMap[dirName].push(fileName);
-    }
-
-    // 按日期分组
-    const dateMap = {};
-    for (const [dirName, files] of Object.entries(dirMap)) {
-      const m = dirName.match(DIR_PATTERN);
-      if (!m) continue;
-      const prefix = m[1], dateStr = m[2];
-      const dateObj = new Date(dateStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
-      if (!dateMap[dateStr]) dateMap[dateStr] = { dateObj, entries: [] };
-      for (const file of files) {
-        dateMap[dateStr].entries.push({ prefix, dirName, file });
-      }
-    }
-
-    const sortedDates = Object.keys(dateMap).sort((a, b) => b.localeCompare(a));
-    if (sortedDates.length === 0) throw new Error('未找到任何报告');
-
-    const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-    const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
-    const yesterdayStr = yesterday.toISOString().slice(0, 10).replace(/-/g, '');
-
-    const container = document.getElementById('content');
-    let totalReports = 0;
-    const marketSet = new Set();
-
-    for (const dateStr of sortedDates) {
-      const g = dateMap[dateStr];
-      // 固定排序：A股复盘 → 美股复盘 → 盘前分析 → 视频脚本
-      const order = ['a-share-review', 'us-market-review', 'a-share-premarket', 'premarket-video'];
-      g.entries.sort((a, b) => order.indexOf(a.prefix) - order.indexOf(b.prefix));
-
-      // 今日/昨日标签
-      let tag = '';
-      if (dateStr === todayStr) tag = '<span class="tag tag-today">今日</span>';
-      else if (dateStr === yesterdayStr) tag = '<span class="tag tag-past">昨日</span>';
-
-      const y = g.dateObj.getFullYear(), m = String(g.dateObj.getMonth()+1).padStart(2,'0'), d = String(g.dateObj.getDate()).padStart(2,'0');
-      const weekdays = ['日','一','二','三','四','五','六'];
-      const weekday = weekdays[g.dateObj.getDay()];
-
-      totalReports += g.entries.length;
-
-      let html = `<div class="date-group"><div class="date-header">${y}-${m}-${d}（周${weekday}） ${tag}</div><div class="report-grid">`;
-      for (const e of g.entries) {
-        const cfg = TYPE_MAP[e.prefix] || { label: e.prefix, cls: '', icon: '📄' };
-        const filePath = e.dirName + '/' + e.file;
-        const displayName = e.file.replace(/\.(html|txt)$/i, '');
-        marketSet.add(cfg.label);
-        html += `<a class="report-card" href="./${filePath}">
-          <div class="type ${cfg.cls}">${cfg.icon} ${cfg.label}</div>
-          <div class="title">${cfg.label} · ${m}月${d}日</div>
-          <div class="desc">${displayName}</div>
-          <div class="arrow">查看报告 →</div>
-        </a>`;
-      }
-      html += '</div></div>';
-      container.innerHTML += html;
-    }
-
-    document.getElementById('countReports').textContent = totalReports;
-    document.getElementById('countDays').textContent = sortedDates.length;
-    document.getElementById('countMarkets').textContent = marketSet.size;
-    document.getElementById('loading').style.display = 'none';
-    container.style.display = 'block';
-
-  } catch (err) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('error').style.display = 'block';
-    document.getElementById('errorMsg').textContent = err.message;
-  }
-})();
-</script>
 </body>
 </html>
