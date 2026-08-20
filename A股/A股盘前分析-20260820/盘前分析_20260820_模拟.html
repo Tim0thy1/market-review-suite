@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-08-20（模拟 数据截止08:00）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root{
+  --up:#e63946; --down:#2d6a4f; --flat:#b08968;
+  --bg:#f5f6fa; --card:#ffffff; --bd:#e6e8ef;
+  --ink:#1a1d24; --sub:#6b7280; --line:#eef0f5;
+  --accent:#2563eb; --accent2:#7c3aed;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+.mono{font-family:"SFMono-Regular",Consolas,monospace}
+/* header */
+.hd{background:linear-gradient(135deg,#0f172a,#1e3a8a 60%,#312e81);color:#fff;border-radius:16px;padding:30px 32px;margin-bottom:24px;box-shadow:0 8px 30px rgba(15,23,42,.25)}
+.hd .tag{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:3px 12px;border-radius:20px;font-size:12px;margin-bottom:12px;letter-spacing:.5px}
+.hd h1{font-size:26px;font-weight:800;margin-bottom:6px}
+.hd .sub{font-size:14px;opacity:.85}
+.hd .sim{display:inline-block;background:var(--up);color:#fff;font-size:12px;padding:3px 10px;border-radius:6px;margin-left:10px;font-weight:600}
+/* section */
+.sec{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:24px 26px;margin-bottom:20px;box-shadow:0 2px 10px rgba(16,24,40,.04)}
+.sec h2{font-size:19px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.sec h2 .n{background:var(--ink);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.sec h2 .en{font-size:12px;color:var(--sub);font-weight:500}
+.sec .lead{font-size:12.5px;color:var(--sub);margin-bottom:16px}
+/* grid */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:720px){.g2,.g3{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fafbfe}
+.card .k{font-size:11.5px;color:var(--sub);margin-bottom:2px;letter-spacing:.4px}
+.card .v{font-size:18px;font-weight:800}
+.card .d{font-size:12.5px;color:var(--sub);margin-top:3px}
+.up{color:var(--up)} .down{color:var(--down)} .flat{color:var(--flat)}
+/* tables */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th{background:#0f172a;color:#fff;padding:8px 10px;text-align:left;font-weight:600;font-size:12.5px}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:hover{background:#f7f8fc}
+/* verdict pills */
+.pill{display:inline-block;padding:2px 10px;border-radius:6px;font-size:12px;font-weight:600}
+.pill-ok{background:#dcfce7;color:#166534} .pill-ko{background:#fee2e2;color:#991b1b}
+.pill-mid{background:#fef3c7;color:#92400e} .pill-lv{background:#e0e7ff;color:#3730a3}
+.pill-A{background:var(--up);color:#fff} .pill-B{background:var(--accent);color:#fff}
+.pill-C{background:var(--accent2);color:#fff} .pill-D{background:#64748b;color:#fff}
+/* quote */
+.blk{background:#f8fafc;border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0;font-size:13.5px}
+.blk.red{border-left-color:var(--up)} .blk.green{border-left-color:var(--down)}
+.mk{font-size:12px;color:var(--sub)}
+/* prob bar */
+.pbar{height:26px;border-radius:6px;background:var(--line);overflow:hidden;display:flex;margin:8px 0}
+.pbar span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;white-space:nowrap}
+/* floor */
+.footer{font-size:12px;color:var(--sub);text-align:center;margin-top:30px;line-height:2}
+.ev{display:inline-block;font-size:11px;padding:1px 6px;border-radius:4px;margin-left:4px;font-weight:600}
+.ev-h{background:#fee2e2;color:#991b1b}.ev-m{background:#fef3c7;color:#92400e}.ev-l{background:#e8e8ee;color:#444}
+.chart-box{height:260px;margin:10px 0}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:13px;color:#78350f;margin:12px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hd">
+  <span class="tag">A股盘前分析 · 盘前预测模式</span>
+  <h1>2026-08-20 A股盘前分析<span class="sim">模拟盘前 · 数据截止 08:00</span></h1>
+  <div class="sub">模拟真实盘前时点：本期信息窗口截止 8/20 上午 08:00 前（8/19收盘状态 + 8/19晚间至8/20早间的隔夜信息）。<b>8/20开盘后任何盘中/收盘数据已被刻意过滤</b>，以严格模拟盘前分析。</div>
+</div>
+
+<!-- S0 -->
+<div class="sec">
+  <h2><span class="n">0</span>执行摘要 <span class="en">Executive Summary</span></h2>
+  <div class="lead">5 行结论先行，详细推演见各段。</div>
+  <div class="grid g2">
+    <div class="card"><div class="k">市场状态</div><div class="v">恐慌出清后 · <span class="flat">修复窗口第1日</span></div><div class="d">8/19 上证-2.40%、创业板-6.26%，逾9成个股下跌的放量深跌（成交25110亿）</div></div>
+    <div class="card"><div class="k">今日核心判断</div><div class="v">偏多 · 高开修复</div><div class="d">隔夜三重利好（医疗+美债+金银），但反弹高度依赖量能与医药承接</div></div>
+    <div class="card"><div class="k">最大变量</div><div class="v">医药能否承接催化</div><div class="d">Moderna mRNA疫苗III期成功是全球级事件，A股映射能否获得新增资金而非高开兑现</div></div>
+    <div class="card"><div class="k">最大风险</div><div class="v">高开兑现 / 无量反弹</div><div class="d">医药若高开>3%但无量封板，则降级为情绪驱动；反弹无量则易夭折</div></div>
+    <div class="card" style="grid-column:1/-1"><div class="k">最重要 3 个观察信号</div><div class="v" style="font-size:15px">① 医药生物相对大盘高开幅度与首小时量能 ② 创业板能否守住 3455 ③ 医药能否从 beta 扩散到 L1/L2 个股涨停</div></div>
+  </div>
+</div>
+
+<!-- S1 -->
+<div class="sec">
+  <h2><span class="n">1</span>市场状态 <span class="en">Market Regime</span></h2>
+  <div class="lead">市场处什么阶段 · 六维标签，均由 8/19 收盘数据支撑（数据日期 2026-08-19）。</div>
+  <div class="grid g3">
+    <div class="card"><div class="k">趋势</div><div class="v flat">短期修复 / 中期弱</div><div class="d">上证收3894于MA20(3887)上方、5日均线下方；60日绿（-6.05%）vs 250日红（+7%）</div></div>
+    <div class="card"><div class="k">波动</div><div class="v up">高</div><div class="d">上证单日振幅2.1%、创业板振幅4.9%，近3日大幅放大</div></div>
+    <div class="card"><div class="k">情绪</div><div class="v flat">冰点 → 修复临界</div><div class="d">8/19上涨仅449家/5547（8.11%），恐慌出清；但跌停仅6家（非跌停潮式崩塌）</div></div>
+    <div class="card"><div class="k">风险偏好</div><div class="v down">risk-off</div><div class="d">成长大跌（创业板-6.26%）价值抗跌（上证-2.4%），risk-off特征明显</div></div>
+    <div class="card"><div class="k">风格</div><div class="v flat">均衡偏价值</div><div class="d">全指成长-5.70% / 全指价值-7.09%（8/19）；30日价值-5.49%（成长+13.54%）</div></div>
+    <div class="card"><div class="k">资金</div><div class="v down">存量博弈</div><div class="d">成交25110亿为20日均值108%，放量属恐慌性抛售而非增量进场</div></div>
+  </div>
+  <h3 style="font-size:15px;margin:18px 0 8px">昨日收盘速览 <span class="mk mono">2026-08-19</span></h3>
+  <table>
+    <thead><tr><th>指数</th><th>收盘</th><th>涨跌幅</th><th>最高/最低</th></tr></thead>
+    <tbody>
+      <tr><td>上证指数</td><td class="mono">3894.42</td><td class="down">-2.40%</td><td class="mono">3961.14 / 3879.58</td></tr>
+      <tr><td>深证成指</td><td class="mono">13890.15</td><td class="down">-5.01%</td><td class="mono">14367.37 / 13842.32</td></tr>
+      <tr><td>创业板指</td><td class="mono">3473.49</td><td class="down">-6.26%</td><td class="mono">3622.50 / 3455.48</td></tr>
+      <tr><td>两市成交额</td><td class="mono">25110 亿</td><td class="up">+1103亿</td><td class="mk">vs 20日均值 23232 亿 · 108%</td></tr>
+    </tbody>
+  </table>
+  <div class="grid g3">
+    <div class="card"><div class="k">上涨/下跌家数</div><div class="v down">449 / 5069</div><div class="d">上涨占比 8.11%，恐慌出清特征</div></div>
+    <div class="card"><div class="k">涨停/跌停</div><div class="v"><span class="up">35</span> / <span class="down">6</span></div><div class="d">放量深跌但非跌停潮</div></div>
+    <div class="card"><div class="k">估值 · 中证全指PE</div><div class="v up">21.97</div><div class="d">10年95.08%分位 · 高位</div></div>
+  </div>
+  <div class="blk"><b>估值分位·决策含义：</b>中证全指PE(TTM)21.97位于10年95分位，对<b>中期</b>风险收益比构成约束（高位追涨性价比低）。但历史极端超跌反弹阶段，估值分位对<b>未来3日方向</b>解释力弱——短期走势更多由情绪修复与量能决定，估值约束主要限制的是中期空间而非今日反弹。故本报告今日判断不因高位估值而看空反弹，但中期仓位建议偏谨慎。</div>
+  <div class="mk">数据源：westock market-overview（收盘/区间/技术/宽度/估值），日期 2026-08-19。</div>
+</div>
+
+<!-- S2 -->
+<div class="sec">
+  <h2><span class="n">2</span>隔夜冲击 <span class="en">Overnight Shock</span></h2>
+  <div class="lead">8/19 收盘后 → 8/20 08:00 前新增信息，按「事件 → Surprise → 资产反应 → 传导链 → A股映射」呈现。</div>
+
+  <h3 style="font-size:15px;margin:8px 0">冲击一 · 莫德纳mRNA癌症疫苗III期成功（全球级 · T0）</h3>
+  <div class="blk red">
+    <b>【事实层】</b>当地时间8/19，Moderna 与默沙东宣布，个性化mRNA肿瘤疫苗 Intismeran（mRNA-4157/V940）联合 K 药治疗可切除黑色素瘤的 INTerpath-001 III期达到双终点（无复发生存RFS + 远处转移无进展生存DMFS），且疗效优于单用 K 药。为全球首个成功的mRNA肿瘤疫苗III期。来源：默沙东/Moderna官方新闻稿、彭博/路透。
+  </div>
+  <div class="grid g4" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="k">Surprise评分</div><div class="v up">+7/10</div><div class="d">重要性9 · 预期中低 · 结果超预期</div></div>
+    <div class="card"><div class="k">资产反应·指</div><div class="v down up">▼Moderna +177%</div><div class="d">纳指生物科技+6.4%</div></div>
+    <div class="card"><div class="k">资产反应·药企</div><div class="v up">默沙东+12% 礼来+4%</div><div class="d">默沙东/礼来创历史新高</div></div>
+    <div class="card"><div class="k">隔夜指数</div><div class="v up">道指+0.22% 标普+0.21% 纳指+0.16%</div><div class="d">美股止步三连跌</div></div>
+  </div>
+  <div class="blk"><b>【传导链 · 四层】</b><br>
+  ① <b>改变什么预期：</b>mRNA肿瘤疫苗从"概念验证困难"转向"III期实证成功"，整个mRNA/LNP技术平台价值重估，也验证新抗原个体化治疗路径。<br>
+  ② <b>谁受益为何：</b>A股映射四个层级——L1直接资产（国内同领域个性化新抗原/mRNA肿瘤疫苗管线）＞L2同技术平台（mRNA/LNP递送平台）＞L3产业链（CXO/CDMO疫苗生产能力）＞L4情绪Beta（创新药/生物医药整体）。<br>
+  ③ <b>资金先手还是跟风：</b><b>8/19 A股医药板块是下跌的（医药-2.45%，涨停仅4家），消息当晚才公布，A股无法提前反应</b>。→ 属"真实催化"而非"兑现日"，今日医药高开是信息驱动，非筹码兑现。<br>
+  ④ <b>逻辑能否持续：</b>全球级事件、真实产业验证，主线级别催化，非一日游；持续性取决于A股映射能否从beta扩散到个股。
+  <div class="mk">【传导链断裂点】A→B最强（Moderna→A股医药高开）；真正的考验在 B→C：<b>A股医药高开后必须看到新增资金承接（涨停扩散+量能放大），若仅高开无量，则传导止于B，题材交易终止，高开兑现</b>。</div>
+  </div>
+
+  <h3 style="font-size:15px;margin:16px 0 8px">冲击二 · 美国财政部扩大长端国债回购</h3>
+  <div class="blk green">
+    <b>【事实层】</b>当地时间8/19，美国财政部宣布将长期国债流动性支持回购规模至少翻倍（单次上限20亿美元→至少40亿美元，覆盖10-20年/20-30年期，9/9生效至11/4）。来源：新华社、美财政部声明。
+    <div class="mk" style="margin-top:6px"><b>⚠️ 市场解读（非事实）：</b>被部分媒体称为"迷你QE/主动瘦身"。本质是<b>债务管理/流动性工具</b>而非QE，本报告按"事实→市场定价→二阶影响"呈现，不将其等同全面宽松。</div>
+  </div>
+  <div class="grid g3">
+    <div class="card"><div class="k">资产反应·利率</div><div class="v down">30Y美债 5.3%→~5.19%</div><div class="d">应声跳水</div></div>
+    <div class="card"><div class="k">传导·市场</div><div class="v up">长端利率下行</div><div class="d">利好成长/长久期资产，缓解risk-off</div></div>
+    <div class="card"><div class="k">破点·A股</div><div class="v flat">依赖情绪传导</div><div class="d">本质非QE，对A股传导偏弱，更多是风险偏好缓解</div></div>
+  </div>
+
+  <h3 style="font-size:15px;margin:16px 0 8px">冲击三 · 金银飙涨 + 汇率</h3>
+  <table>
+    <thead><tr><th>资产</th><th>最新</th><th>变化</th><th>来源时点</th></tr></thead>
+    <tbody>
+      <tr><td>COMEX黄金</td><td class="mono up">4550.6 美元</td><td class="up">隔夜大涨(4%+)</td><td class="mk">截止8/20盘前</td></tr>
+      <tr><td>离岸人民币 USD/CNH</td><td class="mono">6.7246</td><td class="up">小幅升值</td><td class="mk">截止8/20盘前</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- S3 -->
+<div class="sec">
+  <h2><span class="n">3</span>定价与拥挤度 <span class="en">Positioning / Price-in</span></h2>
+  <div class="lead">回答「市场昨天有没有提前交易」。核心结论：<b>8/19 医药无Pre-positioning，今日是真实催化。</b></div>
+  <div class="grid g3">
+    <div class="card"><div class="k">利好强度</div><div class="v up">9 / 10</div><div class="d">全球级临床突破，产业验证级别</div></div>
+    <div class="card"><div class="k">价格透支（Price-in）</div><div class="v down">1 / 10</div><div class="d">8/19 医药下跌-2.45%，零提前交易</div></div>
+    <div class="card"><div class="k">盈亏比</div><div class="v up">优</div><div class="d">催化真实 + 无套牢盘挤压的高开</div></div>
+  </div>
+  <div class="blk"><b>Price-in 判定依据：</b><br>
+  • 8/19 医药板块指数 <b>-2.45%</b>（领跌权重，非领涨），主力净额流出，全市场医药涨停仅 <b>4</b> 家（连板抱团以短线题材为主，济民健康4板，非Moderna映射）。<br>
+  • 莫德纳消息于 <b>8/19 晚间（美东）</b>方公布，北京时间8/20凌晨才传导，A股 8/19 盘面客观上无法提前反应。<br>
+  • 因此本报告判定：<b>不存在消息泄露交易</b>。今日医药高开属于隔夜信息驱动的真实催化，而非"利好兑现/出货日"。这也意味着<b>高开幅度可能较大</b>（相对低位+强催化），反而要防范高开过度。<br>
+  <div class="mk">【高开兑现风险量化】因零提前交易，若今日医药高开 &gt;3% 且首小时无量能配合，则短线资金可能高开兑现——但此属"过度高开"风险，非"预埋出货"风险，性质不同。</div>
+  </div>
+</div>
+
+<!-- S4 -->
+<div class="sec">
+  <h2><span class="n">4</span>主线竞争 <span class="en">Sector Competition</span></h2>
+  <div class="lead">不做单一"绝对主线"断言，按概率竞争表达（真实A股常是两个方向争夺资金）。</div>
+  <div class="pbar">
+    <span style="width:52%;background:var(--up)">医药生物 52%</span>
+    <span style="width:22%;background:var(--accent)">贵金属/有色 22%</span>
+    <span style="width:16%;background:var(--accent2)">科技/算力 16%</span>
+    <span style="width:10%;background:#64748b">其他 10%</span>
+  </div>
+  <table>
+    <thead><tr><th>排序</th><th>主线候选</th><th>概率</th><th>驱动事件</th><th>承接逻辑</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>第一主线</td><td><b>医药生物</b>（创新药/mRNA/疫苗/CXO）</td><td class="up"><b>52%</b></td>
+        <td>莫德纳mRNA疫苗III期成功（全球级T0）</td>
+        <td>真实催化+L1/L2/L3层级映射充分+昨日零 pre-positioning，题材辨识度最高</td>
+      </tr>
+      <tr>
+        <td>第二主线</td><td><b>贵金属/有色</b></td><td class="up">22%</td>
+        <td>隔夜金银飙涨（黄金破4500美元）+美债利率回落</td>
+        <td>避险+美元走弱映射，山东黄金等权重可承接；与医药争夺首资金</td>
+      </tr>
+      <tr>
+        <td>第三主线</td><td><b>科技/AI算力</b></td><td class="up">16%</td>
+        <td>美股止跌 + 长端利率回落利好成长估值</td>
+        <td>无新增事件催化，靠风格修复；仍需验证能否放量</td>
+      </tr>
+      <tr>
+        <td>其余</td><td>红利防御 / 超跌反弹</td><td class="down">10%</td>
+        <td>防御资金 + 普跌后技术性修复</td>
+        <td>大盘不稳时回归防御，但进攻性弱</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px;margin:16px 0 8px">板块映射四层模型（mRNA事件）</h3>
+  <table>
+    <thead><tr><th>层级</th><th>定义</th><th>映射等级</th><th>A股/港股标的举例</th></tr></thead>
+    <tbody>
+      <tr><td>L1 直接资产</td><td>产品/临床/技术路线直接相关</td><td><span class="pill pill-A">A</span></td><td>沃森生物(A股)、康希诺(A股·mRNA布局)、石药集团(H·mRNA平台双上市)</td></tr>
+      <tr><td>L2 同技术平台</td><td>mRNA/LNP递送/抗原设计平台beta</td><td><span class="pill pill-B">B</span></td><td>智飞生物(A·LNP辅料/代理)、键凯科技(A·LNP辅料)、成都先导(A·药物发现)</td></tr>
+      <tr><td>L3 产业链</td><td>CXO/CDMO疫苗生产/测序</td><td><span class="pill pill-C">C</span></td><td>药明康德(A)、博腾股份(A)、凯莱英(A)、华大智造(A·测序)</td></tr>
+      <tr><td>L4 情绪Beta</td><td>吃板块情绪，无具体逻辑</td><td><span class="pill pill-D">D</span></td><td>创新药ETF、生物疫苗概念、创业板指</td></tr>
+    </tbody>
+  </table>
+  <div class="note">⚠️ <b>上市地标注纪律（A股盘前）：</b>石药集团为港股（H股）、信达生物为港股、百济神州为A+H。上述仅列石药集团并标注市地（H股/双上市）。本报告<b>不把港股标的混入"A股受益标的"</b>——港股映射是A股无直接稀缺标的时的替代映射，非A股盘面主体。若需看港股医药，宜看 <b>港股医药指数/恒生医药ETF</b>，单独小节，不并入A股主线承接。</div>
+</div>
+
+<!-- S5 -->
+<div class="sec">
+  <h2><span class="n">5</span>今日预测 <span class="en">Market Forecast</span></h2>
+  <div class="lead">每项预测均可独立打分（对答案/评分/归因），供 S9 台账验证。</div>
+
+  <div class="grid g3">
+    <div class="card" style="grid-column:1/-1"><div class="k">开盘预测</div>
+      <div class="v up">高开 <span style="font-size:26px">+0.8% ~ +1.5%</span> <span class="pill pill-ok" style="vertical-align:middle">偏多</span></div>
+      <div class="d">依据：隔夜医药全球级催化 + 美债利率回落 + 金银走强，三重利好叠加8/19深跌后的修复需求。幅度受高位估值约束，估计温和高开而非跳空大高开。<b>证据等级：中</b></div>
+    </div></div>
+  <h3 style="font-size:15px;margin:14px 0 6px">时间节点预测（可独立验证）</h3>
+  <table>
+    <thead><tr><th>时间点</th><th>预测</th><th>验证逻辑</th><th>证据等级</th></tr></thead>
+    <tbody>
+      <tr><td>09:45 前</td><td class="up">医药生物相对大盘超额收益 +2% ~ +3%</td><td>高开由医药权重驱动，首小时应显著跑赢</td><td class="ev ev-m" style="background:none"><span class="ev ev-m">中</span></td></tr>
+      <tr><td>10:30</td><td class="up">医药板块涨停达到 8 ~ 15 家</td><td>催化真实则应出现涨停扩散（L1/L2优先）</td><td><span class="ev ev-m">中</span></td></tr>
+      <tr><td>11:30</td><td class="up">创业板 vs 上证 超额收益 +0.3% ~ +1%</td><td>修复行情中高弹性成长领涨、权重搭台</td><td><span class="ev ev-l">低</span></td></tr>
+      <tr><td>14:00</td><td>成交额达到全天预测值 60% ~ 65%</td><td>若缩量修复，午后追高乏力</td><td><span class="ev ev-l">低</span></td></tr>
+      <tr><td>14:30</td><td>医药相对强度 <b>不</b>显著衰减</td><td>若封板稳定、未炸板潮，主线延续</td><td><span class="ev ev-m">中</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid g2">
+    <div>
+      <h3 style="font-size:15px;margin:12px 0 6px">量能预测（统计化）</h3>
+      <div class="blk"><b>推导输入：</b>8/19成交25110亿，20日均值23232亿(比值108%)、5日均值23986亿、10日均值24183亿。<br>
+      <b>可比历史：</b>放量深跌（比值≥105% + 单日恐慌）后首日，历史上多现<b>缩量5%~10%</b>（恐慌抛压释放、多头观望）。<br>
+      <b>预测：</b>成交额中位数 <span class="up mono" style="font-size:20px">2.38 万亿</span><br>
+      <b>80%区间：</b><span class="mono">2.20 ~ 2.55 万亿</span>（缩量见龙头承接但整体谨慎）。<b>证据等级：低</b>（无数值样本可依，定性判断）</div>
+    </div>
+    <div>
+      <h3 style="font-size:15px;margin:12px 0 6px">涨停家数预测</h3>
+      <div class="blk"><b>预测区间：</b><span class="up mono" style="font-size:20px">60 ~ 90 家</span><br>
+      依据：医药涨停扩散（若成主线可贡献15~25家）+ 超跌修复普遍反弹，中性假设。<br>
+      若医药兑现失败、无量反弹，实际会落在 35~50 家下限。<b>证据等级：低</b></div>
+    </div>
+  </div>
+
+  <div class="note">⛔ <b>历史基准率纪律：</b>本报告不引用"恐慌日后反弹概率70%"类无样本表述。当前无本地统计库，未检索到满足四要素（样本条件→样本数N→基准概率→条件概率）的可靠统计，故<b>不编造概率担保</b>，仅做定性：放量深跌+94%个股下跌后的首个交易日，历史上修复概率总体偏向反弹，但需量能与广度验证，不能以单一历史数字背书。</div>
+</div>
+
+<!-- S6 -->
+<div class="sec">
+  <h2><span class="n">6</span>情景推演 <span class="en">Scenario Tree</span></h2>
+  <div class="lead">三情景概率加权，触发条件明确，概率将被 S9 台账校准。</div>
+  <div class="pbar">
+    <span style="width:40%;background:#f59e0b">乐观 40%</span>
+    <span style="width:42%;background:#94a3b8">中性 42%</span>
+    <span style="width:18%;background:var(--down)">悲观 18%</span>
+  </div>
+  <div class="grid g3">
+    <div class="card"><div class="k up">乐观（40%）</div><div class="d">高开&gt;1%且有量，医药涨停潮扩散（L1/L2封板），创业板守3455上攻收复中轨。触发：首小时成交额≥1500亿+医药涨停≥10家。</div></div>
+    <div class="card"><div class="k flat">中性（42%）</div><div class="d">高开0.5~1%震荡，医药冲高分化后稳住，涨停60~90家，指数收平或微涨，创业板守住3455。触发：量能平+医药涨停5~15家+创业板未破3455。</div></div>
+    <div class="card"><div class="k down">悲观（18%）</div><div class="d">高开即兑现（医药高开&gt;3%后跳水或无量），量能萎缩，上证回踩2870?（改：3870），创业板破3455。触发：医药无量高开回落+上证首小时跌破3890。</div></div>
+  </div>
+  <div class="mk" style="margin-top:10px">概率校准提示：若无统计样本，本报告主观概率会随台账积累校准——若后续乐观情景实际频率持续高于/低于标注，将下修/上修对应概率。</div>
+</div>
+
+<!-- S7 -->
+<div class="sec">
+  <h2><span class="n">7</span>失效条件 <span class="en">Kill Conditions</span></h2>
+  <div class="lead">「出现什么信号，我承认判断错了」——每条核心预测的失效阈值。</div>
+  <table>
+    <thead><tr><th>失效的预测</th><th>失效信号（触发即承认判断错误）</th><th>应对降级</th></tr></thead>
+    <tbody>
+      <tr><td>偏多/高开修复</td><td>上证<b>低开</b>（高开&lt;0）——隔夜三重利好被无视，说明风险偏好转弱超预期</td><td>降级为震荡/偏空，修复逻辑失效</td></tr>
+      <tr><td>医药成第一主线</td><td>开盘医药高开&gt;3% 但 <b>10:30前涨停&lt;3家</b> 或首小时资金净流出</td><td>主线降级为兑现行情，不追高</td></tr>
+      <tr><td>量能 2.20~2.55万亿</td><td>首小时成交额&lt;1300亿（显著缩量抢劫）或尾盘未达60%</td><td>无量反弹，谨慎</td></tr>
+      <tr><td>创业板守3455</td><td>创业板盘中<b>跌破3455 且 30分钟未收回</b></td><td>修复失败，转向防守</td></tr>
+    </tbody>
+  </table>
+  <div class="blk red"><b>反身性风险：</b>8/19 医药<b>未</b>提前上涨，反身性风险不在"兑现昨涨"（按传统逻辑本应警惕+9%兑现，但真实盘前医药是跌的），而是<b>高开过度 + 无量 → 短线获利盘高开了结</b>。若医药高开&gt;3.5%而首小时缩量，警惕高位开盘后的日内回落。<br>
+  <span class="mk">今日真实风险日历：无重大A股宏观数据发布（下一关键数据窗口未临近），风险主要为情绪与量能层面；隔夜地缘/外盘无新增黑天鹅。</span></div>
+</div>
+
+<!-- S8 -->
+<div class="sec">
+  <h2><span class="n">8</span>观察清单 <span class="en">Watchlist</span></h2>
+  <div class="lead">非荐股，而是「验证逻辑的观察对象」，按四层映射分列，注明映射等级与上市地。</div>
+  <table>
+    <thead><tr><th>层级</th><th>观察标的（等级·上市地）</th><th>看它验证什么逻辑</th></tr></thead>
+    <tbody>
+      <tr><td>L1 直接资产</td><td>沃森生物〈<span class="pill pill-A">A</span>·A股〉、康希诺〈<span class="pill pill-A">A</span>·A股〉</td><td>是否涨停封板→验证"mRNA直接资产"资金认可度</td></tr>
+      <tr><td>L2 同技术平台</td><td>智飞生物〈<span class="pill pill-B">B</span>·A股〉、键凯科技〈<span class="pill pill-B">B</span>·A股〉</td><td>LNP辅料/platform能否跟上→验证技术beta承接</td></tr>
+      <tr><td>L3 产业链</td><td>药明康德〈<span class="pill pill-C">C</span>·A股〉、博腾股份〈<span class="pill pill-C">C</span>·A股〉、凯莱英〈<span class="pill pill-C">C</span>·A股〉、华大智造〈<span class="pill pill-C">C</span>·A股〉</td><td>CXO/测序是否获新增资金→验证是否从beta扩散到产业链（最关键的增量信号）</td></tr>
+      <tr><td>L4 情绪Beta</td><td>创新药ETF、生物疫苗概念指数、创业板指〈<span class="pill pill-D">D</span>〉</td><td>板块整体广度/创业板3455支撑→验证修复能否普涨</td></tr>
+      <tr><td>港股映射</td><td>石药集团〈<span class="pill pill-B">B</span>·H股/双上市〉；（港股医药单独看，不并A股主线）</td><td>A股无稀缺标的时，港股mRNA平台是替代映射——但需单独跟踪恒生医药</td></tr>
+    </tbody>
+  </table>
+  <div class="mk">观察要点：医药主线能否走强，关键在于 L1/L2 封板 + L3 CXO 是否同步获得新增资金（成交量能 + 主力净流入），若只有 L4 指数涨而 L3 无增量，则题材难扩散、主线高度有限。</div>
+</div>
+
+<!-- S9 -->
+<div class="sec">
+  <h2><span class="n">9</span>预测台账 <span class="en">Forecast Ledger</span></h2>
+  <div class="lead">系统长期变强的核心：先验证上期 → 记录本期 → 累计评分。</div>
+  <div class="blk">
+    <b>上期验证：</b>无历史台账记录（本期为引入 S9 结构后首期）。待积累≥10个交易日后，本段将输出滚动评分（方向命中率/区间命中率/主线命中率/时间节点命中率/情景概率校准）并作偏差归因。
+  </div>
+  <h3 style="font-size:15px;margin:12px 0 6px">本期预测记录（待明日验证）</h3>
+  <table>
+    <thead><tr><th>预测项</th><th>预测值</th><th>置信度</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td>开盘方向</td><td class="up">高开 +0.8%~+1.5%</td><td><span class="pill pill-mid">中</span></td><td class="mk">待验证</td></tr>
+      <tr><td>量能</td><td>中位数2.38万亿，区间2.20~2.55万亿</td><td><span class="pill pill-lv">低</span></td><td class="mk">待验证</td></tr>
+      <tr><td>涨停家数</td><td>60~90家</td><td><span class="pill pill-lv">低</span></td><td class="mk">待验证</td></tr>
+      <tr><td>医药最强主线</td><td>是（52%）</td><td><span class="pill pill-mid">中</span></td><td class="mk">待验证</td></tr>
+      <tr><td>医药涨停数</td><td>8~15家（10:30）</td><td><span class="pill pill-mid">中</span></td><td class="mk">待验证</td></tr>
+      <tr><td>创业板守住3455</td><td>是（守住的概率较高）</td><td><span class="pill pill-mid">中</span></td><td class="mk">待验证</td></tr>
+      <tr><td>情景概率校准</td><td>乐观40% / 中性42% / 悲观18%</td><td>—</td><td class="mk">待校准</td></tr>
+    </tbody>
+  </table>
+  <div class="mk">建议：明日盘前读取本台账，填入昨日实际值并对错归属（✅/❌），累计10日后输出系统评分。</div>
+</div>
+
+<div class="footer">
+  以上分析基于公开数据，不构成投资建议。<br>
+  模拟盘前模式 · 数据截止 2026-08-20 08:00（8/19收盘状态 + 隔夜信息），已刻意排除8/20开盘后任何盘中/收盘数据。<br>
+  报告框架：S0~S9 十段盘前预测 · 历史概率引用遵循四要素纪律 · 事件事实与市场解读分层 · 资金结构优先于成交量
+</div>
+
+</div>
+</body>
+</html>
