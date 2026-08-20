@@ -2,10 +2,10 @@
 /*
 
 # 但保留报告目录
-!a-share-review-*/
-!us-market-review-*/
-!a-share-premarket-*/
-!premarket-video-*/
+!美股/
+!美股/**
+!A股/
+!A股/**
 
 # 保留 .gitignore 自身和首页
 !.gitignore

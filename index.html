@@ -22,7 +22,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .date-header .tag{font-size:11px;font-weight:600;padding:2px 10px;border-radius:10px;color:#fff}
 .tag-today{background:var(--green)}
 .tag-past{background:var(--text2)}
-.report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .report-card{border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--card);transition:all .2s;text-decoration:none;color:var(--text);display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .report-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(30,58,95,.12);border-color:var(--accent2)}
 .report-card .type{font-size:11px;font-weight:700;padding:2px 10px;border-radius:6px;display:inline-block;width:fit-content;margin-bottom:8px}
@@ -30,6 +30,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .type-ashare{background:#fef2f2;color:#b91c1c}
 .type-premarket{background:#f0fdf4;color:#15803d}
 .type-video{background:#fffbeb;color:#92400e}
+.report-card .market-tag{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:2px}
 .report-card .title{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.4}
 .report-card .desc{font-size:12.5px;color:var(--text2);line-height:1.5;flex:1}
 .report-card .arrow{color:var(--accent2);font-size:13px;margin-top:8px;font-weight:600}
@@ -42,60 +43,60 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 
 <div class="header">
 <h1>跨市场复盘报告</h1>
-<div class="subtitle">美股复盘 · A股复盘 · 盘前分析 · 盘前视频</div>
+<div class="subtitle">美股复盘 · A股复盘 · 盘前分析 · 视频提示词</div>
 <div class="badge">自动同步 · 每日更新</div>
 <div class="stats">
 <div class="stat"><div class="num">8</div><div class="label">报告总数</div></div>
 <div class="stat"><div class="num">3</div><div class="label">交易日</div></div>
-<div class="stat"><div class="num">4</div><div class="label">市场</div></div>
+<div class="stat"><div class="num">2</div><div class="label">市场</div></div>
 </div>
 </div>
 
-<div class="date-group"><div class="date-header">2026-08-20（周三） <span class="tag tag-today">今日</span></div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/a-share-premarket-20260820/盘前分析_20260820.html" target="_blank">
-          <div class="type type-premarket">🔮 盘前分析</div>
-          <div class="title">盘前分析 · 8月20日</div>
+<div class="date-group"><div class="date-header">2026-08-20（周三） <span class="tag tag-today">今日</span></div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/A股/A股盘前分析-20260820/盘前分析_20260820.html" target="_blank">
+          <div class="type type-premarket">📈 盘前分析</div>
+          <div class="title">A股 · 盘前分析 · 8月20日</div>
           <div class="desc">盘前分析_20260820</div>
           <div class="arrow">查看报告 →</div>
-        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/premarket-video-20260820/视频制作提示词.txt" target="_blank">
-          <div class="type type-video">🎬 视频脚本</div>
-          <div class="title">视频脚本 · 8月20日</div>
+        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/A股/A股视频提示词-20260820/视频制作提示词.txt" target="_blank">
+          <div class="type type-video">📈 视频脚本</div>
+          <div class="title">A股 · 视频脚本 · 8月20日</div>
           <div class="desc">视频制作提示词</div>
           <div class="arrow">查看报告 →</div>
-        </a></div></div><div class="date-group"><div class="date-header">2026-08-19（周二） <span class="tag tag-past">昨日</span></div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/a-share-review-20260819/全景复盘_20260819.html" target="_blank">
-          <div class="type type-ashare">📊 A股复盘</div>
-          <div class="title">A股复盘 · 8月19日</div>
-          <div class="desc">全景复盘_20260819</div>
-          <div class="arrow">查看报告 →</div>
-        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/us-market-review-20260819/us-market-review-20260819.html" target="_blank">
+        </a></div></div><div class="date-group"><div class="date-header">2026-08-19（周二） <span class="tag tag-past">昨日</span></div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/美股/美股复盘-20260819/us-market-review-20260819.html" target="_blank">
           <div class="type type-us">🇺🇸 美股复盘</div>
-          <div class="title">美股复盘 · 8月19日</div>
+          <div class="title">美股 · 美股复盘 · 8月19日</div>
           <div class="desc">us-market-review-20260819</div>
           <div class="arrow">查看报告 →</div>
-        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/a-share-premarket-20260819/a-share-premarket-20260819.html" target="_blank">
-          <div class="type type-premarket">🔮 盘前分析</div>
-          <div class="title">盘前分析 · 8月19日</div>
+        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/A股/A股复盘-20260819/全景复盘_20260819.html" target="_blank">
+          <div class="type type-ashare">📈 A股复盘</div>
+          <div class="title">A股 · A股复盘 · 8月19日</div>
+          <div class="desc">全景复盘_20260819</div>
+          <div class="arrow">查看报告 →</div>
+        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/A股/A股盘前分析-20260819/a-share-premarket-20260819.html" target="_blank">
+          <div class="type type-premarket">📈 盘前分析</div>
+          <div class="title">A股 · 盘前分析 · 8月19日</div>
           <div class="desc">a-share-premarket-20260819</div>
           <div class="arrow">查看报告 →</div>
-        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/premarket-video-20260819/视频制作提示词.txt" target="_blank">
-          <div class="type type-video">🎬 视频脚本</div>
-          <div class="title">视频脚本 · 8月19日</div>
+        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/A股/A股视频提示词-20260819/视频制作提示词.txt" target="_blank">
+          <div class="type type-video">📈 视频脚本</div>
+          <div class="title">A股 · 视频脚本 · 8月19日</div>
           <div class="desc">视频制作提示词</div>
           <div class="arrow">查看报告 →</div>
-        </a></div></div><div class="date-group"><div class="date-header">2026-08-18（周一） </div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/a-share-review-20260818/a-share-review-20260818.html" target="_blank">
-          <div class="type type-ashare">📊 A股复盘</div>
-          <div class="title">A股复盘 · 8月18日</div>
-          <div class="desc">a-share-review-20260818</div>
-          <div class="arrow">查看报告 →</div>
-        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/us-market-review-20260818/us-market-review-20260818.html" target="_blank">
+        </a></div></div><div class="date-group"><div class="date-header">2026-08-18（周一） </div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/美股/美股复盘-20260818/us-market-review-20260818.html" target="_blank">
           <div class="type type-us">🇺🇸 美股复盘</div>
-          <div class="title">美股复盘 · 8月18日</div>
+          <div class="title">美股 · 美股复盘 · 8月18日</div>
           <div class="desc">us-market-review-20260818</div>
+          <div class="arrow">查看报告 →</div>
+        </a><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/A股/A股复盘-20260818/a-share-review-20260818.html" target="_blank">
+          <div class="type type-ashare">📈 A股复盘</div>
+          <div class="title">A股 · A股复盘 · 8月18日</div>
+          <div class="desc">a-share-review-20260818</div>
           <div class="arrow">查看报告 →</div>
         </a></div></div>
 
 <div class="footer">
 <p>market-review-suite · 跨市场复盘工具集</p>
-<p>数据时点：2026-08-20 10:05 · 基于公开数据生成，不构成投资建议</p>
+<p>数据时点：2026-08-20 10:12 · 基于公开数据生成，不构成投资建议</p>
 </div>
 
 </div>
