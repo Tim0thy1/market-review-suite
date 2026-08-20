@@ -65,7 +65,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 <div id="error">
 <div class="icon">⚠️</div>
 <p>加载失败，请稍后刷新重试</p>
-<p id="errorMsg" style="font-size:12px;margin-top:8px"></p>
+<p id="errorMsg" style="font-size:12px;margin-top:8px;color:#999"></p>
 </div>
 
 <div id="content"></div>
@@ -78,105 +78,89 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <script>
-const OWNER = 'Tim0thy1';
-const REPO = 'market-review-suite';
-const BRANCH = 'master';
-const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents?ref=${BRANCH}`;
+(async function() {
+  const TYPE_MAP = {
+    'a-share-review':    { label: 'A股复盘',   cls: 'type-ashare',    icon: '📊' },
+    'us-market-review':  { label: '美股复盘',   cls: 'type-us',        icon: '🇺🇸' },
+    'a-share-premarket': { label: '盘前分析',   cls: 'type-premarket', icon: '🔮' },
+    'premarket-video':   { label: '视频脚本',   cls: 'type-video',     icon: '🎬' },
+  };
+  const DIR_PATTERN = /^(a-share-review|us-market-review|a-share-premarket|premarket-video)-(\d{8})$/;
 
-const TYPE_CONFIG = {
-  'a-share-review':    { label: 'A股复盘',   cls: 'type-ashare',    icon: '📊' },
-  'us-market-review':  { label: '美股复盘',   cls: 'type-us',        icon: '🇺🇸' },
-  'a-share-premarket': { label: '盘前分析',   cls: 'type-premarket', icon: '🔮' },
-  'premarket-video':   { label: '视频脚本',   cls: 'type-video',     icon: '🎬' },
-};
-
-async function load() {
   try {
-    const res = await fetch(API);
-    if (!res.ok) throw new Error(`GitHub API ${res.status}: ${res.statusText}`);
-    const items = await res.json();
-    if (!Array.isArray(items)) throw new Error('unexpected response');
+    // 单次调用 Tree API 获取完整文件树
+    const url = 'https://api.github.com/repos/Tim0thy1/market-review-suite/git/trees/master?recursive=1';
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`API ${res.status}: ${res.statusText}`);
 
-    const dirs = items.filter(i => i.type === 'dir');
-    const reportDirs = dirs.filter(d => /^(a-share-review|us-market-review|a-share-premarket|premarket-video)-\d{8}$/.test(d.name));
+    const data = await res.json();
+    if (!data.tree || !Array.isArray(data.tree)) throw new Error('返回数据格式异常');
 
-    // 按日期分组
-    const groups = {};
-    for (const dir of reportDirs) {
-      const match = dir.name.match(/^(\w+)-(\d{8})$/);
-      if (!match) continue;
-      const prefix = match[1];
-      const dateStr = match[2];
-      const dateObj = new Date(dateStr.replace(/^(\d{4})(\d{2})(\d{2})$/, '$1-$2-$3'));
-      if (!groups[dateStr]) groups[dateStr] = { dateObj, reports: [] };
-      groups[dateStr].reports.push({ prefix, dirName: dir.name, dirUrl: dir.url });
+    // 解析所有文件，按目录分组
+    const dirMap = {};
+    for (const item of data.tree) {
+      if (item.type !== 'blob') continue;
+      const parts = item.path.split('/');
+      if (parts.length < 2) continue;
+      const dirName = parts[0];
+      const fileName = parts.slice(1).join('/');
+      if (!DIR_PATTERN.test(dirName)) continue;
+      if (!/\.(html|txt)$/i.test(fileName)) continue;
+      if (!dirMap[dirName]) dirMap[dirName] = [];
+      dirMap[dirName].push(fileName);
     }
 
-    // 获取每个目录内的 html/txt 文件
-    const allEntries = [];
-    for (const [dateStr, group] of Object.entries(groups)) {
-      for (const r of group.reports) {
-        try {
-          const sub = await fetch(r.dirUrl);
-          if (!sub.ok) continue;
-          const files = await sub.json();
-          if (!Array.isArray(files)) continue;
-          const targets = files.filter(f => f.type === 'file' && /\.(html|txt)$/.test(f.name));
-          for (const f of targets) {
-            allEntries.push({ dateStr, dateObj: group.dateObj, prefix: r.prefix, dirName: r.dirName, file: f });
-          }
-        } catch (_) {}
+    // 按日期分组
+    const dateMap = {};
+    for (const [dirName, files] of Object.entries(dirMap)) {
+      const m = dirName.match(DIR_PATTERN);
+      if (!m) continue;
+      const prefix = m[1], dateStr = m[2];
+      const dateObj = new Date(dateStr.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
+      if (!dateMap[dateStr]) dateMap[dateStr] = { dateObj, entries: [] };
+      for (const file of files) {
+        dateMap[dateStr].entries.push({ prefix, dirName, file });
       }
     }
 
-    // 按日期降序排列
-    const dateMap = {};
-    for (const e of allEntries) {
-      if (!dateMap[e.dateStr]) dateMap[e.dateStr] = { dateObj: e.dateObj, entries: [] };
-      dateMap[e.dateStr].entries.push(e);
-    }
-
     const sortedDates = Object.keys(dateMap).sort((a, b) => b.localeCompare(a));
+    if (sortedDates.length === 0) throw new Error('未找到任何报告');
 
-    // 今日日期
     const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
     const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayStr = yesterday.toISOString().slice(0, 10).replace(/-/g, '');
 
-    // 渲染
     const container = document.getElementById('content');
     let totalReports = 0;
-    const markets = new Set();
+    const marketSet = new Set();
 
     for (const dateStr of sortedDates) {
       const g = dateMap[dateStr];
-      g.entries.sort((a, b) => {
-        const order = ['a-share-review', 'us-market-review', 'a-share-premarket', 'premarket-video'];
-        return order.indexOf(a.prefix) - order.indexOf(b.prefix);
-      });
+      // 固定排序：A股复盘 → 美股复盘 → 盘前分析 → 视频脚本
+      const order = ['a-share-review', 'us-market-review', 'a-share-premarket', 'premarket-video'];
+      g.entries.sort((a, b) => order.indexOf(a.prefix) - order.indexOf(b.prefix));
 
-      const isToday = dateStr === todayStr;
-      const isYesterday = dateStr === yesterdayStr;
+      // 今日/昨日标签
       let tag = '';
-      if (isToday) tag = '<span class="tag tag-today">今日</span>';
-      else if (isYesterday) tag = '<span class="tag tag-past">昨日</span>';
+      if (dateStr === todayStr) tag = '<span class="tag tag-today">今日</span>';
+      else if (dateStr === yesterdayStr) tag = '<span class="tag tag-past">昨日</span>';
 
-      const y = g.dateObj.getFullYear();
-      const m = String(g.dateObj.getMonth() + 1).padStart(2, '0');
-      const d = String(g.dateObj.getDate()).padStart(2, '0');
-      const weekday = ['日', '一', '二', '三', '四', '五', '六'][g.dateObj.getDay()];
+      const y = g.dateObj.getFullYear(), m = String(g.dateObj.getMonth()+1).padStart(2,'0'), d = String(g.dateObj.getDate()).padStart(2,'0');
+      const weekdays = ['日','一','二','三','四','五','六'];
+      const weekday = weekdays[g.dateObj.getDay()];
 
       totalReports += g.entries.length;
 
-      let html = `<div class="date-group"><div class="date-header">${y}-${m}-${d} （周${weekday}） ${tag}</div><div class="report-grid">`;
+      let html = `<div class="date-group"><div class="date-header">${y}-${m}-${d}（周${weekday}） ${tag}</div><div class="report-grid">`;
       for (const e of g.entries) {
-        const cfg = TYPE_CONFIG[e.prefix] || { label: e.prefix, cls: '', icon: '📄' };
-        const filePath = e.dirName + '/' + e.file.name;
-        markets.add(cfg.label);
+        const cfg = TYPE_MAP[e.prefix] || { label: e.prefix, cls: '', icon: '📄' };
+        const filePath = e.dirName + '/' + e.file;
+        const displayName = e.file.replace(/\.(html|txt)$/i, '');
+        marketSet.add(cfg.label);
         html += `<a class="report-card" href="./${filePath}">
           <div class="type ${cfg.cls}">${cfg.icon} ${cfg.label}</div>
           <div class="title">${cfg.label} · ${m}月${d}日</div>
-          <div class="desc">${e.file.name.replace(/\.(html|txt)$/, '')}</div>
+          <div class="desc">${displayName}</div>
           <div class="arrow">查看报告 →</div>
         </a>`;
       }
@@ -186,19 +170,16 @@ async function load() {
 
     document.getElementById('countReports').textContent = totalReports;
     document.getElementById('countDays').textContent = sortedDates.length;
-    document.getElementById('countMarkets').textContent = markets.size;
+    document.getElementById('countMarkets').textContent = marketSet.size;
     document.getElementById('loading').style.display = 'none';
     container.style.display = 'block';
 
   } catch (err) {
     document.getElementById('loading').style.display = 'none';
-    const el = document.getElementById('error');
+    document.getElementById('error').style.display = 'block';
     document.getElementById('errorMsg').textContent = err.message;
-    el.style.display = 'block';
   }
-}
-
-load();
+})();
 </script>
 </body>
 </html>
