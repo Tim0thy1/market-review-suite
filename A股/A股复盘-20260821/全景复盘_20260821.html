@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股全景复盘 | 2026年8月21日</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f7f8fc;--card:#ffffff;--border:#e2e8f0;--text:#1a2740;--text2:#64748b;--accent:#1e3a5f;--accent2:#1e40af;--red:#dc2626;--green:#16a34a;--orange:#ea580c;--amber:#d97706;--yellow:#f59e0b;--purple:#7c3aed;--cyan:#0891b2}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.75;font-size:14.5px}
+.container{max-width:1140px;margin:0 auto;padding:24px 16px}
+.header{text-align:center;padding:36px 20px 24px;border-bottom:2px solid var(--accent);margin-bottom:20px}
+.header h1{font-size:26px;font-weight:800;color:var(--accent);margin-bottom:8px}
+.header .subtitle{color:var(--text2);font-size:14px}
+.header .date-tag{display:inline-block;margin-top:10px;padding:5px 18px;background:var(--accent);color:#fff;border-radius:20px;font-size:13px;font-weight:600}
+.tldr{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);color:#fff;border-radius:12px;padding:22px 26px;margin-bottom:24px;box-shadow:0 4px 14px rgba(30,64,175,0.25)}
+.tldr h2{font-size:18px;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:8px}
+.tldr p{font-size:14px;line-height:1.9;opacity:0.97}
+.tldr b{color:#ffe6b3}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 6px rgba(15,23,42,0.04)}
+.section-title{font-size:19px;font-weight:800;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:10px}
+.section-title .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--accent);color:#fff;border-radius:7px;font-size:15px;font-weight:800;flex-shrink:0}
+.section-sub{font-size:13px;color:var(--text2);margin:-8px 0 14px}
+.prose p{margin-bottom:12px;color:#334155;text-align:justify}
+.prose b{color:var(--accent2)}
+.up{color:var(--red)}.down{color:var(--green)}
+.index-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.index-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.index-card .name{font-size:12px;color:var(--text2);margin-bottom:5px}
+.index-card .value{font-size:20px;font-weight:800;margin-bottom:3px}
+.index-card .change{font-size:13px;font-weight:700}
+.chart-wrap{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin:14px 0}
+.chart-label{font-size:13px;font-weight:700;color:var(--text2);margin-bottom:8px;padding-left:4px}
+.chart-box{width:100%;height:300px}
+.chart-box.small{height:260px}
+.data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.data-table th{background:var(--accent);color:#fff;padding:9px 12px;text-align:left;font-weight:600}
+.data-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.data-table tr:nth-child(even) td{background:#f8fafc}
+.evidence{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle}
+.ev-h{background:#fef2f2;color:#991b1b}
+.ev-m{background:#fffbeb;color:#92400e}
+.ev-l{background:#f0fdf4;color:#166534}
+.tag{display:inline-block;padding:2px 9px;border-radius:4px;font-size:11.5px;font-weight:700;margin:2px 3px 2px 0}
+.tag-p0{background:#dc2626;color:#fff}
+.tag-p1{background:#ea580c;color:#fff}
+.tag-p2{background:#f59e0b;color:#fff}
+.tag-p3{background:#94a3b8;color:#fff}
+.debate{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin:14px 0}
+.debate .role{font-weight:800;font-size:14px;margin-bottom:8px}
+.debate .bull{color:#16a34a}.debate .bear{color:#dc2626}.debate .judge{color:#1e40af}
+.debate ul{margin:0 0 8px 18px;font-size:13px;color:#334155}
+.debate li{margin-bottom:5px}
+.debate .target{margin:6px 0;padding:6px 10px;background:#fff;border-left:3px solid var(--accent2);border-radius:0 6px 6px 0;font-size:13px}
+.metric-row{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+.metric-pill{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:6px 15px;font-size:12.5px}
+.metric-pill b{color:var(--accent2)}
+.callout{background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid var(--orange);border-radius:8px;padding:13px 16px;margin:12px 0;font-size:13.5px}
+.callout.blue{background:#f0f7ff;border-color:#bfdbfe;border-left-color:var(--accent2)}
+.callout b{color:var(--orange)}
+.callout.blue b{color:var(--accent2)}
+.strategy-list{list-style:none;padding:0}
+.strategy-list li{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 15px;margin-bottom:8px;font-size:13.5px;display:flex;gap:10px}
+.strategy-list li .n{color:var(--accent2);font-weight:800;flex-shrink:0}
+.risk-list{list-style:none;padding:0}
+.risk-list li{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:11px 15px;margin-bottom:8px;font-size:13.5px;display:flex;gap:10px}
+.risk-list li .i{color:var(--red);font-weight:800;flex-shrink:0}
+.footer{text-align:center;padding:26px;color:var(--text2);font-size:12.5px;border-top:1px solid var(--border)}
+.tagline{background:var(--accent);color:#fff;border-radius:8px;padding:10px 16px;margin:14px 0;font-weight:700;font-size:14px}
+@media(max-width:768px){.index-cards{grid-template-columns:repeat(2,1fr)}}
+
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:#1e3a5f}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:#1e3a5f;padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#f1f5f9;color:#1e40af}
+</style>
+</head>
+<body>
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#sec0">零 市场底层状态</a><a href="#sec1">一 多时间维度全景</a><a href="#sec2">二 宏观锚点</a><a href="#sec3">三 主线与资金流</a><a href="#sec4">四 暗线与伏击点</a><a href="#sec5">五 盘面成因拆解</a><a href="#sec6">六 叙事映射</a><a href="#sec7">七 多空力量对比</a><a href="#sec8">八 24小时关键信息</a><a href="#sec85">8.5 重磅深度解读</a><a href="#sec9">九 状态更新库</a><a href="#sec10">十 前瞻与风险</a><a href="#sec11">十一 标的动态</a><a href="#sec12">十二 反弹定性</a><a href="#sec13">十三 国家队护盘</a><a href="#sec14">十四 外资机构视角</a><a href="#sec15">十五 仓位管理</a><a href="#sec16">十六 结论</a>
+</nav>
+</div>
+
+<div class="container">
+
+<div class="header">
+<h1>A股十六章节全景复盘</h1>
+<div class="subtitle">State-Trigger-Flow 框架 · TradingAgents 多空辩论</div>
+<div class="date-tag">2026年8月21日 星期五 · 收盘复盘</div>
+</div>
+
+<div class="tldr">
+<h2>一句话定调｜黄金新高点燃有色、算力硬件回流，创业板领涨却个股普跌——缩量分化日</h2>
+<p>8/21 A股延续反弹但<b>分化加剧</b>：创业板指<b>+1.43%</b>收3545.58领涨、深成指<b>+0.87%</b>收14094.17，而上证指数<b>仅+0.04%</b>收3905.20几乎平盘，黄白线分化明显。全场<b>上涨2505家（45%）&lt; 下跌2862家</b>，涨停<b>58家</b>、跌停<b>15家</b>，成交额<b>1.88万亿</b>（较昨日再缩约2000亿）——典型的「权重拉指数、个股普跌」结构。主线切换明显：昨日医药单极让位于<b>贵金属/有色</b>（贵金属+4.64%、白银+4.57%、铅锌+4.13%，湖南白银/盛达资源涨停，受隔夜黄金创新高4638美元驱动）与<b>算力硬件</b>（通信设备+2.98%获主力净流入8.89亿，星网锐捷/通鼎互联/瑞斯康达涨停）双线并进；医药（肿瘤疫苗+6.24%、康希诺20CM）延续但涨停潮收敛、高位人气股（一鸣食品等）批量跌停显示亏钱效应抬头。当前定性为<b>反弹后的结构性轮动</b>：指数靠权重托底、赚钱效应收缩，主线从「单极进攻」转向「多线轮动」，短线需防高位股补跌、聚焦资金净流入的确定性方向。</p>
+</div>
+
+<!-- 章零 -->
+<div class="section" id="sec0">
+<div class="section-title"><span class="num">零</span>市场底层状态与仓位约束（State & Positioning）</div>
+<div class="section-sub">诊断当天市场底色：默认信念、仓位拥挤度、资金驱动力</div>
+<div class="prose">
+<p>今日的市场底色是<b>「医药单极拥挤后的再平衡」</b>。8/20医药涨停潮把市场情绪从冰点拉回修复，但单日84家涨停高度集中于医药一极，本身就是一种拥挤信号——当所有资金都押注同一条主线时，次日必然面临「一致预期兑现后的分化」。今日盘面正是这一逻辑的展开：肿瘤疫苗概念虽仍+6.24%（康希诺20CM），但医药涨停家数较昨日明显收敛，资金开始从拥挤的医药向<b>贵金属/有色（避险+顺周期）</b>与<b>算力硬件（资金回流）</b>两个新方向扩散。市场不是在「延续昨日的主线」，而是在「为昨日的主线重新定价、并寻找新的接力方向」。</p>
+<p>仓位结构上，今日最显著的特征是<b>「指数与个股的严重背离」</b>：创业板指+1.43%领涨，但全市场上涨家数仅45%（2505家），下跌2862家——说明拉抬指数的力量集中在创业板权重（医药权重+算力权重），而绝大多数中小个股在失血。这种「权重护指数、个股普跌」的结构，通常出现在存量资金博弈、赚钱效应收缩的阶段：资金从高位题材撤出后并未离场，而是切换到权重与确定性方向，市场整体仓位并未下降，但<b>持仓结构在剧烈调整</b>。资金驱动力上，游资主导的题材切换（贵金属/算力硬件涨停潮）与机构对权重股的托底并存，北向/外资未现明显异动。</p>
+<p><b>反证条件：</b>若「医药拥挤后向贵金属/算力硬件再平衡」的判断成立，则明日贵金属/算力硬件应延续强势（龙头不炸板、资金持续净流入），且医药高位股不出现连续跌停；若明日贵金属/算力硬件高开低走、医药高位股继续批量跌停、同时成交额进一步萎缩至1.7万亿下方，则说明今日只是「一日游轮动」，市场进入缩量阴跌的退潮期。当前判断以结构性轮动定性（证据等级中高）。</p>
+</div>
+</div>
+
+<!-- 章一 -->
+<div class="section" id="sec1">
+<div class="section-title"><span class="num">一</span>多时间维度全景 + 市场整体状态</div>
+<div class="section-sub">指数当日/5日/20日表现、量能、市场宽度</div>
+<div class="index-cards">
+<div class="index-card"><div class="name">上证指数</div><div class="value">3905.20</div><div class="change up">+0.04%</div></div>
+<div class="index-card"><div class="name">深证成指</div><div class="value">14094.17</div><div class="change up">+0.87%</div></div>
+<div class="index-card"><div class="name">创业板指</div><div class="value">3545.58</div><div class="change up">+1.43%</div></div>
+<div class="index-card"><div class="name">两市成交额</div><div class="value" style="font-size:16px">1.88万亿</div><div class="change down">-约2000亿</div></div>
+</div>
+
+<div class="chart-wrap"><div class="chart-label">三大指数近期日K（收盘走势）</div><div id="chart_kline" class="chart-box"></div></div>
+
+<div class="prose">
+<p><b>市场整体状态是「反弹延续·结构分化」。</b>三大指数连续第二日收涨，但涨幅结构出现明显逆转：昨日是「上证+0.24%、创业板+0.64%」的温和普涨，今日变成「创业板+1.43%、上证+0.04%」的极端分化——成长权重（创业板）继续领涨，而权重蓝筹（上证）几乎原地踏步。指数相对强弱上，创业板（+1.43%）&gt; 深成（+0.87%）&gt; 沪深300（+0.57%）&gt; 中证1000（+0.16%）&gt; 中证500（+0.05%）&gt; 上证（+0.04%），而中证红利（-0.10%）、北证50（-0.57%）逆势收跌，显示资金明确偏好「成长权重」、回避「红利防御」与「小盘题材」。</p>
+<p>从多时间维度看：当日（1D）创业板领涨、权重分化；近5日（5D）创业板由8/19暴跌后快速修复（-6.26%→+1.43%），成长风格重新占优；近20日（20D）中证1000累计+5.48%仍强于沪深300（-2.86%），中小盘成长中期主线未变，但今日小盘（中证1000仅+0.16%）明显跑输大盘权重，短期风格有向权重切换的迹象。市场宽度显著转弱：上涨2505家（45%）&lt; 下跌2862家，涨停58家（较昨日84家明显减少）、跌停15家（较昨日0家显著增加），且成交额进一步缩量至1.88万亿——<b>缩量+个股普跌+跌停增加</b>，是「指数被权重拉抬、真实赚钱效应收缩」的组合，说明反弹的广度在衰减，后续能否放量决定反弹能否延续。</p>
+</div>
+</div>
+
+<!-- 章二 -->
+<div class="section" id="sec2">
+<div class="section-title"><span class="num">二</span>宏观锚点与风险偏好</div>
+<div class="section-sub">汇率、利率、大宗、跨市场传导</div>
+<div class="chart-wrap"><div class="chart-label">隔夜全球宏观传导链（黄金创阶段新高）</div><div id="chart_macro" class="chart-box small"></div></div>
+<div class="prose">
+<p>今日A股结构性行情的宏观背景，是<b>黄金创新高 + 人民币升值 + 国内流动性宽松</b>的三重组合。隔夜国际金价突破4638美元/盎司（8/21较前日+1.4%），创阶段新高，直接点燃A股贵金属/有色板块（贵金属+4.64%、白银+4.57%、铅锌+4.13%、锑+3.63%）——这是今日最强的一条主线，逻辑清晰：全球避险情绪+降息预期+央行购金共振，映射到A股有色资源股。与此同时，离岸人民币升值至6.7178（8/19的6.7310→8/21的6.7178），人民币走强缓解外资流出压力、利好人民币资产估值，是成长权重（创业板）走强的宏观支撑。</p>
+<p>但跨市场存在明显的<b>「避险与进攻并存」</b>的分化：一方面黄金新高、全球债券市场仍存抛售担忧（路透报道称投资者在「财政支持预期 vs 内需疲软与全球债券抛售」之间权衡），避险情绪未消；另一方面人民币升值、A股成长权重领涨，风险偏好局部回暖。这种「避险资产（黄金）与成长资产（创业板）同涨」的组合，说明市场定价的是「结构性机会」而非「全面进攻」——资金既在贵金属避险，又在成长权重博弹性。国内宏观面，7月CPI同比+0.5%、核心CPI+0.9%，M2增速7.7%、M1增速4.0%，10年国债收益率1.68%，流动性维持宽松、基本面温和，为黄金（实际利率下行）与成长（流动性友好）提供了共同支撑。宏观资产共振方向：人民币升值+黄金新高+国债低利率，整体指向「避险偏好下的结构性做多」。</p>
+</div>
+</div>
+
+<!-- 章三 -->
+<div class="section" id="sec3">
+<div class="section-title"><span class="num">三</span>市场主线与资金流向</div>
+<div class="section-sub">行业轮动、资金去向、做空动能、叙事竞争</div>
+<h3 style="font-size:15px;color:var(--accent2);margin-bottom:10px">领涨主线一：贵金属/有色（避险+顺周期）<span class="evidence ev-h">证据高</span></h3>
+<div class="data-table"><table>
+<thead><tr><th>方向</th><th>涨跌幅</th><th>5日</th><th>20日</th><th>领涨股</th></tr></thead>
+<tbody>
+<tr><td>贵金属</td><td class="up">+4.64%</td><td class="up">+16.10%</td><td class="up">+33.73%</td><td>湖南白银(10.03)</td></tr>
+<tr><td>白银概念</td><td class="up">+4.57%</td><td class="up">+7.27%</td><td class="up">+24.00%</td><td>湖南白银(10.03)</td></tr>
+<tr><td>铅锌概念</td><td class="up">+4.13%</td><td class="up">+4.28%</td><td class="up">+20.10%</td><td>湖南白银(10.03)</td></tr>
+<tr><td>有色(锑)</td><td class="up">+3.63%</td><td class="up">+3.89%</td><td class="up">+21.62%</td><td>湖南白银(10.03)</td></tr>
+<tr><td>能源金属/锂矿</td><td class="up">+4.60%</td><td class="down">-2.37%</td><td class="up">+9.39%</td><td>融捷股份(10.00)</td></tr>
+</tbody></table></div>
+
+<h3 style="font-size:15px;color:var(--accent2);margin:16px 0 10px">领涨主线二：算力硬件（资金回流）<span class="evidence ev-m">证据中</span></h3>
+<div class="data-table"><table>
+<thead><tr><th>方向</th><th>涨跌幅</th><th>5日</th><th>20日</th><th>领涨股</th></tr></thead>
+<tbody>
+<tr><td>通信设备</td><td class="up">+2.98%</td><td class="down">-0.86%</td><td class="up">+1.76%</td><td>星网锐捷(10.02)</td></tr>
+<tr><td>元件</td><td class="up">+2.80%</td><td class="down">-4.62%</td><td class="up">+10.73%</td><td>江海股份(7.27)</td></tr>
+<tr><td>陶瓷基板</td><td class="up">+3.80%</td><td class="up">+0.51%</td><td class="up">+21.85%</td><td>中瓷电子(10.00)</td></tr>
+</tbody></table></div>
+
+<h3 style="font-size:15px;color:var(--accent2);margin:16px 0 10px">资金净流入 TOP（万元）</h3>
+<div class="data-table"><table>
+<thead><tr><th>板块</th><th>涨跌幅</th><th>主力净流入</th><th>5日净流入</th></tr></thead>
+<tbody>
+<tr><td>通信设备</td><td class="up">+2.98%</td><td class="up">+8.89亿</td><td class="down">-20.36亿</td></tr>
+<tr><td>元件</td><td class="up">+2.80%</td><td class="up">+4.68亿</td><td class="down">-21.28亿</td></tr>
+<tr><td>工业金属</td><td class="up">+2.42%</td><td class="up">+4.44亿</td><td class="up">+5.24亿</td></tr>
+</tbody></table></div>
+
+<div class="chart-wrap"><div class="chart-label">板块表现与资金流向结构</div><div id="chart_sector" class="chart-box"></div></div>
+
+<div class="prose">
+<p><b>主线判定：今日是「贵金属/有色 + 算力硬件」双线并进，医药高位分化。</b>贵金属/有色是今日最强主线：贵金属+4.64%、白银+4.57%、铅锌+4.13%、锑+3.63%、锂矿+3.77%集体爆发，且5日/20日累计涨幅居前（贵金属5日+16.10%、20日+33.73%），湖南白银、盛达资源涨停，属于「黄金创新高驱动的避险+顺周期」方向性行情，资金连续多日净流入（工业金属5日+5.24亿）。算力硬件是第二主线：通信设备+2.98%（主力净流入8.89亿居首）、元件+2.80%、陶瓷基板+3.80%，星网锐捷、通鼎互联、瑞斯康达涨停——这是前期调整后的资金回流，5日仍为净流出（通信设备5日-20.36亿），属于「超跌回流」而非「趋势确立」，持续性待验证。医药（肿瘤疫苗+6.24%、康希诺20CM）延续但涨停潮收敛，从「全面进攻」转为「龙头分化」。</p>
+<p><b>资金去向逻辑链：</b>隔夜黄金创新高 → 贵金属/有色避险+顺周期逻辑强化 → 资金从拥挤的医药高位股撤出 → 一部分流向贵金属/有色（确定性避险），一部分回流算力硬件（超跌+资金博弈）→ 医药高位股分化、高位人气股（一鸣食品等）批量跌停。这条链是「存量资金再平衡」驱动的轮动行情，而非增量资金驱动的全面进攻。</p>
+<p><b>做空动能拆解：</b>今日最明显的做空/退潮信号是<b>高位人气股批量跌停</b>（一鸣食品、红四方、哈药股份、开开实业、百合花等，据财联社报道），叠加医药涨停潮收敛、跌停家数从昨日0家升至15家——说明短线资金正在从高位题材撤离，亏钱效应开始扩散。这属于「情绪退潮」而非「基本面恶化」，但需警惕高位股补跌对市场情绪的拖累。</p>
+<p><b>叙事竞争：</b>「黄金新高」叙事赢得贵金属/有色板块的局部定价权（板块+4.64%领涨）；「算力硬件回流」赢得通信设备/元件的局部定价权；而指数层面，创业板+1.43%领涨说明「成长权重」叙事赢得了全局定价权（权重拉抬指数）。但个股普跌（上涨仅45%）说明这些叙事均未形成「全面进攻」的全局效应——真正的全局定价权之争仍在进行中。</p>
+</div>
+</div>
+
+<!-- 章四 -->
+<div class="section" id="sec4">
+<div class="section-title"><span class="num">四</span>暗线与多空伏击点</div>
+<div class="prose">
+<p><b>多头水面下的涟漪：</b>贵金属/有色是今日最清晰的多头暗线——贵金属5日+16.10%、20日+33.73%连续走强，工业金属5日资金净流入+5.24亿，属于「趋势性资金持续流入」而非一日游，是当前最具持续性的多头方向。算力硬件（通信设备/元件）今日资金大幅回流（通信设备+8.89亿、元件+4.68亿），虽然5日仍净流出，但「单日大幅回流」往往是资金回补的起点信号，若明日延续则构成第二多头暗线。另外，离岸人民币升值至6.7178，为成长权重提供了估值支撑，创业板权重（医药+算力）的强势有汇率逻辑背书。</p>
+<p><b>空头高位裂痕：</b>最明显的空头信号是<b>高位人气股批量跌停</b>（一鸣食品、红四方、哈药股份、开开实业、百合花等，据财联社8/21报道），叠加医药涨停潮收敛、跌停家数从昨日0家升至15家——高位题材的获利盘正在集中兑现，亏钱效应开始抬头。指数层面，上证+0.04%几乎平盘、中证红利-0.10%、北证50-0.57%收跌，权重蓝筹与红利防御方向走弱，说明资金并未全面做多，指数上攻动能不足。</p>
+<p><b>分歧中的生还者与掉队者：</b>生还者集中在贵金属/有色（湖南白银、盛达资源涨停）与算力硬件（星网锐捷、通鼎互联、瑞斯康达涨停）——资金从医药高位股撤出后选择的新方向；医药内部出现分化，肿瘤疫苗（康希诺20CM）仍是生还者，但多数医药股掉队。掉队者集中在高位人气股（一鸣食品等跌停）与红利防御（中证红利收跌），需防高位补跌扩散。</p>
+</div>
+</div>
+
+<!-- 章五 -->
+<div class="section" id="sec5">
+<div class="section-title"><span class="num">五</span>盘面成因拆解</div>
+<div class="section-sub">State→Trigger→Flow 时线还原</div>
+<p style="background:var(--accent);color:#fff;border-radius:8px;padding:10px 15px;margin-bottom:14px;font-size:14px"><b>总览：</b>State=8/20医药涨停潮后的高位分化 + 缩量环境（成交1.88万亿）；Trigger=隔夜黄金创新高4638美元、离岸人民币升值至6.7178、高位人气股退潮；Flow=贵金属/有色开盘即爆发（湖南白银/盛达资源涨停）→ 算力硬件资金回流（通信设备+8.89亿）→ 医药高位分化（肿瘤疫苗+6.24%但涨停潮收敛）→ 高位人气股批量跌停 → 创业板权重拉抬指数、个股普跌</p>
+
+<div class="callout blue"><b>事件一｜黄金创新高4638美元，贵金属/有色全面爆发（证据高）</b><br>隔夜国际金价突破4638美元/盎司（8/21较前日+1.4%）创阶段新高，驱动逻辑为全球避险情绪+降息预期+央行购金共振。传导链：金价新高 → A股贵金属/有色估值重估 → 贵金属+4.64%、白银+4.57%、铅锌+4.13%、锑+3.63%集体爆发 → 湖南白银、盛达资源涨停、工业金属主力净流入4.44亿。该信息A股开盘前可知，属隔夜Trigger，资金开盘即强势响应，是今日最强主线（证据等级高）。</div>
+
+<div class="callout"><b>事件二｜算力硬件资金回流，通信设备/元件领涨（证据中）</b><br>通信设备+2.98%（主力净流入8.89亿居首）、元件+2.80%、陶瓷基板+3.80%，星网锐捷、通鼎互联、瑞斯康达涨停。传导链：前期AI硬件链调整充分（通信设备5日-0.86%）→ 资金从医药高位股撤出后回流算力硬件 → 超跌反弹+资金博弈共振。但5日资金仍净流出（通信设备-20.36亿），属「超跌回流」而非「趋势确立」，持续性待验证（证据等级中）。</div>
+
+<div class="callout blue"><b>事件三｜医药高位分化，肿瘤疫苗延续但涨停潮收敛（证据中）</b><br>肿瘤疫苗概念+6.24%（康希诺20CM）延续强势，但医药整体涨停潮较昨日明显收敛，多数医药股高位分化。传导链：8/20医药涨停潮的惯性延续 → 但一致预期兑现后资金开始兑现离场 → 龙头（康希诺）延续、跟风股掉队。这是「主线从全面进攻转向龙头分化」的典型信号（证据等级中）。</div>
+
+<div class="callout"><b>事件四｜高位人气股批量跌停，亏钱效应抬头（证据高）</b><br>据财联社8/21报道，早盘多只高位人气股持续走弱，一鸣食品、红四方、哈药股份、开开实业、百合花跌停，桂发祥、澳洋健康、誉衡药业等跟跌。传导链：前期高位题材获利盘集中兑现 → 跌停家数从昨日0家升至15家 → 亏钱效应扩散 → 短线资金风险偏好下降。这是判断情绪是否退潮的关键变量（证据等级高）。</div>
+</div>
+
+<!-- 章六 -->
+<div class="section" id="sec6">
+<div class="section-title"><span class="num">六</span>叙事如何映射到不同资产</div>
+<div class="prose">
+<p><b>核心叙事「黄金新高」的差异化映射是今日最值得研究的对象。</b>同一利好在不同板块的定价差异明显：最直接映射的是贵金属（贵金属+4.64%、湖南白银涨停），其次是白银（白银概念+4.57%）、铅锌（+4.13%）、锑（+3.63%）等有色资源全链，再是锂矿/能源金属（+3.77%、融捷股份涨停）——黄金叙事几乎点燃了整条有色资源链。而「算力硬件回流」叙事则独立于黄金，映射通信设备（+2.98%）、元件（+2.80%）、陶瓷基板（+3.80%），属于超跌资金博弈方向。医药（肿瘤疫苗+6.24%）则延续昨日「mRNA肿瘤疫苗」叙事，但已从「全面进攻」转为「龙头分化」。</p>
+<p><b>证据层级：</b>「金价新高→贵金属/有色爆发」直接映射清晰（证据高）；「算力硬件回流」有资金数据佐证但5日仍净流出（证据中）；「医药龙头分化」有涨停家数收敛佐证（证据中）；「高位人气股退潮」有跌停数据佐证（证据高）。<b>反事实推演：</b>若无隔夜黄金新高，今日贵金属/有色大概率不会爆发，资金可能更多回流医药或观望，指数分化程度可能更弱——正是黄金新高定义了今日「避险+顺周期」的主线方向，并加速了资金从医药高位股向有色/算力的再平衡。</p>
+<div class="tagline">局部定价权：贵金属/有色（避险+顺周期）与算力硬件（资金回流）双线赢得板块定价；医药（肿瘤疫苗）赢得龙头定价但整体分化。全局定价权：创业板权重（+1.43%）拉抬指数，但个股普跌（上涨仅45%），无全面进攻叙事成型。</div>
+</div>
+</div>
+
+<!-- 章七 -->
+<div class="section" id="sec7">
+<div class="section-title"><span class="num">七</span>多空力量对比（TradingAgents 辩论式）</div>
+
+<div class="debate">
+<div class="role bear">🐻 空头观点（熊市研究员）</div>
+<ul>
+<li><b>缩量+个股普跌，指数失真：</b>成交额缩至1.88万亿，上涨家数仅45%（2505家&lt;2862家下跌），创业板+1.43%全靠权重拉抬，真实赚钱效应在收缩，是「虚涨」。</li>
+<li><b>高位人气股批量跌停，亏钱效应扩散：</b>一鸣食品、红四方、哈药股份等跌停，跌停家数从昨日0家升至15家，高位题材获利盘集中兑现，情绪退潮风险大。</li>
+<li><b>医药退潮后无强主线接棒：</b>贵金属是避险非进攻，算力硬件5日仍净流出（超跌回流非趋势），若两者明日高开低走，市场将陷入无主线真空期，可能二次探底。</li>
+</ul>
+<div class="target">下行风险：若明日贵金属/算力硬件高开低走、医药高位股继续跌停、成交额萎缩至1.7万亿下方，则反弹证伪，上证或回踩MA20（约3889）下方。</div>
+</div>
+
+<div class="debate">
+<div class="role bull">🐂 多头观点（牛市研究员）</div>
+<ul>
+<li><b>黄金新高+人民币升值，宏观支撑明确：</b>金价突破4638美元创阶段新高、离岸人民币升值至6.7178，避险与成长共振，贵金属/有色主线有基本面支撑（降息预期+央行购金），非纯情绪。</li>
+<li><b>成长权重领涨，风格修复延续：</b>创业板+1.43%连续第二日领涨，成长风格从8/19暴跌中快速修复，权重拉抬显示机构资金在托底，指数重心上移。</li>
+<li><b>算力硬件资金回流是积极信号：</b>通信设备主力净流入8.89亿居首，前期调整充分的AI硬件链开始有资金回补，若延续则构成新主线，市场主线从单极转向多线更健康。</li>
+</ul>
+<div class="target">上行空间：若贵金属/有色与算力硬件双主线延续且放量，创业板有望站稳3600上方，上证攻击3950（MA5）附近。</div>
+</div>
+
+<div class="debate">
+<div class="role judge">⚖️ 综合判断（交易员）</div>
+<ul>
+<li><b>胜率倾向：</b>短线中性偏谨慎、结构重于指数。胜率评估：多头50%、空头50%。</li>
+<li><b>关键验证条件：</b>明日贵金属/有色（湖南白银/盛达资源）与算力硬件（星网锐捷/通鼎互联）龙头是否延续封板、通信设备资金是否持续净流入、跌停家数是否收敛——满足则多头占优；若双主线高开低走、跌停家数继续增加、成交额续缩则空头主导。</li>
+<li><b>触发条件：</b>参与贵金属/有色以「金价不回落+龙头不炸板」为前提；算力硬件以「资金连续净流入」为前提；规避高位人气股（一鸣食品等）的补跌风险。</li>
+<li><b>当前建议：</b>聚焦贵金属/有色（确定性避险）与算力硬件（资金回流）双主线，指数层面维持「缩量震荡」判断、仓位控制在5成左右，避免追高高位题材，留意成交额能否放大确认。</li>
+</ul>
+</div>
+</div>
+
+<!-- 章八 -->
+<div class="section" id="sec8">
+<div class="section-title"><span class="num">八</span>24小时关键信息筛选</div>
+<div class="data-table"><table>
+<thead><tr><th>信息</th><th>影响力</th><th>证据强度</th><th>类别</th></tr></thead>
+<tbody>
+<tr><td>隔夜黄金创新高4638美元，贵金属/有色全面爆发</td><td>★★★★★</td><td>高</td><td>剧情推进</td></tr>
+<tr><td>创业板指+1.43%领涨、黄白线分化、个股普跌（上涨仅45%）</td><td>★★★★</td><td>高</td><td>剧情推进</td></tr>
+<tr><td>算力硬件资金回流，通信设备主力净流入8.89亿居首</td><td>★★★★</td><td>中</td><td>剧情推进</td></tr>
+<tr><td>高位人气股批量跌停（一鸣食品/红四方/哈药股份等），跌停15家</td><td>★★★★</td><td>高</td><td>放大器</td></tr>
+<tr><td>医药高位分化，肿瘤疫苗+6.24%（康希诺20CM）但涨停潮收敛</td><td>★★★</td><td>中</td><td>剧情推进</td></tr>
+<tr><td>离岸人民币升值至6.7178，10Y国债1.68%，流动性宽松</td><td>★★</td><td>高</td><td>政策风向标</td></tr>
+</tbody></table></div>
+<div class="callout blue"><b>未被市场充分定价的信息：</b>①贵金属/有色连续多日走强（贵金属5日+16.10%、20日+33.73%）但市场关注度仍集中于医药/算力，避险+顺周期逻辑或被低估；②算力硬件资金单日大幅回流（通信设备+8.89亿）但5日仍净流出，若连续2-3日净流入则构成趋势信号，市场尚未充分定价；③离岸人民币升值至6.7178对成长权重（创业板）的估值支撑，市场尚未充分定价；④高位人气股批量跌停的亏钱效应，若明日继续扩散，将压制短线情绪。</div>
+
+<h3 style="font-size:15px;color:var(--accent2);margin:18px 0 10px">外媒小作文监测专区（章八子模块 · 与盘前S2.6同规范）</h3>
+<div class="section-sub">外媒（彭博/路透/FT/WSJ等）关于中国资产的叙事性报道，逐条分级展示。事实层与叙事层分离；外媒品牌不加分，以内容可证伪性评级。</div>
+
+<div class="callout blue"><b>① 路透社 8/21「中国股市持稳，投资者等待财政支持」<span class="evidence ev-m">可信度：中</span></b><br>
+<b>媒体/时间：</b>Reuters · 2026-08-21（盘中）<br>
+<b>核心摘要：</b>周五中国股市大体持稳，上证指数午盘平盘于3903.81点、沪深300涨0.52%、创业板涨逾1%；投资者在「额外财政支持预期」与「内需疲软+全球债券抛售担忧」之间权衡。<br>
+<b>类型标签：</b>机构观点型（叙事型）<br>
+<b>可信度评级+理由：</b>中——指数点位可查证（与收盘数据吻合），但「等待财政支持」属媒体对市场情绪的解读性叙事，非可证实事实。<br>
+<b>涉及标的/板块：</b>上证指数/沪深300/创业板（A股）<br>
+<b>证伪/证实路径：</b>若后续官方出台增量财政刺激（专项债提速/降准降息），则该叙事兑现；若政策持续空窗且内需数据走弱，则「等待落空」叙事成立。<br>
+<b>复盘视角：</b>当日上证+0.04%平盘、创业板+1.43%，与「持稳+分化」的报道一致——该叙事已部分被盘面定价（指数平盘反映观望），标注<b>「情绪已部分释放」</b>。次交易日观察：财政政策相关消息是否落地、指数能否放量突破。</div>
+
+<div class="callout"><b>② 彭博社 8/10「中国券商收紧新开户/两融/期权审查」<span class="evidence ev-m">可信度：中</span></b><br>
+<b>媒体/时间：</b>Bloomberg · 2026-08-10（旧闻，8/21复盘纳入以跟踪后续）<br>
+<b>核心摘要：</b>彭博引述消息人士称，随着股市急剧回调，监管部门加强对过度冒险行为的管控，中信证券、东方财富等多家券商收紧新开账户审查，重点覆盖融资融券及期权交易；部分券商对近6个月新开户或频繁接获追加保证金通知的客户限制新增杠杆。<br>
+<b>类型标签：</b>知情人士型<br>
+<b>可信度评级+理由：</b>中——「收紧审查」有消息源支撑但多家券商（中信/东财）公开否认「从严」，属「知情人士爆料 vs 官方否认」的对峙状态，需后续验证。<br>
+<b>涉及标的/板块：</b>券商板块（中信证券/东方财富，A股+港股）<br>
+<b>证伪/证实路径：</b>若券商两融余额持续下降、或监管出台正式文件，则证实；若两融余额平稳且无官方文件，则证伪。<br>
+<b>复盘视角：</b>该报道发布于8/10，当日券商板块已反应，属<b>「情绪已释放」</b>的旧闻；8/21券商板块无异常波动，未对当日盘面产生新定价。次交易日观察：两融余额数据（8/20两融数据暂缺）是否显示杠杆资金收缩。</div>
+
+<div class="callout blue"><b>③ QFII二季度持仓数据：28家外资机构持有A股市值1643.3亿元<span class="evidence ev-h">可信度：高</span></b><br>
+<b>媒体/时间：</b>Wind统计（新浪财经转载）· 2026-08-20<br>
+<b>核心摘要：</b>截至8/20午间，已披露2026年半年报的A股公司中约233家前十大流通股东含QFII，涉及28家外资机构，合计持有A股市值约1643.3亿元；二季度QFII重点加仓材料、消费、汽车、电气设备。<br>
+<b>类型标签：</b>数据型<br>
+<b>可信度评级+理由：</b>高——基于上市公司半年报披露的客观数据，可查证。<br>
+<b>涉及标的/板块：</b>材料/消费/汽车/电气设备（A股）<br>
+<b>证伪/证实路径：</b>可核对各公司半年报前十大流通股东明细验证。<br>
+<b>复盘视角：</b>该数据为中性信息，未对8/21盘面产生直接定价，标注<b>「未定价（中性）」</b>。次交易日观察：外资加仓方向（材料/汽车）是否与盘面主线（有色/贵金属）形成共振。</div>
+
+<div class="callout"><b>④ 渣打/高盛/大摩/瑞银等外资机构集体看好中国股市下半年<span class="evidence ev-m">可信度：中</span></b><br>
+<b>媒体/时间：</b>综合（新浪财经）· 2026-07-16（旧闻）<br>
+<b>核心摘要：</b>渣打维持中国股票超配评级（估值折让+AI主线+产业升级），高盛、大摩、瑞银等近期集中表态看好中国资产下半年表现，从研报评级上调到真金白银买入。<br>
+<b>类型标签：</b>机构观点型（卖方研报型）<br>
+<b>可信度评级+理由：</b>中——机构观点可查证但属「观点」而非「事实」，且发布时间较早（7/16），对8/21的边际影响有限。<br>
+<b>涉及标的/板块：</b>中国股票整体（A股/港股/ADR）<br>
+<b>证伪/证实路径：</b>若北向资金/外资持续净流入、中国资产跑赢全球，则证实；若外资持续流出，则证伪。<br>
+<b>复盘视角：</b>该叙事为中期背景，8/21人民币升值至6.7178与QFII持仓数据（条目③）为其提供部分佐证，但当日未产生直接定价，标注<b>「未定价（中期背景）」</b>。次交易日观察：北向资金流向与人民币汇率走势。</div>
+
+<div class="callout blue"><b>专区小结：</b>今日（含隔夜）符合收录标准的外媒小作文共4条。其中<b>路透社8/21「等待财政支持」</b>为当日最新叙事且已被盘面部分定价（指数平盘反映观望）；<b>彭博8/10券商收紧审查</b>为旧闻、情绪已释放；<b>QFII数据</b>与<b>外资集体看好</b>为中期背景、未直接定价。整体看，外媒叙事层面对8/21盘面的增量影响有限，A股当日行情主要由「黄金新高+资金再平衡」的国内/商品逻辑驱动。</div>
+</div>
+
+<!-- 章8.5 重磅新闻深度解读 -->
+<div class="section" id="sec85">
+<div class="section-title"><span class="num">8.5</span>重磅新闻深度解读与发酵推演</div>
+<div class="section-sub">对当日两大重磅主线做深度延伸：产业链影响 + 股市影响走势推演</div>
+
+<h3 style="font-size:15px;color:var(--accent2);margin:14px 0 10px">8.5.1 黄金创新高：从「避险资产」到「A股有色资源大爆发」</h3>
+<div class="callout blue"><b>事件回顾：</b>8/21国际金价突破4638美元/盎司（较前日+1.4%）创阶段新高，驱动逻辑为全球避险情绪+降息预期+央行购金共振。8/21 A股贵金属/有色全面爆发：贵金属+4.64%、白银+4.57%、铅锌+4.13%、锑+3.63%、锂矿+3.77%，湖南白银、盛达资源涨停，工业金属主力净流入4.44亿。</div>
+<div class="prose">
+<p><b>为什么A股反应如此剧烈：</b>这是「全球商品定价+A股资源股映射」的共振。其一，金价新高直接抬升贵金属/有色板块的盈利预期与估值中枢；其二，A股有色资源股本身处于「低估值+顺周期+资金连续流入」（贵金属5日+16.10%、20日+33.73%）的强势状态，弹性被放大；其三，避险情绪下资金从高位题材（医药/人气股）撤出后，天然流向确定性最强的黄金链。</p>
+</div>
+<div class="callout"><b>对产业链的影响（谁受益、谁承压）：</b><br>
+<b>直接映射（贵金属）：</b>湖南白银、盛达资源、山东黄金——金价新高直接受益，弹性最大。<br>
+<b>白银/工业金属：</b>白银概念+4.57%、工业金属+2.42%——金银比修复+工业需求，跟涨。<br>
+<b>有色资源全链：</b>铅锌（+4.13%）、锑（+3.63%）、锂矿（+3.77%）——商品涨价共振，顺周期受益。<br>
+<b>承压方向（高位题材）：</b>医药高位股、前期人气股——资金撤离，补跌风险。</div>
+<div class="callout blue"><b>对股市的影响走势（未来1-2周推演）：</b><br>
+<b>贵金属/有色主线持续性：</b>金价新高+资金连续流入（工业金属5日+5.24亿）支撑下，贵金属/有色主线回调后二次上攻概率大，但短期涨幅已大（贵金属20日+33.73%），需防高位波动。<br>
+<b>指数路径：</b>情景A（主线延续）——贵金属/有色放量续涨、金价不回落，创业板站稳3600上方；情景B（高位分化）——贵金属/有色高开低走、金价回调，指数缩量震荡于3880-3950；情景C（主线退潮）——金价大幅回落+无新主线接棒，上证跌破MA20（约3889）二次探底。<b>当前概率：情景B（45%）&gt; 情景A（35%）&gt; 情景C（20%）</b>。<br>
+<b>关键跟踪信号：</b>①国际金价是否延续新高；②贵金属/有色龙头（湖南白银/盛达资源）是否维持封板；③两市成交额能否放大至2.2万亿上方；④高位人气股跌停潮是否收敛。</div>
+<div class="callout"><b>反证条件：</b>若明日金价大幅回落、贵金属/有色龙头炸板、成交额萎缩至1.7万亿以下，且无其他板块接力，则「贵金属/有色主线确立」判断错误，今日仅为避险脉冲、反弹高度存疑。</div>
+
+<h3 style="font-size:15px;color:var(--accent2);margin:14px 0 10px">8.5.2 算力硬件资金回流：超跌反弹还是新主线起点？</h3>
+<div class="callout blue"><b>事件回顾：</b>8/21通信设备+2.98%（主力净流入8.89亿居首）、元件+2.80%、陶瓷基板+3.80%，星网锐捷、通鼎互联、瑞斯康达涨停。此前AI硬件链经历8/19暴跌（创业板-6.26%）后持续调整，通信设备5日-0.86%。</div>
+<div class="prose">
+<p><b>对A股的影响：</b>算力硬件（通信设备/元件/PCB）是前期AI主线的核心方向，8/19暴跌后超跌明显。今日资金单日大幅回流（通信设备+8.89亿居首），叠加星网锐捷/通鼎互联/瑞斯康达涨停，显示有资金开始回补超跌的AI硬件链。但需注意：5日资金仍为净流出（通信设备-20.36亿、元件-21.28亿），说明今日是「单日回流」而非「趋势反转」，能否连续2-3日净流入是判断「超跌反弹 vs 新主线起点」的关键。传导链：AI硬件超跌 → 资金从医药高位股撤出后回流 → 通信设备/元件涨停潮 → 若资金持续流入则构成新主线。</p>
+</div>
+<div class="callout blue"><b>对股市的影响走势：</b>①若通信设备/元件连续2-3日资金净流入、龙头（星网锐捷/通鼎互联）延续封板：算力硬件从「超跌反弹」升级为「新主线」，与贵金属/有色构成双主线，市场结构更健康；②若明日资金再度流出、龙头炸板：今日仅为「一日游回流」，市场重回无主线真空期；③若AI硬件与贵金属/有色共振放量：指数有望放量突破，反弹升级。<b>当前判断：算力硬件定性为「超跌回流」而非「趋势确立」（证据等级中）</b>，需连续资金验证。</div>
+<div class="callout"><b>反证条件：</b>若明日通信设备/元件主力资金转为净流出、星网锐捷/通鼎互联炸板，则「算力硬件资金回流」判断证伪，今日仅为超跌脉冲。</div>
+</div>
+
+<!-- 章九 -->
+<div class="section" id="sec9">
+<div class="section-title"><span class="num">九</span>市场状态更新库</div>
+<div class="callout"><b>被钝化/证伪的旧叙事：「医药单极全面进攻」</b><br>8/20医药涨停潮（84家涨停集中于医药）后，今日医药从「全面进攻」转为「龙头分化」：肿瘤疫苗+6.24%（康希诺20CM）延续，但涨停潮明显收敛、多数医药股高位分化，且高位人气股（一鸣食品等）批量跌停显示医药/题材的赚钱效应在衰减。确认条件：若明日医药龙头（康希诺）炸板、医药板块整体走弱则阶段性退出主导；反证条件：若医药放量收复失地、龙头续封则叙事修复。</div>
+<div class="callout blue"><b>正式接管的新定价锚：「黄金新高 → 贵金属/有色避险+顺周期」</b><br>市场正式交易「国际金价创新高」这一新逻辑：贵金属/白银/铅锌/锑/锂矿全链获得新定价权（贵金属+4.64%、5日+16.10%、20日+33.73%），资金连续多日净流入（工业金属5日+5.24亿）。确认条件：若金价延续新高、贵金属/有色放量上涨2-3日、龙头创阶段新高则锚确立；反证条件：若金价大幅回落、贵金属/有色明显退潮，则该叙事仅为避险脉冲。</div>
+<div class="callout blue"><b>正在形成的新定价锚：「算力硬件资金回流」</b><br>通信设备主力净流入8.89亿居首、元件+4.68亿，星网锐捷/通鼎互联/瑞斯康达涨停，前期超跌的AI硬件链出现资金回补。确认条件：若通信设备/元件连续2-3日资金净流入、龙头延续封板则升级为新主线；反证条件：若资金再度流出、龙头炸板，则仅为一日游回流。</div>
+</div>
+
+<!-- 章十 -->
+<div class="section" id="sec10">
+<div class="section-title"><span class="num">十</span>前瞻观察与风险</div>
+<div class="prose">
+<p><b>主线延续情景：</b>若国际金价延续新高、贵金属/有色放量续涨，且算力硬件资金连续净流入，则「贵金属/有色 + 算力硬件」双主线有望延续，带动创业板站稳3600上方。关键证据：明日贵金属/有色龙头（湖南白银/盛达资源）是否维持封板、通信设备资金是否持续净流入、成交额是否放大（证据中高）。</p>
+<p><b>主线反转情景：</b>若金价大幅回落、贵金属/有色高开低走，且算力硬件资金再度流出，则双主线同时退潮，市场陷入无主线真空期，指数或回踩MA20（约3889）下方。此时需警惕高位人气股补跌扩散。</p>
+<p><b>做空/防御触发条件（Short Triggers）：</b>贵金属/有色龙头炸板次日大跌、成交额持续萎缩至1.7万亿下方、跌停家数继续增加（&gt;20家）、上证跌破MA20（约3889）——任一出现则反弹证伪，防御为主。</p>
+<p><b>宏观事件日历：</b>需持续跟踪国际金价走势（避险情绪核心变量）、美联储9月议息预期（降息预期影响金价与成长估值）、离岸人民币汇率（6.7178，关注是否延续升值）、国内增量财政政策落地节奏（路透「等待财政支持」叙事的验证窗口）、8月底半年报披露高峰（业绩兑现与暴雷并存）。</p>
+</div>
+</div>
+
+<!-- 章十一 -->
+<div class="section" id="sec11">
+<div class="section-title"><span class="num">十一</span>标的动态</div>
+<p style="color:var(--text2);font-size:13px;margin-bottom:12px">结合盘面与「贵金属/有色 + 算力硬件」双主线，给出分层观察方向（不构成买卖建议）。</p>
+<div class="data-table"><table>
+<thead><tr><th>层级</th><th>方向/标的逻辑</th><th>当日状态</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-p0">核心龙头</span></td><td>贵金属（湖南白银涨停、盛达资源涨停）、医药龙头（康希诺20CM）</td><td class="up">主线爆发，封板/大涨</td></tr>
+<tr><td><span class="tag tag-p1">容量中军</span></td><td>算力硬件（星网锐捷/通鼎互联/瑞斯康达涨停，通信设备净流入8.89亿）、工业金属（资金净流入4.44亿）</td><td class="up">资金回流，涨停/放量</td></tr>
+<tr><td><span class="tag tag-p2">低位补涨</span></td><td>有色资源全链（铅锌/锑/锂矿，融捷股份涨停）、元件/陶瓷基板（中瓷电子涨停）</td><td class="up">商品共振，弹性补涨</td></tr>
+<tr><td><span class="tag tag-p3">高位分歧</span></td><td>高位人气股（一鸣食品/红四方/哈药股份跌停）、医药跟风股</td><td class="down">获利兑现，批量跌停</td></tr>
+<tr><td><span class="tag tag-p0">避险主线</span></td><td>贵金属（山东黄金/湖南白银，5日+16.10%、20日+33.73%）</td><td class="up">金价新高，连续走强</td></tr>
+</tbody></table></div>
+<div class="callout">注：贵金属/有色主线具备「金价新高（基本面）+资金连续流入（趋势）+低估值（安全边际）」三重逻辑，是当前最具持续性的方向；算力硬件属「超跌回流」，需连续资金验证；高位人气股批量跌停显示亏钱效应，规避补跌风险（证据中高）。</div>
+</div>
+
+<!-- 章十二 -->
+<div class="section" id="sec12">
+<div class="section-title"><span class="num">十二</span>反弹定性分析</div>
+<div class="prose">
+<p>今日的上涨需要定性其性质，因为它决定了后续参与思路。综合看，今日更接近<b>「结构性轮动」而非「趋势反转」</b>：驱动引擎是「黄金新高（避险+顺周期）」与「算力硬件资金回流（超跌博弈）」两个结构性方向，而非全面进攻——指数靠创业板权重拉抬（+1.43%），但个股普跌（上涨仅45%）、成交额缩量至1.88万亿，显示这是存量资金在板块间的再平衡，而非增量资金大举进场。</p>
+<p><b>反弹性质判断：</b>属于「事件驱动（黄金新高）+ 超跌回流（算力硬件）」的混合型轮动，贵金属/有色方向的上涨有基本面支撑（金价新高），算力硬件更多是超跌资金博弈。<b>重势 vs 重消息：</b>贵金属/有色重"势"（金价趋势+资金流入，看龙头持续性）；算力硬件重"消息"（资金回流信号，看连续净流入）；指数整体偏"重趋势"（看量能与MA修复），不宜因单日权重拉抬过度乐观。</p>
+<p><b>反弹的失效条件：</b>①明日贵金属/有色龙头炸板/高开低走且金价回落；②两市成交额继续萎缩（&lt;1.7万亿）；③跌停家数继续增加（&gt;20家）且高位人气股补跌扩散；④上证再次跌破MA20（约3889）。若出现，则反弹一日游概率上升。<b>操作框架：</b>当前聚焦贵金属/有色主线（确定性避险）与算力硬件（资金回流验证），控制仓位在5成左右；若双主线退潮且指数无量、无新主线，则转入防守、观望等待二次企稳信号。</p>
+</div>
+</div>
+
+<!-- 章十三 -->
+<div class="section" id="sec13">
+<div class="section-title"><span class="num">十三</span>国家队护盘信号深度分析</div>
+<div class="prose">
+<p><b>信号强度评级：弱。</b>今日成交额缩量至1.88万亿、指数靠权重拉抬，但未见明显的宽基ETF放量承接信号。与8/19恐慌日（宽基ETF放量2-3倍）相比，今日护盘资金活跃度显著回落，属于「护盘后自然退坡」状态。创业板+1.43%领涨更多是「医药权重+算力权重」的自然上涨，而非国家队集中买入宽基ETF的护盘行为。</p>
+<p><b>背离分析：</b>今日呈现「指数涨（创业板+1.43%）但个股普跌（上涨仅45%）」的背离，这种背离若由护盘资金驱动，通常表现为权重蓝筹（上证50/沪深300）领涨；但今日上证50仅+0.07%、中证红利-0.10%收跌，说明护盘资金并未主导，指数上涨主要来自成长权重的自然表现。这也印证了今日行情的驱动力来自「黄金新高+资金再平衡」的市场自发逻辑，而非国家队护盘。</p>
+<p><b>综合判断：</b>护盘信号弱，国家队并非今日主角，市场已回归产业/商品逻辑定价。指数层面短期或回到市场自发供需定价，护盘资金兑现或削弱后续指数的抗跌托底，但未破坏贵金属/有色主线行情（证据中）。</p>
+</div>
+</div>
+
+<!-- 章十四 -->
+<div class="section" id="sec14">
+<div class="section-title"><span class="num">十四</span>外资机构视角</div>
+<div class="prose">
+<p>今日外资视角的边际变化是<b>离岸人民币升值至6.7178</b>（8/19的6.7310→8/21的6.7178），人民币走强缓解外资流出压力、利好人民币资产估值，为创业板成长权重（+1.43%）提供了估值支撑。从持仓数据看，截至8/20午间，已披露半年报的A股公司中约233家前十大流通股东含QFII、涉及28家外资机构、合计持有A股市值约1643.3亿元，二季度QFII重点加仓材料、消费、汽车、电气设备——其中「材料」方向与今日贵金属/有色主线（有色资源属材料大类）存在潜在共振，值得关注。</p>
+<p>从机构观点看，渣打、高盛、大摩、瑞银等外资机构近期集体看好中国资产下半年表现（估值折让+AI主线+产业升级），叠加人民币升值与QFII持仓数据，外资对中国资产的配置价值正在重新审视。不过，今日盘面外资主导的特征并不明显（北向资金无显著异动），A股行情主要由国内/商品逻辑（黄金新高）驱动。综合判断：外资视角下，人民币升值+QFII加仓材料/汽车+机构集体看好，构成中期配置的温和支撑，但短期对盘面的边际影响有限，需跟踪北向资金流向与人民币汇率持续性（当前USDCNH约6.72）。</p>
+</div>
+</div>
+
+<!-- 章十五 -->
+<div class="section" id="sec15">
+<div class="section-title"><span class="num">十五</span>仓位管理建议</div>
+<div class="section-sub">基于小资金适配原则（约$2000-3000规模）+ 10%止盈纪律</div>
+<ul class="strategy-list">
+<li><span class="n">1.</span>当前状态为「反弹延续·结构分化」，指数仓位控制在<b>5成左右</b>，聚焦贵金属/有色（确定性避险）与算力硬件（资金回流验证），规避高位人气股补跌风险。</li>
+<li><span class="n">2.</span>主线配置优先做<b>龙头与容量中军</b>（贵金属龙头湖南白银/盛达资源、算力硬件星网锐捷/通鼎互联），小资金不宜过度分散，单主线集中1-2只。</li>
+<li><span class="n">3.</span>入场节奏：贵金属/有色以「金价不回落+龙头不炸板」为参与条件；算力硬件以「资金连续净流入」为参与条件；若已大涨追高则等回调或换低位补涨（有色资源全链）。</li>
+<li><span class="n">4.</span>止盈纪律：严格执行<b>10%止盈</b>，达到目标即减仓至轻仓、落袋为安；情愿不亏，不恋战高位。</li>
+<li><span class="n">5.</span>止损纪律：贵金属/有色龙头若次日炸板/跌破5日线止损；上证跌破MA20（约3889）减仓防御；高位人气股（一鸣食品等）坚决回避。</li>
+</ul>
+</div>
+
+<!-- 章十六 -->
+<div class="section" id="sec16">
+<div class="section-title"><span class="num">十六</span>结论式总结</div>
+<div class="prose">
+<p>今天这根阳线，是<b>黄金砸出来的</b>。隔夜国际金价一口气冲到4638美元，创了阶段新高，A股有色资源直接炸锅——贵金属涨4.64%、白银涨4.57%、铅锌涨4.13%，湖南白银、盛达资源直接涨停。这不是普通反弹，是「避险+顺周期」的真金白银行情，资金连续多日往里冲，贵金属20日累计干了33%，是当前最硬的一条主线。</p>
+<p>但盘面有个刺眼的细节：<b>指数涨得热闹，个股跌得冷清</b>。创业板指涨了1.43%，可全市场上涨家数只有45%，2505家涨、2862家跌，涨停58家、跌停15家，成交还缩到1.88万亿。说白了，今天不是普涨，是钱从医药高位股、人气股里撤出来，一部分躲进黄金避险，一部分回流算力硬件（通信设备净流入8.89亿）——存量资金在换赛道，不是增量进场。一鸣食品、红四方这些高位人气股批量跌停，就是撤资的脚印。</p>
+<p>医药昨天还是主角，今天就成了配角。<b>肿瘤疫苗还在涨（康希诺20CM），但涨停潮明显收敛了</b>，跟风股开始掉队。这是主线从「全面进攻」转向「龙头分化」的信号——医药的赚钱效应在衰减，资金开始寻找新方向。接下来看两点：一是金价能不能续创新高，贵金属/有色这条主线能不能扛住；二是算力硬件这波资金回流是「一日游」还是「真回流」，连续两天净流入才算数。</p>
+<p>一句话：<b>主线锁黄金，算力看回流，医药防分化，人气股别碰</b>。明天盯紧金价和贵金属龙头（湖南白银/盛达资源）能不能续封，通信设备资金能不能连续流入，成交额能不能放量。缩量市里赚的是结构的钱，不是趋势的钱，控制好仓位，落袋为安，不追高，等放量确认。</p>
+</div>
+</div>
+
+<div class="footer">
+<p>A股全景复盘报告 | 2026年8月21日 | 基于 State-Trigger-Flow 框架 + TradingAgents 多空辩论</p>
+<p>数据时点：2026-08-21 收盘 · 指数/板块/资金/涨跌分布为收盘快照；隔夜海外信息据公开财媒报道归因</p>
+<p>以上分析基于公开数据，不构成投资建议</p>
+</div>
+
+</div>
+
+<script>
+// 章一：三大指数近6日收盘
+var dates=['8/14','8/17','8/18','8/19','8/20','8/21'];
+var sh=[3927.18,3982.65,3990.30,3894.42,3903.72,3905.20];
+var cyb=[3626.30,3740.16,3705.56,3473.49,3495.59,3545.58];
+var c1=echarts.init(document.getElementById('chart_kline'));
+c1.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['上证指数','创业板指(右轴)']},
+  grid:{left:'8%',right:'8%',top:'10%',containLabel:true},
+  xAxis:{type:'category',data:dates},
+  yAxis:[{type:'value',name:'上证'},{type:'value',name:'创业板',splitLine:{show:false}}],
+  series:[
+    {name:'上证指数',type:'line',data:sh,itemStyle:{color:'#1e40af'},smooth:true},
+    {name:'创业板指(右轴)',type:'line',yAxisIndex:1,data:cyb,itemStyle:{color:'#dc2626'},smooth:true}
+  ]
+});
+
+// 章二：黄金传导
+var c2=echarts.init(document.getElementById('chart_macro'));
+c2.setOption({
+  tooltip:{limit:0},
+  series:[{
+    type:'gauge',min:0,max:5000,radius:'90%',
+    axisLine:{lineStyle:{color:[[0.7,'#16a34a'],[0.93,'#f59e0b'],[1,'#dc2626']],width:14}},
+    data:[{value:4638,detail:{valueAnimation:true,formatter:'4638'}}],
+    title:{offsetCenter:[0,'-35%'],fontSize:12},
+    detail:{fontSize:18,offsetCenter:[0,'55%']},
+    axisLabel:{distance:20,formatter:function(v){return v}}
+  }]
+});
+
+// 章三：板块
+var c3=echarts.init(document.getElementById('chart_sector'));
+c3.setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  legend:{data:['涨跌幅%','净流入(亿)']},
+  grid:{left:'8%',right:'8%',top:'15%',containLabel:true},
+  xAxis:{type:'category',data:['贵金属','白银','铅锌','通信设备','元件','锂矿','锑'],axisLabel:{rotate:25}},
+  yAxis:[{type:'value',name:'涨幅%'},{type:'value',name:'净流入亿',splitLine:{show:false}}],
+  series:[
+    {name:'涨跌幅%',type:'bar',data:[4.64,4.57,4.13,2.98,2.80,3.77,3.63],itemStyle:{color:'#16a34a'}},
+    {name:'净流入(亿)',type:'line',yAxisIndex:1,data:[0,0,0,8.89,4.68,0,0],itemStyle:{color:'#1e40af'},smooth:true}
+  ]
+});
+
+window.addEventListener('resize',function(){c1.resize();c2.resize();c3.resize();});
+</script>
+</body>
+</html>
