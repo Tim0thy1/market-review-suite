@@ -6,16 +6,16 @@
 <title>美股复盘报告 | 2026年8月20日（周四）</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
-:root{--bg0:#0a0e17;--bg1:#111827;--bg2:#1a2035;--bg3:#1e2842;--bd:#2a3550;--t0:#e2e8f0;--t1:#94a3b8;--t2:#64748b;--red:#ef4444;--grn:#22c55e;--blu:#3b82f6;--blu2:#60a5fa;--ylw:#f59e0b;--dng:#dc2626;--gld:#eab308}
+:root{--bg0:#f7f8fc;--bg1:#ffffff;--bg2:#f1f5f9;--bg3:#eef2ff;--bd:#e2e8f0;--t0:#1a2740;--t1:#475569;--t2:#64748b;--red:#dc2626;--grn:#16a34a;--blu:#1e40af;--blu2:#3b82f6;--ylw:#f59e0b;--dng:#dc2626;--gld:#d97706}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg0);color:var(--t0);font-family:'Segoe UI','Microsoft YaHei',sans-serif;line-height:1.7;font-size:15px}
 .ctn{max-width:1400px;margin:0 auto;padding:20px}
-.hdr{background:linear-gradient(135deg,#1a2035,#0d1321);border:1px solid var(--bd);border-radius:12px;padding:40px;margin-bottom:30px;position:relative;overflow:hidden}
+.hdr{background:linear-gradient(135deg,#ffffff,#eef2ff);border:1px solid var(--bd);border-radius:12px;padding:40px;margin-bottom:30px;position:relative;overflow:hidden}
 .hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--dng),var(--ylw),var(--grn))}
 .hdr h1{font-size:32px;margin-bottom:10px;font-weight:700}
 .hdr .sub{color:var(--t1);font-size:16px;margin-bottom:20px}
 .badge{display:inline-block;background:var(--dng);color:#fff;padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-right:10px}
-.tag2{display:inline-block;background:rgba(34,197,94,.15);border:1px solid var(--grn);color:var(--grn);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600}
+.tag2{display:inline-block;background:rgba(22,163,74,.15);border:1px solid var(--grn);color:var(--grn);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
 .card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:16px 20px;text-align:center}
 .card .lb{font-size:12px;color:var(--t2);margin-bottom:6px;text-transform:uppercase}
@@ -34,39 +34,42 @@ body{background:var(--bg0);color:var(--t0);font-family:'Segoe UI','Microsoft YaH
 .chart-sm{height:300px}.chart-lg{height:500px}
 .ct{font-size:16px;font-weight:600;margin-bottom:10px;color:var(--blu2)}
 .bb{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0}
-.bp{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:20px}
-.kp{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:20px}
+.bp{background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.3);border-radius:10px;padding:20px}
+.kp{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:10px;padding:20px}
 .bp h4{color:var(--grn);margin-bottom:12px;font-size:16px}.kp h4{color:var(--red);margin-bottom:12px;font-size:16px}
-.bp ul,.kp ul{list-style:none;padding-left:0}.bp li,.kp li{padding:6px 0;font-size:14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.bp ul,.kp ul{list-style:none;padding-left:0}.bp li,.kp li{padding:6px 0;font-size:14px;border-bottom:1px solid rgba(0,0,0,.05)}
 .bp li::before{content:"+ ";color:var(--grn);font-weight:bold}.kp li::before{content:"- ";color:var(--red);font-weight:bold}
 .tl{position:relative;padding-left:30px;margin:16px 0}
 .tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--bd)}
 .ti{position:relative;margin-bottom:16px}.ti::before{content:'';position:absolute;left:-25px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--blu);border:2px solid var(--bg1)}
 .tt{font-size:12px;color:var(--blu2);font-weight:600}.tcc{font-size:14px;color:var(--t0);margin-top:2px}
 .tg{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;margin-right:4px}
-.tg-r{background:rgba(239,68,68,.15);color:var(--red)}.tg-g{background:rgba(34,197,94,.15);color:var(--grn)}.tg-n{background:rgba(59,130,246,.15);color:var(--blu2)}.tg-w{background:rgba(245,158,11,.15);color:var(--ylw)}
+.tg-r{background:rgba(220,38,38,.15);color:var(--red)}.tg-g{background:rgba(22,163,74,.15);color:var(--grn)}.tg-n{background:rgba(30,64,175,.15);color:var(--blu2)}.tg-w{background:rgba(245,158,11,.15);color:var(--ylw)}
 .st{font-size:16px;font-weight:600;color:var(--blu2);margin:20px 0 10px;padding-left:12px;border-left:3px solid var(--blu)}
-.hb{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:16px;margin:12px 0;font-size:14px}
+.hb{background:rgba(30,64,175,.06);border:1px solid rgba(30,64,175,.18);border-radius:8px;padding:16px;margin:12px 0;font-size:14px}
 .wb{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:16px;margin:12px 0;font-size:14px}
 .db{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:8px;padding:16px;margin:12px 0;font-size:14px}
 .ftr{text-align:center;color:var(--t2);font-size:12px;padding:30px;border-top:1px solid var(--bd);margin-top:30px}
-.gcard{background:rgba(96,165,250,.06);border:1px solid var(--blu);border-radius:12px;padding:20px;margin:16px 0}
+.gcard{background:rgba(59,130,246,.06);border:1px solid var(--blu);border-radius:12px;padding:20px;margin:16px 0}
 .gcard .gtitle{font-size:18px;font-weight:700;color:var(--blu2);margin-bottom:12px}
 .gcard p{margin:8px 0;font-size:14px}
 .legend-ok{color:var(--grn);font-weight:700}.legend-warn{color:var(--ylw);font-weight:700}.legend-bad{color:var(--red);font-weight:700}
 @media(max-width:768px){.cards{grid-template-columns:repeat(2,1fr)}.bb{grid-template-columns:1fr}}
-.nav{position:fixed;top:0;left:0;bottom:0;width:0;overflow:hidden;background:var(--bg2);border-right:1px solid var(--bd);z-index:100;transition:width .25s ease;padding-top:60px}
-.nav:hover{width:240px;overflow-y:auto}
-.nav a{display:block;color:var(--t1);text-decoration:none;padding:8px 20px;font-size:13px;border-left:3px solid transparent}
-.nav a:hover{background:var(--bg3);color:var(--t0)}
-.nav-tab{position:fixed;top:12px;left:12px;z-index:101;background:var(--bg2);border:1px solid var(--bd);color:var(--t1);padding:6px 12px;border-radius:6px;font-size:12px;cursor:default}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:#1e3a5f}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:#1e3a5f;padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#f1f5f9;color:#1e40af}
 </style>
 </head>
 <body>
-<div class="nav-tab">☰ 章节导航</div>
-<div class="nav" id="sidenav">
-<nav>
-<a href="#ch0">0. 市场底层状态</a><a href="#ch1">1. 多时间维度全景</a><a href="#ch2">2. 宏观锚点</a><a href="#ch3">3. 主线与资金流</a><a href="#ch4">4. 暗线与伏击点</a><a href="#ch45">4.5 期权情绪与期权墙</a><a href="#ch46">4.6 信用利差</a><a href="#ch5">5. 盘面成因拆解</a><a href="#ch6">6. 叙事映射</a><a href="#ch7">7. 多空辩论</a><a href="#ch8">8. 24小时关键信息</a><a href="#ch9">9. 状态更新库</a><a href="#ch10">10. 前瞻与风险</a><a href="#ch11">11. 交易标的建议</a><a href="#ch12">12. 科技AI扫描</a><a href="#ch13">13. 仓位管理</a><a href="#ch14">14. 结论</a>
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#ch0">0. 市场底层状态</a><a href="#ch1">1. 多时间维度全景</a><a href="#ch2">2. 宏观锚点</a><a href="#ch3">3. 主线与资金流</a><a href="#ch4">4. 暗线与伏击点</a><a href="#ch45">4.5 期权情绪与期权墙</a><a href="#ch46">4.6 信用利差</a><a href="#ch5">5. 盘面成因拆解</a><a href="#ch6">6. 叙事映射</a><a href="#ch7">7. 多空辩论</a><a href="#ch8">8. 24小时关键信息</a><a href="#ch85">8.5 重磅深度解读</a><a href="#ch9">9. 状态更新库</a><a href="#ch10">10. 前瞻与风险</a><a href="#ch11">11. 交易标的建议</a><a href="#ch12">12. 科技AI扫描</a><a href="#ch13">13. 仓位管理</a><a href="#ch14">14. 结论</a>
 </nav>
 </div>
 <div class="ctn">
@@ -332,6 +335,79 @@ body{background:var(--bg0);color:var(--t0);font-family:'Segoe UI','Microsoft YaH
 <div class="db"><strong>潜在的"预期差"：</strong>①SpaceX全用英伟达GPU+特斯拉获美光配额是重磅产业催化，但8/20 NVDA/MU/AAPL仅温和反应（NVDA-0.33%、MU+3.97%），若大盘企稳，AI算力/存储链的产业确定性可能被重新定价（当前市场因收益率压制而忽视）→这是最值得跟踪的反向机会；②信用利差收窄+美元大跌（98.77）显示"美债风险"担忧边际缓解，若后续国债供给/油价不失控，风险偏好可能回升；③"大空头"伯里警示英伟达竞争，与马斯克独家锁定英伟达GPU形成观点对立，NVDA多空分歧在放大（期权Put IV偏高）；④高盛"25000纳指强支撑"与8/20收盘26067（距支撑-4%）构成下方安全垫参考。</div>
 </div>
 
+<!-- 章8.5 重磅新闻深度解读 -->
+<div class="chp" id="ch85">
+<div class="cht"><span class="n">8.5</span>重磅新闻深度解读与发酵推演</div>
+<div class="hb">本节对当日两大重磅新闻做深度延伸：①宏观政策层的<strong>"变种QT"（贝森特看跌期权）</strong>——财政部回购救长债的边界、与联储的政策张力、以及未来数周如何发酵；②产业层的<strong>mRNA癌症疫苗</strong>——Moderna为何暴涨177%、平台发展进程、市场定价逻辑与后续关注点。重点回答"这件事几天内会怎么影响市场"。</div>
+
+<div class="st">8.5.1 变种QT：贝森特看跌期权与"政策托底"的边界</div>
+<div class="wb"><strong>事件回顾：</strong>8/19财政部宣布将10-30年名义国债的单次回购规模从20亿美元<strong>至少翻倍至40亿美元</strong>（9/9生效、持续至11/4），长端收益率应声回落、市场反弹一日；但8/20收益率<strong>全面回升至公告前水平</strong>（10Y 4.708%、30Y 5.25%）。8/20贝森特再度发声：财政部"拥有强大的工具箱"、长债收益率"未反映基本面"、30Y流动性尤其匮乏、未来回购规模"视条件而定"（据新浪财经、华尔街见闻）。</div>
+<div class="st">为什么市场只当"短期权宜之计"</div>
+<ul>
+<li><strong>体量杯水车薪：</strong>40亿美元/笔相对32万亿美元美债市场是"信号大于实质"，不改变长端供给与赤字基本面，无法持续压制收益率（据fortune.com、路透）。</li>
+<li><strong>性质是"流动性支持"而非"收益率控制"：</strong>回购是给市场提供流动性、平滑拍卖，并非联储式的收益率曲线控制，市场清楚两者边界。</li>
+<li><strong>野村McElligott点破本质：</strong>"回购细节本身无关紧要，重要的是信号——失去长端是不可接受的，货币与财政当局正转向更积极的姿态"（据heisenbergreport.com）。市场真正在定价的不是回购本身，而是<strong>"财政端开始下场救市"</strong>这一姿态转变。</li>
+<li><strong>政策信号混乱：</strong>财政部压利率 vs 联储保留加息选项（7月FOMC纪要9-3投票、多名官员倾向加息），贝森特干预债市令联储主席沃什"跟着数据走"的表态蒙上阴影（据华尔街见闻）。</li>
+</ul>
+<div class="st">政策张力：财政部 vs 联储</div>
+<div class="hb"><strong>核心矛盾：</strong>贝森特用"财政端回购"对冲"货币端紧缩"，本质是<strong>财政宽松 vs 货币紧缩的拉锯</strong>。联储多名官员（Hammack/Kashkari/Logan）倾向加息、认为AI推升通胀；而贝森特认为长端收益率"未反映基本面"、30Y流动性失真。若联储加息而财政部继续托底长端，将出现"短端利率上行+长端被压制"的<strong>曲线走平</strong>格局，压制银行净息差与金融股、并扭曲收益率曲线的信号功能。8/20 Daly鸽派表态（"不排除年底降息"）暂时缓解鹰派恐慌，但CME 9月加息概率仍达36.2%，政策方向未定。</div>
+<div class="st">贝森特的深层逻辑：押注AI供给扩张</div>
+<div class="hb"><strong>贝森特的操作本质是"时间换空间"：</strong>押注AI资本开支（英伟达、数据中心、算力）能尽快转化为<strong>生产率提升与供给扩张</strong>，从而在联储被迫加息之前实现通胀回落——届时长端利率自然下行，回购托底也就"功成身退"。这一逻辑成立的前提是：AI供给扩张速度 &gt; 需求/通胀反弹速度。若AI生产率兑现（类似90年代互联网），则"贝森特看跌期权"有效；若AI投入产出比不及预期、通胀粘性（油价+关税）占上风，则回购托底只是"把问题后置"，最终以更剧烈的调整收场。<strong>这个不确定性是当前宏观最大的分歧点。</strong></div>
+<div class="st">几天内发酵推演（未来2-4周）</div>
+<table class="dt"><tr><th>时间节点</th><th>事件</th><th>对市场的影响</th></tr>
+<tr><td>8/24</td><td>特朗普对伊新闻发布会</td><td>油价是最大变量：若制裁加码落地，油价续涨→通胀预期升温→长端收益率再上→成长股承压</td></tr>
+<tr><td>8月底</td><td>7月PCE通胀数据</td><td>决定联储9月FOMC方向：PCE若超预期，9月加息概率上升，"变种QT"托底压力加大</td></tr>
+<tr><td>9/9</td><td>回购新规（40亿/笔）生效</td><td>观察9月长债拍卖：若拍卖需求疲弱，回购托底效果存疑，收益率或再冲高</td></tr>
+<tr><td>9月中</td><td>9月FOMC</td><td>联储若加息而财政部继续托底→曲线走平交易；若按兵不动→"贝森特看跌期权"短期有效</td></tr>
+<tr><td>11/4</td><td>回购窗口结束 + 中期选举临近</td><td>回购退场+政治不确定性叠加，11月是政策真空与变盘窗口</td></tr>
+</table>
+<div class="st">对产业链的影响：谁受益、谁承压</div>
+<table class="dt"><tr><th>产业链环节</th><th>影响方向</th><th>传导逻辑</th></tr>
+<tr><td>银行/金融</td><td class="r">承压</td><td>若联储加息+财政部托底长端→曲线走平→净息差收窄，银行盈利预期下修（8/20 XLF -0.92%）</td></tr>
+<tr><td>美债交易商/做市商</td><td class="g">受益</td><td>回购提供流动性、平滑拍卖，交易商库存压力缓解，波动率下降利好做市业务</td></tr>
+<tr><td>黄金/美元</td><td class="g">受益</td><td>美元指数跌破98.77创新低+"变种QT"被解读为财政货币化苗头→黄金避险+抗通胀逻辑强化（8/20 GDX金矿+2.59%）</td></tr>
+<tr><td>成长股/AI硬件（久期资产）</td><td class="w">双向</td><td>长端利率是核心变量：若回购有效压低10Y→软件SaaS（DDOG/CRM）、生物科技等久期资产反弹；若利率反弹→估值再承压</td></tr>
+<tr><td>保险/养老金</td><td class="r">承压</td><td>长端利率下行损害长期负债匹配收益，30Y若被持续压制，保险资金配置收益下降</td></tr>
+<tr><td>房地产/REITs</td><td class="g">受益</td><td>长端利率下行降低融资成本，REITs股息率相对吸引力上升（8/20 XLRE +0.20%逆势翻红）</td></tr>
+</table>
+<div class="st">对股市的影响走势：未来1-2周路径推演</div>
+<div class="hb"><strong>核心变量是10Y收益率与纳指26000防线。</strong>情景A（回购有效、10Y回落至4.5%下方）：成长股估值压力缓解，纳指修复反弹、久期资产（软件/生物科技）领涨，对应"贝森特看跌期权"短期兑现。情景B（10Y高位震荡4.6-4.8%）：市场进入"利率压制+产业分化"的震荡格局，资金收缩至供给刚性赛道（存储/光通信/能源），指数区间波动。情景C（10Y突破5%、拍卖需求疲弱）：政策托底失效，成长股估值重压，纳指下探高盛指出的25000支撑（距8/20收盘-4%），市场自行寻底。<strong>当前概率评估：情景B（50%）&gt; 情景A（30%）&gt; 情景C（20%）</strong>——回购"信号大于实质"已被市场识破，但联储9月加息也非基准情形，高位震荡消化是最大概率路径。</div>
+<div class="db"><strong>反证条件：</strong>若"变种QT只是权宜之计"判断错误，应看到：①长债拍卖需求持续强劲、10Y稳定回落到4.5%下方；②联储9月明确转鸽（降息预期回升）；③油价回落（对伊制裁未落地）。反之若10Y突破4.8-5.0%、拍卖需求疲弱，则"政策托底失效→市场自行寻底"的剧本兑现。</div>
+
+<div class="st">8.5.2 mRNA癌症疫苗：从"新冠平台"到"肿瘤新纪元"</div>
+<div class="wb"><strong>事件回顾：</strong>8/19 Moderna与默沙东联合宣布，个性化mRNA癌症疫苗intismeran autogene联合Keytruda（K药）用于<strong>完全切除的IIB-IV期黑色素瘤辅助治疗</strong>的3期INTerpath-001试验达到主要终点——在RFS（无复发生存期）与DMFS（远处转移无生存期）上均较Keytruda单药<strong>统计学显著且临床意义明确</strong>，成为<strong>首个也是唯一一个</strong>在该适应症上证明联合方案获益的mRNA癌症疫苗（据默沙东官方公告）。当日Moderna暴涨176.97%至174.38美元、市值单日增加约300-445亿美元、逼近700亿美元，默沙东跟涨超10%（据新浪财经、极目新闻）。</div>
+<div class="st">为什么暴涨177%：三重逻辑共振</div>
+<ul>
+<li><strong>平台验证（最核心）：</strong>mRNA技术首次在<strong>癌症治疗</strong>领域跑通三期，证明mRNA平台从"新冠疫苗"到"个性化肿瘤疫苗"可复制、可迁移——市场重估的不只是这一款药，而是<strong>整个mRNA平台的估值锚</strong>。</li>
+<li><strong>市值基数低、弹性大：</strong>Moderna因新冠业务萎缩此前市值仅约250亿美元，市场对其mRNA平台价值长期打折，三期成功瞬间修复预期，低基数放大涨幅。</li>
+<li><strong>想象空间打开：</strong>个性化新抗原疫苗可拓展至肺癌、肾癌、胰腺癌、头颈癌等多个癌种（已在研究中），黑色素瘤只是"第一块拼图"（据羊城晚报、极目新闻）。</li>
+</ul>
+<div class="st">发展进程：mRNA平台的"三级跳"</div>
+<div class="hb"><strong>第一跳（2020-2021）新冠疫苗：</strong>mRNA平台首次大规模商业化验证，Moderna市值一度冲上2000亿美元。<strong>第二跳（2022-2025）平台沉寂：</strong>新冠需求萎缩、管线青黄不接，市场质疑mRNA平台"只有新冠一招"，市值跌至250亿美元附近。<strong>第三跳（2026）个性化癌症疫苗：</strong>intismeran基于患者肿瘤基因测序、定制编码新抗原的mRNA，训练免疫系统精准识别并攻击癌细胞——三期成功意味着mRNA平台从"预防传染病"跨入"治疗肿瘤"的新纪元，平台估值逻辑彻底重构。</div>
+<div class="st">为什么市场如此定价</div>
+<div class="hb"><strong>定价逻辑是"平台期权"而非"单品销售"：</strong>①分析师预计仅黑色素瘤适应症上市后年销售额就可能超过60亿美元（据肿瘤科樊圣主任）；②Keytruda（全球"药王"）+个性化疫苗的组合拳，默沙东的渠道与商业化能力背书；③杰富瑞将Moderna目标价从60美元上调至150美元（据慧博投研）；④更关键的是，市场在给"mRNA肿瘤平台"整体定价——若后续癌种数据延续，估值仍有重估空间。但需注意：<strong>当前股价已计入较高预期，若完整数据或申报节奏不及预期，回撤风险同样大。</strong></div>
+<div class="st">后续关心什么（未来6-24个月）</div>
+<table class="dt"><tr><th>节点</th><th>关注点</th><th>信号意义</th></tr>
+<tr><td>近期</td><td>完整三期数据在即将召开的国际医学会议上公布</td><td>数据细节（HR值、亚组、安全性）决定预期能否维持</td></tr>
+<tr><td>6个月-2年</td><td>与FDA等监管机构沟通申报（审批通常6个月-2年）</td><td>申报节奏决定商业化时间表</td></tr>
+<tr><td>2027-2029</td><td>首批商业化批准（Moderna CEO称最快2027年）</td><td>上市销售兑现平台估值</td></tr>
+<tr><td>持续</td><td>肺癌/肾癌/胰腺癌等适应症拓展进度</td><td>决定平台价值上限</td></tr>
+<tr><td>竞争</td><td>BioNTech等mRNA癌症疫苗竞争者进展</td><td>先发优势与市场格局</td></tr>
+</table>
+<div class="st">对产业链的影响：从"一款药"到"一条链"</div>
+<table class="dt"><tr><th>产业链环节</th><th>影响方向</th><th>传导逻辑</th></tr>
+<tr><td>mRNA平台公司（Moderna等）</td><td class="g">核心受益</td><td>平台估值重构，Moderna市值逼近700亿；BioNTech等mRNA平台公司估值锚同步上移</td></tr>
+<tr><td>肿瘤免疫巨头（默沙东等）</td><td class="g">受益</td><td>Keytruda+个性化疫苗组合拳，延长"药王"生命周期、打开辅助治疗新市场（MRK跟涨超10%）</td></tr>
+<tr><td>疫苗CDMO/生产外包</td><td class="g">受益</td><td>个性化疫苗需定制化生产，Lonza、Catalent等CDMO承接产能；A股映射药明康德/凯莱英</td></tr>
+<tr><td>基因测序/新抗原发现</td><td class="g">受益</td><td>个性化疫苗依赖肿瘤全外显子测序发现新抗原，Illumina（美股）、华大智造（A股）等测序龙头受益</td></tr>
+<tr><td>mRNA原料/递送（LNP/酶）</td><td class="g">受益</td><td>个性化疫苗放量带动LNP递送与酶原料需求，A股映射近岸蛋白/键凯科技</td></tr>
+<tr><td>传统肿瘤药（化疗/小分子）</td><td class="r">长期承压</td><td>若个性化疫苗+免疫组合疗效持续验证，部分辅助治疗场景或受替代，但短期影响有限</td></tr>
+</table>
+<div class="st">对股市的影响走势：医药板块路径推演</div>
+<div class="hb"><strong>美股生物科技（IBB/XBI）：</strong>8/20已现获利了结（IBB -2.83%、XBI -3.64%），短期事件驱动行情进入"数据真空期"——除非完整三期数据公布或申报落地，否则板块高位震荡消化涨幅，龙头（Moderna）在150-180美元区间波动。中期看，若2027年获批预期强化，生物科技ETF仍有重估空间。<strong>对A股/港股映射：</strong>8/20 A股医药产业链已暴涨（生物制品+7.85%、CXO、基因测序），短期同样面临"高开分化"风险；但A股医药有"海外映射+国产创新药业绩+医保政策"三重支撑，若美股生物科技不深调，A股医药主线有望在回调后二次上攻。<strong>关键跟踪信号：</strong>①Moderna是否守住150美元（平台重估逻辑的锚）；②国际医学会议数据公布时点；③BioNTech等竞争对手进展——任一变化都可能引发医药板块二次定价。</div>
+<div class="db"><strong>几天内发酵推演：</strong>8/20医药板块已现获利了结（IBB -2.83%、XBI -3.64%），疫苗行情呈"一日游"特征——事件驱动行情在无新催化时难以连续上攻。但产业逻辑未变：①若后续国际医学会议公布完整数据、或申报进展落地，Moderna可能二次催化；②默沙东（MRK -2.11%）当日跟随大盘回调，若疫苗商业化预期强化，默沙东的"药王+疫苗"组合价值将重估；③对A股/港股映射：mRNA、创新药产业链（疫苗CDMO、新抗原测序）存在情绪传导，但需甄别"真受益"与"蹭概念"。<strong>反证条件：</strong>若Moderna在数据公布前持续回落至150美元下方，说明市场认为"利好已兑现、无增量"，则平台重估逻辑暂缓。</div>
+</div>
+
 <!-- 章九 -->
 <div class="chp" id="ch9">
 <div class="cht"><span class="n">9</span>市场状态更新库</div>
@@ -429,12 +505,12 @@ body{background:var(--bg0);color:var(--t0);font-family:'Segoe UI','Microsoft YaH
 </div>
 
 <div class="ftr">美股复盘报告 | 2026-08-20 | 数据来源：Sentinel_Daily_Pro (Moomoo+WeStock+CBOE期权链) + FRED信用利差(ICE BofA) + 联网公开信息 | 本报告不构成投资建议<br>
-章节导航在左上角 ☰ 悬停展开</div>
+章节导航在右上角 ☰ 点击展开/收起</div>
 </div>
 
 <script>
-var colors=['#22c55e','#ef4444','#3b82f6','#f59e0b','#60a5fa'];
-var axisStyle=function(color){return {axisLine:{lineStyle:{color:'#2a3550'}},axisLabel:{color:'#94a3b8'},splitLine:{lineStyle:{color:'#1a2035'}}}};
+var colors=['#16a34a','#dc2626','#1e40af','#f59e0b','#3b82f6'];
+var axisStyle=function(color){return {axisLine:{lineStyle:{color:'#cbd5e1'}},axisLabel:{color:'#64748b'},splitLine:{lineStyle:{color:'#e2e8f0'}}}};
 window.addEventListener('resize',function(){for(var k in charts)charts[k].resize()});
 var charts={};
 
@@ -442,9 +518,9 @@ var charts={};
 charts.c1=echarts.init(document.getElementById('c1'));
 charts.c1.setOption({
   backgroundColor:'transparent',
-  title:{text:'三大指数近6交易日走势',textStyle:{color:'#60a5fa',fontSize:14}},
+  title:{text:'三大指数近6交易日走势',textStyle:{color:'#1e40af',fontSize:14}},
   tooltip:{trigger:'axis'},
-  legend:{data:['标普500','纳指','道指'],textStyle:{color:'#94a3b8'},top:30},
+  legend:{data:['标普500','纳指','道指'],textStyle:{color:'#64748b'},top:30},
   grid:{left:60,right:20,top:60,bottom:30},
   xAxis:Object.assign({type:'category',data:['8/13','8/14','8/17','8/18','8/19','8/20']},axisStyle()),
   yAxis:Object.assign({type:'value',scale:true},axisStyle()),
@@ -459,14 +535,14 @@ charts.c1.setOption({
 charts.c3=echarts.init(document.getElementById('c3'));
 charts.c3.setOption({
   backgroundColor:'transparent',
-  title:{text:'行业ETF当日涨跌幅（8/20）',textStyle:{color:'#60a5fa',fontSize:14}},
+  title:{text:'行业ETF当日涨跌幅（8/20）',textStyle:{color:'#1e40af',fontSize:14}},
   tooltip:{},
   grid:{left:80,right:30,top:40,bottom:70},
-  xAxis:{type:'value',axisLabel:{color:'#94a3b8'},splitLine:{lineStyle:{color:'#1a2035'}}},
-  yAxis:{type:'category',inverse:true,data:['XBI生物','IBB生物','TQQQ纳指3x','XLV医疗','SOXS半3x','XLY可选','XLP必需','XLI工业','XLF金融','XLC通信','XLK科技','XLB材料','ARKK创新','XLRE地产','XLE能源','SMH半导体','GLD黄金','SOXX半','SOXL半3x','SQQQ纳3x','GDX金矿','USO原油'],axisLabel:{color:'#94a3b8'}},
+  xAxis:{type:'value',axisLabel:{color:'#64748b'},splitLine:{lineStyle:{color:'#e2e8f0'}}},
+  yAxis:{type:'category',inverse:true,data:['XBI生物','IBB生物','TQQQ纳指3x','XLV医疗','SOXS半3x','XLY可选','XLP必需','XLI工业','XLF金融','XLC通信','XLK科技','XLB材料','ARKK创新','XLRE地产','XLE能源','SMH半导体','GLD黄金','SOXX半','SOXL半3x','SQQQ纳3x','GDX金矿','USO原油'],axisLabel:{color:'#64748b'}},
   series:[{
     type:'bar',data:[-3.64,-2.83,-2.19,-1.87,-1.70,-1.61,-1.41,-1.20,-0.92,-0.57,-0.29,-0.19,-0.05,0.20,0.27,0.31,0.34,0.52,1.22,2.18,2.59,2.77],
-    label:{show:true,position:'right',color:'#e2e8f0'},
+    label:{show:true,position:'right',color:'#334155'},
     itemStyle:{color:function(p){return p.value>=0?colors[0]:colors[1]}}
   }]
 });
@@ -475,9 +551,9 @@ charts.c3.setOption({
 charts.c45=echarts.init(document.getElementById('c45'));
 charts.c45.setOption({
   backgroundColor:'transparent',
-  title:{text:'MAG7 现价 vs Zero Gamma vs 期权墙',textStyle:{color:'#60a5fa',fontSize:14}},
+  title:{text:'MAG7 现价 vs Zero Gamma vs 期权墙',textStyle:{color:'#1e40af',fontSize:14}},
   tooltip:{trigger:'axis'},
-  legend:{data:['现价','Zero Gamma','Call Wall','Put Wall'],textStyle:{color:'#94a3b8'},top:30},
+  legend:{data:['现价','Zero Gamma','Call Wall','Put Wall'],textStyle:{color:'#64748b'},top:30},
   grid:{left:80,right:30,top:60,bottom:40},
   xAxis:Object.assign({type:'category',data:['AAPL','MSFT','NVDA','AMZN','META','TSLA']},axisStyle()),
   yAxis:Object.assign({type:'value',scale:true},axisStyle()),
@@ -493,14 +569,14 @@ charts.c45.setOption({
 charts.c12=echarts.init(document.getElementById('c12'));
 charts.c12.setOption({
   backgroundColor:'transparent',
-  title:{text:'科技AI板块细分8/20涨跌幅（%）',textStyle:{color:'#60a5fa',fontSize:14}},
+  title:{text:'科技AI板块细分8/20涨跌幅（%）',textStyle:{color:'#1e40af',fontSize:14}},
   tooltip:{},
   grid:{left:90,right:30,top:40,bottom:50},
-  xAxis:{type:'value',axisLabel:{color:'#94a3b8'},splitLine:{lineStyle:{color:'#1a2035'}}},
-  yAxis:{type:'category',inverse:true,data:['MARA加密','RIOT加密','COIN加密','MRVL定制','MU存储','MSTR加密','NOW软件','LRCX设备','TSM晶圆','AMD逻辑','ARM设计','AVGO逻辑','NVDA芯片','AMAT设备','PLTR软件','CRM软件','DDOG云','DELL基建'],axisLabel:{color:'#94a3b8'}},
+  xAxis:{type:'value',axisLabel:{color:'#64748b'},splitLine:{lineStyle:{color:'#e2e8f0'}}},
+  yAxis:{type:'category',inverse:true,data:['MARA加密','RIOT加密','COIN加密','MRVL定制','MU存储','MSTR加密','NOW软件','LRCX设备','TSM晶圆','AMD逻辑','ARM设计','AVGO逻辑','NVDA芯片','AMAT设备','PLTR软件','CRM软件','DDOG云','DELL基建'],axisLabel:{color:'#64748b'}},
   series:[{
     type:'bar',data:[15.54,8.26,7.58,5.79,3.97,7.81,2.00,1.09,0.95,0.65,0.55,0.43,-0.33,0.01,-0.70,-0.32,-0.42,-0.63],
-    label:{show:true,position:'right',color:'#e2e8f0'},
+    label:{show:true,position:'right',color:'#334155'},
     itemStyle:{color:function(p){return p.value>=0?colors[0]:colors[1]}}
   }]
 });

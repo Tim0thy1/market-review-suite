@@ -69,9 +69,25 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .footer{text-align:center;padding:26px;color:var(--text2);font-size:12.5px;border-top:1px solid var(--border)}
 .tagline{background:var(--accent);color:#fff;border-radius:8px;padding:10px 16px;margin:14px 0;font-weight:700;font-size:14px}
 @media(max-width:768px){.index-cards{grid-template-columns:repeat(2,1fr)}}
+
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:#1e3a5f}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:#1e3a5f;padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#f1f5f9;color:#1e40af}
 </style>
 </head>
 <body>
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#sec0">零 市场底层状态</a><a href="#sec1">一 多时间维度全景</a><a href="#sec2">二 宏观锚点</a><a href="#sec3">三 主线与资金流</a><a href="#sec4">四 暗线与伏击点</a><a href="#sec5">五 盘面成因拆解</a><a href="#sec6">六 叙事映射</a><a href="#sec7">七 多空力量对比</a><a href="#sec8">八 24小时关键信息</a><a href="#sec85">8.5 重磅深度解读</a><a href="#sec9">九 状态更新库</a><a href="#sec10">十 前瞻与风险</a><a href="#sec11">十一 标的动态</a><a href="#sec12">十二 反弹定性</a><a href="#sec13">十三 国家队护盘</a><a href="#sec14">十四 外资机构视角</a><a href="#sec15">十五 仓位管理</a><a href="#sec16">十六 结论</a>
+</nav>
+</div>
+
 <div class="container">
 
 <div class="header">
@@ -86,7 +102,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章零 -->
-<div class="section">
+<div class="section" id="sec0">
 <div class="section-title"><span class="num">零</span>市场底层状态与仓位约束（State & Positioning）</div>
 <div class="section-sub">诊断当天市场底色：默认信念、仓位拥挤度、资金驱动力</div>
 <div class="prose">
@@ -97,7 +113,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章一 -->
-<div class="section">
+<div class="section" id="sec1">
 <div class="section-title"><span class="num">一</span>多时间维度全景 + 市场整体状态</div>
 <div class="section-sub">指数当日/5日/20日表现、量能、市场宽度</div>
 <div class="index-cards">
@@ -116,7 +132,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章二 -->
-<div class="section">
+<div class="section" id="sec2">
 <div class="section-title"><span class="num">二</span>宏观锚点与风险偏好</div>
 <div class="section-sub">汇率、利率、大宗、跨市场传导</div>
 <div class="chart-wrap"><div class="chart-label">隔夜全球宏观传导链</div><div id="chart_macro" class="chart-box small"></div></div>
@@ -127,7 +143,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章三 -->
-<div class="section">
+<div class="section" id="sec3">
 <div class="section-title"><span class="num">三</span>市场主线与资金流向</div>
 <div class="section-sub">行业轮动、资金去向、做空动能、叙事竞争</div>
 <h3 style="font-size:15px;color:var(--accent2);margin-bottom:10px">领涨主线：医药生物产业链全面爆发<span class="evidence ev-h">证据高</span></h3>
@@ -164,7 +180,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章四 -->
-<div class="section">
+<div class="section" id="sec4">
 <div class="section-title"><span class="num">四</span>暗线与多空伏击点</div>
 <div class="prose">
 <p><b>多头水面下的涟漪：</b>宽基ETF昨日的放量承接（创业板ETF放量2.45倍、科创50ETF 1.8倍）在今日得到了延续——创业板ETF（159915）今日成交额仍维持高位，且资金动向显示中证500/1000等中小盘ETF有净流入迹象，暗示低吸资金仍在。另外，<b>医疗服务/生物制品5日累计资金净流出但今日大幅净流入</b>，属于典型的"长期逻辑+短期放量"共振，是潜在的趋势起点而非一日游。</p>
@@ -174,7 +190,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章五 -->
-<div class="section">
+<div class="section" id="sec5">
 <div class="section-title"><span class="num">五</span>盘面成因拆解</div>
 <div class="section-sub">State→Trigger→Flow 时线还原</div>
 <p style="background:var(--accent);color:#fff;border-radius:8px;padding:10px 15px;margin-bottom:14px;font-size:14px"><b>总览：</b>State=昨日恐慌出清后的低位情绪 + AI硬件链偏弱；Trigger=隔夜Moderna/默沙东mRNA癌症疫苗III期成功、Moderna暴涨177%、美债收益率回落、美股回暖；Flow=医药产业链开盘即暴涨（20CM涨停潮）→ 资金从AI硬件切向医药 → 指数温和修复、成交额缩量、其他板块普涨跟风</p>
@@ -189,7 +205,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章六 -->
-<div class="section">
+<div class="section" id="sec6">
 <div class="section-title"><span class="num">六</span>叙事如何映射到不同资产</div>
 <div class="prose">
 <p><b>核心叙事「mRNA癌症疫苗突破」的差异化映射是今日最值得研究的对象。</b>同一利好在不同板块的定价差异明显：最直接映射的是mRNA技术路线的疫苗股（生物疫苗+7.50%、领涨百克生物/康希诺20CM），其次是承接全球研发订单的CXO（医疗服务+4.24%、康凯莱英/博腾股份受益，药明康德/凯莱英龙头），再是创新药出海逻辑（化学制药+2.55%、恒瑞/石药百亿BD兑现），以及mRNA递送与原料（键凯科技近岸蛋白LNP/酶原料龙头上游，近岸蛋白涨停）。而AI硬件链（半导体、存储）则不享受这个利好，反而因全球"科技硬件→生物科技"再平衡而偏弱。</p>
@@ -199,7 +215,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章七 -->
-<div class="section">
+<div class="section" id="sec7">
 <div class="section-title"><span class="num">七</span>多空力量对比（TradingAgents 辩论式）</div>
 
 <div class="debate">
@@ -234,7 +250,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章八 -->
-<div class="section">
+<div class="section" id="sec8">
 <div class="section-title"><span class="num">八</span>24小时关键信息筛选</div>
 <div class="data-table"><table>
 <thead><tr><th>信息</th><th>影响力</th><th>证据强度</th><th>类别</th></tr></thead>
@@ -249,15 +265,48 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 <div class="callout blue"><b>未被市场充分定价的信息：</b>①医药涨停潮虽强但指数涨幅有限、成交额缩量，说明"医药大涨"尚未传导为"全市场进攻"，扩散空间或存；②贵金属（山东黄金+8.59%、5日+11.52%）连续走强但市场关注度低，避险+顺周期逻辑或被低估；③AI硬件链（半导体/存储）隔夜大跌今日A股表现平淡，超跌后是否孕育修复机会值得跟踪。</div>
 </div>
 
+<!-- 章8.5 重磅新闻深度解读 -->
+<div class="section" id="sec85">
+<div class="section-title"><span class="num">8.5</span>重磅新闻深度解读与发酵推演</div>
+<div class="section-sub">对当日两大重磅新闻做深度延伸：产业链影响 + 股市影响走势推演</div>
+
+<h3 style="font-size:15px;color:var(--accent2);margin:14px 0 10px">8.5.1 mRNA癌症疫苗：从"海外里程碑"到"A股医药大反攻"</h3>
+<div class="callout blue"><b>事件回顾：</b>8/19 Moderna与默沙东宣布个性化mRNA癌症疫苗intismeran autogene联合Keytruda用于黑色素瘤辅助治疗的3期INTerpath-001达到主要终点（RFS+DMFS），Moderna暴涨177%至174.38美元、纳指生物科技指数+6.4%创六年最大涨幅。8/20 A股医药产业链全线爆发：生物制品+7.85%、生物疫苗+7.50%、细胞基因治疗+7.16%、基因测序+6.31%，20CM涨停潮（84家涨停集中于医药）。</div>
+<div class="prose">
+<p><b>为什么A股反应如此剧烈：</b>这是"海外里程碑+A股三重共振"的叠加定价。其一，全球生物医药估值中枢上移（mRNA肿瘤疫苗商业化前夜），A股医药作为同一产业链的镜像映射直接受益；其二，A股医药本身处于"超跌（8/19暴跌）+低估值+政策利好（医保、出海BD）"三重叠加，弹性被放大；其三，创业板/科创板20%涨跌幅机制放大了涨停潮的视觉冲击，资金沿「疫苗→CXO→创新药→基因测序」整条链抢筹。</p>
+</div>
+<div class="callout"><b>对产业链的影响（谁受益、谁承压）：</b><br>
+<b>直接映射（疫苗/mRNA技术路线）：</b>康希诺、百克生物、康泰生物——mRNA平台技术对标，弹性最大。<br>
+<b>承接订单（CXO）：</b>药明康德、凯莱英、博腾股份——全球mRNA疫苗/肿瘤疫苗研发生产外包。<br>
+<b>出海估值（创新药）：</b>恒瑞、石药、信达——出海BD兑现+全球医药估值重估。<br>
+<b>测序与递送（基因测序）：</b>华大智造、华大基因、优宁维——新抗原发现依赖全外显子测序。<br>
+<b>上游原料（LNP/酶）：</b>近岸蛋白、键凯科技——mRNA递送与原料国产化。<br>
+<b>避险主线（贵金属）：</b>山东黄金（+8.59%、5日+11.52%）——独立于医药的避险+顺周期逻辑。<br>
+<b>承压方向（AI硬件链）：</b>半导体/存储/光模块——全球"科技硬件→生物科技"再平衡，资金迁移流出。</div>
+<div class="callout blue"><b>对股市的影响走势（未来1-2周推演）：</b><br>
+<b>医药主线持续性：</b>三重支撑（海外映射+国产创新药业绩+医保政策）下，医药主线回调后二次上攻概率大，但首日涨停潮后需防高位分化。<br>
+<b>指数路径：</b>情景A（主线延续）——医药放量续涨、龙头不炸板，上证站稳3950（MA5）上方，攻击3970-3990缺口；情景B（高位分化）——医药高开低走、龙头炸板，指数缩量震荡于3900-3950；情景C（主线退潮）——医药退潮且无新主线接棒，上证跌破MA20（3887）二次探底。<b>当前概率：情景B（45%）&gt; 情景A（35%）&gt; 情景C（20%）</b>。<br>
+<b>关键跟踪信号：</b>①医药龙头（康希诺/优宁维/药明康德）是否维持封板；②两市成交额能否放大至2.3万亿上方；③美股生物科技（IBB/XBI）是否深调；④AI硬件链是否企稳（决定资金是否回流）。</div>
+<div class="callout"><b>反证条件：</b>若明日医药大幅高开低走、龙头炸板、成交额萎缩至2万亿以下，且无其他板块接力，则"医药主线确立"判断错误，今日仅为情绪脉冲、反弹高度存疑。</div>
+
+<h3 style="font-size:15px;color:var(--accent2);margin:14px 0 10px">8.5.2 美债回购（变种QT）的A股视角</h3>
+<div class="callout blue"><b>事件回顾：</b>8/19美国财政部宣布扩大长期国债回购（单次20亿→至少40亿美元/笔，9/9生效至11/4），30Y收益率从5.32%高位回落，美股终结三连跌、中概股走强——这是8/20 A股成长股估值压力缓解的宏观背景。但8/20美债收益率已反弹回公告前水平（10Y 4.708%），"信号大于实质"被市场识破。</div>
+<div class="prose">
+<p><b>对A股的影响：</b>短期看，美债收益率回落缓解全球成长股估值压力，直接利好A股成长风格（创业板+0.64%领涨）与外资风险偏好；但"变种QT"托底效果存疑（8/20美股已回吐反弹），对A股的利好是"脉冲式"而非"趋势式"。传导链：美债利率→人民币汇率（USDCNY约6.9）→北向资金→A股成长股估值。若美债利率持续回落，A股成长（医药+科技）双主线受益；若利率反弹，A股成长股承压、防御（贵金属/红利）占优。</p>
+</div>
+<div class="callout blue"><b>对股市的影响走势：</b>①若10Y回落至4.5%下方：A股成长股估值压力缓解，医药+AI科技有望共振，创业板修复空间打开；②若10Y高位震荡（4.6-4.8%）：A股维持"医药单极+指数震荡"格局，资金聚焦确定性主线；③若10Y突破5%：A股成长股估值承压，指数或回踩3900下方，防御（贵金属/红利）占优。<b>当前判断：A股短期由"国内产业逻辑（医药）"主导，美债利率是次要变量</b>——除非利率大幅失控，否则不影响医药主线，但影响成长股整体估值弹性。</div>
+<div class="callout"><b>反证条件：</b>若美债10Y突破5%、人民币贬值压力加大（USDCNY升破7.0），则A股成长股估值承压，"变种QT对A股利好"证伪，需转向防御配置。</div>
+</div>
+
 <!-- 章九 -->
-<div class="section">
+<div class="section" id="sec9">
 <div class="section-title"><span class="num">九</span>市场状态更新库</div>
 <div class="callout"><b>被钝化/证伪的旧叙事：「AI硬件链（半导体/存储/光通信）领涨」</b><br>昨日至今AI硬件链持续偏弱（隔夜希捷-7%/西数-6%、A股半导体/光模块未有效修复），前期"AI算力扩张"主导的硬件叙事暂时让位于资金迁移。确认条件：若明日相关板块延续弱势则阶段性退出主导；反证条件：若存储/光模块放量收复昨日失地则叙事修复。</div>
 <div class="callout blue"><b>正式接管的新定价锚：「mRNA肿瘤疫苗商业化 → 中国医药产业链价值重估」</b><br>市场正式交易"全球首个mRNA肿瘤疫苗三期成功"这一新逻辑：疫苗（mRNA技术）、CXO（承接订单）、创新药（出海估值）、基因测序/递送全链条获得新定价权，叠加国产创新药业绩拐点。确认条件：若医药主线持续放量上涨2-3日、龙头创新药/CXO创阶段新高则锚确立；反证条件：若医药明显退潮且无新主线接棒，则该叙事仅为一周级脉冲。</div>
 </div>
 
 <!-- 章十 -->
-<div class="section">
+<div class="section" id="sec10">
 <div class="section-title"><span class="num">十</span>前瞻观察与风险</div>
 <div class="prose">
 <p><b>主线延续情景：</b>若mRNA疫苗逻辑持续发酵、国产创新药业绩与出海BD继续兑现，医药（疫苗/CXO/创新药）有望成为中期主线，带动创业板等成长风格修复。关键证据：明日医药板块是否继续放量、龙头是否维持封板、成交额是否放大。属趋势性反弹成立的前提（证据中高）。</p>
@@ -268,7 +317,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章十一 -->
-<div class="section">
+<div class="section" id="sec11">
 <div class="section-title"><span class="num">十一</span>标的动态</div>
 <p style="color:var(--text2);font-size:13px;margin-bottom:12px">结合盘面与mRNA癌症疫苗主线，给出分层观察方向（不构成买卖建议）。重点追踪科技/AI之外本次新增的医药主线，AI硬件链亦纳入对比。</p>
 <div class="data-table"><table>
@@ -284,7 +333,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章十二 -->
-<div class="section">
+<div class="section" id="sec12">
 <div class="section-title"><span class="num">十二</span>反弹定性分析</div>
 <div class="prose">
 <p>今日的上涨需要定性其性质，因为它决定了后续参与思路。综合看，今日更接近<b>「海外催化驱动+超跌修复」的方向性反弹</b>，而非简单的情绪反弹：驱动引擎是有明确基本面支撑的mRNA癌症疫苗里程碑（非空穴来风），同时叠加昨日大跌后的超跌修复动能。</p>
@@ -294,7 +343,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章十三 -->
-<div class="section">
+<div class="section" id="sec13">
 <div class="section-title"><span class="num">十三</span>国家队护盘信号深度分析</div>
 <div class="prose">
 <p><b>信号强度评级：弱→中性。</b>与昨日恐慌日（宽基ETF放量2-3倍）相比，今日宽基ETF成交与资金活跃度显著回落，属于"护盘后自然退坡"状态，未见明显的新增承接。从资金监控看，沪深300ETF（510300）今日主力净流出约0.99亿、上证50ETF（510050）净流出约2.57亿、科创50ETF（588000）净流出显著，而中小盘方向中证500ETF（510500）净流入1.22亿、中证1000ETF（512100）工具资金相对积极，显示资金偏好由"权重护盘"转向"中小盘成长博弈"。</p>
@@ -304,7 +353,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章十四 -->
-<div class="section">
+<div class="section" id="sec14">
 <div class="section-title"><span class="num">十四</span>外资机构视角</div>
 <div class="prose">
 <p>隔夜Moderna暴涨177%与纳指生物科技指数+6.4%创六年最大涨幅，是全球机构对"mRNA肿瘤疫苗商业化前夜"的集体定价。这一全球生物医药重估的外溢，直接提振了外资对A股/港股创新药产业链的中期风险偏好——外资重仓的CXO（药明康德等）、创新药（信达生物、石药集团）等方向今日同步走强，与全球资金流向医疗健康板块的逻辑一致。</p>
@@ -313,7 +362,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章十五 -->
-<div class="section">
+<div class="section" id="sec15">
 <div class="section-title"><span class="num">十五</span>仓位管理建议</div>
 <div class="section-sub">基于小资金适配原则（约$2000-3000规模）+ 10%止盈纪律</div>
 <ul class="strategy-list">
@@ -326,7 +375,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <!-- 章十六 -->
-<div class="section">
+<div class="section" id="sec16">
 <div class="section-title"><span class="num">十六</span>结论式总结</div>
 <div class="prose">
 <p>今天这根阳线，靠的不是大盘自己，而是<b>隔夜一针"mRNA癌症疫苗"打出的涨停潮</b>。莫德纳和默沙东联手，把全球首款三期成功的个性化肿瘤疫苗亮出来了，莫德纳一夜暴涨177%，纳指生物科技指数涨6.4%，创了六年最大单日涨幅。一石激起千层浪，A股医药直接开启20CM涨停模式——生物疫苗、CXO、基因测序、创新药一条链全线爆红，优宁维、康希诺、华大智造、博腾股份这些直接躺上涨停。这不是简单超跌反抽，而是"全球医药估值重估+CXO接单+国产创新药出海+医保政策+低估值"五重共振的方向性行情。</p>
