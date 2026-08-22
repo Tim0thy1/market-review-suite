@@ -11,3 +11,11 @@
 !.gitignore
 !index.html
 !README.md
+
+# 保留采集脚本与配置（2026-08-22 起跟踪核心配置）
+!Sentinel_Daily_Pro.py
+!stock.list
+!stock.options.core.list
+!.trae/
+!.trae/skills/
+!.trae/skills/**

@@ -1,0 +1,34 @@
+# 期权链核心采集清单（2026-08-22 起）：MAG7 + AI科技巨头 + 股指ETF
+# 说明：全量自选(144只)期权链采集过慢且分析冗余，日常仅采集以下核心标的；
+#       如需恢复全量，运行时加参数 --watchlist stock.list 即可，本文件可随时删除。
+# ===== MAG7 =====
+AAPL
+MSFT
+NVDA
+AMZN
+META
+TSLA
+GOOG
+# ===== 半导体/AI硬件巨头 =====
+AMD
+AVGO
+TSM
+ASML
+MU
+ARM
+INTC
+QCOM
+MRVL
+KLAC
+# ===== AI软件/基础设施 =====
+ORCL
+PLTR
+CRM
+SMCI
+DELL
+ADBE
+NOW
+# ===== 股指ETF =====
+SPY
+QQQ
+DIA
