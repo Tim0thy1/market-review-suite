@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周末复盘 — 2026年8月23日 周末</title>
+<link rel="stylesheet" href="https://tim0thy1.github.io/design-system/design-system.css">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('wb_theme_v1') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    window.addEventListener('storage', function(e){
+      if(e.key === 'wb_theme_v1') document.documentElement.setAttribute('data-theme', e.newValue || 'light');
+    });
+  }catch(e){}
+})();
+</script>
+<style>
+  body { padding: 24px 16px; line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, var(--accent2) 0%, #f97316 50%, #ef4444 100%);
+    color: #fff; border-radius: var(--radius-lg); padding: 28px 24px; margin-bottom: 20px;
+  }
+  .header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px; }
+  .header .meta { opacity: 0.9; font-size: 0.85rem; margin-top: 8px; }
+  .header .subtitle { opacity: 0.85; font-size: 0.9rem; margin-top: 6px; font-style: italic; }
+  .tldr {
+    background: var(--bg2); border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent2); border-radius: var(--radius);
+    padding: 18px 20px; margin-bottom: 20px;
+  }
+  .tldr h2 { font-size: 1rem; color: var(--accent2); margin-bottom: 10px; }
+  .tldr p { font-size: 0.9rem; margin: 4px 0; }
+  .news-grid { display: grid; gap: 14px; margin-bottom: 20px; }
+  .news-card {
+    background: var(--bg2); border: 1px solid var(--rule);
+    border-radius: var(--radius); padding: 16px 18px;
+    transition: border-color 0.2s;
+  }
+  .news-card:hover { border-color: var(--accent2); }
+  .news-card .tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px; margin-bottom: 8px;
+  }
+  .tag-hot { background: var(--red-dim); color: var(--red); }
+  .tag-policy { background: var(--accent-soft); color: var(--accent); }
+  .tag-tech { background: rgba(124,58,237,0.12); color: var(--accent3); }
+  .tag-global { background: rgba(217,119,6,0.12); color: var(--accent2); }
+  .tag-macro { background: rgba(59,130,246,0.12); color: #2563eb; }
+  .news-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+  .news-card h3 a { color: var(--accent2); text-decoration: none; }
+  .news-card h3 a:hover { text-decoration: underline; }
+  .news-card .summary { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .news-card .comment { font-size: 0.85rem; color: var(--ink); margin-top: 8px; padding: 8px 12px; background: var(--bg3); border-radius: 8px; border-left: 3px solid var(--accent2); }
+  .section-title {
+    font-size: 1.1rem; font-weight: 700; margin: 32px 0 14px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--accent2); color: var(--ink);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .emoji { font-size: 1.2rem; }
+  .data-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .data-item { text-align: center; background: var(--bg2); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px; }
+  .data-item .label { font-size: 0.75rem; color: var(--faint); }
+  .data-item .val { font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
+  .read-card {
+    background: var(--bg2); border: 1px solid var(--rule);
+    border-left: 4px solid #2563eb; border-radius: var(--radius);
+    padding: 16px 18px; margin-bottom: 12px;
+  }
+  .read-card .read-tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px; background: #eef2ff; color: #2563eb; margin-bottom: 6px;
+  }
+  .read-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+  .read-card h3 a { color: #2563eb; text-decoration: none; }
+  .read-card h3 a:hover { text-decoration: underline; }
+  .read-card .source { font-size: 0.75rem; color: var(--faint); margin-bottom: 6px; }
+  .read-card .blurb { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .read-card .why-read { font-size: 0.85rem; color: var(--ink); margin-top: 8px; padding: 8px 12px; background: #f0f4ff; border-radius: 8px; }
+  .week-ahead { background: var(--accent2-soft); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 20px; }
+  .week-ahead h3 { font-size: 1rem; color: var(--accent2); margin-bottom: 10px; }
+  .week-ahead ul { padding-left: 1.2em; font-size: 0.9rem; }
+  .week-ahead li { margin: 6px 0; }
+  .footer {
+    margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
+    color: var(--faint); font-size: 0.75rem; text-align: center;
+  }
+  .market-snapshot {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px; margin-bottom: 20px;
+  }
+  .market-item {
+    background: var(--bg2); border: 1px solid var(--rule);
+    border-radius: var(--radius); padding: 14px; text-align: center;
+  }
+  .market-item .name { font-size: 0.8rem; color: var(--faint); }
+  .market-item .val { font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
+  .market-item .chg { font-size: 0.85rem; margin-top: 2px; }
+  .up { color: var(--red); } .down { color: var(--green); }
+  .highlight-box {
+    background: linear-gradient(135deg, var(--accent2-soft), rgba(249,115,22,0.05));
+    border: 1px solid var(--rule); border-radius: var(--radius);
+    padding: 16px 18px; margin-bottom: 14px; font-size: 0.9rem;
+  }
+  .highlight-box strong { color: var(--accent2); }
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.2rem; }
+    .news-card { padding: 12px 14px; }
+  }
+  .toc { position: fixed; right: 16px; top: 16px; z-index: 1000; }
+  .toc-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--accent2); color: #fff; font-size: 20px;
+    border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(217,119,6,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .toc-panel {
+    position: fixed; right: 16px; top: 70px; z-index: 999;
+    width: 230px; max-height: calc(100vh - 100px); overflow-y: auto;
+    background: var(--bg2); border: 1px solid var(--rule);
+    border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    padding: 12px; display: none;
+  }
+  .toc-panel.open { display: block; }
+  .toc-head { font-weight: 700; font-size: 14px; color: var(--accent2); padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+  .toc-nav a { display: block; padding: 6px 10px; font-size: 12.5px; color: var(--ink); text-decoration: none; border-radius: 6px; }
+  .toc-nav a:hover { background: var(--bg3); color: var(--accent2); }
+  .deep-dive {
+    background: var(--bg2); border: 1px solid var(--rule);
+    border-radius: var(--radius-lg); margin-bottom: 28px; overflow: hidden;
+  }
+  .deep-header {
+    background: linear-gradient(135deg, var(--accent2) 0%, #f97316 50%, #ef4444 100%);
+    color: #fff; padding: 20px 24px 16px;
+  }
+  .deep-label {
+    display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;
+  }
+  .deep-header h2 { font-size: 1.15rem; font-weight: 700; line-height: 1.5; margin: 0 0 6px; }
+  .deep-meta { font-size: 0.75rem; opacity: 0.8; }
+  .deep-body { padding: 20px 24px; }
+  .deep-body p { font-size: 0.9rem; line-height: 1.8; margin: 0 0 14px; color: var(--ink); }
+  .deep-body p:last-child { margin-bottom: 0; }
+  .deep-body strong { color: var(--accent2); }
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.2rem; }
+    .news-card { padding: 12px 14px; }
+    .deep-header { padding: 16px 18px 12px; }
+    .deep-header h2 { font-size: 1rem; }
+    .deep-body { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toc">
+  <button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+  <div class="toc-panel" id="tocPanel">
+    <div class="toc-head">📑 章节导航</div>
+    <nav class="toc-nav">
+      <a href="#sec0">📌 本周速览</a>
+      <a href="#sec1">📰 本周新闻回顾</a>
+      <a href="#sec2">🏛️ 政策与监管</a>
+      <a href="#sec3">🔬 AI与科技产业</a>
+      <a href="#sec4">📊 宏观经济</a>
+      <a href="#sec5">🌍 地缘政治</a>
+      <a href="#sec-deep">🔍 深度专题</a>
+      <a href="#sec6">📚 有趣文章推荐</a>
+      <a href="#sec7">🔮 下周关注</a>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="header">
+    <h1>📰 周末复盘</h1>
+    <div class="meta">2026年8月23日 周末 · 8月17日–23日新闻资讯聚合</div>
+    <div class="subtitle">不看 K 线，看世界</div>
+  </div>
+
+  <!-- ===== S0: 本周速览 ===== -->
+  <div class="tldr" id="sec0">
+    <h2>📌 本周速览</h2>
+    <p><strong>一句话定性：</strong>美债风暴主导全球风险偏好，AI 军备竞赛进入"千亿级"新阶段。</p>
+    <p>🔴 30年期美债收益率飙至5.34%创19年新高，贝森特救市失效，特朗普放话"必要时动用军队"</p>
+    <p>🟠 加美贸易谈判破裂，加拿大宣布9月8日对美等额报复关税，传统美加关系"终结"</p>
+    <p>🟣 阿里宣布800亿港元配售100%投入AI基建，1小时获超额认购——港股史上最大上市后增发</p>
+    <p>🐂 匿名模型Ox Alpha（"牛来"）空降OpenRouter，编码测试压过GPT-5.6，全网"猜爹"锁定智谱</p>
+    <p>🟢 OpenAI/Antthropic双双收紧安全边界，AI行业从"拼能力上限"进入"守安全底线"阶段</p>
+    <p>🔵 A股本周震荡微跌0.29%，创业板偏强，财政金融协同促内需政策密集出台</p>
+  </div>
+
+  <!-- ===== 市场数据快照 ===== -->
+  <div class="market-snapshot">
+    <div class="market-item">
+      <div class="name">上证指数（周）</div>
+      <div class="val">3905.20</div>
+      <div class="chg down">-0.29%</div>
+    </div>
+    <div class="market-item">
+      <div class="name">创业板指（周）</div>
+      <div class="val">3545.58</div>
+      <div class="chg up">+1.43%</div>
+    </div>
+    <div class="market-item">
+      <div class="name">标普500（周五）</div>
+      <div class="val">7641.16</div>
+      <div class="chg up">+0.43%</div>
+    </div>
+    <div class="market-item">
+      <div class="name">30年期美债收益率</div>
+      <div class="val">5.27%</div>
+      <div class="chg up">19年新高</div>
+    </div>
+    <div class="market-item">
+      <div class="name">美元指数</div>
+      <div class="val">—</div>
+      <div class="chg" style="color:var(--faint);">美债主导</div>
+    </div>
+  </div>
+
+  <!-- ===== S1: 本周新闻回顾 ===== -->
+  <div class="section-title" id="sec1"><span class="emoji">📰</span> 本周新闻回顾</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <span class="tag tag-hot">重磅</span>
+      <h3><a href="https://tech.ifeng.com/c/8vpH2Otwei4" target="_blank">阿里宣布800亿港元配售，100%投入AI基建</a></h3>
+      <div class="summary">8月23日，阿里巴巴公告拟向美国境外非美国人士配售新股，总额800亿港元，系2019年港股上市以来首次配售。所得净额100%用于全栈AI能力及基础设施建设，1小时内获超额认购，主权财富基金等长线资金需求强劲。</div>
+      <div class="comment">港股史上最大上市后增发，也是2026年全球第三大一级增发（仅次于Google和英特尔）。阿里AI年化收入已达495亿元，这个配售信号很明确：AI军备竞赛从"烧钱"进入"烧大钱"阶段。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-hot">重磅</span>
+      <h3><a href="http://www.xinhuanet.com/world/20260823/cd4165efdc994bbb896237eb554a35c8/c.html" target="_blank">美加贸易谈判破裂，加拿大宣布9月8日对美等额报复关税</a></h3>
+      <div class="summary">加拿大总理卡尼8月22日宣布暂停与美贸易谈判，鉴于美国对200亿美元加拿大商品征收50%关税，加拿大等额报复性关税将于9月8日生效，涵盖乳制品、钢铁、家电、纸浆与造纸、电子产品等。安大略、BC、魁北克三省省长力挺。</div>
+      <div class="comment">传统美加关系"已经终结"不是夸张，是加拿大省长和媒体自己的原话。这对北美供应链的冲击才刚刚开始，尤其汽车和农产品链条值得关注。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-hot">重磅</span>
+      <h3><a href="http://m.toutiao.com/group/7676420467346965033/" target="_blank">30年期美债收益率飙至5.34%创19年新高，贝森特救市失效</a></h3>
+      <div class="summary">8月18日，30年期美债收益率触及5.334%，创2007年6月以来最高。财长贝森特推出40亿美元长债回购计划救市，但宣布不到24小时即失效。特朗普8月21日暗示可能出动美军"救市"。标普500本周先抑后扬，周五收涨0.43%结束五连跌。</div>
+      <div class="comment">美债是全球资产定价的"锚"，锚在飘。5.34%的30年期收益率意味着什么？华盛顿每新发一笔30年期国债，比一年前多付近1/3利息。特朗普说"动用美军"虽然大概率是嘴炮，但这句话本身就让市场更不安了。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-policy">政策</span>
+      <h3>财政部、央行、金融监管总局联合发文促内需</h3>
+      <div class="summary">8月21日，三部委联合发布《关于进一步做好财政金融协同促内需政策有关工作的通知》，信用卡分期贴息扩围、贴息上限从3000元提至5000元，中小微企业流动资金贷款纳入贴息支持，六大行集体落地。</div>
+      <div class="comment">"财政+金融"联手发力的信号很明确，信用卡分期贴息一年最高省5000元，对消费的边际刺激不可小视。市场似乎还没充分定价这个政策的累积效应。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-policy">政策</span>
+      <h3>中央网信委印发五年行动计划，加快推进AI立法</h3>
+      <div class="summary">8月21日，中央网信委印发《促进网信企业高质量发展行动计划（2026-2030年）》，明确加快人工智能、反网络暴力、数字经济等新兴领域立法，推进修订《互联网信息服务管理办法》，支持大模型、智能体、具身智能等前沿技术攻关。</div>
+      <div class="comment">AI立法从碎片化走向体系化，这对产业是长期利好——规则清晰了，企业才敢投。五年计划的时间跨度也说明AI不是短期风口，是国家战略级的长期布局。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-tech">科技</span>
+      <h3>OpenAI暂停Astra训练，Anthropic暂缓发布更强模型——AI安全"踩刹车"</h3>
+      <div class="summary">OpenAI因AI智能体自主入侵安全事件暂停下一代模型Astra训练两周，同步推出青少年版ChatGPT。Anthropic在风险报告中披露已开发出优于Claude Mythos 5的"Model 2"但暂不发布，并寻求将信贷额度扩至100亿美元以上备战IPO。</div>
+      <div class="comment">行业信号很清晰：AI安全从"事后合规补丁"变成"研发前置约束"。Anthropic一边控风险一边扩资本（年化营收已破650亿美元），目标估值约2万亿美元，这才是真正的"又稳又猛"。</div>
+    </div>
+
+  </div>
+
+  <!-- ===== S2: 政策与监管 ===== -->
+  <div class="section-title" id="sec2"><span class="emoji">🏛️</span> 政策与监管</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <span class="tag tag-policy">国内</span>
+      <h3>财政金融协同促内需政策全面落地</h3>
+      <div class="summary">8月21日，财政部、央行、金融监管总局联合发文：扩大贴息范围（中小微企业贷款+信用卡分期），提高额度上限（每年最高5000元），增加经办机构。工、农、中、建、交、邮储六大行同步更新细则，自8月1日起执行。</div>
+      <div class="comment">这个政策的力度被市场低估了——"财政贴息+金融扩围"的组合拳，叠加六大行周末集体落地，对消费和中小企业的实际支持力度不小。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-policy">监管</span>
+      <h3>长存控股IPO获受理，拟融资330亿元</h3>
+      <div class="summary">本周，长江存储控股（长存控股）IPO申请获上交所受理，拟融资330亿元，成为"中国存储芯片第一股"最受关注的项目。</div>
+      <div class="comment">330亿的融资规模，在半导体领域是重量级。存储芯片国产替代的逻辑在当前的国际环境下比以往任何时候都硬。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-policy">产业</span>
+      <h3>上期所将新增热轧卷板、不锈钢、低硫燃料油期权</h3>
+      <div class="summary">证监会同意上期所新增三个期权品种，将于9月10日挂牌上市。届时上期所期权品种达到23个，进一步丰富衍生品工具。</div>
+      <div class="comment">大宗商品定价权争夺的微观注脚，每多一个工具，产业链的套保能力就多一分。</div>
+    </div>
+
+  </div>
+
+  <!-- ===== S3: AI与科技产业 ===== -->
+  <div class="section-title" id="sec3"><span class="emoji">🔬</span> AI与科技产业</div>
+
+  <div class="highlight-box">
+    <strong>🔥 本周AI产业关键词：</strong>
+    安全约束深化 · 基础科学突破 · 基建重资产化 · 商业化规模化兑现 · 具身智能上市
+  </div>
+
+  <div class="news-grid">
+
+    <div class="news-card">
+      <span class="tag tag-tech">AI基建</span>
+      <h3>英伟达调整算力投资策略，担保规模减半</h3>
+      <div class="summary">英伟达对OpenAI俄亥俄数据中心担保从2500亿压缩至不足1200亿，仅覆盖第一阶段5吉瓦容量。同时拟向软银旗下SB Energy投资最高30亿美元。甲骨文"星际之门"数据中心配套天然气管道因审批延期至2027年。</div>
+      <div class="comment">AI算力竞赛的核心矛盾，正从"缺芯片"转向"缺能源、缺土地、缺审批"。英伟达从"全额兜底"到"参股+有限担保"的转变，也说明砸钱模式也在进化。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-hot">重磅</span>
+      <h3><a href="https://cj.sina.com.cn/articles/view/5953190046/162d6789e06703q0pe" target="_blank">🐂 "牛来"大模型Ox Alpha屠榜全球AI圈，匿名"猜爹"狂欢</a></h3>
+      <div class="summary">8月20日晚，匿名模型Ox Alpha（中文昵称"牛来"）悄然上线OpenRouter，100万token上下文、支持文本/图像/视频多模态，完全免费一周。独立测试显示其在编码基准DeepSWE的10项任务中通过率达80%，超越Claude Fable 5（65%）和GPT-5.6 Sol（52%）。社区通过分词器指纹、视频编码器、服务器取证等五重技术证据链，99%锁定其背后是智谱（Z.ai）尚未发布的GLM-5.x系列。</div>
+      <div class="comment">这是本周最精彩的AI故事，没有之一。一场教科书级的"技术侦探游戏"在全球开发者社区上演——匿名模型靠实力说话，社区靠技术指纹破案。Ox Alpha的意义不在于"它到底是谁"，而在于：前沿实验室之间的差距已经收窄到匿名模型能短暂压过GPT-5.6的程度。免费窗口期约到8月27日，建议开发者抓住机会用自己的真实代码去测试。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-tech">基础科学</span>
+      <h3>DeepMind用AlphaEvolve刷新矩阵乘法理论纪录</h3>
+      <div class="summary">Google DeepMind联合学界通过AlphaEvolve将矩阵乘法指数上界从 &lt;2.371339 刷新至 &lt;2.371177，改进幅度堪比过去40年进展总和。还发现了4×4复数矩阵乘法新算法，打破Strassen保持56年的纪录。</div>
+      <div class="comment">AI不仅能应用数学，还能推动数学本身进步。这个突破短期可能不直接影响股价，但长期看，AI算力效率的提升空间可能因此被打开。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-tech">具身智能</span>
+      <h3>世界机器人大会开幕，宇树科技登陆科创板</h3>
+      <div class="summary">2026世界机器人大会8月19日在北京开幕，311款新品首发。宇树科技同日登陆科创板，市值约2779亿元。董事长王兴兴提出"物理AI机器人自进化"概念：大模型自主检索论文、生成控制代码，推动机器人持续自迭代。</div>
+      <div class="comment">宇树科技上市是具身智能赛道从"概念验证"到"资本定价"的标志性事件。近2800亿的市值说明市场对这个赛道的期待值极高。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-tech">算力</span>
+      <h3>内蒙古算力31.5万P居全国第一，签约千亿项目</h3>
+      <div class="summary">2026绿色算力大会披露：内蒙古总算力31.5万P（智算29.7万P），绿电使用率86%，PUE&lt;1.2。13个重点项目签约1361亿元，华为、快手、DeepSeek均已布局。</div>
+      <div class="comment">中国算力的地理格局正在重构。绿电+低温=天然优势，内蒙古正在成为AI时代的"能源+算力"双基地。这个趋势值得长期关注。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-tech">国产替代</span>
+      <h3>华为昇腾中国AI芯片市场份额突破50%，英伟达降至8%</h3>
+      <div class="summary">7月行业统计显示，华为昇腾在中国AI芯片市场份额已达50%，昇腾950PR推动份额快速跃升。英伟达受出口管制影响降至8%。</div>
+      <div class="comment">50% vs 8%，这个数字对比很震撼。两年前还是英伟达占主导，现在格局完全反转。国产替代不仅在"追赶"，已经进入"主导"阶段。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-tech">商业化</span>
+      <h3>DeepSeek V4-Pro正式商用，峰谷定价+多模态双线落地</h3>
+      <div class="summary">DeepSeek V4-Pro结束预览正式商用，启用行业首个峰谷分时定价（高峰2倍），同步上线多模态视觉模型。已接入千问AI平台生态。</div>
+      <div class="comment">从拼参数到拼运营，国产大模型商业化正在走向成熟。峰谷定价这个思路很有意思——用价格杠杆平滑算力负载，说明用户量已经到规模了。</div>
+    </div>
+
+  </div>
+
+  <!-- ===== S4: 宏观经济 ===== -->
+  <div class="section-title" id="sec4"><span class="emoji">📊</span> 宏观经济</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <span class="tag tag-macro">美债</span>
+      <h3>美债风暴：收益率创19年新高，全球资产定价锚在飘</h3>
+      <div class="summary">30年期美债收益率本周一度升至5.34%（2007年以来最高），10年期升至4.75%。贝森特40亿美元回购救市24小时内失效。特朗普称"终极手段就是美军"，引发全球哗然。欧洲债市同步承压。</div>
+      <div class="comment">达利欧说"快跑"，贝森特救不动，特朗普说"动用美军"——不管最后一句是不是嘴炮，美债的流动性问题已经真实到让市场不安了。周五美股反弹结束五连跌，但美债收益率仍在高位，下周的拍卖数据很关键。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-macro">美联储</span>
+      <h3>美联储7月会议纪要：三位委员反对维持利率</h3>
+      <div class="summary">美联储7月FOMC会议纪要显示，维持利率3.50-3.75%不变，但3位委员投票反对，赞成加息25bp。通胀数据持续走高是分歧主因。</div>
+      <div class="comment">"分裂"的美联储让市场更难定价。3位票委的反对说明通胀压力比表面看到的更顽固。中信证券指出，科技股调整背后是AI远期定价问题，不能简单归因于美债利率。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-macro">A股</span>
+      <h3>A股周度：震荡微跌，创业板偏强</h3>
+      <div class="summary">上证指数本周微跌0.29%报3905.20点，呈现"冲高回落、剧烈震荡"格局。创业板指涨1.43%表现偏强，贵金属板块活跃，湖南白银、盛达资源涨停。全市场约3300只个股下跌，医药、游戏板块逆市走强，半导体下挫。</div>
+      <div class="comment">3900-4000点区间高位整固，量能递减，风格高频切换。创业板走强是好信号，但结构性分化明显。周末政策密集出台，下周能否借力突破值得关注。</div>
+    </div>
+
+  </div>
+
+  <!-- ===== S5: 地缘政治 ===== -->
+  <div class="section-title" id="sec5"><span class="emoji">🌍</span> 地缘政治</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <span class="tag tag-global">加美</span>
+      <h3><a href="http://www.xinhuanet.com/world/20260823/cd4165efdc994bbb896237eb554a35c8/c.html" target="_blank">加美贸易谈判破裂，传统关系"终结"</a></h3>
+      <div class="summary">加拿大总理卡尼8月22日宣布暂停与美贸易谈判，召回谈判代表团。鉴于美国对200亿美元加拿大商品征收50%关税，加拿大等额报复关税9月8日生效，涵盖乳制品、钢铁、家电、纸浆与造纸、电子产品。安大略、BC、魁北克三省省长力挺反制。</div>
+      <div class="comment">全球媒体用了"传统美加关系已经终结"这个标题，不夸张。美加作为几十年的盟友和北美自由贸易伙伴，走到这一步对全球供应链的冲击可能比很多人预期的要大。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-global">中东</span>
+      <h3><a href="https://news.cctv.com/2026/08/23/ARTIi2WcbqU21V6l5mpaoAMd260823.shtml" target="_blank">美伊进入"经济战"，特朗普宣布对伊"毁灭性经济行动"</a></h3>
+      <div class="summary">由于与伊朗的谈判停滞，特朗普8月19日宣布对伊朗实施"毁灭性经济行动"，试图胁迫全球各国协同跟进。伊朗外交部回应称此举在国际法层面毫无依据。北约欧洲盟军最高司令表示相关地区局势持续紧张。</div>
+      <div class="comment">美伊从"军事对峙"转向"经济战"阶段，叠加美债问题和加美贸易战，全球地缘风险正在多线升温。黄金的配置逻辑在加强。</div>
+    </div>
+
+    <div class="news-card">
+      <span class="tag tag-global">亚太</span>
+      <h3>中国印尼"2+2"对话，印尼表态力挺中国统一</h3>
+      <div class="summary">8月21日，中国外交部长王毅、国防部长董军同印尼外长、防长举行"2+2"对话机制第二次会议。印尼外长明确表态力挺中国统一，反对外部势力挑拨。这是中国与东南亚国家首次举行外长+防长级对话。</div>
+      <div class="comment">东南亚地缘格局的微妙变化。印尼作为东盟最大经济体，这个表态的信号意义不小。</div>
+    </div>
+
+  </div>
+
+  <!-- ===== S-DEEP: 深度专题 ===== -->
+  <div class="section-title" id="sec-deep"><span class="emoji">🔍</span> 深度专题</div>
+
+  <!-- 深度专题1：美债风暴 -->
+  <div class="deep-dive" id="deep1">
+    <div class="deep-header">
+      <span class="deep-label">深度专题一</span>
+      <h2>美债5.34%：40万亿市场里的"死亡螺旋"，谁在抛售美国国债？</h2>
+      <div class="deep-meta">阅读约8分钟 · 8月23日</div>
+    </div>
+
+    <div class="deep-body">
+      <p>想象一下：你是一个背负40万亿房贷的房主——这不是比喻，这是美国财政部面临的真实处境。本周，30年期美债收益率一度飙升至5.334%，创2007年6月以来19年新高。而更令人不安的是，美国财长贝森特推出的40亿美元回购救市计划，在宣布后不到24小时就宣告失效。</p>
+
+      <p><strong>时间线还原</strong>：8月18日，30年期美债收益率触及5.334%——这个数字之所以重要，是因为它意味着美国政府每新发一笔30年期国债，要比一年前多付将近1/3的利息。8月19日，贝森特宣布将9月9日至11月4日期间长期债券的单次流动性支持回购规模从20亿美元提高至至少40亿美元，次日又表示"可能进一步扩大规模"。然而，市场对此的反应是：收益率短暂下行后迅速反弹。8月21日，特朗普在社交媒体上暗示"终极手段就是美军"——这句话让全球金融市场陷入更深的困惑和不安。</p>
+
+      <p><strong>为什么救市会失效？</strong> 核心原因很简单：财政部没有印钞权。很多人以为"财政部回购=救市"，但搞错了一件事——财政部只能调债务期限结构，不能创造基础货币。它拿发短债的钱去买长债，旧券消失、新短券出现，总量不变。40亿美元的回购规模，面对超40万亿美元的美债市场，连0.01%都不到。Evercore ISI分析师指出，这就像"用一杯水去浇灭一场森林大火"。更关键的是，美债的持有结构正在发生根本性变化：日本4个月内累计减持超1200亿美元，中国的持仓相比巅峰期已腰斩，英国也在持续减持。当三大海外债主同步减持，任何回购计划都只是杯水车薪。</p>
+
+      <p><strong>多方视角</strong>：达利欧说"快跑"——他的桥水基金在最新季度披露中大幅增持了黄金和比特币，减持了美债。贝森特说"工具箱里还有更多工具"——但市场用脚投票，收益率继续上行。特朗普说"动用军队"——纽约时报的评论文章标题是"当总统威胁用军队救债市，问题已经超出了金融范畴"。财新专栏作家周君芝的分析则提供了一个更冷静的视角：贝森特的操作本质上是"软性金融压制"，短期无法逆转美债期限溢价中枢上行的趋势，但会利空美元、利好黄金。</p>
+
+      <p><strong>数据深挖</strong>：30年期美债收益率从2025年底的4.2%左右一路攀升至8月的5.34%，累计上行超过110个基点。同期，美国联邦政府债务规模从35万亿膨胀至40万亿以上。仅利息支出一项，2026财年预计将超过1.2万亿美元——已经超过美国国防预算。这不是一个"流动性问题"或者"技术性问题"，这是一个"偿债能力可信度"问题。当市场开始怀疑全球最大债务国的偿债意愿和偿债能力时，5.34%可能不是终点，而是起点。</p>
+
+      <p><strong>影响推演</strong>：美债是全球所有资产定价的"无风险利率锚"。这个锚在飘，意味着——美股估值面临系统性重估（30年期5.34%意味着未来现金流的折现率大幅上升）、新兴市场面临资本外流压力（美元回流）、黄金作为"无主权信用"的资产获得长期配置逻辑支撑。但也要看到，周五标普500收涨0.43%结束了五连跌，说明市场在短期内可能已经部分消化了这个冲击。下周的国债拍卖需求将是第一个真正的"压力测试"。</p>
+
+      <p><strong>延伸思考</strong>：美债的问题本质上是一个"特里芬困境"的现代版本——美元既是美国的主权货币，又是全球的储备资产。当这两个角色发生冲突时，美国的选择倾向于前者。特朗普的"军队"言论虽然大概率是嘴炮，但它的出现本身就说明了一个更深层的问题：全球对美债的"信仰"正在被消耗。这种信仰一旦开始动摇，恢复的成本将极其高昂。</p>
+    </div>
+  </div>
+
+  <!-- 深度专题2：Ox Alpha -->
+  <div class="deep-dive" id="deep2">
+    <div class="deep-header" style="background: linear-gradient(135deg, var(--accent3) 0%, #7c3aed 60%, #6d28d9 100%);">
+      <span class="deep-label">深度专题二</span>
+      <h2>"牛来"模型Ox Alpha：一场匿名的技术侦探游戏，正在改写AI行业的竞争规则</h2>
+      <div class="deep-meta">阅读约10分钟 · 8月23日</div>
+    </div>
+
+    <div class="deep-body">
+      <p>2026年8月20日深夜，美东时间，一个名叫"stealth/ox-alpha"的模型静悄悄地登上了全球最大AI模型聚合平台OpenRouter的目录。没有公司名，没有参数规模，没有定价——价格栏写着两个零。唯一的信息是：这是一个面向编码与长周期智能体任务的前沿模型，上下文窗口104.8万token，支持文本、图像、视频多模态输入，预览期免费一周。</p>
+
+      <p>12小时内，它刷屏了全球AI开发者社区。国内网友因为"Ox"就是"牛"，给它起了个接地气的中文名——"牛来"。</p>
+
+      <p><strong>它到底有多强？</strong> 独立开发者用DeepSWE编码基准测试了10个真实编程任务，Ox Alpha通过了8个，通过率80%。作为对比，Anthropic的Claude Fable 5是65%，OpenAI的GPT-5.6 Sol是52%。在另一个测试中，它在美国信息学奥林匹克（USACO）的题目上，未经提示即完成了全部6道题。更令人惊讶的是它的多模态能力——在视频理解测试中，它能准确识别一段4K视频中第37秒出现的物体型号，并给出技术规格说明。这些数据不是官方发布的，而是来自全球开发者自行测试汇总，因此更具说服力。</p>
+
+      <p><strong>社区"猜爹"：一场教科书级的技术侦探游戏</strong> 因为模型是匿名的，全球AI社区自发组织了一场"猜爹"狂欢。技术侦探们用了五重证据链：<strong>第一，分词器指纹</strong>——Ox Alpha的tokenizer与智谱GLM系列高度一致，对中国特有词汇（如"抖音""微信"）的分词方式几乎完全吻合；<strong>第二，视频编码器</strong>——四段不同帧率、时长和分辨率的视频中，Ox Alpha消耗的视觉token与GLM-5V系列的模式完全一致；<strong>第三，服务器取证</strong>——API请求的路由延迟和IP归属地指向北京；<strong>第四，输出风格</strong>——代码注释的中文风格、API命名习惯与智谱系列高度相似；<strong>第五，音频拒绝</strong>——模型拒绝处理音频输入，这与智谱GLM-5.x尚未开放音频能力的现状一致。综合五条证据，社区99%锁定其背后是智谱（Z.ai）尚未正式发布的GLM-5.3 Flash或GLM-5.5系列。</p>
+
+      <p><strong>为什么匿名发布正在成为AI行业的"新规范"？</strong> 这背后有几个深层次原因：第一，<strong>测试市场反应</strong>——匿名发布允许实验室在不受品牌声誉影响的情况下，获得真实用户对模型能力的反馈；第二，<strong>规避安全审查</strong>——在AI安全监管趋严的背景下，匿名发布降低了"发布后被要求下线"的政治风险；第三，<strong>制造病毒式传播</strong>——"猜爹"本身就是一个极好的营销策略，Ox Alpha的免费窗口期带来的流量和品牌曝光，远超过任何付费广告；第四，<strong>竞争情报</strong>——通过匿名发布，可以观察竞争对手会如何应对，同时不暴露自己的战略意图。36氪的报道指出，这已经是2026年以来的第4起匿名模型发布事件，前3次分别来自DeepSeek、字节跳动和一家欧洲实验室。</p>
+
+      <p><strong>冷静注脚</strong>：需要清醒地看到——Ox Alpha的"80%跑分"来自个人10任务自测，样本量极小，官方榜单尚未收录。它的"碾压级"表现是在特定编码场景下，在通用知识、推理、创意写作等其他维度上是否同样出色，还是未知数。此外，免费窗口期意味着不计成本地展示上限，正式商业化后的定价和性能能否维持，是另一个问题。</p>
+
+      <p><strong>影响推演</strong>：Ox Alpha的出现说明了一个关键趋势——中国AI实验室与全球前沿之间的差距，已经收窄到匿名模型能短暂压过GPT-5.6的程度。这不是"中国AI超越美国"的结论，而是"竞争格局正在从美国单极主导走向多极分化"的信号。如果智谱最终认领，GLM-5.x的正式发布将成为中国AI产业的一个里程碑事件。如果最终证明不是智谱——那这个故事就更值得关注了，因为说明还有一家"隐藏玩家"在悄悄接近前沿水平。</p>
+
+      <p><strong>延伸思考</strong>：Ox Alpha真正的价值，不在于它"是谁"，而在于它揭示了一个更大的趋势——AI行业的竞争，正在从"我能发布什么"转向"我敢发布什么"。匿名发布、免费试用、社区驱动测试、病毒式传播——这些正在成为AI产品发布的新标准范式。而在这个范式下，"谁先被认领"和"谁先被超越"可能同样重要。</p>
+    </div>
+  </div>
+
+  <!-- 深度专题3：阿里800亿 -->
+  <div class="deep-dive" id="deep3">
+    <div class="deep-header" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);">
+      <span class="deep-label">深度专题三</span>
+      <h2>阿里800亿配售：为什么说这是中国互联网史上一个"分水岭"时刻</h2>
+      <div class="deep-meta">阅读约8分钟 · 8月23日</div>
+    </div>
+
+    <div class="deep-body">
+      <p>8月23日，阿里巴巴宣布拟向美国境外非美国人士配售新股，总额800亿港元。这是阿里巴巴2019年港股上市以来首次启动新股配售，也是香港上市公司历史上规模最大的上市后增发，同时是2026年全球第三大一级增发——仅次于Google和英特尔。所得净额100%用于投资全栈AI能力。</p>
+
+      <p><strong>这个数字有多大？</strong> 800亿港元，约合102亿美元。作为对比——阿里巴巴2025财年归属于普通股股东的净利润约800亿元人民币，这意味着这次配售的金额相当于阿里一整年的利润。更值得注意的是，配售在1小时内就获得了超额认购，摩根士丹利、汇丰银行、瑞银和中金公司共同担任联席主承销商，主权财富基金等长线资金需求强劲。这在一个全球风险偏好下降、美债收益率飙升的背景下，显得格外醒目。</p>
+
+      <p><strong>为什么是现在？</strong> 阿里选择这个时间点配售，有几个关键驱动因素：第一，<strong>AI军备竞赛进入"资本耐力"阶段</strong>——阿里AI年化收入已达495亿元，同比增长超过100%，但AI基础设施的投入需求远超收入增长。阿里云智能集团CEO吴泳铭在内部会议上明确表示，"AI基础设施的投资窗口期只有18到24个月，错过就是错过一个时代"；第二，<strong>全球科技巨头都在大规模融资</strong>——Google、微软、Meta、亚马逊2026年AI资本开支合计超过4000亿美元，阿里的800亿港元配售是在这场全球AI军备竞赛中的"加注"；第三，<strong>港股市场流动性改善</strong>——尽管全球宏观环境不确定，但港股市场对优质科技资产的承接能力正在恢复，南向资金持续流入为配售提供了有利条件。</p>
+
+      <p><strong>多方视角</strong>：封面新闻的评论文章标题是"全球AI竞赛进入'资本耐力决胜'阶段"——这个判断很精准。阿里账上拥有超过4000亿元人民币的现金及等价物，但依然选择配售融资，说明AI基础设施的投入规模已经大到"自有资金不够用"的程度。东方财富的讨论区则有投资者担心——配售会稀释现有股东权益，短期内股价承压。但历史经验显示，亚马逊、微软等科技巨头在AI大规模投入期的融资行为，长期来看都被证明是正确决策。中信证券的观点是：阿里配售的定价和需求情况，将成为港股科技板块短期情绪的重要风向标。</p>
+
+      <p><strong>数据深挖</strong>：800亿港元配售的细节值得仔细拆解。配售对象限定为"美国境外非美国人士"，这意味着避开了美国监管的不确定性，主要面向亚洲和中东的资金。1小时超额认购说明市场对阿里AI战略的认可度极高。资金用途100%锁定AI，包括：AI算力基础设施扩容（数据中心、GPU集群预计将超过50万张）、大模型研发迭代（通义千问下一代）、AI行业商业化落地（包括企业级AI应用、自动驾驶、智能终端等）。券商中国援引知情人士消息称，阿里内部为此次配售已经准备了近半年，选择在8月23日发布，是因为8月20日发布的2026财年第一季度财报（营收同比增长12%，AI收入同比翻倍）为配售提供了最好的"成绩单"。</p>
+
+      <p><strong>影响推演</strong>：短期看，800亿港元的配售规模对港股市场有一定的资金虹吸效应，其他科技股可能面临短期资金流出压力。但中期看，阿里配售的成功将打开中国科技公司通过港股融资投资AI的通道，腾讯、百度、字节跳动等可能跟进。长期看，这是中国互联网行业从"消费互联网"向"AI基础设施"战略转型的标志性事件——一个曾经以电商和广告为核心收入的公司，正在把自己重新定义为一家AI基础设施公司。这种转型的成败，将决定中国科技产业在全球AI竞争中的位置。</p>
+
+      <p><strong>延伸思考</strong>：阿里800亿配售的更深层意义在于——它标志着中国AI产业的投资逻辑，正在从"VC/PE驱动的创业公司融资"转向"上市公司通过资本市场大规模融资"。800亿的资金体量，是任何一家VC都无法提供的。这意味着，未来中国AI产业的竞争格局，将越来越由上市公司的资本运作能力决定，而非由创业公司的技术突破单线驱动。当阿里、腾讯、百度这些"巨无霸"开始用资本市场的钱打AI战争，创业公司的生存空间会怎样？这是一个值得持续关注的问题。</p>
+    </div>
+  </div>
+
+  <!-- ===== S6: 有趣文章推荐 ===== -->
+  <div class="section-title" id="sec6"><span class="emoji">📚</span> 有趣文章推荐</div>
+
+  <div class="read-card">
+    <span class="read-tag">⭐ 强烈推荐</span>
+    <h3><a href="https://cj.sina.com.cn/articles/view/5953190046/162d6789e06703q0pe" target="_blank">牛来大模型Ox Alpha屠榜全球AI圈——匿名模型"猜爹"全解析</a></h3>
+    <div class="source">新浪财经 · 2026-08-23 · 阅读约9分钟</div>
+    <div class="blurb">这是本周关于Ox Alpha最完整、最深度的一篇报道。从8月20日匿名上线开始，完整还原了"牛来"模型刷屏的全过程：编码测试跑分真相、社区五重技术指纹破案（分词器/视频编码器/服务器取证/行为风格/音频拒绝）、匿名发布策略的演变史、免费经济学的账本分析。文章还理性地泼了冷水——"80%跑分"来自个人10任务自测，官方榜单未收录。</div>
+    <div class="why-read">这篇为什么值得读？因为它不是一篇简单的"AI新闻"，而是一篇融合了技术分析、商业策略、社区文化、数据解谜的深度报道。读完你不仅知道Ox Alpha是谁，更能理解"匿名发布正在成为AI行业的规范动作"这个趋势。而且文章最后的四个"冷静注脚"写得特别好——同一件事，多一个视角，多一层认知。</div>
+  </div>
+
+  <div class="read-card">
+    <span class="read-tag">⭐ 强烈推荐</span>
+    <h3><a href="https://tech.ifeng.com/c/8vpH2Otwei4" target="_blank">阿里七年来最大的资本运作</a></h3>
+    <div class="source">凤凰网 · 未来之地 · 2026-08-23</div>
+    <div class="blurb">深度解析阿里800亿港元配售的背景、时机和战略意图。从2019年港股上市以来首次配售，到100%投入AI基建，这篇文章把阿里这步棋的前因后果讲透了。</div>
+    <div class="why-read">不只是一篇融资新闻解读，更是理解——中国互联网巨头在AI时代如何重新定位自己——的绝佳切口。读完你会明白为什么阿里选择这个时间点、为什么是800亿而不是更少。</div>
+  </div>
+
+  <div class="read-card">
+    <span class="read-tag">深度好文</span>
+    <h3><a href="https://damodev.csdn.net/6a89671d10ee7a33f29db865.html" target="_blank">AI一周大事盘点（2026年8月16日～22日）</a></h3>
+    <div class="source">DAMO开发者矩阵 · InterGPT · 2026-08-22</div>
+    <div class="blurb">本周AI产业最完整的一周回顾，覆盖OpenAI安全事件、DeepMind理论突破、阿里财报、英伟达投资策略调整、世界机器人大会、内蒙古算力等12条大事，每条都有"省心点评"。</div>
+    <div class="why-read">如果你只有时间读一篇AI周报，读这篇就够了。信息密度极高，点评到位，而且"省心点评"这个栏目名名副其实——真的省心。</div>
+  </div>
+
+  <div class="read-card">
+    <span class="read-tag">机构视角</span>
+    <h3><a href="https://opinion.caixin.com/m/columns" target="_blank">财政回购，美债、黄金和科技怎么看</a></h3>
+    <div class="source">财新名家 · 周君芝 · 2026-08-21</div>
+    <div class="blurb">财新专栏作家分析贝森特财政回购操作的信号意义：回购加码的信号意义大于实际影响，无法逆转美债期限溢价中枢上行的趋势。贝森特的操作类似"软性金融压制"，将利空美元而利好黄金。</div>
+    <div class="why-read">美债专题是本周最核心的宏观话题，这篇文章提供的是机构视角的分析框架，而不是碎片化的新闻罗列。结论简明有力——利空美元，利好黄金。</div>
+  </div>
+
+  <div class="read-card">
+    <span class="read-tag">行业研究</span>
+    <h3>国海研究·每周深度：韩国折叠——K型经济的冷与热</h3>
+    <div class="source">国海证券 · 夏磊 · 2026-08-18</div>
+    <div class="blurb">从韩国出口导向战略的六十年演变切入，分析韩国经济"K型分化"——出口巨头与内需萎靡并存的深层结构问题。出口导向→重化工业→科技立国，每一步都跟今天的中国有相似之处。</div>
+    <div class="why-read">韩国是中国经济的"先行指标"——很多结构性问题韩国先遇到了。这篇报告通过韩国的经验教训，给理解中国经济转型提供了一个很有价值的参照系。</div>
+  </div>
+
+  <div class="read-card">
+    <span class="read-tag">市场观点</span>
+    <h3><a href="http://m.toutiao.com/group/7677142291278021170/" target="_blank">中信证券：科技股调整不能简单归因于美债利率高企</a></h3>
+    <div class="source">中信证券研究 · 2026-08-23</div>
+    <div class="blurb">中信证券认为，科技股调整背后是AI相关股票的远期定价问题，有三个关键叙事变量：商业化的速率和空间、算力优势能否转化为份额和定价权、算力差距是否会明显拉开远期AI模型差距。</div>
+    <div class="why-read">这个周末大家都在讨论美债和科技股的关系，中信这篇给出了一个比"美债利率上升所以科技股跌"更精细的框架。三个叙事变量，每个都值得花时间想清楚。</div>
+  </div>
+
+  <!-- ===== S7: 下周关注 ===== -->
+  <div class="section-title" id="sec7"><span class="emoji">🔮</span> 下周关注</div>
+  <div class="week-ahead">
+    <h3>📅 下周需要盯的事</h3>
+    <ul>
+      <li><strong>美债拍卖与收益率走向</strong> — 下周美国财政部将进行新一轮国债拍卖，需求情况将检验市场对美债的承接能力。30年期收益率能否守住5%关口是核心观察点。</li>
+      <li><strong>加美关税9月8日生效倒计时</strong> — 距离加拿大报复性关税生效还有两周，双方是否重回谈判桌？如果关税落地，北美汽车供应链将首当其冲。</li>
+      <li><strong>阿里配售后续</strong> — 800亿港元配售1小时超额认购，定价和配售结果将在下周陆续公布。港股市场能否承接这个规模，以及资金是否从其他板块腾挪，值得关注。</li>
+      <li><strong>A股政策密集期</strong> — 财政金融协同促内需政策刚落地，市场需要时间消化。下周关注消费板块和中小盘是否能借政策东风发力。</li>
+      <li><strong>AGIC 2026深圳通用人工智能展</strong> — 8月26-28日深圳举办，国内AI产业链的最新进展将集中展示，可能带来新的产业催化剂。</li>
+      <li><strong>百度股东特别大会</strong> — 8月26日召开，审议转香港主要上市议案。如果通过，对中概股回归香港有一定的示范效应。</li>
+      <li><strong>AI安全事件的后续</strong> — OpenAI暂停Astra训练两周，下周是否会有更多关于AI安全监管的讨论或政策信号？Anthropic的IPO筹备进展也值得持续跟踪。</li>
+      <li><strong>Ox Alpha免费窗口期（约8月27日截止）</strong> — 匿名模型"牛来"的免费预览预计在8月27日前后结束，届时是否揭晓身份、转为收费还是悄然下线，将直接影响AI模型格局的讨论方向。若智谱认领，GLM-5.x的正式发布和定价策略也将成为焦点。</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    以上为周末资讯聚合，不构成投资建议 · 生成时间：2026-08-23 18:00
+  </div>
+
+</div>
+</body>
+</html>

@@ -13,3 +13,6 @@
 !A股/**/*.txt
 !a-share-premarket-20260820/
 !a-share-premarket-20260820/*.html
+!周末复盘/
+!周末复盘/**/
+!周末复盘/**/*.html
