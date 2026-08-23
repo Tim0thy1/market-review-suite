@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-08-24（周一）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f5f7fa;--card:#fff;--border:#e2e8f0;--text:#1e293b;--text2:#64748b;--accent:#1e3a5f;--accent2:#2563eb;--red:#e63946;--green:#2d6a4f;--amber:#d97706;--purple:#7c3aed}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.7;font-size:14px}
+.nav{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--accent);color:#fff;overflow-y:auto;z-index:100;padding:20px 0;transform:translateX(-100%);transition:transform .3s ease;box-shadow:2px 0 12px rgba(0,0,0,.15)}
+.nav:hover{transform:translateX(0)}
+.nav-toggle{position:fixed;left:0;top:50%;transform:translateY(-50%);width:32px;height:64px;background:var(--accent);color:#fff;border-radius:0 8px 8px 0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:99;font-size:14px;opacity:0.6;transition:opacity .3s}
+.nav-toggle:hover{opacity:1}
+.nav h3{padding:0 20px 16px;font-size:16px;font-weight:700;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:12px}
+.nav a{display:block;padding:8px 20px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent}
+.nav a:hover,.nav a.active{color:#fff;background:rgba(255,255,255,.1);border-left-color:var(--accent2)}
+.nav .nav-s{font-size:11px;color:rgba(255,255,255,.5);padding:6px 20px 2px;text-transform:uppercase;letter-spacing:1px}
+.container{max-width:960px;margin:0 auto;padding:32px 20px 60px}
+.header{text-align:center;padding:40px 20px 32px;border-bottom:2px solid var(--accent);margin-bottom:32px}
+.header h1{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:8px;letter-spacing:1px}
+.header .badge{display:inline-block;padding:4px 16px;background:var(--accent);color:#fff;border-radius:20px;font-size:12px;font-weight:600;margin:8px 4px}
+.header .badge.amber{background:var(--amber)}
+.header .badge.green{background:var(--green)}
+.header .badge.red{background:var(--red)}
+.header .badge.purple{background:var(--purple)}
+.header .sub{color:var(--text2);font-size:13px;margin-top:8px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.section h2{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:8px}
+.section h2 .s-num{font-size:12px;background:var(--accent);color:#fff;border-radius:6px;padding:2px 8px}
+.section h3{font-size:15px;font-weight:700;color:var(--text);margin:14px 0 8px}
+.section p{color:var(--text);margin-bottom:8px;line-height:1.8}
+.section ul{padding-left:20px;margin-bottom:10px}
+.section ul li{margin-bottom:4px;line-height:1.7}
+.section .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin:0 2px}
+.tag-red{background:#fef2f2;color:#b91c1c}
+.tag-green{background:#f0fdf4;color:#15803d}
+.tag-amber{background:#fffbeb;color:#92400e}
+.tag-blue{background:#eff6ff;color:#1d4ed8}
+.tag-purple{background:#faf5ff;color:#7c3aed}
+.tag-gray{background:#f1f5f9;color:#475569}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:12px 0}
+.stat-card{border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center}
+.stat-card .num{font-size:22px;font-weight:800}
+.stat-card .label{font-size:12px;color:var(--text2);margin-top:2px}
+.table-wrap{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--accent);color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid var(--border)}
+tr:hover{background:#f8fafc}
+.alert-box{border:1px solid;border-radius:8px;padding:14px 16px;margin:10px 0;font-size:13px}
+.alert-box.blue{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
+.alert-box.amber{background:#fffbeb;border-color:#fde68a;color:#92400e}
+.alert-box.red{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.alert-box.green{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.kill-box{border-left:4px solid var(--red);padding:12px 16px;background:#fef2f2;border-radius:0 8px 8px 0;margin:10px 0}
+.scenario-box{border-radius:8px;padding:14px 16px;margin:10px 0;border:1px solid}
+.scenario-box.opt{background:#f0fdf4;border-color:#bbf7d0}
+.scenario-box.neu{background:#f8fafc;border-color:#e2e8f0}
+.scenario-box.pes{background:#fef2f2;border-color:#fecaca}
+.footer{text-align:center;padding:32px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
+.evidence{font-size:12px;color:var(--text2);display:inline-block;margin-left:4px}
+.evidence::before{content:'['}
+.evidence::after{content:']'}
+.prob-bar{height:10px;border-radius:6px;background:#e2e8f0;overflow:hidden;margin:4px 0}
+.prob-bar>div{height:100%;border-radius:6px}
+@media(max-width:600px){.card-grid{grid-template-columns:1fr 1fr}.nav{width:220px}}
+</style>
+</head>
+<body>
+
+<div class="nav-toggle">◀</div>
+<div class="nav" id="sidebar">
+  <h3>📋 目录</h3>
+  <a href="#s0" class="active">S0 · 执行摘要</a>
+  <a href="#s1">S1 · 市场状态</a>
+  <a href="#s15">S1.5 · 盘前观点</a>
+  <a href="#s2">S2 · 隔夜冲击</a>
+  <a href="#s25">S2.5 · 行业快讯板</a>
+  <a href="#s26">S2.6 · 外媒小作文</a>
+  <a href="#s3">S3 · 定价与拥挤度</a>
+  <a href="#s4">S4 · 主线竞争</a>
+  <a href="#s45">S4.5 · 热点深追</a>
+  <a href="#s5">S5 · 今日预测</a>
+  <a href="#s6">S6 · 情景推演</a>
+  <a href="#s7">S7 · 失效条件</a>
+  <a href="#s8">S8 · 观察清单</a>
+  <a href="#s9">S9 · 预测台账</a>
+</div>
+
+<div class="container">
+
+<div class="header">
+  <h1>A股盘前分析</h1>
+  <div class="sub">2026年8月24日（周一） · 数据截止 07:50</div>
+  <div>
+    <span class="badge">盘前预测</span>
+    <span class="badge purple">缩量企稳·等待催化</span>
+    <span class="badge green">主线: 科技硬件/通信算力</span>
+  </div>
+</div>
+
+<!-- S0 执行摘要 -->
+<div class="section" id="s0">
+  <h2><span class="s-num">S0</span> 执行摘要</h2>
+  <div class="alert-box blue">
+    <strong>市场状态：</strong>缩量企稳窗口——上证在3900一线四日横盘、成交萎缩至1.88万亿（仅5日均83%），情绪处于修复后的观望期。周末政策与产业催化密集落地（国常会通信网+长江存储IPO+中际旭创业绩），今日是缩量后再选方向的"量级观察日"。
+  </div>
+  <div class="card-grid">
+    <div class="stat-card"><div class="num" style="color:var(--green)">偏多·高开试攻</div><div class="label">今日核心判断</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--amber)">量能能否放量</div><div class="label">最大变量</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">周末利好高开兑现</div><div class="label">最大风险</div></div>
+  </div>
+  <p><strong>核心判断：</strong>今日A股预计在周末政策催化下高开，但高开后的走势取决于两件事——① 成交能否从1.88万亿放量修复（上周四日缩量，若今日首小时不放量，高开极易演变为兑现回落）；② 科技硬件（通信/算力/半导体）能否承接最强的隔夜催化并形成新的赚钱效应。贵金属、创新药作为已运行主线延续，科技是"新催化+旧主线"的争夺战。降准降息预期（三季度末窗口）与周二6000亿MLF到期、今日950亿逆回购到期的流动性对冲是背景变量。</p>
+  <p><strong>最重要的3个观察信号：</strong>①两市首小时成交能否≥5200亿（对比昨首小时，放量则科技行情启动）；②通信/算力/半导体高开后10:30前涨停能否超15家（验证科技主线真实性）；③创业板能否放量站稳3560、相对上证超额继续+1%以上（成长风格确认）。</p>
+
+  <div class="alert-box amber">
+    <strong>⚠️ 数据口径与方法论（必读）：</strong>本报告涉及"北向资金/外资方向"的表述，均指<strong>盘中实时估算值</strong>，而非交易所官方实时数据（2024年5月起沪深港通已取消盘中实时净买入披露）。盘中的有效替代观察指标：①主力/超大单资金流向；②外资重仓核心票（贵州茅台、宁德时代、中际旭创等）盘中表现；③人民币汇率与港股通南向资金（外资风险偏好镜像）。据此判断方向，勿将估算值当作官方精确数据。
+  </div>
+</div>
+
+<!-- S1 市场状态 -->
+<div class="section" id="s1">
+  <h2><span class="s-num">S1</span> 市场状态（Market Regime）</h2>
+
+  <div class="table-wrap">
+  <table>
+    <tr><th>维度</th><th>状态标签</th><th>数据支撑（截至8/21收盘）</th></tr>
+    <tr>
+      <td>趋势</td>
+      <td><span class="tag tag-amber">震荡</span></td>
+      <td>上证3905点，距5日线约3935尚有-0.8%，已失守20日线；上周5日跌0.56%。8/19跳空下跌后四日缩量横盘3900一线，属"破位后的企稳"，未确认反转</td>
+    </tr>
+    <tr>
+      <td>波动</td>
+      <td><span class="tag tag-green">中低</span></td>
+      <td>上证近3日振幅收窄（8/19约2.1%萎缩至8/21约0.75%），波动率回落至常态</td>
+    </tr>
+    <tr>
+      <td>情绪</td>
+      <td><span class="tag tag-amber">修复后观望</span></td>
+      <td>涨停58/跌停15，上涨家数2505 vs 下跌2862（红盘占比45%）；较8/20的84家涨停明显降温，情绪从亢奋回落至中性偏谨慎</td>
+    </tr>
+    <tr>
+      <td>风险偏好</td>
+      <td><span class="tag tag-amber">neutral</span></td>
+      <td>创业板(+1.43%)显著强于上证(+0.04%)，成长占优；但科创50资金近20日净流出70亿，成长内部有分化</td>
+    </tr>
+    <tr>
+      <td>风格</td>
+      <td><span class="tag tag-blue">成长偏强</span></td>
+      <td>创业板/深成强于上证，题材（贵金属、肿瘤疫苗、通信）活跃；沪深300(+0.51%)跑赢上证50</td>
+    </tr>
+    <tr>
+      <td>资金</td>
+      <td><span class="tag tag-red">存量·缩量</span></td>
+      <td>两市成交1.88万亿，仅5日均2.25万亿的83%、10日均的82%——连续四日萎缩，缩量程度为近期罕见，存量博弈极致。沪深300ETF主力净流入6.4亿（10日累计+42亿），上证50/科创50净流出</td>
+    </tr>
+  </table>
+  </div>
+
+  <h3>昨日（8/21）收盘速览</h3>
+  <div class="card-grid">
+    <div class="stat-card"><div class="num" style="color:var(--green)">3905.20</div><div class="label">上证指数 +0.04%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">14094.17</div><div class="label">深证成指 +0.87%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">3545.58</div><div class="label">创业板指 +1.43%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">18792亿</div><div class="label">成交额 缩量至83%</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--amber)">58/15</div><div class="label">涨停/跌停</div></div>
+  </div>
+  <p><strong>主线（8/21）：</strong>贵金属+4.64%（湖南白银领涨，5日+16%/20日+34%）、能源金属/锂矿+4.6%、肿瘤疫苗+6.24%（康希诺20cm）、白银/铅锌概念+4%、通信设备+2.98%（星网锐捷）——日内是"贵金属+创新药"双主线，通信电子已现轮动迹象（主力净流入领先）。</p>
+  <p><strong>估值分位决策：</strong>沪深300 PE约12.5倍，位于近5年45%分位，估值中性偏低，不构成中期向上硬约束。但结构性分化显著：贵金属/白银板块20日累计涨幅已+24%~34%，拥挤度偏高；肿瘤疫苗短期暴动后医药细分PE分位抬升。对今日而言，估值分位对3日方向解释力弱，真正约束在量能与拥挤度（见S3），而非估值本身。</p>
+</div>
+
+<!-- S1.5 盘前观点 -->
+<div class="section" id="s15">
+  <h2><span class="s-num">S1.5</span> 盘前观点（Morning View）</h2>
+
+  <h3>海外锚点</h3>
+  <p>隔夜美股在周四下跌后周五集体收涨（道指+0.98%、标普+0.43%、纳指+0.44%），但全周仍收跌（标普-1.4%、纳指-2.05%）——周跌尾涨，属"急跌后的反抽修复"，并非趋势转强。真正对A股有方向性意义的是：美国财政部宣布加倍回购10-30年期国债，推动美元走弱、美债收益率先下行，贵金属（COMEX金+5.18%周/白银+6.46%周）与资源品集体走强。这为A股贵金属/有色提供隔夜增量催化，对整体风险偏好偏中性略偏暖——美股企稳+资源品走强，外围不构成压制。</p>
+
+  <h3>盘面定性</h3>
+  <p>用量价定性词典，昨日是典型的"缩量整理、存量博弈"——指数四日横盘、量能萎缩至5日均83%，技术上属于破位（8/19失守20日线）后的缩量企稳，反弹高度直接受制于量能。具体技术位：上证5日线约3935、20日线约3950上方，当前3905处于两者下方，上方第一压力3935、强阻力3950-3960；下方支撑3880（近三日低点3879-3888密集区）为多空分水岭。今日若放量站上3935并守住，则可确认企稳反弹;若缩量冲高回落，则仍是区间整理。</p>
+
+  <h3>结构行为</h3>
+  <p>上周五的资金行为是"贵金属/创新药做主线、通信电子暗流轮动"——贵金属、肿瘤疫苗吸金，通信设备主力净流入8.9亿居板块第一、元件+4.7亿，显示资金在主线退潮翘板。同时沪深300ETF主力净流入6.4亿而科创50净流出，说明大盘蓝筹有承接、科技有分歧。今日焦点是"资金能否从贵金属/医药切向周末催化最强的通信/算力/半导体"，若切换成功则赚钱效应扩散，若切换失败则维持存量跷跷板。</p>
+
+  <h3>今日取向</h3>
+  <p>风格取向：重个股轻指数，科技硬件（通信/算力/半导体）进攻、贵金属与创新药做主线延续，整体偏进攻但不追高。条件分支——"若今日放量（两市≥2.1万亿）且创业板站上3580，则确认成长主线、可积极；若缩量且上证跌破3880，则整固延长、回到防守"。</p>
+</div>
+
+<!-- S2 隔夜冲击 -->
+<div class="section" id="s2">
+  <h2><span class="s-num">S2</span> 隔夜冲击（Overnight Shock）</h2>
+
+  <div class="card-grid">
+    <div class="stat-card"><div class="num" style="color:var(--green)">+0.98%</div><div class="label">道指(周五)</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">+0.43%</div><div class="label">标普500 (周-1.4%)</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">+0.44%</div><div class="label">纳指 (周-2.05%)</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">4661.6</div><div class="label">COMEX金 +5.18%周</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">69.01</div><div class="label">COMEX白银 +6.46%周</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--green)">1001</div><div class="label">沪金主力 元/克</div></div>
+  </div>
+
+  <h3>事件1：周末政策+产业催化密集落地（科技主线最大Trigger）</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>多项利好集中在周末发布：①国常会部署"适度超前统筹推进新一代通信网建设"（覆盖基础/空间/国际/融合网络，对应5G-A/6G/万兆光网/卫星互联网）；②长江存储IPO申请获受理；③中际旭创中报净利同比+242%；④"全国一体化算力网加速成形"，内蒙古绿色算力大会签约1361亿；⑤阿里拟配售800亿港元新股、资金投向AI算力；⑥功率半导体酝酿提价、AI服务器涨价超15%。<br>
+    <strong>来源：</strong>国常会通稿、交易所披露、公司公告、四大证券报头版、财联社。<br>
+    <strong>【市场解读】</strong>市场解读为"政策（通信网）+产业（存储/算力/光模块）+业绩（旭创）三重共振"，周日盘前多个平台的"早报"普遍将科技硬件列为今日开盘最强方向。
+  </div>
+  <div class="alert-box amber">
+    <strong>Surprise评分：</strong>重要性 9/10 + 市场预期（中，政策定调超预期） + 实际偏离（偏超预期）→ <strong>Surprise: 7/10</strong>。单个要素（旭创业绩/长存IPO）此前有预期，但"国常会定向定调通信网+多要素同日共振"的组合力度超预期，构成今日开盘的强Trigger。
+  </div>
+  <p><strong>传导链（四层）：</strong>国常会定向+产业数据共振 → ① 改变预期：通信/算力从"轮动品"升级为"政策锚定方向"，获中期叙事支持；② 谁最受益：光模块/通信设备（中际旭创、星网锐捷，L1-A）、存储/半导体（长存产业链、功率半导体，L1-A）、算力硬件（绿色算力签约，L1-A）、卫星互联网（国常会点名空间网络，L2-B）；③ 资金先手：周五通信设备已主力净流入板块第一，资金已提前布局，今日为"先手兑现 vs 新增量接力"博弈；④ 逻辑持续性：政策定调为中期叙事，但短线看业绩与量能承接，若旭创等龙头涨幅过大则短期透支。</p>
+  <div class="alert-box red">
+    <strong>传导链断裂点：</strong>科技硬件高开后必须看到成交放量（两市首小时≥5200亿）与涨停梯队跟上（10:30前科技涨停≥15家），否则周末利好=高开兑现，题材交易终止、回吐涨幅。这是今日最重要的一环验证。
+  </div>
+
+  <h3>事件2：金价续创新高 + 美元贬值交易（贵金属主线增量）</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>COMEX黄金单周+5.18%至4661.6美元/盎司、3个月新高、8月累计+12%；COMEX白银+6.46%至69.01美元；沪金主力突破1001元/克、现货金逼近千元。驱动：美国财政部加倍回购10-30年国债→美债收益率下行后回升、美元走弱；市场对美国债务规模担忧加剧（机构预测未来12个月金价看5400美元）。<br>
+    <strong>来源：</strong>华西证券周报、证券时报、市场金价数据。
+  </div>
+  <div class="alert-box amber">
+    <strong>Surprise评分：</strong>重要性 8/10 + 市场预期（高） + 实际偏离（继续超预期走强）→ <strong>Surprise: 6/10</strong>。金价上涨已被市场高度预期并连续定价（A股贵金属20日涨34%），属"预期内的超预期"，继续追高风险上升，但趋势未破。
+  </div>
+  <p><strong>传导链：</strong>美元走弱+避险共振 → 黄金白银加速 → A股贵金属/有色/白银概念受催化（湖南白银等），沪金破千元对黄金珠宝（饰品股）也有情绪映射。属已有主线延续，非新叙事，逻辑仍能持续但拥挤度已高，今日若高开更需警惕获利兑现。</p>
+
+  <h3>事件3：Moderna mRNA肿瘤疫苗Ⅲ期成功（创新药主线延续）</h3>
+  <div class="alert-box blue">
+    <strong>【事实层】</strong>默沙东与Moderna联合宣布个性化mRNA癌症疫苗intismeran（V940）在Ⅲ期INTerpath-001达主要终点，覆盖高危黑色素瘤，为全球首个Ⅲ期成功的mRNA肿瘤疫苗（8/19公布，Moderna+177%）。A股周五已发酵：肿瘤疫苗+6.24%（康希诺20cm）、沃森生物机构净买入2.75亿。
+  </div>
+  <div class="alert-box amber">
+    <strong>Surprise评分：</strong>重要性 8/10 + 市场预期（部分已被定价） + 实际偏离（事件利好但催化已Price-in）→ <strong>Surprise: 4/10</strong>。属"已充分定价的旧催化"，今日能否再上台阶取决于A股自身情绪与资金承接，而非隔夜新消息。
+  </div>
+  <p><strong>传导链：</strong>mRNA里程碑 → A股肿瘤疫苗/mRNA平台/CXO映射延续。但注意：距事件已5个交易日，科创50半导体资金流出、医药内部也分化，创新药今日更多是"延续惯性"而非"新增量Trigger"，优先级列于科技与贵金属之后。下一催化剂（其他适应症数据）尚远，短线面临催化真空。</p>
+
+  <h3>宏观锚点与流动性</h3>
+  <p>国内流动性为本期潜在扰动项：今日950亿元逆回购到期，下周二（8/26）另有6000亿元MLF到期。若央行周初以足额OMO/MLF续作对冲则无碍，若有意收拢则缩量状态下对反弹形成压制。降准降息预期仍在（7月政治局会议重开货币政策工具调整窗口，市场预判三季度末前后或落地：预计降息10bp、降准0.5pct），为中期支撑；本周五杰克逊霍尔年会为海外利率路径关键事件，影响贵金属与全球风险偏好。</p>
+</div>
+
+<!-- S2.5 行业快讯板 -->
+<div class="section" id="s25">
+  <h2><span class="s-num">S2.5</span> 行业快讯板（News Board）</h2>
+  <p class="evidence" style="margin-left:0">只收T日08:00前已公开、具交易价值但未进S2的重大信息；每条标注来源类型。</p>
+
+  <h3>AI算力 / 通信</h3>
+  <ul>
+    <li>全国一体化算力网加速成形，内蒙古绿色算力大会现场签约1361亿元。【官方】→ 映射：算力/IDC/服务器</li>
+    <li>AI服务器涨价幅度超15%，产业链传导顺畅。【产业】→ 映射：AI服务器/算力硬件</li>
+    <li>阿里拟配售800亿港元新股，资金投向AI算力（港股映射）。【公告】→ 映射：恒生科技/A股算力链条</li>
+  </ul>
+  <p class="evidence">→ 映射：算力硬件、光模块、IDC、服务器（L1/L2）</p>
+
+  <h3>半导体</h3>
+  <ul>
+    <li>长江存储IPO申请获受理，存储龙头资本化进程推进。【官方】→ 映射：存储产业链/设备</li>
+    <li>功率半导体酝酿提价，供给端约束显现。【产业】→ 映射：功率器件（IGBT/MOSFET）</li>
+  </ul>
+  <p class="evidence">→ 映射：存储/设备/功率半导体（L1-L2）</p>
+
+  <h3>创新药 / 生物医药</h3>
+  <ul>
+    <li>全球首个黑色素瘤mRNA疫苗Ⅲ期成功，临床专家对快速落地持观望态度（商业化节奏存疑）。【产业/媒体】→ 映射：肿瘤疫苗/mRNA平台</li>
+    <li>康希诺、沃森生物等mRNA/疫苗标的获资金重仓（沃森机构净买入2.75亿）。【龙虎榜】→ 映射：mRNA/疫苗</li>
+  </ul>
+
+  <h3>贵金属 / 有色</h3>
+  <ul>
+    <li>金价8月累计涨超12%、连涨三周，白银单周+6.46%，沪金破千元。【数据】→ 映射：黄金/白银/珠宝饰品</li>
+    <li>华西证券：美元贬值交易下关注贵金属投资机会（金12月看5400美元）。【卖方】→ 映射：贵金属/有色</li>
+  </ul>
+
+  <h3>金融 / 政策</h3>
+  <ul>
+    <li>央行本周950亿逆回购+周二6000亿MLF到期；降准降息窗口（三季度末）预期升温。【公告/市场】→ 映射：银行/大金融/风格</li>
+    <li>今日A股限售股解禁69.39亿元（8家公司），规模小、不构成压力。【数据】</li>
+  </ul>
+</div>
+
+<!-- S2.6 外媒小作文 -->
+<div class="section" id="s26">
+  <h2><span class="s-num">S2.6</span> 外媒小作文监测（Market Narrative Watch）</h2>
+  <div class="alert-box amber">
+    <strong>【彭博社】中国券商收紧杠杆/衍生品审查（8/9-8/10报道）</strong><br>
+    · 媒体：彭博社丨时间：8月10日（约两周前）<br>
+    · 核心摘要：据知情人士，中信证券、东方财富等券商近期提高两融/转融券/期权等杠杆及衍生品业务的开户审查要求，更严格核查客户财务、交易经验与风险承受。<br>
+    · 类型标签：知情人士型<br>
+    · 可信度评级：中（多家信源交叉、且与监管"抑制过度风险"导向一致，可信度较高；但属过程性报道，非事件性）<br>
+    · 涉及标的：券商板块、杠杆资金敏感的小盘/题材股<br>
+    · 事实层 vs 叙事层：可查证事实="券商收紧审查"；叙事框架="监管对加杠杆更警惕"——前者可采信，后者是否压制风险偏好需独立判断。<br>
+    · 证伪/证实路径：观察两融余额周度是否显著回落、题材股（小盘/ST）资金是否撤离。两周来A股缩量至1.88万亿，收敛风格与此报道方向一致，但更主因是成交量与情绪而非该单一报道。<br>
+    · <strong>盘面定价判断：</strong>该报道已发布两周、A股已连续缩量定价，情绪基本释放，今日边际影响有限（关注两融余额数据佐证）。
+  </div>
+  <p><strong>总评：</strong>今日无重大新增外媒中国资产叙事报道，仅两周前的券商审查小作文持续发酵，且已被缩量行情部分定价。贵金属/美元贬值为外盘定价、非外媒叙事，见S2事件2。</p>
+</div>
+
+<!-- S3 定价与拥挤度 -->
+<div class="section" id="s3">
+  <h2><span class="s-num">S3</span> 定价与拥挤度（Positioning / Price-in）</h2>
+
+  <h3>各主线利好强度 vs 价格透支</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>方向</th><th>隔夜/周末增量</th><th>5日累计涨幅</th><th>20日累计涨幅</th><th>利好强度</th><th>价格透支</th><th>盈亏比</th></tr>
+    <tr><td>通信/光模块</td><td>国常会+旭创业绩(强)</td><td>-1%~+3%</td><td>+1.8%</td><td>9/10</td><td>2/10</td><td><span class="tag tag-green">优</span></td></tr>
+    <tr><td>半导体/存储</td><td>长存IPO+涨价(强)</td><td>回落(科创50弱)</td><td>回落</td><td>8/10</td><td>2/10</td><td><span class="tag tag-green">优</span></td></tr>
+    <tr><td>贵金属/白银</td><td>金价新高(中强)</td><td>+16%</td><td>+34%</td><td>7/10</td><td><span style="color:var(--red)">8/10</span></td><td><span class="tag tag-red">差</span></td></tr>
+    <tr><td>创新药/肿瘤疫苗</td><td>旧催化延续(弱)</td><td>持平</td><td>激活</td><td>4/10</td><td>6/10</td><td><span class="tag tag-amber">一般</span></td></tr>
+    <tr><td>能源金属/锂矿</td><td>轮动(中)</td><td>-2.4%</td><td>+9%</td><td>5/10</td><td>3/10</td><td><span class="tag tag-amber">一般</span></td></tr>
+  </table>
+  </div>
+
+  <p><strong>关键拥挤度判断：</strong>贵金属/白银是全场拥挤度最高方向——20日累计+34%、湖南白银等龙头5日+16%，周五涨幅第一+4.64%，"利好7 vs 透支8"意味着继续追高的盈亏比最差，今日即便金价新高，板块高开后兑现压力也最大（S2事件2已警示）。与之相反，通信/光模块是"利好强度9 vs 透支仅2"的未充分定价方向——周五虽主力净流入居首但价格涨幅温和（通信设备+2.98%），周末催化多重共振，是今日性价比最佳的主线候选。创新药属"催化真空+部分透支"，优先级居后。</p>
+  <p><strong>高开兑现量化提示：</strong>贵金属/有色周五已+4%，若今日再高开1-2%，则两日累计涨幅达5-7%，短线获利盘浓厚，"高开兑现"概率显著上升；科技硬件因周五涨幅温和、催化新鲜，高开兑现风险相对更低。</p>
+</div>
+
+<!-- S4 主线竞争 -->
+<div class="section" id="s4">
+  <h2><span class="s-num">S4</span> 主线竞争（Sector Competition）</h2>
+
+  <h3>概率竞争（今日最强主线候选）</h3>
+
+  <p><strong>第一主线 · 科技硬件/通信算力/半导体 —— 成为最强主线概率 40%</strong></p>
+  <div class="prob-bar"><div style="width:40%;background:var(--green)"></div></div>
+  <p><strong>驱动：</strong>国常会定调通信网+长江存储IPO+旭创净利+242%+绿色算力+功率半导体涨价多要素同日共振，为全场新增量最大的催化组合；且叠加"价格未透支"（透支仅2/10），盈亏比最优。承接逻辑：通信设备周五主力净流入已居板块第一，资金已在向此切换。风险：量能不足则高开兑现，且旭创等光模块高开幅度过大反而压缩接力空间。</p>
+
+  <p><strong>第二主线 · 贵金属/有色/白银 —— 概率 28%</strong></p>
+  <div class="prob-bar"><div style="width:28%;background:var(--amber)"></div></div>
+  <p><strong>驱动：</strong>金价续创新高+美元贬值交易，趋势性主线惯性最强。承接逻辑：逻辑仍可持续（避险+美元走弱中期支撑）。但拥挤度全场最高（透支8/10），湖南白银等20日+34%，高开兑现风险最大，今日更适合"持有/兑现"而非"追高接力"。</p>
+
+  <p><strong>第三主线 · 创新药/肿瘤疫苗 —— 概率 22%</strong></p>
+  <div class="prob-bar"><div style="width:22%;background:var(--blue);background:var(--accent2)"></div></div>
+  <p><strong>驱动：</strong>mRNA叙事延续，康希诺/沃森获资金承接。逻辑持续但催化已充分定价、下一催化剂尚远，短线易分化，今日更多是惯性而非新增量。</p>
+
+  <p><strong>其他（能源金属/锂矿、存储、机器人）—— 合计 10%</strong></p>
+  <div class="prob-bar"><div style="width:10%;background:#94a3b8"></div></div>
+
+  <div class="alert-box amber">
+    <strong>叙事竞争：</strong>若科技硬件（局部定价权=板块层面）同时推动创业板放量走强并带动指数上攻（全局定价权=指数层面），则"政策科技叙事"同时赢得局部与全局定价权，今日为进攻日；若科技仅自身高开、指数无量回落，则只是"局部兑现"，主线仍停留在贵金属/医药的存量跷跷板，全局仍为震荡。
+  </div>
+</div>
+
+<!-- S4.5 热点深追 -->
+<div class="section" id="s45">
+  <h2><span class="s-num">S4.5</span> 热点深追（Theme Deep-Track）</h2>
+  <p><strong>选题：</strong>通信/算力/光模块（隔夜产业级催化 + 未充分定价，今日最佳性价比方向）</p>
+
+  <h3>1. 事件锚点</h3>
+  <p>国常会"适度超前统筹推进新一代通信网建设"，首次将基础网络、空间网络（卫星互联网）、国际网络、融合网络统筹定调，叠加中际旭创中报净利+242%、全国一体化算力网签约1361亿，"政策+业绩+落地"三线共振，构成产业级拐点而非普通噪音——因为政策定调给予了行业中期资金与叙事支撑，业绩则给出了当期兑现锚。</p>
+
+  <h3>2. 产业链拆解</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>环节</th><th>内容/驱动</th><th>受益弹性</th><th>代表</th></tr>
+    <tr><td>上游·光模块/器件</td><td>旭创业绩+242%、AI服务器涨价→光模块量价齐升</td><td><span class="tag tag-green">最高</span></td><td>中际旭创、天孚</td></tr>
+    <tr><td>上游·通信设备</td><td>国常会通信网直接拉动，5G-A/6G迭代</td><td>高</td><td>星网锐捷、中兴</td></tr>
+    <tr><td>中游·半导体/存储</td><td>长江存储IPO+功率半导体涨价</td><td>中高</td><td>北方华创、功率IDM</td></tr>
+    <tr><td>中游·算力/服务器/IDC</td><td>绿色算力签约1361亿、一体化算力网</td><td>中</td><td>科华数据、IDC厂商</td></tr>
+    <tr><td>下游·卫星互联网/空间网络</td><td>国常会点名"空间网络"建设</td><td>中（弹性题材）</td><td>卫星应用标的</td></tr>
+  </table>
+  </div>
+  <p><strong>最受益排序：</strong>光模块/器件＞通信设备＞半导体/存储＞算力/IDC＞卫星互联网。核心逻辑是"业绩已兑现（旭创）+政策给叙事（国常会）+价格未透支"，弹性最大环节属光模块与通信设备。</p>
+
+  <h3>3. 受益分层（四层映射）</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>层级</th><th>标的</th><th>映射等级</th><th>上市地</th></tr>
+    <tr><td>L1 直接供应链</td><td>中际旭创、星网锐捷、天孚通信、广联达类IDC</td><td>A</td><td>A股</td></tr>
+    <tr><td>L2 同平台/环节beta</td><td>通信设备/光通信ETF、算力硬件</td><td>B</td><td>A股</td></tr>
+    <tr><td>L3 产业链服务</td><td>设备/封测/IDC运营</td><td>C</td><td>A股</td></tr>
+    <tr><td>L4 情绪Beta</td><td>通信ETF、创业板、科创50</td><td>D</td><td>A股</td></tr>
+  </table>
+  </div>
+
+  <h3>4. 板块位置诊断（拐点四要素）</h3>
+  <p>①本轮调整时长：通信设备20日仅+1.8%，处于横盘整理后相对低位，5日小幅回落，调整充分；②机构持仓位置：数据源未精确覆盖，但光模块龙头近月震荡、边际资金谨慎可见；③筹码出清：通信周五放量但涨幅温和（量价定性：温和放量），抛压未充分释放也未见拥挤，筹码状态中性偏优；④利空是否出尽：前期"AI资本开支放缓"担忧在旭创+242%业绩与AI服务器涨价面前被证伪，利空基本出尽。</p>
+
+  <h3>5. 拐点验证/证伪信号</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>类型</th><th>信号（当日可验证）</th></tr>
+    <tr><td>确认(启动)</td><td>两市放量≥2.1万亿，通信/光模块板块成交额放大，旭创等龙头涨停或大涨，且10:30前科技硬件涨停≥15家</td></tr>
+    <tr><td>证伪(兑现)</td><td>高开>2%但10:30前通信涨停<5家，或龙头冲高回落，量能仍在1.9万亿下方→判定为"周末利好兑现"而非趋势启动，降级处理</td></tr>
+  </table>
+  </div>
+</div>
+
+<!-- S5 今日预测 -->
+<div class="section" id="s5">
+  <h2><span class="s-num">S5</span> 今日预测（Market Forecast）</h2>
+
+  <h3>开盘预测</h3>
+  <div class="alert-box blue">
+    <strong>高开。</strong>上证预计 高开 +0.3%~+0.8%（上探3920-3938区间）；创业板高开更多，预计 +0.8%~1.5%（测试3560-3590）。依据：周末科技催化密集+V金融周五企稳利多情绪，但昨日缩量至1.88万亿显示承接偏弱，高开幅度受制。<span class="evidence">高/中</span>
+  </div>
+
+  <h3>时间节点预测</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>时间节点</th><th>预测内容</th><th>验证方式</th></tr>
+    <tr><td>09:45前</td><td>通信/光模块板块相对上证超额收益 +0.5%~1.0%（科技领涨验证）</td><td>板块涨幅 vs 上证</td></tr>
+    <tr><td>10:30</td><td>科技硬件（通信/算力/半导体）涨停家数达 10~20 家</td><td>实时涨停统计</td></tr>
+    <tr><td>11:30</td><td>创业板相对上证超额收益 +0.5%~+1.2%（成长延续）</td><td>指数对比</td></tr>
+    <tr><td>14:00</td><td>成交额达全天预测的 60%~66%（两市约1.25~1.4万亿）</td><td>实时成交额</td></tr>
+    <tr><td>14:30</td><td>贵金属/有色主线相对强弱衰减（高位兑现压力）</td><td>板块尾盘表现</td></tr>
+  </table>
+  </div>
+
+  <h3>量能预测</h3>
+  <div class="alert-box amber">
+    <strong>推导输入：</strong>昨成交1.88万亿、5日均2.25万亿、20日均2.31万亿；昨日缩量至83%为连续四日极端缩量；今日周末催化 + 高开预期。<br>
+    <strong>预测：</strong>中位数 2.05 万亿，80%区间 1.90~2.30 万亿。依据：周末催化应带动放量修复，但950亿逆回购到期与谨慎情绪压制放量幅度，难以一步回到2.2万亿以上。<span class="evidence">低-中</span>
+  </div>
+
+  <h3>涨停家数预测</h3>
+  <p><strong>60~90 家</strong>。昨日58家缩量下仍偏少，今日催化密集+情绪回暖，预计回升至60-90区间。<span class="evidence">低</span></p>
+
+  <h3>历史基准率说明</h3>
+  <p><strong>样本缺失声明：</strong>针对"极端缩量后首日（缩量至5日均83%下方）叠加周末政策催化"的历史样本，本期数据源未提供足够可比样本数（N不可验证），故不给出量化概率数字，仅做定性判断（缩量后若放量上攻则行情启动概率上升；缩量滞涨则回撤）。避免给出无法核实基准率的虚假概率。<span class="evidence">方法纪律</span></p>
+</div>
+
+<!-- S6 情景推演 -->
+<div class="section" id="s6">
+  <h2><span class="s-num">S6</span> 情景推演（Scenario Tree）</h2>
+
+  <div class="scenario-box opt">
+    <strong>乐观（30%）—— 政策科技放量上攻</strong><br>
+    触发：两市放量≥2.2万亿，通信/光模块/半导体集体涨停扩散，创业板站上3580并收+1.5%以上，贵州茅台/宁德企稳。上证收3925上方。<br>
+    含义：周末政策催化被增量资金确认，科技接棒成为新主线，情绪转向进攻。
+  </div>
+  <div class="scenario-box neu">
+    <strong>中性（50%）—— 高开分化、主线切换与存量震荡</strong><br>
+    触发：科技高开但量能温和（1.9~2.2万亿），通信冲高后部分兑现，贵金属/医药与科技轮动切换，创业板相对强、上证窄幅。上证收3900-3935。<br>
+    含义：存量博弈下板块轮动，赚钱效应一般，重个股轻指数。
+  </div>
+  <div class="scenario-box pes">
+    <strong>悲观（20%）—— 高开低走、量能不足回撤</strong><br>
+    触发：周末利好高开后承接不足（首小时成交<4200亿沪市），科技/贵金属"高开兑现"，上证跌破3880且30分钟不收回。上证收3880下方。<br>
+    含义：缩量下利好兑现，二次探底风险，回到防守。
+  </div>
+</div>
+
+<!-- S7 失效条件 -->
+<div class="section" id="s7">
+  <h2><span class="s-num">S7</span> 失效条件（Kill Conditions）</h2>
+
+  <h3>核心预测失效阈值</h3>
+  <div class="kill-box"><strong>科技主线失效：</strong>若通信/算力/半导体高开>2%但10:30前涨停<15家，或光模块龙头（中际旭创等）高开低走翻绿，则"科技为第一主线"判断失效，降级为"利好兑现"的短线一日游。</div>
+  <div class="kill-box"><strong>修复证伪：</strong>上证跌破3880（近三日低点密集区）且30分钟未收回，则"缩量企稳+高开试攻"证伪，转为二次探底。</div>
+  <div class="kill-box"><strong>量能预测失效：</strong>沪市首小时成交<4200亿（昨约4300-4600量级），则全天大概率<1.9万亿，反弹"成色不足"，量能预测须下修。</div>
+  <div class="kill-box"><strong>北向/外资方向：</strong>若主力资金开盘30分钟系统净流出>80亿且外资重仓核心票（茅台/宁德/旭创）盘中走弱，则成长主线承压，主线判断下修。</div>
+
+  <h3>今日真实风险日历</h3>
+  <p>今日950亿逆回购到期（流动性）；本周五杰克逊霍尔年会（海外利率路径，影响贵金属与风险偏好）；下周二6000亿MLF到期。反身性风险：贵金属/有色周五已+4%、20日+34%，今日若再高开即为典型的"高开兑现"候选。</p>
+</div>
+
+<!-- S8 观察清单 -->
+<div class="section" id="s8">
+  <h2><span class="s-num">S8</span> 观察清单（Watchlist）</h2>
+
+  <h3>L1 直接标的（验证科技主线）</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>标的</th><th>板块</th><th>映射/上市地</th><th>验证逻辑</th></tr>
+    <tr><td>中际旭创</td><td>光模块</td><td>A</td><td>业绩+242%，验证科技硬件能否走强（未充分透支+催化最直接）</td></tr>
+    <tr><td>星网锐捷</td><td>通信设备</td><td>A</td><td>验证国常会通信网催化能否兑现</td></tr>
+    <tr><td>RF/功率半导体标的</td><td>半导体</td><td>A</td><td>验证功率半导体涨价逻辑</td></tr>
+  </table>
+  </div>
+
+  <h3>L2/L3 平台与产业链（验证扩散）</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>标的</th><th>板块</th><th>映射/上市地</th><th>验证逻辑</th></tr>
+    <tr><td>湖南白银 / 山东黄金 / 赤峰黄金</td><td>贵金属</td><td>A</td><td>金价新高下贵金属是延续还是高位兑现（拥挤度最高，观察兑现风险）</td></tr>
+    <tr><td>康希诺 / 沃森生物</td><td>肿瘤疫苗/mRNA</td><td>A</td><td>验证创新药惯性能否延续（催化真空期）</td></tr>
+    <tr><td>融捷股份 / 锂矿</td><td>能源金属</td><td>A</td><td>验证轮动补涨逻辑</td></tr>
+  </table>
+  </div>
+
+  <div class="alert-box green">
+    <strong>观察纪律：</strong>以上为验证逻辑的观察对象，非荐股。核心二选一：科技硬件（进攻、未透支）vs 贵金属高位（兑现），看今日量能与涨停梯队二选一的资金给出了谁。
+  </div>
+</div>
+
+<!-- S9 预测台账 -->
+<div class="section" id="s9">
+  <h2><span class="s-num">S9</span> 预测台账（Forecast Ledger）</h2>
+
+  <h3>上期（8/21）预测验证</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>置信度</th><th>实际值(8/21)</th><th>结果</th></tr>
+    <tr><td>开盘方向</td><td>平开至小幅高开+0.1%~0.5%</td><td>中</td><td>上证低开-0.3%（开3891），尾盘收回+0.04%</td><td><span class="tag tag-amber">部分准确</span></td></tr>
+    <tr><td>开盘区间</td><td>上证3900~3920</td><td>中</td><td>开3891（略低），收盘3905在区间</td><td><span class="tag tag-amber">部分准确</span></td></tr>
+    <tr><td>量能中位数</td><td>2.00万亿（1.85~2.20）</td><td>低</td><td>1.88万亿（区间内、低于中位）</td><td><span class="tag tag-green">✅ 区间内</span></td></tr>
+    <tr><td>涨停家数</td><td>50~80家</td><td>低</td><td>58家</td><td><span class="tag tag-green">✅ 准确</span></td></tr>
+    <tr><td>主线竞争</td><td>医药45% / 贵金属25% / 地产15% / 存储10%</td><td>中</td><td>贵金属+4.6%第一、肿瘤疫苗+6.24%、地产未启动</td><td><span class="tag tag-amber">部分准确</span></td></tr>
+    <tr><td>医药涨停数(10:30)</td><td>8~15家</td><td>中</td><td>医药分化，肿瘤疫苗活跃但整体降温</td><td><span class="tag tag-amber">部分准确</span></td></tr>
+    <tr><td>创业板方向</td><td>守3500、相对上证超额+0.3%~0.8%</td><td>中</td><td>创业板3545(+1.43%)，超额+1.39%</td><td><span class="tag tag-green">✅ 准确</span></td></tr>
+    <tr><td colspan="5"><strong>验证小结：</strong>7项中3项准确、4项部分准确、0项明显错误。方向命中率高，但"开盘方向"与"主线竞争"两项预测偏保守——弱化了贵金属的强势与科技/医药的切换弹性。量能预测再度偏向乐观（预期2.0万亿、实际1.88万亿），连续两期低估极端缩量幅度，已在此前台账标注"应加大缩量样本"，本期继续验证该偏差存在（应下修量能估计）。主线竞争：预测地产/存储，实际贵金属+创新药双主线，板块概率权重需提高对"已运行高拥挤主线惯性"的考量。</td></tr>
+  </table>
+  </div>
+
+  <h3>本期（8/24）可验证预测</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+    <tr><td>开盘方向</td><td>高开，上证+0.3%~+0.8%，创业板+0.8%~1.5%</td><td>中</td></tr>
+    <tr><td>量能中位数</td><td>2.05万亿（1.90~2.30万亿）</td><td>低</td></tr>
+    <tr><td>涨停家数</td><td>60~90家</td><td>低</td></tr>
+    <tr><td>主线竞争</td><td>科技硬件/通信算力40% / 贵金属28% / 创新药22% / 其他10%</td><td>中</td></tr>
+    <tr><td>科技硬件涨停(10:30)</td><td>10~20家</td><td>中</td></tr>
+    <tr><td>创业板相对上证超额</td><td>+0.5%~+1.2%</td><td>中</td></tr>
+    <tr><td>情景概率</td><td>乐观30% / 中性50% / 悲观20%</td><td>—</td></tr>
+    <tr><td>贵金属衰减(14:30)</td><td>高位相对强弱衰减</td><td>中</td></tr>
+  </table>
+  </div>
+</div>
+
+<div class="footer">
+  <p>以上分析基于公开数据，不构成投资建议</p>
+  <p>数据来源：西部证券数据接口、WebSearch（华尔街见闻/证券时报/财联社/中证报/路透/彭博等）</p>
+  <p>2026-08-24 07:50 · 盘前分析</p>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.nav a').forEach(function(a){
+  a.addEventListener('click', function(e){
+    document.querySelectorAll('.nav a').forEach(function(x){x.classList.remove('active')});
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
