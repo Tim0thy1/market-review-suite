@@ -85,39 +85,11 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 <nav class="cat-nav" id="catNav">
-  <a href="#cat-deep" class="cat-active" data-cat="cat-deep"><span class="ic">🔬</span>深度专题</a>
-  <a href="#cat-weekend" data-cat="cat-weekend"><span class="ic">📖</span>周末复盘</a>
+  <a href="#cat-weekend" class="cat-active" data-cat="cat-weekend"><span class="ic">📖</span>周末复盘</a>
   <a href="#cat-us" data-cat="cat-us"><span class="ic">🇺🇸</span>美股复盘</a>
   <a href="#cat-ashare" data-cat="cat-ashare"><span class="ic">📈</span>A股复盘</a>
   <a href="#cat-premarket" data-cat="cat-premarket"><span class="ic">📅</span>盘前分析</a>
 </nav>
-
-<div class="date-group content-wrap" id="cat-deep" style="border-top:3px solid var(--accent2);padding-top:14px;margin-top:8px;scroll-margin-top:110px;"><div class="date-header">📌 深度专题专栏 <span class="tag tag-today">常驻 · 永久保留</span></div><div class="report-grid content-wrap"><a class="report-card highlight-card" href="https://tim0thy1.github.io/market-review-suite/深度专题/20260823_美债深度专题.html" target="_blank">
-          <div class="type type-weekend">📖 深度专题</div>
-          <div class="title">40万亿的"死亡螺旋"：美债到底怎么了？</div>
-          <div class="desc">30Y收益率冲5.33%、债务破40万亿、利息超军队开支、日中用脚投票、AI抢债、贝森特救市失效、达利欧拉响三年倒计时</div>
-          <div class="arrow">精读专题 →</div>
-        </a><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/深度专题/20260823_mRNA癌症疫苗专题.html" target="_blank">
-          <div class="type type-weekend">🔴 深度专题</div>
-          <div class="title">mRNA癌症疫苗：一只"疫苗式"的股市核弹</div>
-          <div class="desc">莫德纳暴涨177%、全球首款个性化mRNA肿瘤疫苗III期成功，行业为何兴奋、中美差距在哪</div>
-          <div class="arrow">精读专题 →</div>
-        </a><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/深度专题/20260823_牛来大模型专题.html" target="_blank">
-          <div class="type type-weekend">🔴 深度专题</div>
-          <div class="title">神秘"牛来"大模型刷屏：中美大模型拐点到哪了？</div>
-          <div class="desc">匿名屠榜的"牛来"全网刷屏；中国开源下载占比首超美国、Kimi K3登顶，中美从跟随走向并跑</div>
-          <div class="arrow">精读专题 →</div>
-        </a><a class="report-card highlight-card" href="https://tim0thy1.github.io/market-review-suite/深度专题/20260823_康方发家史故事.html" target="_blank">
-          <div class="type type-weekend">🔬 公司深度 · 故事×科普</div>
-          <div class="title">康方发家史：一部双抗挑战者的故事</div>
-          <div class="desc">从中山实验室到掀翻"药王"K药；讲透为何PD-1×VEGF聪明却难做、康方能否守住龙头</div>
-          <div class="arrow">精读专题 →</div>
-        </a><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/深度专题/20260823_康方生物超级深度研究.html" target="_blank">
-          <div class="type type-weekend">🔬 公司深度 · 投研视角</div>
-          <div class="title">康方生物：12维深度研究（附）</div>
-          <div class="desc">基本面/估值/管线/竞争格局与外资评价全景，分情景定价（投研版参考）</div>
-          <div class="arrow">精读专题 →</div>
-        </a></div><p style="font-size:11px;color:var(--text2);margin-top:8px;">深度专题为独立常驻专栏，长期保留，不随复盘滚动清理；周度复盘报告见下方分组。</p></div>
 
 <div class="date-group content-wrap" id="cat-weekend"><div class="date-header">2026-08-22 ~ 08-23（周末） <span class="tag tag-today">本周</span></div><div class="report-grid content-wrap"><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/周末复盘/20260823_周末复盘.html" target="_blank">
           <div class="type type-weekend">📖 周末复盘</div>
@@ -195,7 +167,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
   var nav=document.getElementById('catNav');
   if(!nav) return;
   var links=nav.querySelectorAll('a');
-  var catMap={'cat-deep':'cat-deep','cat-weekend':'cat-weekend','cat-us':'cat-us','cat-ashare':'cat-ashare','cat-premarket':'cat-premarket'};
+  var catMap={'cat-weekend':'cat-weekend','cat-us':'cat-us','cat-ashare':'cat-ashare','cat-premarket':'cat-premarket'};
   links.forEach(function(a){
     a.addEventListener('click',function(e){
       e.preventDefault();
