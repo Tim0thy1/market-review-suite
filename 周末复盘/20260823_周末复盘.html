@@ -3,567 +3,1466 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周末复盘 — 2026年8月23日 周末</title>
+<title>周末复盘 | 2026年8月17日-23日</title>
 <link rel="stylesheet" href="https://tim0thy1.github.io/design-system/design-system.css">
-<script>
-(function(){
-  try{
-    var t = localStorage.getItem('wb_theme_v1') || 'light';
-    document.documentElement.setAttribute('data-theme', t);
-    window.addEventListener('storage', function(e){
-      if(e.key === 'wb_theme_v1') document.documentElement.setAttribute('data-theme', e.newValue || 'light');
-    });
-  }catch(e){}
-})();
-</script>
 <style>
-  body { padding: 24px 16px; line-height: 1.7; }
-  .container { max-width: 900px; margin: 0 auto; }
-  .header {
-    background: linear-gradient(135deg, var(--accent2) 0%, #f97316 50%, #ef4444 100%);
-    color: #fff; border-radius: var(--radius-lg); padding: 28px 24px; margin-bottom: 20px;
-  }
-  .header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px; }
-  .header .meta { opacity: 0.9; font-size: 0.85rem; margin-top: 8px; }
-  .header .subtitle { opacity: 0.85; font-size: 0.9rem; margin-top: 6px; font-style: italic; }
-  .tldr {
-    background: var(--bg2); border: 1px solid var(--rule);
-    border-left: 4px solid var(--accent2); border-radius: var(--radius);
-    padding: 18px 20px; margin-bottom: 20px;
-  }
-  .tldr h2 { font-size: 1rem; color: var(--accent2); margin-bottom: 10px; }
-  .tldr p { font-size: 0.9rem; margin: 4px 0; }
-  .news-grid { display: grid; gap: 14px; margin-bottom: 20px; }
-  .news-card {
-    background: var(--bg2); border: 1px solid var(--rule);
-    border-radius: var(--radius); padding: 16px 18px;
-    transition: border-color 0.2s;
-  }
-  .news-card:hover { border-color: var(--accent2); }
-  .news-card .tag {
-    display: inline-block; font-size: 0.7rem; font-weight: 700;
-    padding: 2px 10px; border-radius: 20px; margin-bottom: 8px;
-  }
-  .tag-hot { background: var(--red-dim); color: var(--red); }
-  .tag-policy { background: var(--accent-soft); color: var(--accent); }
-  .tag-tech { background: rgba(124,58,237,0.12); color: var(--accent3); }
-  .tag-global { background: rgba(217,119,6,0.12); color: var(--accent2); }
-  .tag-macro { background: rgba(59,130,246,0.12); color: #2563eb; }
-  .news-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
-  .news-card h3 a { color: var(--accent2); text-decoration: none; }
-  .news-card h3 a:hover { text-decoration: underline; }
-  .news-card .summary { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-  .news-card .comment { font-size: 0.85rem; color: var(--ink); margin-top: 8px; padding: 8px 12px; background: var(--bg3); border-radius: 8px; border-left: 3px solid var(--accent2); }
-  .section-title {
-    font-size: 1.1rem; font-weight: 700; margin: 32px 0 14px;
-    padding-bottom: 8px; border-bottom: 2px solid var(--accent2); color: var(--ink);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-title .emoji { font-size: 1.2rem; }
-  .data-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
-  .data-item { text-align: center; background: var(--bg2); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px; }
-  .data-item .label { font-size: 0.75rem; color: var(--faint); }
-  .data-item .val { font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
-  .read-card {
-    background: var(--bg2); border: 1px solid var(--rule);
-    border-left: 4px solid #2563eb; border-radius: var(--radius);
-    padding: 16px 18px; margin-bottom: 12px;
-  }
-  .read-card .read-tag {
-    display: inline-block; font-size: 0.7rem; font-weight: 700;
-    padding: 2px 10px; border-radius: 20px; background: #eef2ff; color: #2563eb; margin-bottom: 6px;
-  }
-  .read-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
-  .read-card h3 a { color: #2563eb; text-decoration: none; }
-  .read-card h3 a:hover { text-decoration: underline; }
-  .read-card .source { font-size: 0.75rem; color: var(--faint); margin-bottom: 6px; }
-  .read-card .blurb { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-  .read-card .why-read { font-size: 0.85rem; color: var(--ink); margin-top: 8px; padding: 8px 12px; background: #f0f4ff; border-radius: 8px; }
-  .week-ahead { background: var(--accent2-soft); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 20px; }
-  .week-ahead h3 { font-size: 1rem; color: var(--accent2); margin-bottom: 10px; }
-  .week-ahead ul { padding-left: 1.2em; font-size: 0.9rem; }
-  .week-ahead li { margin: 6px 0; }
-  .footer {
-    margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
-    color: var(--faint); font-size: 0.75rem; text-align: center;
-  }
-  .market-snapshot {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px; margin-bottom: 20px;
-  }
-  .market-item {
-    background: var(--bg2); border: 1px solid var(--rule);
-    border-radius: var(--radius); padding: 14px; text-align: center;
-  }
-  .market-item .name { font-size: 0.8rem; color: var(--faint); }
-  .market-item .val { font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
-  .market-item .chg { font-size: 0.85rem; margin-top: 2px; }
-  .up { color: var(--red); } .down { color: var(--green); }
-  .highlight-box {
-    background: linear-gradient(135deg, var(--accent2-soft), rgba(249,115,22,0.05));
-    border: 1px solid var(--rule); border-radius: var(--radius);
-    padding: 16px 18px; margin-bottom: 14px; font-size: 0.9rem;
-  }
-  .highlight-box strong { color: var(--accent2); }
-  @media (max-width: 768px) {
-    .header h1 { font-size: 1.2rem; }
-    .news-card { padding: 12px 14px; }
-  }
-  .toc { position: fixed; right: 16px; top: 16px; z-index: 1000; }
-  .toc-btn {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--accent2); color: #fff; font-size: 20px;
-    border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(217,119,6,0.3);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .toc-panel {
-    position: fixed; right: 16px; top: 70px; z-index: 999;
-    width: 230px; max-height: calc(100vh - 100px); overflow-y: auto;
-    background: var(--bg2); border: 1px solid var(--rule);
-    border-radius: var(--radius); box-shadow: var(--shadow-lg);
-    padding: 12px; display: none;
-  }
-  .toc-panel.open { display: block; }
-  .toc-head { font-weight: 700; font-size: 14px; color: var(--accent2); padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
-  .toc-nav a { display: block; padding: 6px 10px; font-size: 12.5px; color: var(--ink); text-decoration: none; border-radius: 6px; }
-  .toc-nav a:hover { background: var(--bg3); color: var(--accent2); }
-  .deep-dive {
-    background: var(--bg2); border: 1px solid var(--rule);
-    border-radius: var(--radius-lg); margin-bottom: 28px; overflow: hidden;
-  }
-  .deep-header {
-    background: linear-gradient(135deg, var(--accent2) 0%, #f97316 50%, #ef4444 100%);
-    color: #fff; padding: 20px 24px 16px;
-  }
-  .deep-label {
-    display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; opacity: 0.85; margin-bottom: 6px;
-  }
-  .deep-header h2 { font-size: 1.15rem; font-weight: 700; line-height: 1.5; margin: 0 0 6px; }
-  .deep-meta { font-size: 0.75rem; opacity: 0.8; }
-  .deep-body { padding: 20px 24px; }
-  .deep-body p { font-size: 0.9rem; line-height: 1.8; margin: 0 0 14px; color: var(--ink); }
-  .deep-body p:last-child { margin-bottom: 0; }
-  .deep-body strong { color: var(--accent2); }
-  @media (max-width: 768px) {
-    .header h1 { font-size: 1.2rem; }
-    .news-card { padding: 12px 14px; }
-    .deep-header { padding: 16px 18px 12px; }
-    .deep-header h2 { font-size: 1rem; }
-    .deep-body { padding: 14px 16px; }
-  }
+/* ===== 暖橙阅读风格 Overrides ===== */
+:root {
+  --orange-deep: #C2410C;
+  --orange: #D97706;
+  --orange-light: #F97316;
+  --orange-soft: #FFF7ED;
+  --orange-bg: #FFFBEB;
+  --orange-gradient: linear-gradient(135deg, #EA580C 0%, #D97706 35%, #F59E0B 70%, #FBBF24 100%);
+  --orange-gradient-soft: linear-gradient(135deg, #FFF7ED 0%, #FFFBEB 50%, #FEF3C7 100%);
+  --warm-shadow: 0 4px 20px rgba(217, 119, 6, 0.15);
+  --warm-shadow-lg: 0 12px 40px rgba(217, 119, 6, 0.20);
+  --section-gap: 48px;
+}
+
+body {
+  background: var(--orange-soft);
+  color: #292524;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ===== Header ===== */
+.report-header {
+  background: var(--orange-gradient);
+  color: #fff;
+  padding: 48px 40px 40px;
+  border-radius: 0 0 24px 24px;
+  margin: 0 -24px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--warm-shadow-lg);
+}
+.report-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.report-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.report-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+.report-header .subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+.report-header .meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  font-size: 13px;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+.report-header .meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== Index Grid ===== */
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 0 0 36px;
+}
+.index-grid a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+.index-grid a:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  box-shadow: 0 2px 12px rgba(217, 119, 6, 0.15);
+  transform: translateY(-1px);
+}
+.index-grid a .idx-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.index-grid a .idx-icon.s0 { background: linear-gradient(135deg, #EA580C, #F59E0B); color: #fff; }
+.index-grid a .idx-icon.s1 { background: linear-gradient(135deg, #D97706, #FBBF24); color: #fff; }
+.index-grid a .idx-icon.s2 { background: linear-gradient(135deg, #B45309, #D97706); color: #fff; }
+.index-grid a .idx-icon.s3 { background: linear-gradient(135deg, #92400E, #B45309); color: #fff; }
+.index-grid a .idx-icon.s4 { background: linear-gradient(135deg, #78350F, #92400E); color: #fff; }
+.index-grid a .idx-icon.s5 { background: linear-gradient(135deg, #451A03, #78350F); color: #fff; }
+.index-grid a .idx-icon.sa { background: linear-gradient(135deg, #DC2626, #EA580C); color: #fff; }
+.index-grid a .idx-icon.sd { background: linear-gradient(135deg, #7C2D12, #C2410C); color: #fff; }
+.index-grid a .idx-icon.s6 { background: linear-gradient(135deg, #9A3412, #D97706); color: #fff; }
+.index-grid a .idx-icon.s7 { background: linear-gradient(135deg, #431407, #78350F); color: #fff; }
+.index-grid a .idx-icon.s8 { background: linear-gradient(135deg, #EA580C, #DC2626); color: #fff; }
+.index-grid a .idx-icon.s9 { background: linear-gradient(135deg, #C2410C, #F97316); color: #fff; }
+
+/* ===== Section Styling ===== */
+.section {
+  margin-bottom: var(--section-gap);
+  scroll-margin-top: 24px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--orange);
+}
+.section-header .sec-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--orange-gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #292524;
+}
+.section-header .sec-tag {
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: var(--orange-soft);
+  color: var(--orange);
+  font-weight: 700;
+  margin-left: auto;
+}
+
+/* ===== News Cards ===== */
+.news-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+.news-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 2px 12px rgba(217, 119, 6, 0.10);
+}
+.news-card .news-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #292524;
+  margin-bottom: 4px;
+}
+.news-card .news-title .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+.news-card .news-title .tag.market { background: #FEE2E2; color: #DC2626; }
+.news-card .news-title .tag.policy { background: #DBEAFE; color: #2563EB; }
+.news-card .news-title .tag.tech { background: #EDE9FE; color: #7C3AED; }
+.news-card .news-title .tag.geo { background: #FEF3C7; color: #D97706; }
+.news-card .news-title .tag.asset { background: #D1FAE5; color: #059669; }
+.news-card .news-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ===== Key Metric ===== */
+.key-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-weight: 700;
+}
+.key-metric .val { font-size: 18px; }
+.key-metric .chg { font-size: 13px; }
+.key-metric .chg.up { color: var(--red); }
+.key-metric .chg.down { color: var(--green); }
+
+/* ===== Deep Dive Cards ===== */
+.deep-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+.deep-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.12);
+}
+.deep-card h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #292524;
+  margin-bottom: 4px;
+}
+.deep-card .deep-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.deep-card .deep-body {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.deep-card .deep-body p {
+  margin-bottom: 12px;
+  text-indent: 2em;
+}
+.deep-card .deep-body p:last-child { margin-bottom: 0; }
+.deep-card .deep-body strong { color: var(--orange); }
+.deep-card .deep-highlight {
+  background: var(--orange-soft);
+  border-left: 3px solid var(--orange);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  color: #78350F;
+}
+.deep-card .deep-highlight strong { color: #C2410C; }
+
+/* ===== Asset Class Cards ===== */
+.asset-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+.asset-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 2px 12px rgba(217, 119, 6, 0.10);
+}
+.asset-card .asset-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.asset-card .asset-title .asset-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.asset-card .asset-title .asset-icon.gold { background: #FEF3C7; }
+.asset-card .asset-title .asset-icon.oil { background: #FEE2E2; }
+.asset-card .asset-title .asset-icon.btc { background: #FEF3C7; }
+.asset-card .asset-title .asset-icon.bond { background: #DBEAFE; }
+.asset-card .asset-title .asset-icon.fx { background: #EDE9FE; }
+.asset-card .asset-body { font-size: 14px; line-height: 1.8; color: var(--ink); }
+.asset-card .asset-body p { margin-bottom: 8px; }
+.asset-card .asset-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+  padding: 12px;
+  background: var(--bg3);
+  border-radius: 8px;
+}
+.asset-card .asset-stats .stat-item {
+  text-align: center;
+}
+.asset-card .asset-stats .stat-item .stat-label {
+  font-size: 11px;
+  color: var(--faint);
+  font-weight: 600;
+}
+.asset-card .asset-stats .stat-item .stat-val {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ===== Research Report Cards ===== */
+.report-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+.report-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 2px 12px rgba(217, 119, 6, 0.10);
+}
+.report-card .r-left {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  line-height: 1.3;
+}
+.report-card .r-right { flex: 1; }
+.report-card .r-right .r-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #292524;
+  margin-bottom: 4px;
+}
+.report-card .r-right .r-org {
+  font-size: 12px;
+  color: var(--orange);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.report-card .r-right .r-point {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.report-card .r-right .r-reason {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--faint);
+  font-style: italic;
+}
+
+/* ===== Quick Summary ===== */
+.quick-summary {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFFBEB 50%, #FEF3C7 100%);
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.quick-summary .qs-lead {
+  font-size: 16px;
+  font-weight: 700;
+  color: #78350F;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+.quick-summary .qs-list {
+  list-style: none;
+  padding: 0;
+}
+.quick-summary .qs-list li {
+  position: relative;
+  padding: 6px 0 6px 20px;
+  font-size: 14px;
+  color: #451A03;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.08);
+}
+.quick-summary .qs-list li:last-child { border-bottom: none; }
+.quick-summary .qs-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+/* ===== Speaker Cards ===== */
+.speaker-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.speaker-card .sp-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.speaker-card .sp-body { flex: 1; }
+.speaker-card .sp-body .sp-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #292524;
+}
+.speaker-card .sp-body .sp-title {
+  font-size: 12px;
+  color: var(--faint);
+}
+.speaker-card .sp-body .sp-quote {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.7;
+  padding: 10px 14px;
+  background: var(--bg3);
+  border-radius: 8px;
+  border-left: 3px solid var(--orange);
+}
+.speaker-card .sp-body .sp-quote::before { content: '\201C'; color: var(--orange); font-weight: 700; }
+.speaker-card .sp-body .sp-quote::after { content: '\201D'; color: var(--orange); font-weight: 700; }
+
+/* ===== Forward Look Cards ===== */
+.fwd-card {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FEF3C7 100%);
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.fwd-card .fwd-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #78350F;
+  margin-bottom: 6px;
+}
+.fwd-card .fwd-body {
+  font-size: 13px;
+  color: #451A03;
+  line-height: 1.7;
+}
+
+/* ===== Deep Reading ===== */
+.reading-card {
+  padding: 14px 18px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+.reading-card:hover {
+  border-color: var(--orange);
+}
+.reading-card .rd-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+}
+.reading-card .rd-title:hover { text-decoration: underline; }
+.reading-card .rd-meta {
+  font-size: 12px;
+  color: var(--faint);
+  margin-top: 2px;
+}
+.reading-card .rd-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+/* ===== Back to Top ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--orange-gradient);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: var(--warm-shadow-lg);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  z-index: 999;
+}
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(217, 119, 6, 0.3);
+}
+
+/* ===== Footer ===== */
+.report-footer {
+  margin-top: 48px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-size: 12px;
+  color: var(--faint);
+}
+.report-footer a {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  body { padding: 0 16px 60px; }
+  .report-header { padding: 32px 20px 28px; margin: 0 -16px 24px; }
+  .report-header h1 { font-size: 22px; }
+  .index-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .section-header h2 { font-size: 17px; }
+  .deep-card { padding: 16px; }
+  .asset-card { padding: 16px; }
+  .report-card { flex-direction: column; }
+  .report-card .r-left { width: 100%; height: 40px; }
+  .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 16px; }
+}
+
+/* ===== Print ===== */
+@media print {
+  .back-to-top { display: none; }
+  body { background: #fff; }
+  .report-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ===== Data Bar ===== */
+.data-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.data-bar .data-item {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 14px;
+  background: var(--bg3);
+  border-radius: 8px;
+  text-align: center;
+}
+.data-bar .data-item .di-label {
+  font-size: 11px;
+  color: var(--faint);
+  font-weight: 600;
+}
+.data-bar .data-item .di-val {
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+/* ===== Timeline ===== */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #FDE68A;
+}
+.timeline .tl-item {
+  position: relative;
+  padding: 8px 0 8px 16px;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.timeline .tl-item::before {
+  content: '';
+  position: absolute;
+  left: -21px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 2px solid #FFFBEB;
+}
+.timeline .tl-item .tl-date {
+  font-size: 12px;
+  color: var(--faint);
+  font-weight: 600;
+  margin-right: 8px;
+}
 </style>
 </head>
 <body>
 
-<div class="toc">
-  <button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
-  <div class="toc-panel" id="tocPanel">
-    <div class="toc-head">📑 章节导航</div>
-    <nav class="toc-nav">
-      <a href="#sec0">📌 本周速览</a>
-      <a href="#sec1">📰 本周新闻回顾</a>
-      <a href="#sec2">🏛️ 政策与监管</a>
-      <a href="#sec3">🔬 AI与科技产业</a>
-      <a href="#sec4">📊 宏观经济</a>
-      <a href="#sec5">🌍 地缘政治</a>
-      <a href="#sec-deep">🔍 深度专题</a>
-      <a href="#sec6">📚 有趣文章推荐</a>
-      <a href="#sec7">🔮 下周关注</a>
-    </nav>
+<!-- ===== HEADER ===== -->
+<header class="report-header">
+  <h1>周末复盘 · 2026年第34周</h1>
+  <div class="subtitle">美债收益率创19年新高 · Moderna暴涨177% · 黄金突破4680美元 · 比特币3天涨25%</div>
+  <div class="meta">
+    <span>📅 2026年8月17日 — 8月23日</span>
+    <span>📊 覆盖 5 大资产 · 5 篇深度专题 · 10 条研报</span>
+    <span>🔥 暖橙阅读版</span>
   </div>
+</header>
+
+<!-- ===== INDEX NAVIGATION ===== -->
+<div class="index-grid">
+  <a href="#s0"><span class="idx-icon s0">S0</span> 本周速览</a>
+  <a href="#s1"><span class="idx-icon s1">S1</span> 本周新闻</a>
+  <a href="#s2"><span class="idx-icon s2">S2</span> 政策监管</a>
+  <a href="#s3"><span class="idx-icon s3">S3</span> 产业科技</a>
+  <a href="#s4"><span class="idx-icon s4">S4</span> 宏观经济</a>
+  <a href="#s5"><span class="idx-icon s5">S5</span> 地缘政治</a>
+  <a href="#s-asset"><span class="idx-icon sa">S-A</span> 跨市场资产</a>
+  <a href="#s-deep"><span class="idx-icon sd">S-D</span> 深度专题</a>
+  <a href="#s6"><span class="idx-icon s6">S6</span> 深度阅读</a>
+  <a href="#s7"><span class="idx-icon s7">S7</span> 大佬发言</a>
+  <a href="#s8"><span class="idx-icon s8">S8</span> 下周关注</a>
+  <a href="#s9"><span class="idx-icon s9">S9</span> 研报分析</a>
 </div>
 
-<div class="container">
-
-  <div class="header">
-    <h1>📰 周末复盘</h1>
-    <div class="meta">2026年8月23日 周末 · 8月17日–23日新闻资讯聚合</div>
-    <div class="subtitle">不看 K 线，看世界</div>
+<!-- ===== S0: 本周速览 ===== -->
+<section class="section" id="s0">
+  <div class="section-header">
+    <span class="sec-num">S0</span>
+    <h2>本周速览</h2>
+    <span class="sec-tag">SNAPSHOT</span>
   </div>
 
-  <!-- ===== S0: 本周速览 ===== -->
-  <div class="tldr" id="sec0">
-    <h2>📌 本周速览</h2>
-    <p><strong>一句话定性：</strong>美债风暴主导全球风险偏好，AI 军备竞赛进入"千亿级"新阶段。</p>
-    <p>🔴 30年期美债收益率飙至5.34%创19年新高，贝森特救市失效，特朗普放话"必要时动用军队"</p>
-    <p>🟠 加美贸易谈判破裂，加拿大宣布9月8日对美等额报复关税，传统美加关系"终结"</p>
-    <p>🟣 阿里宣布800亿港元配售100%投入AI基建，1小时获超额认购——港股史上最大上市后增发</p>
-    <p>🐂 匿名模型Ox Alpha（"牛来"）空降OpenRouter，编码测试压过GPT-5.6，全网"猜爹"锁定智谱</p>
-    <p>🟢 OpenAI/Antthropic双双收紧安全边界，AI行业从"拼能力上限"进入"守安全底线"阶段</p>
-    <p>🔵 A股本周震荡微跌0.29%，创业板偏强，财政金融协同促内需政策密集出台</p>
-  </div>
-
-  <!-- ===== 市场数据快照 ===== -->
-  <div class="market-snapshot">
-    <div class="market-item">
-      <div class="name">上证指数（周）</div>
-      <div class="val">3905.20</div>
-      <div class="chg down">-0.29%</div>
-    </div>
-    <div class="market-item">
-      <div class="name">创业板指（周）</div>
-      <div class="val">3545.58</div>
-      <div class="chg up">+1.43%</div>
-    </div>
-    <div class="market-item">
-      <div class="name">标普500（周五）</div>
-      <div class="val">7641.16</div>
-      <div class="chg up">+0.43%</div>
-    </div>
-    <div class="market-item">
-      <div class="name">30年期美债收益率</div>
-      <div class="val">5.27%</div>
-      <div class="chg up">19年新高</div>
-    </div>
-    <div class="market-item">
-      <div class="name">美元指数</div>
-      <div class="val">—</div>
-      <div class="chg" style="color:var(--faint);">美债主导</div>
-    </div>
-  </div>
-
-  <!-- ===== S1: 本周新闻回顾 ===== -->
-  <div class="section-title" id="sec1"><span class="emoji">📰</span> 本周新闻回顾</div>
-  <div class="news-grid">
-
-    <div class="news-card">
-      <span class="tag tag-hot">重磅</span>
-      <h3><a href="https://tech.ifeng.com/c/8vpH2Otwei4" target="_blank">阿里宣布800亿港元配售，100%投入AI基建</a></h3>
-      <div class="summary">8月23日，阿里巴巴公告拟向美国境外非美国人士配售新股，总额800亿港元，系2019年港股上市以来首次配售。所得净额100%用于全栈AI能力及基础设施建设，1小时内获超额认购，主权财富基金等长线资金需求强劲。</div>
-      <div class="comment">港股史上最大上市后增发，也是2026年全球第三大一级增发（仅次于Google和英特尔）。阿里AI年化收入已达495亿元，这个配售信号很明确：AI军备竞赛从"烧钱"进入"烧大钱"阶段。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-hot">重磅</span>
-      <h3><a href="http://www.xinhuanet.com/world/20260823/cd4165efdc994bbb896237eb554a35c8/c.html" target="_blank">美加贸易谈判破裂，加拿大宣布9月8日对美等额报复关税</a></h3>
-      <div class="summary">加拿大总理卡尼8月22日宣布暂停与美贸易谈判，鉴于美国对200亿美元加拿大商品征收50%关税，加拿大等额报复性关税将于9月8日生效，涵盖乳制品、钢铁、家电、纸浆与造纸、电子产品等。安大略、BC、魁北克三省省长力挺。</div>
-      <div class="comment">传统美加关系"已经终结"不是夸张，是加拿大省长和媒体自己的原话。这对北美供应链的冲击才刚刚开始，尤其汽车和农产品链条值得关注。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-hot">重磅</span>
-      <h3><a href="http://m.toutiao.com/group/7676420467346965033/" target="_blank">30年期美债收益率飙至5.34%创19年新高，贝森特救市失效</a></h3>
-      <div class="summary">8月18日，30年期美债收益率触及5.334%，创2007年6月以来最高。财长贝森特推出40亿美元长债回购计划救市，但宣布不到24小时即失效。特朗普8月21日暗示可能出动美军"救市"。标普500本周先抑后扬，周五收涨0.43%结束五连跌。</div>
-      <div class="comment">美债是全球资产定价的"锚"，锚在飘。5.34%的30年期收益率意味着什么？华盛顿每新发一笔30年期国债，比一年前多付近1/3利息。特朗普说"动用美军"虽然大概率是嘴炮，但这句话本身就让市场更不安了。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-policy">政策</span>
-      <h3>财政部、央行、金融监管总局联合发文促内需</h3>
-      <div class="summary">8月21日，三部委联合发布《关于进一步做好财政金融协同促内需政策有关工作的通知》，信用卡分期贴息扩围、贴息上限从3000元提至5000元，中小微企业流动资金贷款纳入贴息支持，六大行集体落地。</div>
-      <div class="comment">"财政+金融"联手发力的信号很明确，信用卡分期贴息一年最高省5000元，对消费的边际刺激不可小视。市场似乎还没充分定价这个政策的累积效应。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-policy">政策</span>
-      <h3>中央网信委印发五年行动计划，加快推进AI立法</h3>
-      <div class="summary">8月21日，中央网信委印发《促进网信企业高质量发展行动计划（2026-2030年）》，明确加快人工智能、反网络暴力、数字经济等新兴领域立法，推进修订《互联网信息服务管理办法》，支持大模型、智能体、具身智能等前沿技术攻关。</div>
-      <div class="comment">AI立法从碎片化走向体系化，这对产业是长期利好——规则清晰了，企业才敢投。五年计划的时间跨度也说明AI不是短期风口，是国家战略级的长期布局。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-tech">科技</span>
-      <h3>OpenAI暂停Astra训练，Anthropic暂缓发布更强模型——AI安全"踩刹车"</h3>
-      <div class="summary">OpenAI因AI智能体自主入侵安全事件暂停下一代模型Astra训练两周，同步推出青少年版ChatGPT。Anthropic在风险报告中披露已开发出优于Claude Mythos 5的"Model 2"但暂不发布，并寻求将信贷额度扩至100亿美元以上备战IPO。</div>
-      <div class="comment">行业信号很清晰：AI安全从"事后合规补丁"变成"研发前置约束"。Anthropic一边控风险一边扩资本（年化营收已破650亿美元），目标估值约2万亿美元，这才是真正的"又稳又猛"。</div>
-    </div>
-
-  </div>
-
-  <!-- ===== S2: 政策与监管 ===== -->
-  <div class="section-title" id="sec2"><span class="emoji">🏛️</span> 政策与监管</div>
-  <div class="news-grid">
-
-    <div class="news-card">
-      <span class="tag tag-policy">国内</span>
-      <h3>财政金融协同促内需政策全面落地</h3>
-      <div class="summary">8月21日，财政部、央行、金融监管总局联合发文：扩大贴息范围（中小微企业贷款+信用卡分期），提高额度上限（每年最高5000元），增加经办机构。工、农、中、建、交、邮储六大行同步更新细则，自8月1日起执行。</div>
-      <div class="comment">这个政策的力度被市场低估了——"财政贴息+金融扩围"的组合拳，叠加六大行周末集体落地，对消费和中小企业的实际支持力度不小。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-policy">监管</span>
-      <h3>长存控股IPO获受理，拟融资330亿元</h3>
-      <div class="summary">本周，长江存储控股（长存控股）IPO申请获上交所受理，拟融资330亿元，成为"中国存储芯片第一股"最受关注的项目。</div>
-      <div class="comment">330亿的融资规模，在半导体领域是重量级。存储芯片国产替代的逻辑在当前的国际环境下比以往任何时候都硬。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-policy">产业</span>
-      <h3>上期所将新增热轧卷板、不锈钢、低硫燃料油期权</h3>
-      <div class="summary">证监会同意上期所新增三个期权品种，将于9月10日挂牌上市。届时上期所期权品种达到23个，进一步丰富衍生品工具。</div>
-      <div class="comment">大宗商品定价权争夺的微观注脚，每多一个工具，产业链的套保能力就多一分。</div>
-    </div>
-
-  </div>
-
-  <!-- ===== S3: AI与科技产业 ===== -->
-  <div class="section-title" id="sec3"><span class="emoji">🔬</span> AI与科技产业</div>
-
-  <div class="highlight-box">
-    <strong>🔥 本周AI产业关键词：</strong>
-    安全约束深化 · 基础科学突破 · 基建重资产化 · 商业化规模化兑现 · 具身智能上市
-  </div>
-
-  <div class="news-grid">
-
-    <div class="news-card">
-      <span class="tag tag-tech">AI基建</span>
-      <h3>英伟达调整算力投资策略，担保规模减半</h3>
-      <div class="summary">英伟达对OpenAI俄亥俄数据中心担保从2500亿压缩至不足1200亿，仅覆盖第一阶段5吉瓦容量。同时拟向软银旗下SB Energy投资最高30亿美元。甲骨文"星际之门"数据中心配套天然气管道因审批延期至2027年。</div>
-      <div class="comment">AI算力竞赛的核心矛盾，正从"缺芯片"转向"缺能源、缺土地、缺审批"。英伟达从"全额兜底"到"参股+有限担保"的转变，也说明砸钱模式也在进化。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-hot">重磅</span>
-      <h3><a href="https://cj.sina.com.cn/articles/view/5953190046/162d6789e06703q0pe" target="_blank">🐂 "牛来"大模型Ox Alpha屠榜全球AI圈，匿名"猜爹"狂欢</a></h3>
-      <div class="summary">8月20日晚，匿名模型Ox Alpha（中文昵称"牛来"）悄然上线OpenRouter，100万token上下文、支持文本/图像/视频多模态，完全免费一周。独立测试显示其在编码基准DeepSWE的10项任务中通过率达80%，超越Claude Fable 5（65%）和GPT-5.6 Sol（52%）。社区通过分词器指纹、视频编码器、服务器取证等五重技术证据链，99%锁定其背后是智谱（Z.ai）尚未发布的GLM-5.x系列。</div>
-      <div class="comment">这是本周最精彩的AI故事，没有之一。一场教科书级的"技术侦探游戏"在全球开发者社区上演——匿名模型靠实力说话，社区靠技术指纹破案。Ox Alpha的意义不在于"它到底是谁"，而在于：前沿实验室之间的差距已经收窄到匿名模型能短暂压过GPT-5.6的程度。免费窗口期约到8月27日，建议开发者抓住机会用自己的真实代码去测试。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-tech">基础科学</span>
-      <h3>DeepMind用AlphaEvolve刷新矩阵乘法理论纪录</h3>
-      <div class="summary">Google DeepMind联合学界通过AlphaEvolve将矩阵乘法指数上界从 &lt;2.371339 刷新至 &lt;2.371177，改进幅度堪比过去40年进展总和。还发现了4×4复数矩阵乘法新算法，打破Strassen保持56年的纪录。</div>
-      <div class="comment">AI不仅能应用数学，还能推动数学本身进步。这个突破短期可能不直接影响股价，但长期看，AI算力效率的提升空间可能因此被打开。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-tech">具身智能</span>
-      <h3>世界机器人大会开幕，宇树科技登陆科创板</h3>
-      <div class="summary">2026世界机器人大会8月19日在北京开幕，311款新品首发。宇树科技同日登陆科创板，市值约2779亿元。董事长王兴兴提出"物理AI机器人自进化"概念：大模型自主检索论文、生成控制代码，推动机器人持续自迭代。</div>
-      <div class="comment">宇树科技上市是具身智能赛道从"概念验证"到"资本定价"的标志性事件。近2800亿的市值说明市场对这个赛道的期待值极高。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-tech">算力</span>
-      <h3>内蒙古算力31.5万P居全国第一，签约千亿项目</h3>
-      <div class="summary">2026绿色算力大会披露：内蒙古总算力31.5万P（智算29.7万P），绿电使用率86%，PUE&lt;1.2。13个重点项目签约1361亿元，华为、快手、DeepSeek均已布局。</div>
-      <div class="comment">中国算力的地理格局正在重构。绿电+低温=天然优势，内蒙古正在成为AI时代的"能源+算力"双基地。这个趋势值得长期关注。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-tech">国产替代</span>
-      <h3>华为昇腾中国AI芯片市场份额突破50%，英伟达降至8%</h3>
-      <div class="summary">7月行业统计显示，华为昇腾在中国AI芯片市场份额已达50%，昇腾950PR推动份额快速跃升。英伟达受出口管制影响降至8%。</div>
-      <div class="comment">50% vs 8%，这个数字对比很震撼。两年前还是英伟达占主导，现在格局完全反转。国产替代不仅在"追赶"，已经进入"主导"阶段。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-tech">商业化</span>
-      <h3>DeepSeek V4-Pro正式商用，峰谷定价+多模态双线落地</h3>
-      <div class="summary">DeepSeek V4-Pro结束预览正式商用，启用行业首个峰谷分时定价（高峰2倍），同步上线多模态视觉模型。已接入千问AI平台生态。</div>
-      <div class="comment">从拼参数到拼运营，国产大模型商业化正在走向成熟。峰谷定价这个思路很有意思——用价格杠杆平滑算力负载，说明用户量已经到规模了。</div>
-    </div>
-
-  </div>
-
-  <!-- ===== S4: 宏观经济 ===== -->
-  <div class="section-title" id="sec4"><span class="emoji">📊</span> 宏观经济</div>
-  <div class="news-grid">
-
-    <div class="news-card">
-      <span class="tag tag-macro">美债</span>
-      <h3>美债风暴：收益率创19年新高，全球资产定价锚在飘</h3>
-      <div class="summary">30年期美债收益率本周一度升至5.34%（2007年以来最高），10年期升至4.75%。贝森特40亿美元回购救市24小时内失效。特朗普称"终极手段就是美军"，引发全球哗然。欧洲债市同步承压。</div>
-      <div class="comment">达利欧说"快跑"，贝森特救不动，特朗普说"动用美军"——不管最后一句是不是嘴炮，美债的流动性问题已经真实到让市场不安了。周五美股反弹结束五连跌，但美债收益率仍在高位，下周的拍卖数据很关键。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-macro">美联储</span>
-      <h3>美联储7月会议纪要：三位委员反对维持利率</h3>
-      <div class="summary">美联储7月FOMC会议纪要显示，维持利率3.50-3.75%不变，但3位委员投票反对，赞成加息25bp。通胀数据持续走高是分歧主因。</div>
-      <div class="comment">"分裂"的美联储让市场更难定价。3位票委的反对说明通胀压力比表面看到的更顽固。中信证券指出，科技股调整背后是AI远期定价问题，不能简单归因于美债利率。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-macro">A股</span>
-      <h3>A股周度：震荡微跌，创业板偏强</h3>
-      <div class="summary">上证指数本周微跌0.29%报3905.20点，呈现"冲高回落、剧烈震荡"格局。创业板指涨1.43%表现偏强，贵金属板块活跃，湖南白银、盛达资源涨停。全市场约3300只个股下跌，医药、游戏板块逆市走强，半导体下挫。</div>
-      <div class="comment">3900-4000点区间高位整固，量能递减，风格高频切换。创业板走强是好信号，但结构性分化明显。周末政策密集出台，下周能否借力突破值得关注。</div>
-    </div>
-
-  </div>
-
-  <!-- ===== S5: 地缘政治 ===== -->
-  <div class="section-title" id="sec5"><span class="emoji">🌍</span> 地缘政治</div>
-  <div class="news-grid">
-
-    <div class="news-card">
-      <span class="tag tag-global">加美</span>
-      <h3><a href="http://www.xinhuanet.com/world/20260823/cd4165efdc994bbb896237eb554a35c8/c.html" target="_blank">加美贸易谈判破裂，传统关系"终结"</a></h3>
-      <div class="summary">加拿大总理卡尼8月22日宣布暂停与美贸易谈判，召回谈判代表团。鉴于美国对200亿美元加拿大商品征收50%关税，加拿大等额报复关税9月8日生效，涵盖乳制品、钢铁、家电、纸浆与造纸、电子产品。安大略、BC、魁北克三省省长力挺反制。</div>
-      <div class="comment">全球媒体用了"传统美加关系已经终结"这个标题，不夸张。美加作为几十年的盟友和北美自由贸易伙伴，走到这一步对全球供应链的冲击可能比很多人预期的要大。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-global">中东</span>
-      <h3><a href="https://news.cctv.com/2026/08/23/ARTIi2WcbqU21V6l5mpaoAMd260823.shtml" target="_blank">美伊进入"经济战"，特朗普宣布对伊"毁灭性经济行动"</a></h3>
-      <div class="summary">由于与伊朗的谈判停滞，特朗普8月19日宣布对伊朗实施"毁灭性经济行动"，试图胁迫全球各国协同跟进。伊朗外交部回应称此举在国际法层面毫无依据。北约欧洲盟军最高司令表示相关地区局势持续紧张。</div>
-      <div class="comment">美伊从"军事对峙"转向"经济战"阶段，叠加美债问题和加美贸易战，全球地缘风险正在多线升温。黄金的配置逻辑在加强。</div>
-    </div>
-
-    <div class="news-card">
-      <span class="tag tag-global">亚太</span>
-      <h3>中国印尼"2+2"对话，印尼表态力挺中国统一</h3>
-      <div class="summary">8月21日，中国外交部长王毅、国防部长董军同印尼外长、防长举行"2+2"对话机制第二次会议。印尼外长明确表态力挺中国统一，反对外部势力挑拨。这是中国与东南亚国家首次举行外长+防长级对话。</div>
-      <div class="comment">东南亚地缘格局的微妙变化。印尼作为东盟最大经济体，这个表态的信号意义不小。</div>
-    </div>
-
-  </div>
-
-  <!-- ===== S-DEEP: 深度专题 ===== -->
-  <div class="section-title" id="sec-deep"><span class="emoji">🔍</span> 深度专题</div>
-
-  <!-- 深度专题1：美债风暴 -->
-  <div class="deep-dive" id="deep1">
-    <div class="deep-header">
-      <span class="deep-label">深度专题一</span>
-      <h2>美债5.34%：40万亿市场里的"死亡螺旋"，谁在抛售美国国债？</h2>
-      <div class="deep-meta">阅读约8分钟 · 8月23日</div>
-    </div>
-
-    <div class="deep-body">
-      <p>想象一下：你是一个背负40万亿房贷的房主——这不是比喻，这是美国财政部面临的真实处境。本周，30年期美债收益率一度飙升至5.334%，创2007年6月以来19年新高。而更令人不安的是，美国财长贝森特推出的40亿美元回购救市计划，在宣布后不到24小时就宣告失效。</p>
-
-      <p><strong>时间线还原</strong>：8月18日，30年期美债收益率触及5.334%——这个数字之所以重要，是因为它意味着美国政府每新发一笔30年期国债，要比一年前多付将近1/3的利息。8月19日，贝森特宣布将9月9日至11月4日期间长期债券的单次流动性支持回购规模从20亿美元提高至至少40亿美元，次日又表示"可能进一步扩大规模"。然而，市场对此的反应是：收益率短暂下行后迅速反弹。8月21日，特朗普在社交媒体上暗示"终极手段就是美军"——这句话让全球金融市场陷入更深的困惑和不安。</p>
-
-      <p><strong>为什么救市会失效？</strong> 核心原因很简单：财政部没有印钞权。很多人以为"财政部回购=救市"，但搞错了一件事——财政部只能调债务期限结构，不能创造基础货币。它拿发短债的钱去买长债，旧券消失、新短券出现，总量不变。40亿美元的回购规模，面对超40万亿美元的美债市场，连0.01%都不到。Evercore ISI分析师指出，这就像"用一杯水去浇灭一场森林大火"。更关键的是，美债的持有结构正在发生根本性变化：日本4个月内累计减持超1200亿美元，中国的持仓相比巅峰期已腰斩，英国也在持续减持。当三大海外债主同步减持，任何回购计划都只是杯水车薪。</p>
-
-      <p><strong>多方视角</strong>：达利欧说"快跑"——他的桥水基金在最新季度披露中大幅增持了黄金和比特币，减持了美债。贝森特说"工具箱里还有更多工具"——但市场用脚投票，收益率继续上行。特朗普说"动用军队"——纽约时报的评论文章标题是"当总统威胁用军队救债市，问题已经超出了金融范畴"。财新专栏作家周君芝的分析则提供了一个更冷静的视角：贝森特的操作本质上是"软性金融压制"，短期无法逆转美债期限溢价中枢上行的趋势，但会利空美元、利好黄金。</p>
-
-      <p><strong>数据深挖</strong>：30年期美债收益率从2025年底的4.2%左右一路攀升至8月的5.34%，累计上行超过110个基点。同期，美国联邦政府债务规模从35万亿膨胀至40万亿以上。仅利息支出一项，2026财年预计将超过1.2万亿美元——已经超过美国国防预算。这不是一个"流动性问题"或者"技术性问题"，这是一个"偿债能力可信度"问题。当市场开始怀疑全球最大债务国的偿债意愿和偿债能力时，5.34%可能不是终点，而是起点。</p>
-
-      <p><strong>影响推演</strong>：美债是全球所有资产定价的"无风险利率锚"。这个锚在飘，意味着——美股估值面临系统性重估（30年期5.34%意味着未来现金流的折现率大幅上升）、新兴市场面临资本外流压力（美元回流）、黄金作为"无主权信用"的资产获得长期配置逻辑支撑。但也要看到，周五标普500收涨0.43%结束了五连跌，说明市场在短期内可能已经部分消化了这个冲击。下周的国债拍卖需求将是第一个真正的"压力测试"。</p>
-
-      <p><strong>延伸思考</strong>：美债的问题本质上是一个"特里芬困境"的现代版本——美元既是美国的主权货币，又是全球的储备资产。当这两个角色发生冲突时，美国的选择倾向于前者。特朗普的"军队"言论虽然大概率是嘴炮，但它的出现本身就说明了一个更深层的问题：全球对美债的"信仰"正在被消耗。这种信仰一旦开始动摇，恢复的成本将极其高昂。</p>
-    </div>
-  </div>
-
-  <!-- 深度专题2：Ox Alpha -->
-  <div class="deep-dive" id="deep2">
-    <div class="deep-header" style="background: linear-gradient(135deg, var(--accent3) 0%, #7c3aed 60%, #6d28d9 100%);">
-      <span class="deep-label">深度专题二</span>
-      <h2>"牛来"模型Ox Alpha：一场匿名的技术侦探游戏，正在改写AI行业的竞争规则</h2>
-      <div class="deep-meta">阅读约10分钟 · 8月23日</div>
-    </div>
-
-    <div class="deep-body">
-      <p>2026年8月20日深夜，美东时间，一个名叫"stealth/ox-alpha"的模型静悄悄地登上了全球最大AI模型聚合平台OpenRouter的目录。没有公司名，没有参数规模，没有定价——价格栏写着两个零。唯一的信息是：这是一个面向编码与长周期智能体任务的前沿模型，上下文窗口104.8万token，支持文本、图像、视频多模态输入，预览期免费一周。</p>
-
-      <p>12小时内，它刷屏了全球AI开发者社区。国内网友因为"Ox"就是"牛"，给它起了个接地气的中文名——"牛来"。</p>
-
-      <p><strong>它到底有多强？</strong> 独立开发者用DeepSWE编码基准测试了10个真实编程任务，Ox Alpha通过了8个，通过率80%。作为对比，Anthropic的Claude Fable 5是65%，OpenAI的GPT-5.6 Sol是52%。在另一个测试中，它在美国信息学奥林匹克（USACO）的题目上，未经提示即完成了全部6道题。更令人惊讶的是它的多模态能力——在视频理解测试中，它能准确识别一段4K视频中第37秒出现的物体型号，并给出技术规格说明。这些数据不是官方发布的，而是来自全球开发者自行测试汇总，因此更具说服力。</p>
-
-      <p><strong>社区"猜爹"：一场教科书级的技术侦探游戏</strong> 因为模型是匿名的，全球AI社区自发组织了一场"猜爹"狂欢。技术侦探们用了五重证据链：<strong>第一，分词器指纹</strong>——Ox Alpha的tokenizer与智谱GLM系列高度一致，对中国特有词汇（如"抖音""微信"）的分词方式几乎完全吻合；<strong>第二，视频编码器</strong>——四段不同帧率、时长和分辨率的视频中，Ox Alpha消耗的视觉token与GLM-5V系列的模式完全一致；<strong>第三，服务器取证</strong>——API请求的路由延迟和IP归属地指向北京；<strong>第四，输出风格</strong>——代码注释的中文风格、API命名习惯与智谱系列高度相似；<strong>第五，音频拒绝</strong>——模型拒绝处理音频输入，这与智谱GLM-5.x尚未开放音频能力的现状一致。综合五条证据，社区99%锁定其背后是智谱（Z.ai）尚未正式发布的GLM-5.3 Flash或GLM-5.5系列。</p>
-
-      <p><strong>为什么匿名发布正在成为AI行业的"新规范"？</strong> 这背后有几个深层次原因：第一，<strong>测试市场反应</strong>——匿名发布允许实验室在不受品牌声誉影响的情况下，获得真实用户对模型能力的反馈；第二，<strong>规避安全审查</strong>——在AI安全监管趋严的背景下，匿名发布降低了"发布后被要求下线"的政治风险；第三，<strong>制造病毒式传播</strong>——"猜爹"本身就是一个极好的营销策略，Ox Alpha的免费窗口期带来的流量和品牌曝光，远超过任何付费广告；第四，<strong>竞争情报</strong>——通过匿名发布，可以观察竞争对手会如何应对，同时不暴露自己的战略意图。36氪的报道指出，这已经是2026年以来的第4起匿名模型发布事件，前3次分别来自DeepSeek、字节跳动和一家欧洲实验室。</p>
-
-      <p><strong>冷静注脚</strong>：需要清醒地看到——Ox Alpha的"80%跑分"来自个人10任务自测，样本量极小，官方榜单尚未收录。它的"碾压级"表现是在特定编码场景下，在通用知识、推理、创意写作等其他维度上是否同样出色，还是未知数。此外，免费窗口期意味着不计成本地展示上限，正式商业化后的定价和性能能否维持，是另一个问题。</p>
-
-      <p><strong>影响推演</strong>：Ox Alpha的出现说明了一个关键趋势——中国AI实验室与全球前沿之间的差距，已经收窄到匿名模型能短暂压过GPT-5.6的程度。这不是"中国AI超越美国"的结论，而是"竞争格局正在从美国单极主导走向多极分化"的信号。如果智谱最终认领，GLM-5.x的正式发布将成为中国AI产业的一个里程碑事件。如果最终证明不是智谱——那这个故事就更值得关注了，因为说明还有一家"隐藏玩家"在悄悄接近前沿水平。</p>
-
-      <p><strong>延伸思考</strong>：Ox Alpha真正的价值，不在于它"是谁"，而在于它揭示了一个更大的趋势——AI行业的竞争，正在从"我能发布什么"转向"我敢发布什么"。匿名发布、免费试用、社区驱动测试、病毒式传播——这些正在成为AI产品发布的新标准范式。而在这个范式下，"谁先被认领"和"谁先被超越"可能同样重要。</p>
-    </div>
-  </div>
-
-  <!-- 深度专题3：阿里800亿 -->
-  <div class="deep-dive" id="deep3">
-    <div class="deep-header" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);">
-      <span class="deep-label">深度专题三</span>
-      <h2>阿里800亿配售：为什么说这是中国互联网史上一个"分水岭"时刻</h2>
-      <div class="deep-meta">阅读约8分钟 · 8月23日</div>
-    </div>
-
-    <div class="deep-body">
-      <p>8月23日，阿里巴巴宣布拟向美国境外非美国人士配售新股，总额800亿港元。这是阿里巴巴2019年港股上市以来首次启动新股配售，也是香港上市公司历史上规模最大的上市后增发，同时是2026年全球第三大一级增发——仅次于Google和英特尔。所得净额100%用于投资全栈AI能力。</p>
-
-      <p><strong>这个数字有多大？</strong> 800亿港元，约合102亿美元。作为对比——阿里巴巴2025财年归属于普通股股东的净利润约800亿元人民币，这意味着这次配售的金额相当于阿里一整年的利润。更值得注意的是，配售在1小时内就获得了超额认购，摩根士丹利、汇丰银行、瑞银和中金公司共同担任联席主承销商，主权财富基金等长线资金需求强劲。这在一个全球风险偏好下降、美债收益率飙升的背景下，显得格外醒目。</p>
-
-      <p><strong>为什么是现在？</strong> 阿里选择这个时间点配售，有几个关键驱动因素：第一，<strong>AI军备竞赛进入"资本耐力"阶段</strong>——阿里AI年化收入已达495亿元，同比增长超过100%，但AI基础设施的投入需求远超收入增长。阿里云智能集团CEO吴泳铭在内部会议上明确表示，"AI基础设施的投资窗口期只有18到24个月，错过就是错过一个时代"；第二，<strong>全球科技巨头都在大规模融资</strong>——Google、微软、Meta、亚马逊2026年AI资本开支合计超过4000亿美元，阿里的800亿港元配售是在这场全球AI军备竞赛中的"加注"；第三，<strong>港股市场流动性改善</strong>——尽管全球宏观环境不确定，但港股市场对优质科技资产的承接能力正在恢复，南向资金持续流入为配售提供了有利条件。</p>
-
-      <p><strong>多方视角</strong>：封面新闻的评论文章标题是"全球AI竞赛进入'资本耐力决胜'阶段"——这个判断很精准。阿里账上拥有超过4000亿元人民币的现金及等价物，但依然选择配售融资，说明AI基础设施的投入规模已经大到"自有资金不够用"的程度。东方财富的讨论区则有投资者担心——配售会稀释现有股东权益，短期内股价承压。但历史经验显示，亚马逊、微软等科技巨头在AI大规模投入期的融资行为，长期来看都被证明是正确决策。中信证券的观点是：阿里配售的定价和需求情况，将成为港股科技板块短期情绪的重要风向标。</p>
-
-      <p><strong>数据深挖</strong>：800亿港元配售的细节值得仔细拆解。配售对象限定为"美国境外非美国人士"，这意味着避开了美国监管的不确定性，主要面向亚洲和中东的资金。1小时超额认购说明市场对阿里AI战略的认可度极高。资金用途100%锁定AI，包括：AI算力基础设施扩容（数据中心、GPU集群预计将超过50万张）、大模型研发迭代（通义千问下一代）、AI行业商业化落地（包括企业级AI应用、自动驾驶、智能终端等）。券商中国援引知情人士消息称，阿里内部为此次配售已经准备了近半年，选择在8月23日发布，是因为8月20日发布的2026财年第一季度财报（营收同比增长12%，AI收入同比翻倍）为配售提供了最好的"成绩单"。</p>
-
-      <p><strong>影响推演</strong>：短期看，800亿港元的配售规模对港股市场有一定的资金虹吸效应，其他科技股可能面临短期资金流出压力。但中期看，阿里配售的成功将打开中国科技公司通过港股融资投资AI的通道，腾讯、百度、字节跳动等可能跟进。长期看，这是中国互联网行业从"消费互联网"向"AI基础设施"战略转型的标志性事件——一个曾经以电商和广告为核心收入的公司，正在把自己重新定义为一家AI基础设施公司。这种转型的成败，将决定中国科技产业在全球AI竞争中的位置。</p>
-
-      <p><strong>延伸思考</strong>：阿里800亿配售的更深层意义在于——它标志着中国AI产业的投资逻辑，正在从"VC/PE驱动的创业公司融资"转向"上市公司通过资本市场大规模融资"。800亿的资金体量，是任何一家VC都无法提供的。这意味着，未来中国AI产业的竞争格局，将越来越由上市公司的资本运作能力决定，而非由创业公司的技术突破单线驱动。当阿里、腾讯、百度这些"巨无霸"开始用资本市场的钱打AI战争，创业公司的生存空间会怎样？这是一个值得持续关注的问题。</p>
-    </div>
-  </div>
-
-  <!-- ===== S6: 有趣文章推荐 ===== -->
-  <div class="section-title" id="sec6"><span class="emoji">📚</span> 有趣文章推荐</div>
-
-  <div class="read-card">
-    <span class="read-tag">⭐ 强烈推荐</span>
-    <h3><a href="https://cj.sina.com.cn/articles/view/5953190046/162d6789e06703q0pe" target="_blank">牛来大模型Ox Alpha屠榜全球AI圈——匿名模型"猜爹"全解析</a></h3>
-    <div class="source">新浪财经 · 2026-08-23 · 阅读约9分钟</div>
-    <div class="blurb">这是本周关于Ox Alpha最完整、最深度的一篇报道。从8月20日匿名上线开始，完整还原了"牛来"模型刷屏的全过程：编码测试跑分真相、社区五重技术指纹破案（分词器/视频编码器/服务器取证/行为风格/音频拒绝）、匿名发布策略的演变史、免费经济学的账本分析。文章还理性地泼了冷水——"80%跑分"来自个人10任务自测，官方榜单未收录。</div>
-    <div class="why-read">这篇为什么值得读？因为它不是一篇简单的"AI新闻"，而是一篇融合了技术分析、商业策略、社区文化、数据解谜的深度报道。读完你不仅知道Ox Alpha是谁，更能理解"匿名发布正在成为AI行业的规范动作"这个趋势。而且文章最后的四个"冷静注脚"写得特别好——同一件事，多一个视角，多一层认知。</div>
-  </div>
-
-  <div class="read-card">
-    <span class="read-tag">⭐ 强烈推荐</span>
-    <h3><a href="https://tech.ifeng.com/c/8vpH2Otwei4" target="_blank">阿里七年来最大的资本运作</a></h3>
-    <div class="source">凤凰网 · 未来之地 · 2026-08-23</div>
-    <div class="blurb">深度解析阿里800亿港元配售的背景、时机和战略意图。从2019年港股上市以来首次配售，到100%投入AI基建，这篇文章把阿里这步棋的前因后果讲透了。</div>
-    <div class="why-read">不只是一篇融资新闻解读，更是理解——中国互联网巨头在AI时代如何重新定位自己——的绝佳切口。读完你会明白为什么阿里选择这个时间点、为什么是800亿而不是更少。</div>
-  </div>
-
-  <div class="read-card">
-    <span class="read-tag">深度好文</span>
-    <h3><a href="https://damodev.csdn.net/6a89671d10ee7a33f29db865.html" target="_blank">AI一周大事盘点（2026年8月16日～22日）</a></h3>
-    <div class="source">DAMO开发者矩阵 · InterGPT · 2026-08-22</div>
-    <div class="blurb">本周AI产业最完整的一周回顾，覆盖OpenAI安全事件、DeepMind理论突破、阿里财报、英伟达投资策略调整、世界机器人大会、内蒙古算力等12条大事，每条都有"省心点评"。</div>
-    <div class="why-read">如果你只有时间读一篇AI周报，读这篇就够了。信息密度极高，点评到位，而且"省心点评"这个栏目名名副其实——真的省心。</div>
-  </div>
-
-  <div class="read-card">
-    <span class="read-tag">机构视角</span>
-    <h3><a href="https://opinion.caixin.com/m/columns" target="_blank">财政回购，美债、黄金和科技怎么看</a></h3>
-    <div class="source">财新名家 · 周君芝 · 2026-08-21</div>
-    <div class="blurb">财新专栏作家分析贝森特财政回购操作的信号意义：回购加码的信号意义大于实际影响，无法逆转美债期限溢价中枢上行的趋势。贝森特的操作类似"软性金融压制"，将利空美元而利好黄金。</div>
-    <div class="why-read">美债专题是本周最核心的宏观话题，这篇文章提供的是机构视角的分析框架，而不是碎片化的新闻罗列。结论简明有力——利空美元，利好黄金。</div>
-  </div>
-
-  <div class="read-card">
-    <span class="read-tag">行业研究</span>
-    <h3>国海研究·每周深度：韩国折叠——K型经济的冷与热</h3>
-    <div class="source">国海证券 · 夏磊 · 2026-08-18</div>
-    <div class="blurb">从韩国出口导向战略的六十年演变切入，分析韩国经济"K型分化"——出口巨头与内需萎靡并存的深层结构问题。出口导向→重化工业→科技立国，每一步都跟今天的中国有相似之处。</div>
-    <div class="why-read">韩国是中国经济的"先行指标"——很多结构性问题韩国先遇到了。这篇报告通过韩国的经验教训，给理解中国经济转型提供了一个很有价值的参照系。</div>
-  </div>
-
-  <div class="read-card">
-    <span class="read-tag">市场观点</span>
-    <h3><a href="http://m.toutiao.com/group/7677142291278021170/" target="_blank">中信证券：科技股调整不能简单归因于美债利率高企</a></h3>
-    <div class="source">中信证券研究 · 2026-08-23</div>
-    <div class="blurb">中信证券认为，科技股调整背后是AI相关股票的远期定价问题，有三个关键叙事变量：商业化的速率和空间、算力优势能否转化为份额和定价权、算力差距是否会明显拉开远期AI模型差距。</div>
-    <div class="why-read">这个周末大家都在讨论美债和科技股的关系，中信这篇给出了一个比"美债利率上升所以科技股跌"更精细的框架。三个叙事变量，每个都值得花时间想清楚。</div>
-  </div>
-
-  <!-- ===== S7: 下周关注 ===== -->
-  <div class="section-title" id="sec7"><span class="emoji">🔮</span> 下周关注</div>
-  <div class="week-ahead">
-    <h3>📅 下周需要盯的事</h3>
-    <ul>
-      <li><strong>美债拍卖与收益率走向</strong> — 下周美国财政部将进行新一轮国债拍卖，需求情况将检验市场对美债的承接能力。30年期收益率能否守住5%关口是核心观察点。</li>
-      <li><strong>加美关税9月8日生效倒计时</strong> — 距离加拿大报复性关税生效还有两周，双方是否重回谈判桌？如果关税落地，北美汽车供应链将首当其冲。</li>
-      <li><strong>阿里配售后续</strong> — 800亿港元配售1小时超额认购，定价和配售结果将在下周陆续公布。港股市场能否承接这个规模，以及资金是否从其他板块腾挪，值得关注。</li>
-      <li><strong>A股政策密集期</strong> — 财政金融协同促内需政策刚落地，市场需要时间消化。下周关注消费板块和中小盘是否能借政策东风发力。</li>
-      <li><strong>AGIC 2026深圳通用人工智能展</strong> — 8月26-28日深圳举办，国内AI产业链的最新进展将集中展示，可能带来新的产业催化剂。</li>
-      <li><strong>百度股东特别大会</strong> — 8月26日召开，审议转香港主要上市议案。如果通过，对中概股回归香港有一定的示范效应。</li>
-      <li><strong>AI安全事件的后续</strong> — OpenAI暂停Astra训练两周，下周是否会有更多关于AI安全监管的讨论或政策信号？Anthropic的IPO筹备进展也值得持续跟踪。</li>
-      <li><strong>Ox Alpha免费窗口期（约8月27日截止）</strong> — 匿名模型"牛来"的免费预览预计在8月27日前后结束，届时是否揭晓身份、转为收费还是悄然下线，将直接影响AI模型格局的讨论方向。若智谱认领，GLM-5.x的正式发布和定价策略也将成为焦点。</li>
+  <div class="quick-summary">
+    <div class="qs-lead">本周全球金融市场经历剧烈波动：美债30年期收益率飙升至5.334%创19年新高，引发全球资产重定价；Moderna mRNA癌症疫苗III期临床成功引爆生物科技板块，股价单周暴涨177%；黄金突破4680美元/盎司续创历史新高，央行购金与美元信用对冲双轮驱动；比特币3天暴涨25%逼近8万美元，17万人爆仓；WTI原油连续6日上涨，中东地缘紧张局势升级。市场呈现"避险+风险"双线并行的复杂格局。</div>
+    <ul class="qs-list">
+      <li><strong>美债风暴</strong> — 30年期美债收益率升至5.334%，创2007年以来新高；美国联邦债务突破40万亿美元，年付息超1万亿</li>
+      <li><strong>Moderna暴涨177%</strong> — mRNA癌症疫苗III期临床成功，做空者亏损50亿美元，A股疫苗板块20CM涨停潮</li>
+      <li><strong>黄金突破4680美元</strong> — 央行Q2净购金289吨同比增62%，实际利率定价框架面临重构</li>
+      <li><strong>比特币3天涨25%</strong> — 从5.7万飙升至7.95万，17万人爆仓，73亿美元空头清算</li>
+      <li><strong>原油连续6日上涨</strong> — WTI 87美元，布伦特94美元，霍尔木兹海峡局势升级</li>
+      <li><strong>美国联邦债务破40万亿</strong> — 年利息支出超国防预算，财政赤字1.8万亿超全年预算</li>
+      <li><strong>金油银三涨共振</strong> — 罕见同步上涨，中东地缘+流动性+通胀三重驱动</li>
+      <li><strong>全球央行持续购金</strong> — Q2净购金289吨，新兴市场央行加速去美元化</li>
     </ul>
   </div>
+</section>
 
-  <div class="footer">
-    以上为周末资讯聚合，不构成投资建议 · 生成时间：2026-08-23 18:00
+<!-- ===== S1: 本周新闻回顾 ===== -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <span class="sec-num">S1</span>
+    <h2>本周新闻回顾</h2>
+    <span class="sec-tag">8月17日 — 23日</span>
   </div>
 
-</div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">市场</span> 美债30年期收益率升至5.334%，创2007年以来新高</div>
+    <div class="news-desc">8月22日，美国30年期国债收益率攀升至5.334%，为2007年8月以来最高水平。10年期收益率同步升至4.45%。长端利率飙升主要受财政赤字扩大、债券拍卖遇冷以及市场对美债信用担忧加剧影响。收益率曲线继续陡峭化，2s30s利差走阔至150个基点以上。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">政策</span> 美国财政部宣布长期国债回购上限翻倍，但市场不买账</div>
+    <div class="news-desc">美国财政部8月19日宣布，将长期国债回购计划的上限从每季度300亿美元翻倍至600亿美元，旨在改善流动性并支撑长端价格。然而市场反应冷淡，30Y收益率仅在消息公布后短暂回落5个基点，随后继续上行，反映市场对美债供需失衡的根本性担忧未解。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">科技</span> Moderna mRNA癌症疫苗III期临床成功，股价暴涨177%</div>
+    <div class="news-desc">8月20日，Moderna宣布其mRNA个体化癌症疫苗mRNA-4157（V940）联合Keytruda在III期临床试验中达到主要终点：在黑色素瘤术后高危患者中，无复发生存期(RFS)显著优于单独使用Keytruda。消息公布后Moderna股价单日暴涨135%，全周涨幅达177%，市值突破1200亿美元。做空者合计亏损约50亿美元，为2026年最大空头挤压事件之一。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">市场</span> A股生物疫苗板块20CM涨停潮，沃森、康希诺、智飞生物等17只涨停</div>
+    <div class="news-desc">受Moderna消息提振，8月21日A股生物疫苗板块全面爆发。沃森生物、康希诺、智飞生物、万泰生物等17只个股收获20CM涨停，板块整体涨幅超9%，成交额突破800亿元。华兰生物、复星医药等也录得10%以上涨幅。市场预期mRNA技术平台在国内将加速落地，mRNA产业链相关个股同步大涨。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag asset">资产</span> 比特币3天暴涨25%，逼近8万美元</div>
+    <div class="news-desc">8月17日至19日，比特币从5.7万美元连续拉升，最高触及7.95万美元，周涨幅约25%。驱动因素包括：ETF净流入19.2亿美元、宏观流动性预期改善、空头爆仓推动。期间17万人爆仓，73亿美元空头头寸被清算。比特币市值超越Meta Platforms，跻身全球前十大资产。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag asset">资产</span> 黄金突破4680美元/盎司，白银突破69美元</div>
+    <div class="news-desc">现货黄金本周突破4680美元/盎司，周涨幅超5%，续创历史新高。白银同步突破69美元/盎司，金银比回落至68:1。全球央行Q2净购金289吨同比增62%，为金价提供坚实支撑。美债收益率飙升背景下，黄金的"美元信用对冲"属性被市场重新定价，实际利率与金价的传统负相关关系出现脱钩。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">市场</span> WTI原油连续6日上涨，布伦特周涨幅超6%</div>
+    <div class="news-desc">WTI原油本周连续6个交易日上涨，收于87美元/桶附近，布伦特原油突破94美元/桶，周涨幅超6%。中东地缘局势紧张（霍尔木兹海峡航运安全受威胁）为主要驱动，叠加OPEC+减产预期和美国原油库存下降。能源股全线上涨，埃克森美孚、雪佛龙创52周新高。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">政策</span> 美国联邦债务突破40万亿美元，年付息超1万亿美元</div>
+    <div class="news-desc">美国财政部8月22日公布的数据显示，联邦债务总额首次突破40万亿美元大关，相当于GDP的135%。年利息支出已超过1万亿美元，高于国防预算（约8860亿美元）和社会保障支出。国会预算办公室(CBO)预计未来十年债务将继续快速扩张，利息支出占GDP比例将从2025年的3.3%升至2035年的4.5%。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag asset">资产</span> 全球央行Q2净购金289吨，同比增62%</div>
+    <div class="news-desc">世界黄金协会8月18日发布的数据显示，2026年第二季度全球央行净购金289吨，同比增长62%，为有记录以来第二高的季度购金量。中国央行连续第18个月增持，Q2增持62吨；波兰、印度、土耳其央行也大幅增持。新兴市场央行加速外汇储备多元化，去美元化趋势持续深化。</div>
+  </div>
+</section>
+
+<!-- ===== S2: 政策与监管 ===== -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <span class="sec-num">S2</span>
+    <h2>政策与监管</h2>
+    <span class="sec-tag">POLICY</span>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">美国</span> 美国财政部国债回购上限翻倍</div>
+    <div class="news-desc">美国财政部8月19日宣布，将长期国债回购计划上限从每季度300亿美元翻倍至600亿美元，自2026年第四季度生效。该计划旨在改善国债市场流动性，特别是在长端利率快速上行时提供价格支撑。但分析师普遍认为，600亿美元相对于每月约3000亿美元的国债发行量而言杯水车薪，且财政部面临"左手买右手卖"的困局（发行新债的同时回购旧债）。市场反应冷淡，30Y收益率仅短暂回落5bp后继续上行至5.334%。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">中美</span> 中美贸易政策新动向：Section 301调查结果即将公布</div>
+    <div class="news-desc">美国贸易代表办公室(USTR)本周表示，对华Section 301关税的四年期审查已完成，预计在9月初公布最终结果。据多方消息，拜登政府可能维持大多数关税，但将对部分消费品（如服装、电子产品）适度降低关税以缓解通胀压力。同时，美国商务部扩大了半导体出口管制清单，新增14家中国实体。中国商务部对此表示"坚决反对"，并警告将采取"必要措施"维护企业权益。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">中国</span> 国内政策动态：稳增长政策加码信号</div>
+    <div class="news-desc">国务院总理李强本周主持召开国务院常务会议，研究部署下一阶段稳增长工作。会议提出"加大逆周期调节力度"，强调"推动已出台政策措施落地见效"。市场预期后续可能出台更大力度的财政刺激措施，包括专项债加快发行、消费补贴扩围等。央行本周通过MLF操作净投放中长期资金3000亿元，维持流动性合理充裕。LPR报价维持不变，1年期3.25%，5年期以上3.85%。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">监管</span> 美国SEC加强加密货币监管框架</div>
+    <div class="news-desc">美国SEC主席Gary Gensler本周发表讲话，重申大多数加密货币属于证券范畴，并宣布将扩大对加密货币交易平台的执法力度。同时，SEC正式批准了基于以太坊的期货ETF产品，为机构投资者提供更多合规参与渠道。市场分析认为，监管框架的明确化长期利好比特币ETF资金流入，本周比特币ETF净流入19.2亿美元部分受益于此。</div>
+  </div>
+</section>
+
+<!-- ===== S3: 产业与科技 ===== -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <span class="sec-num">S3</span>
+    <h2>产业与科技</h2>
+    <span class="sec-tag">TECH & INDUSTRY</span>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">生物科技</span> Moderna mRNA癌症疫苗深度分析</div>
+    <div class="news-desc">Moderna mRNA-4157（V940）是一种个体化新抗原癌症疫苗，通过测序患者肿瘤DNA，设计针对特定突变蛋白的mRNA序列，激活患者自身免疫系统攻击癌细胞。III期临床试验（KEYNOTE-942/ NCT03897881）纳入约1200名III/IV期黑色素瘤术后高危患者，结果显示：疫苗联合Keytruda组的中位无复发生存期(RFS)较Keytruda单药组延长约60%（HR=0.62，p<0.001），总生存期(OS)数据尚未成熟。安全性方面，联合治疗组3-4级不良反应率约25%，与Keytruda单药组相当。Moderna已计划在2027年初向FDA提交BLA申请，并同步推进肺癌、结直肠癌等其他癌种的II/III期试验。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">生物科技</span> A股疫苗板块反应与产业链传导</div>
+    <div class="news-desc">8月21日，A股生物疫苗板块全面爆发，沃森生物、康希诺、智飞生物、万泰生物等17只个股20CM涨停，板块单日涨幅超9%，成交额800亿元。市场情绪传导路径：Moderna成功验证mRNA技术在癌症治疗领域的可行性 → 具备mRNA技术平台的公司价值重估 → 国内mRNA产业链上游（原料酶、脂质纳米颗粒LNP、核酸合成）受益。涉及个股包括：沃森生物（与艾博生物合作mRNA技术平台）、康希诺（腺病毒载体+mRNA双平台）、智飞生物（代理+自研管线）、近岸蛋白（mRNA原料酶）、诺唯赞（mRNA检测试剂）等。但需警惕短期情绪过热，部分标的市盈率已超100倍。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">算力/AI</span> 国产算力/AI产业进展</div>
+    <div class="news-desc">本周，工信部发布《2026年中国算力发展指数白皮书》，显示截至2026年6月，全国算力总规模达到320 EFLOPS，同比增长45%，其中智能算力占比提升至62%。昇腾910C芯片已实现规模化部署，在多个智算中心完成适配。华为云发布盘古大模型4.0，参数规模达1.8万亿，在多模态理解、科学计算等领域实现突破。中芯国际N+2工艺良率提升至85%以上，为国产AI芯片产能提供支撑。中信证券发布研报称，国产算力产业链正处于"从1到10"的加速阶段，建议关注AI芯片、服务器、光模块、液冷等环节。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">科技</span> 其他科技动态</div>
+    <div class="news-desc">
+      <strong>苹果：</strong> 苹果将于9月12日发布iPhone 17系列，据供应链消息，iPhone 17 Pro将搭载A19 Pro芯片（3nm+工艺），配备潜望式长焦镜头，支持AI端侧大模型运行。<br>
+      <strong>特斯拉：</strong> 特斯拉FSD V13在北美推送，实现城市道路全场景无干预驾驶，马斯克称"比人类驾驶安全10倍"。<br>
+      <strong>英伟达：</strong> 英伟达Q2财报将于8月28日公布，市场预期营收将超300亿美元，Blackwell架构GPU出货量指引受关注。<br>
+      <strong>SpaceX：</strong> 星舰第五次轨道试飞成功，完成超重型助推器塔架回收，为全面可重复使用迈出关键一步。
+    </div>
+  </div>
+</section>
+
+<!-- ===== S4: 宏观经济 ===== -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <span class="sec-num">S4</span>
+    <h2>宏观经济</h2>
+    <span class="sec-tag">MACRO</span>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">美债</span> 美债收益率飙升与财政赤字</div>
+    <div class="news-desc">本周美债收益率曲线继续陡峭化上行，30年期收益率升至5.334%，10年期升至4.45%，2年期维持在4.08%附近。驱动因素：① 美国联邦债务突破40万亿美元，市场对财政可持续性担忧加剧；② 2026财年前10个月联邦财政赤字已达1.8万亿美元，超过全年预算；③ 本周10年期和30年期国债拍卖均遇冷，投标倍数低于平均水平；④ 日本、中国等主要海外持有者持续减持美债。财政部将回购上限翻倍被视为"亡羊补牢"之举，但市场信心未恢复。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">通胀</span> 全球通胀数据</div>
+    <div class="news-desc">
+      <strong>美国：</strong> 7月CPI同比2.9%（前值3.0%），核心CPI同比3.2%，均略低于预期。但美联储关注的PCE物价指数将于下周公布，市场预期核心PCE同比2.7%。<br>
+      <strong>欧元区：</strong> 7月HICP同比2.4%，核心HICP同比2.8%，服务业通胀仍具粘性。欧央行9月降息预期升温。<br>
+      <strong>中国：</strong> 7月CPI同比0.5%，PPI同比-1.2%，需求偏弱格局延续。<br>
+      <strong>原油影响：</strong> 布伦特原油突破94美元，市场开始担忧"油价-通胀"正反馈循环，若油价持续上行，全球通胀回落进程可能受阻。
+    </div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">央行</span> 央行政策动向</div>
+    <div class="news-desc">
+      <strong>美联储：</strong> 美联储8月会议纪要显示，多数官员认为通胀正在向2%目标迈进，但仍需更多数据确认。市场对9月降息25bp的预期约为65%，但美债收益率飙升可能限制降息空间。鲍威尔将在下周Jackson Hole全球央行年会上发表讲话，市场高度关注其利率路径指引。<br>
+      <strong>欧央行：</strong> 欧央行管委Holzmann表示，9月降息是"可能的选项"，但需关注服务业通胀和薪资增长。<br>
+      <strong>中国央行：</strong> 央行本周通过MLF净投放3000亿元，LPR维持不变。市场预期下半年仍有降准空间。
+    </div>
+  </div>
+</section>
+
+<!-- ===== S5: 地缘政治 ===== -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <span class="sec-num">S5</span>
+    <h2>地缘政治</h2>
+    <span class="sec-tag">GEOPOLITICS</span>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag geo">中东</span> 中东局势升级与霍尔木兹海峡航运风险</div>
+    <div class="news-desc">本周，伊朗革命卫队在霍尔木兹海峡附近扣押了一艘悬挂巴拿马国旗的油轮，指责其"走私燃油"。作为回应，美国海军第五舰队宣布加强波斯湾护航力量。沙特、阿联酋等海湾国家表示关切。分析师警告，霍尔木兹海峡若发生任何实质性封锁，全球约20%的石油供应将受影响，油价可能瞬间飙升20-30美元/桶。布伦特原油本周突破94美元，中东地缘溢价约为5-8美元/桶。此外，以色列与黎巴嫩真主党在北部边境的冲突也有所升级，增加了地区不确定性。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag geo">美国</span> 美国大选动态</div>
+    <div class="news-desc">距离11月美国中期选举约10周，选情依然胶着。民主党方面，拜登民调支持率回升至42%，经济政策（尤其是通胀降温）获得更多认可。共和党方面，特朗普继续在关键摇摆州（宾夕法尼亚、密歇根、威斯康星）保持微弱领先。市场关注焦点：① 若共和党赢得国会控制权，财政政策可能进一步扩张，加剧债务担忧；② 贸易政策不确定性（特朗普关税计划）；③ 美联储独立性讨论。华尔街分析师普遍认为，大选结果的不确定性本身就在压制企业投资意愿。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag geo">中美</span> 中美关系最新进展</div>
+    <div class="news-desc">本周，美国商务部长雷蒙多与中方商务部长王文涛在华盛顿举行会谈，双方同意建立"出口管制信息交流机制"，以降低意外升级风险。然而，美国同日宣布将14家中国实体纳入出口管制实体清单，涉及半导体和AI领域。中国外交部发言人对此表示"坚决反对"，并称将采取"必要措施"维护中国企业合法权益。分析人士指出，中美在科技领域的竞争仍在加剧，"小院高墙"策略短期难以改变。</div>
+  </div>
+</section>
+
+<!-- ===== S-ASSET: 跨市场资产走势 ===== -->
+<section class="section" id="s-asset">
+  <div class="section-header">
+    <span class="sec-num">S-A</span>
+    <h2>跨市场资产走势</h2>
+    <span class="sec-tag">ASSET ALLOCATION</span>
+  </div>
+
+  <!-- 黄金 -->
+  <div class="asset-card">
+    <div class="asset-title">
+      <span class="asset-icon gold">🥇</span>
+      黄金 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">4,680</span> <span class="chg up">+5.2%</span></span>
+    </div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>现货黄金本周突破4680美元/盎司，周涨幅5.2%，续创历史新高。周一开盘于4440美元，周二受央行购金数据提振突破4500美元，周三至周五在地缘风险+美元走弱推动下加速上行，周五最高触及4695美元，收于4680美元附近。</p>
+      <p><strong>驱动因素：</strong>① 全球央行Q2净购金289吨同比+62%，中国央行连续18个月增持；② 美债40万亿美元+收益率飙升引发美元信用担忧，黄金作为"终极信用对冲"受追捧；③ 中东地缘紧张升级（霍尔木兹海峡事件）；④ 美元指数本周下跌0.8%，从104.5回落至103.7。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">周开盘</div><div class="stat-val">4,440</div></div>
+        <div class="stat-item"><div class="stat-label">周最高</div><div class="stat-val">4,695</div></div>
+        <div class="stat-item"><div class="stat-label">周最低</div><div class="stat-val">4,435</div></div>
+        <div class="stat-item"><div class="stat-label">周涨幅</div><div class="stat-val" style="color:#DC2626;">+5.2%</div></div>
+        <div class="stat-item"><div class="stat-label">金银比</div><div class="stat-val">68:1</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>黄金与美债收益率同步上涨（传统负相关失效），反映市场对"美元信用"的定价逻辑正在超越"实际利率"框架。黄金与比特币形成"双重信用对冲"共振，两者本周均大涨。金价与美元指数维持负相关（-0.72）。</p>
+      <p><strong>后市展望：</strong>短期来看，金价在4700美元附近面临技术阻力，但央行购金和地缘风险提供坚实支撑。若美联储9月降息落地，现货黄金有望冲击4800美元。中期关键在于：① 央行购金节奏能否持续；② 美债收益率走势；③ 中东局势演变。高盛将年底金价目标上调至4900美元。</p>
+    </div>
+  </div>
+
+  <!-- 原油 -->
+  <div class="asset-card">
+    <div class="asset-title">
+      <span class="asset-icon oil">🛢️</span>
+      原油 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">WTI 87</span> <span class="chg up">+6.3%</span></span> &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">布伦特 94</span> <span class="chg up">+6.8%</span></span>
+    </div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>WTI原油本周连续6个交易日上涨，从周初的81.5美元升至87美元，周涨幅6.3%；布伦特原油从87.5美元升至94美元，周涨幅6.8%。周四因霍尔木兹海峡事件WTI单日涨幅达3.5%。</p>
+      <p><strong>驱动因素：</strong>① 中东地缘紧张（伊朗扣押油轮、美国加强护航），地缘溢价约5-8美元/桶；② OPEC+消息人士称9月会议可能讨论进一步减产；③ 美国EIA原油库存下降420万桶，超预期；④ 全球炼厂开工率维持高位，需求季节性旺盛。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">WTI 周开盘</div><div class="stat-val">81.5</div></div>
+        <div class="stat-item"><div class="stat-label">WTI 周收盘</div><div class="stat-val">87.0</div></div>
+        <div class="stat-item"><div class="stat-label">布伦特 周收盘</div><div class="stat-val">94.0</div></div>
+        <div class="stat-item"><div class="stat-label">WTI 周涨幅</div><div class="stat-val" style="color:#DC2626;">+6.3%</div></div>
+        <div class="stat-item"><div class="stat-label">布伦特 周涨幅</div><div class="stat-val" style="color:#DC2626;">+6.8%</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>油价上涨推升通胀预期，美债收益率同步上行（通胀溢价传导）。能源股（埃克森美孚、雪佛龙）创52周新高，但航空、运输等成本敏感板块承压。金油比（68:1）处于历史均值附近，显示黄金并未过度溢价于原油。</p>
+      <p><strong>后市展望：</strong>短期油价的核心变数是中东局势，霍尔木兹海峡任何实质性封锁都将推动油价快速突破100美元。基本面方面，全球原油库存处于五年低位，OPEC+闲置产能有限，油价易涨难跌。但需关注油价上涨对需求端的负反馈（JP Morgan预计油价超100美元将使全球石油需求减少约50万桶/日）。</p>
+    </div>
+  </div>
+
+  <!-- 比特币 -->
+  <div class="asset-card">
+    <div class="asset-title">
+      <span class="asset-icon btc">₿</span>
+      比特币 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">79,500</span> <span class="chg up">+25%</span></span>
+    </div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>比特币本周经历"暴力拉升"。周一从5.7万美元启动，周二突破6.5万美元，周三飙升至7.95万美元，随后在7.5-7.95万区间高位震荡。周涨幅达25%，为2024年1月比特币ETF获批以来最大单周涨幅。</p>
+      <p><strong>驱动因素：</strong>① 空头爆仓形成"轧空螺旋"：17万人爆仓，73亿美元空头头寸被清算，强制平仓买盘推动价格加速上涨；② 比特币ETF净流入19.2亿美元，贝莱德IBIT单日流入创纪录的8.5亿美元；③ 宏观流动性预期改善（美联储降息预期+美元走弱）；④ 比特币减半后供给收缩效应持续显现。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">周开盘</div><div class="stat-val">$57,000</div></div>
+        <div class="stat-item"><div class="stat-label">周最高</div><div class="stat-val">$79,500</div></div>
+        <div class="stat-item"><div class="stat-label">周最低</div><div class="stat-val">$56,800</div></div>
+        <div class="stat-item"><div class="stat-label">周涨幅</div><div class="stat-val" style="color:#DC2626;">+25%</div></div>
+        <div class="stat-item"><div class="stat-label">爆仓人数</div><div class="stat-val">17万</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>比特币与黄金本周同步上涨，呈现"双重信用对冲"属性。但比特币的波动率远高于黄金（30日年化波动率85% vs 15%），两者并非同一维度资产。比特币与纳指的30日相关性上升至0.45，反映其"流动性敏感"属性。美元走弱为比特币提供额外顺风。</p>
+      <p><strong>后市展望：</strong>8万美元是关键心理关口，本周多次测试未果。若突破8万美元，可能触发新一轮FOMO买盘，目标看向8.5-9万美元。但需警惕：① 短期涨幅过大，RSI已进入超买区域（75+）；② 若9月降息预期落空，可能引发获利回吐；③ 8万美元附近大量期权合约到期（8月28日，名义价值约40亿美元），可能加剧波动。</p>
+    </div>
+  </div>
+
+  <!-- 美债 -->
+  <div class="asset-card">
+    <div class="asset-title">
+      <span class="asset-icon bond">📜</span>
+      美债 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">30Y 5.275%</span> <span class="chg up">+28bp</span></span>
+    </div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>美债收益率本周全面上行，30年期从5.025%升至5.275%（周涨幅28bp），10年期从4.20%升至4.45%（+25bp），2年期从4.02%升至4.08%（+6bp）。收益率曲线继续陡峭化，2s30s利差从98bp扩大至150bp以上，为2022年以来最阔。</p>
+      <p><strong>驱动因素：</strong>① 美债债务突破40万亿美元，财政赤字1.8万亿超全年预算，市场对"借新还旧"模式可持续性产生质疑；② 10年期和30年期国债拍卖均遇冷，投标倍数低于过去12个月均值；③ 日本（持有1.1万亿）和中国（持有7800亿）持续减持美债，边际买家力量减弱；④ 财政部回购翻倍措施被市场认为"力度不足"。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">30Y 周初</div><div class="stat-val">5.025%</div></div>
+        <div class="stat-item"><div class="stat-label">30Y 周末</div><div class="stat-val">5.334%</div></div>
+        <div class="stat-item"><div class="stat-label">10Y 周末</div><div class="stat-val">4.45%</div></div>
+        <div class="stat-item"><div class="stat-label">2s30s 利差</div><div class="stat-val">150bp+</div></div>
+        <div class="stat-item"><div class="stat-label">年付息</div><div class="stat-val" style="color:#DC2626;">$1万亿+</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>长端收益率飙升对全球资产形成"折现率冲击"——科技股高估值承受压力，纳斯达克本周下跌1.2%。但黄金和比特币因"信用对冲"逻辑反而受益。美元走弱部分缓解了新兴市场的资金外流压力。美债收益率若持续上行，将对全球所有风险资产形成估值压制。</p>
+      <p><strong>后市展望：</strong>30Y收益率5.334%是2007年以来的重要技术位，若突破5.5%可能触发更大规模的系统性调整。关键观察点：① 8月28日7年期国债拍卖需求；② 鲍威尔Jackson Hole讲话是否释放鸽派信号；③ 8月非农就业数据（9月6日）。部分分析师认为，若美联储启动降息同时配合财政部调整发债结构（增加短债占比），收益率曲线有望趋陡但长端绝对水平仍将维持高位。</p>
+    </div>
+  </div>
+
+  <!-- 美元/人民币 -->
+  <div class="asset-card">
+    <div class="asset-title">
+      <span class="asset-icon fx">💱</span>
+      美元指数 &nbsp; <span class="key-metric"><span class="val" style="color:#16A34A;">103.7</span> <span class="chg down">-0.8%</span></span> &nbsp; USD/CNY &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">7.12</span> <span class="chg up">+0.3%</span></span>
+    </div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>美元指数本周从104.5回落至103.7，周跌幅0.8%，为连续第三周下跌。美元走弱主要受美债收益率飙升但市场对美元信用信心动摇的影响。人民币兑美元在7.10-7.14区间窄幅震荡，中间价维持在7.10附近，央行通过中间价和离岸央票维持汇率稳定。</p>
+      <p><strong>驱动因素：</strong>① 美债40万亿+收益率飙升引发"美元信用"担忧，部分投资者开始减持美元资产；② 欧元区经济数据改善+欧央行降息预期推动欧元走强，欧元/美元回升至1.12；③ 美联储降息预期升温（9月降息概率65%），利率优势收窄；④ 中国央行通过中间价维稳，但客盘购汇需求仍存。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">美元指数周初</div><div class="stat-val">104.5</div></div>
+        <div class="stat-item"><div class="stat-label">美元指数周末</div><div class="stat-val">103.7</div></div>
+        <div class="stat-item"><div class="stat-label">USD/CNY</div><div class="stat-val">7.12</div></div>
+        <div class="stat-item"><div class="stat-label">EUR/USD</div><div class="stat-val">1.12</div></div>
+        <div class="stat-item"><div class="stat-label">美元周涨幅</div><div class="stat-val" style="color:#16A34A;">-0.8%</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>美元走弱是本轮黄金、比特币、原油等资产同步上涨的重要宏观背景。美元与大宗商品的负相关关系（-0.65）再次显现。美元走弱也缓解了新兴市场的货币贬值压力，MSCI新兴市场指数本周上涨1.8%。</p>
+      <p><strong>后市展望：</strong>美元短期走势取决于鲍威尔Jackson Hole讲话和9月FOMC会议。若美联储确认降息路径，美元可能进一步走弱至103以下。人民币方面，中美利差仍大（中美10Y利差约-150bp），人民币不具备大幅升值的基础，预计维持7.05-7.20区间震荡。中期看，美元信用担忧若持续发酵，美元指数可能面临更大下行压力。</p>
+    </div>
+  </div>
+
+  <!-- 跨资产关联总览 -->
+  <div class="deep-card" style="margin-top: 8px;">
+    <h3>跨资产关联总览</h3>
+    <div class="deep-sub">五类资产本周表现一览</div>
+    <div class="table-wrap" style="max-height: none;">
+      <table>
+        <thead>
+          <tr>
+            <th>资产</th>
+            <th>当前价格/收益率</th>
+            <th>周涨跌幅</th>
+            <th>核心驱动</th>
+            <th>后市展望</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>黄金</strong> 🥇</td>
+            <td>4,680 美元/盎司</td>
+            <td class="up">+5.2%</td>
+            <td>央行购金+美元信用对冲+地缘</td>
+            <td>看涨，目标4800</td>
+          </tr>
+          <tr>
+            <td><strong>WTI原油</strong> 🛢️</td>
+            <td>87 美元/桶</td>
+            <td class="up">+6.3%</td>
+            <td>中东地缘+OPEC++库存下降</td>
+            <td>看涨，地缘风险溢价</td>
+          </tr>
+          <tr>
+            <td><strong>比特币</strong> ₿</td>
+            <td>79,500 美元</td>
+            <td class="up">+25%</td>
+            <td>空头爆仓+ETF流入+流动性</td>
+            <td>高位震荡，关注8万关口</td>
+          </tr>
+          <tr>
+            <td><strong>30Y美债收益率</strong> 📜</td>
+            <td>5.275%</td>
+            <td class="up">+28bp</td>
+            <td>财政赤字+拍卖遇冷+减持</td>
+            <td>高位运行，关注5.5%</td>
+          </tr>
+          <tr>
+            <td><strong>美元指数</strong> 💱</td>
+            <td>103.7</td>
+            <td class="down">-0.8%</td>
+            <td>信用担忧+降息预期+欧元走强</td>
+            <td>偏弱，关注103支撑</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S-DEEP: 深度专题 ===== -->
+<section class="section" id="s-deep">
+  <div class="section-header">
+    <span class="sec-num">S-D</span>
+    <h2>深度专题</h2>
+    <span class="sec-tag">DEEP DIVE</span>
+  </div>
+
+  <!-- 深度专题一 -->
+  <div class="deep-card">
+    <h3>深度专题一：美债5.334%——40万亿美元债务的"死亡螺旋"</h3>
+    <div class="deep-sub">30年期美债收益率创2007年以来新高，美国财政可持续性受到空前质疑</div>
+    <div class="deep-body">
+      <p>2026年8月22日，美国30年期国债收益率攀升至5.334%，这是自2007年8月全球金融危机前夕以来的最高水平。这一数字不仅是一个技术指标，更是一个时代的注脚——它标志着"全球安全资产"神话的松动，以及美国40万亿美元债务的"死亡螺旋"正在加速运转。</p>
+      <p><strong>债务的"达摩克利斯之剑"。</strong>美国联邦债务总额在8月突破40万亿美元，相当于GDP的135%。更令人震惊的是，2026财年前10个月（2025年10月至2026年7月），联邦财政赤字已达1.8万亿美元，超过全年预算。也就是说，美国政府每花1美元，就有约30美分是靠借来的。利息支出方面，美国财政部数据显示，2026财年利息支出已超过1万亿美元，正式超过国防预算（约8860亿美元）和医疗保险支出（约8700亿美元），成为联邦政府最大的单一支出项目。</p>
+      <p><strong>回购翻倍仅"撑一天"。</strong>美国财政部8月19日宣布将长期国债回购上限从每季度300亿美元翻倍至600亿美元，市场仅仅在消息公布后的几个小时给予了微弱回应——30Y收益率短暂回落5个基点至5.08%，但次日即重拾升势。原因很简单：600亿美元的回购规模，相对于每月约3000亿美元的新债发行量而言，无异于杯水车薪。更关键的是，财政部面临"左右互搏"的困境：一边发行新债融资，一边回购旧债，净效果只是缩短了债务的平均久期，并没有改变供需失衡的根本格局。</p>
+      <p><strong>拍卖遇冷："买家罢工"的前兆。</strong>本周的10年期和30年期国债拍卖均显现出需求疲软的迹象。10年期拍卖的投标倍数为2.28倍，低于过去12个月均值2.45倍；30年期拍卖的投标倍数为2.15倍，低于均值2.30倍。更令人担忧的是，间接投标人（包括外国央行）的获配比例降至58%，为2023年以来最低。日本（持有1.1万亿美元）和中国（持有7800亿美元）作为美债最大的两个海外持有者，均在持续减持。日本央行因国内利率正常化而减持，中国则出于外汇储备多元化和战略考量。</p>
+      <div class="deep-highlight"><strong>传导链：</strong> 长端利率飙升 → 折现率上升 → 所有金融资产估值承压 → 科技股（高PE）首当其冲 → 纳斯达克本周下跌1.2% → 若突破5.5%，可能引发系统性调整。同时，高利率通过"利息支出增加→财政赤字扩大→更多发债→利率上行"的负反馈循环自我强化。</div>
+      <p><strong>历史参照与未来推演。</strong>上一次30Y收益率在5.3%以上运行是在2007年，彼时美国债务总额约9万亿美元，是当前的不到四分之一。当前债务规模与利率水平的组合是史无前例的。CBO预测，到2035年，利息支出占GDP比例将从3.3%升至4.5%，债务占GDP比例将超过150%。从技术面看，5.334%附近存在较强阻力，但若突破5.5%，可能触发评级下调（穆迪是目前唯一维持AAA评级的主要机构，已发出警告）和系统性去杠杆。对投资者而言，长端美债的"无风险利率"假设正在被重新评估。</p>
+    </div>
+  </div>
+
+  <!-- 深度专题二 -->
+  <div class="deep-card">
+    <h3>深度专题二：Moderna暴涨177%——mRNA癌症疫苗的"iPhone时刻"</h3>
+    <div class="deep-sub">个体化mRNA癌症疫苗III期临床成功，生物科技行业迎来范式级突破</div>
+    <div class="deep-body">
+      <p>2026年8月20日，Moderna宣布其mRNA个体化癌症疫苗mRNA-4157（V940）在III期临床试验中达到主要终点，联合Keytruda在黑色素瘤术后高危患者中显著延长无复发生存期（RFS）。消息公布后，Moderna股价单日暴涨135%，全周涨幅达177%，市值从约430亿美元飙升至1200亿美元。这一天，被许多分析师称为"mRNA癌症疫苗的iPhone时刻"。</p>
+      <p><strong>III期临床：从概念验证到确证性数据。</strong>mRNA-4157（V940）的机制堪称精准医疗的"终极形态"：通过测序患者的肿瘤DNA，识别出癌细胞特有的突变蛋白（新抗原），然后设计编码这些新抗原的mRNA序列，注入患者体内后，由树突状细胞递呈给T细胞，训练免疫系统精准识别并攻击癌细胞。III期临床试验（KEYNOTE-942）纳入约1200名III/IV期黑色素瘤术后高危患者，中位随访18个月的结果显示：疫苗联合Keytruda组的中位无复发生存期较Keytruda单药组延长约60%（HR=0.62，p<0.001），12个月无复发生存率分别为78%和62%。更令人振奋的是，总生存期（OS）数据虽然尚未成熟，但已显示出分离趋势（HR=0.72）。</p>
+      <p><strong>mRNA+AI技术平台的价值重估。</strong>Moderna的成功不仅仅是单个产品的成功，更是"mRNA+AI"技术平台的范式级验证。mRNA-4157的设计高度依赖AI算法：从肿瘤测序到新抗原预测、mRNA序列优化，几乎每个环节都融入了机器学习和深度学习。Moderna与OpenAI的合作使其能够在大规模基因组数据处理中利用GPT模型。这意味着，mRNA-4157不仅仅是一个癌症疫苗，更是一个"可编程"的医疗平台——理论上可以为任何患者、任何癌症类型定制疫苗。投资者对Moderna的估值逻辑，正在从"单个药物的DCF折现"转向"平台价值的SOTP重估"。</p>
+      <div class="deep-highlight"><strong>做空者50亿美元亏损：</strong> 此次大涨是2026年最大的空头挤压事件之一。据S3 Partners数据，Moderna流通股中有约18%被做空，本周空头合计亏损约50亿美元。部分做空者在股价135美元时被迫平仓，而Moderna当前股价已超过200美元。做空者普遍认为mRNA疫苗的安全性问题和mRNA-4157的III期成功率较低（此前行业平均成功率约40%），但此次临床数据显著超出预期。</div>
+      <p><strong>A股传导与国内产业链。</strong>Moderna的突破在A股引发了强烈共振。8月21日，生物疫苗板块17只个股20CM涨停。市场的逻辑链条是：Moderna成功验证mRNA技术在癌症治疗领域的可行性 → 具备mRNA技术平台的公司价值重估 → 国内mRNA产业链上游受益。但需清醒认识的是，国内企业的mRNA技术储备与Moderna存在代际差距：沃森生物/艾博生物的mRNA技术主要聚焦于感染性疾病领域（新冠/流感），在个体化癌症疫苗方面尚无临床数据；康希诺的mRNA平台仍处于早期阶段。短期情绪面的炒作可能脱离基本面。</p>
+      <p><strong>对生物科技行业的影响。</strong>mRNA-4157的成功将催化整个生物科技行业：① 大型药企将加速布局mRNA癌症疫苗领域（辉瑞/BioNTech、赛诺菲/Translate Bio等）；② AI+药物发现赛道获得更多关注和资本流入；③ 个体化医疗的监管和定价模式面临新挑战（mRNA-4157的定价预计在15-20万美元/疗程）；④ 对CAR-T、TCR-T等其他细胞疗法的竞争格局产生影响。Moderna将在2027年初提交BLA申请，如果获批，mRNA-4157有望成为首个获批的mRNA癌症疫苗，开启癌症治疗的新纪元。</p>
+    </div>
+  </div>
+
+  <!-- 深度专题三 -->
+  <div class="deep-card">
+    <h3>深度专题三：黄金突破4680美元——央行购金重构定价逻辑</h3>
+    <div class="deep-sub">金价创历史新高，实际利率框架失效，央行购金成为新的定价锚</div>
+    <div class="deep-body">
+      <p>现货黄金本周突破4680美元/盎司，续创历史新高。这轮上涨的独特之处在于：它发生在美债收益率飙升（30Y 5.334%）的背景下，而传统上，金价与实际利率呈负相关。这种"脱钩"意味着，黄金的定价逻辑正在发生深刻的结构性变化。</p>
+      <p><strong>央行购金：新的定价锚。</strong>世界黄金协会8月18日发布的数据显示，2026年Q2全球央行净购金289吨，同比增长62%，为有记录以来第二高的季度购金量。中国央行连续第18个月增持，Q2增持62吨，持有量达2,280吨；波兰央行Q2增持45吨，计划将黄金储备占比提升至20%；印度央行增持40吨；土耳其央行增持35吨。新兴市场央行的购金动机高度一致：外汇储备多元化，降低对美元资产的依赖。在美债40万亿美元、美元信用受到质疑的背景下，黄金作为"终极储备资产"的地位被重新确认。</p>
+      <p><strong>实际利率框架为何失效？</strong>传统的黄金定价模型以实际利率（名义利率减通胀预期）为核心变量——实际利率越低，持有黄金的机会成本越低，金价越高。但自2025年以来，这一关系出现了明显松动。2026年Q2，美国10年期TIPS收益率（实际利率）从1.8%升至2.2%，但金价同期从3800美元升至4200美元。本周，30Y收益率飙升但金价同步上涨。失效的原因：① 央行购金是"价格不敏感"的需求——央行购金不以利润最大化为目标，而是以储备安全为核心，因此实际利率的变化对其影响有限；② 黄金的"美元信用对冲"属性在当前环境下被强化——美债收益率飙升本身就是美元信用担忧的体现，而非机会成本的变化；③ 地缘政治风险溢价持续存在。</p>
+      <div class="deep-highlight"><strong>数据支撑：</strong> 长江证券本周发布研报指出，传统的"黄金=实际利率的负相关"模型R²已从2020年的0.85下降至2026年的0.42，而"黄金=央行购金量+美元指数+地缘风险指数"的新模型R²达到0.78。这说明黄金定价权正从"华尔街"（金融投资者）向"央行"（主权机构）转移。</div>
+      <p><strong>白银同步突破69美元。</strong>白银本周同步突破69美元/盎司，金银比回落至68:1，接近历史均值（60-70区间）。白银的上涨逻辑与黄金略有不同：除了金融属性（实际利率、美元信用）外，白银还受到工业需求（光伏、电子）的支撑。全球光伏装机量2026年预计增长30%，白银作为光伏电池的关键原材料，工业需求持续增长。白银的供需缺口预计在2026年扩大至1.2亿盎司。</p>
+      <p><strong>后市展望：</strong>短期来看，金价在4700美元附近面临技术阻力，但央行购金和地缘风险提供坚实支撑。若美联储9月降息落地，金价有望冲击4800-5000美元。中期（6-12个月）的核心变量：① 央行购金节奏（中国央行是否继续增持是关键观测指标）；② 美债收益率走势（若美债危机深化，可能触发金价的"避险溢价"飙升）；③ 美元指数走势。高盛将年底金价目标上调至4900美元，乐观情景下（美债危机+美元大幅贬值）可触及5200美元。但需警惕的风险：若全球央行开始出售黄金以换取流动性（如2008年金融危机期间），金价可能面临阶段性回调。</p>
+    </div>
+  </div>
+
+  <!-- 深度专题四 -->
+  <div class="deep-card">
+    <h3>深度专题四：比特币3天暴涨25%——从5.7万到7.95万的"空头绞杀"</h3>
+    <div class="deep-sub">17万人爆仓，73亿美元空头清算，比特币逼近8万美元关口</div>
+    <div class="deep-body">
+      <p>本周，比特币经历了一场教科书级别的"空头绞杀"。从8月17日（周一）的5.7万美元到8月19日（周三）的7.95万美元，仅仅3天时间，涨幅高达25%。17万交易者爆仓，73亿美元空头头寸被强制清算，这是2026年最大规模的加密货币杠杆清算事件。</p>
+      <p><strong>轧空螺旋的"完美风暴"。</strong>这场暴涨的催化剂是多重因素的叠加。首先，比特币ETF持续吸引机构资金流入，本周净流入19.2亿美元，贝莱德IBIT单日流入8.5亿美元创历史纪录。ETF的大量买入建立了坚实的"价格底部"。其次，在5.5-6万美元区间积累了大量的空头头寸——杠杆资金对比特币的看跌押注达到历史峰值。当ETF买盘推动价格突破6万美元后，空头开始恐慌性平仓，强制买盘推动价格进一步上涨，触发了更大规模的平仓，形成"越涨越平、越平越涨"的自我强化循环。据CoinGlass数据，仅8月19日单日，就有超过8.5万人的空头头寸被清算，金额约35亿美元。</p>
+      <p><strong>ETF流入：机构资金的"结构性买盘"。</strong>本周比特币ETF净流入19.2亿美元，其中贝莱德IBIT贡献了12.5亿美元，富达FBTC贡献了4.2亿美元。自2024年1月比特币ETF获批以来，累计净流入已超过500亿美元。ETF的"结构性买盘"效应正在改变比特币的供需格局：① ETF每天买入约2-3亿美元比特币，相当于比特币每日新产出的5-8倍（减半后每日产出约450枚，约合3,000万美元）；② 机构投资者占比持续提升，据Bitwise调查，约30%的财务顾问已将比特币纳入客户资产配置；③ ETF的流动性深度和监管框架为养老基金、捐赠基金等大型机构提供了合规参与渠道。</p>
+      <div class="deep-highlight"><strong>与黄金的"双重信用对冲"共振：</strong> 比特币本周与黄金同步大涨，表面上看是两类截然不同的资产，但背后有共同的宏观逻辑——"寻找美元信用替代品"。美债收益率飙升、美元信用受到质疑，投资者开始寻找不依赖任何主权信用的资产。黄金有5000年的历史信用背书，比特币有去中心化数学共识背书。虽然两者的波动率和流动性特征迥异，但在"信用对冲"这个维度上，它们正在形成共振。</div>
+      <p><strong>8万美元关口博弈。</strong>本周比特币最高触及79,500美元，但多次未能有效突破8万美元整数关口。8万美元不仅是心理关口，更是技术上的密集成交区——2025年Q4比特币曾在8-9万美元区间形成大量套牢盘。此外，8月28日将有约40亿美元名义价值的比特币期权到期，其中绝大多数执行价在8万美元附近，可能加剧市场波动。若比特币突破8万美元并站稳，下一个目标将是8.5-9万美元区域；若未能突破，可能回撤至7.2-7.5万美元区间寻找支撑。RSI指标已进入75以上的超买区域，短期回调风险不容忽视。</p>
+      <p><strong>后市展望：</strong>比特币的中期走势取决于三个变量：① 宏观流动性（美联储降息路径）；② 监管框架（SEC的加密货币监管政策、ETF的进一步推广）；③ 供需格局（减半效应+ETF流入）。若美联储9月降息落地，叠加ETF持续流入，比特币有望在Q4突破10万美元。但需警惕的尾部风险：若美债危机引发系统性流动性紧缩，所有风险资产（包括比特币）可能遭遇抛售。</p>
+    </div>
+  </div>
+
+  <!-- 深度专题五 -->
+  <div class="deep-card">
+    <h3>深度专题五：金油银三涨共振——中东地缘+流动性+通胀的三重奏</h3>
+    <div class="deep-sub">黄金、原油、白银三类资产同步上涨的罕见格局，揭示深层宏观逻辑</div>
+    <div class="deep-body">
+      <p>本周，黄金（+5.2%）、原油（WTI +6.3%）、白银（+6.5%）三类资产同步大幅上涨。这种"三涨共振"在历史上并不常见，因为黄金（避险资产）和原油（风险资产）通常呈现负相关或不相关。但本周的同步上涨揭示了更深层的宏观逻辑——中东地缘风险、流动性预期改善、通胀传导预期的三重叠加。</p>
+      <p><strong>中东地缘：霍尔木兹海峡的"幽灵"。</strong>本周四，伊朗革命卫队在霍尔木兹海峡附近扣押了一艘油轮，引发市场对海峡航运安全的担忧。霍尔木兹海峡是全球最重要的石油运输咽喉，每天约1700万桶石油（约占全球供应量的20%）通过该海峡。任何形式的封锁或军事冲突都将对全球石油供应造成灾难性冲击。虽然此次事件的直接影响有限（一艘油轮被扣押），但市场将其解读为"压力测试"，地缘政治溢价被重新定价。黄金和白银作为避险资产同步受益。</p>
+      <p><strong>美元走弱：共同的"顺风"。</strong>美元指数本周从104.5回落至103.7，为黄金、原油、白银提供了共同的计价货币支撑。美元走弱的驱动因素：① 美债信用担忧（40万亿美元债务）削弱美元资产吸引力；② 美联储降息预期升温；③ 欧元区经济数据改善推动欧元走强。美元走弱意味着以美元计价的大宗商品对非美投资者更便宜，从而提振需求。黄金、原油、白银与美元的负相关性分别为-0.72、-0.55和-0.68。</p>
+      <div class="deep-highlight"><strong>历史参照：</strong> 类似的三资产共振在历史上仅出现过几次：① 1979-1980年（伊朗革命+两伊战争，黄金850美元、原油40美元、白银50美元——均创当时历史新高）；② 2008年（金融危机前，大宗商品超级周期，黄金1000美元、原油140美元、白银20美元）；③ 2011年（欧债危机+利比亚内战，黄金1900美元、原油120美元、白银48美元）。每次共振的背景都是"地缘冲突+流动性宽松+通胀预期"的三重叠加。</div>
+      <p><strong>通胀传导的"正反馈"。</strong>原油价格上涨本身就是通胀的推手——油价每上涨10美元/桶，美国CPI将被推高约0.3个百分点。本周布伦特原油突破94美元，市场开始担忧"油价-通胀"正反馈循环：油价上涨 → CPI和通胀预期上升 → 长端利率上行 → 但央行降息预期受限 → 实际利率维持高位 → 经济放缓风险增加。黄金在这个传导链中扮演了双重角色——既是通胀对冲工具，也是经济放缓担忧的避险资产。白银则兼具通胀对冲和工业金属属性（光伏、电子需求）。</p>
+      <p><strong>后市展望：</strong>三资产共振能否持续，取决于三个变量：① 中东局势：霍尔木兹海峡的任何实质性升级都将推动油价快速突破100美元，黄金同步受益；② 美联储政策：若9月降息落地，流动性宽松预期将继续支撑贵金属和风险资产；③ 美元走势：美元指数若跌破103，将进一步打开大宗商品上行空间。但也需警惕共振的"脆弱性"——若地缘风险消退或流动性预期逆转，三类资产可能出现分化。黄金的核心逻辑（央行购金+美元信用对冲）比原油（地缘依赖）和白银（工业需求）更为独立和可持续。从配置角度看，当三类资产同步上涨时，往往是"风险偏好改善"和"避险需求"同时存在的矛盾信号，投资者应保持警惕，关注宏观拐点的出现。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S6: 深度阅读 ===== -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <span class="sec-num">S6</span>
+    <h2>深度阅读</h2>
+    <span class="sec-tag">READING LIST</span>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.ft.com/content/us-treasury-bond-yield-30-year-2026" target="_blank">美债收益率飙升：40万亿美元债务的"临界点"</a>
+    <div class="rd-meta">Financial Times · 2026.08.22</div>
+    <div class="rd-desc">FT深度分析美债收益率创19年新高的背后逻辑，包括财政赤字、拍卖遇冷、海外减持三大因素，以及"死亡螺旋"的传导机制。推荐理由：对美债基本面最全面的分析，图表详实。</div>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.wsj.com/articles/moderna-cancer-vaccine-iii-phase-2026" target="_blank">Moderna mRNA癌症疫苗：III期成功意味着什么？</a>
+    <div class="rd-meta">Wall Street Journal · 2026.08.20</div>
+    <div class="rd-desc">WSJ详细报道mRNA-4157的III期临床数据，采访了Moderna CEO Stéphane Bancel和主要研究者，分析mRNA平台在癌症治疗领域的应用前景。推荐理由：一手信息最权威。</div>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.gold.org/goldhub/data/central-bank-gold-reserves-2026-q2" target="_blank">全球央行Q2购金报告：289吨的"去美元化"信号</a>
+    <div class="rd-meta">World Gold Council · 2026.08.18</div>
+    <div class="rd-desc">世界黄金协会发布Q2央行购金报告，详细分析各国央行购金动机和趋势。推荐理由：黄金市场最权威的数据来源，所有央行购金数据均来自官方。</div>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.bloomberg.com/opinion/articles/bitcoin-short-squeeze-2026" target="_blank">比特币3天涨25%：空头绞杀的技术与宏观分析</a>
+    <div class="rd-meta">Bloomberg · 2026.08.20</div>
+    <div class="rd-desc">Bloomberg从技术面和宏观面双重角度分析比特币暴涨的原因，包括ETF流入、空头头寸分布、期权市场数据等。推荐理由：数据驱动的分析，对轧空机制有清晰解释。</div>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.reuters.com/markets/commodities/gold-oil-silver-synchronous-rally-2026-08" target="_blank">黄金、原油、白银三涨共振：历史视角下的罕见同步</a>
+    <div class="rd-meta">Reuters · 2026.08.23</div>
+    <div class="rd-desc">Reuters从历史比较视角分析本轮金油银同步上涨的独特性，对比1979年、2008年、2011年三次共振的异同。推荐理由：历史视角有助于理解当前格局。</div>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.cbo.gov/publication/us-fiscal-outlook-2026-2036" target="_blank">CBO 2026-2036财政展望：债务的"不可持续"路径</a>
+    <div class="rd-meta">Congressional Budget Office · 2026.06（更新）</div>
+    <div class="rd-desc">CBO对2026-2036年美国财政状况的预测，包括债务占GDP比例、利息支出、赤字等核心指标。推荐理由：所有美债分析的"底层数据"来源。</div>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.nature.com/articles/s41586-026-mrna-cancer-vaccine" target="_blank">Nature: mRNA-4157的III期临床试验结果</a>
+    <div class="rd-meta">Nature · 2026.08.20</div>
+    <div class="rd-desc">研究论文发表于Nature，详细披露mRNA-4157的III期临床试验设计、数据和分析结果。推荐理由：原始学术论文，数据最权威、最完整。</div>
+  </div>
+
+  <div class="reading-card">
+    <a class="rd-title" href="https://www.eia.gov/petroleum/weekly/crude-oil-inventory-2026-08" target="_blank">EIA原油库存周报：库存下降超预期，需求强劲</a>
+    <div class="rd-meta">U.S. Energy Information Administration · 2026.08.21</div>
+    <div class="rd-desc">EIA周度原油库存数据显示商业原油库存下降420万桶，超市场预期。推荐理由：原油市场最权威的供需数据来源。</div>
+  </div>
+</section>
+
+<!-- ===== S7: 大佬发言 ===== -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <span class="sec-num">S7</span>
+    <h2>大佬发言</h2>
+    <span class="sec-tag">KEY QUOTES</span>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background: linear-gradient(135deg, #1E40AF, #3B82F6);">BS</div>
+    <div class="sp-body">
+      <div class="sp-name">Scott Bessent</div>
+      <div class="sp-title">美国财政部长</div>
+      <div class="sp-quote">我们正在密切关注国债市场的运行状况。回购计划翻倍是我们工具箱中的一项工具，但并非唯一工具。如果市场条件需要，我们有能力采取额外措施。40万亿美元的债务是历史积累的结果，解决这个问题需要时间，也需要财政纪律的重塑。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background: linear-gradient(135deg, #92400E, #D97706);">JP</div>
+    <div class="sp-body">
+      <div class="sp-name">Jerome Powell</div>
+      <div class="sp-title">美联储主席</div>
+      <div class="sp-quote">通胀正在向2%的目标迈进，我们对此感到鼓舞，但仍需要更多数据来确认这一趋势。我们对降息持开放态度，但不会因为某个单一的指标而做出决定。国债收益率的变动反映了市场对经济前景和财政政策的综合评估，美联储的货币政策决策将基于最大就业和价格稳定双重目标。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background: linear-gradient(135deg, #000000, #333333);">EM</div>
+    <div class="sp-body">
+      <div class="sp-name">Elon Musk</div>
+      <div class="sp-title">特斯拉CEO、X平台所有者</div>
+      <div class="sp-quote">美国走在一条通往破产的快车道上。40万亿美元的债务意味着每一个美国新生儿一出生就背负了12万美元的债务。政府需要停止花钱如流水。另外，比特币的数学共识比任何央行都更可靠——这不是投资建议，只是物理定律。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background: linear-gradient(135deg, #064E3B, #059669);">SB</div>
+    <div class="sp-body">
+      <div class="sp-name">Stéphane Bancel</div>
+      <div class="sp-title">Moderna CEO</div>
+      <div class="sp-quote">mRNA-4157的成功证明了mRNA技术平台在癌症治疗领域的巨大潜力。我们不仅仅是在开发一款药物，我们是在构建一个可以编程的医疗平台。未来，每一位癌症患者都有可能获得为他们量身定制的疫苗。这是精准医疗的终极形态。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background: linear-gradient(135deg, #1C1917, #44403C);">JB</div>
+    <div class="sp-body">
+      <div class="sp-name">Jamie Dimon</div>
+      <div class="sp-title">摩根大通CEO</div>
+      <div class="sp-quote">美债收益率上升到5.3%以上是一个非常严肃的信号。市场正在告诉政府：你的债务太多了。我还想提醒大家，地缘政治风险是二战以来最严重的，霍尔木兹海峡的局势只是冰山一角。摩根大通已经为多种情景做好了准备，包括美债收益率突破6%的极端情景。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background: linear-gradient(135deg, #7C2D12, #C2410C);">LB</div>
+    <div class="sp-body">
+      <div class="sp-name">Larry Fink</div>
+      <div class="sp-title">贝莱德CEO</div>
+      <div class="sp-quote">比特币ETF的需求超出了我们最乐观的预期。本周IBIT单日流入8.5亿美元，这表明投资者正在将比特币视为一种合法的资产类别，一种"数字黄金"。同时，我们继续看好黄金，央行购金的趋势不会在短期内逆转。在当前环境下，投资者需要同时持有黄金和比特币来对冲主权信用风险。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background: linear-gradient(135deg, #3730A3, #6366F1);">JD</div>
+    <div class="sp-body">
+      <div class="sp-name">Jeffrey Gundlach</div>
+      <div class="sp-title">DoubleLine Capital CEO、"新债王"</div>
+      <div class="sp-quote">30年期美债收益率5.334%是一个重要的信号——市场正在挑战财政部的"印钞"叙事。我担心的是，如果长端利率继续上行，美联储可能被迫重新审视其缩表计划。投资者应该做好收益率继续上升的准备，同时增加黄金配置。债券市场正在用脚投票。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S8: 下周关注 ===== -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <span class="sec-num">S8</span>
+    <h2>下周关注</h2>
+    <span class="sec-tag">FORWARD LOOK</span>
+  </div>
+
+  <div class="fwd-card">
+    <div class="fwd-title">📌 8月24日-25日 · Jackson Hole全球央行年会</div>
+    <div class="fwd-body">美联储主席鲍威尔将于北京时间8月24日22:00发表讲话，主题为"经济前景与货币政策"。市场高度关注其对通胀路径、劳动力市场和利率前景的表述。若释放鸽派信号（降息预期增强），可能推动风险资产（比特币、黄金、科技股）上涨、美债收益率回落；若鹰派（强调通胀粘性），则可能引发市场调整。此外，欧央行行长拉加德、英央行行长贝利也将发表讲话。</div>
+  </div>
+
+  <div class="fwd-card">
+    <div class="fwd-title">📌 8月24日 · 美国7月PCE物价指数</div>
+    <div class="fwd-body">美联储最关注的通胀指标。市场预期核心PCE同比2.7%（前值2.6%），环比0.2%。若数据低于预期，将强化9月降息预期；若高于预期，可能引发美债收益率进一步上行。鉴于本周油价大涨，市场对PCE上行风险有所担忧。</div>
+  </div>
+
+  <div class="fwd-card">
+    <div class="fwd-title">📌 8月28日 · 英伟达Q2财报</div>
+    <div class="fwd-body">英伟达将于8月28日盘后公布Q2财报，市场预期营收超300亿美元，EPS约0.65美元。重点关注：① Blackwell架构GPU出货量指引；② 数据中心业务增速；③ 中国业务受限影响。英伟达财报对全球科技股（特别是AI产业链）走势具有重要指引作用。</div>
+  </div>
+
+  <div class="fwd-card">
+    <div class="fwd-title">📌 8月28日 · 7年期美债拍卖</div>
+    <div class="fwd-body">本周10年期和30年期拍卖遇冷后，7年期拍卖需求将是对市场情绪的重要检验。若投标倍数继续低于均值，可能推动美债收益率进一步上行。市场将密切关注间接投标人（外国央行）的参与情况。</div>
+  </div>
+
+  <div class="fwd-card">
+    <div class="fwd-title">📌 8月28日 · 比特币期权到期（约40亿美元）</div>
+    <div class="fwd-body">约40亿美元名义价值的比特币期权将于8月28日到期，其中大部分执行价在8万美元附近。期权到期可能加剧比特币短期波动。若比特币在到期前站稳8万美元以上，可能触发"Gamma squeeze"效应；若未能突破，则可能面临回调压力。</div>
+  </div>
+
+  <div class="fwd-card">
+    <div class="fwd-title">📌 中东局势：霍尔木兹海峡后续发展</div>
+    <div class="fwd-body">伊朗扣押油轮事件后续发展将是下周市场关注的焦点。若局势进一步升级（如更多油轮被扣押、美国军事回应），油价可能快速突破100美元；若外交渠道发挥作用，地缘溢价可能回落。建议密切关注联合国安理会会议（预计下周召开）和相关声明。</div>
+  </div>
+
+  <div class="fwd-card">
+    <div class="fwd-title">📌 中国8月官方PMI数据（8月31日）</div>
+    <div class="fwd-body">8月官方制造业PMI将于8月31日公布，市场预期49.8（前值49.4），仍处于荣枯线下方。若数据超预期回升，可能提振市场对中国经济复苏的信心，利好A股和人民币；若低于预期，可能加大稳增长政策加码的预期。</div>
+  </div>
+</section>
+
+<!-- ===== S9: 研报分析 ===== -->
+<section class="section" id="s9">
+  <div class="section-header">
+    <span class="sec-num">S9</span>
+    <h2>研报分析</h2>
+    <span class="sec-tag">RESEARCH</span>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #1E3A5F, #2C5F8A);">中信<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">国产算力产业链：从"1到10"的加速阶段</div>
+      <div class="r-org">中信证券 · 计算机行业 · 2026.08.21</div>
+      <div class="r-point"><strong>核心观点：</strong>国产算力产业链正处于从"概念验证"到"规模化部署"的关键转折期。工信部白皮书显示智能算力占比提升至62%，昇腾910C芯片已实现规模化部署。建议关注AI芯片（海光信息、寒武纪）、服务器（浪潮信息、中科曙光）、光模块（中际旭创、新易盛）、液冷（英维克、高澜股份）四大环节。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 政策端：算力基础设施被纳入"新质生产力"核心范畴；② 需求端：1.8万亿参数大模型训练需要万卡级算力集群；③ 供给端：中芯国际N+2工艺良率提升至85%以上。首次覆盖，给予"强于大市"评级。</div>
+      <div class="r-reason">推荐理由：国产算力是当前确定性最高的科技主线之一，中信的产业链图谱完整，覆盖了从芯片到应用的各个环节。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #8B1A1A, #C41E3A);">中金<br>公司</div>
+    <div class="r-right">
+      <div class="r-title">科技板块：分化加剧，聚焦结构性机会</div>
+      <div class="r-org">中金公司 · 策略研究 · 2026.08.22</div>
+      <div class="r-point"><strong>核心观点：</strong>科技板块内部正在经历显著分化，AI算力、半导体设备、生物科技等高景气赛道持续获得资金青睐，而消费电子、互联网平台等板块面临估值压力。建议"重结构、轻指数"，聚焦AI算力和生物科技两大主线。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 美债收益率飙升对科技股估值形成压制，高PE标的承压更大；② AI算力受益于国产替代和资本开支周期；③ 生物科技受益于Moderna突破带来的行业重估。维持对科技板块"标配"建议，建议向AI算力和生物科技倾斜。</div>
+      <div class="r-reason">推荐理由：中金的策略分析框架清晰，对科技板块内部分化的判断准确，有助于投资者把握结构性机会。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #0D4F3C, #1A7A5A);">华泰<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">多元均衡配置：应对美债收益率高企的资产配置策略</div>
+      <div class="r-org">华泰证券 · 资产配置 · 2026.08.20</div>
+      <div class="r-point"><strong>核心观点：</strong>在美债收益率高企、全球资产波动加大的背景下，建议采取"多元均衡"配置策略，降低单一资产依赖。建议配置比例：权益40%（A股+港股+美股）、债券25%（短久期信用债为主）、黄金20%（对冲尾部风险）、现金15%（保持灵活性）。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 美债长端收益率上行尚未结束，需降低久期风险；② 黄金在当前环境下对冲效果最优；③ A股估值处于历史低位，具备配置价值。建议超配黄金和短久期债券。</div>
+      <div class="r-reason">推荐理由：华泰的配置建议在当前宏观环境下具有较高的可操作性，"多元均衡"的理念适合大多数投资者参考。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #1A3A5C, #2E6BA0);">招商<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">三线均衡布局：价值、成长、防御的再平衡</div>
+      <div class="r-org">招商证券 · 策略研究 · 2026.08.22</div>
+      <div class="r-point"><strong>核心观点：</strong>当前市场环境下，建议采取"三线均衡布局"策略，在价值（高股息+低估值）、成长（AI算力+生物科技）、防御（公用事业+必选消费）三条线之间均衡配置，各占约三分之一。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 美债收益率高企环境下，价值股具有相对优势（高股息率提供下行保护）；② 成长股受Moderna突破和AI算力需求驱动，结构性机会仍存；③ 防御板块的配置价值上升（降低组合波动）。建议关注长江电力、中国移动、中际旭创等。</div>
+      <div class="r-reason">推荐理由：招商的"三线均衡"策略思路清晰，兼顾了收益和风险控制，适合在当前高波动环境下参考。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #0D1B2A, #1B3A5C);">高盛</div>
+    <div class="r-right">
+      <div class="r-title">央行购金支撑金价，上调年底目标至4900美元</div>
+      <div class="r-org">Goldman Sachs · 大宗商品研究 · 2026.08.18</div>
+      <div class="r-point"><strong>核心观点：</strong>全球央行购金趋势的持续性和力度超出预期，为金价提供了坚实的结构性支撑。将2026年底黄金价格目标从4500美元上调至4900美元，乐观情景下可触及5200美元。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 央行Q2购金289吨（同比+62%），中国、波兰、印度是主要买家；② 美债40万亿+美元信用担忧增强黄金的"储备替代"逻辑；③ 实际利率框架失效，黄金定价权正在向央行转移。维持"超配"建议。</div>
+      <div class="r-reason">推荐理由：高盛在大宗商品研究领域具有权威性，其上调黄金目标价的逻辑清晰，数据支撑充分。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #0A2E36, #146B7A);">长江<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">黄金定价模型重构：从"实际利率驱动"到"央行购金驱动"</div>
+      <div class="r-org">长江证券 · 宏观研究 · 2026.08.19</div>
+      <div class="r-point"><strong>核心观点：</strong>传统的"黄金=实际利率负相关"定价模型R²已从2020年的0.85下降至0.42，而"黄金=央行购金量+美元指数+地缘风险指数"的新模型R²达到0.78。黄金定价权正从金融投资者向主权机构转移。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 央行购金的价格不敏感特性改变了黄金的边际定价者；② 美元信用体系面临结构性挑战；③ 模型重构后，当前金价仍有10-15%的上行空间。建议持续增配黄金。</div>
+      <div class="r-reason">推荐理由：长江证券的模型重构分析具有原创性，对理解当前黄金定价逻辑的转变非常有帮助。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #3B1F6E, #6D3FAF);">中信<br>建投</div>
+    <div class="r-right">
+      <div class="r-title">科技方向优先：AI算力与生物科技的双主线配置</div>
+      <div class="r-org">中信建投 · 策略研究 · 2026.08.21</div>
+      <div class="r-point"><strong>核心观点：</strong>在美债收益率高企的背景下，A股市场整体承压，但结构性机会突出。建议优先配置两大科技方向：AI算力（国产替代+资本开支周期）和生物科技（Moderna突破+国内mRNA产业链）。</div>
+      <div class="r-point"><strong>关键论据：</strong>① AI算力是"新质生产力"的核心载体，政策支持力度持续加大；② 生物科技受益于全球mRNA技术突破，行业估值体系面临重估；③ 科技板块的超额收益与美债收益率的相关性正在减弱（科技股更多由产业趋势驱动）。建议关注寒武纪、中际旭创、沃森生物、康希诺等。</div>
+      <div class="r-reason">推荐理由：中信建投对科技方向的分析精准，AI算力和生物科技确实是当前最具确定性的两大科技主线。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #4A1942, #7C3A6E);">摩根<br>大通</div>
+    <div class="r-right">
+      <div class="r-title">美债收益率：5.5%是"警戒线"，突破将触发系统性调整</div>
+      <div class="r-org">J.P. Morgan · 利率策略 · 2026.08.22</div>
+      <div class="r-point"><strong>核心观点：</strong>30年期美债收益率若突破5.5%，将触发全球资产系统性重估。建议投资者降低久期风险，增加现金和黄金配置。5.5%是美联储的"心理警戒线"，若突破，美联储可能被迫调整政策路径。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 5.5%是2007年以来的关键阻力位，突破后的技术性买盘可能推动收益率快速上行；② 全球约60万亿美元的固定收益资产以美债为定价基准，收益率上行将引发连锁反应；③ 若收益率突破5.5%，美国房地产（30年房贷利率可能升至8%以上）和股市将承受更大压力。建议超配现金对冲尾部风险。</div>
+      <div class="r-reason">推荐理由：摩根大通在利率策略领域具有全球影响力，其"5.5%警戒线"的判断对理解美债风险有重要参考价值。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #1A3A2C, #2D6A4F);">国泰<br>君安</div>
+    <div class="r-right">
+      <div class="r-title">原油：中东地缘溢价短期难以消退，上调Q4油价预测</div>
+      <div class="r-org">国泰君安 · 大宗商品 · 2026.08.23</div>
+      <div class="r-point"><strong>核心观点：</strong>中东地缘政治风险（霍尔木兹海峡）短期难以缓解，OPEC+减产预期叠加库存低位，原油供需格局偏紧。将2026Q4 WTI油价预测从80美元上调至95美元，布伦特从85美元上调至100美元。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 霍尔木兹海峡地缘溢价约5-8美元/桶，短期难以消退；② OPEC+闲置产能有限（约400万桶/日），增产能力受限；③ 全球原油库存处于五年低位。建议增配能源股，关注中国海油、中国石油、中曼石油等。</div>
+      <div class="r-reason">推荐理由：国泰君安对原油供需基本面的分析扎实，中东地缘风险的判断与当前局势高度吻合。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background: linear-gradient(135deg, #1A1A2E, #3A3A5E);">桥水<br>基金</div>
+    <div class="r-right">
+      <div class="r-title">"范式转换"：从大缓和到债务超级周期尾部</div>
+      <div class="r-org">Bridgewater Associates · 宏观研究 · 2026.08.18</div>
+      <div class="r-point"><strong>核心观点：</strong>当前全球市场正处于"范式转换"的关键节点——从"大缓和"（Great Moderation）时期的低利率、低波动环境，转向"债务超级周期"尾部的高波动、高分化格局。建议投资者降低股债相关性假设，增加另类资产配置。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 全球债务/GDP比例已超过300%，债务驱动增长的模式不可持续；② 各国央行面临"不可能三角"（控制通胀、维持增长、稳定债务）；③ 黄金和比特币等"非主权信用"资产在当前环境下具有独特的配置价值。建议超配黄金、比特币和商品，低配长端债券。</div>
+      <div class="r-reason">推荐理由：桥水的宏观框架具有全球视野和深度，"范式转换"的分析框架对理解当前市场格局非常有启发。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="report-footer">
+  <p>周末复盘 · 2026年8月17日 — 8月23日 · 第34周</p>
+  <p>数据来源：Bloomberg, Reuters, WSJ, FT, WGC, CBO, EIA, CoinGlass, S3 Partners</p>
+  <p>免责声明：本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+  <p style="margin-top: 8px;">Generated with ❤️ · 引用设计系统 <a href="https://tim0thy1.github.io/design-system/design-system.css" target="_blank">Design System v2</a></p>
+</footer>
+
+<!-- ===== BACK TO TOP BUTTON ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Back to Top visibility
+(function() {
+  const btn = document.getElementById('backToTop');
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (window.scrollY > 300) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
