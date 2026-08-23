@@ -534,6 +534,59 @@ body {
   line-height: 1.6;
 }
 
+/* ===== Font Size Control ===== */
+.font-control {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 48px;
+  padding: 4px;
+  box-shadow: var(--warm-shadow);
+  z-index: 998;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.font-control:hover { opacity: 1; }
+.font-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--orange-soft);
+  color: var(--orange-deep);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  line-height: 1;
+}
+.font-btn:hover { background: var(--orange); color: #fff; }
+.font-val {
+  min-width: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.font-reset {
+  border: none;
+  background: transparent;
+  color: var(--faint);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0 6px;
+  white-space: nowrap;
+}
+.font-reset:hover { color: var(--orange-deep); }
+
 /* ===== Back to Top ===== */
 .back-to-top {
   position: fixed;
@@ -1440,6 +1493,13 @@ body {
   <p style="margin-top: 8px;">Generated with ❤️ · 引用设计系统 <a href="https://tim0thy1.github.io/design-system/design-system.css" target="_blank">Design System v2</a></p>
 </footer>
 
+<div class="font-control" id="fontControl" title="调整正文字体大小">
+  <button class="font-btn" id="fontDec" aria-label="减小字体">A−</button>
+  <span class="font-val" id="fontVal">100%</span>
+  <button class="font-btn" id="fontInc" aria-label="增大字体">A+</button>
+  <button class="font-reset" id="fontReset">重置</button>
+</div>
+
 <!-- ===== BACK TO TOP BUTTON ===== -->
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
@@ -1461,6 +1521,34 @@ body {
       ticking = true;
     }
   });
+})();
+
+// Font size control
+(function() {
+  const KEY = 'wb_report_font_scale_v1';
+  const MIN = 80, MAX = 150, STEP = 10;
+  const root = document.documentElement;
+  let scale = parseInt(localStorage.getItem(KEY) || '100', 10);
+  if (isNaN(scale) || scale < MIN || scale > MAX) scale = 100;
+
+  function apply() {
+    const scaleNum = scale / 100;
+    document.body.style.zoom = scaleNum.toFixed(2);
+    const val = document.getElementById('fontVal');
+    if (val) val.textContent = scale + '%';
+  }
+  function change(d) {
+    scale = Math.min(MAX, Math.max(MIN, scale + d));
+    localStorage.setItem(KEY, String(scale));
+    apply();
+  }
+  apply();
+  const inc = document.getElementById('fontInc');
+  const dec = document.getElementById('fontDec');
+  const reset = document.getElementById('fontReset');
+  if (inc) inc.onclick = function(){ change(STEP); };
+  if (dec) dec.onclick = function(){ change(-STEP); };
+  if (reset) reset.onclick = function(){ scale = 100; localStorage.setItem(KEY, '100'); apply(); };
 })();
 </script>
 
