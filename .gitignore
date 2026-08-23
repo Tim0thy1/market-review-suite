@@ -12,10 +12,31 @@
 !index.html
 !README.md
 
-# 保留采集脚本与配置（2026-08-22 起跟踪核心配置）
+# 保留采集脚本与配置
 !Sentinel_Daily_Pro.py
+!A_Share_Daily_Pro.py
+!_read_news.py
+!_read_news2.py
+!_summarize.py
+!generate_index.py
+!cleanup_old_reports.py
 !stock.list
 !stock.options.core.list
+!package.json
+!package-lock.json
+
+# 保留 skill 配置
 !.trae/
 !.trae/skills/
 !.trae/skills/**
+
+# 保留数据与资源
+!result/
+!result/**
+!_shared/
+!_shared/js/
+!_shared/js/echarts.min.js
+
+# 保留旧路径的盘前分析（迁移兼容）
+!a-share-premarket-20260820/
+!a-share-premarket-20260820/**
