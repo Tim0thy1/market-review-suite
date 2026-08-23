@@ -32,6 +32,9 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .report-card{border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--card);transition:all .2s;text-decoration:none;color:var(--text);display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .report-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(30,58,95,.12);border-color:var(--accent2)}
+.report-card.highlight-card{ background: linear-gradient(135deg, var(--accent2-soft), #fff7ed); border-left: 4px solid var(--accent2); }
+.report-card.highlight-card:hover{ border-color: var(--accent2); box-shadow: 0 6px 20px rgba(217,119,6,.25); }
+.report-card.highlight-card .title{ color: var(--accent2); font-size:16px; }
 .report-card .type{font-size:11px;font-weight:700;padding:2px 10px;border-radius:6px;display:inline-block;width:fit-content;margin-bottom:8px}
 .type-us{background:var(--accent-soft);color:var(--accent)}
 .type-ashare{background:var(--red-dim);color:var(--red)}
@@ -66,13 +69,18 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 <div class="subtitle">美股复盘 · A股复盘 · 周末复盘 · 盘前分析</div>
 <div class="badge">自动同步 · 每日更新</div>
 <div class="stats">
-<div class="stat"><div class="num">12</div><div class="label">报告总数</div></div>
+<div class="stat"><div class="num">13</div><div class="label">报告总数</div></div>
 <div class="stat"><div class="num">4</div><div class="label">交易日</div></div>
 <div class="stat"><div class="num">3</div><div class="label">类型</div></div>
 </div>
 </div>
 
-<div class="date-group"><div class="date-header">2026-08-22 ~ 08-23（周末） <span class="tag tag-today">本周</span></div><div class="report-grid"><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/周末复盘/20260823_周末复盘.html" target="_blank">
+<div class="date-group"><div class="date-header">2026-08-22 ~ 08-23（周末） <span class="tag tag-today">本周</span></div><div class="report-grid"><a class="report-card highlight-card" href="https://tim0thy1.github.io/market-review-suite/周末复盘/深度专题/20260823_美债深度专题.html" target="_blank">
+          <div class="type type-weekend">🏛 深度专题</div>
+          <div class="title">40万亿的"死亡螺旋"：美债到底怎么了？</div>
+          <div class="desc">30Y收益率冲5.33%、债务破40万亿、利息超军队开支、日中用脚投票、AI抢债、贝森特救市失效、达利欧拉响三年倒计时——一篇讲透本轮美债风暴的长文</div>
+          <div class="arrow">精读专题 →</div>
+        </a><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/周末复盘/20260823_周末复盘.html" target="_blank">
           <div class="type type-weekend">📖 周末复盘</div>
           <div class="title">周末复盘 · 跨市场深度回顾 · 8月23日</div>
           <div class="desc">5篇深度专题 + 跨市场资产走势 + 研报分析 + 索引导航，周末阅读特供版</div>
