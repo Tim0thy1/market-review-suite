@@ -46,6 +46,15 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .report-card .desc{font-size:12.5px;color:var(--text2);line-height:1.5;flex:1}
 .report-card .arrow{color:var(--accent2);font-size:13px;margin-top:8px;font-weight:600}
 .footer{text-align:center;padding:32px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
+/* 分类导航栏 */
+.cat-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 4px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:10;border-bottom:1px solid var(--border)}
+.cat-nav a{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--card);border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:13px;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.03);transition:all .2s}
+.cat-nav a:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(217,119,6,.18);border-color:var(--accent2)}
+.cat-nav a.cat-active{background:linear-gradient(135deg,var(--accent2),#F97316);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(217,119,6,.28)}
+.cat-nav a .ic{font-size:15px}
+@media(max-width:600px){.cat-nav{gap:6px}.cat-nav a{padding:7px 12px;font-size:12px}}
+@media(max-width:768px){.content-wrap{scroll-margin-top:120px}}
+@media(max-width:600px){.content-wrap{scroll-margin-top:140px}}
 @media(max-width:600px){.report-grid{grid-template-columns:1fr}.stats{gap:16px}}
 </style>
 <script>
@@ -75,7 +84,15 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 </div>
 
-<div class="date-group" style="border-top:3px solid var(--accent2);padding-top:14px;margin-top:8px;"><div class="date-header">📌 深度专题专栏 <span class="tag tag-today">常驻 · 永久保留</span></div><div class="report-grid"><a class="report-card highlight-card" href="https://tim0thy1.github.io/market-review-suite/深度专题/20260823_美债深度专题.html" target="_blank">
+<nav class="cat-nav" id="catNav">
+  <a href="#cat-deep" class="cat-active" data-cat="cat-deep"><span class="ic">🔬</span>深度专题</a>
+  <a href="#cat-weekend" data-cat="cat-weekend"><span class="ic">📖</span>周末复盘</a>
+  <a href="#cat-us" data-cat="cat-us"><span class="ic">🇺🇸</span>美股复盘</a>
+  <a href="#cat-ashare" data-cat="cat-ashare"><span class="ic">📈</span>A股复盘</a>
+  <a href="#cat-premarket" data-cat="cat-premarket"><span class="ic">📅</span>盘前分析</a>
+</nav>
+
+<div class="date-group content-wrap" id="cat-deep" style="border-top:3px solid var(--accent2);padding-top:14px;margin-top:8px;scroll-margin-top:110px;"><div class="date-header">📌 深度专题专栏 <span class="tag tag-today">常驻 · 永久保留</span></div><div class="report-grid content-wrap"><a class="report-card highlight-card" href="https://tim0thy1.github.io/market-review-suite/深度专题/20260823_美债深度专题.html" target="_blank">
           <div class="type type-weekend">📖 深度专题</div>
           <div class="title">40万亿的"死亡螺旋"：美债到底怎么了？</div>
           <div class="desc">30Y收益率冲5.33%、债务破40万亿、利息超军队开支、日中用脚投票、AI抢债、贝森特救市失效、达利欧拉响三年倒计时</div>
@@ -92,14 +109,14 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
           <div class="arrow">精读专题 →</div>
         </a></div><p style="font-size:11px;color:var(--text2);margin-top:8px;">深度专题为独立常驻专栏，长期保留，不随复盘滚动清理；周度复盘报告见下方分组。</p></div>
 
-<div class="date-group"><div class="date-header">2026-08-22 ~ 08-23（周末） <span class="tag tag-today">本周</span></div><div class="report-grid"><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/周末复盘/20260823_周末复盘.html" target="_blank">
+<div class="date-group content-wrap" id="cat-weekend"><div class="date-header">2026-08-22 ~ 08-23（周末） <span class="tag tag-today">本周</span></div><div class="report-grid content-wrap"><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/周末复盘/20260823_周末复盘.html" target="_blank">
           <div class="type type-weekend">📖 周末复盘</div>
           <div class="title">周末复盘 · 跨市场深度回顾 · 8月23日</div>
           <div class="desc">5篇深度专题 + 跨市场资产走势 + 研报分析 + 索引导航，周末阅读特供版</div>
           <div class="arrow">阅读全文 →</div>
         </a></div></div>
 
-<div class="date-group"><div class="date-header">2026-08-21（周五） <span class="tag tag-past">本周</span></div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/美股/美股复盘-20260821/us-market-review-20260821.html" target="_blank">
+<div class="date-group content-wrap" id="cat-us"><div class="date-header">2026-08-21（周五） <span class="tag tag-past">本周</span></div><div class="report-grid content-wrap"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/美股/美股复盘-20260821/us-market-review-20260821.html" target="_blank">
           <div class="type type-us">🇺🇸 美股复盘</div>
           <div class="title">美股 · 美股复盘 · 8月21日</div>
           <div class="desc">us-market-review-20260821</div>
@@ -114,7 +131,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
           <div class="title">A股 · A股复盘 · 8月21日</div>
           <div class="desc">全景复盘_20260821</div>
           <div class="arrow">查看报告 →</div>
-        </a></div></div><div class="date-group"><div class="date-header">2026-08-20（周四） <span class="tag tag-past">昨日</span></div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/美股/美股复盘-20260820/us-market-review-20260820.html" target="_blank">
+        </a></div></div><div class="date-group content-wrap" id="cat-ashare"><div class="date-header">2026-08-20（周四） <span class="tag tag-past">昨日</span></div><div class="report-grid content-wrap"><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/blob/master/美股/美股复盘-20260820/us-market-review-20260820.html" target="_blank">
           <div class="type type-us">🇺🇸 美股复盘</div>
           <div class="title">美股 · 美股复盘 · 8月20日</div>
           <div class="desc">us-market-review-20260820</div>
@@ -129,7 +146,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
           <div class="title">A股 · A股复盘 · 8月20日</div>
           <div class="desc">全景复盘_20260820</div>
           <div class="arrow">查看报告 →</div>
-        </a></div></div><div class="date-group"><div class="date-header">2026-08-19（周三） </div><div class="report-grid"><a class="report-card" href="https://htmlpreview.github.io/?https://github.com/Tim0thy1/market-review-suite/blob/master/美股/美股复盘-20260819/us-market-review-20260819.html" target="_blank">
+        </a></div></div><div class="date-group content-wrap" id="cat-premarket"><div class="date-header">2026-08-19（周三） </div><div class="report-grid content-wrap"><a class="report-card" href="https://tim0thy1.github.io/market-review-suite/blob/master/美股/美股复盘-20260819/us-market-review-20260819.html" target="_blank">
           <div class="type type-us">🇺🇸 美股复盘</div>
           <div class="title">美股 · 美股复盘 · 8月19日</div>
           <div class="desc">us-market-review-20260819</div>
@@ -162,5 +179,26 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 </div>
 
 </div>
+<script>
+/* 分类导航：点击滚动到对应分类区块并高亮 */
+(function(){
+  var nav=document.getElementById('catNav');
+  if(!nav) return;
+  var links=nav.querySelectorAll('a');
+  var catMap={'cat-deep':'cat-deep','cat-weekend':'cat-weekend','cat-us':'cat-us','cat-ashare':'cat-ashare','cat-premarket':'cat-premarket'};
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var t=a.getAttribute('data-cat');
+      var target=document.getElementById(t);
+      if(!target) return;
+      var y=target.getBoundingClientRect().top+window.scrollY-70;
+      window.scrollTo({top:y,behavior:'smooth'});
+      links.forEach(function(x){x.classList.remove('cat-active');});
+      a.classList.add('cat-active');
+    });
+  });
+})();
+</script>
 </body>
 </html>
