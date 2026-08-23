@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>深度专题 · 市场复盘</title>
+<style>
+  :root{
+    --bg:#FBFAF8;--bg2:#FFFFFF;--bg3:#F2F0EC;--ink:#1A1A1A;--muted:#8A8578;
+    --rule:#E8E4DC;--accent:#C0392B;--accent2:#E67E22;
+    --accent-soft:rgba(192,57,43,.08);--accent2-soft:rgba(230,126,34,.10);
+  }
+  [data-theme="dark"]{
+    --bg:#121212;--bg2:#1B1B1B;--bg3:#242424;--ink:#F2F0EC;--muted:#8A8578;
+    --rule:#2E2E2E;--accent:#E67E22;--accent2:#C0392B;
+    --accent-soft:rgba(230,126,34,.12);--accent2-soft:rgba(192,57,43,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;min-height:100vh;transition:background .3s,color .3s}
+  .wrap{max-width:860px;margin:0 auto;padding:40px 22px 60px}
+  header{padding-bottom:26px;border-bottom:1px solid var(--rule);margin-bottom:28px}
+  .kicker{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:700;margin-bottom:10px}
+  h1{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+  .sub{color:var(--muted);font-size:14px;margin-top:8px}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .card{
+    display:block;text-decoration:none;color:inherit;
+    background:var(--bg2);border:1px solid var(--rule);border-radius:16px;
+    padding:22px 24px;transition:all .2s ease;position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 28px rgba(0,0,0,.08)}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .tag{display:inline-block;font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--rule);padding:3px 10px;border-radius:20px;margin-bottom:12px}
+  .card h2{font-size:18px;font-weight:700;line-height:1.4;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:13.5px;line-height:1.6}
+  .card .arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--muted);transition:all .2s}
+  .card:hover .arrow{color:var(--accent);right:16px}
+  .foot{margin-top:34px;color:var(--muted);font-size:12px;text-align:center}
+  @media(max-width:600px){.wrap{padding:28px 16px 50px}h1{font-size:24px}.card{padding:18px 18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">MARKET REVIEW · DEEP DIVE</div>
+    <h1>🔬 深度专题</h1>
+    <p class="sub">市场复盘 · 深度研究专题合集，聚焦产业趋势与宏观变量</p>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="20260823_mRNA癌症疫苗专题.html">
+      <span class="tag">医药 · 生物科技</span>
+      <h2>mRNA癌症疫苗：一只"疫苗式"的股市核弹</h2>
+      <p>为何让现代疫苗业重新沸腾</p>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="card" href="20260823_牛来大模型专题.html">
+      <span class="tag">AI · 大模型</span>
+      <h2>神秘"牛来"大模型刷屏</h2>
+      <p>中美大模型的你追我赶，正进入"分水岭"时刻</p>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="card" href="20260823_美债深度专题.html">
+      <span class="tag">宏观 · 债券</span>
+      <h2>40万亿的"死亡螺旋"：美债到底怎么了？</h2>
+      <p>深度拆解美债困局与全球资产影响</p>
+      <span class="arrow">→</span>
+    </a>
+  </main>
+
+  <div class="foot">深度专题 · 持续更新</div>
+</div>
+</body>
+</html>
