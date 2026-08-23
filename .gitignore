@@ -1,42 +1,15 @@
-# 忽略所有文件
+# 忽略所有非报告文件
 /*
 
-# 但保留报告目录
-!美股/
-!美股/**
-!A股/
-!A股/**
-
-# 保留 .gitignore 自身和首页
-!.gitignore
+# 仅保留报告目录与文件
 !index.html
-!README.md
-
-# 保留采集脚本与配置
-!Sentinel_Daily_Pro.py
-!A_Share_Daily_Pro.py
-!_read_news.py
-!_read_news2.py
-!_summarize.py
-!generate_index.py
-!cleanup_old_reports.py
-!stock.list
-!stock.options.core.list
-!package.json
-!package-lock.json
-
-# 保留 skill 配置
-!.trae/
-!.trae/skills/
-!.trae/skills/**
-
-# 保留数据与资源
-!result/
-!result/**
-!_shared/
-!_shared/js/
-!_shared/js/echarts.min.js
-
-# 保留旧路径的盘前分析（迁移兼容）
+!.gitignore
+!美股/
+!美股/**/
+!美股/**/*.html
+!A股/
+!A股/**/
+!A股/**/*.html
+!A股/**/*.txt
 !a-share-premarket-20260820/
-!a-share-premarket-20260820/**
+!a-share-premarket-20260820/*.html
