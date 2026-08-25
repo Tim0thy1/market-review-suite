@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-08-26（周三）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+  :root{
+    --bg:#f7f8fc; --card:#ffffff; --text:#1a2740; --muted:#6b7488;
+    --up:#dc2626; --down:#16a34a; --primary:#1e40af; --secondary:#3b82f6;
+    --warn:#f59e0b; --line:#e6e9f2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,'Helvetica Neue',Arial,sans-serif;
+    line-height:1.75; font-size:15px; padding-bottom:60px;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:24px 20px;}
+  .nav-btn{
+    position:fixed; right:16px; top:16px; z-index:1000;
+    width:44px; height:44px; border-radius:12px; background:var(--primary); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:20px;
+    cursor:pointer; box-shadow:0 6px 18px rgba(30,64,175,.35); border:none;
+  }
+  .nav-panel{
+    position:fixed; right:60px; top:16px; z-index:1000; width:260px; max-height:80vh; overflow:auto;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 10px 30px rgba(26,39,64,.14); padding:10px 6px; display:none;
+  }
+  .nav-panel.open{display:block;}
+  .nav-panel a{
+    display:block; padding:7px 12px; border-radius:8px; color:var(--text);
+    text-decoration:none; font-size:13.5px;
+  }
+  .nav-panel a:hover{background:#eef2fb; color:var(--primary);}
+  .header{
+    margin-bottom:18px; padding-bottom:16px; border-bottom:2px solid var(--primary);
+  }
+  .header .tag{display:inline-block; background:var(--primary); color:#fff; font-size:12px;
+    padding:2px 10px; border-radius:20px; margin-bottom:8px; letter-spacing:1px;}
+  .header h1{font-size:26px; font-weight:700;}
+  .header .sub{color:var(--muted); font-size:14px; margin-top:6px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:16px 0; box-shadow:0 2px 10px rgba(26,39,64,.05);
+  }
+  h2.sec{
+    font-size:20px; color:var(--primary); margin:34px 0 6px; padding-left:12px;
+    border-left:4px solid var(--secondary);
+  }
+  h3{font-size:16px; margin:16px 0 8px; color:var(--text);}
+  h3 .tag{display:inline-block; font-size:11px; background:#eef2fb; color:var(--primary);
+    border-radius:10px; padding:1px 8px; margin-left:6px; vertical-align:middle;}
+  p{color:var(--text); margin:8px 0; text-align:justify;}
+  .lead{font-size:15px;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .kpi{
+    background:linear-gradient(180deg,#f8faff,#fff); border:1px solid var(--line);
+    border-radius:12px; padding:14px 16px;
+  }
+  .kpi .lbl{font-size:12px; color:var(--muted);}
+  .kpi .val{font-size:22px; font-weight:700; margin-top:2px;}
+  .up{color:var(--up);} .down{color:var(--down);} .warn{color:var(--warn);} .blue{color:var(--primary);}
+  .pill{display:inline-block; padding:1px 9px; border-radius:10px; font-size:12px; margin-right:6px;}
+  .pill.hit{background:#e8f7ef; color:var(--down);}
+  .pill.miss{background:#fdecec; color:var(--up);}
+  .pill.up{background:#fdecec; color:var(--up);}
+  .pill.flat{background:#eef2fb; color:var(--primary);}
+  table{width:100%; border-collapse:collapse; margin:10px 0; font-size:13.5px;}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+  th{background:#eef2fb; color:var(--primary); font-weight:600;}
+  tr:nth-child(even) td{background:#fafbfe;}
+  ul{margin:8px 0 8px 20px;} li{margin:5px 0;}
+  .quote{
+    background:#f4f7ff; border-left:4px solid var(--secondary); border-radius:8px;
+    padding:12px 16px; margin:10px 0; color:var(--text);
+  }
+  .tldr{
+    background:linear-gradient(135deg,#1e40af,#1e3a5f); color:#fff; border-radius:14px;
+    padding:20px 24px; margin:16px 0;
+  }
+  .tldr h2{font-size:18px; margin-bottom:8px; color:#fff;}
+  .tldr p{color:#e2e8f0;}
+  .tldr .hl{color:#fbbf24; font-weight:700;}
+  .footer{margin-top:40px; padding-top:16px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:12.5px; text-align:center;}
+  @media(max-width:760px){ .grid2,.grid3{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<button class="nav-btn" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+<div class="nav-panel" id="nav">
+  <a href="#s0">S0 今日定调</a>
+  <a href="#s1">S1 隔夜外盘</a>
+  <a href="#s2">S2 昨日收盘</a>
+  <a href="#s3">S3 主线观察单</a>
+  <a href="#s4">S4 主线竞争</a>
+  <a href="#s5">S5 医药业绩雷达</a>
+  <a href="#s6">S6 资金与情绪</a>
+  <a href="#s7">S7 今日关注</a>
+  <a href="#s8">S8 风险提示</a>
+  <a href="#s9">S9 预测台账</a>
+</div>
+
+<div class="wrap">
+<div class="header">
+  <span class="tag">A股 · 盘前分析</span>
+  <h1>2026-08-26（周三）盘前分析</h1>
+  <div class="sub">数据基准：2026-08-25 收盘 · 生成时间 2026-08-26 07:30（北京时间）</div>
+</div>
+
+<div class="tldr" id="s0">
+  <h2>今日定调：普涨后分化，医药/CRO 主线延续性待验证</h2>
+  <p>昨日（8/25）A股普涨，上涨家数占比 <span class="hl">76%</span>、涨停 <span class="hl">70 家</span>，情绪处于高位；但两市成交额 <span class="hl">1.83 万亿</span>，较前日缩量 <span class="hl">-1756 亿</span>，量能未跟上。医药/CRO 是当前最强主线（中期主线第 11 周），昨日 CRO 概念 +3.44%、医疗服务 +3.40%，凯莱英涨停。今日核心看点：<span class="hl">医药/CRO 能否在普涨后继续跑赢大盘</span>，以及缩量环境下题材能否维持。</p>
+</div>
+
+<h2 class="sec" id="s1">S1 隔夜外盘与消息面</h2>
+<div class="card">
+  <p><strong>说明</strong>：本报告生成于 8/26 早间，隔夜美股（8/25 晚）尚未收盘，外盘数据以 8/25 已知信息为基准，待收盘后于复盘补充。</p>
+  <p><strong>医药产业消息（8/24-8/25 已确认）</strong>：</p>
+  <ul>
+    <li><strong>药明合联（HK02268）</strong> 8/24 盘后发布 2026 中期业绩：归母净利 <span class="up">9.43 亿港元</span>（EPS 0.69 港元），营收同比 <span class="up">+43.9%</span>，其中"IND 后服务"占比 58.3%、北美客户占比 45.6%，验证 ADC/CXO 高景气。</li>
+    <li><strong>荣昌生物（HK09995）</strong> 8/24 盘后发布 2026 中期业绩：归母净利 <span class="up">53.68 亿港元</span>（EPS 9.58 港元），净利率 79.7%，同比 <span class="up">+1188.9%</span>，创新药放量兑现。</li>
+    <li><strong>凯莱英（SZ002821）</strong> 8/25 盘后发布 2026 中报：归母净利 5.20 亿（Q2 单季 2.16 亿），TTM 10.36 亿，披露日 8/25。</li>
+    <li><strong>美迪西（SH688202）</strong> 8/25 盘后发布 2026 中报：归母净利 5160 万（Q2 3599 万），扭亏为盈。</li>
+    <li><strong>康龙化成（SZ300759）</strong> 8/21 已发中报：归母净利 7.50 亿（Q2 4.15 亿），TTM 17.13 亿。</li>
+  </ul>
+</div>
+
+<h2 class="sec" id="s2">S2 昨日（8/25）收盘全景</h2>
+<div class="card">
+  <div class="grid3">
+    <div class="kpi"><div class="lbl">上证指数</div><div class="val up">3889.44</div><div class="lbl up">+0.19%</div></div>
+    <div class="kpi"><div class="lbl">深证成指</div><div class="val down">13745.87</div><div class="lbl down">-0.35%</div></div>
+    <div class="kpi"><div class="lbl">创业板指</div><div class="val up">—</div><div class="lbl">—</div></div>
+  </div>
+  <div class="grid3" style="margin-top:12px">
+    <div class="kpi"><div class="lbl">沪深300</div><div class="val down">4552.03</div><div class="lbl down">-0.24%</div></div>
+    <div class="kpi"><div class="lbl">科创50</div><div class="val up">1604.59</div><div class="lbl up">+0.14%</div></div>
+    <div class="kpi"><div class="lbl">两市成交额</div><div class="val warn">1.83万亿</div><div class="lbl warn">较前日 -1756亿</div></div>
+  </div>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>解读</th></tr>
+    <tr><td>上涨家数</td><td class="up">4234 家（76%）</td><td>普涨格局，情绪偏高</td></tr>
+    <tr><td>涨停 / 跌停</td><td class="up">70 / 4</td><td>涨停家数高位，赚钱效应强</td></tr>
+    <tr><td>成交额</td><td class="warn">1.83 万亿</td><td>较前日缩量 1756 亿，量能未跟上涨幅</td></tr>
+    <tr><td>市场画像</td><td>情绪狂热（5/5）</td><td>但技术面极弱（1/5）、短期趋势弱势</td></tr>
+  </table>
+  <div class="quote"><b>关键矛盾</b>：情绪指标（涨停>50、涨股比>70%）与量能、技术面背离——普涨但缩量，说明是存量资金博弈下的结构性行情，主线（医药/CRO）的持续性比指数更重要。</div>
+</div>
+
+<h2 class="sec" id="s3">S3 盘前主线观察单</h2>
+<div class="card">
+  <p>基于昨日复盘的「中期主线档案 + 主线强度评分卡」，结合今日盘前刷新，今日重点盯以下主线走势：</p>
+  <table>
+    <tr><th>主线（含最强概念子主线）</th><th>昨日评分</th><th>当日盯盘信号</th><th>走强确认</th><th>走弱证伪</th></tr>
+    <tr>
+      <td><strong>医药 → CRO/CDMO</strong><br><span class="pill up">中期主线第11周</span></td>
+      <td class="up">86/100</td>
+      <td>开盘 CRO 概念 vs 医药行业超额；凯莱英能否续涨/放量；板块量能 vs 5日均</td>
+      <td>继续跑赢行业 + 龙头放量封板 + 资金续流入</td>
+      <td>跌破行业超额 / 凯莱英断板 / 缩量背离</td>
+    </tr>
+    <tr>
+      <td><strong>机器人（华为机器人）</strong><br><span class="pill flat">酝酿期</span></td>
+      <td>47/100</td>
+      <td>拓斯达等龙头能否续强；概念量能是否放大</td>
+      <td>连续涨停 + 量能跟进</td>
+      <td>高开低走 / 龙头炸板</td>
+    </tr>
+    <tr>
+      <td><strong>贵金属（黄金）</strong><br><span class="pill miss">高位分歧</span></td>
+      <td>33/100</td>
+      <td>西部黄金、盛达资源等能否止跌企稳</td>
+      <td>金价企稳 + 资金回流</td>
+      <td>继续破位 / 机构净卖出</td>
+    </tr>
+  </table>
+  <div class="quote"><b>观察单更新规则</b>：前一日主线必列并标注"不满足走强信号则降级/剔除"；只有新概念连续涨停放量才考虑换挡。今日医药/CRO 是唯一"主升期"主线，其余为酝酿/分歧期。</div>
+</div>
+
+<h2 class="sec" id="s4">S4 主线竞争与概念下钻</h2>
+<div class="card">
+  <h3>行业 vs 概念：医药内部最强子主线是 CRO/CDMO</h3>
+  <table>
+    <tr><th>维度</th><th>医疗服务（行业）</th><th>CRO（概念）</th><th>对比结论</th></tr>
+    <tr><td>8/25 涨幅</td><td class="up">+3.40%</td><td class="up">+3.44%</td><td>CRO 略强于行业</td></tr>
+    <tr><td>20日涨幅</td><td class="up">+20.57%</td><td class="up">+25.13%</td><td>CRO 显著强于行业 → 主线健康</td></tr>
+    <tr><td>龙头</td><td>凯莱英（涨停）</td><td>凯莱英（涨停）</td><td>龙头共振</td></tr>
+    <tr><td>主力资金（8/25）</td><td>—</td><td class="up">+18.1亿</td><td>当日净流入</td></tr>
+    <tr><td>主力资金（5日）</td><td>—</td><td class="down">-61.7亿</td><td>中期资金仍在流出，需警惕</td></tr>
+  </table>
+  <h3>主线启动归因链（为什么启动、什么引爆）</h3>
+  <ul>
+    <li><strong>启动（6月）</strong>：创新药出海 BD 大爆发，上半年 BD 交易总额创新高，CXO 估值处于历史低位，资金开始回流医药。</li>
+    <li><strong>催化</strong>：创新药管线获批（双抗 ADC 等）、AI 制药合作落地、中报业绩验证。</li>
+    <li><strong>引爆（8/24-8/25）</strong>：药明合联中报净利 +43.9%、荣昌生物中报净利暴增 1188.9% → CRO 午后集体走高、凯莱英涨停。</li>
+    <li><strong>持续性</strong>：主升期 + 业绩验证 → 可延续；但需盯 5 日资金流出是否转为流入。</li>
+  </ul>
+</div>
+
+<h2 class="sec" id="s5">S5 医药核心公司业绩雷达</h2>
+<div class="card">
+  <p><strong>业绩跟踪机制</strong>：本报告固定包含医药行业业绩雷达，重点覆盖创新药、CRO、AI医药领域核心公司财报，财报窗口（4月底/8月底/10月底）自动逐家核对，无需提醒。</p>
+  <table>
+    <tr><th>公司</th><th>市场</th><th>财报期</th><th>归母净利</th><th>同比</th><th>披露日</th><th>点评</th></tr>
+    <tr><td>药明合联</td><td>港股 02268</td><td>2026H1</td><td class="up">9.43亿港元</td><td class="up">+43.9%</td><td>8/24</td><td>ADC/CXO 高景气，北美占45.6%</td></tr>
+    <tr><td>荣昌生物</td><td>港股 09995</td><td>2026H1</td><td class="up">53.68亿港元</td><td class="up">+1188.9%</td><td>8/24</td><td>创新药放量兑现，净利率79.7%</td></tr>
+    <tr><td>药明康德</td><td>A股 603259</td><td>2026H1</td><td class="up">110.8亿</td><td>—</td><td>8/4</td><td>龙头稳健，TTM 216.7亿</td></tr>
+    <tr><td>凯莱英</td><td>A股 002821</td><td>2026H1</td><td class="up">5.20亿</td><td>—</td><td>8/25</td><td>Q2 2.16亿，业绩兑现</td></tr>
+    <tr><td>康龙化成</td><td>A股 300759</td><td>2026H1</td><td class="up">7.50亿</td><td>—</td><td>8/21</td><td>Q2 4.15亿，环比改善</td></tr>
+    <tr><td>美迪西</td><td>A股 688202</td><td>2026H1</td><td class="up">5160万</td><td>扭亏</td><td>8/25</td><td>Q2 3599万，扭亏为盈</td></tr>
+    <tr><td>泰格医药</td><td>A股 300347</td><td>2026H1</td><td>待披露</td><td>—</td><td>—</td><td>中报未出，Q1 净利4904万</td></tr>
+  </table>
+  <div class="quote"><b>今日提示</b>：8/25 盘后凯莱英、美迪西中报已落地，业绩兑现为 CRO 主线提供基本面支撑；今日关注医药板块能否承接业绩利好继续走强。</div>
+</div>
+
+<h2 class="sec" id="s6">S6 资金与情绪</h2>
+<div class="card">
+  <h3>龙虎榜机构动向（8/25）</h3>
+  <table>
+    <tr><th>个股</th><th>机构买入</th><th>净买入</th><th>方向</th></tr>
+    <tr><td>长飞光纤</td><td>6席位 1.68亿</td><td class="up">3.23亿</td><td>光通信</td></tr>
+    <tr><td>盛达资源</td><td>5席位 1.63亿</td><td class="up">1.80亿</td><td>贵金属</td></tr>
+    <tr><td>英维克</td><td>4席位 1.37亿</td><td class="up">2.47亿</td><td>液冷/算力</td></tr>
+    <tr><td>国仪公司</td><td>2席位 1.49亿</td><td>—</td><td>仪器</td></tr>
+  </table>
+  <h3>情绪温度</h3>
+  <ul>
+    <li>涨停 70 家、上涨占比 76% → 情绪高位（狂热区间）</li>
+    <li>但成交额缩量至 1.83 万亿 → 存量博弈，追高风险上升</li>
+    <li>市场画像：情绪 5/5、个股宽度 5/5，但技术面 1/5、短期趋势 2/5 → 情绪与趋势背离</li>
+  </ul>
+</div>
+
+<h2 class="sec" id="s7">S7 今日关注</h2>
+<div class="card">
+  <ol>
+    <li><strong>医药/CRO 主线延续性</strong>：凯莱英、药明系能否续强，CRO 概念是否继续跑赢医药行业。若龙头断板或概念转弱于行业 → 主线进入分歧，警惕。</li>
+    <li><strong>量能能否放大</strong>：昨日缩量普涨，今日若成交额不能回到 2 万亿以上，普涨难持续，将回归结构性行情。</li>
+    <li><strong>贵金属/机器人</strong>：高位分歧的贵金属与酝酿期的机器人，观察资金是否切换。</li>
+    <li><strong>中报窗口</strong>：8 月底为 A 股中报密集披露期，关注医药核心公司（泰格医药等）中报落地对板块的催化。</li>
+  </ol>
+</div>
+
+<h2 class="sec" id="s8">S8 风险提示</h2>
+<div class="card">
+  <ul>
+    <li>情绪高位 + 缩量 → 追高风险，谨防冲高回落。</li>
+    <li>医药/CRO 5 日主力资金仍净流出（-61.7亿），中期资金面未完全转多，警惕主线内部高低切换。</li>
+    <li>技术面指标极弱（MACD 死叉、短期均线空头），指数层面反弹持续性存疑。</li>
+    <li>隔夜外盘（8/25 晚美股）尚未收盘，本报告未纳入，实际开盘可能受其影响。</li>
+  </ul>
+</div>
+
+<h2 class="sec" id="s9">S9 预测台账</h2>
+<div class="card">
+  <table>
+    <tr><th>预测项</th><th>判断</th><th>置信度</th><th>验证条件</th></tr>
+    <tr><td>医药/CRO 主线</td><td class="up">延续主升，但波动加大</td><td>中高</td><td>凯莱英续强 + CRO 跑赢行业</td></tr>
+    <tr><td>大盘量能</td><td class="warn">缩量或持平，难放大</td><td>中</td><td>成交额是否回到 2 万亿</td></tr>
+    <tr><td>指数走势</td><td class="warn">震荡分化，普涨难持续</td><td>中</td><td>上证能否站稳 3900</td></tr>
+  </table>
+  <div class="quote"><b>台账说明</b>：本表预测将记入 <code>predictions_ledger.md</code>，次日复盘验证并更新。</div>
+</div>
+
+<div class="footer">
+  本报告基于公开数据整理，仅供参考，不构成投资建议。数据来源：腾讯自选股（WeStock）。投资有风险，决策需谨慎。
+</div>
+</div>
+</body>
+</html>
