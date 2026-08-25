@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股全景复盘 2026-08-25 | 缩量高低切·机器人接棒</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root{
+  --bg:#0e1117;--card:#161b24;--rule:#232a38;--ink:#e8ecf3;--muted:#9aa5b5;
+  --up:#e63946;--down:#2ea55a;--amber:#e8a33d;--primary:#4f8cff;--accent:#b45309;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;line-height:1.7;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
+.head{background:linear-gradient(135deg,#1a2130,#12151d);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
+.head h1{font-size:24px;letter-spacing:1px;color:var(--primary);margin-bottom:6px}
+.head .sub{color:var(--muted);font-size:13px}
+.badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:var(--primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.amber{background:var(--amber)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px}
+.card h2{font-size:18px;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--rule);padding-bottom:8px}
+.card h3{font-size:15px;color:var(--amber);margin:16px 0 8px}
+.tag{font-size:11px;background:var(--rule);color:var(--muted);padding:2px 10px;border-radius:10px;font-weight:400}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:12px}
+.kpi{background:#1a2130;border:1px solid var(--rule);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:22px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+th,td{border:1px solid var(--rule);padding:8px 10px;text-align:left}
+th{background:#1d2432;color:var(--primary);font-weight:600}
+tr:nth-child(even){background:#181f2a}
+.hl{color:var(--up);font-weight:700}
+.quote{background:#131923;border-left:3px solid var(--accent);padding:12px 14px;margin:12px 0;font-size:13px;color:var(--muted);border-radius:6px}
+.pill{display:inline-block;padding:1px 9px;border-radius:10px;font-size:12px;font-weight:600}
+.pill.up{background:#3a1d20;color:var(--up)}
+.pill.flat{background:#1a2130;color:var(--primary)}
+.callout{border-radius:8px;padding:12px 14px;margin:12px 0;font-size:13px}
+.callout.bull{background:#14251b;border:1px solid var(--down)}
+.callout.bear{background:#2b1a1c;border:1px solid var(--up)}
+.co-title{font-weight:700;font-size:13px;margin-bottom:6px}
+.note{font-size:12px;color:var(--muted)}
+p{margin:8px 0}
+ul,ol{margin:8px 0 8px 22px}
+li{margin:4px 0}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;border-top:1px solid var(--rule);padding-top:16px}
+.nav{position:sticky;top:0;background:#0e1117cc;backdrop-filter:blur(6px);padding:10px;border-bottom:1px solid var(--rule);margin-bottom:18px;display:flex;gap:8px;flex-wrap:wrap;font-size:12px;z-index:9}
+.nav a{color:var(--primary);text-decoration:none;padding:2px 8px;border:1px solid var(--rule);border-radius:14px}
+.chart{width:100%;height:340px;margin:12px 0}
+h3.ch{color:var(--primary);font-size:15px;margin:20px 0 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="nav">
+  <a href="#c0">章零·底色</a><a href="#c1">章一·全景</a><a href="#c2">章二·宏观</a><a href="#c3">章三·主线</a><a href="#c4">章四·暗线</a><a href="#c5">章五·成因</a><a href="#c6">章六·映射</a><a href="#c7">章七·多空</a><a href="#c8">章八·信息</a><a href="#c86">8.6·价格</a><a href="#c87">8.7·故事线</a><a href="#c9">章九·状态</a><a href="#c10">章十·前瞻</a><a href="#c13">章十三·外资</a><a href="#c15">章十五·结论</a><a href="#c16">章十六·台账</a>
+</div>
+
+<div class="head">
+  <h1>A股全景复盘 · 2026-08-25</h1>
+  <div class="sub">交易时段：收盘（数据时点 15:40 北京时间）｜缩量高低切换日：权重搭台、机器人接棒、创业成长领跌</div>
+  <div class="badges"><span class="badge">上证 +0.19%</span><span class="badge amber">缩量修复</span><span class="badge">涨停70/跌停4</span><span class="badge">主线：机器人</span></div>
+</div>
+
+<!-- 章零 -->
+<div class="card" id="c0">
+<h2>章零 · 市场底层状态与仓位约束<span class="tag">核心骨架</span></h2>
+<p>进入今天时，市场的底色是8月24日科技双杀（阿里800亿配股抽水 + SK海力士CPO路线图）之后的残缺修复态。默认信念正在分化：市场不再相信"AI算力硬件无脑高估是安全的"，高位科技（光模块/存储/算力）的信仰出现第一条裂缝，而"高拥挤主线行情一旦被利空击中会踩踏"这一教训开始被资金用脚投票。反过来，资金把信任转移到了两个方向——一看得到业绩与催化的低位题材（机器人中报、种业粮食、跨境支付），二看隔夜有没有新故事能讲故事。</p>
+<p>仓位结构上，多头并不缺（全市场76%个股上涨，成交虽缩但涨停70家不少），缺的是持续的方向共识——资金从创业板权重（锂电/光伏/科技成长）撤出，往中小题材与防御迁移，属于典型的存量博弈下"卖出旧主线、寻找新主线"的换挡期。资金驱动力上，今日是游资和题材资金主导（龙虎榜机器涨停与跨境支付连板），机构在贵金属高位反而派发（湖南白银机构净卖2.58亿）。反证条件：若明日量能不能回到2.0万亿上方且机器人/种业涨停家数大幅萎缩，则今日修复判定为日内反抽而非趋势验证。</p>
+<div class="quote"><b>状态标签：</b>趋势=震荡（收盘3898.44 于MA5下方）、波动=中、情绪=修复（涨停70家、上涨占比76%）、风险偏好=中性偏谨慎（成长弱题材强）、风格=小盘题材跑赢大盘成长、资金=存量博弈（缩量-8.7%）</div>
+</div>
+
+<!-- 章一 -->
+<div class="card" id="c1">
+<h2>章一 · 多时间维度全景 + 整体状态判断<span class="tag">核心骨架</span></h2>
+<p>市场整体状态为<strong>缩量普涨修复、结构高度分化</strong>：上证收盘3889.44（+0.19%），早盘低开-0.48%（开3863.37）后翻红，但并未收复5日线（3894.96）与20日线（3898.27），仍在MA30（3881.93）上方窄幅运行，属于弱势整理中的反抽。深成指-0.35%、创业板指-1.00%续跌，而科创50（+0.14%）、北证50（+0.91%）、中证1000（+0.48%）收红——大盘成长继续失血、中小题材逆势修复的分化格局一目了然。</p>
+<div class="chart" id="ch_idx"></div>
+<table>
+<tr><th>指数</th><th>收盘</th><th>今日</th><th>5日</th><th>20日</th></tr>
+<tr><td>上证指数</td><td>3889.44</td><td class="up">+0.19%</td><td>-0.40%</td><td>-2.96%</td></tr>
+<tr><td>深证成指</td><td>13745.87</td><td class="down">-0.35%</td><td>-2.47%</td><td>-2.38%</td></tr>
+<tr><td>创业板指</td><td>3397.52</td><td class="down">-1.00%</td><td>-4.17%</td><td>-0.68%</td></tr>
+<tr><td>科创50</td><td>1604.59</td><td class="up">+0.14%</td><td>-2.96%</td><td>-2.34%</td></tr>
+<tr><td>沪深300</td><td>4552.03</td><td class="down">-0.24%</td><td>-3.75%</td><td>-2.96%</td></tr>
+<tr><td>中证500</td><td>7710.94</td><td class="down">-0.08%</td><td>-1.87%</td><td>-3.81%</td></tr>
+<tr><td>中证1000</td><td>7527.50</td><td class="up">+0.48%</td><td>-0.77%</td><td>+0.63%</td></tr>
+<tr><td>中证红利</td><td>5619.16</td><td class="down">-0.61%</td><td>+0.50%</td><td>+0.93%</td></tr>
+<tr><td>北证50</td><td>1063.20</td><td class="up">+0.91%</td><td>-1.13%</td><td>-3.22%</td></tr>
+</table>
+<p><strong>量能与宽度：</strong>两市成交1.83万亿，较前一日2.01万亿缩量1756亿（-8.7%），显著低于5日均2.18万亿，存量博弈特征鲜明。全市场上涨4234家、下跌1246家、平70家，上涨占比76%，涨停70家、跌停仅4家——指数滞涨但赚钱效应尚可，是"缩量普涨低开修复"的典型形态。</p>
+<p><strong>周度视角：</strong>本周（含8/25）主线的更替极快：从8/21的贵金属/有色/医药单极，到8/24科技重挫下的防御（煤炭/贵金属/保险），再到今日机器人/消费+种业/跨境支付接棒。量能从2.38万亿峰值逐日递减至当前1.83万亿，说明这是一轮"防御与题材轮动"的低量能行情，尚未看到增量资金系统性入场。</p>
+</div>
+
+<!-- 章二 -->
+<div class="card" id="c2">
+<h2>章二 · 宏观锚点与风险偏好<span class="tag">条件模块</span></h2>
+<p>宏观今天的主线是<strong>内部流动性护盘 vs 外部科技风偏压制</strong>的正面交锋。央行今日开展5000亿元1年期MLF操作，并预告8/27至9/1开展每日上限6000亿元的隔夜逆回购，长短工具组合密集呵护月末资金面，叠加"积极财政政策下半年提挡加速"的表态，内部流动性对A股是明确托底信号（证据等级：高）。这与8月盘前预测的"MLF承接"判断一致，是今日低开能收红的核心底气之一。</p>
+<table>
+<tr><th>指标/事件</th><th>当前动态</th><th>对A股解读</th></tr>
+<tr><td>MLF + 逆回购</td><td>5000亿MLF + 8/27-9/1每日逆回购不超6000亿（月末呵护）</td><td class="up">流动性托底，利好低估值蓝筹与题材接力</td></tr>
+<tr><td>财政政策</td><td>下半年"提挡加速"预期升温</td><td class="up">稳增长预期托底指数</td></tr>
+<tr><td>美股英伟达</td><td>-2.91%，7连阴（近4年最长），美光-5.49%</td><td class="down">外部科技风偏压制，传导A股存储/半导体</td></tr>
+<tr><td>地缘（美伊）</td><td>美财长威胁制裁伊朗"经济D-Day"</td><td class="up">避险支撑贵金属，但加剧商品波动</td></tr>
+<tr><td>风险偏好</td><td>成长弱（创业板-1%）题材强（中证1000+0.48%）</td><td>中性偏谨慎，存量博弈</td></tr>
+</table>
+<p>宏观资产的背离值得注意：内部流动性宽松与外部（美股科技）调整同时作用，A股呈现"大盘权重搭台、题材唱戏"而非单边避险，说明资金并未因外部科技大跌而全面撤出，而是进行了风格内的再配置。这是风险偏好"结构性"而不是"系统性"降温的佐证。</p>
+</div>
+
+<!-- 章三 -->
+<div class="card" id="c3">
+<h2>章三 · 市场主线与资金流向<span class="tag">核心骨架</span></h2>
+<p>今日主线是<strong>机器人/人形机器人（复合主升）</strong>，其爆发由三条催化共振：石头科技中报超预期（H1营收100.84亿+27.6%、净利9.86亿+45.6%、北美Q2扣非翻倍）直接点燃小家电与扫地机器人-消费AI方向并带动机器人指数V型翻红；小鹏旗下人形机器人启动融资、车企加速入局人形机器人赛道，催化"华为机器人"（拓斯达+10.23%涨停）与灵巧手（兆威机电涨停）方向；机器人ETF资金连续32日净流入，呈现典型的资金持续埋伏特征（证据等级：高）。</p>
+<h3>板块涨幅（行业TOP + 概念TOP）</h3>
+<div class="chart" id="ch_sector"></div>
+<table>
+<tr><th>行业</th><th>涨幅</th><th>领涨</th><th>概念</th><th>涨幅</th><th>领涨</th></tr>
+<tr><td>小家电</td><td class="up">+8.02%</td><td>石头科技(20cm)</td><td>富勒烯</td><td class="up">+5.31%</td><td>亿利达</td></tr>
+<tr><td>化妆品</td><td class="up">+5.23%</td><td>青岛金王</td><td>华为机器人</td><td class="up">+4.64%</td><td>拓斯达</td></tr>
+<tr><td>房地产服务</td><td class="up">+4.37%</td><td>我爱我家</td><td>转基因</td><td class="up">+3.74%</td><td>万向德农</td></tr>
+<tr><td>装修装饰</td><td class="up">+3.64%</td><td>东易日盛</td><td>粮食概念</td><td class="up">+3.64%</td><td>金健米业</td></tr>
+<tr><td>医疗服务</td><td class="up">+3.40%</td><td>凯莱英(10cm)</td><td>通感一体化</td><td class="up">+3.49%</td><td>豪尔赛</td></tr>
+<tr><td>电视广播</td><td class="up">+3.15%</td><td>北投科技</td><td>CRO</td><td class="up">+3.44%</td><td>凯莱英</td></tr>
+</table>
+<p><strong>主线竞争结构（概率视角）：</strong>①机器人（P0，约40%概率持续）——催化最密、资金埋伏深；②农业种业（P1，20%）——摩根大通警告明年粮食危机+超强厄尔尼诺预期，金健米业7天5板、登海种业6天3板；③跨境支付/数字货币（P1，18%）——数字人民币运营机构扩容+CIPS催化，新晨科技20cm、楚天龙3连板；④贵金属（P2，12%）——龙头高位分歧、机构派发；⑤医药CRO（P2，10%）——超跌修复。单一"绝对主线"尚未确立，多线竞争仍是主旋律。</p>
+<p><strong>做空动能拆解：</strong>创业板领跌的核心是科技成长权重（锂电、光伏、CPO/存储）继续失血——科创50ETF近20日资金净流出高达85.6亿，说明机构对高位成长的态度是持续撤离而非短期避险。这属于"逻辑松动下的资金出逃"而非单纯技术性回调，真跌成分偏重（证据等级：中）。</p>
+<p><strong>叙事竞争：</strong>在板块层面，机器人/农业/跨境支付赢了"局部定价权"；但在指数层面，"AI硬件高位松动"仍是主导指数（尤其创业板）的"全局定价权"叙事。这解释了为何普涨76%却收在深成指/创业板下跌的"多数个股涨、权重拖累"形态。</p>
+</div>
+
+<!-- 章四 -->
+<div class="card" id="c4">
+<h2>章四 · 暗线与多空伏击点<span class="tag">条件模块</span></h2>
+<p>三条水面下的暗线值得留意。<strong>多头暗线：</strong>跨境支付/数字货币成为又一个"强趋势+强催化"方向的苗头——恒宝股份、楚天龙、东信和平集体登上龙虎榜（机构净买恒宝4330万、楚天龙3846万），数字人民币逻辑有政策增量，若明日持续涨停可升级为新主线的并列候选（证据等级：中）。<strong>空头暗线：</strong>贵金属出现"机构派发进入涨停"的危险组合：湖南白银涨停但机构专用席位净卖出2.58亿、深股通净卖出5612万，盛达资源同样机构净卖2.29亿——高位涨停后机构借势出货，是明日冲高回落的伏击点（证据等级：高）。<strong>分歧中的生还者：</strong>中证1000（+0.48%）与北证50（+0.91%）逆势收红，中小盘在权重成长杀跌中仍由活水进出，说明超跌题材的赚钱效应在扩散。</p>
+</div>
+
+<!-- 章五 -->
+<div class="card" id="c5">
+<h2>章五 · 盘面成因拆解<span class="tag">条件模块</span></h2>
+<p><b>State→Trigger→Flow 总览：</b>市场在8/24科技双杀后处于"高位成长信仰松动"的底色（State），今日遇到四个触发器（Trigger）——石头科技中报超预期、小鹏人形机器人融资、央行MLF托底、以及外部英伟达7连阴+存储股大跌；资金据此做出"从高位成长撤向机器人/题材/防御"的响应（Flow），最终走出低开翻红、题材普涨、创业板承压的形态。</p>
+<h3>护盘资金参与度子块</h3>
+<p>今日<strong>未见国家队明显护盘</strong>：6只宽基ETF主力资金全线净流出（沪深300ETF -5.89亿、科创50ETF -3.69亿、创业板ETF -8.07亿、中证500ETF -1.82亿、上证50ETF -1.01亿、中证1000ETF -0.71亿），且未见券商/银行板块同步拉升迹象。今日的低开翻红是市场自身的存量博弈修复，而非政策性承接，因此其持续性比"国家队护盘"的修复更依赖题材的自我强化。</p>
+<h3>事件时间线（六层归因）</h3>
+<ul>
+<li><b>Trigger⓪ · 石头科技中报超预期（核心Trigger）：</b>事实—H1净利+45.6%、北美Q2扣非翻倍，扫机器人与AI消费方向；证据链—中报发布后20cm涨停、机器人ETF放量V型翻红；因果机制—业绩兑现证明"消费AI"盈利模式成立，市场将AI叙事从"算力硬件"向"消费应用/机器人"迁移；量化影响—小家电+8.02%领涨行业；交叉验证—机器人ETF连续32日净流入；关联—接棒8/24被杀的AI硬件，完成风格切换。</li>
+<li><b>Trigger① · 央行5000亿MLF：</b>事实—央行8/25开展5000亿1年期MLF + 预告8/27-9/1每日不超6000亿隔夜逆回购；证据等级 高；因果—长短组合呵护月末流动性，是今日低开能稳住的宏观底托；映射—金融、低估值蓝筹与题材接力均有支撑。</li>
+<li><b>Trigger①' · 外部存储/科技压制：</b>事实—英伟达7连阴（-2.91%）、美光-5.49%、SK海力士等存储股续跌，主因英伟达因存储成本对AI服务器涨价15%预期；证据等级 高；映射—今日A股存储/半导体/科创50承压、科创50ETF资金出走，创业板领跌的重要原因。</li>
+<li><b>Trigger② · 摩根大通粮食危机警告 + 厄尔尼诺：</b>事实—摩根大通警告粮食危机或2027年爆发，机构提示超强厄尔尼诺预期抬升农业配置价值；映射—金健米业7天5板、登海种业6天3板、粮食ETF领涨，种业/粮食成P1新支线（证据等级：中）。</li>
+<li><b>Trigger③ · 跨境支付/数字人民币扩容：</b>事实—数字人民币运营机构扩容+CIPS跨境支付多催化；映射—新晨科技20cm、楚天龙3连板、恒宝股份上榜（证据等级：中）。</li>
+</ul>
+</div>
+
+<!-- 章六 -->
+<div class="card" id="c6">
+<h2>章六 · 叙事如何映射到不同资产<span class="tag">条件模块</span></h2>
+<p>今日最清晰的叙事分化是<b>"AI"这一条叙事在两端天差地别</b>。市场仍在交易AI，但把所有筹码押在一个点上：过去是"AI算力硬件"（光模块、存储、GPU）——被SK海力士CPO路线图和英伟达涨价压制；今天是"AI消费应用/机器人"（扫地机器人、人形机器人、灵巧手）——被石头科技中报兑现点燃。同一字母"N"，映射到算力朝阳是重创，映射到消费终端则是主升，这正是叙事在产业链不同环节的差异化定价。</p>
+<p><strong>叙事交互：</strong>英伟达服务器涨价15%这个事实，对英伟达自己（供不应求、涨价保价）与对下游云厂商（成本上行、利润承压）是两套解读，而它又强化了"AI算力正在通胀"的宏观叙事，间接推高了机器人/消费终端的"应用落地"想象空间——叙事在博弈间完成了从硬件到应用的接力。<strong>反事实推演：</strong>若没有石头科技中报与央行MLF，今日大概率是高开承压、题材熄火的纯调整日，可见新催化在换挡期是决定性变量。<strong>权重分配：</strong>今日赋予"机器人中报兑现"的叙事权重要明显高于"AI硬件松动"，前者赢得题材定价权，后者仍在指数层面对成长形成压制。</p>
+</div>
+
+<!-- 章七 -->
+<div class="card" id="c7">
+<h2>章七 · 多空力量对比（辩论式）<span class="tag">条件模块</span></h2>
+<div class="callout bull"><div class="co-title">🐂 多头观点</div>①机器人新主线催化最密（石头中报+小鹏融资+车企入局），连续32日ETF净流入，是增量共识，胜率最高；②央行MLF+月末逆回购+财政提挡加速，流动性对指数托底明确；③全市场76%上涨、涨停70家，赚钱效应在扩散，超跌题材接力空间仍大。<b>目标：</b>上证若放量收复MA20（3898）则打开修复空间至3930一带。</div>
+<div class="callout bear"><div class="co-title">🐻 空头观点</div>①缩量1.83万亿是硬伤，存量博弈难支撑多主线同步走强，题材轮动快=难以接力；②创业板领跌、科创50ETF 20日资金-85.6亿，说明机构对高位成长持续撤离，"AI硬件"逻辑leakage未止；③贵金属高位机构派发，龙头冲高回落风险大；④上证在MA5(3895)/MA10(3925)/MA20(3898)等多重均线下方，技术形态偏弱。<b>风险：</b>若量能继续萎缩且机器人/种业涨停家数骤降，则日内反抽易被证伪。</div>
+<div class="quote"><b>综合判断（交易员视角）：</b>胜率略偏中性偏多（55:45）。方向看修复延续，但胜负手在<b>量能</b>——明日量能不能回到2.0万亿上方，则多主线格局难以维系，只可轻仓跟随真人气方向、规避追高。验证条件：①机器人方向明日至少5家以上涨停且龙头不炸板；②上证能否放量站上MA20(3898)；③贵金属/存储若继续机构派发则回避。</div>
+</div>
+
+<!-- 章八 -->
+<div class="card" id="c8">
+<h2>章八 · 24小时关键信息筛选<span class="tag">条件模块</span></h2>
+<table>
+<tr><th>信息</th><th>影响力</th><th>证据强度</th><th>类别</th><th>对应价格变动</th></tr>
+<tr><td>英伟达服务器涨价15%（存储成本，2027初生效）</td><td class="up">9/10</td><td>高</td><td>剧情推进</td><td>美存储股大跌→A股存储/半导体承压</td></tr>
+<tr><td>石头科技中报超预期</td><td class="up">8/10</td><td>高</td><td>剧情推进</td><td>20cm涨停→机器人/小家电领涨</td></tr>
+<tr><td>央行5000亿MLF + 月末逆回购</td><td class="up">7/10</td><td>高</td><td>政策风向标</td><td>支撑金融/低估值，低开翻红的底托</td></tr>
+<tr><td>摩根大通警告粮食危机</td><td>6/10</td><td>中</td><td>剧情推进</td><td>种业/粮食涨停潮</td></tr>
+<tr><td>美财长威胁制裁伊朗"经济D-Day"</td><td>6/10</td><td>中</td><td>放大器</td><td>避险支撑贵金属</td></tr>
+<tr><td>小鹏人形机器人融资</td><td>6/10</td><td>中</td><td>剧情推进</td><td>华为机器人/人形机器人异动</td></tr>
+</table>
+<p><b>未被市场充分定价的信息：</b>①贝森特对伊朗"经济D-Day"虽强化了贵金属，但能源/油运板块当日未充分反应，是潜在发酵点；②英伟达涨价对下游云厂商（成本端）的利空，A股IDC/数据中心运维标的尚未定价；③跨境支付（CIPS扩容）若叠加人民币结算催化，存在被低估的空间。（证据等级均为：低-中）</p>
+<h3>外媒小作文专区</h3>
+<p>今日无重大外媒小作文（类"彭博/路透级中国资产叙事报道"）达到收录标准。英伟达服务器涨价15%属产业事实（TrendForce等渠道披露复证），非未证实叙事，已按事实处理。<span class="note">—— 不硬凑。</span></p>
+</div>
+
+<!-- 8.5 -->
+<div class="card" id="c85">
+<h2>章8.5 · 重磅深度：英伟达涨价15%——"算力通胀"传导链<span class="tag">条件模块</span></h2>
+<p>英伟达因存储成本飙升，已向微软、谷歌、AWS、甲骨文等核心客户发出调价通知，搭载其AI芯片的服务器（覆盖Grace Blackwell、Vera Rubin旗舰系统）价格自2027年初发货起上调超过15%，部分高配型号接近18%，单台售价在数百万美元量级，等于每台多花数十万至近百万美元。</p>
+<p><b>传导链拆解（四段）：</b>①改变什么预期：市场从"存储涨价利好存储股"的单一视角，切换到"算力成本通胀→下游采购与利润率承压"的整链视角；②谁最受益/受损：短期利好存储（DRAM/NAND上游），中游英伟达提价转嫁但利润增量大概率留不住（要交给上游），下游云厂商/IDC利润率承压；③资金先手还是跟风：美股存储股当日即普跌是对"成本传导潮"的先手定价，A股存储/半导体今日承压属跟风；④逻辑能否持续：TrendForce预计Q3 DRAM合约价环+13%~18%、NAND +10%~15%，H100租赁价一年涨幅近40%，算力通胀短期难缓和，但A股对应板块已因"高位+传导利空"而price-in利空面。未来1-2周观察英伟达财报（周三）对算力资本开支的指引，若capex指引上修则利空转利多反转概率上升。</p>
+</div>
+
+<!-- 8.6 -->
+<div class="card" id="c86">
+<h2>章8.6 · 产业链价格雷达（固定模块）<span class="tag">每期固定</span></h2>
+<table>
+<tr><th>品类</th><th>最新变动</th><th>方向</th><th>A股映射</th></tr>
+<tr><td>AI服务器（整机）</td><td>英伟达因存储成本通知客户：2027初交付Grace Blackwell/Vera Rubin涨价<b>15-18%</b></td><td><span class="pill up">▲涨</span></td><td>算力通胀确认；利空IDC/云厂商成本端</td></tr>
+<tr><td>DRAM</td><td>Q3合约价环+13%~18%（TrendForce）；HBM/自带超预期紧张</td><td><span class="pill up">▲涨</span></td><td>利好存储模组库存收益；今日交易日存储/半导体承压（外部映射+高位）</td></tr>
+<tr><td>NAND / 服务器机系统</td><td>Q3 NAND合约价预增10%~15%，涨幅较Q2收敛</td><td><span class="pill up">▲涨·收敛</span></td><td>涨幅收敛≠拐点，HBM挤占产能逻辑未变</td></tr>
+<tr><td>GPU租赁</td><td>H100一年期租赁价一年内涨幅近40%（2025/10→2026/3：$1.70→$2.35/时）</td><td><span class="pill up">▲暴涨</span></td><td>算力荒再现，利好算力租赁/运营弹性标的</td></tr>
+<tr><td>黄金/白银</td><td>金价高位运行（贝森特制裁伊朗避险支撑），A股贵金属龙头涨停后机构派发</td><td><span class="pill up">▲高位分歧</span></td><td>慎追高：涨停+机构净卖组合=冲高回落风险</td></tr>
+</table>
+<div class="quote"><b>雷达读数：</b>今日价格信号聚焦"算力通胀"——英伟达涨价15%是产业最硬的景气证据，但A股对应板块因"高位+外部映射"反而承压，价格与股价再次背离。存储涨幅收敛、贵金属高位分歧，填入持续性故事线持续跟踪。</div>
+</div>
+
+<!-- 8.7 -->
+<div class="card" id="c87">
+<h2>章8.7 · 持续性故事线追踪<span class="tag">核心骨架</span></h2>
+<table>
+<tr><th>故事线</th><th>起始</th><th>今日增量（≤2句）</th><th>对A股映射</th></tr>
+<tr><td>AI算力投入/算力通胀</td><td>—</td><td>英伟达服务器涨价15%+H100租赁价一年+40%，算力通胀确认；英伟达7连阴后周三财报成关键</td><td>利好算力租赁/存储上游，压制硬件高位</td></tr>
+<tr><td>存储涨价周期</td><td>—</td><td>Q3 DRAM环+13~18%，NAND涨幅收敛；外部存储股回落</td><td>利好模组厂，短期受高位+映射压制</td></tr>
+<tr><td>贵金属/避险</td><td>—</td><td>贝森特制裁伊朗支撑金价；A股贵金属涨停后机构派发</td><td>高位分歧，慎追</td></tr>
+<tr><td>CPO路线图冲击</td><td>8/20</td><td>无新增，冲击仍在消化，光模块股价尚未修复</td><td>压制光模块/算力硬件</td></tr>
+<tr><td>阿里800亿配股</td><td>8/24</td><td>港股阿里续跌超1%，金山软件暴跌21%，互联网科技分化</td><td>压制港股/中概映射，拖累A股科技情绪</td></tr>
+<tr><td>粮食危机/厄尔尼诺</td><td>8/25</td><td>摩根大通警告+厄尔尼诺预期抬升，种业涨停潮</td><td>利好种业/粮食/农业（新主线候选）</td></tr>
+</table>
+</div>
+
+<!-- 章九 -->
+<div class="card" id="c9">
+<h2>章九 · 市场状态更新库<span class="tag">条件模块</span></h2>
+<p><b>被钝化/证伪的旧叙事：</b>①"AI算力硬件=安全高估值"的高拥挤主线信仰被证伪——CPO路线图冲击叠加英伟达涨价成本传导，光模块/存储高位资金持续撤离（科创50ETF 20日-85.6亿）；②"贵金属单边safe"被证伪为"高位分歧"——机构在涨停中派发，主线并非无瑕疵。确认条件：科技成长沿均线继续回落；反证条件：若科创50重回资金净流入则旧叙事修复。</p>
+<p><b>正式接管的新定价锚：</b>①"AI消费应用/机器人"——以石头科技中报兑现为锚，机器人/小家电/灵巧手成为承接高位资金的低位新主线；②"防御+政策托底"——央行MLF+财政提挡，低估值蓝筹与超跌题材争夺风格定价权。确认条件：机器人涨停梯队连续≥3日、量能回升至2万亿上方；反证条件：机器人一日游、涨停家数骤降。</p>
+</div>
+
+<!-- 章十 -->
+<div class="card" id="c10">
+<h2>章十 · 前瞻观察与风险<span class="tag">条件模块</span></h2>
+<ul>
+<li><b>主线延续情景：</b>机器人/种业/跨境支付能否连续上榜涨停梯队，且量能回升至2.0万亿上方——若满足，修复升级为趋势。</li>
+<li><b>主线反转情景：</b>若石头科技/拓斯达等机器人龙头冲高回落、机构接力派发，且种业涨停被打开，则新主线出现透支。</li>
+<li><b>风险日历：</b>周三英伟达财报（对算力capex指引，直接映射A股半导体/算力）；8/27央行隔夜逆回购首日量能；贵金属高位派发风险。</li>
+<li><b>关键观察：</b>上证能否放量站上MA20（3898）与MA5（3895）；创业板/科创50资金是否止流出；跨境支付是否升级为并列主线。</li>
+</ul>
+</div>
+
+<!-- 章十三 -->
+<div class="card" id="c13">
+<h2>章十三 · 外资与海外多源观点<span class="tag">条件模块</span></h2>
+<p><b>外资看中国：</b>摩根大通对全球粮食安全的警告是今日最直接的外资视角（粮食危机或2027年爆发），直接点燃A股种业/粮食；该判断属于供给端（厄尔尼诺+地缘）驱动，具备结构性而非炒作的逻辑硬度。<b>海外市场映射：</b>美股英伟达7连阴、存储股普跌，映射A股半导体/存储承压；港股互联网分化（阿里的配股余波+金山软件暴跌21%），映射中概科技情绪仍弱。总体上，外资情绪对A股科技偏空、对防御/资源偏多，与A股当日风格一致。</p>
+</div>
+
+<!-- 章十五 -->
+<div class="card" id="c15">
+<h2>章十五 · 结论式总结<span class="tag">核心骨架</span></h2>
+<p>今天这场盘，说白了就是"昨天科技双杀后的止血+换挡"。早上低开近半个点，是吓得；随后靠着两块硬石头撑住了——一块是央行5000亿放水+月末逆回购，把大盘的底托住了；另一块是石头科技的中报炸了，净利涨四成多、北美还翻倍，20cm涨停把这个"扫地机器人"直接点成了"AI消费新方向"。所以全市场四千多家上涨，但你看创业板还跌1%，因为钱的逻辑变了：钱不当雷锋去接高位的光模块和存储，改去抄低位的机器人、粮食、跨境支付。</p>
+<p>最值得盯的三件事：一是这把"换挡"能不能坐实，明天机器人、种业、跨境支付得接着涨停、别哑火，同时量能得从1.83万亿爬回2万亿之上，不然就是反弹不是反转；二是贵金属这波已经有点"机构在涨停板上偷偷卖"的味儿了（湖南白银机构净卖两个多亿），别去高位接刀；三是周三英伟达财报是个大雷，它说算力还得加钱，那A股硬科技还能喘口气，它一说砍，存储半导体又得挨闷棍。核心就一句：现在是"A软不如B硬"的题材接力局，重个股轻权重、看量能定去留。</p>
+</div>
+
+<!-- 章十六 -->
+<div class="card" id="c16">
+<h2>章十六 · 预测台账与回归<span class="tag">核心骨架</span></h2>
+<h3>8/25 盘前预测回归验证</h3>
+<table>
+<tr><th>预测项</th><th>预测值</th><th>实际(8/25)</th><th>结果</th></tr>
+<tr><td>开盘方向</td><td>低开 -0.3%~-0.8%</td><td>上证低开-0.48%（开3863.37）</td><td class="up">✅命中</td></tr>
+<tr><td>量能中位数</td><td>1.90万亿(1.80~2.00)</td><td>1.83万亿</td><td class="up">✅命中(区间内)</td></tr>
+<tr><td>涨停家数</td><td>30~55家</td><td>70家</td><td class="down">❌超上限</td></tr>
+<tr><td>主线竞争</td><td>贵金属/有色30%/国产替代算力25%…</td><td>机器人/种业/跨境支付接棒，贵金属高位分歧</td><td><span class="flat">部分命中</span></td></tr>
+<tr><td>创业板vs上证超额</td><td>-1.0%~-2.0%</td><td>创业板-1.0% vs 上证+0.19%，超额-1.19%</td><td class="up">✅命中</td></tr>
+</table>
+<p><b>验证小结：</b>5项中3项命中、1项部分命中、1项未命中。进步：开盘低开判断、创业板弱势超额、量能区间三个方向准确；偏差：涨停家数高估上限（情绪修复强度超预期，76%上涨+机器人新主线带动70家涨停）。<span class="note">—— 已写入台账。</span></p>
+<h3>8/26 新预测（写入台账）</h3>
+<table>
+<tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+<tr><td>开盘方向</td><td>平开至小幅高开，上证+0.1%~+0.4%（修复惯性+流动性）</td><td>中</td></tr>
+<tr><td>量能中位数</td><td>1.85万亿（1.75~2.00万亿），能否放量是胜负手</td><td>低</td></tr>
+<tr><td>涨停家数</td><td>45~70家（新主线能否延续连续性）</td><td>低</td></tr>
+<tr><td>主线竞争</td><td>机器人35% / 农业种业18% / 跨境支付15% / 医药CRO12% / 贵金属高位分歧10%</td><td>中</td></tr>
+<tr><td>创业板vs上证超额</td><td>+0.5%~-1.0%（超跌反抽与权重分化并存）</td><td>低</td></tr>
+</table>
+
+</div>
+
+<div class="foot">以上分析基于公开数据与结构化行情，不构成投资建议。数据截至 2026-08-25 15:40 北京时间；行情数据源为交易所公开数据，可能存在延迟。</div>
+</div>
+
+<script>
+// 指数表现图
+(function(){
+var c=document.getElementById('ch_idx');
+var chart=echarts.init(c);
+chart.setOption({
+  tooltip:{trigger:'axis'},
+  grid:{left:50,right:20,top:30,bottom:40},
+  xAxis:{type:'category',data:['上证','深成指','创业板','科创50','沪深300','中证500','中证1000','中证红利','北证50'],axisLabel:{color:'#9aa5b5'}},
+  yAxis:{type:'value',axisLabel:{formatter:'{value}%',color:'#9aa5b5'},splitLine:{lineStyle:{color:'#232a38'}}},
+  series:[{type:'bar',data:[0.19,-0.35,-1.0,0.14,-0.24,-0.08,0.48,-0.61,0.91],
+    itemStyle:{color:function(p){return p.value>=0?'#e63946':'#2ea55a';}},
+    label:{show:true,position:'top',color:'#e8ecf3',formatter:'{c}%'}}]
+});
+window.addEventListener('resize',function(){chart.resize();});
+})();
+// 板块表现图
+(function(){
+var c=document.getElementById('ch_sector');
+var chart=echarts.init(c);
+chart.setOption({
+  tooltip:{trigger:'axis'},
+  grid:{left:60,right:30,top:20,bottom:30},
+  xAxis:{type:'value',axisLabel:{formatter:'{value}%',color:'#9aa5b5'},splitLine:{lineStyle:{color:'#232a38'}}},
+  yAxis:{type:'category',inverse:true,
+    data:['CRO','通感一体化','粮食概念','转基因','华为机器人','富勒烯','医疗服务','装修装饰','房地产服务','化妆品','小家电'],
+    axisLabel:{color:'#9aa5b5'}},
+  series:[{type:'bar',data:[3.44,3.49,3.64,3.74,4.64,5.31,3.40,3.64,4.37,5.23,8.02],
+    itemStyle:{color:'#e63946'},label:{show:true,position:'right',color:'#e8ecf3',formatter:'{c}%'}}]
+});
+window.addEventListener('resize',function(){chart.resize();});
+})();
+</script>
+</body>
+</html>
