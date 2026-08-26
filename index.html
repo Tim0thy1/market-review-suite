@@ -156,18 +156,28 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
   function dedup(list){
     var best={}, keep={};
     for (var i=0;i<list.length;i++){
-      var core=list[i].split("/").pop().replace(/\.html$/i,"");
+      var core=list[i].path.split("/").pop().replace(/\.html$/i,"");
       if (core.indexOf("_test") !== -1) continue;
       var m=core.match(/_v(\d+)$/), ver=m?+m[1]:0, base=core.replace(/_v\d+$/,"");
-      if (!best[base] || ver>best[base].v){ best[base]={v:ver,path:list[i]}; }
+      if (!best[base] || ver>best[base].v){ best[base]={v:ver,item:list[i]}; }
     }
-    for (var b in best) keep[best[b].path]=1;
-    return list.filter(function(p){ return !!keep[p]; });
+    for (var b in best) keep[best[b].item.path]=1;
+    return list.filter(function(x){ return !!keep[x.path]; });
+  }
+
+  function cardHtml(x, d){
+    var fname=x.path.split("/").pop();
+    var title="A股 · "+nameOf(x.cat)+" · "+Math.floor(d/100)%100+"月"+d%100+"日";
+    return '<a class="report-card" data-cat="'+x.cat+'" href="'+BASE+hrefSafe(x.path)+'" target="_blank">'
+      +'<div class="type '+typeOf(x.cat)+'">'+icOf(x.cat)+' '+nameOf(x.cat)+'</div>'
+      +'<div class="title">'+esc(title)+'</div>'
+      +'<div class="desc">'+esc(fname.replace(/\.html$/i,""))+'</div>'
+      +'<div class="arrow">查看报告 →</div></a>';
   }
 
   function render(files){
-    // 分类收集
-    var groups={}; CATS.forEach(function(c){ groups[c.key]={}; });
+    // 按日期聚合当日全部类型报告
+    var byDate={};
     var skipRoots=["tools/",".git","节点","深度专题"];
     files.forEach(function(path){
       if (path==="index.html") return;
@@ -176,40 +186,26 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
       for (var i=0;i<skipRoots.length;i++){ if (path.indexOf(skipRoots[i])===0) return; }
       var cat=classify(path); if (!cat) return;
       var date=extractDate(path); if (!date) return;
-      (groups[cat][date]=groups[cat][date]||[]).push(path);
+      (byDate[date]=byDate[date]||[]).push({cat:cat,path:path});
     });
-    // 去重 + 排序
-    var total=0, days={};
-    CATS.forEach(function(c){
-      var g=groups[c.key];
-      Object.keys(g).forEach(function(d){ g[d]=dedup(g[d]); total+=g[d].length; days[d]=1; });
-    });
-    var nDays=Object.keys(days).length;
-    var nTypes=CATS.filter(function(c){ return Object.keys(groups[c.key]).length>0; }).length;
+    // 同日去重
+    var total=0;
+    Object.keys(byDate).forEach(function(d){ byDate[d]=dedup(byDate[d]); total+=byDate[d].length; });
+    var dates=Object.keys(byDate).map(Number).sort(function(a,b){return b-a;});
+    var nTypes=CATS.filter(function(c){
+      return Object.keys(byDate).some(function(d){ return byDate[d].some(function(x){ return x.cat===c.key; }); });
+    }).length;
     document.getElementById("n-total").textContent=total;
-    document.getElementById("n-days").textContent=nDays;
+    document.getElementById("n-days").textContent=dates.length;
     document.getElementById("n-types").textContent=nTypes;
 
-    // 构建区块
+    // 构建：每个日期一个区块，当日所有类型卡片并排
     var html="";
-    CATS.forEach(function(c){
-      var g=groups[c.key];
-      var dates=Object.keys(g).map(Number).sort(function(a,b){return b-a;});
-      if (!dates.length) return;
-      dates.forEach(function(d){
-        var cards=g[d].map(function(path){
-          var fname=path.split("/").pop();
-          var title="A股 · "+nameOf(c.key)+" · "+Math.floor(d/100)%100+"月"+d%100+"日";
-          return '<a class="report-card" href="'+BASE+hrefSafe(path)+'" target="_blank">'
-            +'<div class="type '+typeOf(c.key)+'">'+icOf(c.key)+' '+nameOf(c.key)+'</div>'
-            +'<div class="title">'+esc(title)+'</div>'
-            +'<div class="desc">'+esc(fname.replace(/\.html$/i,""))+'</div>'
-            +'<div class="arrow">查看报告 →</div></a>';
-        }).join("\n");
-        html += '<div class="date-group content-wrap" id="S-'+c.key+'">'
-          +'<div class="date-header">'+fmtDate(d)+' '+tagFor(d)+'</div>'
-          +'<div class="report-grid content-wrap">'+cards+'</div></div>';
-      });
+    dates.forEach(function(d){
+      var cards=byDate[d].map(function(x){ return cardHtml(x, d); }).join("\n");
+      html += '<div class="date-group content-wrap" data-date="'+d+'">'
+        +'<div class="date-header">'+fmtDate(d)+' '+tagFor(d)+'</div>'
+        +'<div class="report-grid content-wrap">'+cards+'</div></div>';
     });
     document.getElementById("reportRoot").innerHTML = html;
   }
@@ -245,7 +241,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
     else loadFromRemote().catch(function(e){ showError(e.message||"网络错误"); });
   }catch(e){ loadFromRemote().catch(function(x){ showError(x.message||"网络错误"); }); }
 
-  /* 分类导航：滚动并高亮 */
+  /* 分类导航：滚动到该类型首个报告所在日期组并高亮 */
   var nav=document.getElementById("catNav");
   if(nav){
     var links=nav.querySelectorAll("a");
@@ -253,8 +249,13 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
       a.addEventListener("click",function(e){
         e.preventDefault();
         var t=a.getAttribute("data-cat");
-        var el=document.getElementById("S-"+t);
-        if(el){ var y=el.getBoundingClientRect().top+window.scrollY-70; window.scrollTo({top:y,behavior:"smooth"}); }
+        var root=document.getElementById("reportRoot");
+        var target=null;
+        if(root){
+          var cards=root.querySelectorAll('[data-cat="'+t+'"]');
+          if(cards.length){ var g=cards[0].closest?cards[0].closest(".date-group"):null; target=g||cards[0]; }
+        }
+        if(target){ target.scrollIntoView({behavior:"smooth",block:"start"}); }
         links.forEach(function(x){x.classList.remove("cat-active");});
         a.classList.add("cat-active");
       });
