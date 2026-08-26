@@ -168,7 +168,8 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
   function cardHtml(x, d){
     var fname=x.path.split("/").pop();
     var title="A股 · "+nameOf(x.cat)+" · "+Math.floor(d/100)%100+"月"+d%100+"日";
-    return '<a class="report-card" data-cat="'+x.cat+'" href="'+BASE+hrefSafe(x.path)+'" target="_blank">'
+    var href=BASE+esc(encodeURI(x.path));   // 中文路径做百分号编码，避免线上 404
+    return '<a class="report-card" data-cat="'+x.cat+'" href="'+href+'" target="_blank">'
       +'<div class="type '+typeOf(x.cat)+'">'+icOf(x.cat)+' '+nameOf(x.cat)+'</div>'
       +'<div class="title">'+esc(title)+'</div>'
       +'<div class="desc">'+esc(fname.replace(/\.html$/i,""))+'</div>'
