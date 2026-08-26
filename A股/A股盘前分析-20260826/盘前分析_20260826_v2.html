@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-08-26（盘中补测）</title>
+<style>
+/* 配色对齐 a-share-daily-review 既定研报风（浅底深字） */
+:root{
+  --bg:#f7f8fa;--card:#ffffff;--rule:#e2e8f0;--ink:#1e293b;--muted:#64748b;
+  --up:#dc2626;--down:#16a34a;--amber:#d97706;--primary:#1e40af;--accent:#1e3a5f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei',-apple-system,'Microsoft YaHei',sans-serif;line-height:1.7;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
+.head{background:linear-gradient(135deg,#eef2ff,#ffffff);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
+.head h1{font-size:24px;letter-spacing:1px;color:var(--primary);margin-bottom:6px}
+.head .sub{color:var(--muted);font-size:13px}
+.badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:var(--primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.amber{background:var(--amber)}
+.tagline{margin-top:14px;background:#eef2ff;border-left:4px solid var(--primary);padding:10px 14px;font-size:13px;color:var(--accent);border-radius:0 8px 8px 0}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.card h2{font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card h2 .no{background:var(--primary);color:#fff;font-size:12px;width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.card h2 .tag{font-size:11px;font-weight:500;border:1px solid var(--rule);color:var(--muted);padding:2px 10px;border-radius:20px;background:#f8fafc}
+h3{border-left:4px solid var(--primary);padding-left:10px;margin:16px 0 8px;font-size:15px;color:var(--accent)}
+p{font-size:14px;color:#334155;margin-bottom:9px}
+p strong{color:var(--ink)}
+.stf{background:#f8fafc;border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0}
+.stf b.tag{color:var(--primary)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;color:var(--accent);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--rule)}
+td{padding:8px 12px;border:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.h{color:var(--amber);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin-right:6px}
+.pill.up{background:#fee2e2;color:var(--up)}
+.pill.flat{background:#eef2ff;color:var(--primary)}
+.pill.hold{background:#dcfce7;color:#166534}
+.pill.warn{background:#fef3c7;color:#92400e}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mini{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.mini h4{font-size:13px;color:var(--muted);margin-bottom:6px}
+.mini .v{font-size:20px;font-weight:800}
+.mini p{font-size:12.5px;margin-top:4px}
+ul{padding-left:22px;font-size:14px;color:#334155;line-height:2}
+.quote{background:#f8fafc;border-left:3px solid var(--amber);padding:10px 14px;margin:10px 0;font-size:13px;color:#475569;border-radius:6px}
+.warn{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400e;margin:12px 0}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 10px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.card{padding:18px 15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <h1>A 股盘前分析 · 今日走势预判</h1>
+  <div class="sub">交易日 2026-08-26（周三）· 状态：盘中补测 · 信息截止约 10:45（北京时间）<br>
+  <span style="color:var(--accent)">信息窗</span>：昨日复盘＝8/25收盘复盘 ｜ 隔夜信息＝美东8/25收盘 + 8/26开盘前，已区分<b>盘前信息 / 盘中已发生</b></div>
+  <div class="badges">
+    <span class="badge">上证 +0.3% 附近</span><span class="badge amber">修复偏进攻</span><span class="badge">P0:CRO/有色</span><span class="badge">地缘缓和</span>
+  </div>
+  <div class="tagline">⛳ 五步盘前流程正式版实测。核心矛盾：地缘边际缓和（军事升级降温、转向经济制裁）压低油价与避险，是否兑现为 A 股风偏修复 + 高位主线（医药/CRO、有色）再确认。</div>
+</div>
+
+<!-- ==== 壹 昨日复盘 ==== -->
+<div class="card">
+  <h2><span class="no">壹</span>昨日盘面成因 · State→Trigger→Flow <span class="tag">继承8/25复盘结论</span></h2>
+  <div class="stf"><b class="tag">State（底色）</b>：8/25 上证 +0.19%、涨停70/跌停4、成交 1.83 万亿（自 2.38 万亿连续递减），处「缩量修复」；市场底色为 8/24 科技双杀后的<b>高位成长信仰松动</b>——AI硬件/存储高位资金撤离，科创50ETF 20日净流出约 85.6 亿，贵金属进入“涨停中派发”的高位分歧。</div>
+  <div class="stf"><b class="tag">Trigger（触发器）</b>：①央行 5000 亿 1 年期 MLF + 月末隔夜逆回购托底（流动性底托，证据高）；②石头科技中报超预期 + 小鹏人形机器人融资（机器人群催化，证据中-高）；③摩根大通粮食危机警告 + 厄尔尼诺（种业 P1，证据中）；④外部英伟达7连阴 + 美光 -5% 续跌（科技/存储压制第一因，证据高）。</div>
+  <div class="stf"><b class="tag">Flow（资金响应）</b>：资金从高位成长切向「机器人新题材 + 种业/跨境支付/防御 + 医药/CRO」——近期反复出现“多数个股上涨、权重与创业板拖累”的低量能轮动结构，增量资金未系统性入场。</div>
+
+  <h3>主线归层（继承昨日主线生命周期档案 + 评分卡）</h3>
+  <table>
+    <tr><th>主线</th><th>起点/运行</th><th>阶段定位</th><th>评分</th><th>今日角色</th></tr>
+    <tr><td><b>医药 / CRO / 创新药</b></td><td>6/9 · 11周</td><td><span class="pill hold">主升期（中期主线）</span></td><td class="up">86/100 · 强</td><td>中期确定性最高，今日核心验证方向</td></tr>
+    <tr><td><b>机器人</b></td><td>催化密集 · 短</td><td><span class="pill flat">酝酿期（候选）</span></td><td class="h">47/100 · 未升级</td><td>事件博弈、五道门槛未过，看量能承接</td></tr>
+    <tr><td><b>贵金属 / 有色</b></td><td>高位 · 分歧</td><td><span class="pill warn">高位分歧</span></td><td class="h">33/100 · 分歧</td><td>隔夜地缘缓和 → 今日需重新定价</td></tr>
+    <tr><td><b>种业 / 粮食</b></td><td>8/25 新支线</td><td><span class="pill flat">P1 观察</span></td><td>—</td><td>厄尔尼诺 + 危机预警，短逻辑</td></tr>
+  </table>
+  <p style="margin-top:6px"><strong>隔夜边际变化对主线的直接冲击</strong>：昨晚逻辑链中“英伟达7连阴 + 存储续跌”已于美东8/25被打破（英伟达 +2% 止跌、美光/海力士反弹），故昨日本用于压制科技的主因今日<b>转正为风偏利好</b>；同时地缘调和压制油价，昨日“能源/油运潜在发酵点”今日大概率反向（利空油价敏感链）。两者的净效应是：<b>今日外围由“压科技”转为“稳风偏”</b>。</p>
+</div>
+
+<!-- ==== 贰 隔夜 ==== -->
+<div class="card">
+  <h2><span class="no">贰</span>隔夜冲击 + 热点深追 <span class="tag">24h · 四维评估 · 含地缘两步预判</span></h2>
+
+  <h3>地缘政治 / 国际局势 —— 强制两步预判</h3>
+  <p><strong>①军事升级 / 缓和定性</strong>：美东8/25，美国国务卿鲁比奥明确表示<strong>“目前不会主动对伊朗发动新一轮军事打击”，转向制裁为主的施压手段</strong>；伊朗与阿曼拟建立霍尔木兹海峡安全海上通道。定性为<strong>“军事风险边际降温、转向经济制裁”</strong> —— <span class="up">并非避险升温</span>。</p>
+  <p><strong>②直接受制裁领域与受影响大宗 → A股落点</strong>：美财政部将制裁扩大至<b>航空、数字资产、黄金、航运、技术5领域</b>，并列入近60个实体/船只。落点：黄金（制裁扩大但军事缓和→<span class="down">金价小跌、高位分歧加剧</span>）、航运/油运（通航预期+封锁缓和→<span class="down">利空</span>）、油气（原油大跌→利空，昨日“未定价发酵点”预期落空）、数字资产（情绪性）。<b>核心结论：今日地缘按“避险降温→油价回落→压制黄金油气、利好风偏”定价，而非把制裁一律当贵金属利多。</b></p>
+
+  <h3>隔夜关键信息 · 四维评估</h3>
+  <table>
+    <tr><th>事件（来源）</th><th>影响力</th><th>证据强度</th><th>A 股映射</th><th>类别</th></tr>
+    <tr>
+      <td>美股美东8/25收涨：道指+0.30%/53577.40、纳指+0.66%、标普+0.32%；<b>英伟达+2%止跌7连阴，美光/SK海力士+2%反弹</b>（东方财富/新浪）</td>
+      <td class="up">高</td><td>高·明确</td><td>科技/存储/算力风偏修复</td><td>剧情推进</td>
+    </tr>
+    <tr>
+      <td>美国放弃近期对伊军事打击、转经济制裁；伊朗阿曼拟开霍尔木兹安全航道（央视/新华/财联社）</td>
+      <td class="up">高</td><td>高·官方</td><td>利空黄金/油气/油运，利好风偏</td><td>剧情推进</td>
+    </tr>
+    <tr>
+      <td>WTI -3.1%（82.36）/布伦特 -3.9%（88.58）大跌；现货黄金仅 +0.15%（4658）；白银 -0.44%（财联社）</td>
+      <td class="h">中高</td><td>高·价格</td><td>油气承压、贵金属获利兑现</td><td>放大器</td>
+    </tr>
+    <tr>
+      <td>央行8/26开展 2395 亿 7 天逆回购、净投放 2395 亿（利率1.40%不变）；DR001 约1.44% 偏紧（上证报/财联社）</td>
+      <td class="h">中</td><td>中·官方</td><td>流动性底托延续、金融蓝筹支撑</td><td>政策风向</td>
+    </tr>
+    <tr>
+      <td><b>药明康德上调2026全年指引</b>：营收上调至585-605亿、持续经营增速上调至35%-39%；半年报营收+38.93%、扣非+89.39%；创新药“爆款/BD/全链”三重拐点、Moderna-默沙东 mRNA 肿瘤疫苗合作（证券时报/东方财富/界面）</td>
+      <td class="up">高</td><td>高·业绩实锤</td><td><b>强化医药/CRO主线（中期核心）</b></td><td>剧情推进</td>
+    </tr>
+    <tr>
+      <td>锂电8月排产环+8.9%、磷酸铁锂涨价（湖南裕能8/1上调2000元/吨）（证券时报/华泰）</td>
+      <td class="h">中</td><td>中·产业</td><td>锂电/磷酸铁锂/隔膜超跌反弹</td><td>政策风向</td>
+    </tr>
+    <tr>
+      <td>铜/铝龙头中报利润翻倍、有色矿业指数走强；今日早盘江西铜业涨停、洛钼/紫金居资金前列（界面/盘中）</td>
+      <td class="h">中高</td><td>高·价格</td><td>有色金属（铜铝）今日领涨之一</td><td>剧情推进</td>
+    </tr>
+  </table>
+
+  <h3>四层传导链示范：医药/CRO（今日唯一业绩实锤强化主线）</h3>
+  <p><strong>改变什么预期</strong>：药明康德指引显著上修，把“CXO 只是修复”改为“CXO 进入业绩兑现上修周期”。<strong>谁受益、为什么</strong>：产业链龙头→订单/产能确定性最高，二线 CXO 与上游试剂/耗材弹性映射（L1/L2）。<strong>资金先手还是跟风</strong>：8/25 午后 CRO 已逆势走强（凯莱英涨停、近岸蛋白/美迪西+10%），资金已先手布局，今日为「延续+扩散确认」而非首日。<strong>逻辑能否持续</strong>：取决于龙头能否维持强势、指引能否带动板块从“事件”升级为“业绩行情”——断点在上方高位套牢盘与量能承接。证据等级：高。</p>
+</div>
+
+<!-- ==== 叁 走势预判 ==== -->
+<div class="card">
+  <h2><span class="no">叁</span>今日走势预判 <span class="tag">市场状态 + 逐主线 + P0~P3 + 验证信号</span></h2>
+
+  <div class="grid">
+    <div class="mini"><h4>市场状态定性</h4><div class="v" style="color:var(--primary)">修复偏进攻</div><p>外围风偏转正（美股收涨+地缘缓和）+ 央行托底 → 由昨“缩量修复”边际升级为“修复偏进攻”，但量能未放大前不作强进攻定论。</p></div>
+    <div class="mini"><h4>开盘实况（盘中已发生）</h4><div class="v up">沪指 +0.3% 附近</div><p>低开陆续翻红；早盘<strong>生物医药爆发</strong>、<b>有色/券商活跃</b>，恒指+0.94%、恒科+1.35%；<span class="down">黄金/油气/煤炭/农业领跌</span>、光模块(CPO)盘中跌超3% — 与隔夜地缘调和判断一致。</p></div>
+    <div class="mini"><h4>量能关键阈值</h4><div class="v">1.83 <span style="font-size:14px">→ 2.0万亿</span></div><p>昨日量能 1.83 万亿。今日若全天量能 <b>≥2.0万亿</b> 则“修复偏进攻”成立、多主线可持续；若缩量则仍属超跌题材轮动，谨慎追高。</p></div>
+    <div class="mini"><h4>板块优先级</h4>
+      <div style="margin-top:6px"><span class="pill up">P0 医药/CRO</span><span class="pill up">P0 有色(铜铝)</span></div>
+      <div style="margin-top:6px"><span class="pill flat">P1 算力/存储修复</span><span class="pill flat">P1 锂电超跌</span></div>
+      <div style="margin-top:6px"><span class="pill">P2 机器人(博弈)</span><span class="pill">P2 券商</span></div>
+      <div style="margin-top:6px"><span class="pill warn">P3 黄金/油气/油运</span></div>
+    </div>
+  </div>
+
+  <h3>逐主线推演（“还能怎么走”模板 + 隔夜落点）</h3>
+  <table>
+    <tr><th>主线</th><th>阶段</th><th>今日剧本与隔夜落点</th></tr>
+    <tr>
+      <td><b>医药/CRO</b></td><td>主升期</td>
+      <td><b>主升→扩散延续</b>，药明指引上修是今日最强加分项。玩法：扩散到上游试剂/耗材与业绩兑现二线（弹性排序）。验证：龙头不炸板、板块量能不显著萎缩。<span class="down">风险</span>：已运行11周、拥挤度抬升，若高位放量滞涨则警惕顶部特征候选。</td>
+    </tr>
+    <tr>
+      <td><b>有色（铜铝）</b></td><td>事件+业绩</td>
+      <td>中报利润翻番 + 全球铜矿供给偏紧 → 今日领涨确认。验证：江西铜业/洛钼能否稳板、板块资金持续净流入。注意与黄金（避险链条）分离——本轮由<b>工业金属基本面</b>而非地缘避险驱动。</td>
+    </tr>
+    <tr>
+      <td><b>算力/存储</b></td><td>情绪修复</td>
+      <td>美股英伟达/存储止跌反弹 → A股开盘高开，但早盘 <span class="down">CPO(光模块) 盘中跌超3%</span>，说明“外围修复≠A股资金回流”——属情绪性企图，<b>五道门槛未过、仅周级，暂不给延续性结论</b>。</td>
+    </tr>
+    <tr>
+      <td><b>机器人</b></td><td>酝酿期</td>
+      <td>8/25 强势但评分仅47、未升级主线，今日大概率分化。观察：能否连续≥3日涨停+量能跟进（升级条件）；否则按事件博弈、窗口1~2周处理。</td>
+    </tr>
+    <tr>
+      <td><b>黄金/油气/油运</b></td><td>高位分歧 / 退潮风险</td>
+      <td><span class="down">隔夜直接利空</span>：地缘缓和 + 油价大跌 → 今日跌幅居前。昨日“油运未定价发酵点”预期已被证伪，按回避处理（P3）。</td>
+    </tr>
+  </table>
+
+  <h3>关键验证信号（盘中可观测 · 可证伪）</h3>
+  <ul>
+    <li>上证能否<b>放量站上 MA20（约3898）</b> —— 站上则修复空间打开，否则仍箱体。</li>
+    <li>全天成交能否回到 <b>2.0 万亿上方</b> —— 量能是“修复偏进攻”的唯一仲裁。</li>
+    <li>医药/CRO 龙头（凯莱英/药明系）<b>能否维持强势不炸板</b>、板块量能不萎缩 —— 主升延续与否。</li>
+    <li>铜铝（江西铜业等）能否<b>稳板 + 板块资金净流入</b> —— 有色“业绩驱动”成色。</li>
+    <li>CPO/存储高开后能否<b>企稳 != 一日脉冲</b> —— 风偏修复的含金量。</li>
+  </ul>
+</div>
+
+<!-- ==== 肆 标的 ==== -->
+<div class="card">
+  <h2><span class="no">肆</span>标的建议 <span class="tag">P0/P1 · 含失败条件 · 不构成投资建议</span></h2>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px">以下标的选自今日 P0/P1，标注介入逻辑、仓位属性、触发与失效条件。仅为流程演示，请独立决策、控制仓位、严守止盈止损。</p>
+  <table>
+    <tr><th>标的方向</th><th>层级/仓位</th><th>介入逻辑</th><th>触发条件</th><th>失效条件</th></tr>
+    <tr>
+      <td><b>CRO 龙头（药明系）</b></td><td>【P0 · 主升主线 · 底仓/主攻】</td>
+      <td>指引进修，业绩兑现最确定，主线扩散核心载体。</td>
+      <td>开盘承接、龙头不破 5 日线、板块量能不缩。</td>
+      <td>高位放量滞涨 / 破 5 日线且次日不收回 → 逻辑作废。</td>
+    </tr>
+    <tr>
+      <td><b>CRO 上游试剂/耗材（近岸蛋白等）</b></td><td>【P0 · 主线扩散 · 观察/弹性】</td>
+      <td>主线从龙头向下游/上游扩散的弹性映射，8/25 已 +10% 确认。</td>
+      <td>龙头强、扩散梯队跟涨、量能配合。</td>
+      <td>龙头熄火 / 扩散梯队炸板 → 行情退回事件级。</td>
+    </tr>
+    <tr>
+      <td><b>铜铝有色（江西铜业/洛阳钼业等）</b></td><td>【P0 · 业绩驱动 · 主攻】</td>
+      <td>中报利润翻倍 + 供给紧平衡，独立于避险的工业金属行情。</td>
+      <td>板块资金持续净流入、龙头稳板。</td>
+      <td>涨停打开主力净流出 / 铜价回调 → 减仓。</td>
+    </tr>
+    <tr>
+      <td><b>锂电产业链（隔膜/磷酸铁锂）</b></td><td>【P1 · 超跌修复 · 观察仓】</td>
+      <td>8月排产+8.9%、铁锂涨价、超跌后止跌信号。</td>
+      <td>放量站上 5 日线、板块共振。<span class="h">（未定价前提绑定）</span></td>
+      <td>冲高回落破支撑 → 不追。</td>
+    </tr>
+  </table>
+  <div class="warn">⚠️ 地缘衍生方向（油运/能源）今日属“开口向下”一侧，规避（P3）。本轮有色与黄金逻辑已分离，勿再以“避险”视角参与任何军工/油气/贵金属衍生标的。</div>
+</div>
+
+<!-- ==== 伍 盘前观点 ==== -->
+<div class="card">
+  <h2><span class="no">伍</span>盘前观点 <span class="tag">机构早评式叙事</span></h2>
+  <p><strong>隔夜外围与地缘定调：</strong>昨晚全球风险资产的方向发生一次温和的“错位修正”。地缘端，美方主动放低军事打击姿态、转以制裁施压，并与伊朗在霍尔木兹通航上找到缓和接口，直接推动 WTI -3%、布伦特 -3.9% 回落，现货黄金仅小涨、前期抱团的高位贵金属面临获利兑现；与之对应，美股三大指数集体收涨，英伟达止住 7 连阴反弹 2%、存储芯片集体回稳。这一组合的净效果是：<strong>全球从“地缘避险”切回“风险偏好修复”</strong>，而昨日用于压制 A 股科技的主因（英伟达/存储续跌）被当场证伪。</p>
+  <p><strong>昨日 State→Trigger→Flow 复盘 + 当前状态：</strong>昨日是“缩量修复”底色（1.83万亿、高位成长资金撤离）叠加央行 MLF 托底、机器人群催化与外部科技压制四重触发器下，资金向机器人/种业/CRO 轮动的结果，量能持续递减说明增量资金仍未系统性入场。今日在风偏转正 + 央行净投放 2395 亿的加持下，市场由“修复”边际升级为<strong>“修复偏进攻”</strong>，但量能未回 2.0 万亿前，仍只能定位结构性反弹而非趋势反转。</p>
+  <p><strong>今日主线剧本：</strong>主攻是 <b>医药/CRO</b>（药明康德指引上修，今日唯一业绩实锤方向，主升→扩散）与 <b>有色（铜铝）</b>（中报翻倍 + 供给紧平衡，独立于避险的工业金属行情）；分歧方是算力/存储（美股反弹但 A 股 CPO 早盘反跌超3%，情绪修复仍未兑现为资金回流）与机器人（五道门槛未过，事件博弈窗口仅1~2周）；观察方是锂电超跌修复与券商。<strong>黄金、油气、油运进入退潮一侧，按回避处理</strong>，不再代入“地缘避险”旧逻辑。</p>
+  <p><strong>标的线索与风险提示：</strong>可聚焦 CRO 龙头及其上游扩散链、铜铝工业金属的核心标的，配以量能与主线量价定性（放量上涨=增量、高位放量滞涨=顶部候选）严控节奏；最需警惕两点：一是量能持续不足下多主线无法同时支撑，谨防发布会后的“高开兑现”；二是贵金属/油运若因制裁细节再度异动属短线脉冲，勿追。以上均基于公开数据推演，不构成投资建议。</p>
+</div>
+
+</div>
+<footer>本报告基于公开数据生成，仅供研究参考，不构成投资建议。<br>信息截止约 2026-08-26 10:45（北京时间）· 盘中补测</footer>
+</body>
+</html>
