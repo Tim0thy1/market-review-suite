@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主线深度研究 · 2026-08-27</title>
+<style>
+:root{--bg:#f7f8fa;--card:#ffffff;--ink:#1f2937;--muted:#6b7280;--line:#e8eaf0;
+--primary:#1e40af;--up:#dc2626;--down:#16a34a;--amber:#d97706;--soft:#eef2ff;--softred:#fee2e2;--softamber:#fef3c7;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;line-height:1.7;padding:0 0 60px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{padding:46px 0 28px;background:linear-gradient(150deg,#eef2ff,#ffffff);border-bottom:1px solid var(--line)}
+h1{font-size:26px;font-weight:800;color:var(--primary);letter-spacing:.5px}
+.sub{color:var(--muted);font-size:13px;margin-top:6px}
+.badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600;margin:14px 6px 0 0;background:var(--soft);color:var(--primary)}
+.badge.amber{background:var(--softamber);color:var(--amber)}
+.badge.red{background:var(--softred);color:var(--up)}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:22px 0}
+.hero .t{font-weight:800;font-size:16px;margin-bottom:6px}
+.hero p{font-size:14px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.kpe{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpe .n{font-size:20px;font-weight:800}
+.kpe .l{color:var(--muted);font-size:12px;margin-top:2px}
+.up{color:var(--up)!important}.down{color:var(--down)!important}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:16px 0}
+h2{font-size:18px;font-weight:800;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+h2 .no{background:var(--primary);color:#fff;width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+h3{font-size:15px;font-weight:700;margin:16px 0 8px;color:var(--primary)}
+p{font-size:14px;margin-bottom:10px;text-align:justify}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#f1f3f9;text-align:left;padding:8px 10px;font-weight:700;color:#334155}
+td{padding:8px 10px;border-bottom:1px solid var(--line)}
+.pill{display:inline-block;padding:1px 10px;border-radius:12px;font-size:12px;font-weight:600;margin-right:6px}
+.pill.p0{background:var(--softred);color:var(--up)}
+.pill.p1{background:var(--soft);color:var(--primary)}
+.pill.p3{background:var(--softamber);color:var(--amber)}
+.warn{border-left:4px solid var(--amber);background:#fffbeb;padding:12px 14px;border-radius:8px;font-size:13px;margin:12px 0}
+.good{border-left:4px solid var(--down);background:#f0fdf4;padding:12px 14px;border-radius:8px;font-size:13px;margin:12px 0}
+.quote{border-left:4px solid var(--primary);background:var(--soft);padding:12px 14px;border-radius:8px;font-size:13px;margin:12px 0}
+.bar{background:#eef2ff;border-radius:8px;height:14px;margin:6px 0}
+.bar i{display:block;height:14px;border-radius:8px;background:var(--primary)}
+.bar.i2{background:var(--softred)}.bar.i2 i{background:var(--up)}
+.bar.i3{background:var(--softamber)}.bar.i3 i{background:var(--amber)}
+.pillr{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.row-progress{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.step{flex:1;min-width:90px;background:#f1f3f9;border-radius:8px;padding:8px 10px;font-size:12px;text-align:center;color:var(--muted)}
+.step.on{background:var(--soft);color:var(--primary);font-weight:700}
+.step.hot{background:var(--softred);color:var(--up);font-weight:700}
+footer{text-align:center;color:var(--muted);font-size:12px;padding-top:24px;border-top:1px solid var(--line);margin-top:26px}
+.chart{width:100%;height:300px}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:21px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>主线深度研究 · 2026-08-27（周更示范）</h1>
+    <div class="sub">AI长线基本面底盘持稳·独立传导引擎 | 医药CRO中线资金面切换点火后高位回调 · 三源点火识别 + 六维评分 + 预期差 + 三级退出范式</div>
+    <span class="badge">两条主线建档</span><span class="badge amber">AI长线 主升中段</span><span class="badge">CRO中线 高位回调</span><span class="badge amber">全球流动性宽松转向</span><span class="badge">日线存量博弈</span>
+  </div>
+</header>
+<div class="wrap">
+  <div class="hero">
+    <div class="t">本期一句话</div>
+    <p>本期先跑通 <b>AI 科技长线</b> + <b>医药/CRO 中线</b> 两条主线的完整建档，作为框架范式。AI 长线：英伟达 Q2财报营收 962.21 亿(+106%)、数据中心 890 亿(+117%)、净利 +126%，算力供给短缺确认至 2028 财年末，是<b>基本面传导</b>引擎的硬核底盘；传导正从"算力/存储最热"向<b>半导体设备（预热）</b>扩散。医药/CRO 中线：药明 H1 净利 110 亿(扣非+90%)、上半年创新药 BD 约 997 亿美元已超 2024 全年，是<b>资金面切换点火</b>后再接<b>基本面兑现</b>的典型；但 8/26 高位回调、主力净流出，处于"阶段证伪/交易证伪"检验期。整体市场处<b>存量博弈</b>，两条主线都给"高强但需控拥挤"的情景取向。</p>
+  </div>
+
+  <section>
+    <h2><span class="no">S0</span>市场环境层（双尺：全球战略层 + 日线战术层）</h2>
+
+    <h3>中长线主线的环境 · 全球战略层（季/年级，决定权重）</h3>
+    <p><b>注（维度是推导非模板）：</b>下表不是固定的"流动性/地缘/中美"三项，而是<b>为 AI 载板材料这条主线挑选的环境透镜</b>——它最依赖长期资本扩张 + 供应链布局 + 技术围堵，故锁定这 3 维，并用第 4 维捕捉其特有的"对手方资本开支 + 涨价"引擎。</p>
+    <table>
+      <tr><th>维度（本次为 AI 主线选用）</th><th>当前状态（2026-08）</th><th>对中长线主线含义</th></tr>
+      <tr><td>全球流动性<br><span style="color:var(--muted);font-weight:400">货币/信用周期</span></td><td>告别 2022-25 紧缩，三大央行进入降息/预期降息；美联储 9/17 预期降息 25bp 至 4.25% 或按兵，美元走弱、全球资本再平衡、外资回流 A/H</td><td><b>宽松友好</b> → 成长/高估值主线可给高权重，AI 载板材料强成长属性受益</td></tr>
+      <tr><td>地缘与供应链<br><span style="color:var(--muted);font-weight:400">能源咽喉/物流绕行</span></td><td>霍尔木兹博弈未决：8/16 通行一度降 1 艘、8/19 回 9 艘；沙特绕行 8 月~190 万桶/日；日原油依存 ~54%、韩 ~63%</td><td><b>尾部风险反复</b> → 冲击高能源依赖的日韩端；对 AI 算力端为间接风险，仓位留对冲</td></tr>
+      <tr><td>大国科技博弈<br><span style="color:var(--muted);font-weight:400">技术围堵/自主可控</span></td><td>美 1/15 "芯片换合规"新规（H200/MI325X 个案审批）；对华管制延伸 AI/云/生物；美国 VC 对华半导体 Q3 -45%、中国国资制造投资 +30%</td><td><b>脱钩深化但中国加码</b> → 强化载板材料 + 半导体设备国产化分支的长期确定性</td></tr>
+      <tr><td>对手方资本开支 + 涨价<br><span style="color:var(--muted);font-weight:400">AI自身引擎（主线特有）</span></td><td>英伟达 Q2 数据中心 +117%、算力供给短缺至 2028FY；三大 PCB 龙头 2026 资本开支超 544 亿；覆铜板/电子布 8 月新一轮涨价 +17~18%</td><td><b>扩张加速</b> → 这条主线不靠央行利率，而靠<b>产业链自身的资本开支 + 涨价</b>驱动，是比宏观更硬的环境力量</td></tr>
+    </table>
+    <div class="good"><b>中长线战略环境结论（B 层）：</b>全球流动性转宽松 + 中国在主线投入加码 → <b>AI 载板材料、半导体设备国产化</b>这类中长线逻辑的战略确定性增强；地缘（霍尔木兹）是最大尾部风险，但更冲击日韩能源端而非 AI 算力端。中长线主线给<b>高权重</b>、取向偏<b>"持有 + 用日线控制节奏"</b>。</div>
+
+    <h3>短线市场的环境 · 日线战术层（当日，决定节奏）</h3>
+    <p><b>指数环境：</b>大盘 8/26 上证 3912.52(+0.59%)、科创50 +1.71%领涨、中证1000 +0.23% 弱于权重——<b>权重搭台、成长/科技局部领涨</b>，趋势处"缩量修复"而非趋势新高。</p>
+    <p><b>风格环境：</b>资金偏科技成长（科创/半导体）+资源价值双线，小盘（中证1000）落后，属<b>存量再分配</b>的结构行情。</p>
+    <table>
+      <tr><th>资金/情绪指标</th><th>当前</th><th>对主线含义</th></tr>
+      <tr><td>两市成交额</td><td>1.81 万亿（缩量）</td><td>存量博弈 → 主线给"控拥挤"取向</td></tr>
+      <tr><td>主力净流向</td><td class="down">净流出约 460 亿</td><td>权重集中承接，非增量进场</td></tr>
+      <tr><td>涨停 / 跌停</td><td>约 70 家 / 4 家</td><td>情绪偏温和（非高潮非冰点）</td></tr>
+      <tr><td>情绪阶段</td><td>修复→发酵之间</td><td>有赚钱效应但未到高潮</td></tr>
+    </table>
+    <div class="quote"><b>短线战术环境结论（A 层）：</b>当日处"存量博弈 + 缩量修复"，涨停温和。给节奏：AI / CRO 逻辑靠 B 层（全球流动性）+ 基本面撑住，但当日拥挤度上行，操作偏"控仓 + 等回调/等放量再上"。这是"B给权重、A给节奏"的示范。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">S1</span>主线地图（长中短全览）</h2>
+    <table>
+      <tr><th>层级</th><th>主线</th><th>点火源</th><th>真实性标签</th><th>生命周期</th><th>强度/30</th><th>拥挤风险</th></tr>
+      <tr><td>长(年级)</td><td>AI 科技/算力</td><td>基本面传导+政策大厂</td><td><span class="pill p1">真主线</span></td><td>主升中段</td><td class="up">28</td><td>-4 高位</td></tr>
+      <tr><td>长(年级)</td><td>全球资源(铜/贵金属)</td><td>基本面传导</td><td><span class="pill p1">真主线</span></td><td>主升→整固</td><td class="up">26</td><td>-3</td></tr>
+      <tr><td>中(季级)</td><td>医药/CRO(创新药BD)</td><td>资金面切换+基本面</td><td><span class="pill p1">真主线</span><span class="pill p3">回调检验</span></td><td>主升→高位回调</td><td class="up">22</td><td>-2</td></tr>
+      <tr><td>中(季级)</td><td>券商(中报)</td><td>资金面切换</td><td><span class="pill p1">真主线</span></td><td>主升初期</td><td>23</td><td>-1</td></tr>
+      <tr><td>短(周级)</td><td>固态电池/锂电</td><td>政策+大厂</td><td><span class="pill p3">事件驱动</span></td><td>启动期</td><td>候选</td><td>-1</td></tr>
+      <tr><td>短(周级)</td><td>机器人</td><td>政策+大厂</td><td><span class="pill p3">强题材</span></td><td>酝酿期</td><td>未升级</td><td>-0</td></tr>
+      <tr><td>短(周级)</td><td>黄金</td><td>避险+资源</td><td><span class="pill p3">抱团/事件</span></td><td>高位分歧</td><td class="down">28</td><td>-4</td></tr>
+    </table>
+    <p><b>本期聚焦深入两条：</b><b>AI 长线（基本面传导底盘）</b>与<b>医药/CRO 中线（资金面切换 + 兑现）</b>，分别代表"长线靠传导"与"中线靠切换"两种核心引擎，也是用户给定框架的两个活教材。</p>
+    <canvas class="chart" id="scoreChart"></canvas>
+    <figcaption>两条主线六维强度雷达（驱动/兑现/扩散/资金/龙头/催化，0-5）</figcaption>
+  </section>
+
+  <section>
+    <h2><span class="no">S2</span>长线主线 · AI 科技（基本面传导底盘）</h2>
+    <h3>为什么它成为主线（演进史 + 周期定位 + 全球锚）</h3>
+    <p><b>起源与点火：</b>AI 主线源自 2023 年起的"大模型 → 算力军备竞赛"范式。最初由 ChatGPT 等应用点火，随后微软/谷歌/Meta 等全球巨头进入千亿级资本开支周期，带动整条"卖铲人"链条。<b>第一期的意义在于：它的起点不是单一消息，而是一场全球性的技术-资本范式迁移</b>——这正是长线主线区别于短线题材的根本。</p>
+    <p><b>周期定位（长线核心判断）：</b>当前处于<b>"叙事期 → 业绩兑现期"转换</b>的验证段。英伟达连续 13 个季度刷新营收纪录，Q2 营收 962 亿(+106%)、数据中心 +117%，说明 AI 已从"讲故事的成长股"切换为"真金白银的业绩驱动"。长线主线的骨架不是当日涨幅，而是<b>资本开支周期的可持续性</b>——英伟达财报会明确算力供给短缺至少延续至 2028 财年末、明年客户需求可达翻倍级别，为长线提供了"未来 2-3 年仍在上行"的周期锚。</p>
+    <p><b>全球定价锚（A股映射的依据）：</b>A 股 AI 链本质是<b>美股 AI 链的映射</b>。英伟达、费半、纳指、海外云厂商 CAPEX 是 A 股算力/光模块/存储/设备的定价锚；隔夜费半 +1.44%、英伟达盘后 +4% 直接映射 A 股半导体。理解这条主线必须<b>同时跟踪美股</b>，而非只看 A 股内部。</p>
+    <p><b>为什么它一直在传导（以 A股资金节奏为准）：</b>AI 主线在 A股真正的资金主线，不是美股那套"应用→芯片→设备"叙事，而是被资本节奏反复验证的 <b>"AI 载板及材料"链</b>：<b>铜箔/电子树脂 → 覆铜板(CCL) → PCB(高多层/HDI) → 服务器/交换机</b>，旁支还包括 <b>MLCC、电子布、光模块/CPO</b>。上一季度 A股涨得最好的正是这些环节——PCB 龙头（胜宏/沪电/深南）中报业绩爆发（AI服务器PCB价值量是传统近10倍、2026全球市场预计超900亿/+113%），覆铜板/电子布/铜箔/电子树脂多次集体涨停（南亚新材、铜冠铜箔、生益科技、同宇新材）。这与"AI载板需求被算力资本开支拉动→价值量放大"的传导相吻合，是 A股 内部真实资金主线。</p>
+    <p><b>当前资本节奏（A股已兑现 vs 待启动 · 以硬数据为锚）：</b>这条 A股 主链以"业绩+涨价+扩产"三重兑现为标准。PCB/覆铜板/电子布/铜箔/树脂是最早最强的<b>已兑现</b>段——8 月 25 日沪电中报营收 +61.17%/净利 +73.72%，生益 H1 +117~131%、Q2 单季创新高，10 家 PCB/铜箔/覆铜板企业中报集体预增翻倍至十倍；同时 8 月中旬覆铜板新一轮涨价启动、电子布三大系列均价环比 +17~18%，三大 PCB 龙头 2026 资本开支规划超 544 亿。<b>MLCC</b> 进入涨价周期（三环 H1 +45~65%、风华 +61~80%，单台 AI 服务器用量 5-10 倍）与<b>光模块 CPO</b>（新易盛 H1 +90%）为<b>进行中</b>接力；<b>半导体设备</b>（北方华创/中微）为<b>待启动/候补</b>。结论：主位（PCB/CCL）已兑现且拥挤，跟随资本节奏应转向上游扩散与补涨位。</p>
+    <p><b>利润/估值结构变化：</b>当前利润最确定的环节是"卖铲人"（英伟达毛利率 75%）和存储涨价（兆易 H1 +1091%）；估值重估正沿"业绩兑现 → 传导扩散"顺序展开。长线跟踪的实质是<b>追踪利润兑现到哪一环、估值重估到哪一段</b>，而非追当日涨停。</p>
+    <div class="quote"><b>积累视角（第一期 vs 未来）：</b>本段是第一期骨架，后续日更/周更会持续沉淀——每次英伟达财报、每个环节订单落入、每轮 CAPEX 指引、每次估值中枢抬升，都会作为"历史档位"累积进这条主线档案，让"为什么成为 + 为什么持续"的论证越来越厚。</div>
+    <h3>② 点火源</h3>
+    <p><b>基本面传导（核心）</b> + 政策/大厂持续加码。英伟达 Q2 营收 962.21 亿(+106%)、数据中心收入 890 亿(+117%)、净利 596.88 亿(+126%)、毛利率 75%，"卖铲人"商业闭环极致验证；黄仁勋称算力供给短缺至少延续至 2028 财年末、明年客户需求可达翻倍级别。这是长线最硬的"基本面引擎"证据（证据等级 S）。</p>
+    <h3>⑤⑥ 产业链传导路径 + 当前进度</h3>
+    <div class="row-progress">
+      <div class="step hot">PCB/高多层·HDI<br>已兑现·最强</div>
+      <div class="step hot">覆铜板(CCL)<br>已兑现</div>
+      <div class="step hot">电子布/铜箔/树脂<br>已兑现</div>
+      <div class="step on">MLCC(涨价) / 光模块CPO<br>进行中</div>
+      <div class="step">半导体设备/更上游材料<br>待启动·候选</div>
+    </div>
+    <p><b>传导判断（A股资本节奏 · 价值层与股价层分开）：</b>A股最先是 <b>PCB（高多层/HDI）</b> 最强（胜宏/沪电/深南中报爆发），随后 <b>覆铜板/电子布/铜箔/电子树脂</b> 作为上游被联动拉升（南亚新材、铜冠铜箔、生益、同宇新材集体涨停），<b>MLCC</b> 涨价周期（风华高科/三环）与 <b>光模块CPO</b>（中际旭创/新易盛）为进行中接力，<b>半导体设备</b>（北方华创/中微）为待启动潜伏候选。</p>
+    <h3>③ 主线真实性</h3>
+    <p><span class="pill p1">真主线</span> A龙头✓（算力/存储龙头强于指数） B产业链✓（多环节扩散） C业绩✓（英伟达/兆易业绩实锤） D资金✓（增量） E时间✓（催化后仍能运行）——五维全过，为**真主线**。</p>
+    <h3>⑧ 预期差</h3>
+    <p>市场原有预期：英伟达高增长但已较高 price-in。最新实际：营收/数据中心/指引全线<b>超预期</b>。股价反应：美股盘后上涨。结论：<b>核心硬件超预期 → 长线逻辑强化</b>，但 A 股算力映射端拥挤度已升，属"强但预期较满、需控拥挤"。</p>
+    <h3>评分</h3>
+    <table>
+      <tr><th>维度</th><th>分</th><th>评注</th><th>进度条</th></tr>
+      <tr><td>① 驱动强度</td><td class="up">5</td><td>CAPEX+供给短缺至2028</td><td><div class="bar"><i style="width:100%"></i></div></td></tr>
+      <tr><td>② 基本面兑现度</td><td class="up">5</td><td>英伟达/兆易业绩实锤</td><td><div class="bar"><i style="width:100%"></i></div></td></tr>
+      <tr><td>③ 产业链扩散度</td><td class="up">4</td><td>算力→存储→CPO→设备</td><td><div class="bar"><i style="width:80%"></i></div></td></tr>
+      <tr><td>④ 资金认可度</td><td class="up">5</td><td>赛道持续增量</td><td><div class="bar"><i style="width:100%"></i></div></td></tr>
+      <tr><td>⑤ 龙头强度</td><td class="up">5</td><td>算力/存储龙头领涨</td><td><div class="bar"><i style="width:100%"></i></div></td></tr>
+      <tr><td>⑥ 持续催化能力</td><td class="up">4</td><td>财报/存储涨价/CPO订单</td><td><div class="bar"><i style="width:80%"></i></div></td></tr>
+    </table>
+    <div class="quote"><b>评分：28/30 · 拥挤度风险 -4（高位）。</b>强度极高，但算力/存储拥挤度已显著上行——属于"强且拥挤"，交易取向应为<b>不追高、沿传导未启动环节（半导体设备/光通讯上游）做低位卡位</b>，而非追已过热的高位龙头。传导进度（价值）与轮动进度（股价）错位点：设备环节传导刚启动但可能已有情绪跟随，需区分"真逻辑 vs 补涨"。</div>
+    <div class="warn"><b>三级退出信号</b>：逻辑证伪（→出局）= 英伟达/巨头季度 CAPEX 指引转弱、存储涨价见顶、CPO 订单不及预期；阶段证伪（→降级）= 算力/存储龙头破位；交易证伪（→不追）= 当前算力环节拥挤度过高。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">S3</span>中线主线 · 医药/CRO（资金面切换 + 兑现）</h2>
+    <h3>为什么它成为主线（演进史 + 周期定位 + 资金面）</h3>
+    <p><b>起源与点火：</b>医药/CRO 主线起源于 2025-2026 年中国<b>创新药对外授权（BD）大爆发</b>。你此前给过的传导范式在此完整呈现：<b>先是创新药 BD 授权变多 → 学术会议中国元素越来越多 → 研发投入快速上升 → CRO/AIDD 业绩开始转好 → 创新药企业业绩兑现</b>。第一期把这些拼图点出来了。</p>
+    <p><b>周期定位：</b>当前处于"BD 授权放量 → CRO/创新药业绩兑现"的中段。量化为：上半年中国创新药 BD 约 997 亿美元、已超 2024 全年，TOP15 跨国药企外部 CAPEX 2003 亿美元。这意味着<b>中国 CXO 作为"全球研发基础设施"的需求被 BD 浪潮实质拉动</b>——这是中线主线的产业底座。</p>
+    <p><b>资金面引擎（中线区别于长线的关键）：</b>中线主线常由<b>资金面切换</b>点火：CRO 前期估值相对低、拥挤度低，资金从高位科技/成长切向这个"估值洼地"，遇到 BD/业绩催化即被点燃。这解释了去年创新药反弹超 30%、最近 CRO 强势的结构性原因——<b>低估值 + 拥挤度低 + 恰逢催化 = 资金青睐</b>，三者契合正是你说的"一线工程"。</p>
+    <p><b>为什么它持续兑现有支撑：</b>药明康德 H1 净利 110 亿、扣非 +90%，百济神州 H1 净利 +627%、营收 +26.8%，创新药龙头显著盈利，说明不只是"题材共振"，而是<b>真业绩兑现</b>；叠加政策端支持 CRO 搭 AI 辅助药物开发模型（AIDD），赋予研发密度提升的新叙事；1260H 裁定缓解地缘担忧。</p>
+    <p><b>当前所处阶段（为什么回调）：</b>BD/业绩催化已在高位较大程度 price-in，8/26 康龙化成 -4.83%、主力净流出，属<b>"利好兑现 + 高位获利回吐 + 海外 CXO 订单疑虑"的自然降温</b>。这是中线主线的典型阶段切换：从"主升点火"进入"阶段/交易证伪检验"。逻辑未坏（基本面兑现仍在），但买点变差。</p>
+    <div class="quote"><b>积累视角：</b>医药/CRO 的传导链（BD→CRO→AIDD→创新药兑现）会在后续日更/周更中不断补入新的 BD 案例、CRO 业绩、AI 制药进展，形成一份越来越厚重的"中国创新药走出去"档案。第一期先立骨架，厚度靠时间积累。</div>
+    <h3>② 点火源</h3>
+    <p><b>资金面切换（点火）+ 基本面（接力）</b>。你给的框架典范：CRO 前期因估值低、资金从高位成长切换而来，遇 BD/业绩催化被点燃，再由基本面兑现接力。<b>资金切换引擎</b>：创新药/CRO 相对拥挤度此前偏低，资金从高位科技切向估值洼地；<b>基本面引擎</b>：药明康德 H1 净利超 110 亿、扣非增速逼近 90%，百济神州 H1 净利 +627.1%、营收 +26.8%，上半年中国创新药对外授权(BD)约 997 亿美元已超 2024 全年，TOP15 跨国药企外部 CAPEX 2003 亿——<b>BD 授权放量 → CRO 业绩兑现</b>的传导链清晰。政策端 8/25 亦支持 CRO 搭 AI 辅助药物开发模型（AIDD 技术催化）。</p>
+    <h3>④ 生命周期</h3>
+    <p>主升 → <b>高位回调（阶段/交易证伪检验）</b>。8/26 板块回调：康龙化成 -4.83%、主力净流出 1.46 亿，CRO 概念主力净流出 3.87 亿。触发：前期利好兑现 + 海外 CXO 订单担忧 + 短线高位获利回吐。属"已充分定价后的自然降温"，归类为<b>阶段证伪（降级观察）</b>而非<b>逻辑证伪（出局）</b>——因为 "创新药传导 + 估值 + AI 加速研发" 的长逻辑仍在。</p>
+    <h3>③ 主线真实性 + ⑧ 预期差</h3>
+    <p><span class="pill p1">真主线</span><span class="pill p3">回调检验</span> A龙头✓（药明创新高） B产业链✓（BD→CRO→创新药兑现） C业绩✓（药明/百济实锤） D资金△（前期增量、当下净流出） E时间✓（回调前已多次自我运行）。预期差：BD 超预期但高位已较大程度兑现 → <b>强但当前买点变差（交易证伪）</b>，取向为<b>回调企稳前不抄底</b>，等资金净流出转正 + 龙头止跌再评估。</p>
+    <h3>评分</h3>
+    <table>
+      <tr><th>维度</th><th>分</th><th>评注</th></tr>
+      <tr><td>① 驱动强度</td><td class="up">4</td><td>BD/CAPEX+1260H 缓解</td></tr>
+      <tr><td>② 基本面兑现度</td><td class="up">5</td><td>药明110亿、百济+627%</td></tr>
+      <tr><td>③ 产业链扩散度</td><td class="up">4</td><td>BD→CRO→AIDD</td></tr>
+      <tr><td>④ 资金认可度</td><td class="up">3</td><td>当下净流出·回调</td></tr>
+      <tr><td>⑤ 龙头强度</td><td class="up">4</td><td>药明创新高但回调</td></tr>
+      <tr><td>⑥ 持续催化能力</td><td>3</td><td>BD排期/AI制药</td></tr>
+    </table>
+    <div class="quote"><b>评分：22/30 · 拥挤度 -2。</b>真主线但处"高位回调/交易证伪"段。逻辑未坏（基本面兑现仍在），但当前买点差，属典型"逻辑正确 ≠ 股价一直涨"的教材。取向：回调有效企稳（资金转净流入 + 龙头止跌）前不追高，作为中线候选低吸观察。</div>
+    <div class="warn"><b>三级退出信号</b>：逻辑证伪 = BD 授权显著放缓、海外 CXO 景气证伪、1260H 重燃；阶段证伪 = 龙头药明破位；交易证伪 = 高位未回调时追进。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">S4</span>短线主线速览（政策/大厂驱动）</h2>
+    <table>
+      <tr><th>短线主线</th><th>点火源</th><th>真实性标签</th><th>状态</th><th>取向</th></tr>
+      <tr><td>固态电池/锂电</td><td>政策+大厂</td><td><span class="pill p3">事件驱动</span></td><td>启动期·国际标准立项+上海基地</td><td>题材波·观察扩散，不当中线</td></tr>
+      <tr><td>机器人</td><td>政策+大厂</td><td><span class="pill p3">强题材·未验证</span></td><td>酝酿期候选·工信部列支柱产业</td><td>量能不足·单日脉冲≠主线</td></tr>
+      <tr><td>黄金</td><td>避险+资源</td><td><span class="pill p3">抱团/事件</span></td><td>高位分歧·COMEX金-0.99%</td><td>连贯性弱·观望</td></tr>
+    </table>
+    <div class="quote"><b>真实性警示：</b>短线主线多数停在"强题材/事件驱动"而未过 C/D/E 验证，不能与长/中线"真主线"混为一谈。政策/大厂驱动的主线属短线题材波，预期断档即回落（商业航天/机器人/固态皆属此类）。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">S5</span>预期差汇总（谁是高价值主线）</h2>
+    <table>
+      <tr><th>主线</th><th>市场原有预期</th><th>最新实际</th><th>预期变化</th><th>结论</th></tr>
+      <tr><td>AI 算力</td><td>高增长但已 price-in 较高</td><td>英伟达全线超预期(+106%)</td><td><span class="pill p0">超预期</span></td><td>高价值但算力端拥挤，沿未启动环节卡位</td></tr>
+      <tr><td>半导体设备</td><td>传导未充分定价</td><td>SEMI 设备+23.2%、存储设备+29%</td><td><span class="pill p0">超预期·未定价</span></td><td><b>预期差向上，传导扩散候选</b></td></tr>
+      <tr><td>存储(涨价)</td><td>涨价周期受质疑</td><td>兆易+1091%、日延续涨价</td><td><span class="pill p0">超预期</span></td><td>很强但拥挤上行</td></tr>
+      <tr><td>医药/CRO</td><td>BD 高增已部分兑现</td><td>BD 997亿超2024全年、药明兑现</td><td><span class="pill p3">兑现·高位</span></td><td>强但买点变差，等回调企稳</td></tr>
+      <tr><td>半导体设备(进口替代)</td><td>国产替代渐进</td><td>设备缺货+国产化加速</td><td><span class="pill p1">改善</span></td><td>预期向上，长线支线</td></tr>
+    </table>
+    <div class="good"><b>高价值主线判断：</b>AI 内部"半导体设备"环节预期差向上且传导刚启动（超预期 + 未定价）＞ 存储（超预期但已拥挤）＞ CRO（兑现但高位）。这正是指引"沿传导未启动环节做卡位"而非追已过热高位环节的依据。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">S6</span>标的池（AI 长线 + 医药/CRO 中线）</h2>
+    <p>类别：龙头/卡位/弹性/验证；轮动位置：①龙头…⑥尾部。研究标注，非推荐；买卖须自行验证实时行情。</p>
+    <h3>AI 科技长线（以 A股最强资金环节为准）</h3>
+    <table>
+      <tr><th>环节</th><th>标的</th><th>类别</th><th>轮动位置</th><th>证据支撑</th></tr>
+      <tr><td>PCB / 高多层·HDI</td><td>胜宏科技、沪电股份、深南电路</td><td>龙头</td><td>①已兑现·最强</td><td>胜宏Rubin最大供应商HDI份额50-55%、沪电78层背板/GB300唯一认证、深南+54-69%、AI-PCB 2026全球超900亿(+113%)</td></tr>
+      <tr><td>覆铜板(CCL)</td><td>生益科技、南亚新材</td><td>龙头</td><td>①已兑现</td><td>高盛上调CCL 2028至480亿、生益QFII重仓</td></tr>
+      <tr><td>电子布/铜箔/树脂</td><td>铜冠铜箔、宏昌电子、同宇新材</td><td>弹性/卡位</td><td>①已兑现</td><td>铜冠铜箔+12%、同宇新材(电子树脂)20cm、板块多次涨停潮</td></tr>
+      <tr><td>MLCC(涨价)</td><td>风华高科、三环集团</td><td>龙头/卡位</td><td>④进行中</td><td>单台AI服务器用量5-10倍、风华进头部AI链、三环粉体自供</td></tr>
+      <tr><td>光模块/CPO</td><td>中际旭创、新易盛、太辰光</td><td>龙头</td><td>②主升</td><td>新易盛H1+90%、CPO出货、订单能见度至2027-2028</td></tr>
+      <tr><td>液冷/服务器</td><td>英维克、申菱环境</td><td>弹性/卡位</td><td>④刚启动</td><td>东方证券：3Q起液冷需求加速</td></tr>
+      <tr><td>半导体设备(待启动)</td><td>北方华创、中微公司、拓荆科技</td><td>龙头/卡位</td><td>⑤未启动·候选</td><td>SEMI设备+23.2%、存储设备+29%、国产替代</td></tr>
+    </table>
+    <h3>医药/CRO 中线</h3>
+    <table>
+      <tr><th>环节</th><th>标的</th><th>类别</th><th>轮动位置</th><th>证据支撑</th></tr>
+      <tr><td>CXO 龙头</td><td>药明康德</td><td>龙头</td><td>②主升(高位)</td><td>H1净利110亿、扣非+90%</td></tr>
+      <tr><td>CXO</td><td>康龙化成</td><td>中军</td><td>②主升(回调)</td><td>8/26跌4.83%、净流出</td></tr>
+      <tr><td>CXO</td><td>凯莱英、泰格医药</td><td>中军</td><td>③扩散</td><td>跟随龙头</td></tr>
+      <tr><td>AIDD/AI制药</td><td>CRO搭AI模型</td><td>卡位/弹性</td><td>④刚启动</td><td>政策支持AI辅助药物开发</td></tr>
+      <tr><td>创新药 BD</td><td>百济神州</td><td>龙头</td><td>②主升</td><td>H1净利+627%、营收+26.8%</td></tr>
+    </table>
+    <div class="warn"><b>跟踪纪律：</b>标的池随主线阶段动态调整——例如 CRO 处"回调检验"，标的仅在资金转净流入 + 龙头止跌后重估；半导体设备处"预热"，作为 AI 内部传导下一棒的埋伏候选而非追高。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">S7</span>跟踪清单（证伪信号 + 节奏）</h2>
+    <table>
+      <tr><th>主线</th><th>追踪节奏</th><th>关键证伪/升级信号</th><th>动作边界</th></tr>
+      <tr><td>AI 算力(长)</td><td>月复盘·年追踪</td><td>CAPEX转弱→出局；存储见顶→降级</td><td>拥挤-4：不追高，沿设备/上游卡位</td></tr>
+      <tr><td>医药/CRO(中)</td><td>周复盘·季追踪</td><td>BD放缓→出局；龙头破位→降级</td><td>回调企稳(资金转正)前不抄底</td></tr>
+      <tr><td>半导体设备</td><td>周复盘</td><td>设备采购转弱→取消埋伏</td><td>作为AI传导下一棒候选</td></tr>
+      <tr><td>短线(固态/机器人/金)</td><td>日复盘</td><td>政策兑现+预期断档→离场</td><td>题材波，不当中线持有</td></tr>
+    </table>
+    <div class="quote"><b>五源信息冲刷重点：</b>①财经资讯（英伟达/存储/药明财报，S级）；②龙头动态（海光/兆易/药明）；③政策（国产算力/创新药/AI制药扶持，A级）；④前沿技术（CPO/存储涨价/固态标准，B级）；⑤研报外资（外资对AI CAPEX/CXO景气，B-C级）——任一命中即复核"阶段+传导+证伪点"。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">S8</span>台账落库（证据分级 + 升级降级记录）</h2>
+    <h3>催化剂台账（节选）</h3>
+    <table>
+      <tr><th>日期</th><th>信息</th><th>催化等级</th><th>证据等级</th><th>影响环节</th></tr>
+      <tr><td>8/27</td><td>英伟达Q2营收962亿+106%、数据中心+117%、算力短缺至2028FY末</td><td>S</td><td>S</td><td>AI算力/存储</td></tr>
+      <tr><td>8/27</td><td>存储芯片盘初拉升、大普微20cm涨停</td><td>A</td><td>S/A</td><td>存储</td></tr>
+      <tr><td>8/27</td><td>长江存储全球NAND份额14%、保偏光纤需求爆发(CPO)</td><td>A</td><td>B</td><td>存储/光通信</td></tr>
+      <tr><td>8/26</td><td>CRO回调、康龙化成-4.83%、主力净流出</td><td>B(利空)</td><td>S/A</td><td>医药/CRO</td></tr>
+      <tr><td>8/25</td><td>政策支持CRO搭AI辅助药物开发模型</td><td>B</td><td>A</td><td>CRO/AIDD</td></tr>
+    </table>
+    <h3>本期升级/降级记录（证据等级到位才允许改动）</h3>
+    <p><b>维持真主线但运动态度调整：</b>AI 算力（逻辑强化，仅因拥挤度调交易取向，未降级）；医药/CRO（从主升标记<b>降级为"高位回调·阶段/交易证伪检验"</b>，依据 S/A 级回调数据，非 C/D 级传闻）；<b>证据等级 <B 的信息一律只入 evidence_lib、不改档案</b>（如部分媒体对存储涨价的猜测型报道）。</p>
+    <div class="good"><b>结论式总结：</b>本期是 <b>mainline-research 框架的第一次完整实例</b>。AI 长线展示"基本面传导"长线底盘 + 沿未启动环节（半导体设备）做卡位而非追已拥挤的算力高位；医药/CRO 中线展示"资金面切换点火 → 基本面兑现"后进入"高位回调/交易证伪"检验期、回调企稳前不抄底的纪律。框架证明：<b>主线不是静态板块，而是会点火、会传导、会被证伪的动态链条</b>——判断强弱靠十字段 + 六维评分 + 预期差，控制回撤靠三级退出 + 证据分级。</div>
+  </section>
+
+  <div class="warn">风险提示：以上分析基于公开市场数据，不构成投资建议。市场有风险，决策需谨慎；所有具体行情数据以交易所官方为准。</div>
+</div>
+
+<footer>主线深度研究 · mainline-research · 2026-08-27 · 决策流水线：市场环境→发现→点火源→真实性→生命周期→传导→预期差→资金验证→评分→标的→跟踪→升降级/证伪</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+(function(){
+  if(!window.echarts){return;}
+  var el=document.getElementById('scoreChart');if(!el){return;}
+  var c=echarts.init(el);
+  c.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{data:['AI长线','医药/CRO'],top:0},
+    grid:{left:50,right:20,top:34,bottom:70},
+    radar:{
+      indicator:[
+        {name:'驱动',max:5},{name:'兑现',max:5},{name:'扩散',max:5},
+        {name:'资金',max:5},{name:'龙头',max:5},{name:'催化',max:5}
+      ],
+      radius:'65%'
+    },
+    series:[{
+      type:'radar',
+      data:[
+        {value:[5,5,4,5,5,4],name:'AI长线',areaStyle:{color:'rgba(30,64,175,0.25)'},itemStyle:{color:'#1e40af'}},
+        {value:[4,5,4,3,4,3],name:'医药/CRO',areaStyle:{color:'rgba(217,119,6,0.25)'},itemStyle:{color:'#d97706'}}
+      ]
+    }]
+  });
+})();
+</script>
+</body>
+</html>

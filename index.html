@@ -36,6 +36,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 .type-us{background:var(--accent-soft);color:var(--accent)}
 .type-ashare{background:var(--red-dim);color:var(--red)}
 .type-premarket{background:var(--green-dim);color:var(--green)}
+.type-mainline{background:rgba(99,102,241,0.14);color:#6366f1}
 .type-weekend{background:rgba(249,115,22,0.15);color:var(--accent2)}
 .report-card .title{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.4}
 .report-card .desc{font-size:12.5px;color:var(--text2);line-height:1.5;flex:1}
@@ -71,7 +72,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
 
 <div class="header">
 <h1>跨市场复盘报告</h1>
-<div class="subtitle">美股复盘 · A股复盘 · 周末复盘 · 盘前分析</div>
+<div class="subtitle">美股复盘 · A股复盘 · 周末复盘 · 盘前分析 · 主线深度</div>
 <div class="badge">自动扫描 · 实时同步 GitHub 报告目录</div>
 <div class="stats" id="stats">
   <div class="stat"><div class="num" id="n-total">…</div><div class="label">报告总数</div></div>
@@ -85,6 +86,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
   <a href="#S-us" data-cat="us"><span class="ic">🇺🇸</span>美股复盘</a>
   <a href="#S-ashare" data-cat="ashare"><span class="ic">📈</span>A股复盘</a>
   <a href="#S-premarket" data-cat="premarket"><span class="ic">📅</span>盘前分析</a>
+  <a href="#S-mainline" data-cat="mainline"><span class="ic">🧭</span>主线深度</a>
 </nav>
 
 <div id="reportRoot">
@@ -111,7 +113,8 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
     {key:"weekend",  name:"周末复盘",   ic:"📖", type:"type-weekend"},
     {key:"us",       name:"美股复盘",  ic:"🇺🇸", type:"type-us"},
     {key:"ashare",   name:"A股复盘",   ic:"📈", type:"type-ashare"},
-    {key:"premarket",name:"盘前分析",  ic:"📅", type:"type-premarket"}
+    {key:"premarket",name:"盘前分析",  ic:"📅", type:"type-premarket"},
+    {key:"mainline", name:"主线深度",  ic:"🧭", type:"type-mainline"}
   ];
 
   function bjYMD(d){
@@ -123,6 +126,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Micr
   var YESTERDAY = bjYMD(new Date(Date.now()-86400000));
 
   function classify(path){
+    if (path.indexOf("mainline-research") !== -1) return "mainline";
     if (path.indexOf("周末复盘") !== -1) return "weekend";
     if (path.indexOf("盘前") !== -1 || /premarket/i.test(path)) return "premarket";
     if (path.indexOf("美股") !== -1) return "us";

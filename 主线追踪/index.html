@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主线深度研究 · 看板</title>
+<link rel="stylesheet" href="https://tim0thy1.github.io/design-system/design-system.css">
+<style>
+:root{
+  --card:var(--bg2); --border:var(--rule); --text:var(--ink); --text2:var(--muted); --amber:var(--accent2);
+  --indigo:#6366f1; --indigo-soft:rgba(99,102,241,0.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',-apple-system,sans-serif;line-height:1.65;font-size:14px;min-height:100vh}
+.container{max-width:1000px;margin:0 auto;padding:30px 20px 20px}
+.header{text-align:center;padding:34px 20px 26px;border-bottom:3px solid var(--amber);margin-bottom:22px;position:relative}
+.header h1{font-size:26px;font-weight:800;color:var(--amber);letter-spacing:2px}
+.header .subtitle{color:var(--text2);font-size:13.5px;margin-top:6px}
+.header .badge{display:inline-block;margin-top:12px;padding:4px 16px;background:linear-gradient(135deg,var(--amber),#F97316);color:#fff;border-radius:20px;font-size:12px;font-weight:600}
+.src-bar{font-size:12px;color:var(--text2);background:var(--indigo-soft);border:1px solid rgba(99,102,241,0.25);border-radius:8px;padding:9px 14px;margin-bottom:22px}
+.src-bar b{color:var(--indigo)}
+h2{font-size:17px;font-weight:800;color:var(--amber);margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid var(--amber)}
+h2 .cnt{font-size:12px;color:var(--text2);font-weight:600;margin-left:8px}
+.sec{margin-bottom:30px}
+table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border-radius:10px;overflow:hidden}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--indigo-soft);color:var(--indigo);font-size:12px;font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.tag{display:inline-block;padding:2px 9px;border-radius:9px;font-size:11px;font-weight:700;white-space:nowrap}
+.t-long{background:rgba(99,102,241,0.14);color:#6366f1}
+.t-mid{background:rgba(249,115,22,0.15);color:var(--amber)}
+.t-short{background:var(--green-dim);color:var(--green)}
+.stage-now{color:var(--amber);font-weight:700}
+.stage-wait{color:var(--green);font-weight:700}
+.env-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.env-card{border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--card)}
+.env-card .dim{font-size:13px;font-weight:800;color:var(--text);margin-bottom:2px}
+.env-card .mono{font-size:11px;color:var(--text2);margin-bottom:7px}
+.env-card .state{font-size:12.5px;color:var(--text);line-height:1.55}
+.env-card .arrow{font-weight:800}
+.up{color:var(--green)}.down{color:var(--red)}.flat{color:var(--text2)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.res-card{border:1px solid var(--border);border-radius:10px;padding:15px;background:var(--card);text-decoration:none;color:var(--text);display:block;transition:all .2s}
+.res-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(99,102,241,.14);border-color:#6366f1}
+.res-card .rt{font-size:11px;font-weight:700;color:var(--indigo);margin-bottom:6px;letter-spacing:.5px}
+.res-card .rname{font-size:15px;font-weight:800;margin-bottom:4px}
+.res-card .rdesc{font-size:12px;color:var(--text2);line-height:1.55}
+.res-card .rar{color:var(--amber);font-size:13px;font-weight:700;margin-top:8px}
+.note{font-size:12px;color:var(--text2);background:var(--card);border:1px dashed var(--border);border-radius:8px;padding:10px 14px;line-height:1.7}
+.footer{text-align:center;padding:26px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:26px}
+a{color:var(--indigo)}
+@media(max-width:600px){th,td{padding:8px 7px}}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('wb_theme_v1')||'light';document.documentElement.setAttribute('data-theme',t);window.addEventListener('storage',function(e){if(e.key==='wb_theme_v1')document.documentElement.setAttribute('data-theme',e.newValue||'light');});}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🧭 主线深度研究 · 看板</h1>
+  <div class="subtitle">跨市场复盘报告 · 主线章节聚合入口 · 站上主线、跟随资本节奏</div>
+  <div class="badge">双节奏 · 日更增量 / 周更重构</div>
+</div>
+
+<div class="src-bar">
+  <b>单一数据源</b>：本看板为聚合视图，最新完整内容以 <b>mainline-research/</b>（主台账 / 成因档案 / 标的池 / 证据库）为准，日更/周更在源头更新，本页随之刷新，不在各处重复维护第二份。点下方「深研资源」直达源头。
+</div>
+
+<div class="sec">
+  <h2>一、当前主线全景<span class="cnt">（4 条已建档 + 2 条候选）</span></h2>
+  <table>
+    <tr><th>级别</th><th>主线</th><th>引擎类型</th><th>生命周期</th><th>传导进度</th><th>评分</th><th>环境权重</th></tr>
+    <tr>
+      <td><span class="tag t-long">长线·年</span></td>
+      <td><b>AI 载板及材料</b><br>PCB/CCL/电子布/MLCC/铜箔</td>
+      <td>产业传导主线</td>
+      <td class="stage-now">主升中段</td>
+      <td>PCB/CCL <b style="color:var(--amber)">已兑现</b> → MLCC/光模块 <b style="color:var(--amber)">进行中</b> → 半导体设备 <span class="stage-wait">待启动</span></td>
+      <td>28 / -4拥挤</td>
+      <td><b>高</b>（资本开支+涨价自有引擎）</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-long">长线·年</span></td>
+      <td><b>黄金 / 有色</b><br>金 · 铜 · 工业金属</td>
+      <td>配置资金主线（金）<br>产业传导主线（铜）</td>
+      <td class="stage-now">主升 → 高位整固</td>
+      <td>金盯央行购金/实际利率/美元；铜盯矿端供给/需求端（绿电+AI）</td>
+      <td>26 / -3拥挤</td>
+      <td><b>高</b>（跨季度宏观强制驱动）</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-mid">中线·季</span></td>
+      <td><b>医药 / CRO</b><br>创新药 BD · 研发外包</td>
+      <td>政策+基本面传导</td>
+      <td class="stage-now">主升 → 高位回调</td>
+      <td>BD 兑现 → CRO 订单回暖 → AIDD/创新药兑现</td>
+      <td>22 / -2拥挤</td>
+      <td><b>中</b>（政策鼓励 + 全球流动性）</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-mid">中线·季</span></td>
+      <td><b>券商</b><br>中报 · 资本市场活跃</td>
+      <td>情绪+资金传导</td>
+      <td class="stage-now">主升初期</td>
+      <td>中报落地 → 成交放量 → 券商业绩弹性</td>
+      <td>23 / -1拥挤</td>
+      <td><b>中</b>（流动性友好期）</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-short">短线·周</span></td>
+      <td><b>固态电池 / 锂电</b></td>
+      <td>主题催化（产业事件）</td>
+      <td>启动期 · 候选</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-short">短线·周</span></td>
+      <td><b>机器人</b></td>
+      <td>主题催化（大厂入局）</td>
+      <td>酝酿 · 未升级</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </table>
+  <p style="font-size:12px;color:var(--text2);margin-top:8px">注：条数不设上限，凡符合主线定义（沿产业链可传导 + 踩在跨季度/跨年加大力量上 + 有资金/业绩验证）即建档，按引擎类型分开跟踪。黄金/有色单列纠正为长线真主线（主升后高位整固只是生命周期阶段，非证伪）。</p>
+</div>
+
+<div class="sec">
+  <h2>二、全球战略环境（B 层 · 决定权重）</h2>
+  <p style="font-size:12px;color:var(--text2);margin-bottom:10px">维度按主线独立推导（开放扫描框架，非固定模板）。下表为当前主流主线的环境透镜：</p>
+  <div class="env-grid">
+    <div class="env-card">
+      <div class="dim">全球货币/信用周期</div>
+      <div class="mono">F1 · AI 成长/黄金通用</div>
+      <div class="state"><span class="arrow up">▲ 放大</span> 三大央行转宽松，美元走弱、全球资本再平衡、外资回流</div>
+    </div>
+    <div class="env-card">
+      <div class="dim">地缘与供应链</div>
+      <div class="mono">F5 · 尾部风险</div>
+      <div class="state"><span class="arrow flat">▽ 反复</span> 霍尔木兹未决，冲击高能源依赖的日韩端；AI 算力端为间接风险</div>
+    </div>
+    <div class="env-card">
+      <div class="dim">大国科技博弈</div>
+      <div class="mono">F6 · 自主可控</div>
+      <div class="state"><span class="arrow up">▲ 加码</span> 脱钩深化但中国加码，强化载板材料 + 设备国产化长期确定性</div>
+    </div>
+    <div class="env-card">
+      <div class="dim">产业链自身资本开支+涨价</div>
+      <div class="mono">主线特有引擎</div>
+      <div class="state"><span class="arrow up">▲ 加速</span> AI 线不靠央行利率，靠 PCB 龙头 544 亿 CAPEX + 电子布/覆铜板涨价驱动</div>
+    </div>
+    <div class="env-card">
+      <div class="dim">黄金专属：央行购金 / 实际利率</div>
+      <div class="mono">F1+F5 · 配置引擎</div>
+      <div class="state"><span class="arrow up">▲ 放大</span> 去美元化购金 + 实际利率/美元下行，结构性慢牛而非脉冲</div>
+    </div>
+    <div class="env-card">
+      <div class="dim">铜专属：供给刚性 / 需求端</div>
+      <div class="mono">F2 · 产业引擎</div>
+      <div class="state"><span class="arrow flat">▽ 高位整固</span> 铜矿 CAPEX 多年不足供给刚性 + 绿电/AI 用铜，主升后消化为新中枢</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>三、待启动 / 候补接力</h2>
+  <table>
+    <tr><th>主线</th><th>候补环节 / 支线</th><th>触发观察</th></tr>
+    <tr><td><b>AI 算力链</b></td><td>半导体设备 / 更上游材料（北方华创、中微系）</td><td>传导已到 MLCC/CPO 后继、设备国产化资本开支确认</td></tr>
+    <tr><td><b>AI 算力链</b></td><td>上游扩散补涨（电子布/铜箔/树脂弹性）</td><td>主位 PCB/CCL 拥挤后的再平衡</td></tr>
+    <tr><td><b>医药</b></td><td>AIDD / 创新药兑现</td><td>BD 后续客户验证、海外授权落地</td></tr>
+  </table>
+</div>
+
+<div class="sec">
+  <h2>四、深研资源 <span class="cnt">（单一数据源 · 直达）</span></h2>
+  <div class="res-grid">
+    <a class="res-card" href="../mainline-research/reports/mainline-20260827.html">
+      <div class="rt">S0~S8 完整报告</div>
+      <div class="rname">主线深度研究报告</div>
+      <div class="rdesc">市场环境 → 主线全景 → 传导 → 预期差 → 标的池全链路深度报告。</div>
+      <div class="rar">查看报告 →</div>
+    </a>
+    <a class="res-card" href="../mainline-research/ledgers/mainline_ledger.md">
+      <div class="rt">主台账</div>
+      <div class="rname">mainline_ledger</div>
+      <div class="rdesc">全部主线的十字段档案：环境/点火源/真实性/生命周期/传导/驱动/预期差/资金情绪/评分/退出信号。</div>
+      <div class="rar">查看台账 →</div>
+    </a>
+    <a class="res-card" href="../mainline-research/archives/ai-hardware-materials-archive.md">
+      <div class="rt">成因档案</div>
+      <div class="rname">AI 载板材料 成因档案</div>
+      <div class="rdesc">为什么它成为主线：起源点火 → 周期定位 → 全球锚 → 贯穿传导 → 历次里程碑滚动补厚。</div>
+      <div class="rar">查看档案 →</div>
+    </a>
+    <a class="res-card" href="../mainline-research/ledgers/target_pool.md">
+      <div class="rt">标的池</div>
+      <div class="rname">target_pool</div>
+      <div class="rdesc">按 A 股资本节奏重排：主位(已兑现) / 中位(进行中) / 弹性·补涨 / 候补潜伏，含轮动定位。</div>
+      <div class="rar">查看标的池 →</div>
+    </a>
+  </div>
+  <p class="note" style="margin-top:12px"><b>节奏</b>：日更在源头台账增量更新（状态/传导/证伪信号/标的池变化）；周更全市场主线重构后刷新本看板与深度报告。黄金/有色在下期周更正式补建成因档案。</p>
+</div>
+
+<div class="footer">
+  <p>market-review-suite · 主线深度研究看板（整合于跨市场复盘体系）</p>
+  <p>单一数据源暂落 <code>mainline-research/</code>，本页为聚合视图 · 基于公开数据生成，不构成投资建议</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -19,3 +19,10 @@
 !深度专题/
 !深度专题/**/
 !深度专题/**/*.html
+!mainline-research/
+!mainline-research/**/
+!mainline-research/**/*.html
+!mainline-research/**/*.md
+!主线追踪/
+!主线追踪/**/
+!主线追踪/**/*.html
