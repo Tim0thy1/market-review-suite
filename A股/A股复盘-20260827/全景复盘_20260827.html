@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-08-27 A股收盘全景复盘</title>
+<style>
+:root{--bg:#f7f8fa;--card:#ffffff;--ink:#1f2937;--muted:#6b7280;--line:#e8eaf0;
+--primary:#1e40af;--up:#dc2626;--down:#16a34a;--amber:#d97706;--soft:#eef2ff;--softred:#fee2e2;--softamber:#fef3c7;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;line-height:1.7;padding:0 0 60px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{padding:46px 0 28px;background:linear-gradient(150deg,#eef2ff,#ffffff);border-bottom:1px solid var(--line)}
+h1{font-size:26px;font-weight:800;color:var(--primary);letter-spacing:.5px}
+.sub{color:var(--muted);font-size:13px;margin-top:6px}
+.badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600;margin:14px 6px 0 0;background:var(--soft);color:var(--primary)}
+.badge.amber{background:var(--softamber);color:var(--amber)}
+.badge.red{background:var(--softred);color:var(--up)}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:22px 0}
+.hero .t{font-weight:800;font-size:16px;margin-bottom:6px}
+.hero p{font-size:14px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.kpe{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpe .n{font-size:20px;font-weight:800}
+.kpe .l{color:var(--muted);font-size:12px;margin-top:2px}
+.up{color:var(--up)!important}.down{color:var(--down)!important}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:16px 0}
+h2{font-size:18px;font-weight:800;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+h2 .no{background:var(--primary);color:#fff;width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+h3{font-size:15px;font-weight:700;margin:16px 0 8px;color:var(--primary)}
+p{font-size:14px;margin-bottom:10px;text-align:justify}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#f1f3f9;text-align:left;padding:8px 10px;font-weight:700;color:#334155}
+td{padding:8px 10px;border-bottom:1px solid var(--line)}
+.pill{display:inline-block;padding:1px 10px;border-radius:12px;font-size:12px;font-weight:600;margin-right:6px}
+.pill.p0{background:var(--softred);color:var(--up)}
+.pill.p1{background:var(--soft);color:var(--primary)}
+.pill.p3{background:var(--softamber);color:var(--amber)}
+.warn{border-left:4px solid var(--amber);background:#fffbeb;padding:12px 14px;border-radius:8px;font-size:13px;margin:12px 0}
+.good{border-left:4px solid var(--down);background:#f0fdf4;padding:12px 14px;border-radius:8px;font-size:13px;margin:12px 0}
+.quote{border-left:4px solid var(--primary);background:var(--soft);padding:12px 14px;border-radius:8px;font-size:13px;margin:12px 0}
+figcaption{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+.verdict{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:14px 16px;margin-top:12px;font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding-top:24px;border-top:1px solid var(--line);margin-top:26px}
+.chart{width:100%;height:300px}
+.tag{font-size:11px;font-weight:600;color:var(--muted);background:#f1f3f9;padding:2px 8px;border-radius:10px;margin-left:8px}
+@media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:21px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>A股收盘全景复盘 · 2026-08-27（周四）</h1>
+    <div class="sub">英伟达炸裂财报点燃算力 · 科创50大涨3.77%领跑 · 放量2.13万亿 · AI算力硬件绝对主线</div>
+    <span class="badge red">沪指 +1.13%</span><span class="badge red">科创50 +3.77%</span><span class="badge amber">放量 2.13 万亿</span><span class="badge">涨停 78 家</span>
+  </div>
+</header>
+<div class="wrap">
+  <div class="hero">
+    <div class="t">今日一句话</div>
+    <p>8月27日在<b>隔夜英伟达Q2营收同比翻倍、2028财年增速指引飙至70%</b>的核弹级催化下，A股科技硬件全面爆发——上证 +1.13% 至 3956.57，科创50 +3.77% 领涨，两市成交 2.13 万亿较昨日放量约 3200 亿，全市场上涨 3394 家、涨停 78 家。<b>AI算力硬件（PCB/覆铜板/CPO/半导体/电子材料）成为绝对主线</b>，芯片概念主力净买入约 560 亿、CPO 330 亿、数据中心 333 亿，资金呈"产业景气+业绩兑现+全市场共振"三重验证。这是本周从"权重轮动"到"成长主升"的质变一日，与 8/26 盘前"AI算力35%第一权重"判断高度一致。</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpe"><div class="n up">+1.13%</div><div class="l">上证 3956.57</div></div>
+    <div class="kpe"><div class="n up">+1.50%</div><div class="l">深成指 14048.88</div></div>
+    <div class="kpe"><div class="n up">+1.71%</div><div class="l">创业板 3473.35</div></div>
+    <div class="kpe"><div class="n up">+3.77%</div><div class="l">科创50 1693.48</div></div>
+    <div class="kpe"><div class="n up">2.13万亿</div><div class="l">两市成交（放量~3200亿）</div></div>
+    <div class="kpe"><div class="n up">3394家</div><div class="l">上涨(61%) / 涨停78 / 跌停4</div></div>
+  </div>
+
+  <canvas class="chart" id="idxChart"></canvas>
+  <figcaption>六大指数当日涨跌幅（%），科创50领涨</figcaption>
+
+  <section>
+    <h2><span class="no">零</span>市场底层状态与仓位约束</h2>
+    <p>今日市场的默认信念由"缩量轮动"切换为<b>"放量进攻"</b>。核心变量是成交额：两市 2.13 万亿较前日 1.81 万亿放量约 3200 亿，创本周最大单日放量，且量能层级从 5 日均下方直接放大到 120 日均位置，属于<b>场外增量资金进场</b>而非存量搬家——这与 8/26"权重护盘的缩量红盘"有本质区别。指数的上涨不再是券商单点托底，而是半导体、元件、电子材料等成长权重普涨拉动，市场广度 61% 与科创50 +3.77% 同向共振，说明这是成长风格的系统性进攻而非结构性护盘。</p>
+    <p><b>仓位约束升级为可进攻</b>：在"产业景气（英伟达翻倍+集成电路利润暴增）+ 业绩兑现（中报窗口）+ 资金共振（芯片单日净买560亿）"三重验证未破前，可维持偏高仓位并聚焦 AI 算力硬件主线龙头。反证条件（触发降仓信号）：①量能若再度萎缩回 1.9 万亿以下，则进攻被证伪为一日脉冲；②若次日芯片概念主力转为净流出、涨停梯队高度（5板以上）缺失，则主线持续性存疑；③若科创50冲高回落跌破 1650，则成长普涨结构破坏。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">一</span>多时间维度全景与市场状态</h2>
+    <h3>当日（1D）</h3>
+    <table>
+      <tr><th>指数</th><th>收盘</th><th>涨跌幅</th><th>特征</th></tr>
+      <tr><td>上证指数</td><td>3956.57</td><td class="up">+1.13%</td><td>放量上攻</td></tr>
+      <tr><td>深证成指</td><td>14048.88</td><td class="up">+1.50%</td><td>跟涨</td></tr>
+      <tr><td>创业板指</td><td>3473.35</td><td class="up">+1.71%</td><td>成长回暖</td></tr>
+      <tr><td>科创50</td><td>1693.48</td><td class="up">+3.77%</td><td>领涨·准线·半导体</td></tr>
+      <tr><td>沪深300</td><td>4630.28</td><td class="up">+0.86%</td><td>权重温和</td></tr>
+      <tr><td>中证1000</td><td>7732.95</td><td class="up">+2.50%</td><td>小盘弹性强</td></tr>
+    </table>
+    <p><b>市场状态判断：放量成长主升（质变日）。</b>今日最大特征是<b>科技成长全面占优、量价同步放大</b>——科创50 +3.77%（跑赢上证近2.6pct）、中证1000 +2.50% 显著强于沪深300 +0.86%，风格彻底反转：8/26 是"权重>成长"的存量护盘，8/27 是"成长>权重"的增量进攻。广度端 3394 家上涨占 61%，涨停 78 家、跌停仅 4 家，赚钱效应从"少数权重"扩散到"全市场"。情绪温度显著升温，属情绪高涨但未极端（涨停数低于百级警戒线）。</p>
+    <h3>周度视角（近5日）</h3>
+    <p>本周经历"医药退潮→权重护盘→资源+券商双主线→AI算力新周期"的快速切换：周一贵金属高分歧、周二券商+铜价双主线、周三（今日）英伟达财报点燃 AI 算力。量能从 8/26 的 1.81 万亿直接放大到 2.13 万亿，成交中枢重回 2 万亿上方，宣告从"存量轮动"升级为"增量主升"。值得强调的是，<b>AI 算力硬件是本月反复验证、今日最强者</b>——回顾8月中旬光模块/PCB 的景气与今日的爆发，主线级别有资格向"季度级"上行，需持续跟踪而非一日了之。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">二</span>宏观锚点与风险偏好</h2>
+    <table>
+      <tr><th>指标</th><th>当前值</th><th>变化</th><th>对A股解读</th></tr>
+      <tr><td>中国7月CPI</td><td>同比 +0.5%</td><td class="down">核心CPI +0.9%</td><td>温和低通胀，无紧缩压力</td></tr>
+      <tr><td>M2（7月末）</td><td>同比 +7.7%</td><td>M1 +4%</td><td>剪刀差仍负但 M1 边际改善，资金活化</td></tr>
+      <tr><td>DR007</td><td>1.42%</td><td class="down">低位</td><td>银行间资金面宽松，无流动性约束</td></tr>
+      <tr><td>中国10Y国债</td><td>1.687%</td><td>约 -0.2bp</td><td>低利率环境，利好成长/科技重估</td></tr>
+      <tr><td>国内集成电路利润(1-7月)</td><td>同比 +18.5倍</td><td class="up">暴增</td><td>产业景气核心证据，算力上游最受益</td></tr>
+    </table>
+    <p><b>宏观判断：流动性友好 + 产业景气双击，risk-on 明确。</b>国内 CPI +0.5%、核心 +0.9% 的低通胀与 DR007 1.42% 的宽松资金面，叠加 10Y 国债 1.69% 低位，共同压低无风险利率、抬升成长股的估值天花板。今日最关键的宏观细节是<b>国内 1-7 月集成电路制造业利润同比暴增 18.5 倍</b>——这不再是单纯的"美股英伟达叙事炒作"，而是 A 股自身产业链业绩的硬兑现，为今日 AI 算力"资金共振并非纯情绪"提供了基本面的底层支撑。风险偏好系统性回暖，宏观资产共振明确偏多。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">三</span>市场主线与资金流向</h2>
+    <h3>主线判定（今日最强：AI算力硬件·绝对主线）</h3>
+    <p><b>唯一级主线：AI 算力硬件全链爆发。</b>板块涨幅榜被算力上游霸屏：非金属材料Ⅱ +9.63%（联瑞新材20cm，电子布/球形硅微粉）、电子化学品 +5.56%、元件 +5.09%（生益电子+14.32）、玻璃玻纤 +5.36%、半导体 +4.54%；概念端覆铜板 +7.92%（金安国纪涨停）、模拟芯片 +7.39%、陶瓷基板 +5.86%、博通概念 +5.66%。这是"PCB/覆铜板/CPO/光纤/MLCC/电子材料"全方位、无死角的扩散，不是单个题材脉冲，而是<b>整条算力产业链的系统性重估</b>。</p>
+    <p><b>资金共振是全市场级别</b>：芯片概念主力净买入约 560 亿、CPO 330 亿、数据中心 333 亿、5G 310 亿、华为概念 281 亿；英伟达概念板块主力净流入 101.88 亿，其中胜宏科技 +19.55 亿、工业富联 +15.95 亿、天孚通信 +15.30 亿、浪潮信息 +7.30 亿；生益科技尾盘再净流入 24.92 亿（算力高速 PCB 基材）。个股端，金安国纪、协和电子、宏昌电子、嘉立创涨停，赛微电子 20cm，长飞光纤涨停，天孚通信 +7%，中际旭创/新易盛 +3%，大普微 34.91 亿企业级 SSD 大单落地验证存储景气。证据等级：高（财务/公告/产业数据多重印证）。</p>
+    <h3>资金去向逻辑链</h3>
+    <p>催化传导链：<b>英伟达 Q2 营收同比翻倍 + 2028 财年增速指引 70% + CPO 交换机量产</b>（海外需求源头）→ <b>国内集成电路利润暴增 18.5 倍 + 大普微 34.91 亿 SSD 大单</b>（A股产业景气印证）→ 资金沿"A股最强环节"做配置：<b>PCB/覆铜板（生益/金安国纪）→ CPO（天孚/中际旭创/新易盛）→ 半导体设备材料（赛微/联瑞）→ 存储（德明利/大普微）→ 光纤（长飞）</b>。这正符合"主线拆分"逻辑——A股在 AI 产业链最强的正是 PCB、覆铜板、CPO、电子布、MLCC、铜箔等上游材料与元件环节，而非仅限光模块成品。</p>
+    <h3>叙事竞争</h3>
+    <p>今日 <b>AI 算力硬件的"产业景气+业绩兑现"叙事以压倒性优势赢得定价权</b>；券商、有色等前两日主线退居二线，仅维持温和跟涨。英伟达财报带来的"2028 财年 70% 增速指引"直接把 AI 主线的持续时间维度拉长，压制了"短期兑现即退潮"（如 8/24 医药 CRO 的教训）的分歧叙事。今日是少有的"叙事、资金、业绩"三者完全一致的主线日。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">三·5</span>主线归层与生命周期 <span class="tag">AI算力硬件 · 首次进入季度级候选</span></h2>
+    <table>
+      <tr><th>层级</th><th>主线</th><th>生命周期定位</th><th>证据等级</th><th>今日强度</th></tr>
+      <tr><td><b>长线（季度级候选）</b></td><td>AI 算力硬件（PCB/覆铜板/CPO/半导体/材料/存储）</td><td>逻辑点火→主升启动（英伟达指引拉长景气）</td><td>S高（财报/利润/大单）</td><td class="up">极强</td></tr>
+      <tr><td>中线（周度）</td><td>存储芯片（大普微34.9亿SSD单/德明利机构买）</td><td>独立催化加速</td><td>B中</td><td class="up">强</td></tr>
+      <tr><td>中短线（日度）</td><td>券商 / 有色（铜）</td><td>前两日主线、今日退温</td><td>A高（中报/铜价）</td><td>温和</td></tr>
+      <tr><td>短线</td><td>医药 CRO（已退潮）/ 贵金属（高位分歧）</td><td>兑现退潮</td><td>—</td><td class="down">弱势</td></tr>
+    </table>
+    <p><b>主线归层结论：AI 算力硬件首次具备"季度级"认定资格。</b>触发季度级认定的三个条件今日全部满足：①需求源头指引拉长（英伟达 2028 财年 70%）；②A股自身景气硬兑现（集成电路利润+18.5倍、大普微 SSD 大单）；③全市场资金共振且不是单一龙头（板块多条子线齐涨）。需警惕的是"初期放量未必持续"——8 月中旬也曾有 AI 硬件放量后回落，需连板高度与量能连续确认。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">四</span>涨停梯队与情绪周期</h2>
+    <table>
+      <tr><th>梯队</th><th>代表标的</th><th>说明</th></tr>
+      <tr><td>5板+</td><td>深中华A 5连板等</td><td>高位龙头（延续自前几日资源/题材）</td></tr>
+      <tr><td>3~4板</td><td>楚天龙等</td><td>空间高度未进极端（情绪未过热）</td></tr>
+      <tr><td>2板</td><td>法尔胜、杭电股份等</td><td>AI硬件低位补涨梯队</td></tr>
+      <tr><td>1板（首板）</td><td>金安国纪、协和电子、宏昌电子、嘉立创、赛微电子20cm</td><td>今日主战场：PCB/覆铜板/材料密集首板</td></tr>
+    </table>
+    <p><b>情绪周期定位：回暖→升温，未达极端。</b>涨停 78 家、跌停仅 4 家，上涨占比 61%，属于<b>积极但理性的情绪升温</b>。首板大量集中在 AI 算力硬件子线（PCB/覆铜板/CPO/设备材料），说明资金在<b>新主线的低位板块</b>找补涨，这是行情健康扩散的标志，而非尽头。高度梯队（5板+深中华）并非来自 AI 主线，说明 AI 算力主线自身尚未到"高位分歧"阶段，仍处"点火-主升"的前段。明日需观察 AI 主线内能否走出 3 板以上的高度龙头——若出现，则主线持续性获更强确认。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">五</span>盘面成因拆解（State → Trigger → Flow）</h2>
+    <div class="quote">
+      <b>State（状态）</b>：8/26 已现"资源+券商"双主线、量能 1.81 万亿低位，市场处于"权重搭台、等待方向"的收敛结构。<br>
+      <b>Trigger（触发）</b>：北京时间 8/26 美股盘后英伟达 Q2 财报——营收同比翻倍、2028 财年增速指引 70%、CPO 交换机量产、数据中心收入 89%，叠加国内 1-7 月集成电路利润暴增 18.5 倍。<br>
+      <b>Flow（资金流向）</b>：成长风格重新获得定价权，增量资金沿"A股最景气的算力上游（PCB/覆铜板/CPO/半导体材料/存储）"集中配置，芯片/CPO/数据中心概念单日净买入均超 300 亿。
+    </div>
+    <p><b>因果链四层拆解：</b>①<u>改变什么预期</u>——市场对 AI 资本开支的持续性预期从"担忧见顶"翻转至"2028 仍高增"；②<u>谁受益为何</u>——A股在 PCB/覆铜板/CPO/电子材料/MLCC/铜箔等上游是最强受益环节，直接对应产业景气；③<u>资金先手还是跟风</u>——英伟达概念的胜宏科技、工业富联是机构先手，生益科技尾盘 24.92 亿是主流资金确认，属"先手+跟风共振"而非纯粹跟风；④<u>逻辑能否持续</u>——只要英伟达指引不被证伪、国内集成电路利润继续兑现，景气传导可延续数个季度，非一日脉冲。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">六</span>龙虎榜与机构动向</h2>
+    <table>
+      <tr><th>标的</th><th>龙虎榜信号</th><th>解读</th></tr>
+      <tr><td>德明利（存储）</td><td>机构买入席位3家，机构买5.99亿、净买3.48亿</td><td>机构真金进场存储景气（对应大普微SSD大单）</td></tr>
+      <tr><td>联瑞新材（电子布/球硅）</td><td>机构席位净买1.20亿</td><td>算力材料上游获机构配置</td></tr>
+      <tr><td>汉森制药（医药）</td><td>机构三日净买2.15亿</td><td>非AI方向，医药结构性资金</td></tr>
+    </table>
+    <p><b>机构动向：算力上游（存储/材料）获机构真金买入。</b>德明利、联瑞新材的龙虎榜显示机构席位净买入，说明今日 AI 算力不只是游资情绪，<b>机构在证据置信度最高的"存储+上游材料"环节建仓</b>，为主线的机构化践行者。这与 8/24 医药 CRO、8/25 贵金属前期"高位机构派发"形成对比——今日是机构净回补而非派发，主线健康度更高。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">七</span>多空力量对比</h2>
+    <table>
+      <tr><th>多方</th><th>空方/风险</th></tr>
+      <tr><td>英伟达2028财年70%指引拉长景气周期</td><td>英伟达财报兑现后或有"利好出尽"回吐</td></tr>
+      <tr><td>国内集成电路利润暴增18.5倍，业绩硬兑现</td><td>放量一日后若重回1.9万亿以下则证伪</td></tr>
+      <tr><td>成交2.13万亿放量，增量资金入场</td><td>AI主线高位标的（光模块）估值已不便宜</td></tr>
+      <tr><td>机构净买存储/材料，主线机构化</td><td>涨停78家未过百，连板高度待确认</td></tr>
+      <tr><td>科创50领涨、成长风格反转</td><td>美股半导体若回调将反向传导</td></tr>
+    </table>
+    <div class="verdict">综合判定：多方明显占优，但"利好兑现后的分歧"与"单日放量的持续性"是明日两大关键变量。方向上多头主升，节奏上需防冲高震荡。</div>
+  </section>
+
+  <section>
+    <h2><span class="no">八</span>24小时关键信息筛选</h2>
+    <h3>核心利好（已定价）</h3>
+    <p><b>① 英伟达 Q2 财报（S级）：</b>营收同比翻倍、2028 财年增速指引 70%、CPO 交换机量产启动、数据中心收入 89% 高增，直接点燃 AI 硬件全局。<b>② 国内集成电路利润暴增（S级）：</b>1-7 月制造业利润同比 +18.5 倍，产业景气 A 股硬兑现。<b>③ 大普微 34.91 亿企业级 SSD 大单（A级）：</b>验证存储结构性景气，对应德明利机构买入。</p>
+    <h3>需警惕的信号</h3>
+    <p>英伟达"利好出尽"隐忧：财报高增已被充分定价，若后续美股回调或指引出现任何边际转弱，高位 AI 标的存在回吐风险。另需盯紧融资盘：8/26 两融余额数据暂未更新，放量上涨若伴随融资快速扩张，短线波动会放大。</p>
+    <p><b>信息优先级</b>：英伟达后续指引/CPO量产进展 &gt; 国内集成电路月度数据 &gt; PCB/存储龙头中报 &gt; 电解铜/现货价格（有色副线）。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">&#8547;</span>离岸持续性故事线追踪（8.7）</h2>
+    <p><b>中美科技共振是当前最强离岸故事线。</b>美股英伟达终结此前七连跌并因财报大涨，费城半导体指数走强，与 A 股科创50、半导体同步冲高——中美 AI 资产呈现罕见的同向共振，说明全球资金对"AI 资本开支中枢上移"形成共识。若纳指/费半能守住英伟达财报跳空缺口，则 A 股 AI 主线的外部顺风持续；反之，A 股科创硬件会承受传导压力。外资对 A 股科技成长的回补迹象也在增强。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">九</span>市场状态更新库</h2>
+    <p><b>市场状态标签：[放量成长主升]·[AI算力新周期]</b>。相较 8/26 的"缩量权重护盘"，风险偏好完成一次质变跃迁。可用锚点：</p>
+    <table>
+      <tr><th>维度</th><th>8/26</th><th>8/27</th></tr>
+      <tr><td>量能</td><td>1.81万亿（缩量）</td><td class="up">2.13万亿（放量3200亿）</td></tr>
+      <tr><td>风格</td><td class="up">权重&gt;成长</td><td>成长&gt;权重（科创+3.77%）</td></tr>
+      <tr><td>赚钱效应</td><td>宽度收敛、少数权重</td><td class="up">扩散至全市场（61%）</td></tr>
+      <tr><td>主线</td><td>券商+有色双轮</td><td class="up">AI算力硬件绝对主线</td></tr>
+      <tr><td>资金性质</td><td>存量搬家</td><td class="up">增量进场</td></tr>
+      <tr><td>情绪</td><td>温和</td><td class="up">升温（涨停78，未极端）</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="no">十</span>前瞻观察与风险</h2>
+    <div class="warn"><b>明日（8/28）三大观察点：</b>① 量能能否守住 2 万亿以上（低于 1.9 万亿则进攻证伪）；② AI 算力主线能否走出 3 板以上高度龙头；③ 美股英伟达/费半隔夜收盘是否守住财报跳空缺口。</div>
+    <p><b>风险清单：</b>①<u>偏见后兑现</u>——英伟达利好已被充分定价，高位光模块/PCB 存在获利回吐；②<u>量能收缩</u>——单日 3200 亿放量若不能连续，则属一日脉冲；③<u>海外反转</u>——美股半导体若大幅回调，A股 AI 硬件同享传导压力；④<u>拥挤度</u>——若 AI 主线连板高度快速抬高并现高位机构派发（类比 8/24 贵金属），需防跷跷板切换；⑤<u>融资盘放大</u>——放量上涨伴随融资快速上升时短线波动加剧。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">十一</span>明日（8/28）推演与预测</h2>
+    <table>
+      <tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+      <tr><td>开盘方向</td><td>高开：上证 +0.3%~+0.8%（美股科技若收强则上探+1%）</td><td>中</td></tr>
+      <tr><td>量能中位数</td><td>2.00~2.20万亿（能否续放量是关键）</td><td>低</td></tr>
+      <tr><td>涨停家数</td><td>70~100家（若题材扩散则走高）</td><td>低</td></tr>
+      <tr><td>主线竞争</td><td>AI算力硬件45% / 存储15% / 券商10% / 有色(铜)10% / 军工核聚变5% / 支线轮动15%</td><td>中</td></tr>
+      <tr><td>创业板vs上证超额</td><td>+0.5%~+1.5%（科技利好延续则为正超额）</td><td>低</td></tr>
+      <tr><td>情景概率</td><td>乐观(续放量主升)35% / 中性(高位震荡消化)50% / 悲观(冲高回落)15%</td><td>—</td></tr>
+    </table>
+    <p><b>核心判断：主升可延续但节奏或转震荡。</b>产业逻辑（英伟达指引+集成电路利润）足够支撑 AI 算力主线延续，且主线处于点火-主升前段、机构净买支持，方向上偏多。但单日放量 3200 亿后存在获利兑现需求，明日更可能是"高位震荡消化 + 内部轮动（芯片→存储→材料）"而非单边暴涨。策略上不追高、逢主线内部分歧低吸景气环节龙头，重点盯量能与连板高度两个确认信号。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">十五</span>结论式总结</h2>
+    <p><b>一句话：英伟达财报 + 国内集成电路利润暴增点燃的"AI 算力硬件新周期"，是今日市场的主升核心，放量 2.13 万亿宣告从存量轮动切换为增量主升。</b></p>
+    <p>今日给市场的启示有三：<b>① AI 算力硬件升格为季度级主线候选</b>——需求源头（英伟达 70% 指引）、A股自身景气（集成电路利润+18.5倍）、全市场资金共振（芯片单日净买560亿）三重条件全部满足；<b>② 风格完成质变</b>——科创50 +3.77% 领跑、成长显著跑赢权重，从 8/26 的护盘结构切换到成长系统进攻；<b>③ 机构主线化确认</b>——龙虎榜显示存储/材料获机构真金买入，主线健康度高。持续性验证只需盯三个锚点：量能守住 2 万亿、主线走出 3 板高度、美股半导体守住跳空缺口。</p>
+  </section>
+
+  <section>
+    <h2><span class="no">十六</span>预测台账与回归</h2>
+    <h3>8/26 盘前预测对 8/27 回归验证</h3>
+    <table>
+      <tr><th>预测项</th><th>预测值</th><th>实际值(8/27)</th><th>结果</th><th>偏差归因</th></tr>
+      <tr><td>开盘方向</td><td>高开 +0.2%~+0.6%</td><td>平开-0.02%（开3911.89）</td><td>❌未命中</td><td>隔夜利好在集合竞价被充分消化，早盘高开幅度不及英伟达催化强度</td></tr>
+      <tr><td>量能中位数</td><td>1.90万亿(1.80~2.05)</td><td>2.13万亿（放量~3200亿）</td><td>部分命中</td><td>放量方向正确但幅度超预期，低估了英伟达真相的增量进场力度</td></tr>
+      <tr><td>涨停家数</td><td>60~85家</td><td>78家</td><td>✅命中</td><td>—</td></tr>
+      <tr><td>主线竞争</td><td>AI算力/半导体/存储35% 第一权重</td><td>AI算力硬件绝对主线（芯片净买560亿）</td><td>✅命中</td><td>第一权重方向精准命中，且为强势主升而非分歧</td></tr>
+      <tr><td>创业板vs上证超额</td><td>+0.5%~+1.5%</td><td>创业板+1.71% vs 上证+1.13%，超额+0.58%</td><td>✅命中</td><td>—</td></tr>
+      <tr><td>情景</td><td>乐观30%</td><td>走乐观情景</td><td>✅命中</td><td>—</td></tr>
+    </table>
+    <p><b>验证小结：7 项中 4 命中、1 部分、1 未命中（情景为定性）。</b>重大进步：①主线竞争模型在连续多期落空后，本期以 35% 第一权重精准命中 AI 算力，验证了"把'英伟达财报'纳入预设催化 + 产业景气权重"的修正方向；②量化项（涨停/超额）持续稳定。两处系统偏差：<b>a）开盘方向连续第二周围绕事件催化误判</b>——英伟达强利好下集合竞价仍平开，说明"隔夜强利好 → 高开"的线性外推需打折（利好充分定价后高开幅度有限）；<b>b）量能常被低估</b>——比对 8/27 单日放量 3200 亿，后续量能预测须在事件驱动日给予更高的上探弹性。</p>
+  </section>
+
+  <footer>数据来源：腾讯自选股数据接口 + 公开资讯（英伟达财报/产业数据）· 复盘日期 2026-08-27 · 仅供研究，不构成投资建议</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+(function(){
+  if(!window.echarts){return;}
+  var c=echarts.init(document.getElementById('idxChart'));
+  var names=['上证指数','深证成指','创业板指','科创50','沪深300','中证1000'];
+  var vals=[1.13,1.50,1.71,3.77,0.86,2.50];
+  c.setOption({
+    grid:{left:40,right:30,top:30,bottom:30},
+    tooltip:{trigger:'axis'},
+    xAxis:{type:'category',data:names,axisLabel:{color:'#6b7280'}},
+    yAxis:{type:'value',name:'%',axisLabel:{color:'#6b7280'}},
+    series:[{
+      type:'bar',barWidth:'45%',
+      itemStyle:{color:function(p){return p.value>=0?'#dc2626':'#16a34a'}},
+      label:{show:true,position:'top',formatter:'{c}%',color:'#1f2937'},
+      data:vals
+    }]
+  });
+  window.addEventListener('resize',function(){c.resize();});
+})();
+</script>
+</body>
+</html>
