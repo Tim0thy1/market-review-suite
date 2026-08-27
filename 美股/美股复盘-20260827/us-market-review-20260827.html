@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股复盘报告 | 2026年8月27日（周四）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg0:#f7f8fc;--bg1:#ffffff;--bg2:#f1f5f9;--bg3:#eef2ff;--bd:#e2e8f0;--t0:#1a2740;--t1:#475569;--t2:#64748b;--red:#dc2626;--grn:#16a34a;--blu:#1e40af;--blu2:#3b82f6;--ylw:#f59e0b;--dng:#dc2626;--gld:#d97706}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg0);color:var(--t0);font-family:'Noto Sans CJK SC','Microsoft YaHei','Segoe UI',sans-serif;line-height:1.75;font-size:15px}
+.ctn{max-width:1400px;margin:0 auto;padding:20px}
+.hdr{background:linear-gradient(135deg,#ffffff,#eef2ff);border:1px solid var(--bd);border-radius:12px;padding:38px;margin-bottom:24px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--dng),var(--ylw),var(--grn))}
+.hdr h1{font-size:30px;margin-bottom:8px;font-weight:700}
+.hdr .sub{color:var(--t1);font-size:15px;margin-bottom:16px}
+.badge{display:inline-block;background:var(--dng);color:#fff;padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-right:8px;margin-bottom:8px}
+.tag2{display:inline-block;background:rgba(22,163,74,.15);border:1px solid var(--grn);color:var(--grn);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:8px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 18px;text-align:center}
+.card .lb{font-size:12px;color:var(--t2);margin-bottom:5px}
+.card .vl{font-size:22px;font-weight:700}
+.card .ch{font-size:13px;margin-top:3px}
+.chp{background:var(--bg1);border:1px solid var(--bd);border-radius:12px;padding:28px;margin-bottom:22px}
+.cht{font-size:21px;font-weight:700;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--bd);display:flex;align-items:center;gap:10px}
+.cht .n{background:var(--blu);color:#fff;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.cht .nm{font-size:13px;font-weight:500;color:var(--blu2)}
+.dt{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.dt th{background:var(--bg2);color:var(--t1);padding:9px 11px;text-align:left;font-weight:600;border-bottom:2px solid var(--bd);font-size:12.5px}
+.dt td{padding:7px 11px;border-bottom:1px solid var(--bd)}
+.dt tr:hover{background:var(--bg3)}
+.r{color:var(--red)}.g{color:var(--grn)}.b{font-weight:700}
+.up{color:var(--red)}.dn{color:var(--grn)}
+.chart-box{margin:18px 0}
+.chart{width:100%;height:420px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd)}
+.chart-sm{height:320px}.chart-lg{height:460px}.chart-mid{height:380px}
+.ct{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--blu2)}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+.bp{background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.3);border-radius:10px;padding:18px}
+.kp{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:10px;padding:18px}
+.bp h4{color:var(--grn);margin-bottom:10px;font-size:15px}.kp h4{color:var(--red);margin-bottom:10px;font-size:15px}
+.bp ul,.kp ul{list-style:none;padding-left:0}.bp li,.kp li{padding:5px 0;font-size:13.5px;border-bottom:1px solid rgba(0,0,0,.05)}
+.bp li::before{content:"+ ";color:var(--grn);font-weight:bold}.kp li::before{content:"- ";color:var(--red);font-weight:bold}
+.tl{position:relative;padding-left:30px;margin:14px 0}
+.tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--bd)}
+.ti{position:relative;margin-bottom:15px}.ti::before{content:'';position:absolute;left:-25px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--blu);border:2px solid var(--bg1)}
+.tt{font-size:12px;color:var(--blu2);font-weight:600}.tcc{font-size:13.5px;color:var(--t0);margin-top:2px}
+.tg{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;margin-right:4px}
+.tg-r{background:rgba(220,38,38,.15);color:var(--red)}.tg-g{background:rgba(22,163,74,.15);color:var(--grn)}.tg-n{background:rgba(30,64,175,.15);color:var(--blu2)}.tg-w{background:rgba(245,158,11,.15);color:var(--ylw)}
+.st{font-size:15px;font-weight:600;color:var(--blu2);margin:18px 0 8px;padding-left:12px;border-left:3px solid var(--blu)}
+.hb{background:rgba(30,64,175,.06);border:1px solid rgba(30,64,175,.18);border-radius:8px;padding:15px;margin:12px 0;font-size:13.5px}
+.wb{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:15px;margin:12px 0;font-size:13.5px}
+.db{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:8px;padding:15px;margin:12px 0;font-size:13.5px}
+.quote{background:rgba(59,130,246,.06);border-left:4px solid var(--blu);border-radius:6px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .qsrc{display:block;margin-top:8px;font-size:12px;color:var(--blu2);font-weight:600}
+.ftr{text-align:center;color:var(--t2);font-size:12px;padding:26px;border-top:1px solid var(--bd);margin-top:26px}
+.tldr{background:linear-gradient(135deg,#eef2ff,#ffffff);border:1px solid var(--blu);border-radius:12px;padding:22px 26px;margin-bottom:24px}
+.tldr .t{font-size:19px;font-weight:700;color:var(--blu);margin-bottom:12px}
+.tldr .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tldr .cell{background:rgba(255,255,255,.7);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;font-size:13.5px}
+.tldr b{color:var(--blu)}
+@media(max-width:768px){.cards{grid-template-columns:repeat(2,1fr)}.bb{grid-template-columns:1fr}.tldr .grid{grid-template-columns:1fr}}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:#1e3a5f}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:236px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:#1e3a5f;padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#f1f5f9;color:#1e40af}
+</style>
+</head>
+<body>
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#ch0">零. 市场底层状态与仓位约束</a>
+<a href="#ch1">一. 多时间维度全景+状态判断</a>
+<a href="#ch2">二. 宏观锚点与风险偏好</a>
+<a href="#ch3">三. 市场主线与资金流向</a>
+<a href="#ch4">四. 暗线与多空伏击点</a>
+<a href="#ch45">四·五. 期权情绪与期权墙</a>
+<a href="#ch46">四·六. 信用利差</a>
+<a href="#ch5">五. 盘面成因拆解</a>
+<a href="#ch6">六. 叙事如何映射到不同资产</a>
+<a href="#ch7">七. 多空辩论</a>
+<a href="#ch8">八. 24小时关键信息筛选</a>
+<a href="#ch9">九. 市场状态更新库</a>
+<a href="#ch10">十. 前瞻观察与风险</a>
+<a href="#ch11">十一. 标的建议</a>
+<a href="#ch12">十二. AI/半导体板块深度扫描</a>
+<a href="#ch13">十三. 仓位管理建议</a>
+<a href="#ch14">十四. 结论式总结</a>
+</nav>
+</div>
+<div class="ctn">
+
+<!-- HEADER -->
+<div class="hdr">
+<h1>美股复盘报告</h1>
+<div class="sub">2026年8月27日（周四）| 美东时间收盘 | 全部数据均来自公开行情与新闻，真实有效，未编造</div>
+<div><span class="badge">2026.08.27</span><span class="badge">英伟达财报兑现 + 软件重估</span><span class="tag2">英伟达+8.74% | 标普新高 | 费半+2.33% | Salesforce+23% | VIX一周低点</span></div>
+<div class="cards">
+<div class="card"><div class="lb">道琼斯</div><div class="vl up">53,569.44</div><div class="ch up">+105.56 (+0.20%)</div></div>
+<div class="card"><div class="lb">标普500</div><div class="vl up">7,730.99</div><div class="ch up">+55.29 (+0.72%) · 再创历史新高</div></div>
+<div class="card"><div class="lb">纳斯达克</div><div class="vl up">26,541.35</div><div class="ch up">+411.15 (+1.57%) · 创阶段新高</div></div>
+<div class="card"><div class="lb">VIX 恐慌</div><div class="vl up">15.04</div><div class="ch up">一周低点 · -0.17</div></div>
+</div>
+</div>
+
+<!-- TLDR -->
+<div class="tldr">
+<div class="t">关键结论（TLDR）</div>
+<div class="grid">
+<div class="cell"><b>市场定性：</b>财报后 AI 主升 + 软件重估双主线。英伟达在 8/26 财报基础上 8/27 常规交易再暴涨 8.74%（单日市值增约 4420 亿美元），带动纳指 +1.57% 创阶段新高、标普 +0.72% 再创历史新高，费半 +2.33%，VIX 压至一周低点——市场把英伟达 FY2028 +70% 指引当作"AI 资本开支超级周期"的长期承诺兑现，而非见光卖出的获利了结。</div>
+<div class="cell"><b>核心矛盾：</b>一面是英伟达连续两日确认 AI 景气、一面是软件股（Salesforce +23%、CrowdStrike +21%）因 AI 合作而重估——市场正在从"硬件独涨"走向"硬件+软件"的 AI 扩散重估。但 META -0.87%、AMZN -1.54% 分化，说明钱并非普涨，而是精准砸向有业绩兑现的方向。</div>
+<div class="cell"><b>分化警示：</b>纳指中国金龙 -0.74%（中概股走弱）——"美股科技强 ≠ 中国资产皆涨"，映射到 A 股需防传导衰减；同时美国 PCE 3.7%、10 年期美债升至 4.649%，利率端上行仍是压制成长估值的悬剑。</div>
+<div class="cell"><b>关键观察：</b>今日是 8/26"财报前静默"被彻底打破后的首个完整兑现日——英伟达没有高开低走而是放量续涨，AI 硬件链（博通+4.49%、英特尔+4.36%、台积电 ADR+2%+）与软件链（CRM/CRWD）多点开花，市场进入"AI 兑现扩散"的新阶段，需防高位拥挤回吐。</div>
+</div></div>
+
+<!-- 章零 -->
+<div class="chp" id="ch0">
+<div class="cht"><span class="n">0</span>市场底层状态与仓位约束
+<span class="nm">默认信念 / 拥挤度 / 资金驱动力</span></div>
+<p>要理解 8/27，必须先对照 8/26。过去一天市场把全部定价权交给英伟达财报，而 8/27 则是这份"期满审判"落地的验收日——结果是<b>超预期兑现且没有高开低走</b>。英伟达在 8/26 盘后业已超预期（营收 +106%、数据中心 +117%、FY2028 +70% 指引）、8/26 盘后一度从跌 3% 拉升至 +4% 之后，8/27 常规交易不仅守住了涨势，还放量大涨 8.74%、单日市值增加约 4420 亿美元，这构成了对"AI 资本开支超级周期"这一默认信念的最强加杠杆：<b>市场不但没有见光卖出，反而把 FY2028 +70% 的"可远观"承诺当成了长期锚</b>。与此同时一个被多数复盘忽略的底层变化正在发生——软件股（Salesforce、CrowdStrike、Veeva）在"被 AI 颠覆"的恐惧中单日重估大涨，这与"AI 硬件独涨"形成了互补：资金不愿只押注算力机器，开始同时布局"会用 AI 的软件公司"。这带来一个新的拥挤度结构：<b>英伟达与 AI 硬件仍是最拥挤方向，但软件的 alpha 正在第一个交易日后开始扩散</b>。</p>
+<div class="st">仓位约束框架</div>
+<table class="dt"><tr><th>维度</th><th>状态</th><th>信号</th><th>约束含义</th></tr>
+<tr><td>默认信念</td><td class="up">AI 资本开支超级周期，财报后确认续作</td><td>英伟达 8/27 +8.74% 放量续涨，非高开低走</td><td>叙事成立，短期难证伪</td></tr>
+<tr><td>拥挤度</td><td class="w">AI硬件极高、软件刚开始扩散</td><td>英伟达/US单点高度拥挤，CRM/CRWD接棒</td><td>硬件谨慎追高、软件可看扩散</td></tr>
+<tr><td>资金驱动力</td><td class="up">业绩兑现 + 软件重估双驱动</td><td>纳指+1.57%、标普新高、费半+2.33%</td><td>增量偏进攻，关注承接</td></tr>
+<tr><td>指数结构</td><td class="w">硬件领涨、权重分化</td><td>NVDA+8.7% vs META-0.87%、AMZN-1.54%</td><td>龙头强者恒强、权重并非普涨</td></tr>
+<tr><td>宏观托底</td><td class="w">利率上行是悬剑</td><td>10Y 美债 4.649%、PCE 3.7%</td><td>利率端压制估值，不可忽视</td></tr>
+</table>
+</div>
+
+<!-- 章一 -->
+<div class="chp" id="ch1">
+<div class="cht"><span class="n">1</span>多时间维度全景 + 整体状态判断
+<span class="nm">当日 / 5日 / 20日</span></div>
+<div class="st">1.1 三大指数近20日走势</div>
+<div class="chart-box"><div id="c1" class="chart chart-lg"></div></div>
+<div class="st">1.2 纳指近10日走势与成交额（QQQ代理）</div>
+<div class="chart-box"><div id="c4" class="chart chart-mid"></div></div>
+<div class="st">1.3 指数多时间维度涨跌幅</div>
+<table class="dt"><tr><th>指数</th><th>8/27收盘</th><th>1D</th><th>5D(约8/20)</th><th>20D(约7/28)</th><th>结构特征</th></tr>
+<tr><td class="b">纳斯达克</td><td>26,541.35</td><td class="up">+1.57%</td><td class="up">约+2.6%</td><td class="up">约+8.3%</td><td>创阶段新高，AI 兑现扩散主升</td></tr>
+<tr><td class="b">标普500</td><td>7,730.99</td><td class="up">+0.72%</td><td class="up">约+0.6%</td><td class="up">约+3.8%</td><td>再创历史新高，重心持续抬升</td></tr>
+<tr><td class="b">道琼斯</td><td>53,569.44</td><td class="up">+0.20%</td><td class="up">约+0.4%</td><td class="up">约-0.3%</td><td>权重分化，成长显著强于价值</td></tr>
+</table>
+<p style="font-size:12px;color:var(--t2)">注：5D/20D 为按 8/27 收盘点位及 7/28、8/20 参考点估算的方向性结论；图表中 ETF（QQQ/SPY/DIA）8/27 值为按对应指数当日涨跌幅换算的估算，历史点为实际行情记录。</p>
+<div class="st">1.4 市场整体状态判断：财报后 AI 主升 + 软件扩散</div>
+<p>三个时间维度共同指向一个"重心抬升、向上突破"的市场。20 日维度看，纳指自 7/28 以来累计涨幅扩大到约 +8.3%（26,541 vs 约 24,500），这一轮由 AI 叙事驱动的升势不仅完整而且进一步加速；标普再创历史新高（7,731），显示指数层面重心不断上移。5 日维度看，纳指从 8/20 的约 25,870 升至 26,541、累计约 +2.6%，8/25-8/27 连续三日上行走出"财报前收敛 → 财报后放量突破"的经典路径。当日（8/27）则彻底打破 8/26 的财报前静默：纳指 +1.57%、费半 +2.33%，英伟达 +8.74% 领涨，<strong>市场从"事件等待"切换为"兑现扩散主升"</strong>。综合定性：<strong>"财报后 AI 主升 + 软件扩散"</strong>。但需清醒：上行已连续加速且高位拥挤，5 日维度涨幅可观，短线回吐概率随涨幅累积而上升，但趋势层面仍偏强。</p>
+</div>
+
+<!-- 章二 -->
+<div class="chp" id="ch2">
+<div class="cht"><span class="n">2</span>宏观锚点与风险偏好
+<span class="nm">利率 / 汇率 / 商品 / 风险偏好</span></div>
+<div class="st">2.1 宏观快照</div>
+<table class="dt"><tr><th>指标</th><th>状态</th><th>对风险偏好含义</th></tr>
+<tr><td>美债利率</td><td class="w">上行</td><td>10Y 美债升至 4.649%，利率端持续走高压制估值，但当日未阻止成长股上行</td></tr>
+<tr><td>通胀 PCE</td><td class="w">偏高</td><td>PCE 3.7%、连续65个月超美联储2%目标，通胀黏性仍在</td></tr>
+<tr><td>美元指数DXY</td><td class="w">中性</td><td>整日无方向性异动</td></tr>
+<tr><td>黄金/原油</td><td class="w">走弱</td><td>金银油价格走弱，避险与商品属性降温，把资金让位给风险资产</td></tr>
+<tr><td>VIX 恐慌</td><td class="g">一周低点 15.04</td><td>事件落地+风险偏好回升，恐慌指数压至一周低点，偏"贪婪"而非"恐惧"</td></tr>
+</table>
+<div class="quote"><b>宏观资产背离/共振分析：</b>8/27 的一个显著特征是——<b>利率上行（10Y 4.649%）与风险资产上行（纳指新高）并存</b>，即"股债双强"的异常组合。这背后的解释是：市场把主导权交给了"AI 产业景气"这一微观叙事，而暂时钝化了对无风险利率上行的敏感度。而黄金/原油走弱 + VIX 一周低点，共同指向"风险偏好回升、避险资金流出"。对风险偏好的含义是：当前是"产业驱动 + 情绪偏热"的组合，但利率 4.6%+ 的高位与 PCE 3.7% 的黏性仍是随时可能再定价的风险源——一旦 AI 主升动能放缓，利率会迅速重新压制估值。（证据等级：中）</div>
+<div class="st">2.2 反证条件</div>
+<div class="db">如果"产业景气主导、利率钝化"判断错误，盘面应见：科技股冲高回落、10Y 美债继续大幅上行（单日 >8-10bp）或成长股与利率同步走弱——即利率重新夺回定价权。当前尚未出现，但需持续盯 10Y 与 PCE 后续数据。</div>
+</div>
+
+<!-- 章三 -->
+<div class="chp" id="ch3">
+<div class="cht"><span class="n">3</span>市场主线与资金流向
+<span class="nm">行业轮动 / 资金去向 / 做空动能 / 叙事竞争</span></div>
+<div class="st">3.1 七巨头当日表现</div>
+<div class="chart-box"><div id="c2" class="chart chart-mid"></div></div>
+<div class="st">3.2 七巨头涨跌排序（8/27收盘）</div>
+<table class="dt"><tr><th>标的</th><th>1D</th><th>结构信号</th></tr>
+<tr><td class="b">英伟达 NVDA</td><td class="up">+8.74%</td><td>财报兑现+FY2028指引+600亿回购，单日市值+4420亿，绝对领涨</td></tr>
+<tr><td class="b">特斯拉 TSLA</td><td class="up">+2.60%</td><td>独立走强，风险偏好回升下的弹性品种</td></tr>
+<tr><td class="b">微软 MSFT</td><td class="up">+1.75%</td><td>AI 平台受益 + 软件扩散，逆势跟涨</td></tr>
+<tr><td class="b">苹果 AAPL</td><td class="up">+0.36%</td><td>小幅上涨，权重稳</td></tr>
+<tr><td class="b">谷歌 GOOGL</td><td class="dn">-0.41%</td><td>微跌，独立于 AI 兑现链</td></tr>
+<tr><td class="b">Meta META</td><td class="dn">-0.87%</td><td>回落，资金从"平台避风"流出做多 Alpha</td></tr>
+<tr><td class="b">亚马逊 AMZN</td><td class="dn">-1.54%</td><td>领跌权重，与 AI 硬件/软件双主线均弱相关</td></tr>
+</table>
+<div class="st">3.3 主线判定</div>
+<table class="dt"><tr><th>维度</th><th>判断</th><th>证据</th></tr>
+<tr><td>当日主线</td><td class="up">AI 硬件兑现 + 软件重估</td><td>英伟达+8.74%、费半+2.33%、CRM+23%、CRWD+21%</td></tr>
+<tr><td>行业内部</td><td class="up">半导体、软件领涨</td><td>博通+4.49%、英特尔+4.36%、台积电ADR+2%</td></tr>
+<tr><td>做空动能</td><td class="g">非真跌</td><td>纳指+1.57%、VIX 一周低点，风险偏好主导</td></tr>
+<tr><td>叙事竞争</td><td class="w">AI 产业兑现赢得全局定价权</td><td>利率上行被钝化，产业景气压过宏观</td></tr>
+</table>
+<div class="quote"><b>半导体内部多点开花：</b>费城半导体指数大涨 2.33%，博通 +4.49%、英特尔 +4.36%、台积电 ADR +2%+。这与 8/26"英伟达单点领涨、费半仅微涨"形成鲜明对比——说明<strong>英伟达财报的强指引开始从龙头外溢到更广泛的半导体链</strong>，是"兑现扩散"而非"龙头独唱"，AI 硬件链内部出现补涨扩散的健康信号。</div>
+<div class="st">3.4 叙事竞争（局部 vs 全局定价权）</div>
+<p><strong>全局定价权：AI 产业兑现（英伟达财报余震）。</strong>英伟达连续两日兑现 + FY2028 +70% 指引，把"AI 资本开支超级周期"做成全局叙事，半导体链、算力链、甚至软件链都被这一叙事重新定价。<strong>局部定价权：软件重估（Salesforce +23%）。</strong>Salesforce 与 Anthropic 合作推"Claudeforce"并给出 11%-12% 全年增长指引，与 CrowdStrike +21%、Veeva 大涨一起，逆转了市场对"AI 将颠覆 SaaS"的恐惧——资金开始重新定价"会用 AI 的软件公司"。这条局部叙事是 8/27 最大的增量暗线，值得未来数个交易日持续跟踪。</p>
+</div>
+
+<!-- 章四 -->
+<div class="chp" id="ch4">
+<div class="cht"><span class="n">4</span>暗线与多空伏击点
+<span class="nm">水面下的涟漪 / 高位裂痕 / 生还者与掉队者</span></div>
+<div class="st">4.1 多头水面下的涟漪</div>
+<ul style="padding-left:20px;font-size:13.5px;line-height:2">
+<li><b>软件重估（Salesforce +23%、CrowdStrike +21%）：</b>是 8/27 最大的暗线增量——资金从"AI 颠覆软件"转为"软件受益 AI"，为市场提供硬件之外的第二个进攻方向。</li>
+<li><b>半导体系扩散（博通+4.49%、英特尔+4.36%、台积电ADR+2%）：</b>英伟达强指引外溢至全链，兑现扩散而非龙头独唱。</li>
+<li><b>特斯拉 TSLA +2.60% 独立走强：</b>风险偏好回升下的弹性品种，独立于 AI 兑现链。</li>
+</ul>
+<div class="st">4.2 空头高位裂痕</div>
+<ul style="padding-left:20px;font-size:13.5px;line-height:2">
+<li><b>Meta -0.87%、亚马逊 AMZN -1.54%：</b>在"硬件+软件"双主线的大涨日逆势走弱，说明资金不是普涨追高，而是精准抛售无 AI 兑现的权重——高位分化暗线。</li>
+<li><b>纳指中国金龙 -0.74%：</b>中概股整体走弱，美股科技强并未传导到中国资产。</li>
+<li><b>10Y 美债 4.649% + PCE 3.7%：</b>利率上行悬剑仍在，一旦 AI 主升动能衰竭将迅速再定价。</li>
+</ul>
+<div class="st">4.3 分歧中的生还者/掉队者</div>
+<table class="dt"><tr><th>类别</th><th>标的</th><th>信号</th></tr>
+<tr><td class="up">生还者（兑现领涨）</td><td>NVDA +8.74%、博通+4.49%、CRM+23%、TSLA+2.60%</td><td>有业绩兑现/景气催化的方向强者恒强</td></tr>
+<tr><td class="dn">掉队者（大跌日走弱）</td><td>AMZN -1.54%、META -0.87%、中概金龙-0.74%</td><td>无 AI 兑现/权重股被抛售，中概映射弱</td></tr>
+</table>
+</div>
+
+<!-- 四·五 期权 -->
+<div class="chp" id="ch45">
+<div class="cht"><span class="n">4·5</span>期权情绪与期权墙分析
+<span class="nm">P/C · IV · Zero Gamma（数据源未覆盖）</span></div>
+<div class="wb"><b>期权数据源未覆盖说明：</b>本环境中 CBOE 期权链采集脚本（Sentinel_Daily_Pro.py）与自选股列表（stock.list）不可用，无法获取 P/C OI Ratio、P/C Volume Ratio、加权 IV、Call/Put Wall 与 Zero Gamma 等期权情绪数据。下表以"英伟达财报后单日大涨 8.74%"的仓位事实作为期权情绪的替代观察维度。</div>
+<div class="quote"><b>替代观察（财报落地后仓位）：</b>英伟达 8/26 财报前 7 连跌是典型的"财报前期权 Gamma 墙失效 + 主动降仓"；8/27 放量大涨 8.74% 是"财报落地 = Gamma 压缩 + 空头回补"的典型结果，VIX 压至一周低点 15.04（事件落地后波动率快速回归）也印证了这一规律。市场在高位追涨的拥挤度重新抬升，但此类波动率压缩期往往意味着短线 Gamma 反转风险上升——一旦高位获利了结集中触发，回调幅度可能放大。标注证据等级：低（无 CBOE 精确数据支撑）。</div>
+</div>
+
+<!-- 四·六 信用利差 -->
+<div class="chp" id="ch46">
+<div class="cht"><span class="n">4·6</span>信用利差分析
+<span class="nm">CDS 代理（数据源未配置）</span></div>
+<div class="wb"><b>信用利差数据源未配置：</b>FRED API key 与本环境不可用，无法获取 ICE BofA IG/HY/BBB/CCC 各档信用利差的实时值。以 8/27 市场表现做替代观察：三大指数向上突破、均创阶段/历史新高、VIX 压至一周低点、金银油走弱而风险资产走强，综合判断当前信用环境偏宽松、未见利差明显走阔的风险信号，"利率-信用-权益"传导链平稳（尽管无风险利率在 4.6% 高位）。标注证据等级：低（无量化利差数据支撑）。</div>
+</div>
+
+<!-- 章五 -->
+<div class="chp" id="ch5">
+<div class="cht"><span class="n">5</span>盘面成因拆解
+<span class="nm">State → Trigger → Flow · 时间线还原</span></div>
+<div class="st">State → Trigger → Flow 总览</div>
+<div class="hb"><b>原有状态（State）：</b>8/26 财报后市场已确认英伟达超预期（FY27Q2 +106%、数据中心 +117%、FY2028 +70% 指引），盘后 -3%→+4% 反转，但正式交易尚未定价完整。<b>触发器（Trigger）：</b>8/27 常规交易对英伟达财报的次级确认（无新增财报，是兑现行情的延续）+ Salesforce 与 Anthropic 合作"Claudeforce"引爆软件重估。<b>资金响应（Flow）：</b>英伟达放量大涨 8.74%、单日市值 +4420 亿，带动半导体链（费半 +2.33%、博通 +4.49%）与软件链（CRM +23%、CRWD +21%）多点开花，纳指 +1.57% 创阶段新高、标普 +0.72% 再创新高。</div>
+<div class="tl">
+<div class="ti"><div class="tt">盘前/宏观（美东，全天背景）</div><div class="tcc">10Y 美债升至 4.649%、PCE 3.7% 高位，但利率上行被 AI 产业景气钝化；黄金、原油走弱，避险属性降温、把资金让位给风险资产。</div></div>
+<div class="ti"><div class="tt">盘中 · 高举高打</div><div class="tcc"><b>英伟达常规交易干脆利落放量大涨 8.74%</b>（8/26 盘后 +4% 不是一日脉冲，而是持续兑现），单日市值增加约 4420 亿美元，彻底打消"利好出尽"担忧。</div></div>
+<div class="ti"><div class="tt">盘中 · 半导体扩散</div><div class="tcc">费半 +2.33%，博通 +4.49%、英特尔 +4.36%、台积电 ADR +2%+——英伟达强指引外溢到全链，兑现扩散。</div></div>
+<div class="ti"><div class="tt">盘中 · 软件重估</div><div class="tcc"><b>Salesforce 与 Anthropic 宣布合作推"Claudeforce"，发布会+业绩均超预期，单日大涨约 23%</b>；CrowdStrike +21%、Veeva 大涨，SaaS被 AI 颠覆的恐惧被暂时遏制。</div></div>
+<div class="ti"><div class="tt">收盘 · 结构</div><div class="tcc">纳指 +1.57%、标普 +0.72% 再创历史新高、道指 +0.20%（权重分化）；META -0.87%、AMZN -1.54% 逆势走弱；中概金龙 -0.74%。VIX 压至一周低点 15.04。</div></div>
+</div>
+<div class="quote"><b>因果链条（四层）：</b>①改变什么预期——英伟达连续两日确认"AI 资本开支超级周期 + FY2028+70% 可远观指引"，同时 Salesforce 合作重估逆转"软件被 AI 颠覆"的恐惧，把 AI 叙事从"硬件独涨"扩展到"硬件+软件"双轮；②谁最受益——英伟达（+8.74%）与 AI 硬件链（费半+2.33%）、软件（CRM/CRWD）直接受益，权重股（AMZN/META）反被抛售；③资金先手还是跟风——8/26 财报前已先手降负、8/27 兑现回补属"预期落地后重新定价"，是追赶而非纯粹投机；④逻辑能否持续——FY2028 指引 + 软件业绩是硬基本面，具备季度级持续传导，但 8/27 单日大涨后短线拥挤度快速抬升，需防获利回吐（证据等级：高）。</div>
+<div class="st">反证条件</div>
+<div class="db">如果"AI 兑现扩散 = 普涨"判断错误，盘面应见：8/28 英伟达高开低走、半导体/软件链集体冲高回落、或 META/AMZN 补涨而 NVDA 熄火——即"兑现行情"变为"利好出尽"且资金从 AI 撤出。</div>
+</div>
+
+<!-- 章六 -->
+<div class="chp" id="ch6">
+<div class="cht"><span class="n">6</span>叙事如何映射到不同资产
+<span class="nm">同一叙事的差异化传导</span></div>
+<div class="st">叙事映射矩阵</div>
+<table class="dt"><tr><th>叙事</th><th>受益方向</th><th>逻辑</th><th>定价时点</th></tr>
+<tr><td rowspan="3"><b>AI 资本开支超级周期（FY2028+70%）</b></td><td class="up">英伟达 NVDA（+8.74%）</td><td>业绩+指引最直接受益、加码600亿回购</td><td>已充分定价</td></tr>
+<tr><td class="up">半导体链（费半+2.33%、博通/英特尔/台积电ADR）</td><td>算力缺口扩大外溢至全链</td><td>扩散定价中</td></tr>
+<tr><td class="w">数据中心互连/光模块/液冷等 A 股映射</td><td>景气传导，但中概金龙-0.74%提示传导衰减</td><td>A 股映射、待验证</td></tr>
+<tr><td rowspan="2"><b>软件重估（AI 反哺 SaaS）</b></td><td class="up">Salesforce（+23%）、CrowdStrike（+21%）</td><td>与 Anthropic 等合作把 AI 变成软件增量</td><td>首个交易日，扩散初期</td></tr>
+<tr><td class="up">微软 MSFT（+1.75%）</td><td>AI 平台 + 软件受益叠加</td><td>随涨</td></tr>
+<tr><td rowspan="2"><b>资金精准化（去权重化）</b></td><td class="dn">Meta（-0.87%）、亚马逊（-1.54%）</td><td>无 AI 兑现的权重股被抛售</td><td>个股逻辑</td></tr>
+<tr><td class="dn">中国金龙（-0.74%）</td><td>美股科技强≠中国资产皆涨</td><td>映射衰减</td></tr>
+</table>
+<div class="st">叙事权重量化</div>
+<p><strong>局部定价权被"AI 兑现扩散"与"软件重估"双线瓜分。</strong>硬件侧英伟达与半导体链赢得板块定价权，是主引擎；软件侧 Salesforce 为首赢得"AI 反哺软件"的增量叙事，是新的第二引擎。权重股（AMZN/META）因无 AI 兑现被抛售，说明本轮上涨是"有业绩兑现的结构性上涨"而非"普涨"。反事实推演：若英伟达 8/27 高开低走，则会让市场把财报当"利好出尽"，半导体链大概率冲高回落、纳指或回吐 8/26 的全部涨幅——而本次英伟达放量续涨 8.74% 直接规避了这一最悲观情景，并外溢到软件与半导体扩散方向。</p>
+</div>
+
+<!-- 章七 -->
+<div class="chp" id="ch7">
+<div class="cht"><span class="n">7</span>多空辩论
+<span class="nm">TradingAgents 三幕辩论</span></div>
+<div class="bb">
+<div class="bp"><h4>🐂 多头观点</h4><ul>
+<li>英伟达连续两日兑现（8/26财报+8/27大涨8.74%），FY2028 +70% 指引把 AI 资本开支周期"可远观"确定性拉满，这是五年尺度级别的硬证实。</li>
+<li>半导体系扩散（费半+2.33%、博通/英特尔/台积电ADR跟涨）+ 软件重估（CRM+23%）双线开花，市场出现"兑现扩散"而非"龙头独唱"，上涨更健康。</li>
+<li>VIX 压至一周低点 15.04，金银油走弱、风险偏好回升，资金从避险回流风险资产。</li>
+<li>标普再创历史新高、纳指创阶段新高，趋势层面重心持续上移，回踩都是买点。</li>
+</ul></div>
+<div class="kp"><h4>🐻 空头观点</h4><ul>
+<li>英伟达单日 +8.74%、拥挤度快速抬升，高位获利了结盘随时可能出现，近期连涨后短线回吐概率上升。</li>
+<li>10Y 美债升至 4.649% + PCE 3.7% 高位，利率端持续上行压制成长估值，一旦 AI 主升动能放缓将迅速再定价。</li>
+<li>Meta/亚马逊/中概金龙下跌，说明资金并非普涨而是精准砸向有兑现的方向，结构性行情一旦轮动降温则回调集中。</li>
+<li>软件重估（CRM+23%）是"首个交易日"的高情绪，其扩散能否持续、是否透支有待证实，单日大涨存在高开兑现风险。</li>
+</ul></div>
+</div>
+<div class="st">⚖️ 综合判断</div>
+<p>胜率倾向：<strong>短线（1-3日）依旧偏多头</strong>，因英伟达放量续涨 + 兑现扩散 + VIX 低位，趋势动能完整；但<strong>需开始对冲"连涨后的回吐 + 利率上行"</strong>。中期（1-2月）取决于 AI 兑现能否持续外溢到软件与低位半导体，以及利率能否稳定。关键验证条件：8/28 英伟达能否守住涨势、软件链（CRM/CRWD）能否延续扩散、半导体链是否继续补涨——若英伟达高开低走且软件、硬件同时熄火，则多头结论转弱。当前建议：已持有的 AI 硬件头寸可持有观察、用 +10% 止盈纪律锁定，未介入者不追单日大涨后的高位，等待回踩或软件/半导体扩散的二次买点。</p>
+</div>
+
+<!-- 章八 -->
+<div class="chp" id="ch8">
+<div class="cht"><span class="n">8</span>24小时关键信息筛选
+<span class="nm">影响力 · 证据强度 · 对应价格变动</span></div>
+<div class="st">8.1 关键信息按影响力排序</div>
+<table class="dt"><tr><th>信息</th><th>类型</th><th>影响力</th><th>证据强度</th><th>对应价格变动</th></tr>
+<tr><td class="b">英伟达 8/27 放量大涨 8.74%（后续 8/26 财报 FY27Q2 +106%、数据中心 +117%、FY2028 +70%、加码600亿回购）</td><td>财报兑现</td><td class="r">9.5/10</td><td class="up">高（行情+官方财报）</td><td class="up">+8.74%、单日市值+4420亿美元</td></tr>
+<tr><td class="b">Salesforce 与 Anthropic 合作推"Claudeforce"+ 11-12%全年指引</td><td>剧情推进</td><td class="r">8.5/10</td><td class="up">高</td><td class="up">+23%（2020年8月以来最大涨幅）</td></tr>
+<tr><td class="b">软件重估扩散：CrowdStrike +21%、Palo Alto +12.83%、Palantir +4.75%、Veeva 大涨</td><td>剧情推进</td><td class="r">8/10</td><td class="up">高（行情）</td><td class="up">软件板块普涨</td></tr>
+<tr><td>半导体系扩散：费半 +2.33%、博通 +4.49%、英特尔 +4.36%、台积电 ADR +2%+</td><td>放大器</td><td class="w">7/10</td><td class="up">高（行情）</td><td class="up">半导体涨价</td></tr>
+<tr><td>标普 +0.72% 再创历史新高、纳指 +1.57% 创阶段新高</td><td>指数</td><td class="w">6.5/10</td><td class="up">高</td><td class="up">指数新高</td></tr>
+<tr><td>纳指中国金龙 -0.74%、Meta -0.87%、亚马逊 -1.54%</td><td>分化警示</td><td class="w">5.5/10</td><td class="up">高</td><td class="dn">中概/权重走弱</td></tr>
+<tr><td>10Y 美债 4.649% + PCE 3.7% + VIX 一周低点15.04</td><td>宏观背景</td><td class="w">5/10</td><td class="up">高</td><td>利率上行、避险降温</td></tr>
+</table>
+<div class="st">8.2 未被市场定价的信息（专项）</div>
+<div class="hb"><b>软件重估的"首轮扩散"可能仍未被完全定价：</b>CRM/CRWD 单日大涨更多是"首日情绪"，其对整个 SaaS/应用软件板块的重塑（"AI 反哺软件"而非"AI 颠覆软件"）可能在未来数周持续传导到更多软件标的，这一大纲可能被低估。<b>潜在危险信号：</b>①10Y 利率 4.65% 高位、PCE 黏性，利率再定价随时可能发生；②中概金龙与美股科技的背离，预示中国资产映射链条存在衰减。（证据等级：中）</div>
+</div>
+
+<!-- 章九 -->
+<div class="chp" id="ch9">
+<div class="cht"><span class="n">9</span>市场状态更新库
+<span class="nm">被证伪的旧叙事 / 新接管定价锚</span></div>
+<div class="st">9.1 被钝化/证伪的旧叙事</div>
+<table class="dt"><tr><th>旧叙事</th><th>状态</th><th>说明</th></tr>
+<tr><td>"财报后见光卖出 / AI 见顶担忧"</td><td class="r">被兑现证伪</td><td>英伟达 8/27 放量续涨 8.74%，市场把财报当"基本面续作"而非"利好出尽"</td></tr>
+<tr><td>"AI 颠覆软件 / SaaS-pocalypse 担忧"</td><td class="w">被重估暂时取代</td><td>Salesforce+23% 引领软件"AI 反哺"重估，SaaS 恐惧被暂时压制</td></tr>
+<tr><td>"财报前谨慎观望"</td><td class="r">被打破</td><td>8/27 完全打破 8/26 的静默，转向放量兑现扩散</td></tr>
+</table>
+<div class="st">9.2 正式接管的新定价锚</div>
+<div class="hb"><b>新定价锚一：AI 兑现扩散（硬件→软件）。</b>英伟达 + 半导体 + 软件多点兑现，市场从"单点 AI"走向"AI 扩散重估"，这是新的结构化定价锚。<b>新定价锚二：利率高位悬剑。</b>10Y 4.65% + PCE 3.7%——利率上行被暂时钝化，但作为悬剑每时每刻存在，一旦产业动能放缓将夺回定价权。<b>新定价锚三：中国资产映射衰减。</b>中概金龙-0.74% 与美股科技背离，A 股/港股映射到美股景气存在传导折扣。</div>
+</div>
+
+<!-- 章十 -->
+<div class="chp" id="ch10">
+<div class="cht"><span class="n">10</span>前瞻观察与风险
+<span class="nm">未来1-3个交易日关键变量</span></div>
+<div class="st">10.1 主线延续情景（Bull）</div>
+<table class="dt"><tr><th>变量</th><th>观察信号</th></tr>
+<tr><td class="up">英伟达 8/28 走势</td><td>能否守住涨势、量能是否延续；缩量回踩且不破位则健康</td></tr>
+<tr><td class="up">软件重估扩散</td><td>CRM/CRWD 能否延续、更多软件标的接棒（扩散纵深）</td></tr>
+<tr><td class="up">半导体补涨</td><td>博通/英特尔/台积电等能否继续放量补涨（兑现扩散）</td></tr>
+</table>
+<div class="st">10.2 主线反转情景（Bear / 从哪开始失真）</div>
+<table class="dt"><tr><th>触发</th><th>信号</th></tr>
+<tr><td class="dn">英伟达高开低走</td><td>8/28 冲高回落、破 8/27 关键均线，说明兑现行情变利好出尽</td></tr>
+<tr><td class="dn">软件重估一日游</td><td>CRM/CRWD 次日高开低走、软件无法扩散</td></tr>
+<tr><td class="dn">利率再定价</td><td>10Y 美债单日大幅上行或 PCE 后续走强，成长股估值受压</td></tr>
+<tr><td class="dn">中概持续背离</td><td>中国资产持续走弱，映射衰减成系统性</td></tr>
+</table>
+<div class="db"><b>做空/防御触发条件（Short Triggers）：</b>①英伟达跌破 8/27 收盘关键位（反向确认）→ 兑现主线证伪；②软件重估扩散失败、半导体冲高放量长阴 → 情绪脉冲见顶；③10Y 美债单日 >8-10bp 上行或 VIX 升破 18 → 市场从"产业驱动"转回"宏观 risk-off"。在此任一触发前，不逆势做空 AI 兑现主线。</div>
+</div>
+
+<!-- 章十一 -->
+<div class="chp" id="ch11">
+<div class="cht"><span class="n">11</span>风险可控的交易标的建议
+<span class="nm">小资金 · 科技AI主线 · 10%止盈</span></div>
+<div class="quote"><b>资金规模基线：</b>以下建议以 $2,000-3,000 资金为基准（符合"小资金科技AI主线"策略），单标的不超过总资金40%。全部为观察/参与建议，非投资推荐。</div>
+<table class="dt"><tr><th>标的</th><th>逻辑</th><th>表达方式</th><th>风险点</th></tr>
+<tr><td class="up">英伟达 NVDA</td><td>FY2028+70%指引+600亿回购+兑现扩散，AI主线核心</td><td>个股/正股</td><td>单日大涨后高位、回调风险</td></tr>
+<tr><td class="up">半导体ETF（SMH/SOXX）</td><td>费半+2.33%、兑现外溢全链</td><td>ETF 分散单一风险</td><td>整体beta回吐</td></tr>
+<tr><td class="up">软件/云（CRM/CRWD/赛富时代）</td><td>软件重估主线、AI反哺SaaS扩散初期</td><td>等回踩/确认再入</td><td>单日大涨后高兑现</td></tr>
+<tr><td class="w">A股 AI 硬件映射</td><td>美股景气传导到 A 股 PCB/CPO/存储</td><td>注意中概金龙-0.74%提示传导衰减</td><td>映射打折、追高风险</td></tr>
+</table>
+<div class="db"><b>风险控制：</b>①单标的 ≤40% 仓位；②10% 止盈纪律（到达后减至轻仓）；③止损设于 8/27 相关低点（NVDA 破关键均线离场）；④追高需谨慎，<b>拒绝在单日大涨后直接追涨停价</b>，等待回踩或软件/半导体扩散的二次买点；⑤规避 0DTE 与 3 倍杠杆 ETF 隔夜持有。</div>
+</div>
+
+<!-- 章十二 -->
+<div class="chp" id="ch12">
+<div class="cht"><span class="n">12</span>科技/AI板块深度扫描
+<span class="nm">半导体 / AI硬件 / AI应用</span></div>
+<div class="st">12.1 半导体与AI硬件多周期表现</div>
+<div class="chart-box"><div id="c5" class="chart chart-mid"></div></div>
+<div class="st">12.2 半导体与软件当日表现</div>
+<table class="dt"><tr><th>标的</th><th>1D</th><th>逻辑拆解</th></tr>
+<tr><td class="b">英伟达 NVDA</td><td class="up">+8.74%</td><td>财报兑现+FY2028+70%+600亿回购，AI 主线绝对龙头</td></tr>
+<tr><td class="b">博通 AVGO</td><td class="up">+4.49%</td><td>AI 算力 ASIC/通信芯片，苹果产业链，兑现外溢</td></tr>
+<tr><td class="b">英特尔 INTC</td><td class="up">+4.36%</td><td>代工+边缘AI，财报前存储/边缘企稳延续</td></tr>
+<tr><td class="b">台积电 TSM(ADR)</td><td class="up">+2%+</td><td>代工龙头，AI 晶圆需求确定性，随涨</td></tr>
+<tr><td class="b">Salesforce CRM</td><td class="up">+23%</td><td>与 Anthropic 合作"Claudeforce"+11-12%指引，软件重估领涨</td></tr>
+<tr><td class="b">CrowdStrike CRWD</td><td class="up">+21%</td><td>AI 安全平台，财报+AI 反哺重估</td></tr>
+</table>
+<div class="st">12.3 板块内部驱动力分析</div>
+<p><strong>半导体内部从"单点独唱"走向"兑现外溢"，是本轮最显著变化。</strong>8/26 费半仅微涨（英伟达单点领涨），8/27 费半大涨 2.33%、博通+4.49%、英特尔+4.36%、台积电 ADR+2%+——英伟达 FY2028 +70% 指引把"算力缺口扩大"的确定性外溢到整个半导体制造与代工链，这是"兑现扩散"的健康信号。<strong>软件侧则是最强增量：</strong>Salesforce 与 Anthropic 合作推"Claudeforce"（把 Claude 的推理植入企业 CRM 工作流）、并给出 11%-12% 全年增长，与 CrowdStrike、Veeva 一起逆转"AI 颠覆软件"的恐惧，市场开始为"会用 AI 的软件公司"重新定价——软件重估是未来数周可能持续扩散的新主线。对 A 股的映射：英伟达景气 + 国产算力订单（两家上市公司合计 21 亿算力长期服务合同，已刊发盘中快讯）延续，AI 硬件链情绪有支撑，但中概金龙 -0.74% 提示传导存在打折。</p>
+</div>
+
+<!-- 章十三 -->
+<div class="chp" id="ch13">
+<div class="cht"><span class="n">13</span>仓位管理建议
+<span class="nm">当前建议仓位 / 入场节奏 / 止盈止损</span></div>
+<table class="dt"><tr><th>维度</th><th>当前建议</th></tr>
+<tr><td>当前建议仓位</td><td class="w">中性偏进攻（5-6成），连涨后不追高、留足回撤缓冲</td></tr>
+<tr><td>核心暴露</td><td>AI 兑现主线（英伟达/半导体 ETF/SOXX）+ 谨慎布局软件扩散（CRM 等）</td></tr>
+<tr><td>入场节奏</td><td><b>不追单日大涨后的涨停价</b>；优先等英伟达回踩 8/27 关键均线企稳、或软件/半导体扩散出现二次买点再分批介入</td></tr>
+<tr><td>止盈触发</td><td>+10% 止盈纪律：单标的涨幅达 10% 即减至轻仓</td></tr>
+<tr><td>止损执行</td><td>NVDA 跌破 8/27 关键均线 / 半导体 ETF 跌破 8/27 收盘即减半仓</td></tr>
+<tr><td>空仓条件</td><td>英伟达高开低走 + 软件重估退潮 + 量能萎缩 → 全部空仓观望</td></tr>
+<tr><td>规避</td><td>0DTE 期权、3 倍杠杆 ETF 隔夜；单日大涨后不做追高接飞刀</td></tr>
+</table>
+<div class="db"><b>风险优先提示：</b>英伟达单日 +8.74% 后拥挤度显著抬升，10Y 利率 4.65% 高位悬剑仍在，Meta/中概走弱警示资金非普涨。仓位上限锁定 6 成，留足现金应对"连涨后高位震荡"的高波动，用 10% 止盈纪律锁定兑现利润。</div>
+</div>
+
+<!-- 章十四 -->
+<div class="chp" id="ch14">
+<div class="cht"><span class="n">14</span>结论式总结
+<span class="nm">白话观点化 · 谁主导市场 · 盯什么</span></div>
+<p>今天（8/27）美股盘面其实很好懂：<strong>英伟达把 AI 神话从"盘后表演"续成了"正式行情"，而软件股开始第一次分享 AI 的红利</strong>。英伟达没有像很多人担心的那样"高开低走",反而放量涨了 8.74%，单日市值多出 4420 亿美元——因为它不但业绩超预期，还提前一年给出 FY2028 营收 +70% 的指引并加码 600 亿回购，等于告诉市场"AI 这个钱我未来几年还会大把大把地赚"。更值得注意的是软件：Salesforce 跟 Anthropic 合作搞"Claudeforce"直接暴涨 23%，CrowdStrike 涨 21%——市场第一次从"AI 会不会干掉软件"变成了"软件会不会借 AI 赚更多钱"，这是一个新主线的起点，比硬件更值得盯。</p>
+<p>接下来最值得盯的<b>四大信号</b>：①英伟达 8/28 能不能守住涨势（缩量回踩而不破位是健康，高开低走就是利好出尽）；②软件重估（CRM/CRWD）是扩散成板块行情，还是一日游；③半导体（博通/英特尔/台积电ADR）能不能继续补涨，印证"兑现扩散"而非龙头独唱；④10Y 美债（4.65%）和 PCE——利率这把悬剑会不会在情绪转弱时夺回定价权。一句话：<strong>AI 的行情还没结束，但已经从"英伟达一个人扛"变成了"硬件+软件一起跑"，下一步的关键不是追英伟达的高位，而是抓住扩散的低位。</strong></p>
+<div class="quote"><b>免责声明：</b>本报告基于公开行情与新闻（财联社/第一财经/券商中国/nasdaq.com等）生成，全部数据真实有效，仅供研究参考，不构成投资建议。期权（CBOE）与信用利差（FRED）数据源在本环境不可用，相关章节已如实标注并采用替代观察。图表中 ETF（QQQ/SPY/DIA）8/27 值为按对应指数涨跌幅换算的估算。投资有风险，决策需谨慎。</div>
+</div>
+
+</div>
+<div class="ftr">美股复盘报告 · 2026年8月27日 · 数据来源：公开财经新闻（财联社/第一财经/券商中国/nasdaq.com）+ ECharts<br>本环境期权(CBOE)与信用利差(FRED)数据源未配置，相关维度以替代观察标注</div>
+
+<script>
+// ---- 章一 图表 c1: 三大指数20日走势（QQQ/SPY/DIA） ----
+(function(){
+var c = echarts.init(document.getElementById('c1'));
+var dates = ['7/28','7/29','7/30','7/31','8/3','8/4','8/5','8/6','8/7','8/10','8/11','8/12','8/13','8/14','8/17','8/18','8/19','8/20','8/21','8/24','8/25','8/26','8/27*'];
+var spy = [740.86,729.46,741.69,747.03,757.67,771.33,769.79,768.56,773.26,773.03,770.56,772.49,777.88,776.34,772.67,767.45,769.06,762.6,765.72,763.47,765.91,766.08,771.60];
+var qqq = [675.49,661.73,683.55,687.99,700.07,723.85,717.3,714.65,723.03,720.87,718.45,723.7,732.07,731.07,729.87,717.51,716.08,710.93,713.44,706.32,710.72,711.37,722.40];
+var dia = [536.72,537.48,536.37,534.56,533.76,533.56,537.05,536.19,536.8,536.4,535.6,534.9,535.3,536.37,533.76,532.48,533.84,527.09,532.22,533.65,535.24,534.23,535.30];
+c.setOption({
+  backgroundColor:'transparent',
+  tooltip:{trigger:'axis'},
+  legend:{data:['SPY 标普500','QQQ 纳指100','DIA 道琼斯'],top:4},
+  grid:{left:50,right:18,top:44,bottom:28},
+  xAxis:{type:'category',data:dates,axisLabel:{fontSize:10}},
+  yAxis:{type:'value',scale:true,axisLabel:{fontSize:10}},
+  series:[
+    {name:'SPY 标普500',type:'line',data:spy,smooth:true,itemStyle:{color:'#1e40af'},lineStyle:{width:2}},
+    {name:'QQQ 纳指100',type:'line',data:qqq,smooth:true,itemStyle:{color:'#3b82f6'},lineStyle:{width:2}},
+    {name:'DIA 道琼斯',type:'line',data:dia,smooth:true,itemStyle:{color:'#f59e0b'},lineStyle:{width:2}}
+  ]
+});
+})();
+
+// ---- 章一 图表 c4: 纳指10日走势+成交额 ----
+(function(){
+var c = echarts.init(document.getElementById('c4'));
+var dates=['8/14','8/17','8/18','8/19','8/20','8/21','8/24','8/25','8/26','8/27*'];
+var qqq=[731.07,729.87,717.51,716.08,710.93,713.44,706.32,710.72,711.37,722.40];
+var vol=[23.79,26.45,48.99,35.80,33.40,33.40,37.44,23.87,20.39,38.00];
+c.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['QQQ收盘','成交额(亿美元)'],top:4},
+  grid:{left:50,right:18,top:44,bottom:28},
+  xAxis:{type:'category',data:dates},
+  yAxis:[{type:'value',scale:true,name:'价格'},{type:'value',name:'成交额(亿美元)',splitLine:{show:false}}],
+  series:[
+    {name:'QQQ收盘',type:'line',data:qqq,smooth:true,itemStyle:{color:'#1e40af'},lineStyle:{width:2}},
+    {name:'成交额(亿美元)',type:'bar',data:vol,yAxisIndex:1,itemStyle:{color:'rgba(59,130,246,.35)'},barWidth:14}
+  ]
+});
+})();
+
+// ---- 章三 图表 c2: 七巨头当日涨跌 ----
+(function(){
+var c = echarts.init(document.getElementById('c2'));
+var names=['NVDA','TSLA','MSFT','AAPL','GOOGL','META','AMZN'];
+var vals=[8.74,2.60,1.75,0.36,-0.41,-0.87,-1.54];
+c.setOption({
+  tooltip:{trigger:'axis',formatter:function(p){return p[0].name+'<br/>'+p[0].value.toFixed(2)+'%';}},
+  grid:{left:50,right:18,top:20,bottom:28},
+  xAxis:{type:'category',data:names},
+  yAxis:{type:'value',axisLabel:{formatter:'{value}%'}},
+  series:[{type:'bar',data:vals,barWidth:30,
+    itemStyle:{color:function(p){return p.value>=0?'#dc2626':'#16a34a';},borderRadius:[3,3,0,0]},
+    label:{show:true,position:'top',formatter:'{c}%',fontSize:11}}]
+});
+})();
+
+// ---- 章十二 图表 c5: 半导体与软件 ----
+(function(){
+var c = echarts.init(document.getElementById('c5'));
+var names=['NVDA','AVGO','INTC','TSM','CRM','CRWD'];
+var vals=[8.74,4.49,4.36,2.00,23.00,21.00];
+c.setOption({
+  tooltip:{formatter:'{b}: {c}%'},
+  grid:{left:50,right:18,top:20,bottom:28},
+  xAxis:{type:'category',data:names},
+  yAxis:{type:'value',axisLabel:{formatter:'{value}%'}},
+  series:[{type:'bar',data:vals,barWidth:28,
+    itemStyle:{color:function(p){return p.value>=0?'#dc2626':'#16a34a';},borderRadius:[3,3,0,0]},
+    label:{show:true,position:'top',formatter:'{c}%',fontSize:11}}]
+});
+})();
+</script>
+</body>
+</html>

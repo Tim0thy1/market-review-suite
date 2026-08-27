@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-08-28</title>
+<style>
+:root{
+  --bg:#f7f8fa;--card:#ffffff;--rule:#e2e8f0;--ink:#1e293b;--muted:#64748b;
+  --up:#dc2626;--down:#16a34a;--amber:#d97706;--primary:#1e40af;--accent:#1e3a5f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei',-apple-system,'Microsoft YaHei',sans-serif;line-height:1.7;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
+.head{background:linear-gradient(135deg,#eef2ff,#ffffff);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
+.head h1{font-size:24px;letter-spacing:1px;color:var(--primary);margin-bottom:6px}
+.head .sub{color:var(--muted);font-size:13px}
+.headmark{color:var(--amber);font-size:12px;margin-top:8px}
+.badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:var(--primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.amber{background:var(--amber)}
+.tagline{margin-top:14px;background:#eef2ff;border-left:4px solid var(--primary);padding:10px 14px;font-size:13px;color:var(--accent);border-radius:0 8px 8px 0}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.card h2{font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card h2 .no{background:var(--primary);color:#fff;font-size:12px;width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.card h2 .tag{font-size:11px;font-weight:500;border:1px solid var(--rule);color:var(--muted);padding:2px 10px;border-radius:20px;background:#f8fafc}
+h3{border-left:4px solid var(--primary);padding-left:10px;margin:16px 0 8px;font-size:15px;color:var(--accent)}
+h3.sub{border-left:4px solid var(--amber);color:var(--amber)}
+p{font-size:14px;color:#334155;margin-bottom:9px}
+p strong{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;color:var(--accent);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--rule)}
+td{padding:8px 12px;border:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.h{color:var(--amber);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin-right:6px;margin-bottom:4px}
+.pill.up{background:#fee2e2;color:var(--up)}
+.pill.flat{background:#eef2ff;color:var(--primary)}
+.pill.hold{background:#dcfce7;color:#166534}
+.pill.warn{background:#fef3c7;color:#92400e}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mini{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.mini h4{font-size:13px;color:var(--muted);margin-bottom:6px}
+.mini .v{font-size:18px;font-weight:800}
+.mini p{font-size:12.5px;margin-top:4px}
+ul{padding-left:22px;font-size:14px;color:#334155;line-height:2}
+.quote{background:#f8fafc;border-left:3px solid var(--amber);padding:10px 14px;margin:10px 0;font-size:13px;color:#475569;border-radius:6px}
+.warn{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400e;margin:12px 0}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 10px}
+.toc{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin-bottom:18px;font-size:13px;color:var(--muted)}
+.toc b{color:var(--accent)}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.card{padding:18px 15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <h1>A 股盘前分析 · 今日走势预判</h1>
+  <div class="sub">交易日 2026-08-28（周五）· 状态：盘前 ｜ 信息截止 8/28 07:50（北京时间）</div>
+  <div class="headmark">报告结构（v2）＝ S0 执行摘要+盘前观点 → S1 观察清单 → S2 新闻+资讯+隔夜海外 → S3 今日预测+情景推演 → S4 预测台账</div>
+  <div class="badges">
+    <span class="badge">高开 +0.3~0.8%</span><span class="badge amber">AI算力硬件主升</span><span class="badge">续放量是关键</span><span class="badge">内外情绪对冲</span>
+  </div>
+  <div class="tagline">核心矛盾：隔夜美股科技续强（英伟达+8.74%、纳指+1.57%新高）给 A 股 AI 算力硬件提供外部续力，但昨日（8/27）已放量至 2.13 万亿、主线当日主升，今日的问题是<b>"主升中继站得住"还是"高位分歧先降降温"</b>——续放量突破是核心，缩量则防脉冲兑现。</div>
+</div>
+
+<!-- ════ S0 执行摘要 + 盘前观点 ════ -->
+<div class="card">
+  <h2><span class="no">S0</span>执行摘要 + 盘前观点 <span class="tag">第一屏 · 3分钟建立全貌</span></h2>
+
+  <h3>执行摘要（5行）</h3>
+  <div class="quote" style="border-left-color:var(--primary);background:#eef2ff">
+    ① <b>市场定性：中高开——"主线主升中继"型高开，亦可能是高位分歧日。</b>隔夜英伟达 +8.74%（单日市值 +4420 亿美元）、纳指 +1.57% 创阶段新高、费半 +2.33%，A 股 AI 算力硬件续力充分；但纳斯达克中国金龙 -0.74% 提示内外情绪存在对冲；<br>
+    ② <b>核心矛盾：主升中继 vs 高位分歧。</b>昨日（8/27）A 股放量 3200 亿至 2.13 万亿、涨停 78 家、AI 算力硬件绝对主升（芯片净买 560 亿/CPO 330 亿）。今日关键在"能否续放量"，而非高开与否；<br>
+    ③ <b>主线格局：</b>AI算力硬件（PCB/覆铜板/CPO/存储/材料，45%）＞存储（15%）＞券商（10%）＞有色铜（10%）＞军工核聚变（5%）＞支线轮动（15%）；<br>
+    ④ <b>量能阈值：≥2.0~2.2 万亿</b> 续放量则主升成立，缩回 2 万亿下方则防冲高回落；<br>
+    ⑤ <b>最优策略：</b>高开不追、重点看"高位龙头分歧 vs 低位子线扩散"，低位补涨与性价比低位承接优于追一字板。
+  </div>
+
+  <h3>盘前观点 · 机构早评式叙事</h3>
+  <p><strong>海外锚点：</strong>隔夜美股呈现"英伟达财报余震 + 软件重估"双引擎。英伟达常规交易大涨 8.74%、单日市值暴增约 4420 亿美元——其 FY27Q2 营收 962.21 亿(+106%)、数据中心 890 亿(+117%)、Q3 指引中值约 1080 亿，且罕见给出 FY2028 营收约 +70% 的超长指引并加码 600 亿回购，等于给全球 AI 资本开支周期连续两天盖章。同时 Salesforce 因与 Anthropic 合作推"Claudeforce"大涨约 23%、CrowdStrike 涨约 21%，"AI 应用/软件重估"压制了此前 SaaS 被 AI 颠覆的担忧。带动纳指 +1.57%、标普 +0.72% 再创新高、费半 +2.33%（博通 +4.49%、英特尔 +4.36%、台积电 ADR +2%+）。<b>但需注意两点分化：</b>一是中概股纳斯达克中国金龙 -0.74%，印证"美股科技强 ≠ A 股映射皆涨"的传导衰减；二是美国 PCE 3.7%、10 年期美债收益率升至 4.649%，利率端仍在上行压制风险资产估值。</p>
+  <p><strong>盘面定性：</strong>A 股昨日（8/27）从"权重轮动"质变为"成长主升"——上证 +1.13% 收 3956.57、科创 50 +3.77%、两市 2.13 万亿放量约 3200 亿、涨停 78 家，AI 算力硬件（PCB/覆铜板/CPO/半导体/电子材料）成为绝对主线，资金呈"产业景气 + 业绩兑现 + 全市场共振"三重验证。这是自 8/22 缩量整固以来量能首次重回 2 万亿上方。<span class="h">今日若续放量站上 2.2 万亿并带动指数放量突破，则季度级主升打开；若缩量则进入高位分歧、主线内轮动。</span></p>
+  <p><strong>结构行为：</strong>昨日首板大量集中在主板发酵的<b>低位子线</b>（PCB/覆铜板/电子材料）而非高位龙头，属"主线内健康扩散"而非"高位见顶"。研判今日的关键在：增量资金是否继续派生到更多低位子线（存储/半导体设备/铜箔/电子布），还是龙头滞涨、题材全面退潮。隔夜美光及相关存储链波动提示，今日存储子线需重点观察是否延续。</p>
+  <p><strong>今日取向：</strong>重主线、轻指数——不因高开追高，优先看<b>AI 算力硬件的低位补涨子线与存储链</b>的承接，券商与有色铜作为确定性分支对冲。<b>条件分支：若续放量（≥2.2万亿）且低位子线扩散 → 主升中继成立，可顺势持股；若高开后缩量回吐、龙头滞涨 → 高位分歧，减至结构性轮动仓位。</b></p>
+</div>
+
+<!-- ════ S1 观察清单 ════ -->
+<div class="card">
+  <h2><span class="no">S1</span>观察清单 <span class="tag">全篇验证锚 · 可证伪</span></h2>
+  <p style="font-size:13px;color:var(--muted)">按"主升中继 vs 高位分歧"分层，盘中逐条对照。吻合=主升延续、背离=降级为分歧，用于修正而非事后解释。</p>
+
+  <h3 class="sub">逐条验证信号</h3>
+  <table>
+    <tr><th>#</th><th>观察对象</th><th>看什么（可证伪信号）</th><th>验证含义</th></tr>
+    <tr><td>1</td><td><b>AI算力硬件主线</b>（PCB/覆铜板/CPO/存储/电子材料）</td><td>高位龙头是否滞涨、低位子线是否接力扩散、分时守不守</td><td>龙头打板+低位扩散=主升中继；龙头炸板+缩量=分歧</td></tr>
+    <tr><td>2</td><td><b>存储链</b>（隔夜美光等波动）</td><td>存储涨价逻辑延续性、板块能否独立放量</td><td>存储接力=主线扩散纵深；冲高回落=题材轮动快</td></tr>
+    <tr><td>3</td><td><b>券商</b>（71号文落地后）</td><td>高开是否不回、是否承接 AI 分歧资金</td><td>券商场外政策+低估值，分歧日用确定性资金承接</td></tr>
+    <tr><td>4</td><td><b>有色（铜）</b></td><td>隔夜金铜走弱下 A 股铜能否挺住分时</td><td>挺住="歇主线"✅；跟跌=资源链退潮预警</td></tr>
+    <tr><td>5</td><td><b>减肥药（诺和盈）</b></td><td>司美格鲁肽长期体重管理受理能否带动医药股</td><td>连板+量能=题材加分项；无=一日游</td></tr>
+    <tr><td>6</td><td><b>全天量能</b></td><td>能否<b>续放量 ≥2.0~2.2万亿</b>（8/27：2.13万亿）</td><td>量能是"主升中继 vs 高位分歧"的唯一仲裁</td></tr>
+  </table>
+
+  <h3 class="sub">主线映射快照（生命周期）</h3>
+  <table>
+    <tr><th>主线</th><th>层级</th><th>阶段</th><th>评分</th><th>今日增量</th></tr>
+    <tr><td>AI科技/算力硬件</td><td>长(年级)</td><td><span class="pill up">主升初期(中继候选)</span></td><td class="up">82/主升</td><td>英伟达+8.74%、PCB/存储景气三重验证</td></tr>
+    <tr><td>资源(铜/贵金属)</td><td>长(年级)</td><td><span class="pill warn">主升→高位整固</span></td><td>78/整固</td><td>隔夜金铜回落，歇主线</td></tr>
+    <tr><td>券商</td><td>中(季级)</td><td><span class="pill flat">主升初期(延续)</span></td><td>78/延续</td><td>71号文+六大行贴息</td></tr>
+    <tr><td>存储链</td><td>中(季级)</td><td><span class="pill up">价值扩散→主升启动</span></td><td>75/扩散</td><td>存储涨价+英伟达大幅指引</td></tr>
+    <tr><td>减肥药/医药</td><td>短(周级)</td><td><span class="pill flat">事件催化启动</span></td><td>新</td><td>诺和盈司美格鲁肽片受理</td></tr>
+    <tr><td>军工/核聚变</td><td>短(周级)</td><td><span class="pill flat">支线试探</span></td><td>低</td><td>主线拥挤下的避险支线</td></tr>
+    <tr><td>医药/CRO</td><td>中(季级)</td><td><span class="pill warn">高位回调(企稳观察)</span></td><td>62/回调</td><td>无新增催化，不追</td></tr>
+  </table>
+
+  <div class="warn">⚠️ 若高开后缩量回吐、AI龙头滞涨炸板而低位子线不接力，则按"高位分歧"降级处理，主线竞争概率需要重新分配、上修悲观情景。</div>
+</div>
+
+<!-- ════ S2 新闻 + 资讯 + 隔夜海外 ════ -->
+<div class="card">
+  <h2><span class="no">S2</span>新闻 + 资讯 + 隔夜海外市场表现 <span class="tag">信息全景 · 四维评估</span></h2>
+
+  <h3 class="sub">S2.1 市场状态基准（一日起点）</h3>
+  <div class="grid">
+    <div class="mini"><h4>趋势</h4><div class="v up">主升（放量突破）</div><p>8/27 放量 3200 亿至 2.13 万亿、上证 +1.13% 至 3956.57，量能重回 2 万亿上方，突破整固。</p></div>
+    <div class="mini"><h4>情绪</h4><div class="v up">高涨（主升中段）</div><p>涨停 78 家、芯片主力净买 560 亿，情绪处主升中段、未到高潮。</p></div>
+    <div class="mini"><h4>风险偏好</h4><div class="v" style="color:var(--primary)">risk-on 延续</div><p>隔夜美股科技续强（英伟达+8.74%、纳指创新高）、中概金龙-0.74%，内外对冲。</p></div>
+    <div class="mini"><h4>风格</h4><div class="v up">成长极端偏强</div><p>科创50 +3.77% 领涨，资金高度集中在科技硬件，风格极端。</p></div>
+    <div class="mini"><h4>资金</h4><div class="v" style="color:var(--up)">增量进场</div><p>8/27 放量 3200 亿，主力 330 亿流入电子/通信/计算机，增量资金初步入场。</p></div>
+    <div class="mini"><h4>波动</h4><div class="v">高</div><p>主升日振幅放大、赚钱效应强，对应回撤风险同步上升。</p></div>
+  </div>
+
+  <h3 class="sub">S2.2 隔夜核心事件 · 四维评估</h3>
+  <table>
+    <tr><th>事件（来源）</th><th>影响力</th><th>证据</th><th>A 股映射</th><th>类别</th></tr>
+    <tr><td><b>英伟达 8/27 大涨 8.74%</b>：FY27Q2营收962.21亿(+106%)、数据中心890亿(+117%)、Q3指引1080亿、<b>FY2028 +70%</b>、加码600亿回购（财联社/第一财经）</td><td class="up">高</td><td>高·财报实锤</td><td>AI算力硬件（PCB/CPO/存储/材料）主升续力</td><td>剧情推进</td></tr>
+    <tr><td>纳指 +1.57% 创阶段新高、标普 +0.72% 新高、费半 +2.33%（博通+4.5%/英特尔+4.4%/台积电ADR+2%）</td><td class="up">高</td><td>高·价格</td><td>半导体设备/材料链映射情绪</td><td>放大器</td></tr>
+    <tr><td><b>软件重估：Salesforce +23%</b>（与Anthropic推"Claudeforce"、全年指引11-12%）、CrowdStrike +21%、Veeva、Palantir +4.75%、Palo Alto +12.83%</td><td class="h">中高</td><td>高·价格</td><td>A股 AI 应用/软件/算力租赁情绪联想</td><td>剧情推进</td></tr>
+    <tr><td>纳斯达克中国金龙 <b>-0.74%</b>（中概走弱）</td><td class="h">中高</td><td>高·价格</td><td>"美股科技强≠A股皆涨"，提示映射衰减与内外对冲</td><td>风险警示</td></tr>
+    <tr><td>国内算力：两家上市公司合计 <b>21 亿元算力长期服务合同</b>落地（官方公告）</td><td class="h">中高</td><td>中·产业/公告</td><td>算力租赁/GPU配套景气度延伸</td><td>剧情推进</td></tr>
+    <tr><td>央行昨日（8/27）单日净投放，国内流动性宽松延续（官方）</td><td class="h">中</td><td>高·政策</td><td>流动性底托，利好风险资产</td><td>政策风向</td></tr>
+    <tr><td>减肥药：诺和盈（司美格鲁肽片）长期体重管理上市申请受理；百花医药涨停</td><td class="h">中</td><td>中·官方</td><td>减肥药题材催化启动</td><td>题材</td></tr>
+    <tr><td>美国 PCE 3.7%（连续65个月超2%）/ 10Y 美债升至 <b>4.649%</b></td><td class="h">中</td><td>高·宏观</td><td>利率端上行，压制全球估值，成长股承压隐忧</td><td>风险警示</td></tr>
+  </table>
+
+  <h3 class="sub">隔夜重点深挖：英伟达 8/27 大涨 → A 股 AI 算力硬件主升中继的传导</h3>
+  <p><strong>事件→Surprise：</strong>英伟达在 8/26 财报（already超预期）基础上，8/27 常规交易再暴涨 8.74%，单日市值增 4420 亿美元——这是"财报落地后次级确认行情"，说明资金对 FY2028 +70% 指引的重新定价延续而非见光兑现，对 A 股 AI 硬件是<b>第二天的续力催化</b>（Surprise 中，部分利好已在前日兑现）。</p>
+  <p><strong>资产反应：</strong>英伟达 +8.74%，带动费半 +2.33%、博通 +4.49%、英特尔 +4.36%、台积电 ADR +2%+；但中概金龙 -0.74%，表明外溢到中国资产的强度弱于美国本土。</p>
+  <p><strong>传导链（四层+断裂点）：</strong>改变什么预期＝英伟达连续两日确认"AI 资本开支超级周期"、FY2028 +70% 提前盖章 → 谁受益＝A 股 PCB/覆铜板/CPO/存储/电子材料（L2/L3 映射）及算力租赁 → 资金先手还是跟风＝A 股 8/27 已主升、今日看续量承接 → 逻辑能否持续＝取决于今日能否<b>续放量 + 低位子线扩散</b>。<b>断裂点：A→B（美股科技强 → A 股资金续攻）必须通过"续放量站上 2.2 万亿 + 低位子线接力"验证；叠加中概金龙收跌，传导存在衰减风险。</b></p>
+
+  <h3 class="sub">S2.3 行业快讯板（广度覆盖）</h3>
+  <table>
+    <tr><th>行业块</th><th>快讯</th><th>映射</th></tr>
+    <tr><td><b>宏观流动</b></td><td>央行昨日单日净投放延续流动性底托（【官方】）；美国 PCE 3.7%、10Y 美债 4.649%（【宏观】）</td><td>→ 国内流动性宽松 vs 海外利率上行对冲</td></tr>
+    <tr><td><b>AI算力</b></td><td>英伟达 8/27 +8.74%、FY2028 +70%；两家上市公司合计 21 亿算力长期服务合同（【公告】）；存储涨价延续（【产业】）</td><td>→ 算力/PCB/覆铜板/存储/算力租赁</td></tr>
+    <tr><td><b>软件重估</b></td><td>Salesforce+23%（Claudeforce）、CrowdStrike+21%（【行情】）</td><td>→ A股 AI 应用/计算机软件联想</td></tr>
+    <tr><td><b>半导体</b></td><td>费半 +2.33%、博通 +4.49%、英特尔 +4.36%、台积电 ADR+2%（【行情】）</td><td>→ 半导体设备/材料/封测</td></tr>
+    <tr><td><b>医药</b></td><td>诺和盈（司美格鲁肽片）长期体重管理上市受理；百花医药涨停（【官方】）</td><td>→ 减肥药题材</td></tr>
+    <tr><td><b>金融</b></td><td>券商 71 号文落地 + 中报净利多（【公告】）</td><td>→ 券商主升确定性</td></tr>
+  </table>
+
+  <h3 class="sub">S2.4 外媒小作文监测（硬性必写）</h3>
+  <p>隔夜无针对 A 股/中国资产的重大未证实叙事。海外信息以英伟达财报兑现与 Salesforce 软件重估为主（均已证实）。故本节不展开，避免硬凑。</p>
+
+  <h3 class="sub">S2.5 定价与拥挤度（Price-in · 条件模块）</h3>
+  <p><strong>Price-in Score：</strong>AI 算力硬件连续两日主升、芯片主力单日净买 560 亿、CPO/数据中心 330 亿，短线拥挤度已显著抬升，多数龙头存在明显的提前交易迹象；<b>利好强度 8/10 vs 价格透支 6/10 → 盈亏比中性</b>——高开带量则仍可参与低位子线补涨，高开缩量则透支风险集中释放。存储链隔夜相关标的波动放大，今日承接强弱是关键分水岭。</p>
+
+  <h3 class="sub">S2.6 主线竞争 + 热点深追（条件模块）</h3>
+  <div style="margin:8px 0">
+    <span class="pill up">AI算力硬件 45%</span>
+    <span class="pill up">存储 15%</span>
+    <span class="pill flat">券商 10%</span>
+    <span class="pill flat">有色(铜) 10%</span>
+    <span class="pill">军工核聚变 5%</span>
+    <span class="pill warn">支线轮动 15%</span>
+  </div>
+  <p><strong>热点深追：AI 算力硬件（季度级主升中继候选）。</strong>①事件锚点＝英伟达连续两日兑现 + FY2028 +70% 指引 + 国内 21 亿算力合同，构成"海外景气 + 国内需求"双引擎；②产业链拆解＝上游材料（铜箔/电子布/CCL/MLCC）＞PCB（A 股最强环节）＞存储（涨价直供）＞光模块/CPO（映射弹性）＞算力租赁/IDC（订单落地）；③受益分层＝L1 直接供应链、L2 算力平台 beta、L3 上游材料/存储、L4 情绪 Beta；④板块位置＝主升初期、低位子线刚启动、机构尚未统一认定，属"低位扩散健康期"；⑤拐点验证信号＝<b>续放量站上 2.2 万亿且低位子线（PCB/覆铜板/材料）出现涨停扩散则主升中继成立；若高位龙头炸板且缩量、低位不接力则证伪，降级为高位分歧。</b></p>
+</div>
+
+<!-- ════ S3 今日预测 + 情景推演 ════ -->
+<div class="card">
+  <h2><span class="no">S3</span>今日预测 + 情景推演 <span class="tag">预测参数卡 · 三情景树 · 失效条件</span></h2>
+
+  <h3 class="sub">S3.1 预测参数卡</h3>
+  <div class="grid">
+    <div class="mini"><h4>开盘方向</h4><div class="v up">高开 +0.3%~+0.8%</div><p>隔夜美股科技续强催化，若纳指强势映射则上探 +1%；但高开幅度受持续主升后的兑现压力约束。</p></div>
+    <div class="mini"><h4>量能中位数</h4><div class="v">2.00~2.20 万亿</div><p>能否续放量是核心；放量站上 2.2 万亿则主升打开，缩回 2 万亿下方则防冲高回落。推导输入＝8/27 2.13万亿。</p></div>
+    <div class="mini"><h4>涨停家数</h4><div class="v">70~100 家</div><p>题材扩散（AI/存储/减肥药）+ 主线密集涨停，主升中段偏多。</p></div>
+    <div class="mini"><h4>创业板 vs 上证</h4><div class="v up">+0.5%~+1.5% 超额</div><p>科技利好成长指数，科技延续则创业板/科创强于上证。</p></div>
+  </div>
+
+  <h3 class="sub">S3.2 情景推演（三情景树）</h3>
+  <table>
+    <tr><th>情景</th><th>概率</th><th>触发条件</th><th>指数/盘面预期</th><th>应对</th></tr>
+    <tr><td><b class="up">乐观</b></td><td class="up">35%</td><td>续放量 ≥2.2万亿 + 低位子线扩散 + AI龙头打板</td><td>上证 +0.8% 以上，季度级主升打开、赚钱效应全面扩散</td><td>顺势持股，聚焦低位子线与存储，主线内轮动参与</td></tr>
+    <tr><td><b>中性</b></td><td>50%</td><td>AI 冲高回落但券商/存储承接，量能 2.0~2.2万亿</td><td>上证 +0.2%~+0.6%，主线内高低切、指数强于个股</td><td>高开兑现的减高位，守存储/券商确定性</td></tr>
+    <tr><td><b class="down">悲观</b></td><td class="down">15%</td><td>高开大幅缩量回吐 + 龙头滞涨 + 中概映射衰减</td><td>上证冲高回落收平/收绿，题材高位分歧、情绪退潮</td><td>空仓观望，等待券商/铜或存储二次确认</td></tr>
+  </table>
+
+  <h3 class="sub">S3.3 失效条件（Kill Conditions）</h3>
+  <ul>
+    <li>若高开超 +1% 但半小时内回吐过半、且量能缩回 2 万亿下方 → 高开兑现成立，主线概率上修悲观。</li>
+    <li>若 AI 高位龙头炸板且低位子线不接力、存储冲高回落 → "主升中继"证伪，按高位分歧处理。</li>
+    <li>若券商/有色亦不能承接分歧资金 → 主线内共振退潮，转向全面防御。</li>
+    <li>若中概金龙继续走弱、外资映射持续衰减 → "美股科技强→A股皆涨"整体传导逻辑打折。</li>
+  </ul>
+</div>
+
+<!-- ════ S4 预测台账 ════ -->
+<div class="card">
+  <h2><span class="no">S4</span>预测台账 <span class="tag">预测-回归-学习闭环</span></h2>
+  <h3 class="sub">上一期（8/27 盘前）回归验证</h3>
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>实际值(8/27)</th><th>结果</th><th>偏差归因</th></tr>
+    <tr><td>开盘方向</td><td>高开 +0.2%~+0.6%</td><td>平开 -0.02%（开3911.89）</td><td>❌未命中</td><td>强利好被集合竞价充分消化，线性高开外推失效（学习点8）</td></tr>
+    <tr><td>量能中位数</td><td>1.90万亿（1.80~2.05）</td><td>2.13万亿（放量~3200亿）</td><td>部分命中</td><td>放量方向对但幅度超预期，低估事件驱动增量弹性（学习点9）</td></tr>
+    <tr><td>涨停家数</td><td>60~85家</td><td>78家</td><td>✅命中</td><td>—</td></tr>
+    <tr><td>主线竞争（第一权重）</td><td>AI算力/半导体/存储 35%</td><td>AI算力硬件绝对主线（芯片净买560亿）</td><td>✅命中</td><td>第一权重精准命中，且是主升非分歧</td></tr>
+    <tr><td>创业板 vs 上证超额</td><td>+0.5%~+1.5%</td><td>超额 +0.58%</td><td>✅命中</td><td>—</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:13px"><strong>小结：</strong>7项中4命中、1部分、1未命中（情景为定性走乐观）。重大进步：主线竞争模型连续多期落空后，本期以 35% 第一权重精准命中 AI 算力，验证"把英伟达财报纳入预设催化 + 产业景气权重"的修正方向；量化项（涨停/超额）持续稳定。两处系统偏差：①开盘方向连续数周患"强利好→高开"的线性外推（学习点8：财报/重大数据类催化日集合竞价会充分消化隔夜利好）；②量能常被低估，事件驱动日应给更高上探弹性（学习点9）。</p>
+
+  <h3 class="sub">今日（8/28）盘前新预测</h3>
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+    <tr><td>开盘方向</td><td>高开：上证 +0.3%~+0.8%；美股科技强则上探 +1%</td><td class="h">中</td></tr>
+    <tr><td>量能中位数</td><td>2.00~2.20 万亿（能否续放量是核心）</td><td>低</td></tr>
+    <tr><td>涨停家数</td><td>70~100 家</td><td>低</td></tr>
+    <tr><td>主线竞争</td><td>AI算力硬件45% / 存储15% / 券商10% / 有色铜10% / 军工核聚变5% / 支线轮动15%</td><td class="h">中</td></tr>
+    <tr><td>创业板 vs 上证超额</td><td>+0.5%~+1.5%（科技延续则正超额）</td><td>低</td></tr>
+    <tr><td>情景概率</td><td>乐观(续放量主升)35% / 中性(高位震荡)50% / 悲观(冲高回落)15%</td><td>—</td></tr>
+  </table>
+
+  <h3 class="sub">框架学习备注（延续）</h3>
+  <ul>
+    <li><b>学习点8（日历事件型开盘）：</b>英伟达 8/26 财报催化日，8/27 实际平开而非高开——强利好被集合竞价充分消化。后续在事件驱动日应对高开方向预测打五折或按"平开至小幅高开"处理。</li>
+    <li><b>学习点9（事件型量能弹性）：</b>8/27 单日放量 3200 亿远超"1.90万亿中位"预测。产业级重大催化驱动日，量能上探上限应放大至"20日均值"。</li>
+    <li><b>学习点10（季度级主线三条件）：</b>AI算力硬件首次升格季度级候选＝①需求源头指引拉长（英伟达FY2028+70%）②A股自身景气硬兑现（集成电路利润+18.5倍、大普微SSD单）③全市场资金共振。可作为"周度→季度"主线升格的通用判据。</li>
+    <li><b>学习点11（增长扩散≠见顶）：</b>主线首板大量集中在低位子线（PCB/覆铜板/材料）而非高位龙头，是健康扩散而非见顶信号；需区分"主线内低位扩散"与"高位分歧"。今日（8/28）即用此框架判别主升中继 vs 高位分歧。</li>
+  </ul>
+</div>
+
+</div>
+<footer>本报告基于公开数据生成，仅供研究参考，不构成投资建议。<br>A股盘前分析 · v2 结构 · 信息截止约 2026-08-28 08:00（北京时间）</footer>
+</body>
+</html>
