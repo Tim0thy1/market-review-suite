@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主线深度研究 · 全市场主线挖掘与子线拆分 · 2026-08-27</title>
+<style>
+:root{--bg:#f7f8fa;--card:#ffffff;--ink:#1f2937;--muted:#6b7280;--line:#e8eaf0;--primary:#1e40af;--up:#dc2626;--down:#16a34a;--amber:#d97706;--soft:#eef2ff;--softred:#fee2e2;--softamber:#fef3c7;--green:#15803d;--softgreen:#e9f7ef;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;line-height:1.7;font-size:15px;padding-bottom:60px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.header{background:linear-gradient(135deg,#0b1f3f,#1e40af 60%,#3b6bff);color:#fff;padding:34px 0 30px;margin-bottom:26px}
+.header .wrap{display:flex;flex-direction:column;gap:10px}
+h1{font-size:26px;letter-spacing:.5px}
+.sub{font-size:15px;opacity:.94}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:4px 12px;border-radius:999px;font-size:12px;color:#fff}
+.badge.hot{background:var(--up);border-color:var(--up)}
+.hero{background:var(--card);border-left:4px solid var(--primary);border-radius:10px;padding:16px 20px;margin:20px 0;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+section{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--primary);border-radius:10px;padding:22px 24px;margin-bottom:22px;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+section.mainline{border-top:4px solid var(--primary)}
+section.map{background:var(--card)}
+h2{font-size:19px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 .no{background:var(--primary);color:#fff;font-size:13px;width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+h3{font-size:16px;margin:20px 0 8px;color:#111827}
+h4{font-size:14px;margin:12px 0 6px}
+p{margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#f3f4f6;color:#374151;font-weight:600;text-align:left;padding:8px 9px;border-bottom:2px solid var(--line)}
+td{padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.red{color:var(--up);font-weight:600}
+.green{color:var(--down);font-weight:600}
+.amber{color:var(--amber);font-weight:600}
+.muted{color:var(--muted)}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11.5px;background:var(--soft);color:var(--primary);border:1px solid #c7d2fe;white-space:nowrap}
+.pill.hot{background:var(--softred);color:#b91c1c;border-color:#fecaca}
+.pill.new{background:var(--softgreen);color:var(--green);border-color:#bbf7d0}
+.pill.gray{background:#f3f4f6;color:#6b7280;border-color:#e5e7eb}
+.pill.amber{background:var(--softamber);color:#b45309;border-color:#fde68a}
+.warn{border-left:4px solid var(--amber);background:var(--softamber);padding:12px 16px;border-radius:8px;margin:12px 0;font-size:14px}
+.good{border-left:4px solid var(--green);background:var(--softgreen);padding:12px 16px;border-radius:8px;margin:12px 0;font-size:14px}
+.quote{border-left:4px solid var(--primary);background:var(--soft);padding:12px 16px;border-radius:8px;margin:12px 0;font-size:14px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.duo .bull,.duo .bear{border-radius:10px;padding:14px 16px;font-size:13.5px}
+.duo .bull{background:var(--softgreen);border:1px solid #bbf7d0}
+.duo .bear{background:var(--softred);border:1px solid #fecaca}
+.duo h4{font-size:13px;margin-bottom:6px}
+.duo ul{padding-left:18px;margin:0}
+.duo li{margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.kpi{background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi .k{font-size:12px;color:var(--muted)}
+.kpi .v{font-size:18px;font-weight:700;margin-top:2px}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;padding:0 20px}
+@media(max-width:720px){.duo{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="wrap">
+    <h1>主线深度研究 · 全市场主线挖掘与子线拆分</h1>
+    <div class="sub">主动挖掘多条主线（长/中/短）→ 逐条拆成真实子线 → 落到标的 + 合适位置买卖。数据基于 2026-08-27 收盘。</div>
+    <div class="badges">
+      <span class="badge">2026-08-27</span>
+      <span class="badge">主动挖掘 · 非给定选题</span>
+      <span class="badge">最长线主线 AI科技</span>
+      <span class="badge hot">主升中·强者恒强</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+<div class="hero">
+  <b>一句话结论：</b>从当前资金/业绩/政策三源交叉验证，我主动挖出 <b>4 条主线（3 长线 + 1 中线）+ 2 条短线观察</b>。最强者仍是 <b>AI科技/算力（A股=载板材料链）</b>，今日生益 +8%、深南 +4% 延续主升；<b>全球资源（铜反弹/黄金回调）</b>为长线；<b>医药创新药+CRO</b> 中报兑现进入回调检验；<b>券商</b> 低位为情绪放大器。光模块/CPO 只是 AI 主线之下的子线（非独立主线），标的按子线拆再推。
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="k">指数 上证</div><div class="v">3944</div></div>
+  <div class="kpi"><div class="k">创业板</div><div class="v red">3456 · 更强</div></div>
+  <div class="kpi"><div class="k">挖掘主线</div><div class="v">4 + 2观察</div></div>
+  <div class="kpi"><div class="k">最强信号</div><div class="v red">生益 +8%</div></div>
+</div>
+
+<section class="map">
+  <h2><span class="no">0</span>市场环境（先定权重，再谈主线）</h2>
+  <p><b>跨市场战略层（给权重）：</b>全球流动性宽松转向、美元走弱 → 高景气成长主线（AI/资源）权重高；地缘（霍尔木兹）为尾部扰动，需在资源线留对冲尾巴。</p>
+  <p><b>日线战术层（给节奏）：</b>指数温和走高、创业板更强，风险偏好回升；AI 主升放量、资源/医药分化。主线操作节奏 = 强者延续 + 补涨子线轮动，不追已兑现高位。</p>
+  <div class="warn"><b>环境-主线联动：</b>成长主线权重高 ≠ 所有子线都追。资金从已兑现主位（PCB/光模块高位）向上游/补涨子线扩散是本轮核心节奏。</div>
+</section>
+
+<section class="map">
+  <h2><span class="no">1</span>主线地图（长/中/短全览）</h2>
+  <table>
+    <tr><th>层级</th><th>主线</th><th>点火源</th><th>真实性</th><th>生命周期</th><th>强度/30</th><th>拥挤</th><th>操作取向</th></tr>
+    <tr><td><span class="pill">长·年级</span></td><td><b>AI科技/算力</b>（载板材料链）</td><td>基本面+涨价</td><td>真主线</td><td>主升中段</td><td class="red">28</td><td>-4 主位高位</td><td>跟上游/补涨子线</td></tr>
+    <tr><td><span class="pill">长·年级</span></td><td><b>全球资源</b>（铜/黄金）</td><td>供给+美元</td><td>真主线</td><td>主升→高位整固</td><td>26</td><td>-3 高位</td><td>铜短反弹/黄金等企稳</td></tr>
+    <tr><td><span class="pill">中·季级</span></td><td><b>医药创新药+CRO</b></td><td>资金切换+BD</td><td>真主线(回调检验)</td><td>主升→回调</td><td>22</td><td>-2 回调</td><td>企稳前不抄底</td></tr>
+    <tr><td><span class="pill">中/短</span></td><td><b>券商</b>（中报+情绪）</td><td>资金</td><td>真主线(初期)</td><td>低位启动</td><td>23</td><td>-1 早期</td><td>放量确认后跟随</td></tr>
+    <tr><td><span class="pill gray">短·周级</span></td><td>固态电池/机器人</td><td>政策+大厂</td><td>强题材(未验证)</td><td>启动/酝酿候选</td><td>候选</td><td>-1</td><td>观察不确认</td></tr>
+  </table>
+</section>
+
+<section class="mainline">
+  <h2><span class="no">2</span>长线主线 · AI科技/算力（A股=载板材料链）</h2>
+  <div class="quote"><b>为什么它是长期主线（成因档案）：</b>点火＝AI 算力资本开支 + 涨价周期（海外云/英伟达 CAPEX 驱动 → 载板材料涨价）。周期定位：业绩+涨价+扩产 三重验证的主升中段，全球定价锚＝英伟达/云厂商 CAPEX 与光模块龙头。为中报利润集体兑现到"材料/载板"，估值重估持续传导。回调即买入观察而非证伪。</div>
+  <p class="muted">今日：生益科技 +8%（CCL 龙头主升）、深南电路 +4%、沪电股份 +2%，印证子线依然强。参考 2026 H1：沪电净利 +73.72%、生益 +117~131%、深南 +54~69%（S/B 级）。</p>
+
+  <h3>子线拆分 + 标的（本轮关键：跟上游/补涨，不追高位主位）</h3>
+  <table>
+    <tr><th>子线</th><th>标的</th><th>归类依据</th><th>轮动/档位</th><th>买点/卖点情景</th></tr>
+    <tr><td><b>PCB/高多层·HDI</b>（已兑现·主位）</td><td>沪电股份、胜宏科技、深南电路</td><td>AI载板核心供应商</td><td class="pill amber">高位已兑现</td><td>不追高；沪电 121 回踩 118-115 支撑不破再看；破则整链降级</td></tr>
+    <tr><td><b>覆铜板 CCL</b>（进行中）</td><td>生益科技、南亚新材</td><td>PCB 上游材料+涨价</td><td class="pill hot">主升，今日+8%</td><td>回踩 20 日线不破可跟随；高位加速滞涨即减</td></tr>
+    <tr><td><b>电子布/铜箔/树脂</b>（弹性）</td><td>铜冠铜箔、宏昌电子、同宇新材等</td><td>涨价弹性上游</td><td class="pill new">扩散弹性</td><td>回调到位分批，弹性大勿追连板</td></tr>
+    <tr><td><b>MLCC</b>（接力）</td><td>三环集团、风华高科</td><td>AI服务器被动元件+涨价</td><td class="pill new">进行中</td><td>三环 H1 +45~65%；回踩5日线跟随</td></tr>
+    <tr><td><b>光模块/CPO</b>（子线内轮动）</td><td>龙头=旭创/新易盛；接力=天孚/长飞/太辰光；上游=源杰/光迅</td><td>见拆分（按真核心，剔除贴牌）</td><td class="pill hot">主位流出→补涨接力</td><td>主位(旭创20日-182亿)不追→接天孚/长飞/太辰光/源杰等补涨，详见台账</td></tr>
+    <tr><td><b>半导体设备</b>（候补潜伏）</td><td>北方华创、中微、拓荆</td><td>设备国产化</td><td class="pill gray">未启动·候选</td><td>传导下一棒，已验证再介入</td></tr>
+  </table>
+  <div class="duo">
+    <div class="bull"><h4>多头</h4><ul><li>中报集体兑现（沪电+73%、生益+117~131%）</li><li>涨价周期延续，电子布均价环比+17~18%</li><li>全球流动性宽松 + AI CAPEX 强劲</li><li>从主位扩散到上游/补涨</li></ul></div>
+    <div class="bear"><h4>空头</h4><ul><li>主位（PCB/光模块）高位、资金流出</li><li>板块拥挤，连板加速易见光</li><li>海外云 CAPEX 若放缓为最长尾证伪</li></ul></div>
+  </div>
+  <div class="warn"><b>证伪开关：</b>PCB 龙头或涨价见顶 → 降级；反之主升延续，跟上/补涨子线。</div>
+</section>
+
+<section class="mainline">
+  <h2><span class="no">3</span>长线主线 · 全球资源（铜/黄金）</h2>
+  <div class="quote"><b>为什么是国家主线（成因档案）：</b>点火＝铜矿供给刚性 + 绿电/AI 用铜 + 美元/实际利率下行；黄金＝央行购金去美元化 + 实际利率回落。周期定位：主升后高位整固。今日江铜 5 日 +6.6%（铜反弹）、山东黄金回调（黄金整固）。跟随"铜/金各自逻辑与资金"，不把两者混一条。</div>
+  <table>
+    <tr><th>子线</th><th>标的</th><th>驱动</th><th>轮动</th><th>买点/卖点情景</th></tr>
+    <tr><td><b>铜（反弹）</b></td><td>江西铜业、紫金矿业、洛阳钼业</td><td>供给刚性+需求</td><td>今日反弹</td><td>江铜 48.9 回踩 5 日线不破跟随；铜价新高回落即减</td></tr>
+    <tr><td><b>黄金（整固）</b></td><td>山东黄金、中金黄金</td><td>购金+实际利率</td><td class="pill amber">回调</td><td>等企稳（不接飞刀）；实际利率/美元反弹即继续观望</td></tr>
+    <tr><td><b>铝/其他</b></td><td>中国铝业</td><td>供给+绿电</td><td class="pill gray">跟随</td><td>观察扩散</td></tr>
+  </table>
+  <div class="duo">
+    <div class="bull"><h4>多头</h4><ul><li>铜矿资本开支多年不足+供给刚性</li><li>绿电/AI数据中心新需求</li><li>美元走弱/降息利好计价</li></ul></div>
+    <div class="bear"><h4>空头</h4><ul><li>铜价高位，短线回吐</li><li>黄金避险退潮、实际利率反弹</li><li>累计涨幅高、拥挤</li><li>地缘扰动（霍尔木兹）双刃</li></ul></div>
+  </div>
+</section>
+
+<section class="mainline">
+  <h2><span class="no">4</span>中线主线 · 医药/创新药 + CRO</h2>
+  <div class="quote"><b>为什么是中线主线（成因档案）：</b>点火＝资金面切换（其他板块拥挤切医药）+ 创新药 BD 出海高增（上半年 BD 997 亿美元超 2024 全年）。周期定位：中报兑现后的回调检验期（药明 158 回调、百济 +627% 后高位兑现）。回调非证伪，企稳再看。</div>
+  <table>
+    <tr><th>子线</th><th>标的</th><th>驱动</th><th>轮动</th><th>买点/卖点情景</th></tr>
+    <tr><td><b>CXO 龙头</b></td><td>药明康德</td><td>业绩兑现+订单</td><td>高位回调</td><td>企稳前不抄底；回调企稳+放量再看</td></tr>
+    <tr><td><b>CXO 中军</b></td><td>康龙化成、泰格医药</td><td>CRO 业绩</td><td>回调</td><td>发债回调，等企稳确认</td></tr>
+    <tr><td><b>创新药 BD</b></td><td>百济神州、恒瑞</td><td>BD/出海</td><td>兑现后</td><td>BD 降温则减</td></tr>
+    <tr><td><b>AIDD/AI制药</b></td><td>CRO 搭 AI 平台</td><td>技术催化</td><td>刚启动</td><td>低位弹性，验证介入</td></tr>
+  </table>
+  <div class="duo">
+    <div class="bull"><h4>多头</h4><ul><li>BD 出海高增+中报兑现</li><li>板块拥挤切医药的资金面</li></ul></div>
+    <div class="bear"><h4>空头</h4><ul><li>高位已兑现，回调未企稳</li><li>BD 若降温为最直接证伪</li></ul></div>
+  </div>
+</section>
+
+<section class="mainline">
+  <h2><span class="no">5</span>中/短线 · 券商 与 题材观察</h2>
+  <p><b>券商（低位，情绪放大器）：</b>中信证券 27.85 低位横盘、pe 约 13x，中报双增。放量突破/市场情绪再起时可跟随，属"环境友好时的补涨"。买/卖：放量确认跟，缩量回落走。</p>
+  <p><b>短线题材观察（政策+大厂，未验证不确认）：</b>固态电池（首个国际标准立项）、机器人（工信部列新兴支柱）。量能不足/无持续催化前，列为候选不占仓位。</p>
+</section>
+
+<section>
+  <h2><span class="no">6</span>预期差（哪条最有“牌面差”）</h2>
+  <table>
+    <tr><th>主线</th><th>市场已预期</th><th>潜在预期差</th><th>判定</th></tr>
+    <tr><td>AI 载板材料</td><td>主位中报兑现已满</td><td>上游材料/设备国产化未充分定价</td><td class="amber">高低切换有差</td></tr>
+    <tr><td>全球资源</td><td>铜价高位</td><td>供给刚性+新需求（AI用铜）</td><td class="red">铜有差，黄金面临实际利率</td></tr>
+    <tr><td>医药CRO</td><td>BD 兑现后回调</td><td>BD 出海持续度 vs 回调深度</td><td>观察企稳</td></tr>
+    <tr><td>券商</td><td>预期低</td><td>情绪起来则放大</td><td>择时跟随</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="no">7</span>标的池总览（分档 + 合适位置买/卖）</h2>
+  <p class="muted">主线挖掘 → 子线拆分 → 落到标的。以下为按"当前位置 + 赔率 + 时机"给出的情景框架（非投资建议）：</p>
+  <table>
+    <tr><th>主线/子线</th><th>标的</th><th>档位</th><th>合适位置买</th><th>合适位置卖</th></tr>
+    <tr><td>AI·PCB</td><td>沪电股份</td><td>龙头·高位</td><td>回踩 118-115 不破</td><td>目标高位加速/破位降级</td></tr>
+    <tr><td>AI·CCL</td><td>生益科技</td><td>主升·进行中</td><td>回踩20日线不破跟</td><td>高位滞涨减</td></tr>
+    <tr><td>AI·光模块子线</td><td>天孚/长飞/太辰光</td><td>补涨接力</td><td>回踩支撑/次日不破涨停位</td><td>连续加速/破位撤</td></tr>
+    <tr><td>AI·上游光芯片</td><td>源杰/光迅</td><td>潜伏</td><td>回踩支撑+放量验证</td><td>验证证伪离场</td></tr>
+    <tr><td>AI·设备</td><td>北方华创/中微</td><td>候补</td><td>传导启动信号</td><td>启动后止盈纪律</td></tr>
+    <tr><td>资源·铜</td><td>江西铜业/紫金</td><td>反弹</td><td>回踩5日线不破</td><td>铜价新高回落减</td></tr>
+    <tr><td>资源·黄金</td><td>山东黄金</td><td>整固</td><td>等企稳不接飞刀</td><td>实际利率反弹继续观望</td></tr>
+    <tr><td>医药·CXO</td><td>药明/康龙/泰格</td><td>回调检验</td><td>企稳+放量</td><td>BD 降温减</td></tr>
+    <tr><td>券商</td><td>中信证券</td><td>低位·初期</td><td>放量突破跟</td><td>缩量回落走</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="no">8</span>跟踪清单 + 台账落库</h2>
+  <p><b>证伪盯三点：</b>① AI载板龙头放量破位＝AI线阶段证伪；② 云 CAPEX 放缓＝AI/资源最长尾；③ CRO 回调企稳与 BD 降温＝医药切换。交易纪律：补涨子线追高加速即减、回调不确认不接飞刀。</p>
+  <p class="muted">台账已同步：mainline_ledger／target_pool（含 AI·光模块子线拆分）/ catalyst / evidence。</p>
+  <div class="footer" style="text-align:left">数据来源：腾讯自选股行情/财报/资金流（westockdata），收盘 2026-08-27；中报/涨价为已披露公告级（S/B/C）。风险提示：本报告为主线挖掘与方法示范，所示标的为研究示例，非投资建议；投资有风险，决策需谨慎。</div>
+</section>
+
+</div>
+</body>
+</html>
