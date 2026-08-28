@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股全景复盘 · 2026-08-28</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--rule:#e2e8f0;--ink:#1a2740;--muted:#64748b;--t1:#475569;
+--up:#e63946;--dn:#2d6a4f;--blu:#1e40af;--blu2:#3b82f6;--amber:#d97706;--gld:#f59e0b;--accent:#1e3a5f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei','Microsoft YaHei',sans-serif;line-height:1.8;font-size:14.5px}
+.ctn{max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+.hdr{background:linear-gradient(135deg,#ffffff,#fdf0f0);border:1px solid var(--rule);border-radius:14px;padding:32px;margin-bottom:22px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--up),var(--amber),var(--dn))}
+.hdr h1{font-size:28px;margin-bottom:8px}
+.hdr .sub{color:var(--t1);font-size:14px;margin-bottom:16px}
+.badge{display:inline-block;background:var(--dn);color:#fff;padding:4px 14px;border-radius:20px;font-size:12.5px;margin-right:8px;margin-bottom:6px;font-weight:600}
+.badge.r{background:var(--up)}.badge.g{background:var(--dn)}.badge.b{background:var(--blu)}.badge.o{background:var(--amber)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:20px}
+.card{background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:13px 16px;text-align:center}
+.card .lb{font-size:11.5px;color:var(--muted);margin-bottom:4px}
+.card .vl{font-size:21px;font-weight:700}
+.chp{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:24px 26px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.chp .t{font-size:19px;font-weight:700;margin-bottom:14px;padding-bottom:12px;border-bottom:2px solid var(--rule);display:flex;align-items:center;gap:10px}
+.chp .t .no{background:var(--blu);color:#fff;min-width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.chp .t .nm{font-size:12px;color:var(--blu2);font-weight:500}
+h3{color:var(--accent);margin:18px 0 8px;font-size:15.5px;padding-left:10px;border-left:4px solid var(--blu)}
+h3.o{border-left-color:var(--amber);color:var(--amber)}
+p{font-size:14px;color:#334155;margin-bottom:10px}
+p b{color:var(--ink)}
+.up{color:var(--up);font-weight:700}.dn{color:var(--dn);font-weight:700}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;color:var(--accent);text-align:left;padding:8px 10px;border:1px solid var(--rule);font-size:12.5px}
+td{padding:7px 10px;border:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.chart-box{margin:14px 0}
+.chart{width:100%;height:340px;border:1px solid var(--rule);background:var(--bg);border-radius:8px}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin:3px 4px 3px 0}
+.pill.up{background:#ffe5e7;color:var(--up)}.pill.dn{background:#e2f2e9;color:var(--dn)}.pill.fl{background:#eef2ff;color:var(--blu)}.pill.o{background:#fdf1de;color:var(--amber)}
+.quote{background:#eef2ff;border-left:4px solid var(--blu);border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px}
+.warn{background:#fff6e6;border:1px solid #f5d793;border-left:4px solid var(--amber);border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px;color:#7a4a00}
+.db{background:#fdecec;border:1px solid #f3c1c4;border-left:4px solid var(--up);border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px;color:#8a2226}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.bl{background:rgba(230,57,70,.06);border:1px solid rgba(230,57,70,.3);border-radius:10px;padding:16px}
+.bk{background:rgba(45,106,79,.06);border:1px solid rgba(45,106,79,.3);border-radius:10px;padding:16px}
+.bl h4{color:var(--up);margin-bottom:8px}.bk h4{color:var(--dn);margin-bottom:8px}
+.bl ul,.bk ul{padding-left:18px;font-size:13px}.bl li,.bk li{margin:5px 0}
+.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11.5px;font-weight:600;margin-right:4px}
+.tag-s{background:#e2f2e9;color:var(--dn)}.tag-a{background:rgba(30,64,175,.12);color:var(--blu)}.tag-b{background:#ffe5e7;color:var(--up)}.tag-c{background:#f1f5f9;color:var(--t1)}
+.ftr{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 8px}
+.tl{position:relative;padding-left:28px;margin:14px 0}
+.tl::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:var(--rule)}
+.ti{position:relative;margin-bottom:13px}
+.ti::before{content:'';position:absolute;left:-22px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--blu)}
+.ti .tt{font-size:12px;color:var(--blu2);font-weight:600}
+.ti .tc{font-size:13.5px;color:var(--ink);margin-top:2px}
+@media(max-width:720px){.cards{grid-template-columns:repeat(2,1fr)}.bb{grid-template-columns:1fr}}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35)}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh-100px);overflow:auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-panel .h{font-weight:700;font-size:13px;color:#1e3a5f;padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.toc-panel a{display:block;padding:5px 9px;font-size:12px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-panel a:hover{background:#f1f5f9;color:#1e40af}
+</style>
+</head>
+<body>
+<button class="toc-btn" onclick="document.getElementById('tp').classList.toggle('open')">☰</button>
+<div class="toc-panel" id="tp"><div class="h">章节导航</div>
+<a href="#c0">零 底色与仓位</a><a href="#c1">一 全景+周度</a><a href="#c2">二 宏观锚点</a><a href="#c3">三 主线资金</a><a href="#c4">四 暗线</a><a href="#c5">五 成因</a><a href="#c6">六 叙事映射</a><a href="#c7">七 多空</a><a href="#c8">八 24h信息</a><a href="#c87">8.7 故事线</a><a href="#c9">九 状态更新</a><a href="#c10">十 前瞻</a><a href="#c11">十一 标的</a><a href="#c14">十四 仓位</a><a href="#c15">十五 结论</a><a href="#c16">十六 台账</a>
+</div>
+
+<div class="ctn">
+
+<div class="hdr">
+<h1>A 股全景复盘</h1>
+<div class="sub">2026-08-28（周五）· 数据时点 15:44（盘后）· 状态：高位分歧 / 高低切换｜数据来源：公开行情与新闻，未编造</div>
+<div><span class="badge g">指数冲高回落</span><span class="badge r">科创50 -1.85%</span><span class="badge o">资金高低切</span><span class="badge b">农业/地产/化工走强</span><span class="badge r">医药领跌</span></div>
+<div class="cards">
+<div class="card"><div class="lb">上证指数</div><div class="vl dn">3952.18</div><div class="dn">-0.11%</div></div>
+<div class="card"><div class="lb">深证成指</div><div class="vl dn">13953.07</div><div class="dn">-0.68%</div></div>
+<div class="card"><div class="lb">创业控指</div><div class="vl dn">3424.40</div><div class="dn">-1.41%</div></div>
+</div>
+<div class="quote" style="margin-top:16px"><b>今日一句话：</b>8月28日，A股在隔夜美股科技续强（英伟达+8.74%、纳指创新高）背景下<b>冲高回落、指数全线收跌但个股普涨</b>——上证 -0.11% 收3952.18（盘中最高冲击3970.31后跳水），科创50 -1.85%、创业板指 -1.41% 领跌（AI硬件高位获利回吐），两市成交2.10万亿较昨日微幅缩量，全市场上涨3013家、涨停83家、跌停仅3家。<b>资金从高位AI/医药高低切，涌入农业种植链（厄尔尼诺+小麦三年新高，万向德农9天6板）、房地产（中报+稳地产政策）、化工原料等低位防御题材</b>；医药生物领跌。这是"AI硬件主升"后首个交易日进入<b>高位分歧/高低切换</b>，8/28盘前"主升中继"判断未获验证。</div>
+</div>
+
+<!-- 章零 -->
+<div class="chp" id="c0">
+<div class="t"><span class="no">0</span>市场底层状态与仓位约束<span class="nm">State & Positioning</span></div>
+<p>要读懂8月28日，必须回到8月27日的"期满语境"：8/27在英伟达财报核弹级催化下，AI算力硬件（PCB/覆铜板/CPO/半导体/电子材料）成为绝对主线、单日主升，两市放量至2.13万亿。8/28盘前的默认信念是"AI硬件主升中继"，但当日开盘即冲高（上证盘中最高3970.31，逼近前高），随后量能不济、AI硬件权重龙头（部分标的盘中创历史新高后快速跳水）率先回落，创业板、科创50领跌——<strong>市场底色的默认信念从"AI单极主升"松动，转向"高位需消化"</strong>。拥挤度层面，AI硬件经过连续两日主升已高度拥挤，今日的获利回吐正是这种拥挤的释放；而防御端（农业/地产/化工）成为新的吸金方向。仓位约束含义：这是"高位分歧"状态，指数层面偏防守、但个股赚钱效应尚可（涨停83家），属于"重个股、轻指数、防追高"的窗口。</p>
+<div class="db"><b>反证条件：</b>若"高位分歧、资金防御化"判断错误（即资金仍会回流AI硬件），盘面应见：软件/AI应用与农业地产的领涨无法延续、科创50放量重新站上1700、AI硬件龙头二次突破。今日上述均未出现，判断暂成立。</div>
+</div>
+
+<!-- 章一 -->
+<div class="chp" id="c1">
+<div class="t"><span class="no">1</span>多时间维度全景 + 整体状态判断<span class="nm">Year / 5D / 20D</span></div>
+<div class="chart-box"><div id="c1" class="chart"></div></div>
+<h3>1.1 指数当日表现</h3>
+<table><tr><th>指数</th><th>8/28收盘</th><th>1D</th><th>状态</th></tr>
+<tr><td>上证指数</td><td>3952.18</td><td class="dn">-0.11%</td><td>冲高回落，微跌</td></tr>
+<tr><td>深证成指</td><td>13953.07</td><td class="dn">-0.68%</td><td>回落</td></tr>
+<tr><td>创业板指</td><td>3424.40</td><td class="dn">-1.41%</td><td>成长领跌</td></tr>
+<tr><td>科创50</td><td>1662.15</td><td class="dn">-1.85%</td><td>AI硬件回吐领跌</td></tr>
+<tr><td>沪深300</td><td>4609.18</td><td class="dn">-0.46%</td><td>权重回落</td></tr>
+<tr><td>上证50</td><td>2923.33</td><td class="dn">-0.24%</td><td>防御抗跌</td></tr>
+<tr><td>中证500</td><td>7895.45</td><td class="dn">-0.64%</td><td>回落</td></tr>
+<tr><td>中证1000</td><td>7705.03</td><td class="dn">-0.36%</td><td>相对抗跌</td></tr></table>
+<div class="chart-box"><div id="c2" class="chart"></div></div>
+<h3>1.2 市场整体状态判断</h3>
+<p><strong>状态定性：高位分歧 / 结构性行情。</strong>当日指数全线收跌、成长偏弱（科创50/创业板领跌），但市场宽度并不差——上涨3013家（占比54%）、涨停83家甚至多于昨日8/27的78家、跌停仅3家，是一日"指数跌、个股活跃"的典型结构性行情。周度视角：本周（8/24-8/28）整体呈"缩量整固→放量主升→高位分歧"节奏，8/27放量2.13万亿打出AI硬件主升的顶部区域，8/28冲高回落确认高位兑现，量能从2.13万亿微降至2.10万亿、未能延续放量。风格上，成长（创业板/科创）明显弱于大盘价值（上证50/中证1000相对抗跌），呈现"成长退潮、防御与低位补涨"轮动。</p>
+</div>
+
+<!-- 章二 -->
+<div class="chp" id="c2">
+<div class="t"><span class="no">2</span>宏观锚点与风险偏好<span class="nm">Macro Anchor</span></div>
+<table><tr><th>指标</th><th>状态</th><th>对A股解读</th></tr>
+<tr><td>通胀预期（厄尔尼诺）</td><td class="up">升温</td><td>赤道中东太平洋海温持续升高，预计今冬形成有记录以来最强厄尔尼诺，扰动全球主粮及经济作物；农产品涨价→CPI食品项上行→通胀担忧升温</td></tr>
+<tr><td>海外粮价</td><td class="up">大涨</td><td>芝加哥小麦期货升至三年新高，叠加中东冲突+极端天气冲击农业供应链</td></tr>
+<tr><td>海外AI/利率</td><td class="w">延续</td><td>隔夜美股科技续强（英伟达+8.74%、纳指创新高），但10Y美债4.65%、PCE 3.7%高悬；对A股成长映射衰减</td></tr>
+<tr><td>流动性</td><td class="dn">中性</td><td>两融数据8/28尚未更新（按8/27口径），未见政策再加码信号</td></tr>
+<tr><td>风险偏好</td><td class="up">结构性</td><td>避险/通胀资产（农业/黄金）获追捧，高估值科技遭兑现，risk-off局部、risk-on防御化</td></tr></table>
+<div class="quote"><b>宏观资产背离/共振分析：</b>今日最值得注意的宏观信号是"厄尔尼诺+通胀预期"重燃——农产品涨价预期待油价抬升成本与中东/天气供应冲击共振，反过来推动A股农业链（种植业/渔业/农产品加工）集体走强，这是对"农林牧渔+CPI通胀+避险"逻辑的定价，而非单纯板块轮动。这与隔夜美股"科技领涨"形成背离：A股资金今日更多流向反通胀/防风险的农业与地产，说明在指数高位、成长拥挤的背景下，宏观防御叙事开始与海外科技叙事争夺资金。</div>
+</div>
+
+<!-- 章三 -->
+<div class="chp" id="c3">
+<div class="t"><span class="no">3</span>市场主线与资金流向<span class="nm">Mainline & Flow</span></div>
+<div class="chart-box"><div id="c3" class="chart"></div></div>
+<h3>3.1 主线判定</h3>
+<table><tr><th>维度</th><th>判断</th><th>证据</th></tr>
+<tr><td>当日最强方向</td><td class="up">农业种植链 + 房地产 + 化工原料</td><td>渔业+4.55%、房地产服务+3.75%、饰品+3.42%、炼化及贸易+2.66%、农产品加工+2.65%、化学原料+2.42%</td></tr>
+<tr><td>AI硬件</td><td class="dn">高位分歧回吐</td><td>科创50 -1.85%、创业板 -1.41%，部分硬件权重盘中创新高后跳水</td></tr>
+<tr><td>软件/AI应用</td><td class="up">资金流入</td><td>软件开发主力净流入约22.5亿（AI应用/网络安全/海外SaaS映射）</td></tr>
+<tr><td>医药</td><td class="dn">领跌</td><td>医药生物、医疗服务、生物制品领跌</td></tr>
+<tr><td>做空动能</td><td class="w">高位兑现为主</td><td>个股普涨（上涨3013家）+涨停83家，非系统做空，是结构切换</td></tr></table>
+<h3>3.2 板块净流入（资金去向）</h3>
+<table><tr><th>板块</th><th>当日主力净流入</th><th>方向逻辑</th></tr>
+<tr><td>软件开发</td><td class="up">约+22.5亿</td><td>AI应用/网络安全，海外SaaS重估映射</td></tr>
+<tr><td>化学制品</td><td class="up">约+18.0亿</td><td>化工涨价链</td></tr>
+<tr><td>农业/种植</td><td class="up">净流入</td><td>厄尔尼诺+农产品涨价</td></tr>
+<tr><td>房地产服务</td><td class="up">净流入</td><td>中报+稳地产政策</td></tr>
+<tr><td>医药生物</td><td class="dn">净流出</td><td>高位主线退潮延续</td></tr></table>
+<h3>3.3 叙事竞争</h3>
+<p><strong>局部定价权：农业通胀/避险叙事。</strong>农业种植链以万向德农9天6板为首的涨停潮赢得板块层面定价权，房地产与化工原料被动跟随；<strong>全局定价权：AI硬件高位兑现。</strong>主导指数的是AI硬件的获利回吐（科创50领跌），成长叙事让位于防御。这与前一日"AI硬件绝对主线"形成鲜明反差——单一重大叙事（英伟达财报）无法维持多日主升，缺乏新增催化时即高位分歧，验证了"连续大涨后延续权重需下调"的判断。</p>
+</div>
+
+<!-- 章四 -->
+<div class="chp" id="c4">
+<div class="t"><span class="no">4</span>暗线与多空伏击点<span class="nm">Undercurrents</span></div>
+<h3>多头水面下的涟漪</h3>
+<ul style="padding-left:20px;font-size:13.5px;line-height:2">
+<li><b>农业种植链（厄尔尼诺）</b>：万向德农9天6板、新赛股份2连板、敦煌种业/中水渔业/冠农股份涨停，芝加哥小麦三年新高，属有产业催化的真题材。</li>
+<li><b>软件/AI应用 + 网络安全</b>：隔夜美股SaaS/CrowdStrike大涨映射，软件开发主力净流入约22.5亿，AI安全需求从硬件扩散到应用/安全。</li>
+<li><b>房地产</b>：我爱我家中报超预期（8/27盘后）+稳地产政策+金九银十，我爱我家涨停、房地产服务+3.75%。</li></ul>
+<h3>空头高位裂痕</h3>
+<ul style="padding-left:20px;font-size:13.5px;line-height:2">
+<li><b>AI硬件权重</b>：部分龙头盘中创历史新高后跳水（"400亿龙头刚历史新高就跳水"），高位筹码松动。</li>
+<li><b>医药生物领跌</b>：医疗服务、生物制品跌幅居前，前期CRO/创新药主线继续退潮（医保控费+集采+定价权逻辑压制）。</li>
+<li><b>成长与大盘背离</b>：创业板/科创明显弱于上证50/中证1000，指数成长端失血。</li></ul>
+</div>
+
+<!-- 章五 -->
+<div class="chp" id="c5">
+<div class="t"><span class="no">5</span>盘面成因拆解<span class="nm">State → Trigger → Flow</span></div>
+<div class="quote"><b>State → Trigger → Flow 总览：</b><b>状态（State）</b>=前日AI硬件单日主升后高位、指数逼近前高（上证3956→今日盘中3970）、成长极度拥挤；<b>触发器（Trigger）</b>=①AI硬件缺乏新增催化、隔夜美股NVDA虽续强但A股映射衰减；②厄尔尼诺+芝加哥小麦三年新高点燃农业链；③我爱我家中报超预期+稳地产政策；<b>资金响应（Flow）</b>=高位AI/医药获利回吐，资金高低切至农业/地产/化工，及软件/AI应用低位承接。</div>
+<div class="tl">
+<div class="ti"><div class="tt">Meta · 开盘（09:25）</div><div class="tc">认知隔夜利好+地产中报，指数高开，创业板早盘一度涨1%后翻绿——高位兑现情绪压制。</div></div>
+<div class="ti"><div class="tt">上午盘 · 高低切启动</div><div class="tc">农业（万向德农一字板）领涨，房地产我爱我家涨停；医药、光伏电网、部分创新药赛道开盘走弱，AI硬件高位资金流出。</div></div>
+<div class="ti"><div class="tt">盘中 · 分化加剧</div><div class="tc">上证一度冲高至3970.31，但AI硬件分红权重"创新高即跳水"，科创50/创业板翻绿走弱，软件/AI应用与网络安全逆势承接。</div></div>
+<div class="ti"><div class="tt">午后 · 分歧蔓延</div><div class="tc">农业/渔业/化工继续活跃，种植链涨停潮；指数维持"上证微跌、成长领跌"的分化格局，涨停家数维持较多数。</div></div>
+</div>
+<p><strong>因果传导链（农业）：</strong>厄尔尼诺+中东天气冲击 → 芝加哥小麦三年新高 → 国内机构（中信证券）判断2H26农产品价格在高油价抬成本+厄尔尼诺减产下向上 → 农产品涨价→CPI食品项→通胀担忧 → 资金抱团农业（种植/渔业/农化）标的，万向德农9天6板。属"产业催化+通胀避险"双驱动，具备趋势性基础，但短期涨停潮后需防兑现。（证据等级：高）</p>
+<div class="db"><b>护盘资金参与度：</b>今日宽基ETF呈"权重温和净流入、成长净流出"格局——沪深300ETF(+2.45亿)、中证1000ETF(+1.12亿)、上证50ETF(+0.87亿)小幅净流入，而创业板ETF(-3.42亿)、科创50ETF(-5.26亿)明显流出；流入金额均未达异常放量阈值（>5日均值2倍）。<b>未见明显国家队护盘信号</b>，今日为资金自发的高低位防御切换，而非护航性买入。</div>
+</div>
+
+<!-- 章六 -->
+<div class="chp" id="c6">
+<div class="t"><span class="no">6</span>叙事如何映射到不同资产<span class="nm">Narrative Mapping</span></div>
+<table><tr><th>叙事</th><th>映射方向</th><th>A股受益</th><th>强度</th></tr>
+<tr><td rowspan="2"><b>AI硬件（英伟达景气）</b></td><td>A股半导体/PCB/CPO/算力</td><td>科创50、光模块/算力硬件</td><td class="dn">高位兑现·映射衰减</td></tr>
+<tr><td>软件/AI应用/安全</td><td>软件开发(+22.5亿)、网络安全/AI应用</td><td class="up">低位承接·扩散</td></tr>
+<tr><td><b>农业通胀（厄尔尼诺）</b></td><td>种植/渔业/农化/白糖/橡胶/种业</td><td>万向德农(9天6板)、渔业、农产品加工</td><td class="up">新主线·强</td></tr>
+<tr><td><b>稳地产</b></td><td>房地产服务/开发</td><td>我爱我家(涨停)</td><td class="up">中报+政策</td></tr>
+<tr><td><b>医药退潮</b></td><td>医疗服务/生物制品</td><td>（回避）</td><td class="dn">续跌</td></tr></table>
+<p><strong>反事实推演：</strong>今日A股资金最值得玩味的是——海外最强的叙事（AI科技）在A股硬件的映射明显衰减（科创50领跌），而海外相对"冷门"的农业避险逻辑却在A股大行其道。说明A股资金在指数高位、单极拥挤时，对任何"已充分交易的海外叙事"都持兑现态度，转而追捧"有新增催化（厄尔尼诺）+位置低"的方向。这印证了此前观察：单纯的高确定性利好若无价格位置优势，映射会大幅打折。</p>
+</div>
+
+<!-- 章七 -->
+<div class="chp" id="c7">
+<div class="t"><span class="no">7</span>多空力量对比<span class="nm">Bull / Bear</span></div>
+<div class="bb">
+<div class="bl"><h4>🐂 多头观点</h4><ul>
+<li>指数虽跌但个股普涨（上涨3013家），涨停83家多于昨日78家，赚钱效应并未退潮。</li>
+<li>农业（厄尔尼诺+小麦三年新高）与地产（中报+政策）提供新承接主线，资金未离场而是切换。</li>
+<li>软件/AI应用+网络安全获资金流入（软件开发+22.5亿），AI叙事从硬件扩散到应用，方向健康。</li>
+</ul></div>
+<div class="bk"><h4>🐻 空头观点</h4><ul>
+<li>AI硬件高位兑现、科创50 -1.85%领跌，成长端失血，指数重心下移风险。</li>
+<li>量能2.10万亿未延续放量（较2.13万亿微缩），"主升中继"逻辑失效，上攻动能不足。</li>
+<li>农业/地产属防御与低位补涨，多为脉冲/避险，持续性存疑；医药退潮拖累情绪。</li>
+</ul></div>
+</div>
+<div class="quote"><b>⚖️ 综合判断（交易员）：</b>胜率倾向中性偏防守。指数层面处于高位分歧、方向未决；结构层面"科技高、防御低"的切换能否延续是新主线（农业）的试金石。关键验证：①农业种植链次日能否延续涨停潮（万向德农能否连板）→ 新主线确定性；②科创50能否放量重新站上1700 → AI硬件是洗盘还是退潮；③量能能否重回2.2万亿上方。当前建议：不追高指数、回避高位AI硬件与退潮医药，关注有新增催化的农业/软件低位方向，重个股轻指数（证据等级：中）。</div>
+</div>
+
+<!-- 章八 -->
+<div class="chp" id="c8">
+<div class="t"><span class="no">8</span>24小时关键信息筛选<span class="nm">Key Info</span></div>
+<table><tr><th>信息</th><th>影响力</th><th>证据</th><th>类别</th><th>对应价格</th></tr>
+<tr><td class="up">厄尔尼诺+芝加哥小麦三年新高，农业供应冲击（汇丰/中信证券提示）</td><td class="up">9/10</td><td class="up">高</td><td>剧情推进</td><td class="up">种植链涨停潮、万向德农9天6板</td></tr>
+<tr><td>AI硬件高位兑现、部分权重盘中创新高后跳水（中证报）</td><td class="up">8/10</td><td class="up">高</td><td>放大器</td><td class="dn">科创50 -1.85%</td></tr>
+<tr><td>隔夜美股SaaS/网络安全大涨（Salesforce+23%、CrowdStrike+21%）映射</td><td class="up">7/10</td><td class="up">高</td><td>剧情推进</td><td class="up">软件开发+22.5亿净流入</td></tr>
+<tr><td>我爱我家中报超预期+稳地产政策（盘后公告）</td><td class="w">6.5/10</td><td class="up">高</td><td>剧情推进</td><td class="up">我爱我家涨停、地产服务+3.75%</td></tr>
+<tr><td>医药生物/医疗服务/生物制品领跌</td><td class="w">6/10</td><td class="up">高</td><td>持续退潮</td><td class="dn">医药领跌指数</td></tr>
+<tr><td>两市成交2.10万亿，较昨日微缩量</td><td class="w">5.5/10</td><td class="up">高</td><td>背景</td><td>量能高位微缩</td></tr></table>
+<h3>外媒小作文专区</h3>
+<p>今日无重大外媒针对中国资产的叙事性报道（投行观点与行业披露为主），如实标注"无重大外媒小作文"，不硬凑。</p>
+</div>
+
+<!-- 章8.7 -->
+<div class="chp" id="c87">
+<div class="t"><span class="no">8.7</span>持续性故事线追踪<span class="nm">Ongoing Storylines</span></div>
+<table><tr><th>故事线</th><th>起始</th><th>当前状态（今日增量）</th><th>验证点</th></tr>
+<tr><td>AI硬件主升（PCB/CPO/半导体/存储）</td><td>2026/8/27</td><td>今日高位分歧回吐，科创50 -1.85%；映射从硬件扩散至软件/AI应用/安全</td><td>科创50能否放量收复1700，硬件是否二次主升</td></tr>
+<tr><td><b>厄尔尼诺/农业通胀</b></td><td>2026/8/28</td><td>种植/渔业涨停潮启动，万向德农9天6板；芝加哥小麦三年新高</td><td>连板延续性、农产品现货涨价兑现</td></tr>
+<tr><td>软件重估→网络安全/AI应用</td><td>2026/8/27-28</td><td>软件开发主力净流入约22.5亿，AI安全/AI应用承接</td><td>能否从单日扩散为持续性主线</td></tr>
+<tr><td>医药高位退潮（CRO/创新药）</td><td>2026/8/27</td><td>今日医疗服务/生物制品继续领跌，无新增催化</td><td>何时企稳、政策边际变化</td></tr></table>
+</div>
+
+<!-- 章九 -->
+<div class="chp" id="c9">
+<div class="t"><span class="no">9</span>市场状态更新库<span class="nm">State Update</span></div>
+<h3>被证伪的旧叙事</h3>
+<div class="db"><b>"AI硬件主升中继"（8/28盘前判断）：</b>8/28未延续主升，冲高回落、科创领跌——连续两日主升后无新增催化即高位分歧，验证了"连续大涨后延续权重需下调"。本次是《预测台账》"主升中继 vs 高位分歧"二选一的实盘裁决，结果为<b>高位分歧</b>。</div>
+<h3>正式接管的新定价锚</h3>
+<div class="quote"><b>新定价锚一：农业通胀/厄尔尼诺。</b>农产品涨价（小麦三年新高）+通胀避险，资金抱团种植/渔业/农化，是新晋局部主线。<b>新定价锚二：AI叙事从硬件向应用/安全扩散。</b>软件开发/AI应用/网络安全承接硬件退出的资金。<b>新定价锚三：高低切与防御化。</b>指数高位、单极拥挤后，资金追逐低位补涨（地产/化工）与防御（农业/黄金）。确认条件：农业连板延续+软件/AI应用放量；反证：若科创50放量反转收复，定价锚回归AI硬件。</div>
+</div>
+
+<!-- 章十 -->
+<div class="chp" id="c10">
+<div class="t"><span class="no">10</span>前瞻观察与风险<span class="nm">Next 1-3 Days</span></div>
+<table><tr><th>主线</th><th>方向</th><th>观察信号</th></tr>
+<tr><td>农业种植（厄尔尼诺）</td><td class="up">延续</td><td>万向德农能否连板、种业/渔业涨停潮是否扩散、农化/白糖/橡胶跟进</td></tr>
+<tr><td>软件/AI应用</td><td class="up">扩散？</td><td>软件开发能否持续净流入、网络安全/AI应用能否成为独立主线</td></tr>
+<tr><td>AI硬件</td><td class="dn">回踩/退潮？</td><td>科创50能否放量收复1700，硬件权重能否二次突破前高</td></tr>
+<tr><td>医药</td><td class="dn">止跌？</td><td>医药生物能否止跌企稳、政策/催化是否重现</td></tr></table>
+<div class="db"><b>做空/防御触发条件：</b>①若农业种植一日游（次日万向德农炸板、涨停潮不扩散）→ 防御主线证伪，市场进入无主线真空；②若科创50破位下行（跌破1650）且量能持续萎缩→AI硬件由洗盘转退潮，指数重心下移；③若量能缩回2万亿下方→高低切后增量不足，防二次回踩。积极信号：若软件/AI应用放量成主线且农业延续，则结构性行情延续。</div>
+</div>
+
+<!-- 章十一 -->
+<div class="chp" id="c11">
+<div class="t"><span class="no">11</span>标的动态（科技/AI优先）<span class="nm">Targets</span></div>
+<table><tr><th>层级</th><th>方向</th><th>标的（代码/板块）</th><th>今日/逻辑</th></tr>
+<tr><td>核心龙头-高位分歧</td><td>AI硬件（CPO/光模块/算力）</td><td>科创50权重/光模块链</td><td class="dn">创新高后跳水，高位回避，等二次放量确认</td></tr>
+<tr><td>核心龙头-低位承接</td><td>软件/AI应用/网络安全</td><td>三六零(净流入6.71亿)、易点天下、天娱数科，麒麟信安/奇安信/安恒信息(网络安全涨停)</td><td class="up">AI应用概念净流入32.94亿，安全承接</td></tr>
+<tr><td>新主线-农业</td><td>种植/种业/渔业</td><td>万向德农、敦煌种业、中水渔业、冠农股份</td><td class="up">厄尔尼诺+小麦三年新高，涨停潮龙头</td></tr>
+<tr><td>容量中军</td><td>地产/化工</td><td>我爱我家（地产）、华鲁恒升（化工）</td><td class="up">中报+政策/涨价</td></tr>
+<tr><td>20cm弹性</td><td>农业/农化</td><td>创业/科创种业农化标的</td><td>弹性大、波动高，谨慎</td></tr>
+<tr><td>风险回避</td><td>医药生物/CRO</td><td>医疗服务、生物制品</td><td class="dn">领跌、退潮，暂回避</td></tr></table>
+</div>
+
+<!-- 章十四 -->
+<div class="chp" id="c14">
+<div class="t"><span class="no">14</span>仓位管理建议<span class="nm">Position</span></div>
+<table><tr><th>维度</th><th>建议</th></tr>
+<tr><td>当前建议仓位</td><td class="w">中性偏低（4-5成），高位分歧不追高、留足回撤缓冲</td></tr>
+<tr><td>核心暴露</td><td>低位承接：软件/AI应用；新主线观察：农业（小仓位试错1-2成）</td></tr>
+<tr><td>入场节奏</td><td>不追高位AI硬件、不追涨停潮当日龙头；宜等农业/软件回调二次买点，或科创50放量反转再回补硬件</td></tr>
+<tr><td>止盈触发</td><td>+10% 止盈纪律：目标收益10%左右，达到即减仓至轻仓</td></tr>
+<tr><td>止损执行</td><td>农业龙头炸板/软件放量滞涨即减半仓；科创50跌破1650清硬件仓</td></tr>
+<tr><td>空仓条件</td><td>农业与软件双主线均退潮+量能缩回2万亿下方+指数跌破3950（今日低点3947）→ 全部空仓观望</td></tr></table>
+<div class="db"><b>风险优先提示：</b>指数高位分歧、方向未决；量能未延续放大（2.10万亿为顶背离特征）；医药退潮拖累情绪。仓位上限锁定5成，等待新主线（农业/软件）二次确认或硬件重新放量再决定加减，用10%止盈纪律锁定兑现利润。以上为框架性纪律A，不构成具体买卖建议。</div>
+</div>
+
+<!-- 章十五 -->
+<div class="chp" id="c15">
+<div class="t"><span class="no">15</span>结论式总结<span class="nm">The Bottom Line</span></div>
+<p>今天其实是"换挡"的一天。昨天AI硬件刚刚站上舞台主角，今天就冲高回落摔了跟头——科创50大跌1.85%，很多AI硬件权重股盘中刚创新高就跳水，前面涨太猛、没人接盘了。但有意思的是，市场并没有冷下来，反而是换了块地：个股涨了3013家、涨停83家（比昨天还多5家），钱没有跑，只是换了个方向去"捡便宜"。</p>
+<p>钱去了哪？三个明显去处：第一是<strong>农业</strong>，厄尔尼诺一来、美国小麦期货涨到三年新高，种植、渔业、种子集体涨停，万向德农直接9天6板，这是今天最硬的"新故事"；第二是<strong>房地产</strong>，我爱我家业绩超预期+稳地产政策，我爱我家涨停；第三是<strong>软件/AI应用</strong>，隔夜美国软件股（Salesforce、CrowdStrike）暴涨，A股软件、网络安全跟着净流入20多亿，AI的热度从"造芯片"传到了"用软件"。</p>
+<p>接下来盯三件事：一是<strong>农业这波能不能扛住</strong>（龙头明天不炸板、涨停潮继续扩散，就是真的新主线）；二是<strong>科创50能不能放量收回1700</strong>（能，AI硬件只是洗盘；不能，就是真退潮，指数要往下找支撑）；三是<strong>全天量能</strong>——现在2.10万亿卡在高位，放不出更大的量，就是"顶背离"，要防高位二次回踩。一句话：<strong>指数在高位喘气，别追高接飞刀，把注意力放到有新增量的农业和软件低位方向。</strong></p>
+</div>
+
+<!-- 章十六 -->
+<div class="chp" id="c16">
+<div class="t"><span class="no">16</span>预测台账与回归<span class="nm">Forecast & Regression</span></div>
+<h3>16.1 8/28盘前预测回归验证</h3>
+<table><tr><th>预测项</th><th>预测值(8/27盘前)</th><th>实际(8/28)</th><th>结果</th><th>偏差归因</th></tr>
+<tr><td>开盘方向</td><td>高开+0.3%~+0.8%</td><td>平开偏小低开（开3950.24）</td><td>❌</td><td>连续两期患"强利好→高开"线性外推；隔夜利好集合竞价消化</td></tr>
+<tr><td>量能中位数</td><td>2.00~2.20万亿</td><td>2.10万亿</td><td class="up">✅</td><td>区间内</td></tr>
+<tr><td>涨停家数</td><td>70~100家</td><td>83家</td><td class="up">✅</td><td>区间内</td></tr>
+<tr><td>主线竞争（第一权重）</td><td>AI算力硬件45%</td><td>AI硬件高位回吐，最强转农业/防御</td><td>❌</td><td>"主升中继"判断错误，连续大涨后无新增催化即高位分歧</td></tr>
+<tr><td>创业板vs上证超额</td><td>+0.5%~+1.5%</td><td>创业板-1.41% vs 上证-0.11%，负超额-1.3%</td><td>❌</td><td>方向反转，低估成长高位兑现</td></tr></table>
+<p style="font-size:13.5px;color:#475569"><b>小结：</b>5项中2命中、3未命中。进步：量能与涨停两个量化项连续多期稳定命中。系统性偏差：①开盘方向连续两期高估（"强利好→高开"线性外推，事件驱动日应以平开偏小幅高开处理）；②在主升后第二日，"延续"权重过高而"高位分歧"权重不足——对"已充分兑现+连续大涨"方向应主动下调延续权重，与8/24贵金属、8/26 CRO教训同构。<strong>学习点12：连续两日主升后次日无新增催化即按"高位分歧"预设，而非"主升中继"。</strong></p>
+<h3>16.2 明日（8/31）新预测</h3>
+<table><tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+<tr><td>开盘方向</td><td>平开~小幅低开（高低切分歧延续）</td><td class="w">中</td></tr>
+<tr><td>量能中位数</td><td>1.95~2.10万亿（若缩回2万亿下方防回踩）</td><td>低</td></tr>
+<tr><td>涨停家数</td><td>55~85家</td><td>低</td></tr>
+<tr><td>主线竞争</td><td>农业(厄尔尼诺)25% / 软件AI应用25% / 地产20% / AI硬件回踩企稳15% / 其他15%</td><td class="w">中</td></tr>
+<tr><td>情景概率</td><td>乐观(农业+软件双扩)30% / 中性(高低切震荡)50% / 悲观(缩量回踩)20%</td><td>—</td></tr></table>
+<p style="font-size:13px;color:#64748b;margin-top:8px">完整台账已同步《预测台账文件》，用作后续滚动评分与校准。</p>
+</div>
+
+</div>
+<div class="ftr">A股全景复盘报告 · 2026-08-28 · 数据源：公开行情/新闻（changedist/sector/market-overview + 财联社/证券时报/第一财经/华尔街见闻等）<br>以上分析基于公开数据，不构成投资建议</div>
+
+<script>
+function ec(id){return echarts.init(document.getElementById(id));}
+// c1 指数当日涨跌
+(function(){var c=ec('c1');
+var n=['科创50','创业控指','深证成指','中证500','沪深300','中证1000','上证50','上证指数'];
+var v=[-1.85,-1.41,-0.68,-0.64,-0.46,-0.36,-0.24,-0.11];
+c.setOption({title:{text:'8/28 主要指数当日涨跌幅 (%)',left:'center',textStyle:{fontSize:14}},tooltip:{trigger:'axis',formatter:'{b}: {c}%'},grid:{left:60,right:15,top:44,bottom:28},xAxis:{type:'category',data:n,axisLabel:{fontSize:10,interval:0}},yAxis:{type:'value',axisLabel:{formatter:'{value}%'}},series:[{type:'bar',data:v,barWidth:22,itemStyle:{color:function(p){return p.value>=0?'#e63946':'#2d6a4f';},borderRadius:[3,3,0,0]},label:{show:true,position:'top',formatter:'{c}%',fontSize:11}}]});})();
+// c2 涨跌分布
+(function(){var c=ec('c2');
+var n=['涨停','>7%','7~5%','5~2%','2~0%','平','0~-2%','-2~-5%','-5~-7%','跌停'];
+var v=[83,49,77,716,2088,148,1582,670,93,3];
+c.setOption({title:{text:'8/28 全市场涨跌家数分布',left:'center',textStyle:{fontSize:14}},tooltip:{trigger:'axis'},grid:{left:60,right:15,top:44,bottom:48},xAxis:{type:'category',data:n,axisLabel:{fontSize:9.5,interval:0,rotate:30}},yAxis:{type:'value'},series:[{type:'bar',data:v.map(function(x){return x;}),itemStyle:{color:function(p){var d=p.dataIndex;return d<5?'#e63946':(d===5?'#cbd5e1':'#2d6a4f');},borderRadius:[3,3,0,0]}}]});})();
+// c3 领涨领跌板块
+(function(){var c=ec('c3');
+var n=['医药二级(index)','光伏/电力设备','化学原料','农产品加工','炼化及贸易','饰品','房地产服务','渔业'];
+var v=[-1.8,-1.2,2.42,2.65,2.66,3.42,3.75,4.55];
+c.setOption({title:{text:'8/28 领涨/领跌板块 (%)',left:'center',textStyle:{fontSize:14}},tooltip:{formatter:'{b}: {c}%'},grid:{left:90,right:40,top:44,bottom:24},xAxis:{type:'value',axisLabel:{formatter:'{value}%'}},yAxis:{type:'category',data:n.reverse(),axisLabel:{fontSize:10}},series:[{type:'bar',data:v.reverse(),barWidth:16,itemStyle:{color:function(p){return p.value>=0?'#e63946':'#2d6a4f';},borderRadius:[0,3,3,0]},label:{show:true,position:'right',formatter:'{c}%',fontSize:10}}]});})();
+</script>
+</body>
+</html>
