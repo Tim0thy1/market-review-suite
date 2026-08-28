@@ -1,8 +1,8 @@
 # 《主线深度研究》报告模板（周更 S0~S8）
 
-**视觉风格强制对齐 A股 复盘报告**（`A股复盘-YYYYMMDD/全景复盘_YYYYMMDD.html`），同一 UI 语言，用户一眼可辨识。
+**视觉风格为自包含研报风**，与A股复盘报告同一UI语言，用户一眼可辨识。不依赖外部文件。
 
-## CSS 基础（复用复盘报告 token）
+## CSS 基础（内置 token）
 
 ```css
 :root{--bg:#f7f8fa;--card:#ffffff;--ink:#1f2937;--muted:#6b7280;--line:#e8eaf0;
