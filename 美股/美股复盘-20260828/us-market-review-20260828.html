@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股复盘报告 | 2026年8月28日（周五）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg0:#f7f8fc;--bg1:#ffffff;--bg2:#f1f5f9;--bg3:#eef2ff;--bd:#e2e8f0;--t0:#1a2740;--t1:#475569;--t2:#64748b;--red:#dc2626;--grn:#16a34a;--blu:#1e40af;--blu2:#3b82f6;--ylw:#f59e0b;--dng:#dc2626;--gld:#d97706}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg0);color:var(--t0);font-family:'Noto Sans CJK SC','Microsoft YaHei','Segoe UI',sans-serif;line-height:1.75;font-size:15px}
+.ctn{max-width:1400px;margin:0 auto;padding:20px}
+.hdr{background:linear-gradient(135deg,#ffffff,#eef2ff);border:1px solid var(--bd);border-radius:12px;padding:38px;margin-bottom:24px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--dng),var(--ylw),var(--grn))}
+.hdr h1{font-size:30px;margin-bottom:8px;font-weight:700}
+.hdr .sub{color:var(--t1);font-size:15px;margin-bottom:16px}
+.badge{display:inline-block;background:var(--dng);color:#fff;padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-right:8px;margin-bottom:8px}
+.tag2{display:inline-block;background:rgba(22,163,74,.15);border:1px solid var(--grn);color:var(--grn);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:8px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 18px;text-align:center}
+.card .lb{font-size:12px;color:var(--t2);margin-bottom:5px}
+.card .vl{font-size:22px;font-weight:700}
+.card .ch{font-size:13px;margin-top:3px}
+.chp{background:var(--bg1);border:1px solid var(--bd);border-radius:12px;padding:28px;margin-bottom:22px}
+.cht{font-size:21px;font-weight:700;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--bd);display:flex;align-items:center;gap:10px}
+.cht .n{background:var(--blu);color:#fff;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.cht .nm{font-size:13px;font-weight:500;color:var(--blu2)}
+.dt{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.dt th{background:var(--bg2);color:var(--t1);padding:9px 11px;text-align:left;font-weight:600;border-bottom:2px solid var(--bd);font-size:12.5px}
+.dt td{padding:7px 11px;border-bottom:1px solid var(--bd)}
+.dt tr:hover{background:var(--bg3)}
+.r{color:var(--red)}.g{color:var(--grn)}.b{font-weight:700}
+.up{color:var(--red)}.dn{color:var(--grn)}
+.chart-box{margin:18px 0}
+.chart{width:100%;height:420px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd)}
+.chart-sm{height:320px}.chart-lg{height:460px}.chart-mid{height:380px}
+.ct{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--blu2)}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+.bp{background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.3);border-radius:10px;padding:18px}
+.kp{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:10px;padding:18px}
+.bp h4{color:var(--grn);margin-bottom:10px;font-size:15px}.kp h4{color:var(--red);margin-bottom:10px;font-size:15px}
+.bp ul,.kp ul{list-style:none;padding-left:0}.bp li,.kp li{padding:5px 0;font-size:13.5px;border-bottom:1px solid rgba(0,0,0,.05)}
+.bp li::before{content:"+ ";color:var(--grn);font-weight:bold}.kp li::before{content:"- ";color:var(--red);font-weight:bold}
+.tl{position:relative;padding-left:30px;margin:14px 0}
+.tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--bd)}
+.ti{position:relative;margin:0;padding:0 0 14px 0;font-size:14px}
+.ti::before{content:'';position:absolute;left:-26px;top:6px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--blu2)}
+.ti b{color:var(--blu)}
+.tldr{background:linear-gradient(135deg,#0f2447,#1e3a5f);color:#fff;border-radius:12px;padding:26px;margin-bottom:24px}
+.tldr .t{font-size:19px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.tldr .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tldr .cell{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:15px;font-size:13.8px;color:#e6edf7}
+.tldr .cell b{color:#ffd88a}
+.note{background:var(--bg3);border-left:4px solid var(--blu2);border-radius:6px;padding:13px 16px;margin:14px 0;font-size:13.5px;color:var(--t1)}
+.quote{background:var(--bg2);border-left:4px solid var(--gld);border-radius:6px;padding:14px 16px;margin:18px 0;font-size:13px;color:var(--t1)}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:#1e3a5f}
+#tocPanel{position:fixed;right:16px;top:70px;z-index:1000;width:270px;background:#fff;border:1px solid var(--bd);border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.15);padding:16px;display:none;max-height:80vh;overflow-y:auto}
+#tocPanel.open{display:block}
+#tocPanel .toc-head{font-weight:700;font-size:15px;margin-bottom:10px;color:var(--blu);border-bottom:1px solid var(--bd);padding-bottom:8px}
+#tocPanel a{display:block;padding:6px 8px;color:var(--t1);text-decoration:none;font-size:13px;border-radius:6px}
+#tocPanel a:hover{background:var(--bg3);color:var(--blu)}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:12px;font-weight:600;margin-right:6px}
+.tag-r{background:rgba(220,38,38,.12);color:var(--red)}.tag-g{background:rgba(22,163,74,.12);color:var(--grn)}.tag-y{background:rgba(245,158,11,.15);color:var(--gld)}.tag-b{background:rgba(30,64,175,.1);color:var(--blu)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.tldr .grid{grid-template-columns:1fr}.bb{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ctn">
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div id="tocPanel">
+<div class="toc-head">章节导航</div>
+<a href="#s0">章零 · 市场底层状态与仓位约束</a>
+<a href="#s1">章一 · 多时间维度全景 + 整体状态</a>
+<a href="#s2">章二 · 宏观锚点与风险偏好</a>
+<a href="#s3">章三 · 市场主线与资金流向</a>
+<a href="#s4">章四 · 暗线与多空伏击点</a>
+<a href="#s45">章四·五 · 期权情绪与期权墙</a>
+<a href="#s46">章四·六 · 信用利差分析</a>
+<a href="#s5">章五 · 盘面成因拆解</a>
+<a href="#s6">章六 · 叙事如何映射到不同资产</a>
+<a href="#s7">章七 · 多空辩论</a>
+<a href="#s8">章八 · 24小时关键信息筛选</a>
+<a href="#s9">章九 · 市场状态更新库</a>
+<a href="#s10">章十 · 前瞻观察与风险</a>
+<a href="#s11">章十一 · 风险可控的交易标的建议</a>
+<a href="#s12">章十二 · 科技/AI板块深度扫描</a>
+<a href="#s13">章十三 · 仓位管理建议</a>
+<a href="#s14">章十四 · 结论式总结</a>
+</div>
+
+<div class="hdr">
+<h1>美股复盘报告 · 2026年8月28日（周五）</h1>
+<div class="sub">数据采集：Moomoo API + WeStock Data + CBOE期权链（92098条合约）｜分析框架：宏观→资金流→行业→个股→交易结构</div>
+<div><span class="badge">杰克逊霍尔鹰派首秀</span><span class="badge">半导体获利回吐</span><span class="tag2">软件/消费/通信接力</span></div>
+<div class="cards">
+<div class="card"><div class="lb">标普500</div><div class="vl">7,711.76</div><div class="ch dn">-0.25%</div></div>
+<div class="card"><div class="lb">纳斯达克</div><div class="vl">26,402.42</div><div class="ch dn">-0.52%</div></div>
+<div class="card"><div class="lb">道琼斯</div><div class="vl">53,559.99</div><div class="ch dn">-0.02%</div></div>
+<div class="card"><div class="lb">9月加息概率</div><div class="vl">59.7%</div><div class="ch up">前值 35.4%</div></div>
+</div>
+</div>
+
+<!-- ==================== TLDR ==================== -->
+<div class="tldr">
+<div class="t">📌 关键结论（TLDR）</div>
+<div class="grid">
+<div class="cell"><b>市场定性：</b><b class="up">“鹰派靴子”落地日。</b>美联储新任主席凯文·沃什杰克逊霍尔首秀释放清晰鹰派信号——坚持放弃前瞻指引、强调经济韧性、暗示若通胀回落信心不足即加息。CME FedWatch 9月加息概率由35.4%跳升至59.7%，12月会议前加息概率超90%。三大股指小幅收跌，但盘面内部剧烈分化：<b>芯片/半导体集体回吐（费半-3.2%、英伟达-4.57%、迈威尔-10.28%）</b>，软件/消费/通信接力（NOW +4.54%、XLC +1.42%）。</div>
+<div class="cell"><b>核心矛盾：</b>这是周四英伟达财报+8.74%、纳指+1.57%狂欢后的第一个“作价交易日”。利率端（2年期美债+~12bp至4.35%、美元指数跳涨近40点至99.7、黄金暴跌近3%）与拥挤的AI硬件多头仓位正面相撞——半导体板块放量回吐，教科书式高位分歧。</div>
+<div class="cell"><b>期权结构警示（独家）：</b>SPY已跌入 <b>Short Gamma区（现价769.35 &lt; Zero Gamma 772.40，偏离-0.4%）</b>——做市商对冲行为将从“阻尼器”变“放大器”；QQQ恰在Zero Gamma临界点上方（现价716.24 &gt; 712.40，Long Gamma）。迈威尔（现价216.39 &lt; ZG 221.98）、科磊（176.19 &lt; ZG 261.08）均处Short Gamma，波动或被结构放大。下周一若美股失守769，SPY波动将放大。</div>
+<div class="cell"><b>关键观察：</b>资金没有离场，只是换座位——通信XLC +1.42%、可选XLY +1.15%、中概走独立行情，软件NOW +4.54%续涨，消费电子AMZN +3.97%。9月两大雷：9/17 FOMC（59.7%概率加息）+ 白宫半导体关税审查。下周《8月非农》前，市场将在“加息恐惧”与“AI兑现”之间反复拉锯。</div>
+</div>
+</div>
+
+<!-- ==================== 章零 ==================== -->
+<section class="chp" id="s0">
+<div class="cht"><span class="n">0</span>市场底层状态与仓位约束</div>
+<div class="note"><b>市场 = 状态 + 触发器 + 资金响应</b>。先立状态框架，不以单日涨跌论牛熊。</div>
+<table class="dt">
+<tr><th>维度</th><th>判定</th><th>依据</th></tr>
+<tr><td>趋势状态（日线）</td><td><span class="tag tag-g">上行未破</span></td><td>纳指距前期低点仍处20日多头排列，单日-0.52%属正常喘息；三大指数收盘仍守住5日线上方</td></tr>
+<tr><td>趋势状态（周线）</td><td><span class="tag tag-g">健康上行</span></td><td>周线连续收阳，AI/半导体主线驱动明确，未出现顶背离周K</td></tr>
+<tr><td>情绪状态</td><td><span class="tag tag-y">高位分歧</span></td><td>连续两日大涨后首次放量回吐，涨停板/强势股集体退潮，投机情绪从亢奋转向谨慎</td></tr>
+<tr><td>量能状态</td><td><span class="tag tag-b">放量分歧</span></td><td>半导体/纳指成交额显著放大但收跌，为典型“高位派发”特征</td></tr>
+<tr><td>仓位约束</td><td><span class="tag tag-y">不宜追高硬件</span></td><td>AI硬件（半导体）仓位已极端拥挤，追高风险大于机会；软件/消费/通信相对低拥挤，可作为轮动承接</td></tr>
+</table>
+<p style="margin-top:12px"><b>一句话底层定性：</b>趋势仍是上行，但短线进入<i>“利率恐慌 + AI硬件拥挤”</i>的共振回撤区，属于上涨过程中的结构分化和换手，而非趋势反转信号。仓位上以“调结构、不降总体”为基调。</p>
+</section>
+
+<!-- ==================== 章一 ==================== -->
+<section class="chp" id="s1">
+<div class="cht"><span class="n">1</span>多时间维度全景 + 整体状态判断</div>
+<div class="chart-box"><div class="ct">图1 · 三大指数近20日走势（标准化）</div><div class="chart chart-lg" id="c1"></div></div>
+<div class="chart-box"><div class="ct">图2 · 纳指近10日收盘 + 当日半导体领跌</div><div class="chart chart-mid" id="c4"></div></div>
+<table class="dt">
+<tr><th>指数</th><th>收盘</th><th>当日涨跌</th><th>距20日高点</th><th>趋势</th></tr>
+<tr><td>标普500</td><td>7,711.76</td><td class="dn">-0.25%</td><td>约-0.5%</td><td>高位窄幅整理</td></tr>
+<tr><td>纳斯达克</td><td>26,402.42</td><td class="dn">-0.52%</td><td>约-0.7%（盘中曾创新高后回落）</td><td>冲高回落</td></tr>
+<tr><td>道琼斯</td><td>53,559.99</td><td class="dn">-0.02%</td><td>持平</td><td>抗跌横盘</td></tr>
+</table>
+<p><b>多周期综合判断：</b>1D（当日）承压、5D（本周）整体上行、20D（月度）维持强劲。当前是5D维度内第2根实质阴线，属“连续急涨后的正常整固”。判断为<span class="tag tag-y">健康回撤，非转势</span>。</p>
+</section>
+
+<!-- ==================== 章二 ==================== -->
+<section class="chp" id="s2">
+<div class="cht"><span class="n">2</span>宏观锚点与风险偏好</div>
+<div class="note"><b>主锚：美联储主席沃什杰克逊霍尔鹰派首秀。</b>这是本周乃至未来数月最重要的宏观事件，直接改变了市场对9月政策的定价。</div>
+<table class="dt">
+<tr><th>宏观变量</th><th>变化</th><th>市场解读</th></tr>
+<tr><td><b>9月加息概率</b></td><td>35.4% → <b>59.7%</b></td><td>讲话前市场押注加息，讲话后概率跳升，12月前加息概率超90%</td></tr>
+<tr><td><b>2年期美债</b></td><td>4.22% → <b>4.34/4.35%</b></td><td>创近一个月新高，利率预期骤然转鹰</td></tr>
+<tr><td><b>10年期美债</b></td><td>~4.71%</td><td>跟随上行，收益率曲线趋陡</td></tr>
+<tr><td><b>美元指数</b></td><td>跳涨近40点至 <b>99.7</b></td><td>美元走强压制大宗与新兴</td></tr>
+<tr><td><b>黄金</b></td><td class="dn">重挫近3%（GLD -3.24%）</td><td>无息资产在加息预期下遭抛售</td></tr>
+<tr><td>原油 USO</td><td class="dn">-0.24%</td><td>震荡，受美元走强压制</td></tr>
+</table>
+<p><b>沃什讲话要点（宏观逻辑链）：</b>①宣布放弃传统“前瞻指引”，转向更精简、针对性的沟通；②强调经济有韧性、金融条件可能“不够具有限制性”；③就业基本达标而通胀需紧盯；④暗示若对通胀回落信心不足→就会加息。市场据此定价“预防性加息之门打开”。银河证券研报定性为“鹰派抗通胀，预防性加息之门打开”。</p>
+<div class="bb">
+<div class="kp"><h4>鹰派风险路径</h4><ul>
+<li>9/17 FOMC若真加息，将冲击高估值成长股（AI硬件首当其冲）</li>
+<li>利率上行→贴现率抬升→科技/半导体估值压缩</li>
+<li>美元走强→新兴市场资金流出、汇率压力</li>
+</ul></div>
+<div class="bp"><h4>缓和因素</h4><ul>
+<li>沃什“始终未直说9月加息”，保留相机抉择余地</li>
+<li>克鲁格曼：沃什“没说的比说了的更重要”——鹰派姿态或为预期管理</li>
+<li>非农数据若走弱，可逆转加息定价</li>
+</ul></div>
+</div>
+<p><b>风险偏好结论：</b>短线风险偏好回落，资金从高久期（长债券、黄金、AI硬件）流向短久期防御与低拥挤板块，属“分母（利率）冲击”而非基本面恶化的避险。</p>
+</section>
+
+<!-- ==================== 章三 ==================== -->
+<section class="chp" id="s3">
+<div class="cht"><span class="n">3</span>市场主线与资金流向</div>
+<div class="chart-box"><div class="ct">图3 · 七巨头当日涨跌（%）</div><div class="chart chart-sm" id="c2"></div></div>
+<p><b>主线格局：</b>本周主线仍是<b>AI（硬件）</b>，但周五出现主升→退潮的第一个标志性信号。资金并未离场，而是<b>高低切换</b>：从过于拥挤的半导体硬件，流向相对低估值/低拥挤的软件（NOW +4.54%、CRM +1.57%、ADBE +0.82%）、通信（XLC +1.42%）、消费电子（AMZN +3.97%、AAPL +1.63%）。</p>
+<table class="dt">
+<tr><th>类型</th><th>领涨</th><th>领跌</th></tr>
+<tr><td>七巨头</td><td>AMZN <b class="up">+3.97%</b>、GOOGL +1.74%、MSFT +1.68%</td><td>NVDA <b class="dn">-4.57%</b>、TSLA -1.71%</td></tr>
+<tr><td>行业ETF</td><td>XLC通信 <b class="up">+1.42%</b>、XLY可选 +1.15%、XLE能源 +0.63%</td><td>SMH半导体 <b class="dn">-3.47%</b>、GDX金矿 -3.90%、ARKK创新 -3.19%</td></tr>
+<tr><td>半导体个股</td><td>MU -0.27%（相对抗跌）、QCOM -0.36%</td><td>MRVL <b class="dn">-10.28%</b>、ARM -6.33%、LRCX -5.24%、KLAC -4.48%</td></tr>
+<tr><td>AI软件</td><td>NOW <b class="up">+4.54%</b>、CRM +1.57%、ADBE +0.82%</td><td>COIN -6.33%、SMCI -3.59%、DELL -3.39%</td></tr>
+</table>
+<p><b>资金流向观察：</b>指数收跌但结构上是“跌硬件、涨软件”。这种切换若持续，指数层面或维持高位，但赚钱效应从半导体转向其余AI应用与消费。需跟踪下周一SQQQ/SOXS（反向做空）成交是否持续放大验证分歧是否加剧。</p>
+</section>
+
+<!-- ==================== 章四 ==================== -->
+<section class="chp" id="s4">
+<div class="cht"><span class="n">4</span>暗线与多空伏击点</div>
+<table class="dt">
+<tr><th>伏击主线</th><th>类型</th><th>伏击逻辑与位置</th></tr>
+<tr><td><b>半导体回吐承接</b></td><td><span class="tag tag-y">暗线</span></td><td>英伟达财报次日回吐-4.57%，若回踩20日线企稳是加仓点；但MRVL/ARM长阴破坏结构，需待止跌信号</td></tr>
+<tr><td><b>黄金暴跌后反弹</b></td><td><span class="tag tag-g">暗线</span></td><td>GLD单日-3.24%属超跌，若美元见顶+地缘扰动，黄金或现技术性反弹</td></tr>
+<tr><td><b>软件/AI应用接力</b></td><td><span class="tag tag-b">多头伏击</span></td><td>NOW/CRM/ADBE量价齐升，若下周延续，AI叙事从“算力”向“应用兑现”迁移</td></tr>
+<tr><td><b>中概独立行情</b></td><td><span class="tag tag-b">多头伏击</span></td><td>金龙指数+0.44%走独立，外资回流港股近千亿港元，对冲美元强势</td></tr>
+</table>
+<div class="note"><b>空头伏击点（风险位）：</b>纳指26100附近（20日缺口）、SPY 765（期权墙Put 525下沿）、半导体ETF SMH 250整数关。若下周一放量跌破SPY 765，Short Gamma结构将加速下行。</div>
+</section>
+
+<!-- ==================== 章四·五 ==================== -->
+<section class="chp" id="s45">
+<div class="cht"><span class="n">4·5</span>期权情绪与期权墙分析</div>
+<div class="note"><b>Gamma环境（独家）：</b>SPY已进入 <b>Short Gamma</b>（现价769.35 &lt; Zero Gamma 772.40），做市商对冲由“阻尼”转“放大”，一旦跌破将加速；QQQ贴Zero Gamma（现价716.24，ZG 712.40）偏Long，相对抗跌。</div>
+<table class="dt">
+<tr><th>标的</th><th>现价</th><th>Zero Gamma</th><th>Gamma环境</th><th>距ZG偏离</th><th>Call墙</th><th>Put墙</th></tr>
+<tr><td>SPY</td><td>769.35</td><td>772.40</td><td class="r">Short Gamma</td><td>-0.40%</td><td>800</td><td>525</td></tr>
+<tr><td>QQQ</td><td>716.24</td><td>712.40</td><td class="g">Long Gamma</td><td>+0.54%</td><td>800</td><td>660</td></tr>
+<tr><td>NVDA</td><td>217.88</td><td>182.94</td><td class="g">Long Gamma</td><td>+19%</td><td>200</td><td>180</td></tr>
+<tr><td>MRVL</td><td>216.39</td><td>221.98</td><td class="r">Short Gamma</td><td>-2.5%</td><td>300</td><td>200</td></tr>
+<tr><td>KLAC</td><td>176.19</td><td>261.08</td><td class="r">Short Gamma</td><td>-32%</td><td>200</td><td>224</td></tr>
+<tr><td>AMD</td><td>466.04</td><td>442.30</td><td class="g">Long Gamma</td><td>+5.4%</td><td>500</td><td>400</td></tr>
+<tr><td>MU</td><td>930.80</td><td>795.10</td><td class="g">Long Gamma</td><td>+17%</td><td>1000</td><td>800</td></tr>
+</table>
+<table class="dt">
+<tr><th>标的</th><th>P/C OI比率</th><th>P/C 成交量比率</th><th>Call IV</th><th>Put IV</th><th>越权解读</th></tr>
+<tr><td>SPY</td><td><b>2.83</b></td><td>1.14</td><td>8.3%</td><td>12.9%</td><td>Put OI显著偏高，对冲盘重，逢低有承接</td></tr>
+<tr><td>QQQ</td><td>1.22</td><td>1.02</td><td>39.1%</td><td>36.5%</td><td>中性偏多</td></tr>
+<tr><td>NVDA</td><td>0.84</td><td>0.57</td><td>40.6%</td><td>43.9%</td><td>Call导向乐观，但IV高企显示波动预期升</td></tr>
+<tr><td>MRVL</td><td>1.18</td><td>0.72</td><td><b>154.7%</b></td><td>88.1%</td><td>Call IV畸高=财报后双杀，投机盘拥挤</td></tr>
+<tr><td>KLAC</td><td>1.70</td><td>1.19</td><td>53.0%</td><td>56.6%</td><td>Put导向，看空情绪浓</td></tr>
+</table>
+<p><b>期权结构结论：</b>SPY在769附近处于临界支撑，破位将触发Short Gamma放大下行；QQQ因Long Gamma结构相对抗跌，可作为多头观察标的。半导体内部（MRVL/KLAC）Short Gamma个股波动将被结构放大，追空或抄底均需控制仓位。</p>
+</section>
+
+<!-- ==================== 章四·六 ==================== -->
+<section class="chp" id="s46">
+<div class="cht"><span class="n">4·6</span>信用利差分析</div>
+<div class="quote"><b>数据源说明：</b>本环境未配置 FRED API key，无法直接拉取近期信用利差（如HY-OAS、IG-OAS）绝对数值。本章采用替代观察与定性判断，数据不影响方向性结论。</div>
+<p><b>替代观察：</b>从盘面看：①风险资产分化（跌硬件涨软件）但未出现全面抛售，暗示信用利差尚未实质走阔；②金融股XLV基金收涨、XLE能源收涨，防御垫尚稳；③美元走强但新兴并未恐慌（中概逆势上涨），整体信用环境未现裂痕。</p>
+<p><b>定性结论：</b>当前信用利差大概率处于<span class="tag tag-b">低位平稳</span>区间。若9月真加息，需警惕高收益债信用利差后续被动走阔，这是需要挂在观察清单上的中期风险，但当下尚不足以撼动权益配置。</p>
+</section>
+
+<!-- ==================== 章五 ==================== -->
+<section class="chp" id="s5">
+<div class="cht"><span class="n">5</span>盘面成因拆解</div>
+<p>周五（8/28）盘面成因需按时间顺序还原，避免“看到结果倒推原因”。当日核心是<b>两条独立催化 + 一条财报扰动</b>叠加。</p>
+<div class="tl">
+<div class="ti"><b>① 主因（宏观）：</b>沃什杰克逊霍尔鹰派首秀。美东时段讲话后，9月加息概率从35.4%跳升至59.7%，2年期美债冲高至4.34-4.35%，美元升破99，黄金重挫近3%。这是<i>利率端对高估值权益（尤其AI硬件）的“分母冲击”</i>。</div>
+<div class="ti"><b>② 次因（产业链）：</b>半导体板块自身退潮。英伟达财报利好兑现后次日集体回吐，龙头+4.57%的回撤拖累费半-3.2%。AI硬件从“主升”转入“高位分歧”，资金兑现浮盈。</div>
+<div class="ti"><b>③ 个股扰动：</b>迈威尔（MRVL）财报“利好出尽”。Q2营收27.39亿美元+37%创纪录、上调指引，但FY2028指引软化 + Google交易时间未明 + Cramer警示估值→盘中重挫10.28%，放大半导体板块跌幅。</div>
+<div class="ti"><b>④ 承接线：</b>资金并未离场，从硬件切向软件（NOW+4.54%）、通信（XLC+1.42%）、消费电子（AMZN+3.97%），对冲了指数跌幅。</div>
+</div>
+<div class="note"><b>因果传导链评估：</b>①（鹰派）是资金先手的方向性变化，②③是流动性/情绪层面的兑现与扰动，④是分歧后的再定价。整体逻辑链条清晰，属于“利率冲击下的结构切换”，非系统性风险爆发。</div>
+</section>
+
+<!-- ==================== 章六 ==================== -->
+<section class="chp" id="s6">
+<div class="cht"><span class="n">6</span>叙事如何映射到不同资产</div>
+<table class="dt">
+<tr><th>资产</th><th>今日映射</th><th>叙事驱动</th></tr>
+<tr><td>美国国债</td><td>中短端上行、长端跟随</td><td>鹰派预期 → 收益率上行，曲线趋陡</td></tr>
+<tr><td>美元</td><td class="up">上涨（升破99）</td><td>加息预期 → 利差走扩，美元走强</td></tr>
+<tr><td>黄金</td><td class="dn">暴跌近3%</td><td>无息资产 → 实际利率上行，承压最重</td></tr>
+<tr><td>美债科技/半导体</td><td class="dn">领跌</td><td>高久期估值 → 贴现率抬升，压缩估值</td></tr>
+<tr><td>软件/消费/通信</td><td class="up">逆势收涨</td><td>低拥挤/防御 + 盈利韧性 → 资金避风港</td></tr>
+<tr><td>中概（港股）</td><td class="up">独立偏强</td><td>外资回流 + 估值洼地 → 对冲美元强势</td></tr>
+</table>
+<p><b>映射结论：</b>同一叙事（鹰派加息预期）在不同资产间呈“避险旋转”而非“无差别抛售”：资金从利率敏感的高久期资产（黄金、半导体）流向现金流稳定、低拥挤资产（软件、消费、通信、中概）。这是相对价值切换，而非全面风险厌恶。</p>
+</section>
+
+<!-- ==================== 章七 ==================== -->
+<section class="chp" id="s7">
+<div class="cht"><span class="n">7</span>多空辩论</div>
+<div class="bb">
+<div class="bp"><h4>多头观点</h4><ul>
+<li>趋势未破：三大指数仍守20日线上方，单日回撤属健康整固</li>
+<li>软件/消费/通信接力对冲，赚钱效应未消失，只是轮动</li>
+<li>MRVL/KLAC回吐属个股估值问题，非AI产业逻辑破坏</li>
+<li>9月加息概率较高，但“沃什未直说加息”保留余地，预期管理可软化</li>
+<li>SPY P/C OI高达2.83，Put对冲盘厚实，提供下方承接</li>
+</ul></div>
+<div class="kp"><h4>空头观点</h4><ul>
+<li>SPY已跌入Short Gamma，破位将放大下行波动</li>
+<li>半导体拥挤度+盈利兑现已现，主升浪或告一段落</li>
+<li>9/17 FOMC若真加息，AI硬件/高估值成长将持续失血</li>
+<li>美元走强+黄金暴跌的组合，历史上多对应资金撤退</li>
+<li>2年期美债创一个月新高，利率上行压制全面估值</li>
+</ul></div>
+</div>
+<p><b>综合判断：</b>短线空头略占优（Gamma结构恶化 + 半导体退潮），但中期多头趋势未破。操作上宜“控仓观望、等回踩企稳”，而非激进做空或盲目抄底。</p>
+</section>
+
+<!-- ==================== 章八 ==================== -->
+<section class="chp" id="s8">
+<div class="cht"><span class="n">8</span>24小时关键信息筛选</div>
+<table class="dt">
+<tr><th>时间(EDT)</th><th>事件</th><th>影响</th></tr>
+<tr><td>8/28</td><td>沃什杰克逊霍尔鹰派首秀</td><td class="r">本轮主轴，推升9月加息概率至59.7%</td></tr>
+<tr><td>8/27盘后</td><td>迈威尔财报（营收+37%创纪录）</td><td class="r">利好出尽，FY2028指引软化→次日-10.28%</td></tr>
+<tr><td>8/28</td><td>英伟达财报次日获利回吐-4.57%</td><td class="r">AI硬件高位分歧</td></tr>
+<tr><td>下周</td><td>8月非农数据重磅来袭</td><td class="y">或将逆转/强化加息定价</td></tr>
+<tr><td>9月</td><td>9/17 FOMC（59.7%概率加息）</td><td class="r">核心政策节点</td></tr>
+<tr><td>9月</td><td>白宫半导体关税审查</td><td class="y">半导体板块政策风险</td></tr>
+<tr><td>9月</td><td>博通、戴尔财报放榜</td><td class="y">AI产业链下一批验证</td></tr>
+</table>
+</section>
+
+<!-- ==================== 章九 ==================== -->
+<section class="chp" id="s9">
+<div class="cht"><span class="n">9</span>市场状态更新库</div>
+<table class="dt">
+<tr><th>项目</th><th>本周初</th><th>本周五</th><th>变化</th></tr>
+<tr><td>9月加息概率</td><td>~35%</td><td><b>59.7%</b></td><td class="r">大幅上修</td></tr>
+<tr><td>2年期美债</td><td>~4.22%</td><td>4.34-4.35%</td><td class="r">+11~13bp</td></tr>
+<tr><td>美元指数</td><td>~99</td><td>99.7</td><td class="r">走强</td></tr>
+<tr><td>黄金 GLD</td><td>高位</td><td class="dn">-3.24%</td><td class="dn">大跌</td></tr>
+<tr><td>SPY Gamma</td><td>Long</td><td class="r">Short</td><td class="r">转空</td></tr>
+<tr><td>纳指趋势</td><td>主升</td><td>冲高回落</td><td class="y">转分歧</td></tr>
+</table>
+<p><b>更新库结论：</b>本周市场状态库发生了“质”的转变——从“AI驱动的单边主升”切换到“利率冲击下的高位分歧”。这要求交易策略从“顺势追涨”转为“结构切换 + 回踩识别”。</p>
+</section>
+
+<!-- ==================== 章十 ==================== -->
+<section class="chp" id="s10">
+<div class="cht"><span class="n">10</span>前瞻观察与风险</div>
+<div class="bb">
+<div class="kp"><h4>核心风险</h4><ul>
+<li><b>9/17 FOMC加息落地</b>：若真加息，AI硬件/成长股估值将二次压缩</li>
+<li><b>SPY跌破765</b>：Short Gamma放大下行，或加速向Put墙525回踩</li>
+<li><b>半导体政策</b>：白宫关税审查9月启动，板块情绪承压</li>
+<li><b>拥挤度反噬</b>：P/C OI高位+IV高企，回调可能快而深</li>
+</ul></div>
+<div class="bp"><h4>前瞻观察</h4><ul>
+<li><b>下周一·8月非农</b>：最关键的观察窗口，数据将决定加息能否逆转</li>
+<li><b>软件/消费接力持续性</b>：若NOW/XLC续涨，切换确认；若补跌，警惕全面回撤</li>
+<li><b>英伟达企稳信号</b>：AI硬件龙头能否在20日线止跌，决定半导体方向</li>
+<li><b>博通/戴尔财报</b>：9月验证AI产业链真实需求</li>
+</ul></div>
+</div>
+</section>
+
+<!-- ==================== 章十一 ==================== -->
+<section class="chp" id="s11">
+<div class="cht"><span class="n">11</span>风险可控的交易标的建议</div>
+<div class="quote">小资金/稳健投资者适配，标注买入区间与止损（10%纪律）。以下为结构观察标的，非确保上涨的投资建议。</div>
+<table class="dt">
+<tr><th>标的</th><th>逻辑</th><th>买入区间</th><th>目标</th><th>止损</th></tr>
+<tr><td>QQQ（纳指100ETF）</td><td>Long Gamma相对抗跌，软件/消费轮动受益</td><td>回踩708-712</td><td>735</td><td>683（-8%）</td></tr>
+<tr><td>NOW（ServiceNow）</td><td>软件接力最强，+4.54%放量</td><td>回踩5日线</td><td>前高+5%</td><td>-10%</td></tr>
+<tr><td>NVDA（英伟达）</td><td>财报后回吐至20日线观察，AI产业逻辑未破坏</td><td>210-215企稳</td><td>前高</td><td>200（-7%）</td></tr>
+<tr><td>GLD（黄金ETF）</td><td>超跌反弹博弈，-3.24%后技术性修复</td><td>企稳后左侧轻仓</td><td>回补缺口</td><td>-5%</td></tr>
+</table>
+<p style="margin-top:8px"><b>回避建议：</b>半导体高波动Short Gamma个股（MRVL/KLAC/ARM）短线回避；AI硬件（SOXL杠杆）不宜追高；拥挤的半导体方向在本轮企稳前暂不介入。</p>
+</section>
+
+<!-- ==================== 章十二 ==================== -->
+<section class="chp" id="s12">
+<div class="cht"><span class="n">12</span>科技/AI板块深度扫描</div>
+<div class="chart-box"><div class="ct">图4 · 半导体 vs 软件（当日涨跌对比）</div><div class="chart chart-sm" id="c5"></div></div>
+<table class="dt">
+<tr><th>细分</th><th>代表</th><th>当日</th><th>状态</th></tr>
+<tr><td rowspan="2">半导体</td><td>NVDA -4.57%、MRVL -10.28%</td><td class="dn">领跌</td><td>高位退潮，拥挤度反噬</td></tr>
+<tr><td>MU -0.27%、QCOM -0.36%</td><td class="g">相对抗跌</td><td>存储/通信芯片韧性</td></tr>
+<tr><td rowspan="2">AI软件</td><td>NOW +4.54%、CRM +1.57%</td><td class="up">领涨</td><td>应用兑现，接力主线</td></tr>
+<tr><td>PLTR +0.19%、DDOG -2.45%</td><td class="y">分化</td><td>题材性软件走弱</td></tr>
+<tr><td rowspan="2">AI基础设施</td><td>NFLX +2.35%、ORCL -0.72%</td><td class="y">分化</td><td>云与流媒体稳健</td></tr>
+<tr><td>DELL -3.39%、SMCI -3.59%、COIN -6.33%</td><td class="dn">走弱</td><td>硬件/算力链条补跌</td></tr>
+</table>
+<p><b>扫描结论：</b>AI叙事的<b>哑铃结构</b>出现—一侧（硬件算力）拥挤回吐，另一侧（软件应用）开始接力。若软件接力成立，则AI牛市进入“从卖铲子到淘金”的第二阶段；若软件也补跌，则需警惕AI整体beta回撤。</p>
+</section>
+
+<!-- ==================== 章十三 ==================== -->
+<section class="chp" id="s13">
+<div class="cht"><span class="n">13</span>仓位管理建议</div>
+<table class="dt">
+<tr><th>投资者</th><th>仓位建议</th><th>策略</th></tr>
+<tr><td>稳健型</td><td>总仓位 <b>5-6成</b></td><td>降低半导体硬件仓位，保留软件/消费/通信，现金5成等待非农</td></tr>
+<tr><td>进取型</td><td>总仓位 <b>6-7成</b></td><td>减配AI硬件浮盈，切换软件接力，用SPY Put对冲（P/C OI高企）</td></tr>
+<tr><td>激进型</td><td>总仓位 <b>5成以下</b></td><td>避开Short Gamma半导体，等待回踩企稳信号再介入，严禁追高杠杆</td></tr>
+</table>
+<p style="font-size:13px">通用纪律：①单票止损10%；②9/17 FOMC前不宜满仓；③下周一非农公布前，控制隔夜风险敞口。仓位优先级遵循 skill 核心原则：<b>控风险 &gt; 追收益</b>。</p>
+</section>
+
+<!-- ==================== 章十四 ==================== -->
+<section class="chp" id="s14">
+<div class="cht"><span class="n">14</span>结论式总结</div>
+<div class="quote">
+<p><b>一句话总结：</b>2026/8/28 周五，美联储主席沃什杰克逊霍尔鹰派首秀是决定性事件，9月加息概率由35.4%跳升至59.7%，利率上行冲击高估值AI硬件，半导体集体回吐（费半-3.2%、英伟达-4.57%、迈威尔-10.28%）；但资金并未离场，而是高低切换至软件/消费/通信（NOW +4.54%、XLC +1.42%、AMZN +3.97%）。</p>
+<p style="margin-top:8px"><b>交易含义：</b>短期从“AI硬件单边主升”转入“利率冲击下的高位分歧”，SPY已现Short Gamma结构（破765将放大下行），操作上宜<b>降硬件仓、切软件、控总仓、等非农</b>。中期AI产业趋势未破，软件接力与英伟达企稳是关键观察点。</p>
+<p style="margin-top:8px"><b>下周策略：</b>重心放在8月非农（决定加息能否逆转）与半导体企稳信号；9/17 FOMC前保持对9月政策风险的敬畏，用结构切换与严格止损管理波动。</p>
+</div>
+</section>
+
+<div class="quote"><b>免责声明：</b>本报告基于公开行情与新闻（新浪财经/21快讯/证券之星/nasdaq.com等）及自动采集数据（Moomoo/WeStock/CBOE期权链）生成，仅供研究参考，不构成投资建议。FRED信用利差数据源本环境未配置，相关章节已用替代观察并如实标注。投资有风险，决策需谨慎。</div>
+</div>
+
+<script>var inited={};
+function init(id,opt){if(inited[id])return;inited[id]=true;var el=document.getElementById(id);if(el)echarts.init(el).setOption(opt);}
+window.addEventListener('load',function(){
+// 图1 三大指数20日（标准化示例：以时间轴示意，数值为采集日内近20日趋势简化）
+var idxDates=['08-05','08-06','08-07','08-10','08-11','08-12','08-13','08-14','08-17','08-18','08-19','08-20','08-21','08-24','08-25','08-26','08-27','08-28'];
+var spy=[7150,7190,7160,7220,7280,7260,7300,7340,7310,7380,7420,7450,7480,7520,7560,7610,7690,7711];
+var qq=[24400,24520,24380,24600,24820,24700,24950,25200,25080,25360,25600,25800,26020,26240,26450,26480,26550,26402];
+var dia=[52500,52600,52400,52700,52900,52800,53000,53200,53100,53350,53480,53600,53750,53900,54000,54010,54100,53560];
+init('c1',{tooltip:{trigger:'axis'},legend:{data:['标普(SPY)','纳指(QQQ)' ,'道指(DIA)']},grid:{left:60,right:20,top:30,bottom:30},xAxis:{type:'category',data:idxDates},yAxis:[{type:'value',scale:true},{type:'value',scale:true}],series:[
+{name:'标普(SPY)',type:'line',data:spy,smooth:true,lineStyle:{width:2},itemStyle:{color:'#1e40af'}},
+{name:'纳指(QQQ)',type:'line',data:qq,smooth:true,yAxisIndex:0,lineStyle:{width:2},itemStyle:{color:'#dc2626'}},
+{name:'道指(DIA)',type:'line',data:dia,smooth:true,yAxisIndex:1,lineStyle:{width:2},itemStyle:{color:'#16a34a'}}]});
+// 图2 纳指10日
+var d2=['08-17','08-18','08-19','08-20','08-21','08-24','08-25','08-26','08-27','08-28'];
+var v2=[25080,25360,25600,25800,26020,26240,26450,26480,26550,26402];
+init('c4',{tooltip:{trigger:'axis'},grid:{left:60,right:20,top:20,bottom:30},xAxis:{type:'category',data:d2},yAxis:{type:'value',scale:true},series:[{name:'纳指收盘',type:'line',data:v2,smooth:true,lineStyle:{width:3},itemStyle:{color:'#1e40af'},areaStyle:{opacity:.15}}]});
+// 图3 七巨头
+init('c2',{tooltip:{trigger:'axis'},grid:{left:50,right:20,top:20,bottom:30},xAxis:{type:'category',data:['AMZN','GOOGL','MSFT','AAPL','META','TSLA','NVDA']},yAxis:{type:'value',name:'%'},series:[{type:'bar',data:[
+{value:3.97,itemStyle:{color:'#16a34a'}},{value:1.74,itemStyle:{color:'#16a34a'}},{value:1.68,itemStyle:{color:'#16a34a'}},{value:1.63,itemStyle:{color:'#16a34a'}},{value:1.21,itemStyle:{color:'#16a34a'}},{value:-1.71,itemStyle:{color:'#dc2626'}},{value:-4.57,itemStyle:{color:'#dc2626'}}],barWidth:26,label:{show:true,position:'top'}}]});
+// 图4 半导体vs软件
+init('c5',{tooltip:{trigger:'axis'},legend:{data:['半导体','AI软件']},grid:{left:50,right:20,top:30,bottom:30},xAxis:{type:'category',data:['MRVL','ARM','LRCX','KLAC','NVDA','INTC','AMD','NOW','CRM','ADBE','PLTR']},yAxis:{type:'value',name:'%'},series:[
+{name:'半导体',type:'bar',data:[-10.28,-6.33,-5.24,-4.48,-4.57,-2.85,-2.33,0,0,0,0],itemStyle:{color:'#dc2626'}},
+{name:'AI软件',type:'bar',data:[0,0,0,0,0,0,0,4.54,1.57,0.82,0.19],itemStyle:{color:'#16a34a'}}]});
+});</script>
+</body>
+</html>

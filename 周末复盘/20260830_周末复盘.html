@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周末复盘 · 2026年第35周（8月24日—8月28日）</title>
+<style>
+/* ============ 周末复盘 · 自包含暖橙设计系统 ============ */
+:root{
+  --bg:#FBFAF8;--bg2:#ffffff;--bg3:#F5F2EE;--bg4:#EFEBE6;
+  --ink:#403C38;--muted:#66615A;--faint:#8A847C;--rule:#EBE7E2;--rule2:#DDD7D0;
+  --accent:#0D9488;--accent2:#D97706;--green:#16A34A;--red:#DC2626;--orange:#D97706;--amber:#F59E0B;
+  --accent-soft:rgba(13,148,136,.12);--accent2-soft:rgba(217,119,6,.10);--red-dim:rgba(220,38,38,.12);--green-dim:rgba(22,163,74,.12);
+  --shadow:0 1px 2px rgba(64,60,56,.05),0 4px 16px rgba(64,60,56,.06);
+  --shadow-lg:0 12px 40px rgba(64,60,56,.16);
+  --radius:10px;--radius-lg:14px;
+  --font-sans:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Micro Hei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);line-height:1.7;font-size:15px}
+.report-frame{max-width:1080px;margin:0 auto;padding:32px 24px 80px}
+
+/* ===== 页眉 ===== */
+.report-header{text-align:center;padding:44px 24px;background:linear-gradient(160deg,#fff8ef,#fdeedb);border:1px solid var(--rule);border-radius:20px;margin-bottom:16px}
+.report-header h1{font-size:30px;font-weight:800;color:#292524;margin-bottom:6px}
+.report-header .sub{font-size:15px;color:var(--muted);margin-bottom:6px}
+.report-header .date-chip{display:inline-block;background:#fff;border:1px solid var(--rule2);border-radius:30px;padding:6px 20px;font-size:13px;color:#78350F;margin-top:8px;box-shadow:var(--shadow)}
+.report-header .tocools{margin-top:14px;font-size:13px;color:var(--faint)}
+
+/* ===== 索引 ===== */
+.idx{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:18px 0 8px}
+.idx a{display:flex;align-items:center;gap:6px;text-decoration:none;background:var(--bg2);border:1px solid var(--rule);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--muted);transition:all .15s}
+.idx a:hover{border-color:var(--accent2);color:#C2410C;background:#fff}
+.idx .i-num{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
+
+/* ===== S0 速览 ===== */
+.hero-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.hero-card{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:16px 18px;box-shadow:var(--shadow)}
+.hero-card .hb{font-size:12px;color:var(--faint);font-weight:600;margin-bottom:4px}
+.hero-card .hv{font-size:22px;font-weight:800;color:#292524}
+.hero-card .hc{font-size:13px;font-weight:700;margin-top:3px}
+.v-up{color:var(--red)}.v-down{color:var(--green)}.v-org{color:#C2410C}
+
+.spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.spot-card{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--shadow)}
+.spot-card .stitle{font-size:16px;font-weight:800;color:#292524;margin-bottom:6px}
+.spot-card .stitle .em{color:#C2410C}
+.spot-card .sdesc{font-size:13.5px;color:var(--muted);line-height:1.75}
+
+/* ===== Section ===== */
+.section{background:var(--bg2);border:1px solid var(--rule);border-radius:20px;padding:28px 30px;margin:18px 0;box-shadow:var(--shadow)}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.sec-num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;background:linear-gradient(135deg,#C2410C,#D97706);box-shadow:0 3px 10px rgba(217,119,6,.3)}
+.section-header h2{font-size:22px;font-weight:800;color:#292524}
+.sec-tag{font-size:11px;color:var(--faint);letter-spacing:1.5px;font-weight:700}
+
+/* ===== 新闻卡片 ===== */
+.news-card{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:16px 18px;margin-bottom:12px}
+.news-card .news-title{font-size:15px;font-weight:700;color:#292524;margin-bottom:4px}
+.news-card .news-title .tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:4px;margin-right:6px;vertical-align:middle}
+.news-card .news-title .tag.market{background:#FEE2E2;color:#DC2626}
+.news-card .news-title .tag.policy{background:#DBEAFE;color:#2563EB}
+.news-card .news-title .tag.tech{background:#EDE9FE;color:#7C3AED}
+.news-card .news-title .tag.geo{background:#FEF3C7;color:#D97706}
+.news-card .news-title .tag.asset{background:#D1FAE5;color:#059669}
+.news-card .news-descse{font-size:13px;color:var(--muted);line-height:1.7}
+.news-card .news-desc{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ===== 深度 / 资产卡片 ===== */
+.deep-card,.asset-card{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;box-shadow:var(--shadow)}
+.deep-card h3{font-size:17px;font-weight:800;color:#292524;margin-bottom:4px}
+.deep-card .deep-sub{font-size:13px;color:var(--muted);margin-bottom:14px}
+.deep-card .deep-body{font-size:14px;line-height:1.85;color:var(--ink)}
+.deep-card .deep-body p{margin-bottom:12px;text-indent:2em}
+.deep-card .deep-body p:last-child{margin-bottom:0}
+.deep-card .deep-body strong{color:var(--orange)}
+.deep-card .deep-highlight{background:var(--amber, rgba(217,119,6,.1));border-left:3px solid var(--orange);padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:13px;color:#78350F}
+.deep-card .deep-highlight strong{color:#C2410C}
+
+/* ===== 资产卡片 ===== */
+.asset-card .asset-title{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;margin-bottom:12px}
+.asset-card .asset-title .asset-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.asset-card .asset-title .asset-icon.gold{background:#FEF3C7}
+.asset-card .asset-title .asset-icon.oil{background:#FEE2E2}
+.asset-card .asset-title .asset-icon.btc{background:#FEF3C7}
+.asset-card .asset-title .asset-icon.bond{background:#DBEAFE}
+.asset-card .asset-title .asset-icon.fx{background:#EDE9FE}
+.asset-card .asset-body{font-size:14px;line-height:1.8}
+.asset-card .asset-body p{margin-bottom:8px}
+.asset-card .asset-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:12px 0;padding:12px;background:var(--bg3);border-radius:8px}
+.asset-card .asset-stats .stat-item{text-align:center}
+.asset-card .asset-stats .stat-item .stat-label{font-size:11px;color:var(--faint);font-weight:600}
+.asset-card .asset-stats .stat-item .stat-val{font-size:15px;font-weight:700}
+
+/* ===== key metric ===== */
+.key-metric{display:inline-flex;align-items:baseline;gap:4px;font-weight:700}
+.key-metric .val{font-size:18px}
+.key-metric .chg{font-size:13px}
+.key-metric .chg.up{color:var(--red)}.key-metric .chg.down{color:var(--green)}
+
+/* ===== 阅读 ===== */
+.reading-card{padding:14px 4px;border-bottom:1px solid var(--rule)}
+.reading-card:last-child{border-bottom:none}
+.reading-card .rd-title{font-size:15px;font-weight:700;color:#C2410C;text-decoration:none}
+.reading-card .rd-title:hover{text-decoration:underline}
+.reading-card .rd-meta{font-size:12px;color:var(--faint);margin:3px 0}
+.reading-card .rd-desc{font-size:13px;color:var(--muted)}
+
+/* ===== 大佬 ===== */
+.speaker-card{display:flex;gap:16px;padding:16px 4px;border-bottom:1px solid var(--rule)}
+.speaker-card:last-child{border-bottom:none}
+.sp-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0}
+.sp-body .sp-name{font-size:15px;font-weight:800;color:#292524}
+.sp-body .sp-title{font-size:12px;color:var(--faint);margin-bottom:5px}
+.sp-body .sp-quote{font-size:13.5px;color:var(--ink);line-height:1.7}
+
+/* ===== 下周关注 ===== */
+.fwd-card{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:16px 18px;margin-bottom:12px}
+.fwd-card .fwd-title{font-size:14px;font-weight:700;color:#292524;margin-bottom:6px}
+.fwd-card .fwd-body{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ===== 研报 ===== */
+.report-card{display:flex;gap:16px;padding:16px 18px;background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius-lg);margin-bottom:12px}
+.report-card .r-left{flex-shrink:0;width:60px;height:60px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;text-align:center;line-height:1.3}
+.report-card .r-right{flex:1}
+.report-card .r-right .r-title{font-size:14px;font-weight:700;color:#292524}
+.report-card .r-right .r-org{font-size:12px;color:var(--faint);margin:2px 0 6px}
+.report-card .r-point{font-size:13px;color:var(--muted);margin-bottom:4px;line-height:1.65}
+.report-card .r-point strong{color:#78350F}
+.report-card .r-reason{font-size:12px;color:var(--faint);margin-top:4px;line-height:1.6}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th{background:var(--bg4);color:#292524;padding:9px 11px;text-align:left;font-weight:700;border-bottom:2px solid var(--rule2);font-size:12.5px}
+td{padding:8px 11px;border-bottom:1px solid var(--rule)}
+tr:hover td{background:var(--bg3)}
+.t-up{color:var(--red);font-weight:700}.t-dn{color:var(--green);font-weight:700}.t-flat{color:var(--faint)}
+.table-wrap{overflow-x:auto;margin:12px 0}
+
+/* ===== footer / 控件 ===== */
+.report-footer{text-align:center;padding:30px 0 10px;color:var(--faint);font-size:12px;border-top:1px solid var(--rule);margin-top:30px;line-height:2}
+.font-control{position:fixed;right:16px;bottom:80px;z-index:1000;background:#fff;border:1px solid var(--rule2);border-radius:30px;box-shadow:var(--shadow-lg);padding:6px 10px;display:flex;align-items:center;gap:6px}
+.font-control button{border:none;background:var(--bg4);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;color:#292524}
+.font-control button:hover{background:var(--accent2-soft)}
+.font-control .font-val{font-size:12px;color:var(--muted);min-width:42px;text-align:center}
+.back-to-top{position:fixed;right:20px;bottom:20px;z-index:1000;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#C2410C,#D97706);color:#fff;font-size:22px;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(217,119,6,.4);opacity:0;pointer-events:none;transition:all .25s}
+.back-to-top.show{opacity:1;pointer-events:auto}
+@media(max-width:820px){.hero-strip{grid-template-columns:1fr 1fr}.spot-grid{grid-template-columns:1fr}.report-header h1{font-size:23px}.section{padding:20px 18px}}
+</style>
+</head>
+<body>
+<div class="report-frame">
+
+<!-- ===== 页眉 ===== -->
+<div class="report-header" style="position:relative;">
+  <h1>周末复盘 · 2026年第35周</h1>
+  <div class="sub">📅 2026年8月24日 — 8月28日　📊 覆盖 5 大资产 · 5 篇深度专题 · 9 条研报　🔥 暖橙阅读版</div>
+  <div class="date-chip">本周关键词：沃什"放鹰"落地 · 英伟达+8.74%又回吐 · 黄金周跌3.2% · 半导体关税酝酿</div>
+</div>
+
+<div class="idx">
+  <a href="#s0"><span class="i-num" style="background:#C2410C;">S0</span>本周速览</a>
+  <a href="#s1"><span class="i-num" style="background:#2563EB;">S1</span>本周新闻</a>
+  <a href="#s2"><span class="i-num" style="background:#0D9488;">S2</span>政策监管</a>
+  <a href="#s3"><span class="i-num" style="background:#7C3AED;">S3</span>产业科技</a>
+  <a href="#s4"><span class="i-num" style="background:#D97706;">S4</span>宏观经济</a>
+  <a href="#s5"><span class="i-num" style="background:#555;">S5</span>地缘政治</a>
+  <a href="#s-asset"><span class="i-num" style="background:#059669;">S-A</span>跨市场资产</a>
+  <a href="#s-deep"><span class="i-num" style="background:#C2410C;">S-D</span>深度专题</a>
+  <a href="#s6"><span class="i-num" style="background:#7C3AED;">S6</span>深度阅读</a>
+  <a href="#s7"><span class="i-num" style="background:#92400E;">S7</span>大佬发言</a>
+  <a href="#s8"><span class="i-num" style="background:#2563EB;">S8</span>下周关注</a>
+  <a href="#s9"><span class="i-num" style="background:#0D9488;">S9</span>研报分析</a>
+</div>
+
+<!-- ===== S0 速览 ===== -->
+<section class="section" id="s0">
+  <div class="section-header"><span class="sec-num">S0</span><h2>本周速览</h2><span class="sec-tag">SNAPSHOT</span></div>
+  <div class="hero-strip">
+    <div class="hero-card"><div class="hb">标普500</div><div class="hv">7,711.76</div><div class="hc t-up">周 +0.49%</div></div>
+    <div class="hero-card"><div class="hb">纳斯达克</div><div class="hv">26,402.42</div><div class="hc t-up">周 +0.85%</div></div>
+    <div class="hero-card"><div class="hb">现货黄金</div><div class="hv">4,457.57</div><div class="hc t-dn">周 -3.22%</div></div>
+    <div class="hero-card"><div class="hb">9月加息概率</div><div class="hv">59.7%</div><div class="hc v-org">上周35% → 本周跳升</div></div>
+  </div>
+  <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:14px">本周全球市场在"超级财报周"与"鹰派预期"的拉扯中剧烈摇摆。表面看三大美股指周线收涨（标普+0.49%、纳指+0.85%、道指+0.53%），但周五（8/28）美联储主席沃什在杰克逊霍尔的鹰派首秀，将9月加息概率从35%骤推至59.7%，2年期美债冲高至4.35%、美元指数升破99.7、黄金单日重挫逾3%——市场在"英伟达财报引爆的AI狂欢"与"利率恐惧"之间上演了教科书级的冲高回落。</p>
+  <div class="spot-grid">
+    <div class="spot-card"><div class="stitle">🔥 <span class="em">英伟达财报引爆AI狂潮</span></div><div class="sdesc">英伟达FY27Q2营收962亿美元同比+106%、给出FY28年增70%罕见指引，股价次日（8/27）暴涨8.74%，纳指跟涨1.57%。但周五滤网兑现获利，个股回吐至-4.57%，费半-3.2%。</div></div>
+    <div class="spot-card"><div class="stitle">🦅 <span class="em">沃什"放鹰"定调</span></div><div class="sdesc">美联储新主席沃什杰克逊霍尔首秀放弃前瞻指引、暗示"若通胀回落信心不足即加息"，9月加息概率由35%升至59.7%，2年期美债创一个月新高。</div></div>
+    <div class="spot-card"><div class="stitle">📉 <span class="em">黄金高位急跌</span></div><div class="sdesc">金价周一开盘4608、周二冲高4696（5月以来新高），但周五在鹰派冲击下单日暴跌3.08%收4457.57，本周累计-3.22%，终结三周连涨。8月累计仍+14%。</div></div>
+    <div class="spot-card"><div class="stitle">🐘 <span class="em">半导体关税酝酿</span></div><div class="sdesc">特朗普政府被曝研究将半导体关税扩大至芯片及终端产品（笔记本/游戏机/数据中心服务器），"投资美国"或成免税门票，半导体板块政策风险升温。</div></div>
+  </div>
+</section>
+
+<!-- ===== S1 本周新闻 ===== -->
+<section class="section" id="s1">
+  <div class="section-header"><span class="sec-num">S1</span><h2>本周新闻回顾</h2><span class="sec-tag">8月24日 — 28日</span></div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">科技</span>英伟达FY27Q2财报：营收962亿美元，同比+106%，Blackwell需求爆发</div>
+    <div class="news-desc">8/26盘后英伟达公布FY27Q2（截至7/26）营收962亿美元，超预期（一致预期约920亿），同比+106%、环比+18%；数据中心业务创纪录达890亿美元、同比+117%，受Blackwell Ultra放量驱动。公司给出FY28年同比约70%增长的罕见前瞻指引。财报次日（8/27）股价暴涨8.74%，纳指收涨1.57%。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">市场</span>沃什杰克逊霍尔鹰派首秀：9月加息概率升至59.7%</div>
+    <div class="news-desc">8/28美联储主席沃什发表上任后首次杰克逊霍尔讲话，宣布放弃传统"前瞻指引"，强调经济韧性与"金融条件不够限制性"，暗示若通胀回落信心不足即会加息。9月加息概率从35%升至59.7%，12月前加息概率超90%。沃什此前被解读为"口头鹰派、内心鸽派"，此次姿态明显转鹰。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag asset">资产</span>黄金8月累计+14%，跌破4500引发"贬值交易"降温</div>
+    <div class="news-desc">本周黄金冲高4696后遭获利了结，周五沃什鹰派冲击下单日-3.08%收4457.57，周跌3.22%终结三周连涨。8月累计仍有约14%涨幅，"美元贬值交易"（debasement trade）是主线。但周内贝森特TGA回购预期一度助推金价，显示宏观博弈白热化。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">市场</span>Salesforce点燃软件AI行情，股价单日+20%创2020年来最大涨幅</div>
+    <div class="news-desc">CRM发布FY27Q2财报：营收113.4亿美元同比+11%，调整后EPS 5.90美元大超预期（含Anthropic投资约2.53美元/股浮盈），并上调全年指引至461-464亿美元。市场解读为AI从"冲击者"变"催化者"，股价单日暴涨超20%，本周累计涨幅惊人，软件AI板块全线走强（NOW +4.54%等）。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">市场</span>Marvell财报"利好出尽"：Q2净利+154%，但股价暴跌7.8%-10%</div>
+    <div class="news-desc">8/27盘后Marvell公布FY27Q2（截至8/1）财报，营收27.39亿美元同比+37%创纪录，调整后EPS 0.94美元超预期，上调全年营收展望。但市场聚焦FY2028指引软化与Google交易时间未明，收盘跌10.28%；周五尾盘延续弱势，半导体板块集体回吐。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">政策</span>特朗普酝酿扩大半导体关税：从芯片到终端产品</div>
+    <div class="news-desc">8/27援引知情人士，特朗普政府研究大幅扩大半导体关税范围，除芯片本身外，或覆盖笔记本电脑、游戏机、数据中心服务器等搭载芯片的终端产品。"投资美国"或提供免税通道。此前中国已宣布对部分先进芯片免征对美反制关税以保供应链。</div>
+  </div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag geo">地缘</span>伊朗-阿曼霍尔木兹谈判缓解供应担忧</div>
+    <div class="news-desc">阿曼与伊朗就霍尔木兹海峡安全通航达成框架协议（设立临时联合航道+排除水雷），伊朗外长访阿曼磋商。霍尔木兹日均油运量从高位回落至约500万桶/日，市场对供应中断的定价降温，WTI回落至约82美元/桶。</div>
+  </div>
+</section>
+
+<!-- ===== S2 政策监管 ===== -->
+<section class="section" id="s2">
+  <div class="section-header"><span class="sec-num">S2</span><h2>政策与监管</h2><span class="sec-tag">POLICY</span></div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">美债</span>贝森特回应TGA回购传闻：克制，未进一步释放信号</div>
+    <div class="news-desc">美财政部长贝森特周一被问及是否利用TGA现金回购高息存量国债时回应"我们甚至连一只债券都还没买"，周初10年期美债收益率回落至4.70%、布伦特跌2.35%至92美元。市场原预期财政部动用现金压低长端，"预期落空"一度引发周初的小幅抛压。</div>
+  </div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">中美</span>中美经济/科技/安全博弈延续，半导体管制收紧</div>
+    <div class="news-desc">美方在被曝扩大半导体关税的同时，商务部对华出口管制持续收紧环节；中方则以对先进芯片免征反制关税保供应链（texxr报称"不让贸易战影响芯片供应"）。中美高层外交渠道保持接触，经济科技限制并行推进。</div>
+  </div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">韩美</span>韩国拟强制"5天模拟交易"为杠杆ETF降温</div>
+    <div class="news-desc">韩国监管机构被报道拟要求杠杆ETF投资者先完成若干日模拟交易再入场，以抑制高风险产品的散户投机，反映亚洲市场对高波动AI/杠杆产品需求的监管回应。</div>
+  </div>
+</section>
+
+<!-- ===== S3 产业科技 ===== -->
+<section class="section" id="s3">
+  <div class="section-header"><span class="sec-num">S3</span><h2>产业与科技</h2><span class="sec-tag">TECH &amp; INDUSTRY</span></div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">算力</span>从"卖铲子"到"淘金"：AI叙事向应用层迁移</div>
+    <div class="news-desc">本周主线显著分化：硬件（半导体）因盈利兑现+政策风险回吐，软件（CRM、NOW、ADBE、NFLX、PLTR）接力大涨。CRM单日+20%被视为AI从"冲击者"变"催化者"的标志性事件，AI应用兑现逻辑逐步浮现。英伟达数据中心890亿美元纪录强化算力需求，但资本市场开始给"应用层"重新定价。</div>
+  </div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">半导体</span>Marvell ASIC/网络芯片：AI订单强劲但毛利指引波动</div>
+    <div class="news-desc">Marvell数据中心业务高增、上调全年指引，但FY2028指引软化+毛利指引下修+Google交易细节未明，市场选择"利好兑现"。与英伟达不同，ASIC逻辑在高估值下对指引边际变化极度敏感。</div>
+  </div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag tech">消费电子</span>苹果9/12 iPhone 17发布会临近，供应链升温</div>
+    <div class="news-desc">苹果iPhone 17系列预计9/12发布，Pro机型搭载A19 Pro芯片+AI端侧大模型支持。本周消费电子板块（AMZN +3.97%、AAPL +1.63%）逆势走强，资金在AI硬件退潮后转向"确定性兑现"的消费电子。</div>
+  </div>
+</section>
+
+<!-- ===== S4 宏观经济 ===== -->
+<section class="section" id="s4">
+  <div class="section-header"><span class="sec-num">S4</span><h2>宏观经济</h2><span class="sec-tag">MACRO</span></div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">利率</span>9月加息概率59.7%，2年期美债创一个月新高</div>
+    <div class="news-desc">沃什讲话后，9月加息概率从35%升至59.7%、12月9日会议前加息概率超90%。2年期美债从4.22%升至4.34-4.35%，10年期约4.71%，美元指数跳涨近40点至99.7。市场从"年内降息"预期切换为"预防性加息"定价。</div>
+  </div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag market">通胀</span>美国通胀韧性仍存，沃什紧盯"回落信心"</div>
+    <div class="news-desc">沃什强调就业基本达标、通胀需紧盯，若对"通胀趋势回归目标"缺乏信心就会加息。此前的7月CPI（同比约2.9%）与核心CPI（约3.2%）虽降温但仍高于目标，油价的传导风险被关注。银河证券研报将其定性为"鹰派抗通胀，预防性加息之门打开"。</div>
+  </div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag policy">债务</span>美联储独立性&财政部发债受关注</div>
+    <div class="news-desc">美国联邦债务高企（40万亿美元）与长端拍卖需求是本周债市焦点。贝森特周一未承诺动用TGA回购，长端收益率在高位震荡。市场关注财政部发债结构与美联储后续是否"被逼"调整政策路径。</div>
+  </div>
+</section>
+
+<!-- ===== S5 地缘政治 ===== -->
+<section class="section" id="s5">
+  <div class="section-header"><span class="sec-num">S5</span><h2>地缘政治</h2><span class="sec-tag">GEOPOLITICS</span></div>
+
+  <div class="news-card">
+    <div class="news-title"><span class="tag geo">霍尔木兹</span>伊朗-阿曼框架协议缓解油运风险，油价回吐地缘溢价</div>
+    <div class="news-desc">阿曼与伊朗达成霍尔木兹海峡安全通航框架（联合临时航道+排雷），伊朗外长访阿曼磋商后续安排。霍尔木兹日油运量从高位回落至约500万桶/日，WTI回落至约82-83美元/桶，此前"油价-通胀"共振担忧降温。国际社会关注霍尔木兹任何实质变化对全球20%石油供应的潜在影响。</div>
+  </div>
+  <div class="news-card">
+    <div class="news-title"><span class="tag geo">中美</span>关税+管制并行，"科技脱钩"边际信号显分化</div>
+    <div class="news-desc">美方一边放大半导体关税范围、一边延续出口管制；中方对先进芯片免征反制关税以保供应链。双方在"关税/管制红线"与"供应链连续性"之间寻求动态平衡，半导体、消费电子仍是博弈主战场。</div>
+  </div>
+</section>
+
+<!-- ===== S-A 跨市场资产 ===== -->
+<section class="section" id="s-asset">
+  <div class="section-header"><span class="sec-num">S-A</span><h2>跨市场资产走势</h2><span class="sec-tag">ASSET ALLOCATION</span></div>
+
+  <!-- 黄金 -->
+  <div class="asset-card">
+    <div class="asset-title"><span class="asset-icon gold">🥇</span>黄金 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">4,457.57</span> <span class="chg down">周 -3.22%</span></span></div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>本周金价冲高回落。周一开盘4608美元，受三周连涨技术买盘推动于周二刷新5/14以来新高4696美元（距4700仅咫尺）；周三因PCE数据推升加息预期小幅回调；周五沃什鹰派定调讲话后数小时重挫逾1%，收报4457.57美元，单日-3.08%，本周累计-3.22%，终结三周连涨。8月累计仍+14%。</p>
+      <p><strong>驱动因素：</strong>① 宏观定调转鹰：9月加息概率骤升至59.7%，无息资产承压（实际利率上行的"分母冲击"）；② 美元走强（升破99.7）压制美元计价金价；③ 获利了结：金价连续冲高后积累大量获利盘，破关键位触发程序化抛售；④ 但"美元贬值交易/信用对冲"主线未破坏，贝森特TGA回购预期一度提供支撑。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">周开盘</div><div class="stat-val">4,608</div></div>
+        <div class="stat-item"><div class="stat-label">周最高</div><div class="stat-val">4,696</div></div>
+        <div class="stat-item"><div class="stat-label">周收盘</div><div class="stat-val">4,457.57</div></div>
+        <div class="stat-item"><div class="stat-label">周涨幅</div><div class="stat-val" style="color:#16A34A;">-3.22%</div></div>
+        <div class="stat-item"><div class="stat-label">8月累计</div><div class="stat-val" style="color:#DC2626;">+14%</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>黄金本周与美债收益率"负相关失灵"再度显现——周五利率上行+美元走强构成对黄金的"双重挤压"。但8月维度看，黄金与比特币（双双大涨）的"美元信用对冲"共振仍是主导逻辑，本周急跌属"定价过快的均值回归"，而非对冲逻辑终结。</p>
+      <p><strong>后市展望：</strong>短期关注4450-4400支撑与美元指数100关口。若9月加息落地，金价或进一步下探4300-4350；但若"贬值交易"回归+央行购金支撑，4400下方或将获得承接。中期核心变量：① 9/17 FOMC是否为真加息；② 美元指数能否站稳100；③ 央行购金是否延续。高盛等此前已上调年底金价目标，本轮回调需观察是否构成"黄金牛回头"。</p>
+    </div>
+  </div>
+
+  <!-- 原油 -->
+  <div class="asset-card">
+    <div class="asset-title"><span class="asset-icon oil">🛢️</span>原油 &nbsp; <span class="key-metric"><span class="val">WTI ~82</span> <span class="chg down">周跌</span></span> &nbsp; <span class="key-metric"><span class="val">布伦特 ~88.5</span> <span class="chg down">周跌</span></span></div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>本周油价整体回落。周一因贝森特"经济战"言论+新制裁伊朗，WTI一度跌2.35%至85美元附近；随后伊朗-阿曼霍尔木兹谈判框架缓解供应担忧，周内油价持续下行，周五WTI收于约82-83美元、布伦特约88.5美元。相比一周前（WTI约85.6/布伦特约93），布伦特周内下跌约4-5美元。</p>
+      <p><strong>驱动因素：</strong>① 地缘缓和：伊朗-阿曼就霍尔木兹通航达成框架，市场对"供应中断"定价大幅降温；② 霍尔木兹油运量从高位回落至约500万桶/日；③ 美元走强+美债利率高企压制商品；④ 贝森特宣布扩大对伊二级制裁，但被解读为"预期内、增量有限"。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">WTI 周一</div><div class="stat-val">85.01</div></div>
+        <div class="stat-item"><div class="stat-label">WTI 周五</div><div class="stat-val">~82-83</div></div>
+        <div class="stat-item"><div class="stat-label">布伦特 周五</div><div class="stat-val">~88.68</div></div>
+        <div class="stat-item"><div class="stat-label">周度方向</div><div class="stat-val" style="color:#16A34A;">回落</div></div>
+        <div class="stat-item"><div class="stat-label">地缘溢价</div><div class="stat-val">回落</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>油价回落缓解了本周初"油价→通胀→加息"的正反馈担忧，一定程度上缓解了美债收益率的上行压力（周初10Y一度回落至4.70%）。油价与美元负相关。油价回落也减轻了对美股的"输入性通胀"压制。</p>
+      <p><strong>后市展望：</strong>短期油价核心变数是霍尔木兹谈判的"落地确定性"——若框架协议兑现，地缘溢价进一步回落，WTI或下探80美元下方；若谈判破裂/局势反复，油价可能快速反抽。基本面看，OPEC+闲置产能有限、库存偏低，油价下方支撑较强。DXY走强+加息预期是压制主因。</p>
+    </div>
+  </div>
+
+  <!-- 比特币 -->
+  <div class="asset-card">
+    <div class="asset-title"><span class="asset-icon btc">₿</span>比特币 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">高位</span> <span class="chg up">8月+20%</span></span></div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>比特币在8月19日以来累计涨幅超20%，本周在8万美元关口附近高位震荡博弈。过去5个交易日，黄金+比特币ETF净流入合计约70亿美元创纪录，"贬值交易"带动加密走强。周五受沃什鹰派冲击、风险偏好回落，高位波动加剧。</p>
+      <p><strong>驱动因素：</strong>① "美元贬值交易"回归：押注财政赤字/债务膨胀+通胀高企的宏观主线；② ETF结构性买盘：过去5日黄金+比特币ETF创约70亿美元净流入纪录；③ 与黄金"双重信用对冲"共振；④ 8/28前后大量期权到期（此前预估约40亿美元名义价值）叠加高波动。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">8/19以来</div><div class="stat-val" style="color:#DC2626;">+20%</div></div>
+        <div class="stat-item"><div class="stat-label">ETF流入(5日)</div><div class="stat-val">~$70亿</div></div>
+        <div class="stat-item"><div class="stat-label">关键关口</div><div class="stat-val">80,000</div></div>
+        <div class="stat-item"><div class="stat-label">上周(参考)</div><div class="stat-val">79,500</div></div>
+        <div class="stat-item"><div class="stat-label">宏观敏感度</div><div class="stat-val">高</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>比特币与黄金本周同属"信用对冲"主线，但比特币对流动性/风险偏好更敏感——周五沃什鹰派冲击下，其高位波动明显大于黄金。比特币与纳指的流动性相关性仍高，AI科技回调亦构成扰动。</p>
+      <p><strong>后市展望：</strong>8万美元是关键心理与技术关口。若突破并站稳，可能触发新一轮FOMO买盘；若9月加息预期强化导致流动性收紧，高位回调风险上升。核心变量：① 9/17 FOMC路径；② 加密货币ETF流入是否延续；③ 监管边际变化。</p>
+    </div>
+  </div>
+
+  <!-- 美债 -->
+  <div class="asset-card">
+    <div class="asset-title"><span class="asset-icon bond">📜</span>美债 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">2Y 4.35%</span> <span class="chg up">+13bp</span></span> &nbsp; <span class="key-metric"><span class="val">10Y 4.71%</span> <span class="chg up">上行</span></span></div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>本周美债收益率"先抑后扬"。周初因贝森特TGA回购预期，10年期一度回落至4.70%；随后沃什鹰派讲话推动2年期从4.22%升至4.34-4.35%（创一个月新高，单日+约11-13bp），10年期约4.71%。收益率曲线受"加息预期"驱动而短端上行更明显。</p>
+      <p><strong>驱动因素：</strong>① 沃什转鹰+9月加息概率骤升至59.7%：短端利率受"政策预期"直接驱动；② 财政部发债/回购节奏：贝森特星期一"尚未买债"的表述令市场失望；③ 美联储整体转向"预防性加息"叙事；④ 长端受财政赤字与债务供给高企制约，高位震荡。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">2Y 周初</div><div class="stat-val">4.22%</div></div>
+        <div class="stat-item"><div class="stat-label">2Y 周末</div><div class="stat-val">4.34-4.35%</div></div>
+        <div class="stat-item"><div class="stat-label">10Y 周末</div><div class="stat-val">~4.71%</div></div>
+        <div class="stat-item"><div class="stat-label">9月加息概率</div><div class="stat-val" style="color:#DC2626;">59.7%</div></div>
+        <div class="stat-item"><div class="stat-label">12月前加息</div><div class="stat-val" style="color:#DC2626;">&gt;90%</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>短端利率飙升是本周"黄金暴跌、美元走强、科技波动"的总根源（分母冲击）。利率上行抬高贴现率、压缩高估值科技/半导体估值，同时利好美元。10年期维持在高位反映财政约束，长端"折现率冲击"对全球风险资产构成中期压力。</p>
+      <p><strong>后市展望：</strong>核心焦点转向9/17 FOMC是否能兑现59.7%的加息定价，以及8月非农（下周）是否强化/逆转预期。若9月真加息，2年期或进一步上行、长端承压；若市场抢先交易"加完就停"，收益率可能冲高回落。关注财政部发债结构与美联储表态。</p>
+    </div>
+  </div>
+
+  <!-- 美元/人民币 -->
+  <div class="asset-card">
+    <div class="asset-title"><span class="asset-icon fx">💱</span>美元指数 &nbsp; <span class="key-metric"><span class="val" style="color:#C2410C;">99.7</span> <span class="chg up">走强</span></span> &nbsp; USD/CNH &nbsp; <span class="key-metric"><span class="val">6.73</span> <span class="chg up">微升</span></span></div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>美元指数本周五因沃什鹰派跳涨近40点至99.7，为本周最剧烈波动；此前周内在99附近震荡。人民币维持强势——离岸在岸均约6.72-6.73水平，人民币兑美元近期创3年半新高后短暂回调。中国央行中间价设在6.78附近，彰显"稳中有进"的外汇管理。</p>
+      <p><strong>驱动因素：</strong>① 美债加息预期+利差走扩支撑美元；② 欧元区经济数据相对偏弱+欧央行降息预期，欧元走弱为美元提供相对支撑；③ 人民币中间价+离岸央票机制维持汇率稳定，近期八周连涨后央行温和降温升值速度；④ 中国7月CPI同比0.5%、PPI-1.2%，需求偏弱格局压制人民币继续大幅升值动力。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">美元指数周五</div><div class="stat-val">99.7</div></div>
+        <div class="stat-item"><div class="stat-label">单日跳涨</div><div class="stat-val" style="color:#DC2626;">~40点</div></div>
+        <div class="stat-item"><div class="stat-label">USD/CNH</div><div class="stat-val">6.7305</div></div>
+        <div class="stat-item"><div class="stat-label">USD/CNY中间价</div><div class="stat-val">6.7841</div></div>
+        <div class="stat-item"><div class="stat-label">人民币趋势</div><div class="stat-val">强势</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>美元走强是本周"黄金暴跌、比特币高位波动"的重要宏观背景，二者与美元的负相关性再度显现。人民币强势体现了中国基本面（出口+外汇管理）+外资流入，对A股/中概构成支撑。美元若站稳100，将对新兴市场与大宗构成更大压力。</p>
+      <p><strong>后市展望：</strong>美元短期取决于9月加息能否兑现——若9月真加息，美元有望站上100；若预期落空，可能回落。人民币方面，中美利差仍大，人民币不具备大幅单边升值基础，预计6.70-6.85宽幅震荡，中国央行"稳汇率"意图明确。中期看，美国"加息的鹰派周期"能否持续是关键。</p>
+    </div>
+  </div>
+
+  <!-- 美股周度 -->
+  <div class="asset-card">
+    <div class="asset-title"><span class="asset-icon fx" style="background:#FEE2E2;">📈</span>美股三大指数 &nbsp; <span class="key-metric"><span class="val">周线收涨</span></span></div>
+    <div class="asset-body">
+      <p><strong>走势摘要：</strong>本周美股"周线收涨、周五回落"。标普500周涨0.49%、纳指周涨0.85%、道指周涨0.53%、罗素2000周跌1.5%。英伟达财报（8/26）引爆周三AI狂潮（纳指+1.57%），但周五沃什鹰派冲击下三大指数集体收跌（标普-0.25%、纳指-0.52%、道指-0.02%）。</p>
+      <p><strong>结构分化：</strong>本周"跌硬件、涨软件"。半导体因Marvell指引软化+关税政策风险+英伟达回吐而集体走弱（MRVL -10.28%、ARM -6.33%、NVDA周五-4.57%）；软件AI（CRM +20%、NOW +4.54%）、消费电子（AMZN +3.97%、AAPL +1.63%）接力走强。周五小型股罗素2000领跌反映加息预期对高波动小盘股压制。</p>
+      <div class="asset-stats">
+        <div class="stat-item"><div class="stat-label">标普周涨</div><div class="stat-val" style="color:#DC2626;">+0.49%</div></div>
+        <div class="stat-item"><div class="stat-label">纳指周涨</div><div class="stat-val" style="color:#DC2626;">+0.85%</div></div>
+        <div class="stat-item"><div class="stat-label">道指周涨</div><div class="stat-val" style="color:#DC2626;">+0.53%</div></div>
+        <div class="stat-item"><div class="stat-label">罗素2000</div><div class="stat-val" style="color:#16A34A;">-1.5%</div></div>
+        <div class="stat-item"><div class="stat-label">周五方向</div><div class="stat-val" style="color:#16A34A;">收跌</div></div>
+      </div>
+      <p><strong>跨资产关联：</strong>美股本周受两大力量拉扯——英伟达财报的AI产业逻辑（多头）与沃什鹰派的利率冲击（空头）。指数收涨但结构剧烈分化，资金从拥挤的AI硬件切换至软件/消费。周五的收跌说明"利率恐惧"暂占上风，但周线收涨说明产业趋势未被破坏。</p>
+      <p><strong>后市展望：</strong>三大指数周线维持上行、日线面临短期调整。核心变量：① 下周8月非农（决定加息能否逆转）；② 英伟达/半导体能否止跌企稳（AI主线的"锚"）；③ 9/17 FOMC定价。操作上宜"降硬件仓、切软件、控总仓、等非农"。</p>
+    </div>
+  </div>
+
+  <!-- 跨资产关联总览 -->
+  <div class="deep-card" style="margin-top:8px;">
+    <h3>跨资产关联总览</h3>
+    <div class="deep-sub">五大资产本周表现一览</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>资产</th><th>周末水位</th><th>周涨跌</th><th>核心驱动</th><th>下周关键</th></tr></thead>
+        <tbody>
+          <tr><td>黄金</td><td>4,457.57</td><td class="t-dn">-3.22%</td><td>沃什鹰派+美元走强</td><td>FOMC/非农</td></tr>
+          <tr><td>原油 WTI</td><td>~82-83</td><td class="t-dn">本周回落</td><td>霍尔木兹谈判缓和</td><td>谈判落地</td></tr>
+          <tr><td>比特币</td><td>8万关口附近</td><td class="t-up">8月+20%</td><td>贬值交易+ETF流入</td><td>流动性/关口</td></tr>
+          <tr><td>美债 2Y</td><td>4.35%</td><td class="t-up">+13bp</td><td>加息预期骤升</td><td>非农+FOMC</td></tr>
+          <tr><td>美元指数</td><td>99.7</td><td class="t-up">跳涨</td><td>加息预期</td><td>能否站稳100</td></tr>
+          <tr><td>人民币 CNH</td><td>6.73</td><td class="t-up">微升</td><td>三角力量平衡</td><td>央行态度</td></tr>
+          <tr><td>美股(标普)</td><td>7,711.76</td><td class="t-up">+0.49%</td><td>AI财报 vs 利率</td><td>非农</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S-D 深度专题 ===== -->
+<section class="section" id="s-deep">
+  <div class="section-header"><span class="sec-num">S-D</span><h2>深度专题</h2><span class="sec-tag">DEEP DIVE</span></div>
+
+  <!-- 专题一 -->
+  <div class="deep-card">
+    <h3>深度专题一：沃什"放鹰"落地——美联储通胀之战的"最后一公里"</h3>
+    <div class="deep-sub">本被寄望"转鸽"的新主席杰克逊霍尔首秀，为何反而推升9月加息概率至59.7%？</div>
+    <div class="deep-body">
+      <p>2026年8月28日，美联储新任主席凯文·沃什在杰克逊霍尔全球央行年会上完成了他的"首秀"。市场原本的期待是——这位曾被视为"口头鹰派"的主席，会在就任后逐步转向鸽派，为市场"降息盛宴"保驾护航。然而他用整整半小时、近乎直白地告诉市场：如果通胀回落的信心不足，我就会加息。</p>
+      <p><strong>"没说的比说了的更重要"。</strong>克鲁格曼在点评中说，沃什"没说的"（不提9月降息、不提宽松）比"说了的"更重要。他宣布放弃美联储沿用多年、被视为政策透明基石的传统"前瞻指引"，转向"更精简、更具针对性"的沟通。经济学家普遍解读为：他的鹰派不是姿态，而是真实政策意图的前兆——不再是"预期管理"，而是想把市场预期往"可能加息"的方向拉。</p>
+      <p><strong>市场用真金白银投票。</strong>讲话后，CME FedWatch显示的9月加息概率从35%骤升至59.7%，12月前加息概率超过90%；2年期美债从4.22%冲高至4.34-4.35%（创一个月新高）；美元指数跳涨近40点至99.7；黄金数小时重挫逾1%收至4457.57美元。这些几乎是"教科书级"的鹰派冲击反应。</p>
+      <div class="deep-highlight"><strong>传导链：</strong> 沃什转鹰 → 9月加息概率35%→59.7% → 短端利率上行（2Y +11-13bp）→ 美元走强（99.7）→ 无息资产黄金暴跌（单日-3%）→ 高估值科技/半导体受压（费半-3.2%）→ 但软件/消费因"低拥挤+盈利兑现"反向受益（CRM +20%）→ 市场从"年内降息"切换为"预防性加息再定价"。</div>
+      <p><strong>为什么又"偏鹰"？</strong>沃什的逻辑很直白：① 美国经济仍有韧性；② 金融条件可能"不够具有限制性"（即利率还不够高）；③ 就业基本达标，焦点只剩通胀；④ 若对通胀回归2%缺乏信心，就必须加息。银河证券研报将其定性为"鹰派抗通胀，预防性加息之门打开"。这意味着美联储认定"通胀顽固"，政策重心从"防衰退"转向"坚持抗通胀"。</p>
+      <p><strong>对资产配置的深远含义：</strong>若9/17 FOMC真加息，将是本轮周期一次重要转向——黄金、长债、高估值成长将反复承压；价值/高股息与盈利确定性资产相对受益；美元中期走强。反之，若8月非农（下周）大幅走弱、或沃什后续"回补鸽派预期"，则市场会迅速price-in"最后一次加息"。这条主线的演化，决定了Q4全年的资产格局。</p>
+    </div>
+  </div>
+
+  <!-- 专题二 -->
+  <div class="deep-card">
+    <h3>深度专题二：英伟达962亿"爆表"财报——AI主升浪的健康check</h3>
+    <div class="deep-sub">营收+106%、数据中心890亿、FY28指引+70%，为何财报次日股价+8.74%却又在周五回吐？</div>
+    <div class="deep-body">
+      <p>8月26日盘后，英伟达交出了一份堪称"炸裂"的Q2财报：FY27Q2营收962亿美元，同比+106%、环比+18%，大幅超出一致预期（约920亿）；数据中心业务创纪录的890亿美元，同比+117%，由Blackwell Ultra带动；Hyperscale云收入+102%、AI Cloud/企业/主权客户收入+138%；调整后EPS 2.22美元超预期（一致预期约2.10）。更关键的是，公司罕见地给出FY28营收同比约70%增长的前瞻指引——这是对AI需求持续性的最强背书。</p>
+      <p><strong>市场反应的双重性。</strong>财报次日（8/27）股价暴涨8.74%、纳指收涨1.57%，AI硬件迎来"狂欢日"。但8/28周五，股价回吐至-4.57%，费半-3.2%。理性看待：一天的8.74%是"利好兑现"的情绪宣泄，周五的回吐是正常的"财报后获利了结+宏观鹰派冲击"，而非AI逻辑破坏。</p>
+      <p><strong>Blackwell二代的"硬需求"。</strong>财报真正的亮点在于Blackwell Ultra的量产放量：数据中心复苏是"自上而下"的真实需求（超大规模云厂投入），而非库存回补。FY28 +70%的指引意味着AI算力资本开支周期仍在加速上行。这是AI主升浪的"基本面锚"。</p>
+      <div class="deep-highlight"><strong>关键判断：</strong> 英伟达财报是"AI产业趋势无恙"的确认，但"财报即顶"是美股高估值科技股的常见模式。映照参考模板（上周）的预期——市场上周还在关注英伟达财报能否"超300亿营收预期"，但实际交出962亿，需求强度远超想象。AI牛市的基本面逻辑依然成立，回调是节奏问题而非方向问题。</div>
+      <p><strong>隐忧与观察：</strong>① 中国Hopper出货受限对营收的影响需观察；② 股价周五回吐是否演变为"见顶"取决于能否止跌企稳（20日线）；③ 半导体关税若落地将压制板块情绪；④ 软件AI（CRM +20%）的接力，正在构成本轮的"哑铃结构"——硬件（算力）负责"卖铲子"，软件负责"淘金"。若软件接力失败、硬件又回调，指数将承压；反之则AI牛市进入更健康的第二阶段。</p>
+    </div>
+  </div>
+
+  <!-- 专题三 -->
+  <div class="deep-card">
+    <h3>深度专题三：黄金单周-3.22%——"贬值交易"与"加息预期"的正面碰撞</h3>
+    <div class="deep-sub">金价冲高4696后急跌近240美元，一次"定价过快"的均值回归还是趋势反转？</div>
+    <div class="deep-body">
+      <p>本周黄金走出"冲高回落"的过山车：周一开盘4608美元，周二刷新5/14以来新高4696美元（距4700仅一脚之遥），周三因PCE数据推升加息预期小幅回调，周五在沃什鹰派冲击下数小时重挫逾1%，收报4457.57美元，单日-3.08%，周跌-3.22%，终结此前连续三周上涨。8月累计涨幅仍高达约14%。</p>
+      <p><strong>两种叙事在碰撞。</strong>8月主导黄金的是"美元贬值交易"（debasement trade）——押注美国财政赤字、40万亿债务与长期通胀，黄金作为"信用对冲"被追逐，创下历史新高。但本周沃什"转鹰+9月加息概率59.7%"把市场拉回"实际利率"框架——加息推升实际利率，黄金作为无息资产的持有机会成本上升，风险偏好又受美元走强挤压。两种逻辑在4400-4700区间正面相撞，周五大跌就是"利率叙事"暂时压过"信用对冲叙事"的结果。</p>
+      <p><strong>急跌不等于逻辑破坏。</strong>8月+14%的巨大涨幅本身积累了沉重获利盘，跌破关键位触发程序化与技术性抛售，属"定价过快的均值回归"。基本面支撑（央行购金、美元信用担忧）并未消失——它们压制的是"短期定价"，改变的是"上升斜率"，而非"上升方向"，此为黄金牛市中的正常回撤。</p>
+      <div class="deep-highlight"><strong>观察锚：</strong> ① 4450-4400支撑是否守住（跌破则看4300-4350）；② 美元指数能否站稳100；③ 央行购金8月数据；④ 9/17 FOMC结果。若9月加息兑现后市场"利空出尽"，黄金或现黄金牛回头；若"贬值交易"重回主线，4400下方承接将出现。</div>
+      <p><strong>配置含义：</strong>黄金在"美元信用对冲"维度的配置价值未变，但短线受利率压制。稳健投资者可等金价在4400-4450企稳后再分批布局；激进者关注美元/美债收益率见顶信号。关键变量仍是9月议息会议与8月非农——它们将决定黄金是"调整后继续"还是"转入中期回调"。</p>
+    </div>
+  </div>
+
+  <!-- 专题四 -->
+  <div class="deep-card">
+    <h3>深度专题四：半导体关税大棒——从"芯片"到"终端"的产业链冲击前夜</h3>
+    <div class="deep-sub">特朗普欲将关税扩至笔记本/游戏机/服务器，"投资美国"或成免税门票</div>
+    <div class="deep-body">
+      <p>8月27日，美国政治新闻网援引知情人士披露：特朗普政府正研究大幅扩大半导体关税的征税范围——除芯片本身外，或延伸至笔记本电脑、游戏机、数据中心服务器等"搭载芯片的终端产品"，并以"投资美国"作为部分免税通道换取制造业回流。</p>
+      <p><strong>政策的动机与逻辑。</strong>这延续了特朗普"关税推动制造业回流"的核心思路：用关税作为筹码，向全球半导体与电子制造企业施压，迫使其赴美设厂投资，同时强化美国本土供应链（呼应此前"半导体产业本土化"政策）。"投资美国=免税门票"的设计，本质是一种"胡萝卜+大棒"的谈判策略。</p>
+      <p><strong>对产业链的影响路径。</strong>① 芯片环节：进口芯片成本上升，直接冲击美国芯片进口商与下游OEM；② 终端环节：笔记本/游戏机/服务器是消费电子与数据中心的"大头"，关税将抬高终端成本，冲击苹果、戴尔、联想等硬件厂商毛利；③ 供应链：或将加速非美产能（东南亚/墨西哥）布局，但转产周期长、短期成本高企。</p>
+      <div class="deep-highlight"><strong>传导链：</strong> 关税预期升温 → 半导体/硬件巨头毛利承压担忧 → 周五"跌硬件涨软件"加剧（MRVL -10.28%、ARM -6.33%、SMCI -3.59%）→ 但中国对先进芯片免征关税保供应链（制造端"豁免对冲"）→ 政策落地前"预期反复"是最大不确定性。</div>
+      <p><strong>双面博弈与投资含义：</strong>市场纠结的核心是"豁免对冲"——中国已宣布对部分先进芯片免征对美反制关税以保供应链连续性，说明"芯片供应链全球一体化"的现实约束仍在。对投资者：① 半导体硬件短线因"政策预期"承压，回避高波动Short Gamma个股；② 但若"免税通道"落地+关税门槛低于预期，则构成利空出尽；③ 中长期看，"投资美国"利好美国本土制造/设备（Applied Materials、KLAC、LRCX类资本开支逻辑）与"免税赴美投资"标的。政策落地前的预期反复，是下周半导体板块的核心变量。</p>
+    </div>
+  </div>
+
+  <!-- 专题五 -->
+  <div class="deep-card">
+    <h3>深度专题五：懂AI的软件终于爆发——Salesforce+20%的产业含义</h3>
+    <div class="deep-sub">当CRM单日暴涨20%创2020年来最大涨幅，AI叙事正从"卖铲子"转向"淘金"</div>
+    <div class="deep-body">
+      <p>本周最亮眼的并非英伟达，而是Salesforce。CRM发布FY27Q2财报：营收113.4亿美元，同比+11%，略超预期；调整后EPS 5.90美元，同比超1倍，大幅超预期——其中包含其投资的Anthropic带来的约2.53美元/股浮盈。管理层上调全年营收指引至461-464亿美元。财报后股价单日暴涨超20%，为2020年以来最大单日涨幅，Wolfe Research随后升级为"强买"。</p>
+      <p><strong>市场为何反应如此剧烈？</strong>核心在于"叙事反转"：此前AI被视为软件巨头的"颠覆者"（担心AI应用会取代传统SaaS的订阅价值），股价承压。但这家公司展示了"AI是增长催化剂而非破坏者"——通过把AI能力变现（Agentforce等生成式AI应用），反而带动了从"卖铲子（算力）"到"淘金（应用兑现）"的产业逻辑切换。NOW +4.54%、ADBE +0.82%、NFLX +2.35%等软件AI同步走强，构成本周最强的进攻链。</p>
+      <p><strong>AI"哑铃结构"的形成。</strong>本周市场呈现清晰的哑铃：一端是英伟达（算力，负责"卖铲子"），一端是Salesforce/软件（应用，负责"淘金"）。若软件接力延续，AI牛市进入"第二增长阶段"——不再只靠硬件算力资本开支，而是靠应用层变现兑现现金流；反之，若软件补跌，则需警惕AI整体beta回撤。</p>
+      <div class="deep-highlight"><strong>产业信号：</strong> AI商业化正在从"资本开支（CapEx）驱动的物理需求"向"收入变现（OpEx）驱动的应用需求"演进——这是科技股最健康的结构升级信号。软件AI在"高利率+谨慎风险偏好"环境下反而成为资金避风港（低拥挤+盈利兑现），恰是本周逆势走强的宏观共振。</div>
+      <p><strong>投资含义与观察：</strong>① 软件AI（CRM、NOW、ADBE、PLTR、DDOG）趋势向上，是"降硬件仓"后的承接主线；② 但CRM业绩含AI投资浮盈（约2.53美元/股），需剔除后看经营性盈利能力；③ 关注Salesforce跳空缺口能否守住——若下周不回补缺口、缩量整理，则软件AI行情具备持续性；④ 与英伟达形成"哑铃"配置，可平衡"AI基建确定性"与"AI应用爆发弹性"。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S6 深度阅读 ===== -->
+<section class="section" id="s6">
+  <div class="section-header"><span class="sec-num">S6</span><h2>深度阅读</h2><span class="sec-tag">READING LIST</span></div>
+  <div class="reading-card"><a class="rd-title" href="https://www.nasdaq.com/articles/stock-market-today-aug-28-marvell-slides-10-softer-fiscal-2028-guidance-and-google-deal" target="_blank">Marvell Slide 10% on Softer FY2028 Guidance and Google Deal Timing</a><div class="rd-meta">Nasdaq · 2026.08.28</div><div class="rd-desc">Marvell财报"利好出尽"的完整复盘：为何营收超预期+上调指引仍暴跌10%，FY2028指引软化与Google交易细节是关键。</div></div>
+  <div class="reading-card"><a class="rd-title" href="https://nvidianews.nvidia.com/news/will-your-next-shampoo-be-developed-on-gpus" target="_blank">NVIDIA Announces Financial Results for Second Quarter Fiscal 2027</a><div class="rd-meta">NVIDIA Newsroom · 2026.08.26</div><div class="rd-desc">英伟达Q2财报原文：营收962亿美元+106%、数据中心890亿+117%、EPS 2.22美元，Blackwell Ultra放量驱动的第一手官方数据。</div></div>
+  <div class="reading-card"><a class="rd-title" href="https://www.zacks.com/commentary/2982102/salesforce-crm-stock-soars-on-q2-earnings-is-it-too-late-to-buy" target="_blank">Salesforce Stock Soars on Q2 Earnings: Is It Too Late to Buy?</a><div class="rd-meta">Zacks · 2026.08.28</div><div class="rd-desc">CRM单日+20%的解读：AI从"破坏者"到"催化者"的叙事反转，剔除Anthropic浮盈后的真实经营利润分析。</div></div>
+  <div class="reading-card"><a class="rd-title" href="https://c.m.163.com/news/a/L5E1TP400511838M.html" target="_blank">Q2净利大涨154%！Marvell上调全年财测：股价大跌7.8%</a><div class="rd-meta">芯智讯 · 2026.08.28</div><div class="rd-desc">Marvell财报的中文深度解读：AI订单强劲但毛利指引下滑，市场为何用脚投票，潜在"利好出尽"模式。</div></div>
+  <div class="reading-card"><a class="rd-title" href="https://finance.sina.com.cn/roll/2026-08-28/doc-inipvrtz5730967.shtml" target="_blank">"贬值交易"突然重燃！黄金8月暴涨14% 比特币狂飙20%</a><div class="rd-meta">新浪财经 · 2026.08.28</div><div class="rd-desc">黄金比特币齐涨背后的"美元贬值交易"主线：财政赤字/债务膨胀+通胀长期高位的宏观逻辑，5日ETF流入70亿美元。</div></div>
+  <div class="reading-card"><a class="rd-title" href="http://m.toutiao.com/group/7679648000137773594/" target="_blank">周评：沃什"放鹰"令金价回吐逾3%，下周重磅非农来袭</a><div class="rd-meta">新浪财经周评 · 2026.08.28</div><div class="rd-desc">黄金本周冲高4696后回吐逾3%的全过程：周一4608、周二新高、周五鹰派冲击，及下周非农对金价的关键指引。</div></div>
+  <div class="reading-card"><a class="rd-title" href="http://m.toutiao.com/group/7679677991538721295/" target="_blank">特朗普酝酿扩大半导体关税：从芯片到终端产品</a><div class="rd-meta">国际金融报 · 2026.08.27</div><div class="rd-desc">半导体关税扩大方案：覆盖笔记本/游戏机/服务器等终端，"投资美国"或成免税门票，对产业链的潜在冲击路径。</div></div>
+</section>
+
+<!-- ===== S7 大佬发言 ===== -->
+<section class="section" id="s7">
+  <div class="section-header"><span class="sec-num">S7</span><h2>大佬发言</h2><span class="sec-tag">KEY QUOTES</span></div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background:linear-gradient(135deg,#92400E,#D97706)">KW</div>
+    <div class="sp-body">
+      <div class="sp-name">Kevin Warsh（凯文·沃什）</div>
+      <div class="sp-title">美联储主席</div>
+      <div class="sp-quote">我们正式放弃传统的前瞻指引，转向更精简、更具针对性的沟通。美国经济仍有韧性，金融条件可能并不具有限制性。就业基本达标，但通胀需要紧盯——如果我们对通胀趋势回到目标的信心不足，就会加息。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background:linear-gradient(135deg,#1C1917,#44403C)">JH</div>
+    <div class="sp-body">
+      <div class="sp-name">Jensen Huang（黄仁勋）</div>
+      <div class="sp-title">英伟达CEO</div>
+      <div class="sp-quote">Blackwell的需求是超乎寻常的。企业正在认识到，AI不再是可选项，而是未来十年竞争力的核心。我们的数据中心业务同比增长一倍以上，这只是AI基础设施浪潮的开始。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background:linear-gradient(135deg,#064E3B,#059669)">AB</div>
+    <div class="sp-body">
+      <div class="sp-name">Marc Benioff（马克·贝尼奥夫）</div>
+      <div class="sp-title">Salesforce CEO</div>
+      <div class="sp-quote">AI是我们最大的增长催化剂，而不是破坏者。我们正在把AI能力转化为客户看得见的商业成果，Agentforce正在重新定义企业软件的交付方式。这一季度证明了我们的战略是对的。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background:linear-gradient(135deg,#1E40AF,#3B82F6)">SB</div>
+    <div class="sp-body">
+      <div class="sp-name">Scott Bessent（斯科特·贝森特）</div>
+      <div class="sp-title">美国财政部长</div>
+      <div class="sp-quote">关于动用现金储备回购国债——我们甚至连一只债券都还没买。我们正在评估债务管理工具，但不会因为市场预期而仓促行动。财政纪律和债务的可持续性是我们长期关注的核心。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background:linear-gradient(135deg,#7C2D12,#C2410C)">PG</div>
+    <div class="sp-body">
+      <div class="sp-name">Paul Krugman（保罗·克鲁格曼）</div>
+      <div class="sp-title">诺贝尔经济学奖得主</div>
+      <div class="sp-quote">沃什这次"没说的"比"说了的"更重要。他避而不谈宽松、不提降息路径，只强调通胀风险——这本身就是强烈的鹰派信号。市场解读正确：加息概率确实该上升。</div>
+    </div>
+  </div>
+
+  <div class="speaker-card">
+    <div class="sp-avatar" style="background:linear-gradient(135deg,#3730A3,#6366F1)">JN</div>
+    <div class="sp-body">
+      <div class="sp-name">Jim Cramer（吉姆·克莱默）</div>
+      <div class="sp-title">CNBC主持人</div>
+      <div class="sp-quote">英伟达的财报是完美的，但Marvell提醒我们——高估值AI股票对任何指引的边际变化都极度敏感。当一只股票因为"超预期但不够超预期"而跌去10%，你要知道市场正在给"AI定价是否过高"投反对票。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S8 下周关注 ===== -->
+<section class="section" id="s8">
+  <div class="section-header"><span class="sec-num">S8</span><h2>下周（9月首周）关注</h2><span class="sec-tag">FORWARD LOOK</span></div>
+
+  <div class="fwd-card"><div class="fwd-title">📌 8月非农就业数据（重磅）</div><div class="fwd-body">下周公布的8月非农是决定9月加息能否逆转/强化的最关键观察窗口。若数据大幅走弱，可迅速扭转59.7%的加息定价（利好黄金/it币/科技）；若数据强劲，则9月加息概率进一步走高，黄金与高估值成长继续承压。</div></div>
+
+  <div class="fwd-card"><div class="fwd-title">📌 9/17 FOMC前夜 · 沃什后续表态</div><div class="fwd-body">距离9/17议息会议约两周。沃什是否会"回补鸽派预期"、工作人员讲话、美联储官员密集发言将逐步揭示政策路径。市场将高度关注任何"最后一次加息"或"加息后即停"的信号。</div></div>
+
+  <div class="fwd-card"><div class="fwd-title">📌 半导体关税：政策落地前夜</div><div class="fwd-body">特朗普政府扩大半导体关税方案若正式公布细节，将重定价板块。关注：① 征税范围是否覆盖终端；② "投资美国"免税条款细则；③ 对苹果、戴尔、服务器厂商的冲击测算；④ 中国反应。短期半导体硬件波动料加大。</div></div>
+
+  <div class="fwd-card"><div class="fwd-title">📌 黄金4400-4450支撑与美元100关口</div><div class="fwd-body">金价能否守住4450-4400决定"黄金牛回头"还是"中期回调"；美元指数能否站稳100决定新兴市场与大宗的短期方向。二者与8月非农结果高度联动。</div></div>
+
+  <div class="fwd-card"><div class="fwd-title">📌 软件AI接力是否有持续性</div><div class="fwd-body">CRM跳空缺口能否守住、NOW/ADBE是否延续，是判断AI"哑铃结构"软件端能否承接的关键。若软件补跌，警惕AI整体beta回撤。</div></div>
+
+  <div class="fwd-card"><div class="fwd-title">📌 霍尔木兹谈判落地与OPEC+会议</div><div class="fwd-body">伊朗-阿曼协议若正式生效，油价地缘溢价进一步回落；9月初OPEC+会议关于减产的讨论将是油价的方向标。油价回落能否缓解美国通胀与加息压力，值得跟踪。</div></div>
+
+  <div class="fwd-card"><div class="fwd-title">📌 中国8月官方PMI（8/31）</div><div class="fwd-body">8月官方制造业PMI将于8月31日公布，市场预期仍在荣枯线下方（约49.8）。若超预期回升，利好A股/人民币；若低于预期，可能加大稳增长政策加码预期。</div></div>
+</section>
+
+<!-- ===== S9 研报分析 ===== -->
+<section class="section" id="s9">
+  <div class="section-header"><span class="sec-num">S9</span><h2>研报分析</h2><span class="sec-tag">RESEARCH</span></div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#3B1F6E,#6D3FAF)">银河<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">8月Jackson Hole：鹰派抗通胀，预防性加息之门打开</div>
+      <div class="r-org">银河证券 · 宏观经济 · 2026.08.28</div>
+      <div class="r-point"><strong>核心观点：</strong>沃什本次讲话加强了鹰派姿态，明确"就业达标、紧盯通胀"，若对通胀回落信心不足即会加息。评价为"鹰派抗通胀"，首次较清晰表达防预性加息的可能路径。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 经济保持韧性；② 金融条件可能不够限制；③ 通胀回归目标缺乏内生信心。结论：9/17 FOMC加息风险显著抬升。</div>
+      <div class="r-reason">推荐理由：对沃什首秀政策取向最直接的国内机构解读，与市场9月加息定价（59.7%）高度吻合。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#1E3A5F,#2C5F8A)">高盛</div>
+    <div class="r-right">
+      <div class="r-title">"贬值交易"重燃：黄金与比特币的双重信用对冲</div>
+      <div class="r-org">Goldman Sachs · 大宗商品 · 2026.08.28</div>
+      <div class="r-point"><strong>核心观点：</strong>美元贬值交易（押注赤字/债务膨胀+长期通胀）是8月黄金+/比特币大涨的主线，过去5日黄金+比特币ETF流入约70亿美元创纪录。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 美国财政40万亿+债务，信用对冲需求上升；② 央行购金提供结构性支撑；③ 比特币的"数字黄金"属性延伸。短期受沃什加息预期扰动，中期逻辑不变。</div>
+      <div class="r-reason">推荐理由：理解黄金回调后是否仍具配置价值的权威视角，明确"急跌≠逻辑破坏"。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#0D4F3C,#1A7A5A)">中信<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">国产算力：AI应用兑现下的"从1到10"机遇</div>
+      <div class="r-org">中信证券 · 计算机 · 2026.08.27</div>
+      <div class="r-point"><strong>核心观点：</strong>英伟达财报验证全球AI需求强劲，国产算力受益AI应用兑现+国产替代，处于"从1到10"加速阶段。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 全球AI算力资本开支上行；② 国产芯片良率提升；③ 政策支持"新质生产力"。建议关注AI芯片/服务器/光模块/液冷环节。</div>
+      <div class="r-reason">推荐理由：在美股AI硬件回调背景下，提供A股"确定性最高"的科技主线替代视角。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#8B1A1A,#C41E3A)">华泰<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">应对加息预期回归的资产配置策略</div>
+      <div class="r-org">华泰证券 · 资产配置 · 2026.08.28</div>
+      <div class="r-point"><strong>核心观点：</strong>9月加息预期回升，建议"多元均衡+降低久期"，超配短久期债券/黄金对冲尾部风险直至FOMC确认政策路径。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 利率上行环境下高久期资产承压；② 黄金中期配置价值仍在；③ 需等待非农/FOMC确认转向。建议在确认前控制杠杆与高估值成长暴露。</div>
+      <div class="r-reason">推荐理由：针对"鹰派预期回归"的实操配置思路，适合多数投资者参考。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#1A3A5C,#2E6BA0)">招商<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">AI哑铃结构：算力硬件与软件应用的两端布局</div>
+      <div class="r-org">招商证券 · 策略 · 2026.08.27</div>
+      <div class="r-point"><strong>核心观点：</strong>AI主线演化为"哑铃"，一端是英伟达/算力（卖铲子）、一端是Salesforce/软件应用（淘金），建议两端均衡配置、避免押注单一方向。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 硬件需求由英伟达财报验证；② 软件应用受益AI变现；③ 在市场利率扰动下，低拥挤的软件端相对占优。建议关注软件AI与价值防御组合。</div>
+      <div class="r-reason">推荐理由：准确捕捉本周"软件接力"的结构性机会，提供可执行的哑铃配置框架。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#0A2E36,#146B7A)">摩根<br>大通</div>
+    <div class="r-right">
+      <div class="r-title">美元若能站稳100，新兴市场与大宗将承压</div>
+      <div class="r-org">J.P. Morgan · 利率/外汇 · 2026.08.28</div>
+      <div class="r-point"><strong>核心观点：</strong>沃什转鹰后美元跳涨至99.7，若9月加息确认、美元站稳100，将对新兴市场与大宗商品形成压力；反之美元回落利好风险资产。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 美元与大宗/新兴负相关；② 加息预期支撑利差；③ 人民币走势取决于央行态度与中美利差。建议关注美元100关口的确认信号。</div>
+      <div class="r-reason">推荐理由：把握"美元-大宗-新兴"联动链条的机构观点，为跨资产判断提供锚点。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#4A1942,#7C3A6E)">长江<br>证券</div>
+    <div class="r-right">
+      <div class="r-title">黄金定价重构：从"实际利率驱动"到"央行+信用对冲驱动"</div>
+      <div class="r-org">长江证券 · 宏观 · 2026.08.26</div>
+      <div class="r-point"><strong>核心观点：</strong>黄金传统"实际利率负相关"模型R²逐年下降，而"央行购金+美元信用+地缘风险"新框架解释力更强。本周急跌是"利率叙事"的短期扰动。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 央行购金价格不敏感；② 美元信用担忧支撑黄金"终极储备"地位；③ 短期受加息预期压制，中期"信用对冲"逻辑仍在。建议回调企稳后增配。</div>
+      <div class="r-reason">推荐理由：解释黄金"为何能在利率上行时仍具配置价值"的框架性视角，与本周急跌后的判断高度契合。</div>
+    </div>
+  </div>
+
+  <div class="report-card">
+    <div class="r-left" style="background:linear-gradient(135deg,#0D1B2A,#1B3A5C)">桥水<br>基金</div>
+    <div class="r-right">
+      <div class="r-title">从"大缓和"到"债务超级周期尾部"：范式转换</div>
+      <div class="r-org">Bridgewater Associates · 宏观 · 2026.08.24</div>
+      <div class="r-point"><strong>核心观点：</strong>全球处于"范式转换"——从低利率低波动向高波动高分化过渡，各国央行面临"控制通胀/维持增长/稳债务"不可能三角。</div>
+      <div class="r-point"><strong>关键论据：</strong>① 全球债务高企；② 沃什转鹰正是"不可能三角"的体现（选择抗通胀而非稳债务）；③ 黄金/比特币等"非主权信用"资产具备独特配置价值。建议超配黄金比特币、低配长债。</div>
+      <div class="r-reason">推荐理由：桥水的宏观框架为理解"沃什为何转鹰+黄金为何具配置价值"提供完整的理论支撑。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="report-footer">
+  <p>周末复盘 · 2026年8月24日 — 8月28日 · 第35周</p>
+  <p>数据来源：AP News, Nasdaq, Sina Finance, NVIDIA Newsroom, Zacks, 芯智讯, 国际金融报, 上海有色网, chinamoney.com, Sprague</p>
+  <p>免责声明：本报告根据公开行情与新闻整理生成，仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+</footer>
+
+</div>
+
+<div class="font-control" id="fontControl" title="调整正文字体大小">
+  <button id="fontDec">A−</button><span class="font-val" id="fontVal">100%</span><button id="fontInc">A+</button><button id="fontReset">重置</button>
+</div>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Back to Top
+(function(){var btn=document.getElementById('backToTop');var ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){window.requestAnimationFrame(function(){
+  if(window.scrollY>300){btn.classList.add('show');}else{btn.classList.remove('show');}
+  ticking=false;});ticking=true;}});})();
+
+// Font size control
+(function(){
+  var KEY='wb_report_font_scale_v1',MIN=80,MAX=150,STEP=10,scale=parseInt(localStorage.getItem(KEY)||'100',10);
+  if(isNaN(scale)||scale<MIN||scale>MAX)scale=100;
+  function apply(){document.body.style.zoom=(scale/100).toFixed(2);var v=document.getElementById('fontVal');if(v)v.textContent=scale+'%';}
+  function chg(d){scale=Math.min(MAX,Math.max(MIN,scale+d));localStorage.setItem(KEY,String(scale));apply();}
+  apply();
+  document.getElementById('fontInc').onclick=function(){chg(STEP);};
+  document.getElementById('fontDec').onclick=function(){chg(-STEP);};
+  document.getElementById('fontReset').onclick=function(){scale=100;localStorage.setItem(KEY,'100');apply();};
+})();
+</script>
+</body>
+</html>
