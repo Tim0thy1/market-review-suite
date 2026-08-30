@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深度专题 | AI摧毁SaaS论：恐慌的崩塌 × 业绩的真相，一部信号两面看</title>
+<!-- 统一设计系统 -->
+<link rel="stylesheet" href="https://tim0thy1.github.io/design-system/design-system.css">
+<style>
+:root{--orange:#D97706;--orange-light:#F97316;--orange-soft:#FFF7ED;--orange-bg:#FFFBEB;--orange-gradient:linear-gradient(135deg,#EA580C 0%,#D97706 35%,#F59E0B 70%,#FBBF24 100%);--warm-shadow-lg:0 12px 40px rgba(217,119,6,.20);--section-gap:44px;}
+body{background:var(--orange-soft);color:#292524;max-width:880px;margin:0 auto;padding:0 24px 80px;line-height:1.78;}
+a{color:var(--orange);text-decoration:none;}a:hover{text-decoration:underline;}
+.font-control{position:fixed;top:24px;right:24px;display:flex;align-items:center;gap:4px;background:#fff;border:1px solid #f1e6d3;border-radius:48px;padding:4px;box-shadow:0 4px 20px rgba(217,119,6,.15);z-index:998;opacity:.9;transition:opacity .2s;}.font-control:hover{opacity:1;}
+.font-btn{width:30px;height:30px;border-radius:50%;border:none;background:rgba(217,119,6,.1);color:#D97706;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1;}.font-btn:hover{background:#D97706;color:#fff;}
+.font-val{min-width:40px;text-align:center;font-size:12px;font-weight:600;color:#78716C;}.font-reset{border:none;background:transparent;color:#A8A29E;font-size:11px;cursor:pointer;padding:0 6px;white-space:nowrap;}.font-reset:hover{color:#D97706;}
+.report-header{background:var(--orange-gradient);color:#fff;padding:44px 36px 36px;border-radius:0 0 24px 24px;margin:0 -24px 30px;position:relative;overflow:hidden;box-shadow:var(--warm-shadow-lg);}
+.report-header h1{font-size:26px;font-weight:800;letter-spacing:.5px;position:relative;z-index:1;line-height:1.4;}
+.report-header .subtitle{font-size:14px;opacity:.92;margin-top:10px;position:relative;z-index:1;}
+.report-header .meta{display:flex;gap:20px;margin-top:14px;font-size:12px;opacity:.85;position:relative;z-index:1;flex-wrap:wrap;}
+.report-header .badge{display:inline-block;padding:3px 14px;background:rgba(255,255,255,.18);border-radius:20px;font-size:11px;font-weight:600;position:relative;z-index:1;}
+.report-header .badge.danger{background:rgba(239,68,68,.85);}
+.toc{background:var(--orange-bg);border:1px solid #f1e3c9;border-radius:14px;padding:20px 22px;margin-bottom:12px;}.toc .title{font-weight:800;font-size:15px;color:var(--orange);margin-bottom:12px;}.toc ol{margin:0;padding-left:22px;}.toc li{margin:6px 0;font-size:13.5px;}.toc a{color:#292524;}.toc a:hover{color:var(--orange);}
+.section{margin-top:var(--section-gap);}.section-title{font-size:20px;font-weight:800;color:var(--orange);margin-bottom:6px;padding-bottom:10px;border-bottom:2px solid var(--orange);}
+.sec-sub{font-size:12.5px;color:#A8A29E;margin-bottom:18px;}.section p{font-size:15px;margin:14px 0;text-align:justify;}.section .lead{font-size:16px;line-height:1.85;font-weight:500;}strong{color:#b45309;}
+.callout{border-left:4px solid var(--orange);background:var(--orange-bg);padding:16px 20px;border-radius:0 10px 10px 0;margin:18px 0;}.callout .co-title{font-weight:800;font-size:14px;color:var(--orange);margin-bottom:6px;}.callout p{margin:8px 0;font-size:14px;}.callout.danger{border-left-color:#ef4444;background:#fef2f2;}.callout.danger .co-title{color:#dc2626;}.callout.blue{border-left-color:#2563eb;background:#eff6ff;}.callout.blue .co-title{color:#2563eb;}.callout.green{border-left-color:#16a34a;background:#f0fdf4;}.callout.green .co-title{color:#15803d;}
+.tbl-wrap{overflow-x:auto;margin:16px 0;}table{width:100%;border-collapse:collapse;font-size:13.5px;}th{background:var(--orange);color:#fff;font-weight:700;padding:10px 12px;text-align:left;}td{padding:10px 12px;border-bottom:1px solid #f1e6d3;}tr:nth-child(even) td{background:var(--orange-bg);}.hl{color:#dc2626;font-weight:700;}td.g{color:#15803d;font-weight:700;}
+.timeline{border-left:3px solid var(--orange);margin:18px 0 18px 8px;padding-left:20px;}.tl-item{position:relative;margin-bottom:16px;}.tl-item::before{content:'';position:absolute;left:-27px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 3px var(--orange-soft);}.tl-date{font-weight:800;font-size:14px;color:var(--orange);}.tl-desc{font-size:14px;margin-top:2px;}
+ul.tight{margin:12px 0;padding-left:22px;}ul.tight li{margin:8px 0;font-size:14.5px;}.b-strong{color:#b45309;font-weight:700;}
+.quote{background:#fff;border-left:4px solid #2563eb;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0;}.quote .q-text{font-size:15px;font-style:italic;color:#1c1917;}.quote .q-src{font-size:12px;color:#A8A29E;margin-top:8px;text-align:right;}
+.fig-wrap{margin:16px 0;}.fig-caption{font-size:12px;color:#A8A29E;text-align:center;margin-top:6px;line-height:1.5;}
+.footer{margin-top:52px;padding:24px 0;border-top:1px solid #f1e3c9;text-align:center;font-size:12px;color:#A8A29E;}
+.back-to-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:var(--orange-gradient);color:#fff;border:none;cursor:pointer;font-size:22px;box-shadow:0 12px 40px rgba(217,119,6,.2);transition:all .3s;opacity:0;transform:translateY(20px);pointer-events:none;z-index:999;}.back-to-top.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+.cite-note{font-size:12px;color:#A8A29E;line-height:1.7;}
+@media (max-width:768px){body{padding:0 16px 60px;}.report-header{margin:0 -16px 24px;padding:32px 20px 28px;}.report-header h1{font-size:20px;}.font-control{top:12px;right:12px;}.back-to-top{bottom:20px;right:20px;width:40px;height:40px;}}
+@media print{.back-to-top,.font-control{display:none;}body{background:#fff;}}
+</style>
+</head>
+<body>
+
+<div class="font-control" id="fontControl" title="调整字体大小">
+  <button class="font-btn" id="fontDec" aria-label="减小字体">A−</button><span class="font-val" id="fontVal">100%</span><button class="font-btn" id="fontInc" aria-label="增大字体">A+</button><button class="font-reset" id="fontReset">重置</button>
+</div>
+
+<div class="report-header">
+  <span class="badge danger">🔴 深度专题 · 资本 + AI + 软件产业</span>
+  <h1>恐慌的崩塌 × 业绩的真相<br>AI摧毁SaaS论，一部"信号"两面看</h1>
+  <div class="subtitle">软件股一夜蒸发近万亿美元，又在两个月内强势反弹——同一句话"AI在吃软件"，为什么一边是暴跌、一边是暴涨？把"叙事"和"财报"放在同一张桌上摊开</div>
+  <div class="meta"><span>📅 2026年8月30日</span><span>⏱ 阅读约18分钟</span><span>🏛 软件 · AI · 资本 · 美股 + A股</span></div>
+</div>
+
+<div class="toc"><div class="title">📋 本专题导航</div><ol>
+  <li><a href="#s1">事件：软件股为何一夜蒸发近一万亿美元</a></li>
+  <li><a href="#s2">恐慌篇 · "AI摧毁SaaS"到底是谁说的？</a></li>
+  <li><a href="#s3">真相篇 · 暴跌是被冤枉，还是真见顶？</a></li>
+  <li><a href="#s4">恐慌篇 · 谁跌得最惨，谁反而抗跌？</a></li>
+  <li><a href="#s5">真相篇 · 反转到来的两个月：两波行情解剖</a></li>
+  <li><a href="#s6">真相篇 · 财报说真话：AI把软件从成本变成收入引擎</a></li>
+  <li><a href="#s7">恐慌篇 · 这轮反弹能持续吗？多头与空头</a></li>
+  <li><a href="#s8">对A股 · 同一个信号，A股怎么读？</a></li>
+  <li><a href="#s9">双视角对照：恐慌 vs 真相</a></li>
+  <li><a href="#s10">结语：别只看到"反弹"</a></li>
+</ol></div>
+
+<!-- ============ 事件 ============ -->
+<div class="section" id="s1">
+  <div class="section-title">事件：软件股为何一夜蒸发近一万亿美元</div>
+  <div class="sec-sub">从"SaaSpocalypse"到"软件复兴"，只隔了半年</div>
+  <p class="lead">2026年2月，一场被交易员称为 <strong>"SaaSpocalypse"（SaaS末日）</strong> 的抛售席卷美股软件板块：先是24小时内约2800亿美元市值蒸发，随后约6个交易日累计蒸发接近1万亿美元<sup><a href="#ref10">[10]</a></sup><sup><a href="#ref12">[12]</a></sup>。当周，主打软件的IGV基金单月下跌约15%，创2008年以来最差单月表现；从2025年9月约117美元的高点，到2026年2月中旬，它跌去了约30%<sup><a href="#ref15">[15]</a></sup><sup><a href="#ref9">[9]</a></sup>。</p>
+  <p>但进入8月，剧情反转。8月27-28日，Salesforce财报后盘后一度暴涨约23%，ServiceNow、CrowdStrike、Okta等软件股集体走强，IGV基金"2026年首次转正"成为头条<sup><a href="#ref13">[13]</a></sup><sup><a href="#ref3">[3]</a></sup>。同样的载体会在半年前和一朝内走出完全相反的方向——这本身就是资本市场上最值得解剖的"信号"。</p>
+  <div class="callout"><div class="co-title">📌 别急着站队</div><p>这一篇，我们把同一句话的<strong>两面都摊开</strong>：一面是资本恐慌的底层逻辑（为什么它一度相信"软件已死"），一面是真实财报的尺度（为什么AI反而成了软件的增量和收入引擎）。恐慌与真相，缺一不可。</p></div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">2011年8月</div><div class="tl-desc">Marc Andreessen 在《华尔街日报》发表《软件正在吞噬世界》，成为SaaS黄金时代的精神纲领<sup><a href="#ref1">[1]</a></sup>。</div></div>
+    <div class="tl-item"><div class="tl-date">2024-2025年</div><div class="tl-desc">AI编码与AI Agent渗透，2025年传统SaaS普遍跑输，"B2B软件大分化"成形：HubSpot年跌51%、Adobe跌35%、Salesforce跌31%，而Palantir涨142%、Cloudflare涨80%<sup><a href="#ref8">[8]</a></sup>。</div></div>
+    <div class="tl-item"><div class="tl-date">2026年2月</div><div class="tl-desc">Anthropic 的 Claude Cowork 行业插件亮相，软件股一周内一度蒸发近1万亿美元，"SaaSpocalypse"被Jefferies交易员命名<sup><a href="#ref10">[10]</a></sup><sup><a href="#ref12">[12]</a></sup>。</div></div>
+    <div class="tl-item"><div class="tl-date">2026年7月22日</div><div class="tl-desc">ServiceNow Q2财报：AI年合同价值首次突破10亿美元，被视为"第一波反弹"的起点<sup><a href="#ref5">[5]</a></sup>。</div></div>
+    <div class="tl-item"><div class="tl-date">2026年8月3-5日</div><div class="tl-desc">Palantir Q2爆发：单日一度涨约29.5%，营收同比+93%，把反弹动能放大<sup><a href="#ref8">[8]</a></sup><sup><a href="#ref9">[9]</a></sup>。</div></div>
+    <div class="tl-item"><div class="tl-date">2026年8月27日</div><div class="tl-desc">Salesforce财报盘后涨约23% + 英伟达Q2超预期，"第二波反弹"开启，资金从芯片往软件/应用轮动<sup><a href="#ref14">[14]</a></sup><sup><a href="#ref15">[15]</a></sup>。</div></div>
+  </div>
+</div>
+
+<!-- ============ 恐慌篇 1：叙事起源 ============ -->
+<div class="section" id="s2">
+  <div class="section-title">恐慌篇 · "AI摧毁SaaS"到底是谁说的？</div>
+  <div class="sec-sub">一句"软件被吃了"，对应一段话的三级火箭</div>
+  <p>暴跌往往先于逻辑，但逻辑总会被总结成一句话。把"AI摧毁SaaS"的叙事拆开，大致是三层叠加：</p>
+  <ul class="tight">
+    <li><span class="b-strong">① 终极的反转宣言：</span>2026年初，投资人Naval Ravikant在社交平台把2011年Andreessen那句金句直接反转——<em>"软件正在吞噬世界，而现在，AI正在吞噬软件。"</em>他进一步说"纯软件业务不再具有投资价值"<sup><a href="#ref2">[2]</a></sup><sup><a href="#ref4">[4]</a></sup>。</li>
+    <li><span class="b-strong">② 巨头的"判词"：</span>微软CEO纳德拉被报道称，SaaS应用将在AI Agent时代"s collapse（崩塌）"<sup><a href="#ref5">[5]</a></sup>。掌门人自己钦定"旧软件将死"，无异于给空头递刀。</li>
+    <li><span class="b-strong">③ 具体的"现场演示"：</span>2026年2月Anthropic把11个Claude Cowork行业插件（法律、财务、销售等）开源上线，似乎"坐实"了AI Agent能替掉整条业务链<sup><a href="#ref9">[9]</a></sup><sup><a href="#ref10">[10]</a></sup>。</li>
+  </ul>
+  <p>这套叙事的<strong>核心逻辑是"席位压缩"（Seat Compression）</strong>：如果10个AI Agent能完成以往100个人的工作，企业就不再需要100个软件订阅席位，只需要10个——SaaS"按人头收费"的商业模式根基被动摇。行业人物Jason Lemkin直接点破：<em>"如果10个AI Agent能做100人的活，你只需要10个Salesforce席位，而不是100个。"</em><sup><a href="#ref12">[12]</a></sup></p>
+  <p>再往下，还有两条"技术层面的弑神论"：一是<strong>编码工具让软件变便宜</strong>——Cursor年化收入从2023年100万美元飙到2025年11月约10亿美元，GitHub Copilot用户超2000万，让"自己写软件"变得几乎免费<sup><a href="#ref15">[15]</a></sup>；二是<strong>消费级AI削弱订阅的稀缺性</strong>——Chegg一度因ChatGPT冲击单日跌48%、Duolingo因GPT-5语言应用demo股价跌38%、Stack Overflow发帖量锐减<sup><a href="#ref15">[15]</a></sup><sup><a href="#ref18">[18]</a></sup>。</p>
+  <div class="quote"><div class="q-text">"Software is eating the world, and now AI is eating software."（软件正在吞噬世界，而现在AI正在吞噬软件。）</div><div class="q-src">—— Naval Ravikant，2026年初</div></div>
+  <div class="callout danger"><div class="co-title">⚠️ 注意：这是"叙事"，不是"财报"</div><p>这三层火箭每一层都引用了真实的人和真实的产品，但它们的落点都在"预期"而非"账本"。跌得越急，往往离"用收入说话"越远——这正是下一章要分清的事。</p></div>
+</div>
+
+<!-- ============ 真相篇 1：暴跌是不是真见顶 ============ -->
+<div class="section" id="s3">
+  <div class="section-title">真相篇 · 暴跌是被冤枉，还是真见顶？</div>
+  <div class="sec-sub">把"AI吃软件"放进财报和利率里验证</div>
+  <p>叙事可以一夜杀估值，但基本面只认数字。把下跌拆到"真实原因"这一层，会发现三股力量夹杂：<strong>一部分是真实的、一部分是被放大的、一部分压根不是AI。</strong></p>
+  <h3 style="font-size:16px;font-weight:800;color:#b45309;margin:26px 0 4px;">一、真实的：需求结构确实在变</h3>
+  <p>2025-2026年，软件需求并非全面萎缩，而是<strong>结构性分流</strong>：钱涌向AI算力、数据基础设施和安全，传统"通用应用层"相对失血。全行业并非"软件没人买了"，而是"买得更挑剔、更AI化"。这种分流是真实的，也是"SaaS末日论唯一站得住的底盘"<sup><a href="#ref8">[8]</a></sup><sup><a href="#ref15">[15]</a></sup>。</p>
+  <h3 style="font-size:16px;font-weight:800;color:#b45309;margin:26px 0 4px;">二、被放大的：把"某一类软件的痛点"当成"整个行业死刑"</h3>
+  <p>受冲击最重的，主要是<strong>SMB垂直应用和席位定价型软件</strong>（营销、协作、业务流程）。而真正的企业核心平台——安全、数据、ITSM、数据库——在AI周期里反而录得高增长（Palantir +142%、MongoDB +70%、CrowdStrike +51%）。Jen-Hsun Huang（黄仁勋）和a16z都公开反驳"软件已死"：黄仁勋称"AI取代软件是世界上最不合逻辑的想法之一"<sup><a href="#ref20">[20]</a></sup>；a16z发文《Death of Software. Nah.》，强调"人工智能改变的是构建什么和谁来构建，而不是需要构建多少"<sup><a href="#ref7">[7]</a></sup>。</p>
+  <h3 style="font-size:16px;font-weight:800;color:#b45309;margin:26px 0 4px;">三、无关AI的：利率与拥挤度误差</h3>
+  <p>软件是长久期资产，对利率高度敏感。2026年初美债长端利率高企抬升折现率，高估值成长股承压是本轮下跌重要的"非AI"推手；叠加2025年传统SaaS已连跌、仓位上被持续减配，<strong>"AI恐慌"更像那最后一根稻草</strong>，放大了原本就在进行的估值回归。<sup><a href="#ref17">[17]</a></sup><sup><a href="#ref25">[25]</a></sup></p>
+  <div class="callout"><div class="co-title">🔬 一句话读懂真相</div><p>下跌里<strong>只有一部分是真"基本面空头"</strong>（需求结构性再分配），其余大多是<strong>"叙事空头"</strong>（把某类软件的痛点放大成全行业的死刑）+<strong>"利率空头"</strong>（高利率压估值）。分清这三股力量，才能解释为什么反弹也能来得这么猛。</p></div>
+</div>
+
+<!-- ============ 恐慌篇 2：谁跌得最惨 ============ -->
+<div class="section" id="s4">
+  <div class="section-title">恐慌篇 · 谁跌得最惨，谁反而抗跌？</div>
+  <div class="sec-sub">下跌不是均等的，"AI楔子"把市场劈成两半</div>
+  <p>最惨的不是所有软件，而是<strong>"SMB + 席位定价 + 通用流程"</strong>三类特征重叠的公司——它们恰好是"AI替代"最容易省钱的地方。反观"AI原生 + 关键业务 + 数据/安全基础设施"的公司，跌得最少甚至大涨。这张劈开的分化表，就是"SaaS末日论"最大的漏洞：<strong>如果AI真吞噬一切软件，为什么一半软件还在涨？</strong><sup><a href="#ref8">[8]</a></sup></p>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>2025年重灾区（传统SaaS）</th><th>跌幅</th><th>2025年逆势走强（AI/基础设施）</th><th>涨幅</th></tr>
+    <tr><td>HubSpot（SMB营销）</td><td class="hl">-51%</td><td>Palantir（AI原生）</td><td class="g">+142%</td></tr>
+    <tr><td>Bill.com（SMB财务）</td><td class="hl">-43%</td><td>Cloudflare（云边缘）</td><td class="g">+80%</td></tr>
+    <tr><td>Monday.com（协作）</td><td class="hl">-36%</td><td>MongoDB（数据库）</td><td class="g">+70%</td></tr>
+    <tr><td>Adobe（创意软件）</td><td class="hl">-35%</td><td>Shopify（电商基础设施）</td><td class="g">+51%</td></tr>
+    <tr><td>Atlassian（协作）</td><td class="hl">-34%</td><td>CrowdStrike（安全）</td><td class="g">+51%</td></tr>
+    <tr><td>Salesforce（CRM）</td><td class="hl">-31%</td><td>Snowflake（数据云）</td><td class="g">+45%~50%</td></tr>
+    <tr><td>ServiceNow（ITSM）</td><td class="hl">-26%</td><td>Zscaler（安全）</td><td class="g">+34%</td></tr>
+  </table>
+  <div class="fig-caption">表 ▎2025年B2B软件"大分化"：AI将市场劈成"被替代"与"吃AI红利"两半。<a href="#ref8">[8]</a></div>
+  </div>
+  <p>杀跌的"强度"也印证了这点。2026年2月的单日暴跌里，跌幅最深的几乎全是<strong>法律、营销等垂直流程应用</strong>：Thomson Reuters单日-15.8%、LegalZoom -19.7%、RELX -14%、Wolters Kluwer -13%——它们因"Claude Cowork法律插件"直接被视为替代对象<sup><a href="#ref9">[9]</a></sup><sup><a href="#ref12">[12]</a></sup>。</p>
+  <div class="callout blue"><div class="co-title">📌 "席位压缩"与裁员信号</div><p>真实的传导也在发生：Atlassian于2026年3月裁员约1600人（约占10%），被市场解读为"AI编码让更少人做更多开发、协作软件席位见顶"的佐证<sup><a href="#ref13">[13]</a></sup>。但这些信号更多打击的是<strong>"工具完好率为王"的席位型软件</strong>，而非"Agent带来的新增Agent用量"型软件——后者正是反弹的主角。</p></div>
+</div>
+
+<!-- ============ 真相篇 2：两波行情 ============ -->
+<div class="section" id="s5">
+  <div class="section-title">真相篇 · 反转到来的两个月：两波行情解剖</div>
+  <div class="sec-sub">先带头的是ServiceNow和Palantir，第二波由Salesforce与英伟达共振点燃</div>
+  <p>反弹不是一次，是明显<strong>两波</strong>。回答"谁先带头"，要看财报发布的先后和每一波的性质。</p>
+  <h3 style="font-size:16px;font-weight:800;color:#b45309;margin:26px 0 4px;">第一波（7月底-8月初）：财报"打样"，先由ServiceNow与Palantir带头</h3>
+  <ul class="tight">
+    <li><span class="b-strong">ServiceNow（7月22日），最早的头号扳机：</span>Q2营收39.87亿美元、同比+24%，超预期；更关键的是<strong>AI年合同价值（ACV）首次突破10亿美元</strong>、季度环比增长超40%，9个月内生产环境中的代理AI部署量增长9倍<sup><a href="#ref5">[5]</a></sup><sup><a href="#ref6">[6]</a></sup>——它第一次用"合同金额"证明AI不是吃掉软件，而是让企业追加买软件。</li>
+    <li><span class="b-strong">Palantir（8月3-5日），把动能放大的"爆发型龙头"：</span>Q2营收19.35亿美元、同比+93%，美国商业收入同比+149%至7.64亿美元，Rule of 40高达155%，单日一度暴涨约29.5%<sup><a href="#ref8">[8]</a></sup><sup><a href="#ref9">[9]</a></sup>。</li>
+    <li><span class="b-strong">科技贝塔共振：</span>7月27-31那一周，科技ETF（XLK）周涨6.2%、英伟达涨12.4%，AI投资周期仍获认可<sup><a href="#ref7">[7]</a></sup>。</li>
+  </ul>
+  <div class="callout green"><div class="co-title">✅ 第一波的性质：由"AI应用落地产收"驱动</div><p>这一波不是炒作，而是<strong>以财报里的"AI已转化为合同金额"为锚</strong>。ServiceNow和Palantir用真金白银的合同证明了"AI让软件更值钱"，从而逆转"AI杀软件"的叙事。</p></div>
+  <h3 style="font-size:16px;font-weight:800;color:#b45309;margin:26px 0 4px;">第二波（8月27-28日）：Salesforce业绩重估 + 英伟达周期确认 + 资金轮动</h3>
+  <ul class="tight">
+    <li><span class="b-strong">Salesforce（8月27日），第二波的核心催化剂：</span>Q2营收113.5亿美元、同比+11%，GAAP营业利润率20.5%；<strong>Agentforce ARR增长240%至15亿美元</strong>，财报后盘后一度涨约23%<sup><a href="#ref10">[10]</a></sup><sup><a href="#ref14">[14]</a></sup>——"AI Agent卖的是一种更贵的软件"，直接戳破"AI杀死CRM"。</li>
+    <li><span class="b-strong">英伟达（8月27日）周期确认：</span>Q2营收962亿美元、指引超预期，多家媒体转述黄仁勋称"软件股被超卖（oversold）"，推动资金从芯片/算力轮动到软件/应用<sup><a href="#ref12">[12]</a></sup><sup><a href="#ref15">[15]</a></sup>。</li>
+    <li><span class="b-strong">市场确认：</span>8月27日IGV盘中涨约1.6%，Salesforce一只贡献1.32点；8月28日IGV"2026年首次转正"成为标志性事件<sup><a href="#ref13">[13]</a></sup><sup><a href="#ref24">[24]</a></sup>。</li>
+  </ul>
+  <div class="callout blue"><div class="co-title">📈 两波的区别与共性</div><p>第一波是<strong>"财报证明"</strong>，第二波是<strong>"资金确认+盈利修复"</strong>。共性是同一个：市场终于看清，AI把软件从"可选成本"变成了"AI落地的收入引擎"。反弹"一波还是两波"的答案很明确——<strong>两波，且每一波都有基本面和资金逻辑的接力</strong>。</p></div>
+</div>
+
+<!-- ============ 真相篇 3：财报说真话 ============ -->
+<div class="section" id="s6">
+  <div class="section-title">真相篇 · 财报说真话：AI把软件从成本变成收入引擎</div>
+  <div class="sec-sub">把各家Q2的"AI账本"摊开，看反弹的硬支撑</div>
+  <p>反弹能不能站住，最终要看财报里的AI是否转化为收入。把本轮领涨公司的Q2数字并排看，答案相当清晰：<strong>AI不是边缘的"讲故事"，而是进入了合同、增购与利润表。</strong><sup><a href="#ref5">[5]</a></sup><sup><a href="#ref8">[8]</a></sup><sup><a href="#ref10">[10]</a></sup></p>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>公司</th><th>财报要点</th><th>市场反应</th></tr>
+    <tr><td>ServiceNow</td><td>Q2营收39.87亿美元(+24%)；AI ACV首破10亿美元、环比+40%</td><td>首波反弹起点，月内涨超30%</td></tr>
+    <tr><td>Palantir</td><td>Q2营收19.35亿美元(+93%)；美国商业+149%；Rule of 40 =155%</td><td>单日一度+29.5%</td></tr>
+    <tr><td>Salesforce</td><td>Q2营收113.5亿美元(+11%)；GAAP利润率20.5%；Agentforce ARR +240%至15亿美元</td><td>盘后一度+23%</td></tr>
+    <tr><td>Datadog</td><td>Q2营收11.21亿美元(+36%)；可观测性受益于AI规模化部署</td><td>随板块走强</td></tr>
+    <tr><td>CrowdStrike</td><td>Q2营收14.7亿美元(+25.6%)；AI Agent带来安全需求扩张</td><td>跟随反弹</td></tr>
+  </table>
+  <div class="fig-caption">表 ▎2026年Q2软件龙头"AI账本"：反弹并非纯情绪，有合同、收入与利润支撑。<a href="#ref5">[5]</a>[8]<a href="#ref10">[10]</a></div>
+  </div>
+  <p>更进一步，<strong>AI改变了软件业的"计价方式"</strong>：从"按席位"转向"按用量/按结果/按Agent计费"。Salesforce出售Agentforce、ServiceNow按AI合同计账——这让软件单价可能上行而非被AI打崩。2025年以来软件公司利润同比增长约29%、2026年业绩预期被不断上调，而板块估值溢价从10年均值约36%压缩到约6%——<strong>"盈利在修复、估值在收缩"的剪刀差，正是反弹的基本面基础</strong><sup><a href="#ref17">[17]</a></sup><sup><a href="#ref13">[13]</a></sup>。</p>
+  <div class="callout green"><div class="co-title">✅ 一句话</div><p>暴跌时市场相信"AI是软件的敌人"，反弹时财报证明"AI是软件最贵的用户"。同一个信号，两次读法——差别只在于<strong>看的是'叙事'还是'利润表'</strong>。</p></div>
+</div>
+
+<!-- ============ 恐慌篇 3：能否持续 ============ -->
+<div class="section" id="s7">
+  <div class="section-title">恐慌篇 · 这轮反弹能持续吗？多头与空头</div>
+  <div class="sec-sub">把多空两张牌都翻给你看，别只信一边</div>
+  <p>反弹越强，越要问一句"是不是又炒过头"。目前华尔街是多空分歧而非一边倒：</p>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>视角</th><th>逻辑</th></tr>
+    <tr><td class="g" style="color:#15803d;">✅ 多头</td><td>晨星认为"AI其实没有吃掉软件"，史诗级反弹可能延续到10月；摩根士丹利认为AI对软件冲击被夸大，对SaaS/CRM/客户成功等关键平台影响有限；英伟达黄仁勋称软件股"超卖"；软件公司利润+29%、业绩预期上修<sup><a href="#ref13">[13]</a></sup><sup><a href="#ref25">[25]</a></sup><sup><a href="#ref15">[15]</a></sup></td></tr>
+    <tr><td class="hl">❌ 空头</td><td>IGV估值仍高达约59倍盈利、前十大持仓占约59%，资金短期仍有净流出；Palantir等股价盘后大涨后估值约为42倍收入，泡沫争议未消；AI Agent仍可能替代HubSpot、Klaviyo、ZoomInfo等垂直应用；部分观点认为反弹是"拥挤空头回补/估值修复"，而非全面基本面反转<sup><a href="#ref24">[24]</a></sup><sup><a href="#ref26">[26]</a></sup><sup><a href="#ref27">[27]</a></sup></td></tr>
+  </table>
+  <div class="fig-caption">表 ▎本轮反弹的持续性问题：多空分歧的底层是"估值修复"vs"基本面反转"之争。<a href="#ref13">[13]</a><a href="#ref24">[24]</a></div>
+  </div>
+  <div class="callout danger"><div class="co-title">⚠️ 可持续的关键变量</div><p>后续能否续涨，取决于四项：①后续财报能否继续把AI转化为合同与现金流；②估值能否在业绩增长下被消化（而非再次透支）；③利率与宏观流动性是否配合；④AI Agent替代对"SMB/垂直应用"的真实进度。把"估值修复"和"基本面反转"分开看，是本轮最该做的功课。<sup><a href="#ref13">[13]</a></sup><sup><a href="#ref24">[24]</a></sup></p></div>
+</div>
+
+<!-- ============ 对A股 ============ -->
+<div class="section" id="s8">
+  <div class="section-title">对A股 · 同一个信号，A股怎么读？</div>
+  <div class="sec-sub">传导有1-2日延迟，真正能走远的是国内订单与业绩</div>
+  <p>美股软件反弹会不会传导到A股？答案是<strong>会，但通常有1-2个交易日延迟，且并不能简单"日级同步"</strong>。这次已经有实证：8月27日隔夜美股软件暴涨（IGV +7.7%、Salesforce +22.6%、Okta +28.6%），8月28日A股软件板块应声走强——软件ETF一度涨3%、深信服一度涨超12%、用友网络涨超6%、金山办公涨约4%<sup><a href="#ref3">[3]</a></sup><sup><a href="#ref5">[5]</a></sup>。</p>
+  <p>传导的路径与节奏：<strong>美股软件财报验证AI需求 → IGV反弹 → 情绪外溢 → A股软件/信创/云计算跟涨</strong>。但更持久的核心驱动仍是国内产业进展、政策与订单落地。历史上A股软件与美股存在联动，但"情绪带动"和"行情持续"是两回事。<sup><a href="#ref1">[1]</a></sup><sup><a href="#ref2">[2]</a></sup></p>
+  <h3 style="font-size:16px;font-weight:800;color:#b45309;margin:26px 0 4px;">四个机会方向</h3>
+  <ul class="tight">
+    <li><span class="b-strong">方向一 · AI应用/Agent商业化：</span>美股证明AI从概念进入落地产收。A股对应办公场景（WPS AI）、金融IT（投研/风控/合规）、行业Agent（金融/政务/制造）与智能编程等。<sup><a href="#ref3">[3]</a></sup><sup><a href="#ref7">[7]</a></sup></li>
+    <li><span class="b-strong">方向二 · 信创/国产替代：</span>基础软件（操作系统、数据库、中间件）、金融信创、信创安全；2026-2027年信创从"政策冲刺"进入"业绩验证窗口"。<sup><a href="#ref9">[9]</a></sup><sup><a href="#ref10">[10]</a></sup></li>
+    <li><span class="b-strong">方向三 · 云计算基础设施：</span>全球云资本开支周期上行（2026年全球九大云厂商资本开支或超8867亿美元、同比+90%），IDC、智算中心、液冷、政务云受益。<sup><a href="#ref7">[7]</a></sup></li>
+    <li><span class="b-strong">方向四 · 企业级SaaS：</span>企业ERP/管理软件、云办公、数据治理与安全，映射美股Enterprise SaaS的付费韧性。<sup><a href="#ref5">[5]</a></sup><sup><a href="#ref7">[7]</a></sup></li>
+  </ul>
+  <h3 style="font-size:16px;font-weight:800;color:#b45309;margin:26px 0 4px;">A股相关基本面速览</h3>
+  <p>行业大盘稳中有升：2026年上半年全国软件业务收入约7.72万亿元、同比+9.5%，其中信息技术服务+10.4%、云计算与大数据服务+12.1%——软件板块并非"没有基本面"，只是过去被算力硬件虹吸了资金。<sup><a href="#ref7">[7]</a></sup></p>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>标的</th><th>方向</th><th>逻辑与基本面</th></tr>
+    <tr><td>金山办公</td><td>AI办公/信创</td><td>办公软件龙头；2026H1营收33.13亿(+24.69%)、归母净利25.18亿(+236.94%)；WPS365收入+60.84%<sup><a href="#ref15">[15]</a></sup></td></tr>
+    <tr><td>深信服</td><td>安全/云计算</td><td>AI安全、数据安全、Agent身份治理方向；8/28盘中一度涨超12%<sup><a href="#ref3">[3]</a></sup></td></tr>
+    <tr><td>恒生电子</td><td>金融IT/信创</td><td>金融IT龙头；2026H1营收21.44亿(-11.65%)，Q2净利承压，市场关注AI+信创修复<sup><a href="#ref16">[16]</a></sup><sup><a href="#ref18">[18]</a></sup></td></tr>
+    <tr><td>用友网络</td><td>企业SaaS/ERP</td><td>企业管理软件龙头，仍处业绩修复期，估值弹性来自SaaS+AI+国产替代<sup><a href="#ref19">[19]</a></sup></td></tr>
+    <tr><td>科大讯飞</td><td>AI应用/智能体</td><td>语音与认知智能，星火大模型场景化应用<sup><a href="#ref5">[5]</a></sup></td></tr>
+    <tr><td>云赛智联</td><td>云计算/智算</td><td>上海国资政务云、数据中心、AI算力；2026H1净利+7.21%<sup><a href="#ref20">[20]</a></sup></td></tr>
+  </table>
+  <div class="fig-caption">表 ▎A股软件相关标的观察线索（供研究参考，不构成个股推荐）。</div>
+  </div>
+  <div class="callout danger"><div class="co-title">🎯 风险要一起看</div><p>①业绩兑现与订单节奏：信创/政务云订单受招投标与预算周期影响，2027年前后才是部分方向业绩验证窗口；②估值波动：中证全指软件指数PE约109倍（处于近1年约20%分位），预期强但波动大；③技术替代：AI Agent仍可能改变部分传统软件交付；④外部映射的脆弱性：美股情绪能带A股一天，带不动持续性，后者看国内订单与业绩；⑤回避纯概念小票。<sup><a href="#ref7">[7]</a></sup><sup><a href="#ref9">[9]</a></sup></p></div>
+</div>
+
+<!-- ============ 双视角对照 ============ -->
+<div class="section" id="s9">
+  <div class="section-title">双视角对照：恐慌 vs 真相</div>
+  <div class="sec-sub">同一个"AI吃软件"的信号，两种读法——都需要，别混用</div>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th>维度</th><th>恐慌视角</th><th>真相视角</th></tr>
+    <tr><td>对"AI吃软件"</td><td>叙事滑坡：软件已死、席位归零</td><td>结构性分流：重灾区是SMB垂直应用，核心平台反受益</td></tr>
+    <tr><td>对"下跌"</td><td>见顶信号：商业模式崩塌</td><td>三因夹杂：真实分流 + 叙事超调 + 利率压估值</td></tr>
+    <tr><td>对"反弹"</td><td>空头回补/估值修复，不可持续</td><td>财报验证：AI转合同、转收入、转利润</td></tr>
+    <tr><td>对"领涨"</td><td>Palantir、Salesforce只是炒作泡沫</td><td>两波皆有业绩锚：ServiceNow/Palantir→Salesforce/英伟达</td></tr>
+    <tr><td>对"计价方式"</td><td>AI让软件变免费</td><td>从席位走向用量/结果/Agent计价，单价可上行</td></tr>
+    <tr><td>对"估值"</td><td>59倍PE是泡沫</td><td>盈利修复+估值收缩的剪刀差，提供了修复空间</td></tr>
+    <tr><td>对"A股"</td><td>情绪一日游、概念炒作</td><td>映射+政策+订单三重驱动，看业绩兑现</td></tr>
+  </table>
+  <div class="fig-caption">表 ▎"AI摧毁SaaS论"这部信号的两种读法。</div>
+  </div>
+  <p>这份分歧本身，就是最值钱的信息：<strong>恐慌买的是"叙事的崩塌"，真相等的是"财报的兑现"。</strong>两者都真实，但如果你用真金白银做决策，务必分清自己此刻读的是哪一版信号。</p>
+</div>
+
+<!-- ============ 结语 ============ -->
+<div class="section" id="s10">
+  <div class="section-title">结语：别只看到"反弹"</div>
+  <div class="sec-sub">既理解恐慌的合理，也别低估业绩的力量</div>
+  <p>回到最初的问题——AI摧毁SaaS的论调，为什么突然"放缓了"？答案是分层：</p>
+  <p><strong>作为"信号"，它真实地标记了一个拐点。</strong>AI的确在重构软件——把一部分"按席位收钱的通用软件"逼向淘汰，同时把"吃AI红利的企业平台、数据与安全基础设施、Agent计价型软件"抬上主桌。需求不是没了，是被重新分配了。这场再分配，始于2024-2025年的分化，在2026年2月的"SaaSpocalypse"中集中爆发。<sup><a href="#ref8">[8]</a></sup><sup><a href="#ref10">[10]</a></sup></p>
+  <p><strong>作为"行情"，它这次由财报打底，而非纯情绪。</strong>两波反弹由ServiceNow（AI ACV破10亿美元）、Palantir（+93%）、Salesforce（Agentforce +240%）等财报接力验证——"AI让软件更值钱"第一次从概念变成合同与利润。但IGV约59倍PE、Palantir约42倍收入的估值也在提醒：反弹有基本面支撑，不等于没有泡沫风险。<sup><a href="#ref13">[13]</a></sup><sup><a href="#ref24">[24]</a></sup></p>
+  <p><strong>对A股，是"映射+主线切换"的机会窗口，但要看业绩兑现。</strong>美股从算力硬件向软件/应用轮动，A股软件、信创、云计算开始承接资金与情绪；但持续性能走多远，取决于国内订单、信创进度与AI应用变现——而非美股一天的脸色。<sup><a href="#ref3">[3]</a></sup><sup><a href="#ref7">[7]</a></sup></p>
+  <div class="callout danger"><div class="co-title">一句话总结</div><p>"AI摧毁SaaS"的下半句，是"AI喂大SaaS"。<strong>恐慌时市场只看见被替代的那一半，反弹时财报亮出跟着AI吃肉的那一半——两者都真实。</strong>真正能落袋的机会和风险，都在"谁在AI里真的多赚到了合同、收入和利润"这条线上；把那层叙事掀开，剩下的才是可以相信的。</p></div>
+  <p style="margin-top:20px;border-top:1px dashed #f1e3c9;padding-top:16px;color:#78716C;font-size:13px;">参考资料：a16z（Andreessen 2011年文章、<em>Death of Software. Nah.</em>）、SaaStr（2025年B2B软件大分化）、Jefferies/市场报道之"SaaSpocalypse"（36氪、Taskade、aifirstfounders、Pulsemark）、ServiceNow/Palantir/Salesforce/Datadog/CrowdStrike 2026年Q2财报及媒体摘要、Morningstar"AI isn't eating software"、摩根士丹利软件抛售研究、东方财富/同花顺/新浪财经A股软件与信创研报等公开信息，经多源交叉验证。文中数字为各公司财报或机构/分析师观点，部分为媒体口径，可能存在出入；本报告仅供研究参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+</div>
+
+<!-- ============ Sources ============ -->
+<div class="section" id="ref" style="margin-top:24px;">
+  <div class="section-title" style="font-size:16px;">📑 参考来源明细</div>
+  <p class="cite-note" id="ref1">[1] Marc Andreessen, <em>Why Software Is Eating the World</em>, a16z / WSJ, 2011 — <a href="https://a16z.com/2011/08/20/why-software-is-eating-the-world/">链接</a></p>
+  <p class="cite-note" id="ref3">[3] 同花顺, 《隔夜美股软件板块强势反弹，AI与软件由替代叙事转向融合叙事》，2026-08-28 — <a href="http://fund.10jqka.com.cn/20260828/c679385677.shtml">链接</a></p>
+  <p class="cite-note" id="ref2">[2] Naval Ravikant on X：<em>Software is eating the world, and now AI is eating software</em> — <a href="https://x.com/naval/status/2003749139771986214">链接</a></p>
+  <p class="cite-note" id="ref4">[4] OfficeChai, <em>Pure Software Businesses Are Now Uninvestable: Naval Ravikant</em>, 2026-04 — <a href="https://officechai.com/ai/pure-software-businesses-are-now-uninvestable-naval-ravikant/">链接</a></p>
+  <p class="cite-note" id="ref5">[5] ServiceNow Q2 2026 Financial Results（AI ACV破10亿美元）— <a href="https://enterprisedna.co/resources/news/servicenow-ai-acv-1-billion-agentic-enterprise-q2-2026/">链接</a></p>
+  <p class="cite-note" id="ref6">[6] Enterprisedna, <em>ServiceNow Hits $1B in AI Revenue</em> — <a href="https://enterprisedna.co/resources/news/servicenow-ai-acv-1-billion-agentic-enterprise-q2-2026/">链接</a></p>
+  <p class="cite-note" id="ref7">[7] a16z, <em>Death of Software. Nah.</em> — <a href="https://a16z.com/death-of-software-nah/">链接</a></p>
+  <p class="cite-note" id="ref8">[8] Jason Lemkin / SaaStr, <em>2025年B2B软件大分化</em> — <a href="https://www.saastr.com/the-performing-major-b2b-stocks-of-2025-what-the-ai-divide-tells-us-about-the-future-of-saas/">链接</a></p>
+  <p class="cite-note" id="ref9">[9] 36氪/量子位, <em>Claude一个插件吓哭华尔街，软件公司集体暴跌</em>, 2026-02 — <a href="https://m.36kr.com/p/3670320410977157">链接</a></p>
+  <p class="cite-note" id="ref10">[10] aifirstfounders, <em>The SaaSpocalypse: How AI Wiped $1 Trillion From Software Stocks</em> — <a href="https://aifirstfounders.com/blog/saaspocalypse-trillion-dollar-selloff-2026.html">链接</a></p>
+  <p class="cite-note" id="ref11">[11] Pulsemark, <em>The SaaSpocalypse: How Anthropic's Legal Plugin Triggered a $300B Software Selloff</em> — <a href="https://pulsemark.ai/anthropic-cowork-legal-plugin-saaspocalypse-software-selloff/">链接</a></p>
+  <p class="cite-note" id="ref12">[12] Taskade, <em>The SaaSpocalypse Explained</em>, 2026-03 — <a href="https://www.taskade.com/blog/saaspocalypse-explained">链接</a></p>
+  <p class="cite-note" id="ref13">[13] Morningstar/MarketWatch, <em>AI isn't eating software after all</em>, 2026-08-30 — <a href="https://www.morningstar.com/news/marketwatch/202608302/ai-isnt-eating-software-after-all-and-the-sectors-epic-rally-could-run-through-october">链接</a></p>
+  <p class="cite-note" id="ref14">[14] 247wallst, <em>AI Isn't Eating SaaS: Why Salesforce and ServiceNow Finally Exploded Upward</em> — <a href="https://247wallst.com/investing/2026/08/28/ai-isnt-eating-saas-why-salesforce-and-servicenow-finally-exploded-upward/">链接</a></p>
+  <p class="cite-note" id="ref15">[15] Nasdaq, <em>Nvidia CEO says software stocks are oversold</em> — <a href="https://www.nasdaq.com/articles/nvidia-ceo-jensen-huang-just-said-software-stocks-are-oversold-2-easy-buys-make-now">链接</a></p>
+  <p class="cite-note" id="ref16">[16] 新浪财经, 《美股软件强势反弹，AI不再是"杀手"？》— <a href="https://finance.sina.com.cn/jjxw/2026-06-01/doc-inhzwuht2435949.shtml">链接</a></p>
+  <p class="cite-note" id="ref17">[17] NextFin, <em>Software Stocks Will Rebound From the Ashes</em> — <a href="https://www.nextfin.ai/en/news/software-stocks-will-rebound-from-the-ashes-malik-says-cef5ee2867">链接</a></p>
+  <p class="cite-note" id="ref18">[18] Slashdot/Yahoo, <em>Duolingo's Stock Down 38%</em> — <a href="https://yro.slashdot.org/story/25/08/17/194212/duolingos-stock-down-38-plummets-after-openais-gpt-5-language-app-building-demo">链接</a></p>
+  <p class="cite-note" id="ref19">[19] 同花顺, 用友网络盈利预测 — <a href="http://basic.10jqka.com.cn/600588/worth.html">链接</a></p>
+  <p class="cite-note" id="ref20">[20] 东方财富/新浪转载, Jensen Huang谈软件股 — <a href="https://www.nasdaq.com/articles/jensen-huang-has-warning-investors-dumping-software-stocks">链接</a></p>
+  <p class="cite-note" id="ref24">[24] TradingNews, <em>Software's $14B Sector Fund Bounces</em> — <a href="https://www.tradingnews.com/news/softwares-14b-usd-sector-fund-bounce-while-1-5-busd-walks-out">链接</a></p>
+  <p class="cite-note" id="ref25">[25] Morgan Stanley, <em>AI-Related Sell-Off in Software</em> — <a href="https://www.morganstanley.com/im/publication/insights/articles/article_thesoftwareselloff_ltr.pdf">链接</a></p>
+  <p class="cite-note" id="ref26">[26] Nasdaq, <em>Palantir Just Guided to 134% U.S. Commercial Growth</em> — <a href="https://www.nasdaq.com/articles/palantir-just-guided-134-us-commercial-growth-after-15-pop-stock-costs-42-times-revenue">链接</a></p>
+  <p class="cite-note" id="ref27">[27] Webull/Futurum, <em>95% of Software Could Become AI Plumbing</em> — <a href="https://www.webull.com/news/15434800234644480">链接</a></p>
+  <p class="cite-note" id="ref28">[28] Bloomberg Intelligence, <em>Agentic AI 2026 Outlook</em> — <a href="https://assets.bbhub.io/professional/sites/41/Bloomberg-Intelligence-Agentic-AI-Deep-Dive.pdf">链接</a></p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){var K='wb_report_font_scale_v1',MIN=80,MAX=150,STEP=10;var s=parseInt(localStorage.getItem(K)||'100',10);if(isNaN(s)||s<MIN||s>MAX)s=100;function a(){document.body.style.zoom=(s/100).toFixed(2);var v=document.getElementById('fontVal');if(v)v.textContent=s+'%';}function c(d){s=Math.min(MAX,Math.max(MIN,s+d));localStorage.setItem(K,String(s));a();}function r(){s=100;localStorage.setItem(K,'100');a();}a();var i=document.getElementById('fontInc'),d=document.getElementById('fontDec'),f=document.getElementById('fontReset');if(i)i.onclick=function(){c(STEP)};if(d)d.onclick=function(){c(-STEP)};if(f)f.onclick=r;})();
+(function(){var b=document.getElementById('backToTop'),t=false;window.addEventListener('scroll',function(){if(!t){window.requestAnimationFrame(function(){b.classList.toggle('show',window.scrollY>300);t=false;});t=true;}});})();
+</script>
+</body>
+</html>
