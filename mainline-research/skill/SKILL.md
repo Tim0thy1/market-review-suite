@@ -11,13 +11,15 @@ description_zh: "A股主线深度研究：长中短主线判断、建档、信�
 
 # A 股主线深度研究（Mainline Deep Research）
 
+> **v2.0 自包含声明**：本 skill 已将全部依赖（westock-data / westock-tool / neodata 命令语法、market-trend-assessment 市场状态框架、industry-chain-research 产业链方法、company-deep-research 公司分析、daily-financial-news 资讯管线、us-stock-review 全球映射、innovative-drug-tracker 医药管线）打包为 7 个内置参考文件，**运行时无需调用任何外部 skill**。所有命令语法、分析框架、方法论均在 `references/` 目录内自包含。
+
 ## 核心定位
 
 **主线 = 一条会被"点火、沿产业链传导、再被证伪"的动态链条，不是静态板块。**
 
 **目的宣言（最高原则）**：找主线的目的不是写研究、不是做复盘，而是**看准市场 → 买中合适标的 → 在合适位置买 → 合适位置卖 → 兑现收益**。主线只是手段，赚钱才是目的。所有建档、评分、传导、预期差、环境判断都只是让"选票 + 择时"这最后一步更准的**工具**。因此：**任何一条主线分析，都不能止于叙事，必须"拆分"出真实子线并落到可操作的标的 + 买卖位置框架**（见「主线拆分」模块）。
 
-本 skill 是"跨行业地把主线做成可运行闭环系统"的研究工具：判断 → 建档 → 信息冲刷 → **拆分选票** → 筛股跟踪 → 升级/降级/证伪/出局。要精读单个行业或公司时，下沉调用 `industry-chain-research` / `company-deep-research`。
+本 skill 是"跨行业地把主线做成可运行闭环系统"的研究工具：判断 → 建档 → 信息冲刷 → **拆分选票** → 筛股跟踪 → 升级/降级/证伪/出局。要精读单个行业或公司时，使用内置的 `references/industry-chain-method.md`（9章产业链框架+公司卡片+三色标签）和 `references/company-deep-analysis.md`（12维度深度分析），无需调用外部 skill。
 
 **一句话**：从"今天有哪些热点"升级为"市场在炒什么 → 为什么炒 → 炒到哪了 → **泛概念拆出哪些真实子线、落在哪些股、在哪个位置买/卖** → 何时逻辑变坏 → 何时切下一条"。
 
@@ -326,20 +328,19 @@ Level 0 泛概念主线（概念板块，如"光通信"）
 
 ---
 
-## 数据采集（可信 skill，禁止 web_search 替代行情）
+## 数据采集（自包含 · 不依赖外部 skill）
 
-| 用途 | 命令/skill |
-|------|-----------|
-| 大盘/板块/资金 | `westockdata`（quote / sector ranking / market-overview / fund flow） |
-| 涨跌停/梯队/资金排行 | `westock-tool`（limitup_days / cap_main_5d / margin_chg_d） |
-| 资讯/研报/政策 | `neodata`（query.py） |
-| 市场情绪/阶段 | `market-trend-assessment`（已有框架直接复用） |
-| 每日数据/观察清单 | `a-share-daily-review` 采集命令复用 |
-| 单行业精读 | `industry-chain-research` |
-| 单公司精读 | `company-deep-research` |
-| 资讯聚合 | `daily-financial-news` |
-| 外资/全球 | `us-stock-review` |
-| 医药管线 | `innovative-drug-tracker` |
+本 skill 已将全部数据采集命令打包为内置参考文件，无需调用外部 skill。所有行情/板块/资金数据必须从以下内置命令获取，禁止用 web_search / curl / 第三方 API 替代。
+
+| 用途 | 参考文件（内置） | 说明 |
+|------|-----------------|------|
+| 大盘/板块/资金/涨停/龙虎榜/护盘 | `references/data-commands.md` | westock-data + westock-tool + neodata 全部命令语法 |
+| 市场情绪/阶段判断 | `references/market-state-frameworks.md` | 日频情绪+涨停梯队 / 周线七阶段 / 群体心理三套框架 |
+| 财经资讯聚合 | `references/news-pipeline.md` | 5维度新闻查询 + 信息五源冲刷 + 快讯接入 |
+| 全球映射/外资/关键人物 | `references/global-anchors.md` | 海外→A股四层传导 + 8类双语搜索 + 外媒小作文监测 |
+| 单行业精读 | `references/industry-chain-method.md` | 9章产业链框架 + 公司卡片 + 三色标签 + 真伪辨识 |
+| 单公司精读 | `references/company-deep-analysis.md` | 12维度分析 + Bull/Base/Bear + 投资时机评估 |
+| 医药管线追踪 | `references/pharma-pipeline.md` | 创新药管线 + BD交易 + 临床数据 + 催化剂时间线 |
 
 > 整合口径：先判节奏（日更/周更）→ 按三级结构取数 → 走决策流水线 → 建档更新到台账 → （周更才生成完整 HTML 报告）。
 
