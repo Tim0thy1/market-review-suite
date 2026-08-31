@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股全景复盘 · 2026-08-31</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--rule:#e2e8f0;--ink:#1a2740;--muted:#64748b;--t1:#475569;
+--up:#e63946;--dn:#2d6a4f;--blu:#1e40af;--blu2:#3b82f6;--amber:#d97706;--gld:#f59e0b;--accent:#1e3a5f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei','Microsoft YaHei',sans-serif;line-height:1.8;font-size:14.5px}
+.ctn{max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+.hdr{background:linear-gradient(135deg,#ffffff,#fdf0f0);border:1px solid var(--rule);border-radius:14px;padding:32px;margin-bottom:22px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--up),var(--amber),var(--dn))}
+.hdr h1{font-size:28px;margin-bottom:8px}
+.hdr .sub{color:var(--t1);font-size:14px;margin-bottom:16px}
+.badge{display:inline-block;background:var(--dn);color:#fff;padding:4px 14px;border-radius:20px;font-size:12.5px;margin-right:8px;margin-bottom:6px;font-weight:600}
+.badge.r{background:var(--up)}.badge.g{background:var(--dn)}.badge.b{background:var(--blu)}.badge.o{background:var(--amber)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:20px}
+.card{background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:13px 16px;text-align:center}
+.card .lb{font-size:11.5px;color:var(--muted);margin-bottom:4px}
+.card .vl{font-size:21px;font-weight:700}
+.chp{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:24px 26px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.chp .t{font-size:19px;font-weight:700;margin-bottom:14px;padding-bottom:12px;border-bottom:2px solid var(--rule);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.chp .t .no{background:var(--blu);color:#fff;min-width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.chp .t .nm{font-size:12px;color:var(--blu2);font-weight:500}
+h3{color:var(--accent);margin:18px 0 8px;font-size:15.5px;padding-left:10px;border-left:4px solid var(--blu)}
+h3.o{border-left-color:var(--amber);color:var(--amber)}
+p{font-size:14px;color:#334155;margin-bottom:10px}
+p b{color:var(--ink)}
+.up{color:var(--up);font-weight:700}.dn{color:var(--dn);font-weight:700}
+.w{color:var(--amber);font-weight:700}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;color:var(--accent);text-align:left;padding:8px 10px;border:1px solid var(--rule);font-size:12.5px}
+td{padding:7px 10px;border:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.chart-box{margin:14px 0}
+.chart{width:100%;height:340px;border:1px solid var(--rule);background:var(--bg);border-radius:8px}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin:3px 4px 3px 0}
+.pill.up{background:#ffe5e7;color:var(--up)}.pill.dn{background:#e2f2e9;color:var(--dn)}.pill.fl{background:#eef2ff;color:var(--blu)}.pill.o{background:#fdf1de;color:var(--amber)}
+.quote{background:#eef2ff;border-left:4px solid var(--blu);border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px}
+.warn{background:#fff6e6;border:1px solid #f5d793;border-left:4px solid var(--amber);border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px;color:#7a4a00}
+.db{background:#fdecec;border:1px solid #f3c1c4;border-left:4px solid var(--up);border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13.5px;color:#8a2226}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.bl{background:rgba(230,57,70,.06);border:1px solid rgba(230,57,70,.3);border-radius:10px;padding:16px}
+.bk{background:rgba(45,106,79,.06);border:1px solid rgba(45,106,79,.3);border-radius:10px;padding:16px}
+.bl h4{color:var(--up);margin-bottom:8px}.bk h4{color:var(--dn);margin-bottom:8px}
+.bl ul,.bk ul{padding-left:18px;font-size:13px}.bl li,.bk li{margin:5px 0}
+.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11.5px;font-weight:600;margin-right:4px}
+.tag-s{background:#e2f2e9;color:var(--dn)}.tag-a{background:rgba(30,64,175,.12);color:var(--blu)}.tag-b{background:#ffe5e7;color:var(--up)}.tag-c{background:#f1f5f9;color:var(--t1)}
+.ftr{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 8px}
+.tl{position:relative;padding-left:28px;margin:14px 0}
+.tl::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:var(--rule)}
+.ti{position:relative;margin-bottom:13px}
+.ti::before{content:'';position:absolute;left:-22px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--blu)}
+.ti .tt{font-size:12px;color:var(--blu2);font-weight:600}
+.ti .tc{font-size:13.5px;color:var(--ink);margin-top:2px}
+@media(max-width:720px){.cards{grid-template-columns:repeat(2,1fr)}.bb{grid-template-columns:1fr}}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35)}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh-100px);overflow:auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-panel .h{font-weight:700;font-size:13px;color:#1e3a5f;padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.toc-panel a{display:block;padding:5px 9px;font-size:12px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-panel a:hover{background:#f1f5f9;color:#1e40af}
+</style>
+</head>
+<body>
+<button class="toc-btn" onclick="document.getElementById('tp').classList.toggle('open')">☰</button>
+<div class="toc-panel" id="tp"><div class="h">章节导航</div>
+<a href="#c0">零 底色与仓位</a><a href="#c1">一 全景+周度</a><a href="#c2">二 宏观锚点</a><a href="#c3">三 主线资金</a><a href="#c5">五 盘面成因(时间轴)</a><a href="#c6">六 叙事映射</a><a href="#c7">七 多空辩论</a><a href="#c8">八 24h信息</a><a href="#c87">8.7 持续性故事线</a><a href="#c9">九 状态更新</a><a href="#c10">十 前瞻观察</a><a href="#c13">十三 外资海外</a><a href="#c15">十五 结论</a><a href="#c16">十六 预测台账</a>
+</div>
+
+<div class="ctn">
+
+<div class="hdr">
+<h1>A 股全景复盘</h1>
+<div class="sub">2026-08-31（周一 · 8月收官日）· 数据时点 17:56（盘后）· 状态：低开高走 / 高低切换｜数据来源：公开行情与新闻，未编造</div>
+<div><span class="badge r">低开高走收在最高</span><span class="badge r">上证 +0.86%</span><span class="badge b">传媒/AI应用爆发</span><span class="badge o">资金高低切</span><span class="badge g">89涨停 / 13跌停</span></div>
+<div class="cards">
+<div class="card"><div class="lb">上证指数</div><div class="vl up">3986.30</div><div class="up">+0.86%</div></div>
+<div class="card"><div class="lb">深证成指</div><div class="vl up">14015.00</div><div class="up">+0.44%</div></div>
+<div class="card"><div class="lb">创业板指</div><div class="vl up">3438.68</div><div class="up">+0.42%</div></div>
+<div class="card"><div class="lb">科创50</div><div class="vl up">1684.39</div><div class="up">+1.34%</div></div>
+<div class="card"><div class="lb">两市成交额</div><div class="vl">21310亿</div><div class="up">环比+293亿</div></div>
+<div class="card"><div class="lb">涨 / 跌家数</div><div class="vl up">3181/2218</div><div class="w">涨停89 跌停13</div></div>
+</div>
+<div class="quote" style="margin-top:16px"><b>今日一句话：</b>8月31日，A股在隔夜美股科技回吐（英伟达官宣5000亿美元算力融资方案后单日-4.57%、费城半导体指数-3.47%、美联储主席沃什"放鹰"）冲击下<b>大幅低开（上证低开-0.65%、科创50一度低开-2.34%）</b>，随后凭借<b>国内首部上星AI长剧《后西游记》登陆湖南卫视黄金档</b>这一产业级催化点燃传媒/AI应用主线，走出<b>低开高走、上证收在全天最高3986.30（+0.86%）</b>的强势反转。全市场上涨3181家、涨停89家、跌停13家，两市成交2.13万亿环比微增。资金从高位AI硬件/算力、农业医药<b>高低切换</b>至深度调整后的传媒/AI影视（中文在线、芒果超媒、海看股份20cm涨停，华策影视+15.77%），同时高位股开始退潮（13家跌停）。这是"月末收官"的<b>情绪回暖+高低切换</b>日。</div>
+</div>
+
+<!-- 章零 -->
+<div class="chp" id="c0">
+<div class="t"><span class="no">0</span>市场底层状态与仓位约束<span class="nm">State & Positioning</span></div>
+<p>要读懂8月31日，须回到两个既有底色：其一，8/27因英伟达财报、8/28冲高回落之后，市场已从"AI硬件单极主升"过渡到"高位分歧、高低切换"，8/28农业/地产/化工承接退潮资金；其二，周末"美联储沃什放鹰 + 英伟达5000亿美元算力融资方案落地"在情绪面埋下隐忧。因此周一开盘时的默认信念是"科技成长要回调、资金继续防御"，于是集合竞价即大幅低开。但市场的<b>真实状态并不悲观</b>——成长股前期已连调、估值消化充分，传媒板块更是深度超跌（影视院线年初以来仍跌约19.5%），一旦出现产业级催化，就具备向上修复的弹性。拥挤度层面，高位AI硬件/算力仍偏拥挤（延续出货），而超跌传媒、低位消费电子/地产成为新承接方向。仓位约束含义：这是典型的<b>"重个股、轻指数、防追高"</b>高低切窗口，指数层面低开高走已修复，但主线切换剧烈，追涨高位票与跟风退潮票的风险均不低。</p>
+<div class="db"><b>反证条件：</b>若"情绪回暖、资金高低切到传媒/AI应用"判断错误（即传媒只是超跌一日游、资金仍将回流AI硬件），盘面应见：传媒龙头次日大幅高开后炸板回落、无新增资金承接，AI硬件/算力龙头缩量企稳后重新放量领涨。明日（9/1）若中文在线/芒果超媒无法维持强势、成交萎缩，即证伪"新主线"判断。</div>
+</div>
+
+<!-- 章一 -->
+<div class="chp" id="c1">
+<div class="t"><span class="no">1</span>多时间维度全景 + 整体状态判断<span class="nm">1D / 5D / 周度</span></div>
+<div class="chart-box"><div id="ch1" class="chart"></div></div>
+<h3>1.1 指数当日表现（低开高走，全线上涨）</h3>
+<table><tr><th>指数</th><th>8/31收盘</th><th>1D涨跌</th><th>开盘涨跌</th><th>状态</th></tr>
+<tr><td>上证指数</td><td class="up">3986.30</td><td class="up">+0.86%</td><td class="dn">-0.65%</td><td>收在全天最高，反转</td></tr>
+<tr><td>深证成指</td><td class="up">14015.00</td><td class="up">+0.44%</td><td class="dn">-1.35%</td><td>低开修复</td></tr>
+<tr><td>创业板指</td><td class="up">3438.68</td><td class="up">+0.42%</td><td class="dn">-1.67%</td><td>低开修复</td></tr>
+<tr><td>科创50</td><td class="up">1684.39</td><td class="up">+1.34%</td><td class="dn">-2.34%</td><td>低开最多、修复最强</td></tr>
+<tr><td>上证50</td><td class="up">2936.88</td><td class="up">+0.46%</td><td class="dn">-0.90%</td><td>权重抗跌</td></tr>
+<tr><td>沪深300</td><td class="up">4625.09</td><td class="up">+0.35%</td><td class="dn">-1.02%</td><td>权重温和</td></tr>
+<tr><td>中证1000</td><td class="up">7770.42</td><td class="up">+0.85%</td><td class="dn">-1.27%</td><td>小盘活跃</td></tr>
+<tr><td>中证红利</td><td class="up">5718.42</td><td class="up">+0.47%</td><td class="dn">+0.23%</td><td>防御稳定</td></tr>
+<tr><td>北证50</td><td class="up">1065.29</td><td class="up">+0.14%</td><td class="dn">-0.56%</td><td>最弱</td></tr></table>
+<div class="chart-box"><div id="ch2" class="chart"></div></div>
+<h3>1.2 市场整体状态判断</h3>
+<p><strong>状态定性：低开高走、情绪回暖的结构性行情。</strong>当日全部9大核心指数收涨，上证收在全天最高3986.30点，是典型的单边修复日——开盘定价完隔夜利空（科技/半导体低开领跌），随后全程走强。市场宽度健康：上涨3181家（占57%）、涨停89家（较前一日83家续增）、跌停13家（较前日3家明显放大），说明<b>普涨与高位退潮并存</b>——赚钱效应在扩散，但前主线高位股出现补跌。量能2.13万亿环比微增293亿，未现显著放量，属"存量博弈下的结构切换"。<strong>周度视角</strong>：本周（8/24-8/28）系"缩量整固→放量主升→高位分歧"后的收官周，8/31作为8月最后一日，在月末情绪与高低切共振下收阳，8月全月上证从7月底的平台重心抬升至3950-3990一线，站稳20日均线上方，中期仍处震荡偏强格局。</p>
+</div>
+
+<!-- 章二 -->
+<div class="chp" id="c2">
+<div class="t"><span class="no">2</span>宏观锚点与风险偏好<span class="nm">Macro Anchor</span></div>
+<table><tr><th>指标</th><th>状态</th><th>对A股解读</th></tr>
+<tr><td>8月制造业PMI</td><td class="up">49.8%（环比+0.6pp）</td><td>制造业景气回升但仍处荣枯线下、成色待确认；非制造业49.0%持平、综合PMI产出49.5%。"边际修复"为低开高走提供内因支撑，但总量仍弱，制约指数向上弹性</td></tr>
+<tr><td>美联储主席沃什表态</td><td class="dn">偏鹰</td><td>周末放鹰叠加市场对9月加息预期升温，压制全球风险偏好，是周一低开的核心外部扰动</td></tr>
+<tr><td>美股科技/半导体</td><td class="dn">回吐</td><td>英伟达官宣5000亿美元算力融资方案引发"资本内循环"担忧，周五单日-4.57%；费城半导体指数-3.47%，直接拖累A股科技成长周一低开</td></tr>
+<tr><td>北向成交</td><td class="w">中性</td><td>8/31北向成交3259.57亿元、占两市总成交额15.30%；沪股通成交前三为寒武纪、生益科技、药明康德（成交口径，净额未披露）</td></tr>
+<tr><td>流动性/主力资金</td><td class="dn">微幅流出</td><td>当日全市场主力资金净流出约193亿，主因转融券/融资融券标的净流出210亿所致；结构性资金仍净流入人工智能(+87亿)等方向</td></tr></table>
+<p><strong>宏观资产背离分析：</strong>今日宏观面呈现"PMI边际回升（内因偏多）"与"海外沃什放鹰+芯片融资担忧（外因偏空）"的背离。低开反映的是外因（消息面与情绪面先定价），高走反映的是内因（国内景气回升预期 + 产业催化落地 + 超跌修复）重新接管定价权。这属于<b>风险偏好"先受压后修复"</b>的日内转换，而非整体风险偏好抬升——量能未明显放大即是佐证。</p>
+</div>
+
+<!-- 章三 -->
+<div class="chp" id="c3">
+<div class="t"><span class="no">3</span>市场主线与资金流向<span class="nm">Main Line & Money Flow</span></div>
+<h3>3.1 主线判定（证据等级：高）</h3>
+<p>当日唯一且最强的绝对主线是<b>传媒/AI应用（AI影视、Kimi、短剧、Sora）</b>：行业板块中数字媒体+7.19%、影视院线+7.02%、出版+5.26%、电视广播+3.85%、广告营销+3.32%占据涨幅榜前五；概念板块中爱奇艺概念+7.71%、Kimi概念+6.68%、短剧/互动游戏+5.21%、Sora概念+5.03%、AI营销+4.92%霸榜。龙头中文在线20cm涨停、芒果超媒20cm涨停、海看股份19.99%涨停、华策影视+15.77%，呈现龙头+跟风齐涨的健康扩散结构。</p>
+<h3>3.2 行业内部拆解</h3>
+<p>传媒主线内部分三层：<b>①核心IP/长剧</b>（中文在线、芒果超媒、华策影视，直接受益AI影视商业化落地）；<b>②出版/广电渠道</b>（时代出版、龙版传媒、海看股份，受益内容分发与上星渠道）；<b>③AI工具/营销</b>（易点天下、昆仑万维，受益AI视频生成工作流与营销降本）。弹性排序上，20cm的短视频/短剧IP弹性最大，10cm的出版/广电次之。</p>
+<h3>3.3 资金去向逻辑链</h3>
+<p>当日资金主去方向为<b>超跌反攻的资金高低切换</b>：行业资金净流入榜中消费电子+24.56亿、IT服务Ⅱ+21.25亿、计算机设备+19.34亿居前，主题资金层面人工智能净流入86.99亿、VR/抖音概念亦获流入。资金的底层逻辑是"卖高位AI硬件/算力、农业医药，买超跌的传媒与低位科技"。做空动能拆解：跌停13家集中在前期高位股（医药的誉衡药业-10.08%、汉森制药-9.98%，农业的神农种业-4.98%等），属<b>"情绪退潮型"补跌</b>而非系统性风险，与主线高低切是同一枚硬币的两面。</p>
+<h3>3.4 叙事竞争（局部 vs 全局定价权）</h3>
+<p><b>全局定价权</b>：赢得指数翻红的叙事是"利空出尽+月末情绪修复"，其次是"PMI边际回升"。<b>局部定价权</b>：赢得板块层面对抗的是"AI影视商业化落地"（传媒），它战胜了农业/医药/化工等前一日承接方向，也战胜了"地产政策催化"预期（盘前主线预测中最被看好的地产链40%权重实际表现平淡）。</p>
+</div>
+
+<!-- 章五 -->
+<div class="chp" id="c5">
+<div class="t"><span class="no">5</span>盘面成因拆解<span class="nm">State → Trigger → Flow · 时间轴还原</span></div>
+<p><strong>State→Trigger→Flow总览：</strong>市场原有状态为"高位分歧、资金已开始高低切"（8/28农业地产化工承接、AI硬件高位回吐）。周一的触发器分两波：<b>隔夜触发</b>——英伟达算力融资方案落地引发回吐、沃什放鹰、费半-3.47%，指向"科技成长低开"；<b>盘中触发</b>——《后西游记》AI长剧上星+广电"边制作边审核边播出"新模式+微短剧新规，点燃传媒。资金响应：集合竞价先砸科技，开盘后迅速杀向超跌传媒并扩散至AI应用，尾盘普涨，上证收在全天最高。</p>
+<h3>分时时间轴事件表</h3>
+<table><tr><th>时间</th><th>方向</th><th>板块</th><th>备注（证据链）</th></tr>
+<tr><td>09:30</td><td class="dn">拖累</td><td>半导体/算力/贵金属</td><td>隔夜英伟达-4.57%、费半-3.47%、沃什放鹰，科创50低开-2.34%、创业板-1.67%，科技成长率先承压</td></tr>
+<tr><td>09:40</td><td class="up">拉升</td><td>传媒/影视</td><td>芒果超媒开盘十几分钟即封20cm涨停，《后西游记》首部上星AI长剧落地引爆</td></tr>
+<tr><td>10:00-11:30</td><td class="up">拉升</td><td>AI应用/Kimi/短剧</td><td>中文在线半日涨近14%，上海电影、中广天择封板，Kimi概念(+6.68%)、Sora概念(+5.03%)跟涨，主线扩散</td></tr>
+<tr><td>13:00-14:05</td><td class="up">拉升</td><td>影视/出版/广电</td><td>午后影视持续走强，流金科技30cm涨停，电广传媒、时代出版涨停，板块全面开花</td></tr>
+<tr><td>14:30-15:00</td><td class="w">分歧</td><td>高位股</td><td>前期高位股补跌（誉衡药业、汉森制药跌停，神农种业-4.98%），跌停增至13家，与普涨并存</td></tr>
+<tr><td>15:00</td><td class="up">收盘</td><td>全市场</td><td>上证收在全天最高3986.30(+0.86%)，89家涨停、3181家上涨，低开高走收官</td></tr></table>
+<p><strong>证据等级：</strong>传媒主线判定为<b>高</b>（有明确价格反应+板块梯队齐涨+资金净流入）；低开成因判定为<b>高</b>（隔夜美股科技回吐数据明确）；"利空出尽"定性为<b>中</b>（属演绎性解释，需次日量能确认）。</p>
+<h3>护盘资金参与度</h3>
+<p>今日低开高走主要靠传媒题材催化与"利空出尽"情绪修复推动，<b>未见国家队明显护盘信号</b>——宽基ETF未现异常放量或集中净申购特征，券商/银行板块亦无逆势异动。指数翻红是市场自发行为而非护盘所致。</p>
+</div>
+
+<!-- 章六 -->
+<div class="chp" id="c6">
+<div class="t"><span class="no">6</span>叙事如何映射到不同资产<span class="nm">Narrative → Assets</span></div>
+<p><strong>"AI影视商业化落地"叙事的差异化映射：</strong>同一叙事下，L1直接资产（长剧/短剧IP：中文在线、芒果超媒、华策影视）映射等级最高（A），股价弹性也最大（20cm涨停）；L2同平台（AI视频生成工作流：昆仑万维、易点天下）为B级，涨势略温和；L3产业链（出版渠道、广电分发：时代出版、龙版传媒、海看股份）为C级，10cm涨停为主。<b>反事实推演：</b>若无《后西游记》这一产业级催化，周一很可能是"科技低开→指数阴跌→防御股延续"的弱势结构，而非低开高走。叙事权重分配上，当日"AI影视"在局部定价权中占据绝对主导，"利空出尽+PMI修复"则主导全局定价权。</p>
+</div>
+
+<!-- 章七 -->
+<div class="chp" id="c7">
+<div class="t"><span class="no">7</span>多空力量对比<span class="nm">Bull / Bear 辩论</span></div>
+<div class="bb">
+<div class="bl"><h4>🐂 多头观点（传媒/AI应用主线延续）</h4><ul>
+<li>论据1：AI长剧《后西游记》上星标志AI内容首次进入主流电视体系，叠加"广电21条"边制作边审核模式，政策+产业双催化，非一日游题材</li>
+<li>论据2：传媒板块此前深度超跌（影视院线年初至今-19.5%），估值与筹码出清充分，上行空间大于高位AI硬件</li>
+<li>论据3：89家涨停、龙头+跟风齐涨，短线情绪从连续调整中回暖（连板高度抬至6-7板），赚钱效应在扩散</li></ul></div>
+<div class="bk"><h4>🐻 空头观点（高低切持续、主线难续）</h4><ul>
+<li>论据1：机构龙虎榜显示中文在线(-1270万)、芒果超媒(-1637万)、浪潮信息(-8902万)等均为机构净卖出，传媒暴涨系游资驱动，机构在借力出货</li>
+<li>论据2：量能2.13万亿仅微增，属存量博弈；传媒单日暴涨后短期波动大，需剧集播出数据与业绩兑现验证</li>
+<li>论据3：高位股退潮（13家跌停）与普涨并存，说明指数翻红掩盖了结构性调整，情绪回暖的质量存疑</li></ul></div>
+</div>
+<div class="quote"><b>⚖️ 综合判断：</b>多空短期胜率<b>55:45偏多</b>。可验证条件——明日（9/1）若中文在线/芒果超媒不炸板、板块成交额维持放大且无机构集中碾压，则多头"主线延续"胜（大概率是扩散而非接续，即传媒内部高低切向低位补涨）；若龙头高开低走、封单松动，则空头"一日游兑现"胜。</div>
+</div>
+
+<!-- 章八 -->
+<div class="chp" id="c8">
+<div class="t"><span class="no">8</span>24小时关键信息筛选<span class="nm">Info Screening</span></div>
+<table><tr><th>信息</th><th>影响力</th><th>证据强度</th><th>类别</th></tr>
+<tr><td>国内首部上星AI长剧《后西游记》登陆湖南卫视黄金档+芒果TV（8/31）</td><td class="up">★★★★★</td><td>高</td><td>剧情推进（产业催化）</td></tr>
+<tr><td>英伟达官宣5000亿美元超大算力融资方案，市场担忧资本内循环引发回吐</td><td class="up">★★★★</td><td>高</td><td>放大器（海外扰动）</td></tr>
+<tr><td>美联储主席沃什周末"放鹰"、9月加息预期升温</td><td class="up">★★★★</td><td>中</td><td>政策风向标</td></tr>
+<tr><td>8月制造业PMI 49.8%（环比+0.6pp，景气回升）</td><td class="up">★★★</td><td>高</td><td>政策风向标/背景</td></tr>
+<tr><td>广电"21条"后首部"边制作边审核边播出"模式落地、微短剧新规施行</td><td class="up">★★★</td><td>中</td><td>政策风向标</td></tr></table>
+<p><strong>未被市场充分定价的信息：</strong>机构在传媒龙头的净卖出（龙虎榜多家机构借涨停出货）尚未被短线情绪定价——若次日机构继续出货，将对传媒主线的持续性构成真实压力，这是当前盘面与信息面之间最值得警惕的"错位"。</p>
+</div>
+
+<!-- 8.7 -->
+<div class="chp" id="c87">
+<div class="t"><span class="no">8.7</span>持续性故事线追踪<span class="nm">Ongoing Storylines · 增量更新</span></div>
+<table><tr><th>故事线</th><th>起始</th><th>今日增量</th><th>未来验证点</th></tr>
+<tr><td>AI算力投入</td><td>7月中</td><td>英伟达官宣5000亿美元算力融资方案，市场担忧"资本内循环"，AI硬件短期承压回吐</td><td>融资具体投向与国内算力订单兑现</td></tr>
+<tr><td>AI影视/AIGC商业化</td><td>8/31新起</td><td>首部上星AI长剧落地，传媒/AI应用爆发，主线首日确立</td><td>剧集播出数据、后续AI内容排期与业绩</td></tr>
+<tr><td>农业/厄尔尼诺</td><td>8/24</td><td>无新增，万向德农5板后分歧，神农种业回落，农业主线退潮</td><td>粮食价格与天气演变</td></tr>
+<tr><td>美联储政策路径</td><td>持续</td><td>沃什周末放鹰，9月加息预期升温（新增）</td><td>9月议息会议态度</td></tr></table>
+</div>
+
+<!-- 章九 -->
+<div class="chp" id="c9">
+<div class="t"><span class="no">9</span>市场状态更新库<span class="nm">State Library</span></div>
+<p><b>被钝化的旧叙事：</b>"AI算力硬件单极主升"（8/27叙事）今日被英伟达回吐+内资高低切证伪，AI硬件退居防守；"农业/厄尔尼诺"叙事在8/28短暂承接后今日松动。<b>正式接管的新定价锚：</b>"AI影视/AIGC商业化落地"成为新的局部定价锚（确认条件：传媒龙头次日企稳+板块成交放大；反证条件：龙头炸板+机构出货）。全局定价锚则仍是"景气边际修复+超跌修复"。</p>
+</div>
+
+<!-- 章十 -->
+<div class="chp" id="c10">
+<div class="t"><span class="no">10</span>前瞻观察与风险<span class="nm">Forward</span></div>
+<p><b>主线延续情景：</b>需要传媒/AI应用次日不炸板、成交额维持放大、无机构集中碾压，则高低切从"传媒内部扩散"走向"AI应用全面反攻"。<b>主线反转情景：</b>若传媒龙头高开低走、机构继续出货、量能萎缩，则退化为"一日游兑现"，资金重新回流防御。<b>Short/防御触发：</b>上证跌破20日均线且缩量（需放量确认失守），或跌停家数持续放大至20家以上。<b>宏观事件日历：</b>9月议息会议前，沃什鹰派表态的后续、9月首周的宏观数据（美国非农、国内信贷）是下一批关键变量。</p>
+</div>
+
+<!-- 章十三 -->
+<div class="chp" id="c13">
+<div class="t"><span class="no">13</span>外资与海外多源观点<span class="nm">Overseas</span></div>
+<p><b>外资动态：</b>8/31北向成交3259.57亿元（占两市15.30%），沪股通成交前三为寒武纪、生益科技、药明康德，显示外资在AI算力硬件与创新药两个方向保持交投活跃。<b>海外映射：</b>隔夜纳指/费半调整、英伟达回吐压制A股科技成长开盘；韩国存储情绪此前对A股存储的映射减弱。海外KOL/机构本周聚焦点集中在"AI资本开支是否过热"，该担忧向A股算力链的映射已部分定价，需警惕传导反噬。</p>
+</div>
+
+<!-- 章十五 -->
+<div class="chp" id="c15">
+<div class="t"><span class="no">15</span>结论式总结<span class="nm">Conclusion</span></div>
+<p>8月最后一天，A股上演了一场教科书式的"低开高走、高低切换"。隔夜英伟达算力融资方案落地引发全球科技回吐，叠加美联储沃什鹰派表态，周一开盘科技成长被砸了个大坑，科创50一度低开超过2%。但盘面真正的转机，来自一部电视剧——《后西游记》作为国内首部上星播出的AI长剧落地湖南卫视，这标志着AIGC从"技术展示"跨入"主流内容产业"，瞬间点燃了整个超跌的传媒板块，中文在线、芒果超媒、海看股份20cm涨停，收盘前上证拉到了全天最高点。</p>
+<p>谁主导了今天？不是权重、不是算力，而是<b>超跌的传媒/AI应用和短线游资</b>。资金玩的是高低切——卖高位AI硬件和农业医药，买趴在地上快一年的影视传媒。但要注意两件事：一是龙虎榜显示机构在传媒龙头上是净卖出的，说明这波暴涨游资主导、机构借力出货；二是跌停13家不少，普涨的同时高位退潮也在进行。所以明天最值得盯的不是指数能不能上4000，而是<b>传媒主线能不能扛住机构的抛压、中文在线芒果超媒这批高位票明天别炸板</b>。扛住了，AI应用的反攻会向低位补涨扩散；扛不住，就是一日游，钱又得回头找防御。</p>
+<p>把镜头拉远一点：8月在"AI硬件主升→高位分歧→月末高低切"的节奏中收官，上证站稳3950-3990平台。方向上，9月的胜负手大概率仍在<b>AI产业链内部的轮动</b>——从硬件算力向应用（影视、营销、软件）的切换能不能走成趋势，比指数的绝对涨幅更重要。以上分析基于公开数据，不构成投资建议。</p>
+</div>
+
+<!-- 章十六 -->
+<div class="chp" id="c16">
+<div class="t"><span class="no">16</span>预测台账与回归<span class="nm">Ledger</span></div>
+<h3>16.1 昨日盘前预测回归验证（8/31 盘前 → 8/31 实际）</h3>
+<table><tr><th>预测项</th><th>预测值</th><th>实际值</th><th>结果</th></tr>
+<tr><td>上证开盘</td><td>高开0.2~0.5%（地产政策催化）</td><td>低开-0.65%</td><td class="dn">❌ 未命中（方向反转）</td></tr>
+<tr><td>地产链涨停数</td><td>5~8家</td><td>地产链非主线、传媒主导</td><td class="dn">❌ 未命中</td></tr>
+<tr><td>全天成交额</td><td>20500~22800亿（中位21650亿）</td><td>21310亿</td><td class="up">✅ 命中</td></tr>
+<tr><td>上证收盘区间</td><td>3950~3980</td><td>3986.30</td><td class="w">◑ 部分（略超上沿）</td></tr>
+<tr><td>主线竞争</td><td>地产链40% / 化工30% / 半导体20% / 锂电10%</td><td>传媒/AI应用最强（未入预测集）</td><td class="dn">❌ 未命中</td></tr></table>
+<p><strong>学习点13（主线竞争需纳入潜在催化）：</strong>"8/31盘前主线竞争"把地产链/化工/半导体/锂电作为候选，完全漏掉了"《后西游记》AI长剧上星"这一确定性最强的当日产业催化。教训：主线竞争模型对<b>"已定档/已官宣的确定性事件"权重设置不足</b>，后续盘前需把"当日预告/定档类事件"作为独立的第一权重候选，而非仅靠"政策预期+景气权重"。</p>
+<p><strong>学习点14：</strong>开盘方向连续第三期患"强利好→高开"线性外推（本期把"地产政策催化"当高开依据，实际隔夜海外利空主导低开）。修正：开盘方向应以"隔夜海外实盘"为第一输入，而非"国内利好事件"。</p>
+<h3>16.2 今日新预测（8/31 → 9/1）</h3>
+<table><tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+<tr><td>9/1开盘方向</td><td>平开~小幅低开（传媒高位兑现+隔夜美股扰动）</td><td>中</td></tr>
+<tr><td>9/1量能</td><td>2.00~2.20万亿</td><td>低</td></tr>
+<tr><td>9/1涨停家数</td><td>55~85家</td><td>低</td></tr>
+<tr><td>9/1主线竞争</td><td>传媒/AI应用延续35% / AI应用内部低位补涨20% / 消费电子15% / AI硬件企稳反抽15% / 防御支线15%</td><td>中</td></tr>
+<tr><td>9/1情景</td><td>乐观(主线强势延续)30% / 中性(高低切震荡)50% / 悲观(一日游兑现)20%</td><td>—</td></tr></table>
+</div>
+
+<div class="ftr">以上分析基于公开数据，不构成投资建议 · A股全景复盘 · 2026-08-31</div>
+</div>
+
+<script>
+(function(){
+  function bar(id, cats, vals){
+    var el = document.getElementById(id);
+    if(!el || typeof echarts === 'undefined') return;
+    var ch = echarts.init(el);
+    ch.setOption({
+      grid:{left:46,right:20,top:30,bottom:60},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+      xAxis:{type:'category',data:cats,axisLabel:{rotate:30,fontSize:11}},
+      yAxis:{type:'value',axisLabel:{formatter:'{value}%'}},
+      series:[{type:'bar',data:vals.map(function(v){return {value:v,itemStyle:{color:v>=0?'#e63946':'#2d6a4f'}};}),barMaxWidth:30,label:{show:true,position:'top',formatter:'{c}%',fontSize:10}}]
+    });
+    window.addEventListener('resize',function(){ch.resize();});
+  }
+  bar('ch1',['上证','深成指','创业板','科创50','上证50','沪深300','中证1000','中证红利','北证50'],[0.86,0.44,0.42,1.34,0.46,0.35,0.85,0.47,0.14]);
+  bar('ch2',['数字媒体','影视院线','出版','电视广播','广告营销','装修装饰','消费电子','IT服务','计算机设备'],[7.19,7.02,5.26,3.85,3.32,3.07,2.17,2.84,2.82]);
+})();
+</script>
+</body>
+</html>
