@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股复盘报告 | 2026年9月2日（周三）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg0:#f7f8fc;--bg1:#ffffff;--bg2:#f1f5f9;--bg3:#eef2ff;--bd:#e2e8f0;--t0:#1a2740;--t1:#475569;--t2:#64748b;--red:#dc2626;--grn:#16a34a;--blu:#1e40af;--blu2:#3b82f6;--ylw:#f59e0b;--dng:#dc2626;--gld:#d97706}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg0);color:var(--t0);font-family:'Noto Sans CJK SC','Microsoft YaHei','Segoe UI',sans-serif;line-height:1.75;font-size:15px}
+.ctn{max-width:1400px;margin:0 auto;padding:20px}
+.hdr{background:linear-gradient(135deg,#ffffff,#eef2ff);border:1px solid var(--bd);border-radius:12px;padding:38px;margin-bottom:24px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--dng),var(--ylw),var(--grn))}
+.hdr h1{font-size:30px;margin-bottom:8px;font-weight:700}
+.hdr .sub{color:var(--t1);font-size:14px;margin-bottom:16px}
+.badge{display:inline-block;background:var(--grn);color:#fff;padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-right:8px;margin-bottom:8px}
+.badge.w{background:var(--dng)}.badge.b{background:var(--blu)}.badge.y{background:var(--gld)}
+.tag2{display:inline-block;background:rgba(220,38,38,.12);color:var(--dng);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:8px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 18px;text-align:center}
+.card .lb{font-size:12px;color:var(--t2);margin-bottom:5px}
+.card .vl{font-size:21px;font-weight:700}
+.card .ch{font-size:13px;margin-top:3px}
+.chp{background:var(--bg1);border:1px solid var(--bd);border-radius:12px;padding:28px;margin-bottom:22px}
+.cht{font-size:21px;font-weight:700;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--bd);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cht .n{background:var(--blu);color:#fff;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.cht .nm{font-size:12.5px;font-weight:500;color:var(--t2)}
+.dt{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.dt th{background:var(--bg2);color:var(--t1);padding:9px 11px;text-align:left;font-weight:600;border-bottom:2px solid var(--bd);font-size:12.5px}
+.dt td{padding:7px 11px;border-bottom:1px solid var(--bd)}
+.dt tr:hover{background:var(--bg3)}
+.r{color:var(--red)}.g{color:var(--grn)}.b{font-weight:700}
+.up{color:var(--red)}.dn{color:var(--grn)}
+.chart-box{margin:18px 0}
+.chart{width:100%;height:420px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd)}
+.chart-sm{height:320px}.chart-lg{height:460px}.chart-mid{height:380px}
+.ct{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--blu2)}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+.bp{background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.3);border-radius:10px;padding:18px}
+.kp{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:10px;padding:18px}
+.bp h4{color:var(--grn);margin-bottom:10px;font-size:15px}.kp h4{color:var(--red);margin-bottom:10px;font-size:15px}
+.bp ul,.kp ul{list-style:none;padding-left:0}.bp li,.kp li{padding:5px 0;font-size:13.5px;border-bottom:1px solid rgba(0,0,0,.05)}
+.bp li::before{content:"+ ";color:var(--grn);font-weight:bold}.kp li::before{content:"- ";color:var(--red);font-weight:bold}
+.tl{position:relative;padding-left:30px;margin:14px 0}
+.tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--bd)}
+.ti{position:relative;margin:0;padding:0 0 14px 0;font-size:14px}
+.ti::before{content:'';position:absolute;left:-26px;top:6px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--blu2)}
+.ti b{color:var(--blu)}
+.tldr{background:linear-gradient(135deg,#0f2447,#1e3a5f);color:#fff;border-radius:12px;padding:26px;margin-bottom:24px}
+.tldr .t{font-size:19px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.tldr .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tldr .cell{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:15px;font-size:13.8px;color:#e6edf7}
+.tldr .cell b{color:#ffd88a}
+.tldr .cell .up{color:#f87171}.tldr .cell .dn{color:#4ade80}
+.note{background:var(--bg3);border-left:4px solid var(--blu2);border-radius:6px;padding:13px 16px;margin:14px 0;font-size:13.5px;color:var(--t1)}
+.quote{background:var(--bg2);border-left:4px solid var(--gld);border-radius:6px;padding:14px 16px;margin:18px 0;font-size:13px;color:var(--t1)}
+.src{font-size:12px;color:var(--t2);margin-top:6px;line-height:1.7;word-break:break-all}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:#1e3a5f}
+#tocPanel{position:fixed;right:16px;top:70px;z-index:1000;width:275px;background:#fff;border:1px solid var(--bd);border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.15);padding:16px;display:none;max-height:80vh;overflow-y:auto}
+#tocPanel.open{display:block}
+#tocPanel .toc-head{font-weight:700;font-size:15px;margin-bottom:10px;color:var(--blu);border-bottom:1px solid var(--bd);padding-bottom:8px}
+#tocPanel a{display:block;padding:6px 8px;color:var(--t1);text-decoration:none;font-size:13px;border-radius:6px}
+#tocPanel a:hover{background:var(--bg3);color:var(--blu)}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:12px;font-weight:600;margin-right:6px}
+.tag-r{background:rgba(220,38,38,.12);color:var(--red)}.tag-g{background:rgba(22,163,74,.12);color:var(--grn)}.tag-y{background:rgba(245,158,11,.15);color:var(--gld)}.tag-b{background:rgba(30,64,175,.1);color:var(--blu)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.tldr .grid{grid-template-columns:1fr}.bb{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ctn">
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div id="tocPanel">
+<div class="toc-head">章节导航</div>
+<a href="#s0">章零 · 市场底层状态与仓位约束</a>
+<a href="#s1">章一 · 多时间维度全景 + 整体状态</a>
+<a href="#s2">章二 · 宏观锚点与风险偏好</a>
+<a href="#s3">章三 · 市场主线与资金流向</a>
+<a href="#s4">章四 · 暗线与多空伏击点</a>
+<a href="#s45">章四·五 · 期权情绪与期权墙</a>
+<a href="#s46">章四·六 · 信用利差分析</a>
+<a href="#s5">章五 · 盘面成因拆解</a>
+<a href="#s6">章六 · 叙事如何映射到不同资产</a>
+<a href="#s7">章七 · 多空辩论</a>
+<a href="#s8">章八 · 24小时关键信息筛选</a>
+<a href="#s9">章九 · 市场状态更新库</a>
+<a href="#s10">章十 · 前瞻观察与风险</a>
+<a href="#s11">章十一 · 风险可控的交易标的建议</a>
+<a href="#s12">章十二 · 科技/AI板块深度扫描</a>
+<a href="#s13">章十三 · 仓位管理建议</a>
+<a href="#s14">章十四 · 结论式总结</a>
+</div>
+
+<div class="hdr">
+<h1>美股复盘报告 · 2026年9月2日（周三）</h1>
+<div class="sub">数据采集：WeStock Data（指数/七巨头/半导体K线）+ 联网信息增强（宏观/Fed/机构/科技领袖）｜分析框架：宏观→资金流→行业→个股→交易结构｜信息截止约 9/3 06:50（北京时间）</div>
+<div><span class="badge">三连跌终结·反弹日</span><span class="badge w">10Y盘中2.75年高</span><span class="badge b">戴尔财报+AI服务器景气</span><span class="badge b">AI硬件领涨</span><span class="tag2">通胀/油价高悬</span></div>
+<div class="cards">
+<div class="card"><div class="lb">标普500</div><div class="vl">7,666.60</div><div class="ch up">+0.46%</div></div>
+<div class="card"><div class="lb">纳斯达克</div><div class="vl">26,217.83</div><div class="ch up">+0.45%</div></div>
+<div class="card"><div class="lb">道琼斯</div><div class="vl">53,061.95</div><div class="ch up">+0.56%</div></div>
+<div class="card"><div class="lb">VIX</div><div class="vl">≈15.2~15.4</div><div class="ch dn">-6%左右·恐慌退潮</div></div>
+</div>
+</div>
+
+<!-- ==================== TLDR ==================== -->
+<div class="tldr">
+<div class="t">📌 关键结论（TLDR）</div>
+<div class="grid">
+<div class="cell"><b>市场定性：</b><b>“逼空式防御反抽”终结三连跌。</b>在8/28、8/31、9/1三连跌（10Y美债盘中触及约2.75年高点近4.82%、地缘油价+5%、联储加息预期升温）后，9/2在<b>ADP就业转弱缓解加息忧虑 + 10Y收益率盘中冲高回落企稳 + 戴尔财报引爆AI服务器景气</b>三股力量下反弹，道指+0.56%、标普+0.46%、纳指+0.45%，罗素2000（小盘）+0.75%补涨；VIX自9/1的+9.52%冲高后回落约6%至15.2~15.4，恐慌退潮。</div>
+<div class="cell"><b>核心矛盾：</b>“美联储降息预期”与“通胀-高利率”的拉锯回到息面。Waller（鸽，支持9/16-17降息25bp）vs <b>Barr（鹰，称通胀不退应果断加息）</b>内部分裂，市场借今天ADP转弱（+3.8万人&lt;预期+4.7万）站在“降息”一侧，但<b>油价高企与10Y仍处2.75年高位</b>让反弹“建在软地基上”。本质是<b>对利率利空的超跌修复 + AI景气证真</b>，而非风格切换的趋势反转。</div>
+<div class="cell"><b>主线轮动：</b>AI硬件夺回局部定价权——<b>英伟达+3.21%（Equinix推理合作、传$140亿竞购Hugging Face、黄仁勋G20喊话）</b>、Meta +2.47%、戴尔财报后暴涨约16%；但七巨头内部剧烈分化，<b>MSFT -0.84%、AVGO -0.66%、AMD -0.55%、AAPL -0.05% 明显落后</b>。油价(Brent 94.65 +4.6%)、黄金+1.38%走强；BTC却-0.7%~-1.9%阴跌，加密成唯一失血风险资产。</div>
+<div class="cell"><b>关键观察：</b>①10Y能否站稳4.79以下——若再度上探4.82，修复将夭折；②ADP 3.8万确认劳动力降温，9/5非农成决定性验证；③戴尔AI服务器订单积压950亿美元+全年指引上调至1920亿，AI资本开支叙事强化；④机构端小摩/大摩已把标普2026目标上调至8000点。明日看“AI硬件能否放量接力 + 小盘补涨能否延续”。</div>
+</div>
+</div>
+
+<!-- ==================== 章零 ==================== -->
+<section class="chp" id="s0">
+<div class="cht"><span class="n">0</span>市场底层状态与仓位约束<span class="nm">State &amp; Positioning</span></div>
+<div class="note"><b>市场 = 状态 + 触发器 + 资金响应</b>。先立状态框架，不以单日涨跌论牛熊。本日的上涨必须被理解为“在连续三天的利率/通胀杀跌之后，仓位已经被压低后的超跌反抽”，而非新增基本面驱动的大举建仓。</div>
+<table class="dt">
+<tr><th>维度</th><th>判定</th><th>依据</th></tr>
+<tr><td>趋势状态（日线）</td><td><span class="tag tag-y">短期转弱后修复</span></td><td>标普自8/28的7711连跌三日至9/1的7631（-1.0%），跌破8/26-27横盘中枢；9/2反弹收复7711~7631回撤的一半左右，属“下跌中继的反抽”而非重新转强</td></tr>
+<tr><td>趋势状态（周线）</td><td><span class="tag tag-y">高位震荡</span></td><td>周线仍处高位但动能减弱，10Y收益率创2.75年高构成中期估值压制；未破位，但上攻需放量验证</td></tr>
+<tr><td>情绪状态</td><td><span class="tag tag-y">恐慌退潮·未转亢奋</span></td><td>VIX自9/1的+9.52%冲高（16.34）回落约6%至15.2~15.4，仍远离20极端区；市场情绪从“risk-off防御”切换到“谨慎修复”，但赚钱效应未全面放大（七巨头分化）</td></tr>
+<tr><td>量能状态</td><td><span class="tag tag-b">温和反抽</span></td><td>标普9/2成交额2.085万亿，略低于9/1的2.093万亿——反弹未显著放量，量价配合一般，对“趋势反转”存疑</td></tr>
+<tr><td>仓位约束</td><td><span class="tag tag-y">不宜追高中已跌透成长</span></td><td>AI硬件（NVDA/META）前期回调后拥挤度下降、今日领涨；但半成品/软件（MSFT/AVGO/AMD）仍弱。仓位宜“低吸已回调的AI龙头 + 防范油价二次冲击”，不满仓追高</td></tr>
+</table>
+<p style="margin-top:12px"><b>一句话底层定性：</b>这是<b>“利率/通胀利空带来的超跌修复”</b>，AI景气（戴尔/英伟达）给了它一个“反弹得动”的理由，但<b>10Y盘中2.75年高 + 油价5周高位</b>这两颗雷没拆。仓位上“回补已回调AI龙头、不宜追反弹中段、把防御仓（现金/短债）留足”。</p>
+</section>
+
+<!-- ==================== 章一 ==================== -->
+<section class="chp" id="s1">
+<div class="cht"><span class="n">1</span>多时间维度全景 + 整体状态判断<span class="nm">1D / 5D / 20D</span></div>
+<div class="chart-box"><div class="ct">图1 · 三大指数近8个交易日走势（双轴）</div><div class="chart chart-lg" id="c1"></div></div>
+<div class="chart-box"><div class="ct">图2 · 纳指与英伟达近8日（成长修复的核心观察）</div><div class="chart chart-mid" id="c4"></div></div>
+<table class="dt">
+<tr><th>指数</th><th>收盘</th><th>当日(1D)</th><th>5日(自8/28)</th><th>趋势判断</th></tr>
+<tr><td>标普500</td><td>7,666.60</td><td class="up">+0.46%</td><td class="dn">-0.59%</td><td>跌破后反抽，收复约半程</td></tr>
+<tr><td>纳斯达克</td><td>26,217.83</td><td class="up">+0.45%</td><td class="dn">-0.70%</td><td>成长回吐后修复，弱于道指</td></tr>
+<tr><td>道琼斯</td><td>53,061.95</td><td class="up">+0.56%</td><td class="dn">-0.93%</td><td>当日领涨，价值/顺周期相对抗跌</td></tr>
+<tr><td>罗素2000</td><td>2,941.98</td><td class="up">+0.75%</td><td>—</td><td>小盘补涨，从弱势开盘全数收复</td></tr>
+</table>
+<div class="note"><b>1D/5D/20D 分层：</b>当日（1D）是普涨反抽，且<b>道指（+0.56%）&gt;标普（+0.46%）&gt;纳指（+0.45%）</b>，说明反弹由“利率利空缓解→价值/顺周期修复”驱动，而非单一科技抱团；5D仍为负（三大指数较8/28全数收跌），20D维持高位震荡但动量放缓。这种“1D反弹 + 5D仍负 + 10Y高位”的组合，属于<b>下跌中继的修复</b>，不是趋势反转的起点。</div>
+<p><b>量价配合：</b>当日反弹未显著放量（标普成交额2.085万亿 &lt; 9/1的2.093万亿），反抽性质明显；卖压暂歇（9/1恐慌盘已大量出清）是更主要推动力。罗素2000 +0.75%补涨、VIX回落，说明“避险交易”在退潮，但资金并未系统性加杠杆。</p>
+<div class="src">指数收盘价、罗素2000与VIX数据来源：上海证券报·中国证券网、MarketClose 9/2复盘、AA通讯社（$TRAE_REF 见正文引注）。</div>
+</section>
+
+<!-- ==================== 章二 ==================== -->
+<section class="chp" id="s2">
+<div class="cht"><span class="n">2</span>宏观锚点与风险偏好<span class="nm">息面拉锯是全局定价权所在</span></div>
+<div class="note"><b>主锚：10年期美债收益率盘中触及约2.75年高点，随后冲高回落企稳。</b>这是本日单边行情唯一能“改变全局定价格局”的变量——它回落，成长才敢反弹；它只要再上探，修复即夭折。</div>
+<table class="dt">
+<tr><th>宏观变量</th><th>变化</th><th>市场解读</th></tr>
+<tr><td><b>10年期美债收益率</b></td><td>盘中触及约4.82%（约2.75年高/2023年11月来高位），收窄回至约4.80%附近</td><td>油价+地缘推升通胀预期，早盘急冲；随后因ADP转弱+美股反抽而企稳。10Y高位是压制成长久期资产的“天花板”</td></tr>
+<tr><td><b>ADP 8月就业</b></td><td>+3.8万人（预期+4.7万，前值+4.6万）</td><td>劳动力市场走弱，缓解“被迫激进加息”担忧 → 支撑本轮反弹成色</td></tr>
+<tr><td><b>7月工厂订单</b></td><td>环比+0.9%（强于预期）</td><td>制造业韧性仍在，缓和衰退叙事；但被油价通胀对冲</td></tr>
+<tr><td><b>美元指数</b></td><td>小幅回落</td><td>随10Y企稳走弱，美元回落利好黄金与新兴成长，与“risk-on反抽”共振</td></tr>
+<tr><td><b>原油（Brent/WTI）</b></td><td>Brent约94.65（+4.6%，5周高）/ WTI约90.22（+5.2%）</td><td>美伊冲突（Day 63）持续推高油价，通胀紧箍咒仍在——这是10Y高企的根因，也是反弹最可能被打破的裂缝</td></tr>
+<tr><td><b>黄金/白银</b></td><td>黄金约4388（+1.38%）、白银约65.33（+1.93%）</td><td>避险+美元走弱共振上行，risk-on与避险资产同涨=“利率缓和但通胀未消”的夹层状态</td></tr>
+<tr><td><b>VIX</b></td><td>9/1 +9.52%冲高至16.34，9/2回落约6%至15.2~15.4</td><td>恐慌快速退潮，但仍高于8月中旬的14低位——风险偏好修复但不极端乐观</td></tr>
+</table>
+<div class="quote"><b>宏观资产背离/共振解读：</b>本日出现一种教科书式的“<b>inflation-pass-through</b>”组合——油价+5%、10Y盘中冲高（通胀仍在定价）与成长股+0.5%、美元回落（利率缓和定价）<b>同向并存</b>。这说明市场同时在交易两条互相打架的逻辑：一边怕通胀（油价/10Y），一边盼降息（ADP转弱）。判断它不是单纯的“risk-on”，而是<b>利率脉冲后的超跌修复</b>。若明天10Y重新站上4.82，则本日反弹将被判定为一次性反抽。</div>
+<div class="src">10Y收益率、ADP、工厂订单、美元来源：TipRanks、Treasuries Close报道、Nasdaq.com、MarketClose 9/2复盘；油价来源：东方财富/Channel NewsAsia（Brent 94.65 +4.6%、WTI 90.22 +5.2%）；VIX来源：新浪财经、AA通讯社、MarketClose（9/1 +9.52%→9/2 -6%至15.2~15.4）。</div>
+</section>
+
+<!-- ==================== 章三 ==================== -->
+<section class="chp" id="s3">
+<div class="cht"><span class="n">3</span>市场主线与资金流向<span class="nm">局部定价权＝AI硬件；全局定价权＝利率</span></div>
+<div class="chart-box"><div class="ct">图3 · 七巨头/半导体与Meta当日涨跌幅（柱状）</div><div class="chart chart-mid" id="c2"></div></div>
+<div class="chart-box"><div class="ct">图4 · 当日核心资产涨跌对比（% 横向条形）</div><div class="chart chart-sm" id="c3"></div></div>
+<table class="dt">
+<tr><th>主线索</th><th>表现</th><th>归因（证据）</th></tr>
+<tr><td><b>AI硬件（局部定价权·走强）</b></td><td class="up">NVDA +3.21%、META +2.47%、TSM +0.36%、戴尔财报后暴涨约16%</td><td>戴尔Q2 AI服务器营收164亿（同比翻倍）、季度订单609亿、积压950亿、全年AI营收指引上调至740亿；英伟达Equinix推理合作+传约140亿美元竞购Hugging Face+黄仁勋G20喊话——AI资本开支景气“证真”</td></tr>
+<tr><td><b>价值/顺周期（当日领涨但弱于AI）</b></td><td class="up">道指+0.56%领涨、罗素2000小盘+0.75%</td><td>利率利空缓解（10Y回稳）+美元回落，低久期价值与高弹性小盘补涨，属于对“超跌”的轮动修复</td></tr>
+<tr><td><b>滞涨的科技权重（相对落后）</b></td><td class="dn">MSFT -0.84%、AVGO -0.66%、AMD -0.55%、AAPL -0.05%</td><td>七巨头内部剧烈分化——10Y高位下高估值软件/半成品久期受压，资金只在“AI景气直接受益”处抱团</td></tr>
+<tr><td><b>加密（风险资产中唯一失血）</b></td><td class="dn">BTC -0.7%~-1.9%至约7.68万~7.73万美元，ETH -1.47%，全市场市值-0.87%</td><td>与权益/黄金背离，反映“高久期投机资产”在油价通胀+高利率下的持续去杠杆，是与AI硬件一致性最强的反向信号</td></tr>
+</table>
+<p><b>①主线判定：</b>本日局部定价权被<b>AI硬件（NVDA/META/戴尔链）</b>拿下——它抓到的是“戴尔财报证真的AI资本开支”这条最硬的景气主线；但全局定价权仍握在<b>利率/息面</b>手中——标普仅+0.46%，说明市场不敢放大持仓，只是在把利率悲观看淡。</p>
+<p><b>②行业内部拆解（半导体≠普涨）：</b>费半成分内部不对称——直接受益推理/数据中心逻辑的AI芯片（NVDA）大涨，而软件/半成品（MSFT/AVGO）、算力整机竞争压力股（AMD）反而下跌。半导体板块整体是“结构性修复”，不是广谱轮动。</p>
+<p><b>③资金去向逻辑链：</b>避险退潮（VIX回落）→ 资金从现金/防御回流 → 优先落到“景气最硬且在回调”的AI硬件（NVDA/META）+ 超跌小盘（RUT）→ 形成“利率缓和 + AI景气”双轮。但量能未放大，说明回流力度有限。</p>
+<p><b>⑤叙事竞争：</b>“AI资本开支景气证真（戴尔/NVDA）”赢得<b>局部定价权</b>（领涨）；“利率/通胀压制（10Y/油价）是否解除”仍在争夺<b>全局定价权</b>（决定反弹持续性）。当前是局部先赢、全局待决。</p>
+</section>
+
+<!-- ==================== 章四 ==================== -->
+<section class="chp" id="s4">
+<div class="cht"><span class="n">4</span>暗线与多空伏击点<span class="nm">分歧中的背离最有信息量</span></div>
+<table class="dt">
+<tr><th>暗线</th><th>对象</th><th>信号</th><th>博弈含义</th></tr>
+<tr><td>多头水面下的涟漪</td><td><b>罗素2000小盘（+0.75%）</b>、戴尔（财报后+16%）</td><td>小盘从弱势开盘全数收复并领涨，属“资金愿意扩展风险度”的信号；戴尔暴涨强化AI景气 beta</td><td>若明日小盘续涨＝反弹外扩、风险偏好真回升；若一日游＝仍是避险资金的轮动用</td></tr>
+<tr><td>空头高位裂痕</td><td><b>MSFT、AVGO、AMD、AAPL</b></td><td>在普涨日收跌，属“高位久期资产在10Y高位下的持续失血”</td><td>这四只是“利率不落地”的最大做空候选；它们的走势判断着成长股是否分批离场</td></tr>
+<tr><td>分歧中的生还者/掉队者</td><td>生还：NVDA/META（逆势大涨）；掉队：BTC/ETH、高估值软件</td><td>同一天里，AI硬件涨、加密跌、价值微涨——三类资产方向完全不同</td><td>资金极度“择景气而不择风险”：只买有盈利兑现的AI，不买纯叙事的加密</td></tr>
+</table>
+<div class="note"><b>伏击点：</b>①<b>做空10Y二次上探</b>——若明日油价续涨、10Y返回4.82，则本日反弹是逃命窗；②<b>做多NVDA/META的景气接力</b>——只要戴尔AI订单链条的财报验证不缺席，AI硬件的相对强势可延续；③<b>小盘补涨的持续性</b>是全球 risk-on 能否“外扩”的信号灯。</div>
+</section>
+
+<!-- ==================== 章四·五 ==================== -->
+<section class="chp" id="s45">
+<div class="cht"><span class="n">4·5</span>期权情绪与期权墙分析<span class="nm">数据源未覆盖·定性提示</span></div>
+<div class="note"><b>材质声明：</b>本环境<b>未配置 CBOE 期权链采集脚本</b>（Sentinel_Daily_Pro.py 在本地工作区/需要在持券数据源运行），故无法读取自选股的 P/C OI Ratio、P/C Volume Ratio、加权IV、Call/Put Wall、Zero Gamma 与 Gamma 环境判定。本节按技能规范<b>如实标注“期权数据源未覆盖”</b>，仅结合当日量价/VIX做定性推断，不做无数据支撑的 Gamma 数值断言。</div>
+<table class="dt">
+<tr><th>维度</th><th>基于现有信息的定性判断</th><th>证据等级</th></tr>
+<tr><td>整体情绪</td><td>VIX 9/2 回落约6%至15.2~15.4，隐含波动率自9/1恐慌高点（16.34，+9.52%）退潮，但仍高于8月中低位（约14）——期权端处于“恐慌缓解、尚未乐观”的中性偏谨慎区</td><td class="tag tag-y">中（VIX数据）</td></tr>
+<tr><td>波动方向</td><td>若无持续买Call的Sign of Life，20日内IV大概率在油价/10Y扰动下随标的横盘而回落</td><td class="tag tag-y">中（推断）</td></tr>
+<tr><td>短期支撑/阻力</td><td>无真实 OI 数据，不臆造墙位。仅提示：10Y价格行为（9/2盘中4.82→回稳）是比期权墙更硬的短期锚</td><td class="tag tag-r">低（无数据）</td></tr>
+</table>
+<p><b>反证/前瞻：</b>若后续接入 CBOE 数据源，将重点监测 ①SPY/QQQ 现价与 Zero Gamma 的相对位置（Long/Short Gamma环境决定墙体有效性），②NVDA/META 在财报后 Call Wall 是否上移（若有，则AI硬件上方空间被打开），③VIX 是否重返14以下（若，则恐慌彻底出清）。当前阶段不做逆势摸顶/抄底。</p>
+</section>
+
+<!-- ==================== 章四·六 ==================== -->
+<section class="chp" id="s46">
+<div class="cht"><span class="n">4·6</span>信用利差分析<span class="nm">数据源未配置·定性提示</span></div>
+<div class="note"><b>材质声明：</b>本环境<b>未配置 FRED API Key</b>，无法拉取 ICE BofA IG/HY/BBB/CCC OAS 信用利差数据。本节按技能规范<b>如实标注“信用利差数据源未配置”</b>，仅围绕“利率-信用-权益”传导链做定性推演。</div>
+<p><b>从已有宏观数据推断的传导链：</b>油价+5%、10Y盘中触2.75年高（4.82）→ 高分位利率若持续，将抬升高收益债融资成本、压制信用利差收窄空间 → 权益端高久期成长（MSFT/AVGO/AMD/AAPL）本日恰恰领跌，与“利率→信用→高估值资产”的传导方向吻合。</p>
+<p><b>当前判断与反证：</b>由于缺乏信用利差数据，无法区分“利率上行但信用利差收窄（经济向好）”与“利率与利差同步走阔（信用风险上升）”。<b>反证观察：</b>若后续能获取 FRED 数据且出现 HY OAS 明显走阔，则本日权益反弹将被判定为无信用基本面支撑的技术反抽，应下调仓位；若利差平稳，则反抽具备一定成色。</p>
+</section>
+
+<!-- ==================== 章五 ==================== -->
+<section class="chp" id="s5">
+<div class="cht"><span class="n">5</span>盘面成因拆解<span class="nm">State → Trigger → Flow 时间线还原</span></div>
+<div class="note"><b>State：</b>进入9/2前，市场处于“三连跌后的风险偏好收缩”：8/28~9/1，标普自7711连跌至7631（-1.0%），纳指26402→26099（-1.1%），由<b>10Y美债冲2.75年高 + 地缘油价+5% + 联储加息预期升温</b>三重利空主导；9/1 VIX已+9.52%冲至16.34，恐慌正盛、仓位已充分下调。</div>
+<div class="tl">
+<div class="ti"><b>盘中 10:00 前（美东）· 油冲高、10Y探2.75年高：</b>美伊冲突（Day 63）仍紧，Brent冲至约94.65（+4.6%）5周高，推升10Y盘中触及约4.82%——早盘风险资产承压，罗素2000一度弱势低开。此时是“通胀/利率利空”继续施压的状态。</div>
+<div class="ti"><b>盘前/盘中 · ADP 8月+3.8万低于预期：</b>私企就业<strong>低于预期+4.7万</strong>，劳动力市场确认走弱，缓解“被迫激进加息”担忧——这是本日最关键的“预期修正触发器”，直接带动10Y自4.82冲高回落企稳、美元走弱。</div>
+<div class="ti"><b>盘前 · 戴尔财报“超级利好”：</b>戴尔Q2营收469.7亿（+58%）、EPS +203%、AI服务器营收164亿（同比翻倍、超预期）、季度订单609亿+积压950亿、上修全年指引至1920亿（AI占740亿）——AI硬件景气被彻底“证真”，为成长反弹注入硬逻辑；戴尔财报后暴涨约16%。</div>
+<div class="ti"><b>盘中 · 英伟达多个催化共振：</b>与Equinix达成AI推理合作（Inference Exchange）、彭博传约140亿美元竞购Hugging Face、黄仁勋G20喊话加速AI采用、公司上修财政2028增长指引——NVDA +3.21%领涨，META +2.47%跟涨。</div>
+<div class="ti"><b>尾盘 · 避险交易退潮、小盘补涨收口：</b>10Y企稳、VIX自9/1高位回落约6%，罗素2000自弱势低开全数收复+0.75%；价值与AI硬件合力把道指推至+0.56%领涨。资金把“被迫卖的”重新买回，但标普量能未放大。</div>
+</div>
+<div class="quote"><b>因果还原（关键结论）：</b>本日不是“新共识驱动的趋势反转”，而是<b>“一个利空（ADP转弱→加息担忧缓解）打掉了之前的恐慌，另一个利好（戴尔AI景气）提供了反弹的理由”</b>的超跌修复。谁先手？——戴尔财报公布前AI硬件（NVDA/费半成分）已连续回调、价格已反映悲观预期，本日上涨更多是“利空出尽后的价值回归”，而非先知资金抢跑；油价与10Y仍在，反弹的“软地基”属性未变。</div>
+</section>
+
+<!-- ==================== 章六 ==================== -->
+<section class="chp" id="s6">
+<div class="cht"><span class="n">6</span>叙事如何映射到不同资产<span class="nm">同一叙事、三类反应</span></div>
+<table class="dt">
+<tr><th>叙事</th><th>受益端（为何）</th><th>受损端（为何）</th></tr>
+<tr><td><b>AI资本开支景气证真（戴尔/NVDA）</b></td><td>NVDA +3.21%（推理/数据中心最纯）、META +2.47%（资本开支/算力需求端）、TSM +0.36%（代工）、戴尔+16%（AI服务器）——有<strong>盈利兑现</strong>的产业链环节领涨</td><td>高估值/<strong>无当期盈利兑现</strong>的环节（部分软件/半成品）不涨反跌——市场只奖励“已兑现金额”</td></tr>
+<tr><td><b>利率利空缓解（ADP转弱→10Y回稳）</b></td><td>低久期价值（道指+0.56%）、高弹性小盘（罗素+0.75%）、黄金白银（+1.4%/~+1.9%）——<strong>久期越短、贴现率越不敏感</strong></td><td>高久期成长（MSFT -0.84%、AVGO -0.66%等）虽反弹日仍被10Y高位压制——<strong>久期越长、贴现率越敏感</strong></td></tr>
+<tr><td><b>油价/地缘通胀高悬</b></td><td>能源股与通胀再定价（Brent 94.65，5周高位）</td><td>利润被原料侵蚀的加工制造业、高估值成长；也是压制10Y回落空间的元凶</td></tr>
+<tr><td><b>高利率下的投机去杠杆</b></td><td>—</td><td>加密全线阴跌（BTC -0.7%~-1.9%、合约市场-0.87%），高久期投机资产持续失血</td></tr>
+</table>
+<div class="note"><b>证据层级判定：</b>①“AI景气证真”=高（戴尔财报/AI订单为硬数据）；②“利率利空缓解”＝中（ADP是月度数据、单月波动大，仍需9/5非农确认）；③“油价通胀”＝中高（美伊冲突是事件驱动，单日数据强但可持续性存疑）。<b>反事实推演：</b>若无戴尔财报，本日在“ADP转弱”下或仍是“弱势整理”而非“+0.5%普涨”——AI景气是让反弹具有向上动能的边际增量。</div>
+</section>
+
+<!-- ==================== 章七 ==================== -->
+<section class="chp" id="s7">
+<div class="cht"><span class="n">7</span>多空力量对比<span class="nm">TradingAgents 式辩论</span></div>
+<div class="bb">
+<div class="bp"><h4>🐂 多头陈述（Bull）</h4><ul>
+<li><b>核心信仰：</b>AI资本开支进入“兑现期”——戴尔季度AI订单609亿、积压950亿、全年指引上调至1920亿，NVDA/TSM产能满载，软件巨头AI收入加速，本轮AI景气有真实盈利支撑，不是纯叙事。</li>
+<li><b>择时：</b>连续三天杀跌已把高位AI硬件的拥挤度大幅挤出（NVDA从229高点回调至217），本日放量反弹收复一半失地，超跌价值回归。</li>
+<li><b>催化：</b>Waller鸽派支持9月降息、ADP转弱确认劳动力降温、10Y盘中冲高回落——利率最鹰的时点大概率已过，为估值修复打开空间。</li>
+<li><b>空间：</b>摩根大通/摩根士丹利把标普2026目标上调至8000点，当前7666仍有约4%上方空间；AI主线的盈利上修足以对冲利率压力。</li></ul></div>
+<div class="kp"><h4>🐻 空头反击（Bear）</h4><ul>
+<li><b>致命裂缝：</b>油价Brent 94.65封在5周高位、10Y盘中触约2.75年高（4.82%）——只要美伊不缓和，通胀紧箍咒不解除，利率就难真正下行，高估值成长（MSFT/AVGO/AMD）本日的领跌就是预警。</li>
+<li><b>成色不足：</b>本日反弹未显著放量（标普成交额2.085万亿&lt;前日），是“卖压暂停”的技术反抽而非新资金入场；BTC/ETH全线阴跌说明高风险偏好资金仍在撤退。</li>
+<li><b>数据单薄：</b>ADP单月+3.8万人波动大，9/5非农若强于预期将直接击穿“转弱”叙事；Barr放话“通胀不退则果断加息”，美联储内部已在鹰鸽拉锯。</li>
+<li><b>轧空隐患：</b>若10Y再上4.82、油价冲百，空头反手会把反弹变成“逃命窗”——修复会以“回落”形式兑现。</li></ul></div>
+</div>
+<p><b>⚖️ 综合判断：</b>短期（1-3日）多头略占优——<span class="up">超跌 + AI景气 + 利率缓和</span>给了反弹动能，方向偏多；但<b>中期（5-20日）中性偏防御</b>，因油价/10Y两颗雷未拆、7日欧洲与9/5非农是关键验证窗。当前建议：<b>轻仓回补已回调AI硬件龙头，不做趋势反转的满仓押注</b>；若10Y重上4.82、油价破百则立即降回防御仓位。</p>
+</section>
+
+<!-- ==================== 章八 ==================== -->
+<section class="chp" id="s8">
+<div class="cht"><span class="n">8</span>24小时关键信息筛选<span class="nm">影响力评分 + 证据强度四维评估</span></div>
+<table class="dt">
+<tr><th>事件（来源）</th><th>影响力</th><th>证据</th><th>类别</th><th>对市场的确认/影响</th></tr>
+<tr><td><b>ADP 8月+3.8万（低于预期+4.7万）</b><br><span class="src">TipRanks / Nasdaq.com</span></td><td class="up">高</td><td>高·官方数据</td><td>政策风向标</td><td>劳动力降温→缓解激进加息→10Y回稳，为反弹的“底色”</td></tr>
+<tr><td><b>戴尔Q2财报：AI服务器营收164亿（翻倍）、季度订单609亿、积压950亿、上修全年1920亿</b><br><span class="src">新浪财经 / Zacks / Invezz</span></td><td class="up">高</td><td>高·财报实锤</td><td>剧情推进</td><td>AI资本开支“证真”，AI硬件（NVDA/META/戴尔）领涨的直接弹药</td></tr>
+<tr><td><b>10Y美债盘中触约2.75年高4.82%，尾盘回稳</b><br><span class="src">Treasuries Close / TipRanks / Chosun</span></td><td class="up">高</td><td>高·价格实锤</td><td>政策风向标</td><td>利率天花板仍在；回稳是本日反弹成立的必要条件</td></tr>
+<tr><td><b>油价Brent 94.65（+4.6%）5周高、WTI 90.22（+5.2%）；美伊冲突Day 63</b><br><span class="src">东方财富 / Channel NewsAsia</span></td><td class="up">高</td><td>高·事件实锤</td><td>风险事件</td><td>通胀紧箍咒；为下一轮利空埋雷</td></tr>
+<tr><td><b>美联储：Waller支持9月降息25bp vs Barr称通胀不退应加息</b><br><span class="src">美联储官网 / 澎湃新闻</span></td><td class="h">中高</td><td>中·官员表态</td><td>政策风向标</td><td>联储内部分裂，市场站“鸽派”；9/17 FOMC成关键观察</td></tr>
+<tr><td><b>英伟达：Equinix AI推理合作 + 传约140亿美元竞购Hugging Face + 黄仁勋G20喊话</b><br><span class="src">FXLeaders / TickerReport / TTM</span></td><td class="h">中高</td><td>中·消息+合作实锤</td><td>剧情推进</td><td>NVDA +3.21%的实质催化，加固AI景气叙事</td></tr>
+<tr><td><b>特朗普：称美国利率过高（促降息）</b><br><span class="src">澎湃新闻</span></td><td class="h">中</td><td>中·言论</td><td>政治压力</td><td>与Waller同向，给“鸽派”叙事加码</td></tr>
+<tr><td><b>小摩/大摩上调标普2026目标至8000点</b><br><span class="src">财联社 / E*Trade</span></td><td class="h">中</td><td>中·研报</td><td>机构观点</td><td>机构端看多底色，支撑反弹上限；也提示当前估值偏贵</td></tr>
+<tr><td><b>7月工厂订单+0.9%（强于预期）</b><br><span class="src">Nasdaq.com</span></td><td>中</td><td>高·数据</td><td>数据</td><td>制造业韧性，缓和衰退；但被油价对冲</td></tr>
+<tr><td><b>加密全线阴跌（BTC -0.7%~-1.9%）</b><br><span class="src">Moneynomical / CoinCodex</span></td><td>中</td><td>高·价格</td><td>风险偏好</td><td>高息下投机去杠杆，与AI景气分化</td></tr>
+</table>
+<div class="note"><b>未被市场定价的信息（专项）：</b>①机构（小摩/大摩）8000点目标意味着“按目标点位推算，市场仍有上行”，但这也可能让“看目标→多配”成为潜在拥挤——二次风险；②Waller强调“劳动力市场可能快速恶化、不想落后于曲线”，这份对就业的担忧在本日ADP走弱后尚未被权益充分定价，若9/5非农继续走弱，将放大降息预期而非引爆下跌；③10Y盘中到过4.82后回稳，但“2.75年高”这个事实本身可能尚未被市场完全消化——它压制的是未来每一次反弹的高点。</div>
+</section>
+
+<!-- ==================== 章九 ==================== -->
+<section class="chp" id="s9">
+<div class="cht"><span class="n">9</span>市场状态更新库<span class="nm">叙事是被钝化还是被接管</span></div>
+<table class="dt">
+<tr><th>类别</th><th>内容</th><th>结论</th></tr>
+<tr><td><b>被钝化/证伪的旧叙事</b></td><td>①“强势加息（9月）已成定局”在9/1-Barr放鹰后被广泛定价，ADP转弱+Waller鸽派部分证伪；②“三连跌＝趋势转熊”被9/2反弹证伪（至少短期）；③“AI资本开支见顶”被戴尔财报（订单609亿/积压950亿）强力证伪</td><td>旧利空被钝化，为反弹腾出空间</td></tr>
+<tr><td><b>正式接管的新定价锚</b></td><td>①“AI硬件景气兑现”（戴尔/NVDA盈利实证）成为权益端最强主线；②“劳动力转弱→降息”取代“加息恐慌”成为息面主导锚；③“10Y高低位震荡”成为压制成长估值的持续约束</td><td>短期以“AI景气 + 利率缓和”双锚为主，但“10Y-油价”作为反向钳制仍在台上</td></tr>
+</table>
+</section>
+
+<!-- ==================== 章十 ==================== -->
+<section class="chp" id="s10">
+<div class="cht"><span class="n">10</span>前瞻观察与风险<span class="nm">未来1-3日验证</span></div>
+<table class="dt">
+<tr><th>观察变量</th><th>看什么</th><th>含义</th></tr>
+<tr><td><b>主线延续情景</b></td><td>明日NVDA/META能否放量续涨、戴尔AI订单链（服务器/存储/光模块）是否扩散、罗素2000小盘补涨能否延续</td><td>若AI硬件放量接力+小盘外扩＝反弹向“趋势”升级</td></tr>
+<tr><td><b>主线反转情景</b></td><td>10Y是否重上4.82（油价破百前兆）、油价Brent是否冲96-97上方、MSFT/AVGO等高久期是否继续阴跌</td><td>若利率/油价再起＝本日反弹被判定为逃命窗，降仓防御</td></tr>
+<tr><td><b>做空/防御触发（Short Triggers）</b></td><td>①油价Brent站上96+；②10Y重上4.82；③9/5非农强于预期（如+25万以上）；④BTC跌破7.4万表明投机资金加速离场</td><td>任一条触发即“利率+通胀”逻辑回潮，反弹终结风险上升</td></tr>
+<tr><td><b>关键日历</b></td><td>9/5 非农、9/16-17 FOMC、白宫半导体关税审查</td><td>9/5非农是近端最大变量（验证ADP转弱是否成立）</td></tr>
+</table>
+</section>
+
+<!-- ==================== 章十一 ==================== -->
+<section class="chp" id="s11">
+<div class="cht"><span class="n">11</span>风险可控的交易标的建议<span class="nm">小资金 $2000-3000 · 科技AI主线</span></div>
+<div class="note"><b>纪律前置：</b>本日反弹“软地基”属性（未放量+油价/10Y未解），给小资金的建议是<b>“低吸已回调AI龙头、严格10%止盈、不追反弹中段”</b>，并把现金/短债仓位作为验证10Y前的保险。</div>
+<table class="dt">
+<tr><th>标的</th><th>最优表达</th><th>逻辑</th><th>仓位建议 / 止损 / 止盈</th></tr>
+<tr><td><b>NVDA（$224.41）</b></td><td>正股（情绪高点勿追）；可分批低吸</td><td>Equinix合作+传$140亿购HuggingFace+戴尔AI订单证真，AI硬件景气最纯</td><td>首仓≤50%、回调$215-218区间分批；止损破$208；止盈+10%≈$247减半</td></tr>
+<tr><td><b>META（$592.85）</b></td><td>正股</td><td>AI收入兑现+资本开支受益，+2.47%当日跟涨，攻守兼备</td><td>首仓≤30%、止损破$575；止盈+10%≈$652减半</td></tr>
+<tr><td><b>QQQ（纳指ETF）</b></td><td>ETF（分散化·小资金首选）</td><td>若纳指止跌转修复，一个工具覆盖AI+科技主线，规避个股择股风险</td><td>首仓≤60%（若空仓建底）、破阶段低点止损；止盈+8%~10%分批</td></tr>
+<tr><td><b>（观察·暂不追）AVGO/AMD</b></td><td>—</td><td>本日收跌，高久期半成品受压10Y；若10Y回落二次确认后再介入</td><td>信号未现前不追，避免“反弹日领跌”的弱势</td></tr>
+</table>
+<div class="quote"><b>极值风控：</b>本环境未配置期权链，无法研判 Gamma 环境与 0DTE 承接；在10Y未明确回落前，<b>规避 3x 杠杆ETF 与临近到期期权过夜</b>——一旦10Y/油价驱动的下跌脉冲发生，高杠杆与短线期权会被流动性放大。以小仓位+明确止损+10%止盈为底线。</div>
+</section>
+
+<!-- ==================== 章十二 ==================== -->
+<section class="chp" id="s12">
+<div class="cht"><span class="n">12</span>科技/AI板块深度扫描<span class="nm">多周期 + 内部驱动力</span></div>
+<table class="dt">
+<tr><th>细分</th><th>当日</th><th>5日趋势</th><th>内部驱动力</th></tr>
+<tr><td><b>AI芯片/推理</b></td><td class="up">NVDA +3.21%（$224.41）</td><td>自229回调后修复</td><td>戴尔AI订单证真 + Equinix推理合作 + Hugging Face并购传闻 + 黄仁勋G20，催化密度最高</td></tr>
+<tr><td><b>社交/AI应用</b></td><td class="up">META +2.47%（$592.85）</td><td>创新高附近</td><td>AI广告/推荐货币化 + 资本开支受益，攻守兼备</td></tr>
+<tr><td><b>半导体设备/代工</b></td><td class="up">TSM +0.36%</td><td>高位整理</td><td>代工受益AI但估值已高，跟随性修复</td></tr>
+<tr><td><b>算力整机竞争压力股</b></td><td class="dn">AMD -0.55%</td><td>偏弱</td><td>面临NVDA与自研芯片双线竞争，10Y下久期承压</td></tr>
+<tr><td><b>软件/通信芯片</b></td><td class="dn">MSFT -0.84% / AVGO -0.66%</td><td>相对弱</td><td>高估值久期在高10Y下失血，虽是财报后领涨的结构但本日落后</td></tr>
+<tr><td><b>消费电子</b></td><td class="dn">AAPL -0.05%</td><td>横盘</td><td>等待秋季新品催化，本日中性</td></tr>
+</table>
+<div class="note"><b>板块内部分化解读：</b>半导体<strong>并非普涨</strong>。资金只在“<b>有当期AI盈利兑现</b>”的环节（NVDA/META/TSM）抱团，而“高估值/久期敏感/竞争压力”的环节（MSFT/AVGO/AMD）在10Y2.75年高位下继续失血。这提示：当前是“景气结构性行情”，不是“科技广谱牛市”。做多应聚焦AI硬件里“订单/收入已兑现”的龙头，回避高久期软件。</div>
+</section>
+
+<!-- ==================== 章十三 ==================== -->
+<section class="chp" id="s13">
+<div class="cht"><span class="n">13</span>仓位管理建议<span class="nm">防御优先 · 留足验证窗</span></div>
+<table class="dt">
+<tr><th>项目</th><th>建议</th></tr>
+<tr><td>当前建议仓位</td><td><b>股票 50%-60%</b>（AI硬件龙头+可选小盘），现金/短债 40%-50%（等9/5非农与10Y验证）</td></tr>
+<tr><td>入场节奏</td><td>分2-3批回补已回调AI龙头（NVDA/META），不在反弹中段一次满仓</td></tr>
+<tr><td>止盈触发</td><td>达到+8%~10% 减半；若10Y回落确认再作二次补回</td></tr>
+<tr><td>止损执行</td><td>破各自阶段低点即止损，不做“扛单补仓”；总回撤控制在-5%内优先</td></tr>
+<tr><td>空仓条件</td><td>①油价Brent破96+；②10Y重上4.82；③9/5非农强于预期；④BTC跌破7.4万——任一触发即回到防御/现金</td></tr>
+</table>
+</section>
+
+<!-- ==================== 章十四 ==================== -->
+<section class="chp" id="s14">
+<div class="cht"><span class="n">14</span>结论式总结<span class="nm">白话版 · 谁在主导，盯什么</span></div>
+<p><b>今天怎么走的：</b>一句话——<b>“加息恐慌退了，AI景气又回来了”</b>。连续跌了三天，大家本来都很怕，结果盘中ADP说8月就业只加了3.8万人（比预期少），市场立刻不慌了：10年期美债从2.75年高位（4.82%）回落、美元走软，恐慌指标VIX也掉头向下。与此同时，戴尔的财报炸了——AI服务器收入翻倍、手上攒了950亿美元的AI订单，直接把“AI烧钱还能不能兑现”这个问题答成了“能”。于是AI硬件（英伟达+3.21%、Meta+2.47%）带着大盘反抽，道指+0.56%、纳指+0.45%、罗素小盘也+0.75%补涨。</p>
+<p><b>谁在主导：</b>短期是<b>AI景气（英伟达/戴尔链）+ 利率缓和（ADP转弱）</b>双轮驱动；但坐在主控台后面的仍旧是<b>利率</b>——因为油价还在Brent 94.65的五周高位、10Y也还在2.75年高位，这两颗雷没拆，反弹就只能叫“超跌反抽”，不叫“趋势反转”。七巨头内部MSFT、AVGO、AMD还在跌，提醒你这不是普涨牛市，是“只买有实际利润增长的AI，不买纯故事”。</p>
+<p><b>接下来最值得盯什么：</b>①<strong>10Y今晚/明天会不会又冲上4.82</strong>——一句话决定反弹生死；②<strong>9/5非农</strong>——验证今天ADP的“就业转弱”是不是真的；③<strong>油价会不会破百</strong>——那是通胀逻辑卷土重来的号角；④<strong>英伟达/Meta明天还能不能放量续涨</strong>，以及小盘补涨能不能延续。方向上，谨慎偏多、留足现金、只做AI景气龙头、严格10%止盈——<b>在这轮“软地基反弹”里，活得久比赚得快更重要</b>。</p>
+</section>
+
+<div style="text-align:center;color:var(--t2);font-size:12px;padding:20px 0 10px">
+本报告基于公开数据/联网信息生成，仅供研究参考，不构成投资建议。数据有延迟、以交易所官方为准。<br>
+美股复盘 · 2026-09-02（周三）· 分析框架：宏观→资金流→行业→个股→交易结构
+</div>
+</div>
+
+<script>var inited={};
+function init(id,opt){if(inited[id])return;inited[id]=true;var el=document.getElementById(id);if(el)echarts.init(el).setOption(opt);}
+window.addEventListener('load',function(){
+/* 图1 三大指数近8日（双轴） */
+var d1=['08-24','08-25','08-26','08-27','08-28','08-31','09-01','09-02'];
+var spy=[7652.86,7677.28,7675.7,7730.99,7711.76,7686.14,7631.47,7666.6];
+var qq=[25980.19,26151.3,26130.2,26541.35,26402.42,26370.89,26099.77,26217.83];
+var dia=[53417.16,53577.4,53463.88,53569.44,53559.99,53185.9,52766.88,53061.95];
+init('c1',{tooltip:{trigger:'axis'},legend:{data:['标普500','纳指','道指']},grid:{left:70,right:70,top:30,bottom:30},xAxis:{type:'category',data:d1},yAxis:[{type:'value',scale:true,name:'标普/纳指'},{type:'value',scale:true,name:'道指'}],series:[
+{name:'标普500',type:'line',data:spy,smooth:true,lineStyle:{width:2},itemStyle:{color:'#1e40af'}},
+{name:'纳指',type:'line',data:qq,smooth:true,lineStyle:{width:2},itemStyle:{color:'#dc2626'}},
+{name:'道指',type:'line',data:dia,yAxisIndex:1,smooth:true,lineStyle:{width:2},itemStyle:{color:'#16a34a'}}]});
+/* 图2 纳指+英伟达近8日（双轴） */
+var nvda=[208.48,213.05,209.66,227.98,217.55,220.78,217.44,224.41];
+init('c4',{tooltip:{trigger:'axis'},legend:{data:['纳指','英伟达NVDA']},grid:{left:60,right:60,top:30,bottom:30},xAxis:{type:'category',data:d1},yAxis:[{type:'value',scale:true},{type:'value',scale:true}],series:[
+{name:'纳指',type:'line',data:qq,smooth:true,lineStyle:{width:2},itemStyle:{color:'#1e40af'},areaStyle:{opacity:.12}},
+{name:'英伟达NVDA',type:'line',data:nvda,yAxisIndex:1,smooth:true,lineStyle:{width:2},itemStyle:{color:'#f59e0b'}}]});
+/* 图3 MAG7+半导体 当日涨跌幅（柱状） */
+init('c2',{tooltip:{trigger:'axis'},grid:{left:50,right:20,top:30,bottom:30},xAxis:{type:'category',data:['NVDA','META','TSM','TSLA','AMZN','AAPL','AMD','AVGO','MSFT']},yAxis:{type:'value',name:'%'},series:[{type:'bar',data:[
+{value:3.21,itemStyle:{color:'#16a34a'}},{value:2.47,itemStyle:{color:'#16a34a'}},{value:0.36,itemStyle:{color:'#16a34a'}},{value:0.26,itemStyle:{color:'#16a34a'}},{value:0.02,itemStyle:{color:'#16a34a'}},{value:-0.05,itemStyle:{color:'#dc2626'}},{value:-0.55,itemStyle:{color:'#dc2626'}},{value:-0.66,itemStyle:{color:'#dc2626'}},{value:-0.84,itemStyle:{color:'#dc2626'}}],barWidth:30,label:{show:true,position:'top',formatter:'{c}%'}}]});
+/* 图4 当日核心资产涨跌（横向） */
+var rows=[['BTC(24h)',-1.9],['VIX(9/2)',-5.9],['纳指',0.45],['标普',0.46],['道指',0.56],['罗素2000',0.75],['黄金',1.38],['Brent原油(结算)',4.6]];
+init('c3',{tooltip:{trigger:'axis'},grid:{left:90,right:40,top:10,bottom:30},xAxis:{type:'value',name:'%'},yAxis:{type:'category',data:rows.map(function(x){return x[0];})},series:[{type:'bar',data:rows.map(function(x){var v=x[1];return {value:v,itemStyle:{color:v>=0?'#dc2626':'#16a34a'}};}),label:{show:true,position:'right',formatter:function(p){return p.value+'%';}}}]});
+});
+</script>
+</body>
+</html>
