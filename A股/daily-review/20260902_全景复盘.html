@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-09-02 A股全景复盘</title>
+<style>
+:root{--accent:#1e40af;--accent-dark:#1e3a5f;--red:#dc2626;--green:#16a34a;--bg:#f8fafc;--card-bg:#fff;--border:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--section-gap:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}
+.container{max-width:980px;margin:0 auto;padding:20px 16px 60px}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:var(--accent-dark)}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:240px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:var(--accent-dark);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.toc-nav a{display:block;padding:5px 8px;font-size:12px;color:#334155;text-decoration:none;border-radius:4px;border-left:3px solid transparent;margin-bottom:2px}
+.toc-nav a:hover{background:#f1f5f9;color:var(--accent);border-left-color:var(--accent)}
+.report-header{text-align:center;padding:30px 0 10px}
+.report-header h1{font-size:26px;font-weight:800;color:var(--accent-dark);letter-spacing:1px}
+.report-header .date{font-size:13px;color:var(--text-muted);margin-top:4px}
+.report-header .subtitle{font-size:13px;color:var(--text-muted);margin-top:2px}
+.tldr{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border:1px solid #c7d2fe;border-radius:14px;padding:20px 24px;margin:16px 0 24px}
+.tldr h2{font-size:16px;color:var(--accent);margin-bottom:10px;font-weight:700}
+.tldr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:13px;line-height:1.6}
+.tldr-grid .label{color:var(--text-muted);font-weight:600}
+.tldr-grid .val{color:var(--text);font-weight:500}
+.tldr .tldr-summary{margin-top:10px;padding-top:10px;border-top:1px solid #c7d2fe;font-size:13px;color:#1e293b;line-height:1.7}
+.section{margin-bottom:var(--section-gap);background:var(--card-bg);border-radius:12px;border:1px solid var(--border);overflow:hidden}
+.section-header{cursor:pointer;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;user-select:none;background:linear-gradient(135deg,rgba(30,64,175,0.03),rgba(30,58,95,0.05))}
+.section-header:hover{background:linear-gradient(135deg,rgba(30,64,175,0.06),rgba(30,58,95,0.08))}
+.section-header h2{font-size:15px;font-weight:700;color:var(--accent-dark);margin:0}
+.section-header .toggle-icon{font-size:14px;color:var(--accent);transition:transform .3s;font-weight:700}
+.section-body{padding:16px 18px 18px;border-top:1px solid var(--border)}
+.section-body p{font-size:13.5px;line-height:1.8;margin-bottom:10px;color:#334155;text-align:justify}
+.section-body p:last-child{margin-bottom:0}
+.data-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin:10px 0}
+.data-card .row{display:flex;justify-content:space-between;padding:3px 0;font-size:13px}
+.data-card .row .label{color:var(--text-muted)}
+.data-card .row .val{font-weight:600}
+.up{color:var(--red)}.down{color:var(--green)}.flat{color:var(--text-muted)}
+.data-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
+.data-table th{background:#f1f5f9;padding:7px 8px;text-align:left;font-weight:600;color:var(--accent-dark)}
+.data-table td{padding:6px 8px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+.data-table tr:hover{background:#f8fafc}
+.timeline{position:relative;padding-left:22px;margin:12px 0}
+.timeline:before{content:'';position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:#e0e7ff}
+.tline-item{position:relative;margin-bottom:12px;font-size:12.5px;line-height:1.6;color:#334155}
+.tline-item b.t-time{display:inline-block;min-width:52px;color:var(--accent);font-weight:700}
+.tline-item:before{content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.tline-item.t-warn:before{background:var(--red)}
+.tline-item.t-ok:before{background:#16a34a}
+.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:4px}
+.tag-red{background:#fee2e2;color:#dc2626}.tag-green{background:#dcfce7;color:#166534}.tag-blue{background:#dbeafe;color:#1e40af}.tag-amber{background:#fef3c7;color:#92400e}.tag-gray{background:#f1f5f9;color:#475569}
+.debate-bull{border-left:4px solid var(--red)}.debate-bear{border-left:4px solid var(--green)}.debate-final{border-left:4px solid var(--accent);background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
+.media-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin:8px 0;border-left:3px solid var(--accent)}
+.media-card .media-title{font-weight:700;font-size:13px;color:var(--accent-dark)}
+.media-card .media-meta{font-size:11px;color:var(--text-muted);margin:2px 0 4px}
+.hint{margin-top:6px;border-left:1px solid #cbd5e1;padding-left:10px;color:#a0aec0;font-size:12.5px}
+.chart-box{width:100%;height:320px;margin:8px 0}
+.footer{text-align:center;padding:20px 0;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border);margin-top:20px}
+@media(max-width:640px){.container{padding:12px 10px 40px}.tldr-grid{grid-template-columns:1fr}.report-header h1{font-size:20px}}
+</style>
+</head>
+<body>
+
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#sec0">零 · 市场底层状态与仓位约束</a>
+<a href="#sec1">一 · 多时间维度全景</a>
+<a href="#sec2">二 · 宏观锚点与风险偏好</a>
+<a href="#sec3">三 · 市场主线与资金流向</a>
+<a href="#sec4">四 · 暗线与多空伏击点</a>
+<a href="#sec5">五 · 盘面成因拆解</a>
+<a href="#sec6">六 · 叙事映射与定价</a>
+<a href="#sec7">七 · 多空力量对比</a>
+<a href="#sec8">八 · 24h关键信息</a>
+<a href="#sec85">8.5 重磅深度</a>
+<a href="#sec86">8.6 价格波动链</a>
+<a href="#sec87">8.7 持续性故事线</a>
+<a href="#sec9">九 · 市场状态更新库</a>
+<a href="#sec10">十 · 前瞻观察与风险</a>
+<a href="#sec11">十一 · 核心逻辑拆解</a>
+<a href="#sec12">十二 · 外资与海外观点</a>
+<a href="#sec13">十三 · 仓位管理建议</a>
+<a href="#sec14">十四 · 结论式总结</a>
+<a href="#sec15">十五 · 预测台账</a>
+</nav>
+</div>
+
+<div class="container">
+
+<div class="report-header">
+<h1>A股全景复盘报告</h1>
+<div class="date">2026年9月2日 · 星期三</div>
+<div class="subtitle">上证3941.39 (-0.97%) · 成交1.79万亿 · 1541涨 / 3901跌</div>
+</div>
+
+<!-- TLDR -->
+<div class="tldr">
+<h2>TL;DR 首屏结论</h2>
+<div class="tldr-grid">
+<div><span class="label">市场状态</span> <span class="val" style="color:var(--red);font-weight:700">高位退潮 · 缩量下行</span></div>
+<div><span class="label">风格偏向</span> <span class="val">防御独强 · 成长继续杀跌</span></div>
+<div><span class="label">核心主线</span> <span class="val" style="color:var(--red)">军工(地面兵装/地缘) · 银行 · 玻纤/教育</span></div>
+<div><span class="label">成交额</span> <span class="val">1.79万亿 &lt;9/1的2.03万亿(-12%)</span></div>
+<div><span class="label">情绪温度</span> <span class="val" style="color:var(--red)">27%涨 · 55涨停9跌停 · 偏冷</span></div>
+<div><span class="label">风险提示</span> <span class="val" style="color:var(--red)">农业崩塌-7% · 印巴+美伊双地缘 · 成长续跌</span></div>
+</div>
+<div class="tldr-summary"><strong>一句话定性：</strong>在全球两大军事冲突（美伊再升级：伊朗击落美军MQ-9并回击、约旦美军营地遭导弹打击；印巴冲突爆发：印度导弹打击巴控克什米尔9处目标）与全球债市抛售（日债/美债/德债高位）双重压制下，A股低开缩量收跌。今日<b>军工（地面兵装+6.48%，申万二级第一）成为唯一逆势主线</b>——地缘紧张长期化+军工低位 + 机构参与（博云新材机构净买），内蒙一机2连板、建设工业开盘3分钟涨停。而盘前第一权重主线<b>农业当日崩塌退潮</b>（种植业-5.93%、敦煌种业跌停、神农种业-11%），印证了高位已充分price-in主线"兑现风险最高"的判断。核心矛盾＝"地缘冲突长期化的进攻性（军工）" vs "全球risk-off的防御性（银行/成长杀跌）"；农业退潮释放的资金是否有序流入军工，是明日最大看点。</div>
+</div>
+
+<!-- ============ 章零 ============ -->
+<div class="section" id="sec0">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章零 · 市场底层状态与仓位约束</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<div class="data-card">
+<div class="row"><span class="label">趋势</span><span class="val down">短期转弱 · 高位退潮确认（跌破3950平台，上证收3941）</span></div>
+<div class="row"><span class="label">情绪</span><span class="val down">27%上涨 · 55涨停9跌停 · 近2900股收绿 · 亏钱效应拉满</span></div>
+<div class="row"><span class="label">风险偏好</span><span class="val down">risk-off · 全球债市抛售+地缘双线压制</span></div>
+<div class="row"><span class="label">风格</span><span class="val down">价值/防御强于成长 · 上证50(-0.93%)最抗跌 · 创业板(-2.39%)最弱</span></div>
+<div class="row"><span class="label">资金</span><span class="val down">缩量至1.79万亿(环比-12%) · 观望情绪浓厚 · 北向盘中流出</span></div>
+</div>
+<p><b>每日明确仓位约束：</b>中性偏低仓（建议 4~5 成），忌追高已披露主线（农业已示警兑现、军工首日异动需防高位）。<b>今日核心矛盾：</b>地缘冲突长期化的进攻性（军工） vs 全局risk-off的防御性（银行/成长杀跌）；农业高位退潮后资金去向决定结构走向。</p>
+<p><b>决策前提复盘（为何跌）：</b>盘前判断"平开至小幅低开"，但全球债市抛售+两大地缘冲突发酵 + 农业高位兑现共振，实际弱于中性情景、接近悲观情景（高位退潮+成长续跌）——本日归入"悲观/防守"象限。</p>
+</div>
+</div>
+
+<!-- ============ 章一 ============ -->
+<div class="section" id="sec1">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章一 · 多时间维度全景 + 市场整体状态判断</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>多周期指数全景（涨跌幅相对昨收）：</b>上证 <span class="up">-0.97%</span> / 深成 <span class="up">-1.88%</span> / 创业板 <span class="up">-2.39%</span> / 科创50 <span class="up">-1.82%</span> / 沪深300 <span class="up">-1.38%</span> / 中证500 <span class="up">-1.64%</span> / 中证1000 <span class="up">-1.40%</span> / 上证50 <span class="up">-0.93%</span>。三大指数集体收跌，成长与中小盘杀跌尤重，仅上证50经银行防御相对抗跌。</p>
+<table class="data-table">
+<tr><th>指数</th><th>收盘</th><th>涨跌幅</th><th>今开(较昨收)</th><th>成交特点</th></tr>
+<tr><td>上证指数</td><td>3941.39</td><td class="up">-0.97%</td><td>3963.07(-0.42%)</td><td>沪市 8353亿</td></tr>
+<tr><td>深证成指</td><td>13611.55</td><td class="up">-1.88%</td><td>13732.18(-1.01%)</td><td>深市 9558亿</td></tr>
+<tr><td>创业板指</td><td>3312.24</td><td class="up">-2.39%</td><td>3347.68(-1.35%)</td><td>缩量最明显</td></tr>
+<tr><td>科创50</td><td>1617.60</td><td class="up">-1.82%</td><td>1623.53(-1.46%)</td><td>成长持续承压</td></tr>
+<tr><td>上证50</td><td>2914.44</td><td class="up">-0.93%</td><td>2927.81(-0.48%)</td><td>银行防御抗跌</td></tr>
+</table>
+<p><b>量能与广度：</b>两市约 <b>1.79万亿</b>，较 9/1 缩量约 2400 亿（-12%），重返 2 万亿下方；全市场上涨 <b>1541</b> 家（27%）/ 下跌 3901 家 / 平 112 家，<b>涨停 55 / 跌停 9</b>。量价齐缩+跌停抬头，属"高位退潮、资金离场观望"的典型缩量下行走势——较盘前预测区间（1.90~2.10万亿）明显偏低，说明盘前对"双地缘+债市抛售"下的量能萎缩仍估计不足。</p>
+<p><b>市场整体状态判断：<span class="up">高位钝化→退潮期</span>。</b>连续多日的"权重撑台+通胀防御"结构在今日共振瓦解：成长（科创/创业板）续跌破位、前期主线（农业）冲高兑现、量能萎缩。仅剩军工（事件驱动）与银行（防御）两条相对强势线。系统判定仓位应从"中性"进一步收敛至"中性偏低/防守"。</p>
+</div>
+</div>
+
+<!-- ============ 章二 ============ -->
+<div class="section" id="sec2">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章二 · 宏观锚点与风险偏好</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>全球债券收益率（核心宏观锚点·强制纳入）：</b>全球债市抛售延续，日债/美债/德债维持高位，是全球成长估值压制的宏观根源。详见下表。</p>
+<table class="data-table">
+<tr><th>锚点</th><th>当前值</th><th>变化趋势</th><th>对A股解读</th></tr>
+<tr><td>日本10年期国债</td><td class="up">约3%（1996年以来首次破3%后高位徘徊）</td><td class="up">高位/维持</td><td>全球利率上行→压制高估值成长（科创/创业板杀跌主因之一）</td></tr>
+<tr><td>美债10年期</td><td class="up">高（去年1月以来最高区）</td><td class="up">上行</td><td>美联储偏鹰表态→美元走强→成长承压、北向流出</td></tr>
+<tr><td>德债10年期</td><td class="up">约3.34%（2011年以来最高）</td><td class="up">上行</td><td>全球risk-off共振确认</td></tr>
+<tr><td>布伦特原油</td><td class="up">约94美元（美伊升级）</td><td class="up">大涨后高企</td><td>通胀韧性/地缘溢价→军工/油气受益、航空成本承压</td></tr>
+<tr><td>人民币汇率</td><td>（美元走强下偏弱）</td><td class="up">弱化</td><td>北向盘中持续流出，压制风险偏好</td></tr>
+</table>
+<p><b>风险偏好定性：risk-off / 结构避险。</b>两大军事冲突（美伊+M-9击落/印巴爆发）+ 全球债券大抛售 + 油价高企，四条宏观主线叠加，指向"通胀韧性+地缘风险"并存。对A股：压制成长久期资产（确认），强化军工（新）、贵金属/油气（通胀避险）、银行高股息（利率防御）。这与 9/1 的"顺通胀防御"结构同源，但今日新增<b>军工</b>的进攻性受益分支。</p>
+</div>
+</div>
+
+<!-- ============ 章三 ============ -->
+<div class="section" id="sec3">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章三 · 市场主线与资金流向</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>今日主线排行（按表现与持续性）：</b>①<b class="up">军工/国防装备</b>（地面兵装 +6.48% 申万二级第一，航空装备、无人战机、中兵系联动）——唯一进攻型主线；②<b>银行高股息</b>（邮储等逆势走强，防御延续）；③<b>玻纤</b>(+1.23%)、<b>教育</b>(+0.82%)、<b>旅游</b>(+0.72%)、<b>电网设备</b>——零星活跃；④<b class="up">农业崩塌</b>（种植业 -5.93%，全线跌停潮）——盘前第一权重主线当日证伪。</p>
+<table class="data-table">
+<tr><th>板块</th><th>当日涨幅</th><th>5日**</th><th>领涨/领跌</th><th>归因</th></tr>
+<tr><td>军工·地面兵装</td><td class="up">+6.48%</td><td>+13.58%</td><td>北方长龙(301357)+13.9%</td><td>地缘双线冲突长期化 + 低位修复 + 机构参与</td></tr>
+<tr><td>军工·航空装备</td><td class="up">+0.93%</td><td>+5.19%</td><td>博云新材(002297)涨停</td><td>同军工地缘主线</td></tr>
+<tr><td>国有大型银行</td><td class="up">+0.57%</td><td>+4.62%</td><td>邮储银行</td><td>高股息 + 全球利率上行防御</td></tr>
+<tr><td>种植业</td><td class="down">-5.93%</td><td>+12.6%→回吐</td><td>敦煌种业跌停</td><td>高位兑现 + 风险提示 + 缩量下机构撤退</td></tr>
+<tr><td>煤炭 / 通信</td><td class="down">跌幅居前</td><td>—</td><td>—</td><td>博时点评点明居前，周期/成长齐弱</td></tr>
+</table>
+<p class="hint">** <span class="flat">电力/CSS注：5日为该板块过去5日累计表现，非两日值。</span></p>
+<p><b>资金流向：</b>缩量至1.79万亿整体观望；相对集中流入<b>电网设备（主力+1.42亿）</b>、<b>地面兵装（+1.28亿）</b>、<b>航空装备（+1.25亿）</b>——军工与电网设备获资金加仓，回避高位农业与高估值成长。龙虎榜显示<b>机构参与军工</b>：博云新材机构净买约7905万；飞龙股份（机器人+汽车热管理）机构买 9431万。北向资金盘中持续流出，加重抛压。</p>
+</div>
+</div>
+
+<!-- ============ 章四 ============ -->
+<div class="section" id="sec4">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章四 · 暗线与多空伏击点</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>暗线（被低估的潜在主线）：</b></p>
+<ul style="padding-left:18px;font-size:13px;line-height:1.9">
+<li><b>军工地缘（进攻暗线）</b>——今日已浮出水面，但持续性尚未确立；美伊+印巴双线若继续升级，军工（地面兵装/航天/导弹/无人机）具备主线潜质，机构资金已先手（博云新材龙虎榜）。</li>
+<li><b>黄金/贵金属</b>——全球地缘+债市抛售+美元走强三重扰动，避险叙事未走完，近期回调中是否存在低吸窗口。</li>
+<li><b>存储/半导体</b>——隔夜美股存储逆势（闪迪+5.5%/美光+2.77%）映射A股，但今日未独立走强，若明日美股存储续强而A股跟涨，则在农业退潮空档有承接空间。</li>
+</ul>
+<p><b>多空伏击点：</b>①农业反抽陷阱（超跌龙头如万向德农今日已逆势收涨3.3%，恐高处不胜寒，追高即被伏击）；②军工高开低走风险（首日异动后若明日不续封，抢跑资金会被反杀）；③油气因油价94高企本应走强但今日未爆发，若地缘再炸则随时补涨（存在埋伏价值）；④成长超跌反弹与否，决定科创是否止跌。</p>
+</div>
+</div>
+
+<!-- ============ 章五 ============ -->
+<div class="section" id="sec5">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章五 · 盘面成因拆解（分时时间轴事件表）</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>总览：</b>今日行情为"<b>低开—军工独拉—农业崩塌—缩量收跌</b>"的结构。全球地缘双重冲突 + 债市抛售压制全局，军工借事件逆势，农业高位兑现砸盘，指数缩量下沉。</p>
+<div class="timeline">
+<div class="tline-item t-warn"><b class="t-time">9:15-9:25</b>集合竞价低开承压：上证开盘 3963.07（-0.42%），低开幅度超盘前"小幅低开"上限，地缘+债市风险偏好压制初现。</div>
+<div class="tline-item t-ok"><b class="t-time">9:30-10:00</b><b>军工急拉，早盘最强。</b>内蒙一机被一笔 1.81 亿元大单直接拉涨停（2连板），建设工业开盘约3分钟封板，长城军工、博云新材跟封——军工地缘逻辑瞬间点火，成为逆势唯一主线。</div>
+<div class="tline-item t-warn"><b class="t-time">10:00-11:30</b><b>农业高位兑现崩塌。</b>盘前第一权重的种植业集体跳水：敦煌种业跌停、金健米业跌约6.3%、神农种业盘初冲高转暴跌超11%、华绿生物/国投丰乐跌超10%；万向德农盘初一度涨超7%后大幅回吐（收涨3.3%，11天8板/PE150X，9/1晚已发风险提示）。资金从农业流出。</div>
+<div class="tline-item"><b class="t-time">11:30-13:30</b>午间军工维系强势震荡，玻纤、教育、旅游零星翻红，大盘维持低位弱势，市场情绪整体偏冷。</div>
+<div class="tline-item t-warn"><b class="t-time">13:30-14:45</b>午后军工略有回落但守住涨幅，指数继续弱势下行，煤炭、通信、传媒/算力/光伏走高后回落，跌停家数增至9家。</div>
+<div class="tline-item"><b class="t-time">14:45-15:00</b>尾盘近4000股下跌，两市缩量至1.79万亿收官；上证收3941.39（-0.97%）跌破3950平台，创业板-2.39%领跌。</div>
+</div>
+<p><b>关键证据链：</b>军工（美伊双线冲突+印巴爆发→地缘紧张长期化→低位军工承接，龙虎榜机构净买博云新材佐证非纯游资）→ 逆势独强；农业（全球粮价8月+13%涨到极致+龙头10日96%+监管风险提示→高位筹码集中兑现）→ 崩塌退潮。此为"事件驱动进攻" vs "高位题材退潮"的镜像。</p>
+</div>
+</div>
+
+<!-- ============ 章六 ============ -->
+<div class="section" id="sec6">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章六 · 叙事如何映射到不同资产</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<table class="data-table">
+<tr><th>核心叙事</th><th>受益资产(今日表现)</th><th>受损资产(今日表现)</th></tr>
+<tr><td>地缘冲突长期化（美伊+印巴）</td><td>军工/国防（+6.48%/领涨）、油气/资源（待抬）、黄金（避险）</td><td>航空航运成本承压、高估值成长受情绪压制</td></tr>
+<tr><td>全球债市抛售/利率高位</td><td>银行高股息（+0.57%逆势）、防御价值</td><td>成长/中小盘杀跌（创业板-2.39%/科创-1.82%）</td></tr>
+<tr><td>农业高位兑现</td><td>资金腾挪流向军工/电网设备</td><td>种植业-5.93%、粮食/水产/人造肉全线跟跌</td></tr>
+<tr><td>缩量观望/北向流出</td><td>大盘蓝筹抗跌</td><td>高位题材无承接、流动性溢价收缩</td></tr>
+</table>
+<p><b>资产映射结论：</b>今日"地缘进攻（军工）+ 利率防御（银行）"双主线并行，成长/前期题材集体失血。策略上不宜单押，应"军工打进攻、银行/黄金保防守"的哑铃结构，等待地缘与利率的确定性进一步提升。叙事对油气/黄金的映射尚未完全兑现（属可埋伏的潜在映射）。</p>
+</div>
+</div>
+
+<!-- ============ 章七 ============ -->
+<div class="section" id="sec7">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章七 · 多空力量对比</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<div class="data-card debate-bull">
+<h4 style="color:var(--red)">多方逻辑</h4>
+<ul style="padding-left:16px;font-size:12.5px;line-height:1.7">
+<li>地缘军工是真催化+机构先手（内蒙一机大单封板、博云新材龙虎榜净买7905万）。</li>
+<li>农业高位兑现是"主动出清"，后续资金或有序流入低估顺周期（军工/资源），提升结构韧性。</li>
+<li>外资整体转多（小摩沪深300看5200、高盛Q2新进697只A股、中金建议转A股），中期支撑仍在。</li>
+<li>上证站上3930平台未深跌，银行防御兜底，系统性大幅下杀风险有限。</li>
+</ul>
+</div>
+<div class="data-card debate-bear">
+<h4 style="color:var(--green)">空方逻辑</h4>
+<ul style="padding-left:16px;font-size:12.5px;line-height:1.7">
+<li>缩量1.79万亿（-12%）表明资金离场而非抄底，观望为主。</li>
+<li>成长（创业板-2.39%/科创-1.82%）续跌破位，估值仍有向下空间。</li>
+<li>全球债市抛售+双地缘+北向流出三重压制，当前无做多主引擎。</li>
+<li>农业高位的"从涨停到跌停"一日式崩塌，预示高位题材踩踏风险未释放完毕。</li>
+</ul>
+</div>
+<div class="data-card debate-final">
+<h4>结论（裁决）</h4>
+<p style="margin:0">短期偏空防守占优。军工是唯一进攻点但首日异动持续性未验证；银行/黄金提供防御底仓。在量能未回升至2万亿上方、地缘未出明确缓和信号前，维持"谨慎+哑铃"应对，不追高、不抄底成长。</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 章八 ============ -->
+<div class="section" id="sec8">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章八 · 24小时关键信息筛选</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<table class="data-table">
+<tr><th>事件（时间）</th><th>来源</th><th>影响力</th><th>证据</th><th>A股映射</th></tr>
+<tr><td><b>印巴冲突爆发</b>：印度导弹打击巴控克什米尔9处目标，巴方誓言自卫/反制，克什米尔恐怖袭击为导火索（9/2）</td><td>境外外媒</td><td class="up">高</td><td>高·事件实锤</td><td>军工（地面兵装/导弹/无人机）强催化</td></tr>
+<tr><td><b>美伊再升级</b>：伊朗革命卫队开始反击、击落美军MQ-9无人机，并向美军基地发射导弹/无人机，约旦美军营地遭重型导弹打击（9/2凌晨）</td><td>央视新闻</td><td class="up">高</td><td>高·官方</td><td>军工+油气 + 地缘避险（黄金）</td></tr>
+<tr><td>全球债市抛售延续：日债破3%后高企、美债/德债高位，美联储偏鹰、美元走强（9/1-9/2）</td><td>财联社/凤凰</td><td class="up">高</td><td>高·价格</td><td>压制成长估值、强化银行防御</td></tr>
+<tr><td>农业龙头风险提示：万向德农8/17-9/1累涨96%、8个涨停，9/1晚再发风险提示公告（9/1盘后）</td><td>证券时报</td><td class="h">中高</td><td>高·公告</td><td>加速农业高位兑现（当日种植业-5.93%）</td></tr>
+<tr><td>北交所宣布设立五周年（9/2）</td><td>证券时报</td><td class="h">中</td><td>官方</td><td>北交所个股活跃、情绪催化</td></tr>
+<tr><td>外资机构集体转多：小摩沪深300看5200、高盛新进697只A股、中金建议仓位转A股（9/1-9/2）</td><td>证券时报等</td><td class="h">中</td><td>机构观点</td><td>改善中期风险偏好，短期被地缘覆盖</td></tr>
+</table>
+<p class="hint">注：上表中"印巴冲突"与盘面"印巴冲突概念"的领涨股（内蒙一机等地面兵装）实为地缘紧张下军工整体联动，应以南亚/中东冲突长期化的"军工地缘共振"理解，而非仅有单一印巴行情。</p>
+</div>
+</div>
+
+<!-- ============ 章8.5 ============ -->
+<div class="section" id="sec85">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章8.5 · 重磅深度：地缘双线冲突 → 军工逆势主线</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>事件层级梳理：</b>过去24小时，全球地缘风险从"局部紧张"升级为"双线冲突"——<b>一线美伊</b>（伊朗击落美军MQ-9、导弹打击约旦美军营地，美军此前空袭伊朗南部沿海），<b>一线印巴</b>（印度导弹打击巴控克什米尔、巴基斯坦誓言自卫，克什米尔恐袭为导火索）。两条线同时发酵，全球risk-off显著升温，但反向强化了A股军工的"地缘溢价"。</p>
+<p><b>为何军工而非油气成为今日主升？</b>①油价9/1已大涨至94美元（油气前期有获利兑现压力），而军工前期低位整理、未抢跑，弹性更大；②军改/军贸/出口伊朗共振，内蒙一机（主战坦克+军贸）、建设工业、长城军工等"地面兵装"直接受益于"装备升级+出口"叙事，且机构龙虎榜净买入（博云新材）表明资金认可度高；③地缘长期化预期（非单日事件）为军工主线提供持续性想象空间。</p>
+<p><b>持续性核心变量（跟踪清单）：</b>①美伊是否继续升级/是否有国际斡旋；②印巴是否从"边境交火"走向正面冲突；③内蒙一机能否走出3连板、军工涨停家数能否由8家左右扩散至15家以上（扩散=主线确立）；④油气/黄金是否在军工休息时接力（地缘进攻线的"高低切"）。只要军工地缘逻辑未证伪，其防御性进攻价值就持续存在；一旦地缘明确缓和，军工将随情绪快速回落，需设定止盈纪律。</p>
+</div>
+</div>
+
+<!-- ============ 章8.6 ============ -->
+<div class="section" id="sec86">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章8.6 · 价格波动链追踪</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>地缘→资产价格传导链：</b>美伊+印巴双线升级 → 地缘风险溢价 → 油价高企（布伦特约94美元）+ 军工股点火（地面兵装+6.48%）+ 黄金避险预期。油价向上传导油气开采/油运，成本端压制航空；军工向上传导装备/无人机/导弹产业链，独立于油价自成一条"地缘进攻链"。</p>
+<p><b>农业价格链反转：</b>农产品从"全球粮价8月+13%+厄尔尼诺减产+航运受阻"的上涨极致，转入高位兑现——种植业单日-5.93%、敦煌跌停，粮价涨价预期阶段性price-in完毕，价格链进入反向调整段。</p>
+<p><b>债市→估值传导链：</b>日债破3%/美债/德债高位 → 全球无风险利率上行 → 高估值成长久期资产折现压力 → A股创业板/科创续跌。该链条在"利率见顶前"将持续对成长形成压制，是当前最大宏观逆风。</p>
+</div>
+</div>
+
+<!-- ============ 章8.7 ============ -->
+<div class="section" id="sec87">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章8.7 · 持续性故事线追踪</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<div class="data-card" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-color:#bbf7d0">
+<div class="row"><span class="label">故事线</span><span class="val">① 地缘冲突长期化 → 军工/油气/黄金（进攻+防御双收益）</span></div>
+<div class="row"><span class="label">状态</span><span class="val" style="color:#166534">◈ 主升候选 / 首日点火</span></div>
+<div class="row"><span class="label">核心变量</span><span class="val">美伊/印巴是否升级；军工涨停家数扩散；内蒙一机能否3板</span></div>
+</div>
+<div class="data-card">
+<div class="row"><span class="label">故事线</span><span class="val">② 全球债市抛售/利率高位 → 银行高股息防御 + 成长杀跌</span></div>
+<div class="row"><span class="label">状态</span><span class="val" style="color:#166534">◈ 延续中（9/1已有）</span></div>
+<div class="row"><span class="label">核心变量</span><span class="val">日债/美债收益率是否续创新高；如见顶则成长迎喘息</span></div>
+</div>
+<div class="data-card">
+<div class="row"><span class="label">故事线</span><span class="val">③ 农业高位退潮（粮价极端+监管示警）→ 资金腾挪</span></div>
+<div class="row"><span class="label">状态</span><span class="val" style="color:#b45309">◈ 退潮兑现中</span></div>
+<div class="row"><span class="label">核心变量</span><span class="val">资金是否有序流入军工/资源；农业超跌反抽力度（防诱多）</span></div>
+</div>
+<p><b>跟踪优先级：</b>军工持续性（明日 3 板/扩散）＞ 地缘是否缓和 ＞ 利率是否见顶 ＞ 农业资金去向。前两者决定防守或进攻，后两者决定成长与农业能否修复。</p>
+</div>
+</div>
+
+<!-- ============ 章九 ============ -->
+<div class="section" id="sec9">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章九 · 市场状态更新库</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p>本次更新新增/强化如下状态观测标签：</p>
+<ul style="padding-left:18px;font-size:13px;line-height:1.9">
+<li><b>地缘风险 ON（新高）</b>——美伊+印巴双线，全球地缘进入"冲突可能长期化"窗口，成为中期核心变量。</li>
+<li><b>高位退潮确认（新增）</b>——可从"退潮待确认"升级为"退潮中"，缩量+跌停抬头+农业崩塌为三信号。</li>
+<li><b>利率高位压制（强化）</b>——日债/美债/德债高位，成长估值持续承压，风格向价值/防御迁移。</li>
+<li><b>农业从"通胀主线"降级为"兑现题材"</b>——逻辑未变但 price-in 极致+监管示警，短期无超额。</li>
+</ul>
+</div>
+</div>
+
+<!-- ============ 章十 ============ -->
+<div class="section" id="sec10">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章十 · 前瞻观察与风险</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>明日（9/3）前瞻观察信号：</b></p>
+<ul style="padding-left:18px;font-size:13px;line-height:1.9">
+<li>军工持续性：内蒙一机能否3连板、军工涨停能否从个位数扩容至15家以上——扩=主线确立、缩=一日游。</li>
+<li>地缘进展：美伊/印巴是否有缓和信号（真缓和则军工退潮/油气和黄金回落最快）。</li>
+<li>农业：超跌反抽是修复还是诱多（万向德农若再冲高风险极大）。</li>
+<li>量能：能否重回2万亿上方，否则结构性弱势延续。</li>
+<li>成长：科创50能否止跌——决定是否超跌反弹。</li>
+<li>油气/黄金：地缘升级时是否会接棒军工，形成"地缘进攻链"的高低切。</li>
+</ul>
+<p><b>风险提示：</b>①地缘突然缓和引发军工/油价急速回撤；②高位题材（农业/传媒）继续踩踏拖累情绪；③缩量阴跌后若放量下跌，则系统性风险偏好进一步走弱；④北向持续流出对大盘蓝筹的压制。</p>
+</div>
+</div>
+
+<!-- ============ 章十一 ============ -->
+<div class="section" id="sec11">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章十一 · 核心逻辑拆解</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>一句话：</b>今日是"地缘进攻（军工）独扛 vs 全局risk-off（成长/农业杀跌）"的极端防御结构。</p>
+<p><b>拆解：</b>①<b>地缘双线冲突</b>是本日唯一增量进攻催化剂，直接点燃低位军工（地面兵装），且机构资金先手验证其非纯题材；②<b>全球债市抛售</b>压制成长估值、驱动银行高股息防御，二者合力造成"军工涨、成长跌、农业崩、银行稳"的四分结构；③<b>农业</b>在全球粮价price-in极致+监管示警下高位兑现，是"已运行主线在充分透支后必然承接兑现"的教科书案例；④<b>缩量</b>表明是存量博弈下的结构腾挪而非增量入场，故指数层面弱势、结构层面分化。</p>
+<p><b>这个结构能否持续？</b>取决于两点：地缘是否升级（军工弹性）与利率是否见顶（成长压制）。二者均未到拐点，短期"军工进攻+银行防御"的哑铃结构或延续；但军工单日大涨后波动加大、成长持续的杀跌存在超跌反弹窗口。中期仍看外资转多对底部的支撑。</p>
+</div>
+</div>
+
+<!-- ============ 章十二 ============ -->
+<div class="section" id="sec12">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章十二 · 外资与海外多源观点</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<div class="media-card">
+<div class="media-title">印度对巴基斯坦开展空袭后，巴方誓言"强烈反制"</div>
+<div class="media-meta">CNNBC · 2026-09-02 ｜ 类型：数据型</div>
+<div class="media-body">印度对巴控克什米尔/巴基斯坦9处目标实施导弹打击，巴基斯坦称此为"战争行为"并誓言自卫，克什米尔恐怖袭击为导火索。印证南亚地缘升级，利好军工/避险。</div>
+</div>
+<div class="media-card">
+<div class="media-title">伊朗革命卫队称已开始反击，一架美军MQ-9无人机被击落</div>
+<div class="media-meta">央视新闻(CCTV) · 2026-09-02 05:06 ｜ 类型：官方</div>
+<div class="media-body">伊朗击落美军MQ-9并向美军基地发射导弹/无人机，约旦营地遭重型导弹打击——美伊冲突进入军事反击阶段，地缘长期化风险显著抬升。</div>
+</div>
+<div class="media-card">
+<div class="media-title">外资机构集体转多A股</div>
+<div class="media-meta">证券时报/华盛通 ｜ 类型：机构观点</div>
+<div class="media-body">小摩沪深300年底看5200、超配中国；高盛二季度新进697只A股；中金建议仓位向A股转回。中期资金面偏暖，但短期被地缘/利率压制。</div>
+</div>
+<p class="hint">免责：本报告仅作事实整理与叙事拆解，不构成投资建议。</p>
+</div>
+</div>
+
+<!-- ============ 章十三 ============ -->
+<div class="section" id="sec13">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章十三 · 仓位管理建议</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>当前建议仓位：<span style="color:var(--red)">中性偏低（4~5成）</span>。</b>理由：缩量+地缘quad风险+成长续跌，风险收益比偏中性偏笃定防守。高仓位追热点在退潮期回撤风险大；空仓则可能错过军工/地缘低吸窗口。</p>
+<ul style="padding-left:18px;font-size:13px;line-height:1.9">
+<li><b>进攻仓（建议2成内）：</b>军工/地面兵装（等缩量回调企稳、非追板）；油气/黄金低位埋伏（地缘防御性进攻）。</li>
+<li><b>防守仓（建议2成）：</b>银行高股息、公用事业——抗利率/避险压舱石。</li>
+<li><b>回避：</b>农业高位（防诱多反抽）、创业板/科创等高估值成长（未止跌前不抄底）。</li>
+<li><b>节奏：</b>明日若军工扩容（涨停15家+）可加仓进攻；若地缘缓和→减军工/油气、防避险回撤；若放量跌破3900→降至3成防守。</li>
+</ul>
+</div>
+</div>
+
+<!-- ============ 章十四 ============ -->
+<div class="section" id="sec14">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章十四 · 结论式总结</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>今日定性：</b>全球地缘双线冲突 + 债市抛售压制的"退潮期"，上证-0.97%缩量收跌，成长杀跌、农业崩塌、军工独强、银行防御。</p>
+<p><b>三个关键收获：</b>①军工以事件驱动成为唯一进攻主线，机构先手验证需跟踪扩散与否；②农业高位兑现验证了"充分price-in主线当日兑现风险最高"（盘前虽有警示但权重仍给到30%，属执行瑕疵）；③量能缩至1.79万亿低于盘前区间下沿，暴露盘前对"地缘+债市双重压制下缩量"估计不足。</p>
+<p><b>明日核心问题：</b>军工能否从"单日异动"晋级为"持续主线"（看内蒙一机3板+板块扩散）；地缘是否缓和；量能与成长能否企稳。哑铃策略（军工进攻+银行防御）是当前最优应对。</p>
+</div>
+</div>
+
+<!-- ============ 章十五 ============ -->
+<div class="section" id="sec15">
+<div class="section-header" onclick="toggleSection(this)">
+<h2>章十五 · 预测台账与回归</h2><span class="toggle-icon">▼</span>
+</div>
+<div class="section-body">
+<p><b>上一期（9/2盘前）预测 vs 实际回归：</b></p>
+<table class="data-table">
+<tr><th>预测项</th><th>盘前预测</th><th>实际(9/2)</th><th>结果</th><th>偏差归因</th></tr>
+<tr><td>开盘方向</td><td>平开~小幅低开 -0.2%~+0.2%</td><td>低开 -0.42%（开3963.07）</td><td>⌛部分</td><td>方向对（低开）但幅度超出上限，低估地缘+债市压制下的低开幅度</td></tr>
+<tr><td>量能中位数</td><td>2.0万亿（1.90~2.10）</td><td>约1.79万亿</td><td>❌未命中</td><td>低于区间下沿，双地缘+债市抛售下观望缩量，盘前高估情绪承接</td></tr>
+<tr><td>涨停家数</td><td>55~80家</td><td>55家（下沿）</td><td>✅命中</td><td>农业退潮+科技弱，涨停回落至区间下沿</td></tr>
+<tr><td>主线竞争</td><td>农业30/存储25/银行20/油气15</td><td>军工(地面兵装+6.48%)第一，农业暴跌退潮，银行逆势走强</td><td>❌未命中</td><td>完全漏掉军工地缘主线；农业给最高权重却暴跌；银行20%部分兑现</td></tr>
+<tr><td>情景概率</td><td>乐观20%/中性50%/悲观30%</td><td>悲观情景触发（高位退潮+成长续跌）</td><td>✅命中</td><td>悲观情景当月兑现，但未预判军工逆势这一结构亮点</td></tr>
+</table>
+<p><b>小结：</b>5 项中 2 命中（涨停/悲观情景）、1 部分（开盘方向）、2 未命中。量化端点仍稳；两大系统性缺陷依旧暴露：<b>①主线连续第五期漏掉"地缘军工"方向</b>——9/1 已有美伊升级信息，9/2盘前仍未将"地缘紧张→军工低位"纳入候选；<b>②对已充分price-in的高位主线（农业）权重仍过高（30%第一）</b>，虽有警示但执行不足。详见报告后台账文件同步更新。</p>
+</div>
+</div>
+
+</div>
+<div class="footer">本报告基于公开数据与可靠数据源生成，仅供研究参考，不构成投资建议。<br>A股全景复盘 · 2026-09-02 · 信息截止约9/2 17:00（北京时间）</div>
+
+<script>
+function toggleSection(el){var b=el.parentElement.querySelector('.section-body');var ic=el.querySelector('.toggle-icon');if(b.classList.contains('collapsed')){b.classList.remove('collapsed');ic.textContent='▼';el.classList.remove('collapsed')}else{b.classList.add('collapsed');ic.textContent='▶';el.classList.add('collapsed')}}
+document.getElementById('tocBtn2') && null;
+</script>
+</body>
+</html>
