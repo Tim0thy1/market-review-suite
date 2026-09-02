@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-09-03</title>
+<style>
+:root{
+  --bg:#f7f8fa;--card:#ffffff;--rule:#e2e8f0;--ink:#1e293b;--muted:#64748b;
+  --up:#dc2626;--down:#16a34a;--amber:#d97706;--primary:#1e40af;--accent:#1e3a5f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei',-apple-system,'Microsoft YaHei',sans-serif;line-height:1.7;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
+.head{background:linear-gradient(135deg,#eef2ff,#ffffff);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
+.head h1{font-size:24px;letter-spacing:1px;color:var(--primary);margin-bottom:6px}
+.head .sub{color:var(--muted);font-size:13px}
+.headmark{color:var(--amber);font-size:12px;margin-top:8px}
+.badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:var(--primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.amber{background:var(--amber)}
+.badge.green{background:#166534}
+.tagline{margin-top:14px;background:#eef2ff;border-left:4px solid var(--primary);padding:10px 14px;font-size:13px;color:var(--accent);border-radius:0 8px 8px 0}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.card h2{font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card h2 .no{background:var(--primary);color:#fff;font-size:12px;width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.card h2 .tag{font-size:11px;font-weight:500;border:1px solid var(--rule);color:var(--muted);padding:2px 10px;border-radius:20px;background:#f8fafc}
+h3{border-left:4px solid var(--primary);padding-left:10px;margin:16px 0 8px;font-size:15px;color:var(--accent)}
+h3.sub{border-left:4px solid var(--amber);color:var(--amber)}
+p{font-size:14px;color:#334155;margin-bottom:9px}
+p strong{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;color:var(--accent);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--rule)}
+td{padding:8px 12px;border:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.h{color:var(--amber);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin-right:6px;margin-bottom:4px}
+.pill.up{background:#fee2e2;color:var(--up)}
+.pill.flat{background:#eef2ff;color:var(--primary)}
+.pill.hold{background:#dcfce7;color:#166534}
+.pill.warn{background:#fef3c7;color:#92400e}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mini{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.mini h4{font-size:13px;color:var(--muted);margin-bottom:6px}
+.mini .v{font-size:18px;font-weight:800}
+.mini p{font-size:12.5px;margin-top:4px}
+ul{padding-left:22px;font-size:14px;color:#334155;line-height:2}
+.quote{background:#f8fafc;border-left:3px solid var(--amber);padding:10px 14px;margin:10px 0;font-size:13px;color:#475569;border-radius:6px}
+.warn{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400e;margin:12px 0}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 10px}
+.toc{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin-bottom:18px;font-size:13px;color:var(--muted)}
+.toc b{color:var(--accent)}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.card{padding:18px 15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <h1>A 股盘前分析 · 今日走势预判</h1>
+  <div class="sub">交易日 2026-09-03（周四）· 状态：盘前 ｜ 信息截止 9/3 06:50（北京时间）</div>
+  <div class="headmark">报告结构（v2）＝ S0 执行摘要+盘前观点 → S1 观察清单 → S2 新闻+资讯+隔夜海外 → S3 今日预测+情景推演 → S4 预测台账</div>
+  <div class="badges">
+    <span class="badge">平开~小幅高开 +0.1~+0.4%</span><span class="badge amber">地缘双线(美伊+印巴)</span><span class="badge">美股反弹+戴尔财报</span><span class="badge green">央行维稳宣言</span>
+  </div>
+  <div class="tagline">核心矛盾：隔夜美股结束三连跌反弹（道指+0.56%，美债收益率回落、ADP低于预期缓解加息忧虑）+ 戴尔财报超预期暴涨15%（AI服务器景气）+ 央行盘后维稳宣言（流动性充裕）构成"超跌修复"窗口；但美伊二度空袭（油价曾跳上94）+ 印巴誓言报复 + 美联储理事巴尔放鹰 + 美考虑加码半导体关税构成地缘与政策压制。9/3主线之争＝"军工（地缘长期化·已启动）能否续强"＋"存储/AI硬件（戴尔财报映射）能否接力"＋"银行（央行维稳防御）能否续创新高"。</div>
+</div>
+
+<!-- ════ S0 执行摘要 + 盘前观点 ════ -->
+<div class="card">
+  <h2><span class="no">S0</span>执行摘要 + 盘前观点 <span class="tag">第一屏 · 3分钟建立全貌</span></h2>
+
+  <h3>执行摘要（5行）</h3>
+  <div class="quote" style="border-left-color:var(--primary);background:#eef2ff">
+    ① <b>市场定性：平开至小幅高开——"超跌修复+地缘扰动"型整理。</b>9/2 上证 3941.39（-0.97%）破 5 日线、创业板 -2.39% 留跳空缺口，成交缩至 1.79 万亿（10日均值 90.5%），涨 1541/跌 3901、涨停 55/跌停 9，情绪转冷但恐慌未扩散；军工（地面兵装 +6.48%）逆势独强、农业高位崩塌、银行防御承接；<br>
+    ② <b>核心矛盾：隔夜修复窗口 vs 地缘/政策压制。</b>美股结束三连跌反弹 + 美债收益率回落 + 戴尔财报超预期（AI服务器）+ 央行维稳宣言（流动性充裕）构成修复催化；但美伊二度空袭（油价曾跳上94）、印巴誓言报复、美联储理事巴尔放鹰、美考虑加码半导体关税构成压制——多空对冲下难有单边行情；<br>
+    ③ <b>主线格局：</b>军工（地缘长期化·已启动主线）30%＞存储/AI硬件（戴尔财报+费半上涨）25%＞银行高股息（央行维稳+防御）15%＞油气/资源（油价95+美伊升级）15%＞创新药（FDA获批+百济神州）10%＞其他（农业修复/消费/超跌科技）5%；<br>
+    ④ <b>量能阈值：≥1.9 万亿</b> 修复才站得稳，否则缩量反抽后继续分化；<br>
+    ⑤ <b>最优策略：</b>重个股轻指数——进攻看军工续强与存储接力，防守看银行高股息；农业高位不追、谨防二次兑现，科创50 未止跌前不抄底成长。
+  </div>
+
+  <h3>盘前观点 · 机构早评式叙事</h3>
+  <p><strong>海外锚点：</strong>隔夜美股结束三连跌反弹——道指 +0.56%、标普 +0.46%、纳指 +0.45%，核心驱动是美债收益率自高位回落 + ADP 就业数据低于预期（劳动力市场温和降温，缓解美联储激进加息忧虑）。戴尔财报超预期暴涨 15%（营收 469.7 亿美元 +58%，Q3 指引营收 +81%）点燃 AI 服务器链，费半 +0.45%、美光 +2.43%、英伟达 +3.21%。但地缘端仍在升级：美军 9/2 对伊朗南部沿海多处目标新一轮空袭（油价曾跳上 94）、巴基斯坦总理誓言对印度导弹打击"强力报复"；美联储理事巴尔放鹰（通胀降温不足应果断加息）、美考虑加码半导体关税。对 A 股传导方向：修复窗口打开（利好超跌成长/存储），但地缘与政策压制限制上行空间——多空对冲。</p>
+  <p><strong>盘面定性：</strong>A 股 9/2 上证 3941.39 缩量收阴（1.79 万亿，环比 -0.24 万亿），属"缩量下跌+结构性防御"。技术位看：上证已破 5 日线（约 3960）、上方压力 3965-3990、回踩支撑 3930-3940；创业板 3312 留跳空缺口（3347-3350），缺口回补与否是关键；科创50 1617 已跌破全部短中期均线，成长趋势转弱。若今日放量收复 3965 则修复延续；若缩量跌破 3930 则整固延长、上修悲观情景。<span class="h">均线与点位的开盘复核须以此框架为锚。</span></p>
+  <p><strong>结构行为：</strong>资金在"地缘军工（印巴+美伊）"与"防御（银行/油气）"之间聚集，高位农业（9/2 暴跌）与未止跌成长（科创50）失血。军工是已启动主线的惯性延续（9/2 地面兵装 +6.48%、内蒙一机 2 连板），存储/AI 硬件是隔夜美股映射的新催化（戴尔财报+费半上涨），银行是央行维稳+防御的承接方向。板块跷跷板核心＝军工能否续强扩散、存储能否借美股催化独立走强，以及农业高位兑现后资金去向。</p>
+  <p><strong>今日取向：</strong>重个股轻指数、进攻看军工续强+存储接力、防守看银行高股息。<b>条件分支：若军工/存储放量高开且首小时 &gt;5000 亿则转进攻（修复窗口打开）；若军工高开炸板且科创50 续跌、量能缩至 1.8 万亿下方则偏防守整固。</b></p>
+</div>
+
+<!-- ════ S1 观察清单 ════ -->
+<div class="card">
+  <h2><span class="no">S1</span>观察清单 <span class="tag">全篇验证锚 · 可证伪</span></h2>
+  <p style="font-size:13px;color:var(--muted)">按"利好的真伪/延续"分层，盘中逐条对照。吻合=逻辑成立、背离=降级，用于修正而非事后解释。</p>
+
+  <h3 class="sub">逐条验证信号</h3>
+  <table>
+    <tr><th>#</th><th>观察对象</th><th>看什么（可证伪信号）</th><th>验证含义</th></tr>
+    <tr><td>1</td><td><b>国防军工</b>（印巴+美伊地缘·L1·A股）</td><td>内蒙一机能否3连板、板块能否扩散、龙头机构是否续买</td><td>续板+扩散=地缘主线延续；高开炸板/大面积分化=事件兑现退潮</td></tr>
+    <tr><td>2</td><td><b>存储/AI硬件</b>（戴尔财报+费半上涨·L1/L2·A股）</td><td>能否独立走强、涨停家数、资金是否净流入</td><td>涨停≥3家且放量=独立行情成立；高开&gt;3%但 10:30 前无涨停=美股映射一日游</td></tr>
+    <tr><td>3</td><td><b>银行高股息</b>（央行维稳+防御·L2/L3·A股）</td><td>工行/中行/建行能否续创新高、防御资金是否承接</td><td>大盘承压时段银行逆势=防御承接；银行转弱=无防御、系统性风险偏好升高</td></tr>
+    <tr><td>4</td><td><b>油气/资源</b>（油价95+美伊升级·L1·A股）</td><td>能否封板并扩散、油价盘前是否站稳93上方</td><td>封板+扩散="地缘硬催化"✅；高开低走+油运不跟=一日游</td></tr>
+    <tr><td>5</td><td><b>创新药</b>（FDA获批+百济神州·L1/L2·A股）</td><td>百济神州/创新药能否异动、CXO是否跟涨</td><td>龙头异动+板块跟涨=新催化发酵；高开回落=利好兑现</td></tr>
+    <tr><td>6</td><td><b>科创50/科技成长</b>（高位杀跌·L4·A股）</td><td>能否止跌企稳、有无新增资金</td><td>止跌反抽=成长杀跌暂歇；续跌破位=成长趋势转弱确认，不抄底</td></tr>
+    <tr><td>7</td><td><b>全天量能</b></td><td>能否守住 <b>≥1.9 万亿</b>（9/2：1.79 万亿）</td><td>量能是"修复延续 vs 缩量分化"的唯一仲裁</td></tr>
+  </table>
+
+  <h3 class="sub">主线映射快照（生命周期）</h3>
+  <table>
+    <tr><th>主线</th><th>层级</th><th>阶段</th><th>评分</th><th>今日增量</th></tr>
+    <tr><td>国防军工</td><td>短(事件级→季级)</td><td><span class="pill up">启动→主升候选(地缘长期化)</span></td><td class="up">新/升级观察</td><td>印巴誓言报复+美伊二度空袭；9/2 地面兵装+6.48%、内蒙一机2板、博云新材机构4席净买</td></tr>
+    <tr><td>存储/AI硬件</td><td>长(年级)</td><td><span class="pill up">量价齐升→主升候选(升级观察)</span></td><td class="up">72/升级观察</td><td>隔夜戴尔财报暴涨15%（AI服务器营收+58%、Q3指引+81%）+费半+0.45%+美光+2.43%</td></tr>
+    <tr><td>银行高股息</td><td>中(季级)</td><td><span class="pill hold">防御支撑(续创新高)</span></td><td>—/延续</td><td>央行盘后维稳宣言（流动性充裕+逆周期调节）；9/2 国有大行逆势+0.57%</td></tr>
+    <tr><td>油气/石化/油运</td><td>短(事件级)</td><td><span class="pill flat">低位待启动(地缘催化)</span></td><td>新</td><td>美伊二度空袭、油价布油95.63（+1.04%）、曾跳上94、伊朗誓言报复</td></tr>
+    <tr><td>创新药</td><td>中(季级)</td><td><span class="pill flat">新催化(事件驱动)</span></td><td>新</td><td>全球首款泛RAS抑制剂 daraxonrasib 获FDA批准（百济神州获中国权益）；先声药业获FDA突破性疗法认定</td></tr>
+    <tr><td>农业种植</td><td>中(季级)</td><td><span class="pill warn">高位退潮(兑现观察)</span></td><td>—/退潮</td><td>9/2 种植业-5.93%、敦煌种业跌停、金健米业-6%；全球粮价逻辑仍在但价格已透支</td></tr>
+  </table>
+
+  <div class="warn">⚠️ 若开盘军工高开炸板且存储/油气均无承接、量能不配合，即使地缘逻辑仍在，主线切换亦不成立，则按"低位蛰伏/高低切震荡"降级处理，上修悲观情景概率。</div>
+</div>
+
+<!-- ════ S2 新闻 + 资讯 + 隔夜海外 ════ -->
+<div class="card">
+  <h2><span class="no">S2</span>新闻 + 资讯 + 隔夜海外市场表现 <span class="tag">信息全景 · 四维评估</span></h2>
+
+  <h3 class="sub">S2.1 市场状态基准（一日起点）</h3>
+  <div class="grid">
+    <div class="mini"><h4>趋势</h4><div class="v" style="color:var(--amber)">短期转弱·分化</div><p>上证 3941 已破 5 日线（约 3960），20 日线上方仍有支撑；创业板留跳空缺口、科创50 破全部短中期均线，指数与结构背离。</p></div>
+    <div class="mini"><h4>情绪</h4><div class="v" style="color:var(--amber)">转冷·未恐慌</div><p>9/2 涨停 55/跌停 9、上涨占比 27%，情绪明显降温但无跌停潮；军工独强、农业退潮，赚钱效应收缩。</p></div>
+    <div class="mini"><h4>风险偏好</h4><div class="v" style="color:var(--amber)">risk-off 防御</div><p>军工+银行+油气防御方向吸金，科创50/农业失血；隔夜美股反弹或小幅修复风险偏好。</p></div>
+    <div class="mini"><h4>风格</h4><div class="v">大盘+防御</div><p>国有大行逆势 +0.57%、军工独强；成长（创业板-2.39%）与高位题材（农业）杀跌，防御主导。</p></div>
+    <div class="mini"><h4>资金</h4><div class="v" style="color:var(--amber)">存量博弈</div><p>成交 1.79 万亿（环比 -0.24 万亿），处 10 日均值（1.98 万亿）的 90.5%；宽基ETF主力净流出（沪深300 -6.1亿/创业板 -9.4亿/科创50 -6.2亿），无国家队护盘。</p></div>
+    <div class="mini"><h4>波动</h4><div class="v">高</div><p>9/2 创业板 -2.39% 留缺口、北证50 +2.5% 情绪套利；隔夜地缘+美股反弹或放大今日日内波动。</p></div>
+  </div>
+
+  <h3 class="sub">S2.2 隔夜核心事件 · 四维评估</h3>
+  <table>
+    <tr><th>事件（来源）</th><th>影响力</th><th>证据</th><th>A 股映射</th><th>类别</th></tr>
+    <tr><td><b>美股结束三连跌反弹</b>：道指 +0.56%、标普 +0.46%、纳指 +0.45%；美债收益率自高位回落、ADP 就业低于预期缓解加息忧虑（新华社/大河财立方）</td><td class="up">高</td><td>高·价格实锤</td><td>整体偏多修复开盘；美债回落缓解成长估值压力</td><td>背景+剧情</td></tr>
+    <tr><td><b>戴尔财报超预期暴涨 15%</b>：营收 469.7 亿美元（+58% 超预期），Q3 指引营收 +81%；AI 服务器需求强劲（大河财立方/Wind）</td><td class="up">高</td><td>高·财报实锤</td><td>A 股 AI 服务器/算力/存储链映射，硬件景气证真</td><td>剧情推进</td></tr>
+    <tr><td><b>美伊冲突升级</b>：美军 9/2 对伊朗南部沿海多处目标新一轮空袭（阿巴斯港/格什姆/恰巴哈尔等），油价曾跳上 94、布油收 95.63（+1.04%），IRGC 誓言"倍数报复"（东方财富/新华社）</td><td class="up">高</td><td>高·事件实锤</td><td>油气开采/油运/油服利好；军工情绪提振；航空航运成本承压</td><td>风险事件</td></tr>
+    <tr><td><b>印巴冲突升级</b>：巴基斯坦总理誓言对印度导弹打击"强力报复"；印巴陷入无人机军备竞赛（CNNBC/新华社）</td><td class="up">高</td><td>高·事件实锤</td><td>军工（地面兵装/无人战机/中兵系）直接受益，9/2 已启动</td><td>风险事件</td></tr>
+    <tr><td><b>央行盘后维稳宣言</b>：保持流动性合理充裕、货币政策独立自主；"适度宽松+加大逆周期调节+保持流动性充裕"，下半年 2 万亿+专项债/特别国债待发（东方财富/微博）</td><td class="up">高</td><td>高·官方表态</td><td>银行/顺周期受益；整体风险偏好托底，降准/MLF 预期升温</td><td>政策风向</td></tr>
+    <tr><td><b>美联储理事巴尔放鹰</b>：若通胀降温不足应果断加息；关税/中东冲突/AI 基建可能使通胀回落受阻（中国网）</td><td class="h">中高</td><td>中·官员表态</td><td>压制成长估值；强化顺通胀防御逻辑</td><td>政策风向</td></tr>
+    <tr><td><b>美考虑加码半导体关税</b>：在美建厂可豁免（卢特尼克，观察者网）</td><td class="h">中高</td><td>中·官员表态</td><td>A 股半导体出口链短期承压，但国产替代逻辑强化</td><td>政策风向</td></tr>
+    <tr><td><b>创新药里程碑</b>：全球首款泛RAS口服抑制剂 daraxonrasib 获 FDA 批准（胰腺癌中位 OS 6.7→13.2 个月、死亡风险 -60%），百济神州获中国等亚洲市场权益；先声药业获 FDA 突破性疗法认定（财新/每日经济新闻）</td><td class="h">中高</td><td>高·产业实锤</td><td>创新药/百济神州/CXO 映射，A 股创新药情绪提振</td><td>剧情推进</td></tr>
+    <tr><td><b>8 月 A 股新开户 265.03 万户</b>：环比 +34.97%、同比 +165.21%（上交所）</td><td class="h">中</td><td>高·官方数据</td><td>增量资金入市信号，中长期利好市场流动性</td><td>数据</td></tr>
+  </table>
+
+  <h3 class="sub">隔夜重点深挖：美股反弹 + 戴尔财报 → A 股 AI 硬件传导链</h3>
+  <p><strong>事件→Surprise：</strong>美东 9/2 美股结束三连跌反弹（道指 +0.56%），核心驱动是美债收益率自高位回落 + ADP 就业低于预期（劳动力温和降温，缓解加息忧虑）——此前市场连续三日因"通胀韧性+加息预期"杀跌，本次属预期修正，Surprise 中等。戴尔财报（营收 +58%、Q3 指引 +81%）远超预期，AI 服务器需求证真，属高 Surprise 的产业级催化。</p>
+  <p><strong>资产反应：</strong>美股科技股反弹（费半 +0.45%、美光 +2.43%、英伟达 +3.21%、Meta +2.47%），戴尔暴涨 15% 领涨；油价黄金白银集体拉升（布油 95.63、黄金 4388 +1.38%、白银 65.33 +1.93%）；中国金龙指数基本持平（-0.05%）。</p>
+  <p><strong>传导链（四层+断裂点）：</strong>改变什么预期＝AI 服务器需求景气证真（戴尔）+ 加息忧虑缓解（ADP 低于预期）→ 谁受益＝A 股 AI 硬件（存储/服务器/算力/光模块）与超跌成长修复 → 资金先手还是跟风＝9/2 A 股科创50 仍弱、存储未启动，今日看是否补涨 → 逻辑能否持续＝取决于美股科技能否站稳、美债收益率是否继续回落。<b>断裂点：美股 AI 硬件上涨（A）→ A 股存储/算力跟涨（B）→ 扩散为成长板块整体修复（C）必须逐日验证——今日只需先满足"存储/算力放量涨停≥2 家+科创50 止跌"，否则仅停留在单日映射。</b></p>
+
+  <h3 class="sub">S2.3 行业快讯板（广度覆盖）</h3>
+  <table>
+    <tr><th>行业块</th><th>快讯</th><th>映射</th></tr>
+    <tr><td><b>军工</b></td><td>印巴冲突升级（巴总理誓言报复、无人机军备竞赛）；美伊二度空袭伊朗南部（【官方】）；9/2 地面兵装 +6.48%、内蒙一机 2 连板、博云新材机构 4 席净买 7905 万（【行情】）</td><td>→ 地面兵装/无人战机/中兵系/航空装备</td></tr>
+    <tr><td><b>半导体/AI 硬件</b></td><td>戴尔财报暴涨 15%（AI 服务器营收 +58%、Q3 指引 +81%）；费半 +0.45%、美光 +2.43%、英伟达 +3.21%（【外媒】）；美考虑加码半导体关税、在美建厂可豁免（【官方】）</td><td>→ 存储/服务器/算力/光模块；出口链短期承压、国产替代强化</td></tr>
+    <tr><td><b>银行</b></td><td>央行盘后维稳宣言：保持流动性充裕、适度宽松+逆周期调节（【官方】）；9/2 国有大行逆势 +0.57%（【行情】）</td><td>→ 银行高股息防御走强</td></tr>
+    <tr><td><b>油气</b></td><td>美伊二度空袭、布油 95.63（+1.04%）、曾跳上 94；IRGC 誓言报复（【官方】）</td><td>→ 油气开采/油运/油服</td></tr>
+    <tr><td><b>创新药</b></td><td>全球首款泛RAS抑制剂 daraxonrasib 获 FDA 批准，百济神州获中国权益（【外媒】）；先声药业获 FDA 突破性疗法认定（【公告】）</td><td>→ 创新药/百济神州/CXO</td></tr>
+    <tr><td><b>新能源</b></td><td>全国首条全固态电池智能制造中试线年底建成（赛科动力，【产业】）；多家光伏企业竞入储能赛道（通威/隆基，【产业】）</td><td>→ 固态电池/储能；弱信号，观察为主</td></tr>
+    <tr><td><b>农业</b></td><td>9/2 种植业 -5.93%、敦煌种业跌停、金健米业 -6%（【行情】）；全球粮价逻辑仍在但价格已透支</td><td>→ 种植/种业；高位退潮，修复观察</td></tr>
+    <tr><td><b>宏观</b></td><td>8 月 A 股新开户 265.03 万户（环比 +34.97%、同比 +165.21%，【官方】）；美加贸易摩擦（美对加 200 亿美元商品加征 50% 关税，加方 9/8 反制，【外媒】）</td><td>→ 增量资金入市信号；出口链扰动</td></tr>
+  </table>
+
+  <h3 class="sub">S2.4 外媒小作文监测（硬性必写）</h3>
+  <table>
+    <tr><th>标题/媒体/时间</th><th>核心摘要</th><th>类型</th><th>可信度</th><th>证伪/证实路径</th></tr>
+    <tr><td>CNNBC 9/2：Pakistan Vows Strong Retaliation Following India's Missile Strikes（巴基斯坦誓言强力报复）</td><td>巴基斯坦总理谢赫巴兹·谢里夫在社交媒体声明中称印度袭击"懦弱"，誓言以武力回应；印巴陷入无人机军备竞赛。【知情人士型+事件实锤】</td><td>事件实锤</td><td class="up">高（官方声明可查证）</td><td>若 A 股军工（地面兵装/无人战机）续板扩散，则"地缘军工"叙事证实</td></tr>
+    <tr><td>路透/彭博 9/2：中国资产叙事类报道</td><td>当日未检索到针对中国资产的重大做空/看多叙事类报道；8 月 A 股新开户 265 万户（+165%）为官方数据，非外媒叙事。【数据型】</td><td>数据型</td><td class="up">高（官方数据）</td><td>若两融余额回升/新发基金回暖，则"居民资金入市"叙事部分证实</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--muted)">事实层与叙事层分离：上述"可查证事实"（巴总理声明、美伊空袭、新开户数据）可采信；"地缘军工主线"属事件驱动判断，需独立验证。当日无重大外媒做空类小作文。</p>
+
+  <h3 class="sub">S2.5 定价与拥挤度（Price-in）</h3>
+  <table>
+    <tr><th>候选主线</th><th>昨涨幅</th><th>5日累计</th><th>Price-in评估</th><th>盈亏比</th></tr>
+    <tr><td>国防军工</td><td class="up">+6.48%（地面兵装）</td><td>+13.58%</td><td>中高（9/2 启动但仅 1 日，地缘长期化催化未充分定价）</td><td class="up">优（事件延续）</td></tr>
+    <tr><td>存储/AI硬件</td><td>分化</td><td>+5%~8%</td><td>中高（涨价已发酵多月，但戴尔财报是增量催化）</td><td class="up">优（新催化）</td></tr>
+    <tr><td>银行高股息</td><td class="up">+0.57%（逆势）</td><td>+4.62%</td><td>中（防御逻辑，创新高后拥挤度上升）</td><td>中性（防御）</td></tr>
+    <tr><td>油气/资源</td><td>平稳</td><td>+2%~5%</td><td>低（尚未抢跑）</td><td class="up">优（低位待启动）</td></tr>
+    <tr><td>创新药</td><td>平稳</td><td>—</td><td>低（FDA 获批为隔夜新催化，尚未定价）</td><td class="up">优（新催化）</td></tr>
+    <tr><td>农业种植</td><td class="down">-5.93%</td><td>高位回落</td><td>高（前期充分 price-in，9/2 兑现）</td><td class="down">差（二次兑现风险）</td></tr>
+  </table>
+  <p><strong>综合判断：</strong>军工（地缘长期化）与存储/AI硬件（戴尔财报）属"催化强、透支低"的新方向，盈亏比优；创新药（FDA 获批）为隔夜新催化、尚未定价；银行（央行维稳）为防御承接；农业已充分 price-in 且 9/2 兑现，是"二次兑现风险"最高的方向。（表述限定"存在提前交易迹象"，不断言消息泄露。）</p>
+
+  <h3 class="sub">S2.6 主线竞争 + 热点深追（条件模块）</h3>
+  <div style="margin:8px 0">
+    <span class="pill up">国防军工 30%</span>
+    <span class="pill up">存储/AI硬件 25%</span>
+    <span class="pill hold">银行高股息 15%</span>
+    <span class="pill up">油气/资源 15%</span>
+    <span class="pill flat">创新药 10%</span>
+    <span class="pill warn">其他(农业修复/消费/超跌科技) 5%</span>
+  </div>
+  <p><strong>热点深追：国防军工（印巴+美伊地缘长期化，9/3 最可能续强的主线）。</strong>①事件锚点＝巴基斯坦总理誓言对印度导弹打击"强力报复"（印巴无人机军备竞赛）+ 美军 9/2 对伊朗南部沿海新一轮空袭（IRGC 誓言"倍数报复"）——地缘冲突从"单日事件"升级为"双线长期化趋势"，与 9/2 军工启动（地面兵装 +6.48%）同源共振；②产业链拆解＝地面兵装（弹性最高）&gt; 无人战机/中兵系（事件直接受益）&gt; 航空装备（订单预期）&gt; 军工电子（配套）；③受益分层＝L1 地面兵装（内蒙一机/建设工业·A股）、L2 无人战机/中兵系（晶品特装/长城军工·A股）、L3 军工电子/材料（博云新材·A股，机构4席净买）、L4 情绪 Beta（军工 ETF/国防指数）；④板块位置＝军工 9/2 刚启动（1 日），5 日 +13.58% 但 20 日仅 +9.67%，位置不高、量价健康，属"启动→主升候选"；⑤拐点验证信号＝<b>板块成交额放大且龙头（内蒙一机）3 连板、涨停≥3 家则主升启动成立；若高开炸板且 10:30 前无新增涨停则证伪，降级为事件兑现行情</b>。</p>
+  <p><strong>热点深追：存储/AI硬件（戴尔财报+费半上涨，独立行情候选）。</strong>①事件锚点＝戴尔财报暴涨 15%（AI 服务器营收 469.7 亿美元 +58%、Q3 指引营收 +81%）+ 费半 +0.45% + 美光 +2.43%——AI 硬件景气证真，叠加此前 HBM 涨价链（HBM3E 现货 2100 美元为长协 4-5 倍），"业绩兑现"叙事进一步强化；②产业链拆解＝上游存储模组/原厂（直接量价齐升）&gt; 中游服务器/算力（戴尔映射）&gt; 下游光模块/PCB（需求传导）；③受益分层＝L1 存储模组/原厂（江波龙/佰维/德明利/东芯·A股）、L2 服务器/算力（浪潮/中科曙光·A股）、L3 光模块/PCB（中际旭创/沪电·A股）、L4 情绪 Beta（半导体 ETF/科创50）；④板块位置＝半导体自 8 月中旬 AI 硬件回吐后调整 2-3 周、位置不高，但科创50 整体仍弱，存储能否独立于科创走强是关键；⑤拐点验证信号＝<b>板块成交额放大且龙头（模组/算力）涨停≥2 家则独立行情成立；若高开&gt;3% 但 10:30 前无涨停则证伪，降级为美股映射一日游</b>。</p>
+</div>
+
+<!-- ════ S3 今日预测 + 情景推演 ════ -->
+<div class="card">
+  <h2><span class="no">S3</span>今日预测 + 情景推演 <span class="tag">预测参数卡 · 三情景树 · 失效条件</span></h2>
+
+  <h3 class="sub">S3.1 预测参数卡</h3>
+  <div class="grid">
+    <div class="mini"><h4>开盘方向</h4><div class="v up">平开~小幅高开</div><p>上证 +0.1%~+0.4%。隔夜美股反弹+美债回落+央行维稳构成修复催化，但地缘双线+巴尔放鹰+半导体关税压制，多空对冲下小幅高开。</p></div>
+    <div class="mini"><h4>量能中位数</h4><div class="v">1.85 万亿</div><p>区间 1.75~1.95。推导输入＝9/2 成交 1.79 万亿、10 日均约 1.98 万亿；修复日若放量则上探，缩量反抽则回区间下沿。</p></div>
+    <div class="mini"><h4>涨停家数</h4><div class="v">50~70 家</div><p>9/2 情绪转冷（55 家），军工/存储若接力则回升，农业二次兑现则维持低位。</p></div>
+    <div class="mini"><h4>创业板 vs 上证</h4><div class="v down">-0.8%~+0.3%</div><p>成长能否止跌是关键；若存储/算力接力则负超额收窄，若科创续跌则分化加剧。</p></div>
+  </div>
+
+  <h3 class="sub">S3.2 情景推演（三情景树）</h3>
+  <table>
+    <tr><th>情景</th><th>概率</th><th>触发条件</th><th>指数/盘面预期</th><th>应对</th></tr>
+    <tr><td><b class="up">乐观</b></td><td class="up">25%</td><td>军工续板扩散+存储/算力放量接力+量能 ≥1.95 万亿+上证收复 3965</td><td>上证 +0.4%~+0.8%，修复窗口打开、地缘军工+AI硬件双主线共振</td><td>进攻看军工龙头与存储/算力</td></tr>
+    <tr><td><b>中性</b></td><td>50%</td><td>军工高位分歧但银行/油气承接，量能 1.85 万亿上下、板块高低切震荡</td><td>上证 -0.2%~+0.4%，指数稳、结构分化、防御延续</td><td>重个股，守防御主线不追高</td></tr>
+    <tr><td><b class="down">悲观</b></td><td class="down">25%</td><td>军工高开炸板+科创50 续跌+油气高开低走+量能缩至 &lt;1.75 万亿+跌破 3930</td><td>上证冲高回落收绿，修复窗口关闭、成长继续杀跌</td><td>防守优先，关注银行高股息承接</td></tr>
+  </table>
+
+  <h3 class="sub">S3.3 失效条件（Kill Conditions）</h3>
+  <ul>
+    <li>若军工龙头（内蒙一机）高开炸板且板块大面积分化 → "地缘军工主线"判断失效，降级为事件兑现行情。</li>
+    <li>若存储/算力高开超 +3% 但 10:30 前涨停 &lt;3 家、午前冲高回落 → "AI 硬件独立行情"判断失效，降级为美股映射一日游。</li>
+    <li>若油气高开低走、油运不跟、且油价盘前回落至 90 下方 → 地缘催化一日游成立。</li>
+    <li>若开盘低开超 -0.5%、首小时成交 &lt;4500 亿且上证跌破 3930 → "修复"判断失败，转防御整固。</li>
+    <li>反身性风险：科创50 若续跌破位，将加速成长/题材补跌、拖累指数，上修悲观情景。</li>
+  </ul>
+</div>
+
+<!-- ════ S4 预测台账 ════ -->
+<div class="card">
+  <h2><span class="no">S4</span>预测台账 <span class="tag">预测-回归-学习闭环</span></h2>
+  <h3 class="sub">上一期（9/2 盘前）回归验证</h3>
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>实际值(9/2)</th><th>结果</th><th>偏差归因</th></tr>
+    <tr><td>上证开盘</td><td>平开~小幅低开 -0.2%~+0.2%</td><td>低开 -0.42%（开 3963.07）</td><td>⌛部分命中</td><td>方向押对（低开）但幅度超上限一倍，低估地缘+债市双重压制</td></tr>
+    <tr><td>全天成交额</td><td>2.0 万亿（1.90~2.10）</td><td>1.79 万亿</td><td>❌未命中</td><td>低估缩量幅度，地缘避险+成长杀跌下资金观望</td></tr>
+    <tr><td>涨停家数</td><td>55~80 家</td><td>55 家</td><td>✅命中</td><td>区间下沿，情绪转冷但未恐慌</td></tr>
+    <tr><td>主线竞争</td><td>农业30% / 存储25% / 银行20% / 油气15%</td><td>军工(地面兵装+6.48%)第一、农业暴跌、银行逆势</td><td>❌未命中</td><td>漏掉"地缘军工"新主线（印巴+美伊）；农业给最高权重30%却当日暴跌（高位兑现）；银行20%部分兑现</td></tr>
+    <tr><td>情景概率</td><td>乐观20%/中性50%/悲观30%</td><td>悲观情景触发（高位退潮+成长续跌）</td><td>✅命中</td><td>悲观30%命中，农业退潮+成长杀跌符合预设</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:13px"><strong>小结：</strong>5 项中 2 命中、1 部分、2 未命中。量化项（涨停）持续稳定、情景概率命中；核心教训＝主线竞争连续第五期严重偏离（漏掉"地缘军工"新主线）、农业高位权重过高（学习点 15/16/17/19）。故本期按最新隔夜信息更新主线：军工 30%（地缘长期化·已启动）+ 存储/AI硬件 25%（戴尔财报）+ 银行 15% + 油气 15% + 创新药 10%，并纳入"地缘军工 vs AI硬件接力"为核心矛盾。（台账文件 <code>A股/predictions_ledger.md</code> 同步更新）</p>
+</div>
+
+</div>
+<footer>本报告基于公开数据生成，仅供研究参考，不构成投资建议。<br>A股盘前分析 · v2 阅读顺序结构 · 信息截止约 2026-09-03 06:50（北京时间）</footer>
+</body>
+</html>
