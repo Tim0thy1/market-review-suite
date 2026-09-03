@@ -78,8 +78,6 @@ body{background:var(--bg0);color:var(--t0);font-family:'Noto Sans CJK SC','Micro
 <a href="#s2">章二 · 宏观锚点与风险偏好</a>
 <a href="#s3">章三 · 市场主线与资金流向</a>
 <a href="#s4">章四 · 暗线与多空伏击点</a>
-<a href="#s45">章四·五 · 期权情绪与期权墙</a>
-<a href="#s46">章四·六 · 信用利差分析</a>
 <a href="#s5">章五 · 盘面成因拆解</a>
 <a href="#s6">章六 · 叙事如何映射到不同资产</a>
 <a href="#s7">章七 · 多空辩论</a>
@@ -193,27 +191,6 @@ body{background:var(--bg0);color:var(--t0);font-family:'Noto Sans CJK SC','Micro
 <tr><td>分歧中的生还者/掉队者</td><td>生还：NVDA/META（逆势大涨）；掉队：BTC/ETH、高估值软件</td><td>同一天里，AI硬件涨、加密跌、价值微涨——三类资产方向完全不同</td><td>资金极度“择景气而不择风险”：只买有盈利兑现的AI，不买纯叙事的加密</td></tr>
 </table>
 <div class="note"><b>伏击点：</b>①<b>做空10Y二次上探</b>——若明日油价续涨、10Y返回4.82，则本日反弹是逃命窗；②<b>做多NVDA/META的景气接力</b>——只要戴尔AI订单链条的财报验证不缺席，AI硬件的相对强势可延续；③<b>小盘补涨的持续性</b>是全球 risk-on 能否“外扩”的信号灯。</div>
-</section>
-
-<!-- ==================== 章四·五 ==================== -->
-<section class="chp" id="s45">
-<div class="cht"><span class="n">4·5</span>期权情绪与期权墙分析<span class="nm">数据源未覆盖·定性提示</span></div>
-<div class="note"><b>材质声明：</b>本环境<b>未配置 CBOE 期权链采集脚本</b>（Sentinel_Daily_Pro.py 在本地工作区/需要在持券数据源运行），故无法读取自选股的 P/C OI Ratio、P/C Volume Ratio、加权IV、Call/Put Wall、Zero Gamma 与 Gamma 环境判定。本节按技能规范<b>如实标注“期权数据源未覆盖”</b>，仅结合当日量价/VIX做定性推断，不做无数据支撑的 Gamma 数值断言。</div>
-<table class="dt">
-<tr><th>维度</th><th>基于现有信息的定性判断</th><th>证据等级</th></tr>
-<tr><td>整体情绪</td><td>VIX 9/2 回落约6%至15.2~15.4，隐含波动率自9/1恐慌高点（16.34，+9.52%）退潮，但仍高于8月中低位（约14）——期权端处于“恐慌缓解、尚未乐观”的中性偏谨慎区</td><td class="tag tag-y">中（VIX数据）</td></tr>
-<tr><td>波动方向</td><td>若无持续买Call的Sign of Life，20日内IV大概率在油价/10Y扰动下随标的横盘而回落</td><td class="tag tag-y">中（推断）</td></tr>
-<tr><td>短期支撑/阻力</td><td>无真实 OI 数据，不臆造墙位。仅提示：10Y价格行为（9/2盘中4.82→回稳）是比期权墙更硬的短期锚</td><td class="tag tag-r">低（无数据）</td></tr>
-</table>
-<p><b>反证/前瞻：</b>若后续接入 CBOE 数据源，将重点监测 ①SPY/QQQ 现价与 Zero Gamma 的相对位置（Long/Short Gamma环境决定墙体有效性），②NVDA/META 在财报后 Call Wall 是否上移（若有，则AI硬件上方空间被打开），③VIX 是否重返14以下（若，则恐慌彻底出清）。当前阶段不做逆势摸顶/抄底。</p>
-</section>
-
-<!-- ==================== 章四·六 ==================== -->
-<section class="chp" id="s46">
-<div class="cht"><span class="n">4·6</span>信用利差分析<span class="nm">数据源未配置·定性提示</span></div>
-<div class="note"><b>材质声明：</b>本环境<b>未配置 FRED API Key</b>，无法拉取 ICE BofA IG/HY/BBB/CCC OAS 信用利差数据。本节按技能规范<b>如实标注“信用利差数据源未配置”</b>，仅围绕“利率-信用-权益”传导链做定性推演。</div>
-<p><b>从已有宏观数据推断的传导链：</b>油价+5%、10Y盘中触2.75年高（4.82）→ 高分位利率若持续，将抬升高收益债融资成本、压制信用利差收窄空间 → 权益端高久期成长（MSFT/AVGO/AMD/AAPL）本日恰恰领跌，与“利率→信用→高估值资产”的传导方向吻合。</p>
-<p><b>当前判断与反证：</b>由于缺乏信用利差数据，无法区分“利率上行但信用利差收窄（经济向好）”与“利率与利差同步走阔（信用风险上升）”。<b>反证观察：</b>若后续能获取 FRED 数据且出现 HY OAS 明显走阔，则本日权益反弹将被判定为无信用基本面支撑的技术反抽，应下调仓位；若利差平稳，则反抽具备一定成色。</p>
 </section>
 
 <!-- ==================== 章五 ==================== -->
