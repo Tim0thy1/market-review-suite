@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前分析 · 2026-09-04</title>
+<style>
+:root{
+  --bg:#f7f8fa;--card:#ffffff;--rule:#e2e8f0;--ink:#1e293b;--muted:#64748b;
+  --up:#dc2626;--down:#16a34a;--amber:#d97706;--primary:#1e40af;--accent:#1e3a5f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei',-apple-system,'Microsoft YaHei',sans-serif;line-height:1.7;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
+.head{background:linear-gradient(135deg,#eef2ff,#ffffff);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
+.head h1{font-size:24px;letter-spacing:1px;color:var(--primary);margin-bottom:6px}
+.head .sub{color:var(--muted);font-size:13px}
+.headmark{color:var(--amber);font-size:12px;margin-top:8px}
+.badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:var(--primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.amber{background:var(--amber)}
+.badge.green{background:#166534}
+.tagline{margin-top:14px;background:#eef2ff;border-left:4px solid var(--primary);padding:10px 14px;font-size:13px;color:var(--accent);border-radius:0 8px 8px 0}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.card h2{font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card h2 .no{background:var(--primary);color:#fff;font-size:12px;width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.card h2 .tag{font-size:11px;font-weight:500;border:1px solid var(--rule);color:var(--muted);padding:2px 10px;border-radius:20px;background:#f8fafc}
+h3{border-left:4px solid var(--primary);padding-left:10px;margin:16px 0 8px;font-size:15px;color:var(--accent)}
+h3.sub{border-left:4px solid var(--amber);color:var(--amber)}
+p{font-size:14px;color:#334155;margin-bottom:9px}
+p strong{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;color:var(--accent);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--rule)}
+td{padding:8px 12px;border:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.h{color:var(--amber);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin-right:6px;margin-bottom:4px}
+.pill.up{background:#fee2e2;color:var(--up)}
+.pill.flat{background:#eef2ff;color:var(--primary)}
+.pill.hold{background:#dcfce7;color:#166534}
+.pill.warn{background:#fef3c7;color:#92400e}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mini{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.mini h4{font-size:13px;color:var(--muted);margin-bottom:6px}
+.mini .v{font-size:18px;font-weight:800}
+.mini p{font-size:12.5px;margin-top:4px}
+ul{padding-left:22px;font-size:14px;color:#334155;line-height:2}
+.quote{background:#f8fafc;border-left:3px solid var(--amber);padding:10px 14px;margin:10px 0;font-size:13px;color:#475569;border-radius:6px}
+.warn{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400e;margin:12px 0}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 10px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.card{padding:18px 15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <h1>A 股盘前分析 · 今日走势预判</h1>
+  <div class="sub">交易日 2026-09-04（周五）· 状态：盘前 ｜ 信息截止 9/4 07:50（北京时间）</div>
+  <div class="headmark">报告结构（v2）＝ S0 执行摘要+盘前观点 → S1 观察清单 → S2 新闻+资讯+隔夜海外 → S3 今日预测+情景推演 → S4 预测台账</div>
+  <div class="badges">
+    <span class="badge amber">高开 +0.2~+0.6%</span><span class="badge">沃勒转鸽·加息概率63%→50%</span><span class="badge green">美股大涨+英伟达收购Hugging Face</span><span class="badge green">十部门中小科创"十五五"规划</span>
+  </div>
+  <div class="tagline">核心矛盾：近两周压制A股成长最强的宏观变量——"全球债市大抛售+美联储激进加息预期"——昨夜出现边际缓解：美联储理事沃勒转鸽（若通胀延续放缓倾向9月按兵不动），加息概率从63%砍到50%，美债收益率连创阶段新高后高位回落，美股应声大涨（道指+1.18%、纳指+1.40%），黄金暴涨超2%，英伟达约130亿美元收购Hugging Face点燃AI情绪。叠加国内十部门《促进中小企业发展"十五五"规划》落地（中小基金二期+上市培育库），为9/4盘前构成"利率下行成长修复+政策催化"双利好。但9/3 A股仍处地量缩圈冰点（成交1.76万亿、涨停46家、超3500只下跌），主线如何从"培育钻石/保险/航运一日轮动"切换到"超跌成长+黄金"，以及量能能否放大，是今日第一变量。</div>
+</div>
+
+<!-- ════ S0 执行摘要 + 盘前观点 ════ -->
+<div class="card">
+  <h2><span class="no">S0</span>执行摘要 + 盘前观点 <span class="tag">第一屏 · 3分钟建立全貌</span></h2>
+
+  <h3>执行摘要（5行）</h3>
+  <div class="quote" style="border-left-color:var(--primary);background:#eef2ff">
+    ① <b>市场定性：高开为主——"利率下行成长修复+政策催化"型反弹窗口。</b>9/3 上证 3942.09（+0.02%）收平、创业板 +0.01%，成交续缩至 1.76 万亿（阶段地量），涨 1846/跌 3570、涨停 46/跌停 16，属"地量缩圈+冰点"；培育钻石/保险/航运/贵金属一日轮动领涨，军工退潮、农业续跌；<br>
+    ② <b>核心矛盾：隔夜"沃勒转鸽"是否足以打破A股冰点。</b>美股大涨（道指+1.18%、纳指+1.40%）直因加息概率 63%→50%、美债收益率高位回落；黄金暴涨超 2%；英伟达约 130 亿美元收购 Hugging Face 点燃 AI。叠加国内十部门中小科创规划、潘功胜 G20 重申适度宽松，为超跌成长修复提供最强催化——但 A 股此前两周患"强利好→高开回落"反复，量能是否放大是唯一裁决；<br>
+    ③ <b>主线格局：</b>超跌成长修复（半导体/AI算力/存储/CPO/PCB/科创50）30%＞黄金/贵金属（利率下行+避险）20%＞创新药/中药（基药目录+FDA延续）15%＞中小科创/专精特新/北交所（十部门规划）15%＞油气/资源（油价高位）10%＞冰点防御轮动（保险/培育钻石等退潮）10%；<br>
+    ④ <b>量能阈值：≥1.9 万亿</b> 成长修复才站得稳，否则仍属缩量轮动、高开回落风险高；<br>
+    ⑤ <b>最优策略：</b>重个股轻指数——进攻看超跌成长（存储/AI）与黄金的估值修复承接，防守只做低吸不追高开；冰点防御板块（培育钻石/保险/航运）高开兑现、谨防一日游，科创50 若放量收复年线则成长修复确认。
+  </div>
+
+  <h3>盘前观点 · 机构早评式叙事</h3>
+  <p><strong>海外锚点：</strong>隔夜美东 9/3 美股大涨（道指 +1.18%、标普 +1.06%、纳指 +1.40%），直接驱动是美联储理事沃勒现鸽派表态——"近期数据终于显示通胀放缓迹象，若未来两周延续，倾向支持 9 月维持 3.50%-3.75% 区间不变"，把 9 月加息概率从 63% 砍到 50%，美债收益率自阶段高位回落（2 年期 4.34% 跌 3.1bp、10 年期 4.769%、德债 3.359%）。这不止是利率单点缓解，而是给过去两周"全球债市大抛售压制成长估值"这一最强宏观锚点松绑——黄金暴涨超 2%、特斯拉 +5.42%、英伟达 +1.80% 并宣布约 130 亿美元收购 Hugging Face。对 A 股传导方向：强利好——超跌成长（半导体/AI/存储）、黄金贵金属直接受益，风险偏好修复窗口打开。</p>
+  <p><strong>盘面定性：</strong>A 股 9/3 上证 3942.09 收平（成交 1.76 万亿，续创阶段地量），属"地量缩圈+冰点"。技术位看：上证站稳 20 日线（约 3900 上方），上方压力 3965-3990、回踩支撑 3930-3940；创业板 3312 仍留 9/2 跳空缺口（3347-3350），缺口回补与否是成长修复第一信号；科创50 1611 已破全部短中期均线、处年线附近，是超跌反弹弹性最大的方向。<span class="h">今日若高开放量收复 3965、创业板回补缺口，则成长修复确立；若高开缩量回落，则冰点延续、回落至"培育钻石/保险式一日轮动"。</span></p>
+  <p><strong>结构行为：</strong>近两日 A 股冰点下资金极度孱弱，仅在"培育钻石/保险/航运/贵金属"等防御+超跌纯轮动方向短打，军工（9/3 -0.59%）与农业续跌。隔夜"利率下行+AI 催化"改变了这样的结构底色：超跌成长（存储/AI/半导体/科创50）有望承接最强的估值修复资金，黄金贵金属承接"美联储转鸽+美元美债松动"配置需求。跷跷板核心＝场内存量能否在"低位防御轮动"与"超跌成长修复"之间切换——若成长放量吸金，则防御轮动退潮；若量能不配合，则两者皆弱。</p>
+  <p><strong>今日取向：</strong>重个股轻指数、进攻看超跌成长（存储/AI）与黄金、政策催化看中小科创。<b>条件分支：若存储/AI 放量高开、科创50 收复年线且首小时两市 &gt;5500 亿则成长修复兑现（转进攻）；若高开缩量、10:30 前科创50 翻绿则成长修复一日游，维持冰点防御轮动。</b></p>
+</div>
+
+<!-- ════ S1 观察清单 ════ -->
+<div class="card">
+  <h2><span class="no">S1</span>观察清单 <span class="tag">全篇验证锚 · 可证伪</span></h2>
+  <p style="font-size:13px;color:var(--muted)">按"利好的真伪/延续"分层，盘中逐条对照。吻合=逻辑成立、背离=降级，用于修正而非事后解释。</p>
+
+  <h3 class="sub">逐条验证信号</h3>
+  <table>
+    <tr><th>#</th><th>观察对象</th><th>看什么（可证伪信号）</th><th>验证含义</th></tr>
+    <tr><td>1</td><td><b>存储/AI/半导体</b>（利率下行+英伟达收购·L1/L2·A股）</td><td>存储模组/算力是否放量高开、涨停家数、科创50 年线得失</td><td>放量涨停≥3 家且科创50 收复年线=成长修复确立；高开&gt;3% 但 10:30 前翻绿/无涨停=一日游</td></tr>
+    <tr><td>2</td><td><b>黄金/贵金属</b>（美联储转鸽·L1·A股）</td><td>是否承接、能否续强扩散</td><td>沃勒鸽派+金价暴涨2%为硬催化；若高开兑现回落则短期拥挤</td></tr>
+    <tr><td>3</td><td><b>中小科创/专精特新/北交所</b>（十部门规划·L1/L2·A股）</td><td>北证50 能否止跌回升、专精特新板块涨停家数</td><td>北交所放量修复+涨停扩散=政策催化落地；高开回落=情绪弱</td></tr>
+    <tr><td>4</td><td><b>创新药/中药</b>（基药目录9/1+FDA延续·L1/L2·A股）</td><td>百济/恒瑞/药茅能否异动</td><td>龙头异动+板块跟涨=催化发酵；高开回落=利好兑现</td></tr>
+    <tr><td>5</td><td><b>油气/资源</b>（油价91-95高位·L1·A股）</td><td>能否承接、油价盘前是否稳</td><td>普京暗示谈判+油价结束三连涨=反身性风险，高位油气易高开低走</td></tr>
+    <tr><td>6</td><td><b>冰点防御轮动</b>（培育钻石/保险/航运·L4·A股）</td><td>是否一日游退潮</td><td>高位兑现+成长吸金=轮动退潮；若续强反证今日仍冰点</td></tr>
+    <tr><td>7</td><td><b>创业板缺口</b></td><td>能否回补 3347-3350 缺口</td><td>回补=成长修复真突破；留缺口=反弹偏弱</td></tr>
+    <tr><td>8</td><td><b>全天量能</b></td><td>能否突破 <b>≥1.9 万亿</b>（9/3：1.76 万亿）</td><td>放量=冰点打破、成长修复可信；<1.8 万亿=缩量轮动、高开回落</td></tr>
+  </table>
+
+  <h3 class="sub">主线映射快照（生命周期）</h3>
+  <table>
+    <tr><th>主线</th><th>层级</th><th>阶段</th><th>评分</th><th>今日增量</th></tr>
+    <tr><td>存储/AI算力/半导体（超跌成长）</td><td>长(年级)</td><td><span class="pill up">冰点超跌→修复观察(估值修复)</span></td><td class="up">新/升级观察</td><td>隔夜美股科技大涨、英伟达约130亿美元收购Hugging Face、美债收益率高位回落；利率下行直接缓解成长估值压制</td></tr>
+    <tr><td>黄金/贵金属</td><td>中(季级)</td><td><span class="pill up">避险+利率下行共振(启动)</span></td><td class="up">新</td><td>美联储沃勒转鸽（加息概率63%→50%）、黄金暴涨超2%；美元/美债松动</td></tr>
+    <tr><td>创新药/中药</td><td>中(季级)</td><td><span class="pill flat">催化延续(事件驱动)</span></td><td>延续</td><td>《2026年版国家基本药物目录》9/1实施纳入更多创新药/独家品种；百济/先声 FDA 催化延续</td></tr>
+    <tr><td>中小科创/专精特新/北交所</td><td>中(季级)</td><td><span class="pill flat">政策催化(新启动)</span></td><td class="up">新</td><td>工信部/央行/证监会等十部门《中小企业"十五五"规划》：中小基金二期+上市培育库+加大直接融资</td></tr>
+    <tr><td>油气/资源</td><td>短(事件级)</td><td><span class="pill warn">高位待兑现(地缘催化)</span></td><td>—/兑现观察</td><td>WTI~91、布油~95.5（本周+7%）；但普京暗示愿谈判、油价结束三连涨</td></tr>
+    <tr><td>培育钻石/保险/航运（冰点轮动）</td><td>短(轮动级)</td><td><span class="pill warn">高位一日游(退潮观察)</span></td><td>—/退潮</td><td>9/3 已小幅领涨；若成长吸金则今日大概率兑现退潮</td></tr>
+  </table>
+
+  <div class="warn">⚠️ 若开盘高开但存储/AI 无承接、科创50 翻绿且量能&lt;1.8 万亿，即使隔夜利好再强，"成长修复"亦不成立——按冰点缩量轮动处理，上修悲观情景概率，防高开回落。</div>
+</div>
+
+<!-- ════ S2 新闻 + 资讯 + 隔夜海外 ════ -->
+<div class="card">
+  <h2><span class="no">S2</span>新闻 + 资讯 + 隔夜海外市场表现 <span class="tag">信息全景 · 四维评估</span></h2>
+
+  <h3 class="sub">S2.1 市场状态基准（一日起点）</h3>
+  <div class="grid">
+    <div class="mini"><h4>趋势</h4><div class="v" style="color:var(--amber)">地量缩圈·冰点</div><p>上证 3942 站稳 20 日线（约 3900 上方），3580-3990 箱体内缩量整理；创业板留 9/2 跳空缺口、科创50 破全部短中期均线至年线附近，指数弱结构强。</p></div>
+    <div class="mini"><h4>情绪</h4><div class="v" style="color:var(--amber)">冰点·超3500只下跌</div><p>9/3 涨停 46/跌停 16、涨 1846/跌 3570（超 3500 只下跌）、封板率 71.8%，赚钱效应极弱、主线缺失呈纯轮动，情绪处冰点边缘。</p></div>
+    <div class="mini"><h4>风险偏好</h4><div class="v" style="color:var(--amber)">risk-off 防御</div><p>冰点期资金仅在防御/超跌纯轮动方向短打；隔夜美股大涨+美债回落或边际修复风险偏好、利好成长。</p></div>
+    <div class="mini"><h4>风格</h4><div class="v">等待切换</div><p>9/3 培育钻石/保险/航运/贵金属等资源防御领涨、半导体/传媒领跌；今日看能否从"防御轮动"切换至"超跌成长修复"。</p></div>
+    <div class="mini"><h4>资金</h4><div class="v" style="color:var(--amber)">存量博弈·待放量</div><p>成交 1.76 万亿（续缩 323 亿，阶段地量），处 5 日均值下方；存量博弈下缺乏新增资金，量能是今日唯一裁决。</p></div>
+    <div class="mini"><h4>波动</h4><div class="v">高(隔夜变量大)</div><p>冰点后遭遇重大隔夜利好，高开后日内波动可能放大，成长高波动方向（科创50）弹性最大。</p></div>
+  </div>
+
+  <h3 class="sub">S2.2 隔夜核心事件 · 四维评估</h3>
+  <table>
+    <tr><th>事件（来源）</th><th>影响力</th><th>证据</th><th>A 股映射</th><th>类别</th></tr>
+    <tr><td><b>美联储理事沃勒转鸽 + 美股大涨</b>：道指 +1.18%（53686.11）、标普 +1.06%（7747.71）、纳指 +1.40%（26584.06）；沃勒称"若通胀延续放缓倾向 9 月按兵不动（维持 3.50%-3.75%）"，9 月加息概率 63%→50%（每经/全球市场播报/WSJ）</td><td class="up">极高</td><td>高·价格实锤</td><td>利率下行直接缓解成长估值压制，利好超跌成长/黄金；风险偏好修复</td><td>剧情推进+放大器</td></tr>
+    <tr><td><b>英伟达约 130 亿美元收购 Hugging Face</b>：含 10 亿美元员工股权留任计划，维持平台开放性（每经/环球市场播报）</td><td class="up">高</td><td>高·并购实锤</td><td>A 股 AI/算力/半导体情绪提振，AI 应用与开源生态映射</td><td>剧情推进</td></tr>
+    <tr><td><b>黄金暴涨超 2%、特斯拉 +5.42%</b>：美元/美债松动+降息预期升温，成长与避险同涨（新浪/微博）</td><td class="up">高</td><td>高·价格实锤</td><td>A 股黄金/贵金属估值修复；新能源车/AI智驾情绪提振</td><td>剧情推进</td></tr>
+    <tr><td><b>油价高位震荡</b>：WTI 收约 91、布油约 95.5（结束三连涨）；伊朗称打击美国基地、俄罗斯普京暗示愿谈判（路透/新浪）</td><td class="h">中高</td><td>高·价格+表态</td><td>油气开采/油运利好但高位易高开低走；普京和谈迹象限制上方空间</td><td>风险事件</td></tr>
+    <tr><td><b>初请失业金 20.6 万人</b>：预期 20.5 万、前值修正 20.4 万（每经）</td><td class="h">中</td><td>高·官方数据</td><td>劳动力温和降温，弱化加息动力→强化"沃尔转鸽"叙事利好</td><td>数据</td></tr>
+    <tr><td><b>十部门《促进中小企业"十五五"规划》</b>：工信部/央行/证监会等，设立国家中小企业发展基金二期、搭建优质企业上市培育库、加大直接融资、投早投小投科技（上证早知道/新浪）</td><td class="up">高</td><td>高·官方文件</td><td>专精特新/创投/中小科创/北交所政策催化；中长期利好直接融资</td><td>政策风向</td></tr>
+    <tr><td><b>潘功胜 G20 表态</b>：重申继续实施适度宽松货币政策、无意竞争性贬值，稳定中长期政策预期（股海浮沉/央视）</td><td class="h">中高</td><td>高·官方表态</td><td>稳定人民币汇率预期、顺周期/银行利好；整体风险偏好托底</td><td>政策风向</td></tr>
+    <tr><td><b>富时中国 A50 纳入中微公司、生益科技</b>（9/1 生效）</td><td class="h">中</td><td>高·指数变动</td><td>半导体设备/PCB 龙头获被动资金增量，利好存储/AI 硬件</td><td>资金面</td></tr>
+  </table>
+
+  <h3 class="sub">隔夜重点深挖：沃勒转鸽 → A 股超跌成长估值修复传导链</h3>
+  <p><strong>事件→Surprise：</strong>美东 9/3 美联储理事沃勒讲话是本轮"全球债市抛售→压制成长"主线的首次权威鸽派信号——此前市场连续多日为加息预期定价，本次"若通胀延续放缓倾向 9 月按兵不动"直接改变利率路径预期，9 月加息概率从 63% 砍到 50%，Surprise 高。对 A 股而言，这相当于给过去两周压制半导体/AI 估值的最强宏观锚点（美债 4.8%、日债 3%、德债 3.3% 集体新高）松绑。</p>
+  <p><strong>资产反应：</strong>美股科技普涨（英伟达 +1.80%、特斯拉 +5.42%），黄金暴涨超 2%（美元与美债利率松动），美债收益率高位回落（2 年期 4.34% 跌 3.1bp、10 年期 4.769%）。中国金龙指数 9/3 大体平稳——隔夜叙事目前是"利率+避险"主导，中国资产自身尚未被大幅定价，存在 A 股补涨空间。</p>
+  <p><strong>传导链（四层+断裂点）：</strong>改变什么预期＝美联储加息路径趋缓、全球高利率对成长估值压制缓解 → 谁受益＝A 股超跌成长（存储/半导体/AI算力/CPO/PCB/科创50）估值修复 + 黄金贵金属 → 资金先手还是跟风＝9/3 A 股仍冰点、存储/科创未启动，属隔夜新催化、尚未被定价，今日看补涨 → 逻辑能否持续＝取决于美股科技能否站稳、美债收益率是否延续回落、A 股能否放量。<b>断裂点：隔夜美股利率下行（A）→ A 股成长估值修复（B）→ 放量扩散为成长板块整体反弹（C）必须逐级验证——今日只需先满足"存储/AI 放量涨停≥3 家+科创50 收复年线+两市量能≥1.9 万亿"，否则仅停留在隔夜映射、极易高开回落。</b></p>
+
+  <h3 class="sub">S2.3 行业快讯板（广度覆盖）</h3>
+  <table>
+    <tr><th>行业块</th><th>快讯</th><th>映射</th></tr>
+    <tr><td><b>AI/半导体/算力</b></td><td>英伟达约130亿美元收购Hugging Face（【外媒】）；美股费城半导体/科技大涨、特斯拉+5.42%（【行情】）；富时A50纳入中微公司/生益科技（【指数】）</td><td>→ 存储/算力/AI应用/半导体设备与PCB；估值修复+AI并购情绪</td></tr>
+    <tr><td><b>宏观/美债</b></td><td>沃勒转鸽、9月加息概率63%→50%、美债收益率高位回落（2Y 4.34%/10Y 4.769%）（【外媒】）；初请失业金20.6万（【官方】）；潘功胜G20重申适度宽松（【官方】）</td><td>→ 超跌成长估值修复；黄金；顺周期</td></tr>
+    <tr><td><b>中小科创</b></td><td>工信部/央行/证监会等十部门印发《中小企业"十五五"规划》：中小基金二期、上市培育库、加大直接融资投早投小（【官方】）</td><td>→ 专精特新/创投/北交所/中小科创</td></tr>
+    <tr><td><b>医药</b></td><td>《2026年版国家基本药物目录》9/1实施，纳入更多创新药与独家品种（【官方】）；百济/先声 FDA 催化延续</td><td>→ 创新药/中药/医药商业</td></tr>
+    <tr><td><b>油气/地缘</b></td><td>WTI~91、布油~95.5（结束三连涨）；伊朗称打击美军基地、普京暗示愿谈判限制涨幅（【外媒】）</td><td>→ 油气开采/油运；高位易高开低走，反身性风险</td></tr>
+    <tr><td><b>黄金/资源</b></td><td>黄金暴涨超2%，美元与美债松动（【行情】）</td><td>→ 黄金/贵金属估值修复</td></tr>
+  </table>
+
+  <h3 class="sub">S2.4 外媒小作文监测（硬性必写）</h3>
+  <table>
+    <tr><th>标题/媒体/时间</th><th>核心摘要</th><th>类型</th><th>可信度</th><th>证伪/证实路径</th></tr>
+    <tr><td>WSJ/CNBC 9/3：Waller signals openness to hold rates in September（沃勒示意9月或按兵不动）</td><td>美联储理事沃勒称若未来两周通胀延续放缓则倾向支持9月维持利率不变，9月加息概率从63%降至50%。【官方表态+机构解读】</td><td>官方表态底部</td><td class="up">高（讲话原文可查证）</td><td>若 9/4-9/5 美债收益率续跌、美股科技续涨，则"转鸽"叙事证实；若后续官员放鹰回摆，则概率重新上修</td></tr>
+    <tr><td>路透 9/4：Putin hints at peace talks as US-Iran tensions persist（普京暗示谈判而美伊仍紧张）</td><td>普京释放和谈开放信号限制油价涨幅（布油结束三连涨收95.5），但美伊重新针锋相对打击致霍尔木兹供应风险仍存。【知情人士/官方表态】</td><td>地缘表态</td><td class="up">高（俄乌/美伊均可跟踪）</td><td>若油价回落至90下方则"地缘缓和"叙事展开，油气高位退潮；若美伊再度升级则油价上冲</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--muted)">事实层与叙事层分离：上述"可查证事实"（沃勒讲话、加息概率、普京表态、油价）可采信；"成长修复主线"属隔夜映射判断，需独立验证。当日无重大中国资产做空类小作文。</p>
+
+  <h3 class="sub">S2.5 定价与拥挤度（Price-in）</h3>
+  <table>
+    <tr><th>候选主线</th><th>昨涨幅</th><th>5日累计</th><th>Price-in评估</th><th>盈亏比</th></tr>
+    <tr><td>存储/AI/半导体（超跌成长）</td><td class="down">-0.27%（半导体领跌）</td><td>弱/回吐</td><td>低（隔夜利率+AI催化为新增量，9/3 冰点未启动）</td><td class="up">优（新催化·低估修复）</td></tr>
+    <tr><td>黄金/贵金属</td><td class="up">+2.18%（9/3领涨）</td><td>强</td><td>中低（已小幅启动，但"美联储转鸽"是增量）</td><td class="up">优（新催化）</td></tr>
+    <tr><td>创新药/中药</td><td>平稳</td><td>—</td><td>低中（基药目录+FDA延续为事件催化）</td><td>中性</td></tr>
+    <tr><td>中小科创/北交所</td><td class="down">-1.61%（北证50）</td><td>回落</td><td>低（十部门规划为新增催化，尚未定价）</td><td class="up">优（政策新催化）</td></tr>
+    <tr><td>油气/资源</td><td>平稳</td><td>+7%（本周油价）</td><td>高（油价已高位透支，普京示和+油价结束三连涨）</td><td class="down">差（高开兑现风险）</td></tr>
+    <tr><td>培育钻石/保险/航运（冰点轮动）</td><td class="up">+2~4%（9/3领涨）</td><td>短</td><td>高（一日轮动已兑现）</td><td class="down">差（退潮风险）</td></tr>
+  </table>
+  <p><strong>综合判断：</strong>超跌成长（存储/AI）、黄金、中小科创属"催化强、透支低"的隔夜新方向，盈亏比优；创新药/中药为事件催化、尚未充分定价；油气与冰点轮动（培育钻石/保险/航运）已高位price-in，是"高开兑现/退潮"风险最高方向。（表述限定"存在提前交易迹象"，不断言消息泄露。）</p>
+
+  <h3 class="sub">S2.6 主线竞争 + 热点深追（条件模块）</h3>
+  <div style="margin:8px 0">
+    <span class="pill up">存储/AI/半导体(超跌成长) 30%</span>
+    <span class="pill up">黄金/贵金属 20%</span>
+    <span class="pill flat">创新药/中药 15%</span>
+    <span class="pill flat">中小科创/专精特新/北交所 15%</span>
+    <span class="pill warn">油气/资源 10%</span>
+    <span class="pill warn">冰点防御轮动(培育钻石/保险/航运) 10%</span>
+  </div>
+  <p><strong>热点深追：存储/AI/半导体——"利率下行估值修复"最直接受益的超跌成长。</strong>①事件锚点＝美联储沃勒转鸽（加息概率 63%→50%、美债收益率高位回落）+ 英伟达约 130 亿美元收购 Hugging Face + 美股科技大涨——过去两周压制 A 股半导体/AI 估值的最强宏观锚点（全球债市抛售）边际松绑，属"利率敏感+AI 情绪"双重催化的产业级信号；②产业链拆解＝存储模组/原厂（估值修复弹性最大）&gt; 算力/AI 应用（英伟达收购映射）&gt; 半导体设备/PCB（富时 A50 纳入中微/生益+国产替代）&gt; 光模块/CPO（超跌反抽）；③受益分层＝L1 存储/算力（江波龙/佰维/德明利/浪潮·A股）、L2 半导体设备/PCB（中微公司/生益科技·A股，A50 纳入）、L3 光模块/CPO（中际旭创/新易盛·A股）、L4 情绪 Beta（半导体 ETF/科创50）；④板块位置＝半导体 9/3 领跌、处冰点超跌位，科创50 破全部短中期均线至年线附近，属"调整充分+新催化出现"的拐点候选区；⑤拐点验证信号＝<b>板块放量高开、存储/算力涨停≥3 家、科创50 收复年线（约 1610-1630）则估值修复确立；若高开&gt;3% 但 10:30 前翻绿/无涨停且量能&lt;1.8 万亿则证伪，降级为隔夜映射一日游。</b></p>
+  <p><strong>热点深追：黄金/贵金属——美联储转鸽+避险双共振的确定性方向。</strong>①事件锚点＝沃勒鸽派表态（9 月加息概率 63%→50%）+ 黄金隔夜暴涨超 2%，美元与美债利率同步松动——"避险+利率下行"双驱动共振；②产业链拆解＝金矿/黄金股（价格弹性）&gt; 白银/铜（工业+金融属性）&gt; 黄金 ETF；③受益分层＝L1 黄金矿业（山东黄金/中金黄金·A股）、L2 贵金属相关（白银有色·A股）、L3 黄金 ETF（黄金ETF·A股）；④板块位置＝9/3 已小幅领涨 +2.18%，但"美联储转鸽"为隔夜新增量、喘息未充分定价，位置不高；⑤拐点验证信号＝<b>若金价续涨且 A 股黄金板块放量涨停≥2 家则主升延续；若高开兑现回落且金价滞涨则短期拥挤、观察回调。</b></p>
+</div>
+
+<!-- ════ S3 今日预测 + 情景推演 ════ -->
+<div class="card">
+  <h2><span class="no">S3</span>今日预测 + 情景推演 <span class="tag">预测参数卡 · 三情景树 · 失效条件</span></h2>
+
+  <h3 class="sub">S3.1 预测参数卡</h3>
+  <div class="grid">
+    <div class="mini"><h4>开盘方向</h4><div class="v up">高开 +0.2%~+0.6%</div><p>隔夜美股大涨+沃勒转鸽（美债回落）+英伟达收购+国内中小科创规划为强第一输入，属近两周最强高开催化，但冰点缩量环境下高开幅度或受限。</p></div>
+    <div class="mini"><h4>量能中位数</h4><div class="v">1.85 万亿</div><p>区间 1.78~1.95。推导输入＝9/3 成交 1.76 万亿（阶段地量）、5 日均约 1.8 万亿；成长修复若承接则上探，冰点缩量延续则维持区间下沿。是否放量是今日唯一裁决。</p></div>
+    <div class="mini"><h4>涨停家数</h4><div class="v">55~80 家</div><p>9/3 极弱（46 家）；若存储/AI/黄金承接接力则回升，若高开回落则维持低位。</p></div>
+    <div class="mini"><h4>创业板 vs 上证</h4><div class="v up">+0.3%~+1.2%</div><p>成长能否回补 9/2 缺口是关键；若存储/AI 承接则创业板正超额，若科创续跌则分化延续。</p></div>
+  </div>
+
+  <h3 class="sub">S3.2 情景推演（三情景树）</h3>
+  <table>
+    <tr><th>情景</th><th>概率</th><th>触发条件</th><th>指数/盘面预期</th><th>应对</th></tr>
+    <tr><td><b class="up">乐观</b></td><td class="up">30%</td><td>成交放大≥1.95 万亿、存储/AI 放量涨停扩散、科创50 收复年线、黄金续强、上证收复 3965</td><td>上证 +0.5%~+1.0%，成长修复+黄金共振、冰点打破</td><td>进攻看存储/AI 与科创50，黄金配置不动摇</td></tr>
+    <tr><td><b>中性</b></td><td>50%</td><td>高开后成长分化、量能 1.8~1.9 万亿、黄金/创新药承接、创业板回补部分缺口</td><td>上证 +0.2%~+0.6%，指数温和、结构转向超跌成长与资源</td><td>重个股，成长低吸不追高开</td></tr>
+    <tr><td><b class="down">悲观</b></td><td class="down">20%</td><td>高开缩量（&lt;1.8 万亿）、10:30 前科创50 翻绿、存储/AI 无承接、跌破 3930</td><td>上证高开回落收平/微跌，冰点延续、成长修复一日游</td><td>防御优先，谨防冰点防御轮动退潮补跌</td></tr>
+  </table>
+
+  <h3 class="sub">S3.3 失效条件（Kill Conditions）</h3>
+  <ul>
+    <li>若高开&gt;0.6% 但首小时两市 &lt;5000 亿、10:30 前存储/AI 无涨停且科创50 翻绿 → "超跌成长修复"判断失效，降级为隔夜映射一日游。</li>
+    <li>若量能全天 &lt;1.8 万亿 → 冰点缩量延续，成长修复大概率不成立，上修悲剧概率。</li>
+    <li>若油气高开低走、油运不跟、且油价盘中回落至 90 下方 → 地缘催化退潮、油气高位兑现。</li>
+    <li>若培育钻石/保险/航运等冰点轮动昨日领涨板块高开炸板 → 印证纯轮动退潮、不追高。</li>
+    <li>反身性风险：若 9/3 领涨的贵金属/培育钻石等资源防御高开兑现，可能拖累指数回落，需看黄金是否独立承接。</li>
+  </ul>
+</div>
+
+<!-- ════ S4 预测台账 ════ -->
+<div class="card">
+  <h2><span class="no">S4</span>预测台账 <span class="tag">预测-回归-学习闭环</span></h2>
+  <h3 class="sub">上一期（9/3 盘前）回归验证</h3>
+  <table>
+    <tr><th>预测项</th><th>预测值</th><th>实际值(9/3)</th><th>结果</th><th>偏差归因</th></tr>
+    <tr><td>上证开盘</td><td>平开~小幅高开 +0.1%~+0.4%</td><td>平开微涨（开 3952.79，收 +0.02%）</td><td>✅命中</td><td>方向命中；隔夜美股反弹+美债回落+央行维稳为第一输入，多空对冲下小幅高开符合预判</td></tr>
+    <tr><td>全天成交额</td><td>1.85 万亿（1.75~1.95）</td><td>1.76 万亿（低于下沿）</td><td>❌未命中</td><td>连续第二期低估缩量，地量缩圈阶段量能需参考 5 日递减趋势主动下修</td></tr>
+    <tr><td>涨停家数</td><td>50~70 家</td><td>46 家（低于下沿）</td><td>⌛部分命中</td><td>冰点期缩量，涨停随之回落至低位，区间下沿略超</td></tr>
+    <tr><td>主线竞争</td><td>军工30% / 存储AI硬件25%</td><td>培育钻石/保险/航运/贵金属；军工-0.59%退潮</td><td>❌未命中</td><td>冰点期无主线，前日轮动方向（军工）一日反转、AI 硬件未承接（港股科技+半导体传导弱）</td></tr>
+    <tr><td>情景概率</td><td>乐观25%/中性50%/悲观25%</td><td>实际落中性（缩量整理）</td><td>✅命中</td><td>中性情景（分化震荡）兑现</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:13px"><strong>小结：</strong>5 项中 2 命中、1 部分、2 未命中。开盘方向"以隔夜海外实盘为第一输入"修正连续两期见效（9/2 低开、9/3 平开微涨）；命中的是计价面、落空的是择向面——冰点无主线时段，主线竞争本就不具高可信度，应降档为观望。故本期据隔夜最大新增量（沃勒转鸽+美股大涨+英伟达收购 + 十部门中小科创规划）更新主线：超跌成长修复 30% + 黄金/贵金属 20% + 创新药/中药 15% + 中小科创 15% + 油气 10% + 冰点轮动退潮 10%，核心矛盾转为"利率下行成长修复 vs 冰点缩量高开回落"。（台账文件 <code>A股/predictions_ledger.md</code> 同步更新）</p>
+</div>
+
+</div>
+<footer>本报告基于公开数据生成，仅供研究参考，不构成投资建议。<br>A股盘前分析 · v2 阅读顺序结构 · 信息截止约 2026-09-04 07:50（北京时间）</footer>
+</body>
+</html>
