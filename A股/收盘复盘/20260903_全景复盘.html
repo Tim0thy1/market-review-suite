@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-09-03 A股全景复盘</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f7f9fc;--card:#ffffff;--line:#e2e8f0;--ink:#1e293b;--sub:#64748b;--accent:#1e40af;--accent2:#1e3a5f;--red:#dc2626;--green:#16a34a;--amber:#d97706;--amberbg:#fffbeb}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:28px 16px 60px;max-width:1080px;margin:0 auto}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:var(--accent2)}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:var(--accent2);padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#f1f5f9;color:var(--accent)}
+header{padding:10px 0 6px}
+h1{font-size:26px;color:var(--accent2);letter-spacing:.5px}
+.sub{color:var(--sub);font-size:14px;margin-top:4px}
+.headmark{font-size:12.5px;color:var(--sub);background:#f1f5f9;border-radius:6px;padding:8px 12px;margin-top:10px;border:1px solid var(--line)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{background:var(--accent);color:#fff;font-size:12.5px;padding:4px 12px;border-radius:20px}
+.badge.amber{background:var(--amber);color:#fff}
+.badge.green{background:var(--green);color:#fff}
+.badge.gray{background:#475569;color:#fff}
+.tagline{font-size:13.5px;color:#334155;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:16px 0 8px}
+.section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:18px 0;box-shadow:0 4px 16px rgba(15,23,42,.06)}
+.section h2{font-size:19px;color:var(--accent2);border-bottom:2px solid #e2e8f0;padding-bottom:10px;margin-bottom:14px}
+.section h2 .no{color:var(--accent);font-size:14px;font-weight:700;margin-right:8px}
+.section h3{font-size:15px;color:var(--accent);margin:16px 0 8px}
+.prose{font-size:14px;color:#334155;line-height:1.85;text-align:justify}
+.prose p{margin-bottom:12px}
+.prose b{color:var(--accent2)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{background:#f1f5f9;color:var(--accent2);padding:8px 10px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid #eef2f7;vertical-align:top}
+tr:hover td{background:#f8fafc}
+.up{color:var(--red);font-weight:600}.down{color:var(--green);font-weight:600}.neu{color:var(--sub)}
+.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:4px}
+.tg-red{background:#fee2e2;color:#b91c1c}.tg-green{background:#dcfce7;color:#15803d}.tg-amber{background:#fef3c7;color:#92400e}.tg-blue{background:#dbeafe;color:#1d4ed8}.tg-gray{background:#e2e8f0;color:#475569}
+.chart{width:100%;height:300px;margin:12px 0}
+.evidence{display:inline-block;font-size:11px;background:#f1f5f9;border:1px solid var(--line);color:var(--sub);border-radius:4px;padding:1px 6px;margin-left:6px}
+.flow{display:inline-block;background:#fef3c7;color:#92400e;font-size:12px;border-radius:6px;padding:2px 8px;margin:6px 2px;border:1px solid #fde68a}
+.dive-card{background:linear-gradient(135deg,rgba(30,64,175,.03),rgba(30,58,95,.05));border:1px solid rgba(30,64,175,.15);border-radius:10px;padding:16px;margin-bottom:14px}
+.dive-card h3{font-size:15px;color:var(--accent);margin-bottom:12px;border-bottom:1px solid rgba(30,64,175,.1);padding-bottom:8px}
+.dive-layer{margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.layer-tag{display:inline-block;padding:2px 10px;border-radius:4px;font-size:12px;font-weight:600;background:rgba(30,64,175,.1);color:var(--accent);flex-shrink:0;min-width:56px;text-align:center}
+.dive-layer p{margin:0;font-size:13px;line-height:1.6;color:#374151}
+.bull,.bear{border-left:4px solid;padding:12px 14px;border-radius:8px;margin:10px 0;background:#f8fafc}
+.bull{border-color:#22c55e}.bear{border-color:#ef4444}
+.bull h4{color:#15803d}.bear h4{color:#b91c1c}
+.bull li,.bear li{font-size:13px;margin:4px 0 4px 16px;color:#334155}
+.verdict{background:var(--accent2);color:#fff;border-radius:8px;padding:12px 16px;font-size:13px;margin-top:10px}
+.verdict b{color:#fde68a}
+.footer{margin-top:24px;color:var(--sub);font-size:12px;text-align:center;border-top:1px solid var(--line);padding-top:16px}
+.kill{background:#fff5f5;border:1px solid #fecaca;border-radius:8px;padding:12px 14px;margin:8px 0}
+.kill b{color:#b91c1c}
+@media(max-width:720px){h1{font-size:22px}.section{padding:16px}}
+</style>
+</head>
+<body>
+
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#sec0">章零 市场底层状态</a>
+<a href="#sec1">章一 多时间维度全景</a>
+<a href="#sec2">章二 宏观锚点与风险偏好</a>
+<a href="#sec3">章三 市场主线与资金流向</a>
+<a href="#sec5">章五 盘面成因拆解</a>
+<a href="#sec6">章六 叙事如何映射</a>
+<a href="#sec7">章七 多空力量对比</a>
+<a href="#sec87">章8.7 持续性故事线</a>
+<a href="#sec10">章十 前瞻观察与风险</a>
+<a href="#sec14">章十四 仓位管理</a>
+<a href="#sec15">章十五 结论式总结</a>
+<a href="#sec16">章十六 预测台账与回归</a>
+</nav>
+</div>
+
+<header>
+<h1>A 股全景复盘 · 指数红、个股绿：地量十字星的缩圈整理</h1>
+<div class="sub">交易日 2026-09-03（周四）· 状态：收盘复盘 ｜ 数据时点：9/3收盘</div>
+<div class="headmark">报告框架：章零~章十六全景复盘（动态折叠） ｜ State-Trigger-Flow 因果链 ｜ 归因遵"真实数据源"铁律 + 全球债市核心锚点</div>
+<div class="badges">
+<span class="badge">沪指+0.02% 收3942.09</span>
+<span class="badge">成交1.76万亿 再创阶段地量</span>
+<span class="badge amber">培育钻石/保险/航运领涨</span>
+<span class="badge gray">超3500股下跌</span>
+<span class="badge green">北证50-1.61%退潮</span>
+</div>
+</header>
+
+<div class="tagline"><b>核心矛盾：</b>9/3 是"指数微红掩盖个股普跌"的缩量十字星整理日。三大指数冲高回落微幅收涨（沪指+0.02%、创业板+0.01%），但全市场超3500只个股下跌、成交缩至1.76万亿（较昨日再缩323亿，续创阶段新低）。热点杂乱无主线——培育钻石、保险、航运、贵金属领涨，农业、军工、玻纤、传媒领跌。资金在地量与缩圈中寻找低门槛弹性（培育钻石、航运），而上一日的军工避险主线未延续，市场进入"无种子的休息期"。</div>
+
+<!-- 章零 -->
+<div class="section" id="sec0">
+<h2><span class="no">章零</span>市场底层状态与仓位约束</h2>
+<div class="prose">
+<p>9/3 市场的底色是一句"地量缩圈里的指数护盘"——三大指数在权重与低估值防御的护持下微幅翻红，但真实的市场温度偏低。默认信念层面，上一日（9/2）刚确立的"军工地缘主线"并未延续，军工装备当日-0.59%、军工电子领跌，说明这场避险进攻只是存量资金的高频换手而非趋势承接，市场被迫在缺乏新增主线的空窗期缩量整固。同时，农业延续退潮（新赛股份跌停、农林牧渔领跌），前期人气板多头尽数熄火。</p>
+<p>.仓位拥挤度上，当日呈"高位无接力、低位无主攻"的双冷特征。涨停仅46家、封板率71.8%，连板高度维持低位，涨1846/跌3570、超3500只下跌，赚钱效应寡淡。资金驱动力上，日内呈现典型的"高低切换+题材轮动"——早晨航运港口（海通发展/中远海能/凤凰航运涨停）、证券（国盛证券涨停）、贵金属（湖南白银+7.81%）领涨，随后冲高回落；液冷（集泰股份4连板）成唯一有连板的局部活口。成交连续两日创阶段新低（2.03→1.79→1.76万亿），量能萎缩至极致，是"存量博弈无增量"的明确信号。</p>
+<p>一句话，市场在"指数护盘"与"个股缩圈"之间走钢丝，处于情绪冰点与缩量整理的叠加态。反证条件：若次日放量放大至2万亿上方且出现明确主线（而非培育钻石式轮动），可视为冰点反转；否则缩圈整理或延续，不宜重仓。</p>
+</div>
+</div>
+
+<!-- 章一 -->
+<div class="section" id="sec1">
+<h2><span class="no">章一</span>多时间维度全景 + 市场整体状态</h2>
+<table>
+<tr><th>指数</th><th>收盘</th><th>当日</th><th>近5日</th><th>当日状态</th></tr>
+<tr><td>上证指数</td><td>3942.09</td><td class="up">+0.02%</td><td>-0.9%</td><td>冲高回落微涨，十字星</td></tr>
+<tr><td>深证成指</td><td>13625.12</td><td class="up">+0.10%</td><td>-1.1%</td><td>微涨</td></tr>
+<tr><td>创业板指</td><td>3312.54</td><td class="up">+0.01%</td><td>-2.1%</td><td>冲高回落，3连阴后微涨</td></tr>
+<tr><td>科创50</td><td>1611.17</td><td class="down">-0.40%</td><td>-2.3%</td><td>高开低走，半导体承压</td></tr>
+<tr><td>上证50</td><td>2919.50</td><td class="up">+0.17%</td><td>+0.5%</td><td>权重护盘相对强</td></tr>
+<tr><td>沪深300</td><td>4552.58</td><td class="up">+0.10%</td><td>-0.3%</td><td>微涨</td></tr>
+<tr><td>中证1000</td><td>7600.10</td><td class="up">+0.22%</td><td>-1.0%</td><td>小盘相对抗跌</td></tr>
+<tr><td>中证500</td><td>7755.36</td><td class="up">+0.34%</td><td>-0.2%</td><td>微涨</td></tr>
+<tr><td>北证50</td><td>1088.75</td><td class="down">-1.61%</td><td>+0.2%</td><td>上日套利退潮</td></tr>
+</table>
+<table>
+<tr><th>量价指标</th><th>数值</th><th>解读</th></tr>
+<tr><td>两市成交额</td><td>1.76万亿</td><td>较昨日再缩323亿(-2.2%)，续创阶段新低，地量</td></tr>
+<tr><td>上涨/下跌</td><td>1846 / 3570</td><td>指数微涨但个股普跌，宽度差</td></tr>
+<tr><td>涨停 / 跌停</td><td>46 / 16~17</td><td>封板率71.8%，涨停回落至区间下沿</td></tr>
+<tr><td>上涨占比</td><td>33%</td><td>情绪偏低</td></tr>
+</table>
+<div class="prose">
+<p><b>整体状态判断：结构性防御 / 地量缩圈整理。</b>当日指数层面微涨、但个股层面普跌（超3500只下跌），是典型的"只涨指数不涨钱"格局。权重与中小盘对比上，上证50/沪深300因保险、银行权重护盘而微涨相对强，科创50/北证50高估值倒挂退潮。量能配合度差，成交缩至阶段地量，显示承接与参与意愿双低。当日叙事竞争的结局是：低估值防御与题材轮动赢得局部定价权，但全局缺乏主导叙事——这是一次"指数护盘+结构缩圈"的中性整理，不具备趋势方向意义。</p>
+<p><b>周度视角（近5日）：</b>本周市场快速缩量（2.03→1.79→1.76万亿），量能逐级萎缩是连续多日的核心特征，反映增量资金持续缺席。主线从9/1的"农业收官+银行新高"，切到9/2的"军工避险"，再切到9/3的"培育钻石/保险/航运轮动"——三日三换无定线，情绪温度逐日降低，已从"偏高"回落至"冰点边缘"。</p>
+</div>
+</div>
+
+<!-- 章二 -->
+<div class="section" id="sec2">
+<h2><span class="no">章二</span>宏观锚点与风险偏好</h2>
+<table>
+<tr><th>指标</th><th>当前值</th><th>变化趋势</th><th>对A股解读</th></tr>
+<tr><td>美债10Y</td><td>阶段高位（近2.75年新高附近）</td><td>↘ 高位略回落</td><td>隔夜美股反弹+美债收益率回落，缓解成长估值压制</td></tr>
+<tr><td>日债30Y</td><td>破3%（30年新高）</td><td>→ 高位</td><td>全球债市抛售格局未变，压制高久期成长</td></tr>
+<tr><td>布伦特原油</td><td>94.65附近（五周高位）</td><td>→ 高位震荡</td><td>地缘+通胀延续，油气相对抗跌但当日领跌开盘</td></tr>
+<tr><td>北向资金</td><td>—</td><td>—</td><td>数据源未覆盖，不展开</td></tr>
+<tr><td>港股科技</td><td>午后跳水</td><td>↓</td><td>全球半导体传导压力，压制A股半导体/科创</td></tr>
+</table>
+<div class="prose">
+<p><b>全球债市仍是宏观核心锚点。</b>隔夜美股结束三连跌反弹、10Y美债收益率盘中回落，为A股提供了相对温和的海外环境，这是当日指数能微涨的外部支撑；但日债30Y仍在3%上方的30年高位，全球债市抛售格局未根本扭转，成长估值压制仍在（科创50/创业板/半导体当日偏弱，中证半导体-1.03%居跌幅榜前列）。</p>
+<p>当日宏观资产呈"海外略缓和但未反转"的中性格局：油价高位徘徊、美债高位略落、港股科技跳水与A股半导体承压形成亚太共振。央行为维稳的表态继续构成潜在支撑。整体风险偏好维持中性偏低——指数靠权重与防御护盘，成长与题材缺乏持续性。</p>
+</div>
+</div>
+
+<!-- 章三 -->
+<div class="section" id="sec3">
+<h2><span class="no">章三</span>市场主线与资金流向</h2>
+<div class="prose">
+<p><b>主线判定（当日最强方向）：</b>当日无单一持续主线，呈"杂乱轮动"格局。序号1是<b>培育钻石</b>（+4.18%，6.13%换手，恒盛能源涨停领涨），纯题材/情绪Beta，属低门槛弹性博弈，证据等级低；序号2是<b>保险+航运+贵金属</b>（保险+2.58%中国太保+3.69%、航运BDI+4.26%中远海能+8.77%、贵金属+2.18%湖南白银+7.81%），低估值防御+涨价链，证据等级中；序号3是<b>液冷（AI硬件延伸）</b>，集泰股份4连板为当日唯一有高度的连板活口，证据等级低-中。领跌方向：农业（新赛股份跌停）、军工装备（-0.59%，上日避险主线退潮）、玻纤、传媒、半导体（-0.27%~-1.03%）、油气。</p>
+<p><b>资金去向逻辑链：</b>资金从"昨日的军工避险"与"农业退潮"流出，轮动至"低估值防御（保险/航运/贵金属）"与"低门槛题材（培育钻石）"，同时抱团液冷等局部AI硬件活口。这是典型的"无主线下的缩量轮动+防御"——资金不敢久持，日内高抛低吸、高频换手。做空动能上，农业/军工为"高位退潮+兑现"（真跌），半导体/科创为"港股科技传导+估值压制"（情绪杀），北证为"套利退潮"。</p>
+</div>
+<table>
+<tr><th>方向</th><th>强度</th><th>驱动</th><th>资金性质</th><th>优先级</th></tr>
+<tr><td>培育钻石</td><td class="up">+4.18%</td><td>纯题材/情绪</td><td>低门槛弹性博弈</td><td><span class="tag tg-amber">P1 观察</span></td></tr>
+<tr><td>保险/航运/贵金属</td><td class="up">+2.2~4.3%</td><td>低估值防御+涨价/BID</td><td>防御配置</td><td><span class="tag tg-blue">P1</span></td></tr>
+<tr><td>液冷(AI硬件)</td><td>局部连板</td><td>AI算力延伸</td><td>抱团活口</td><td><span class="tag tg-blue">P2</span></td></tr>
+<tr><td>农业/军工/半导体</td><td class="down">领跌</td><td>退潮/兑现/传导</td><td>获利盘出逃+情绪杀</td><td><span class="tag tg-gray">P3 回避</span></td></tr>
+</table>
+</div>
+
+<!-- 章五 -->
+<div class="section" id="sec5">
+<h2><span class="no">章五</span>盘面成因拆解</h2>
+<div class="prose">
+<p><b>State→Trigger→Flow 总览：</b>当日市场原有状态（State）是"量能逐日萎缩、军工避险刚确立、农业退潮"的缩量存量局；触发器（Trigger）是"隔夜美股反弹+美债回落（外部略缓和）叠加国内无新增主催化、也无利空"；资金响应（Flow）是"权重防御护盘微涨、个股缩圈普跌、题材杂乱轮动（培育钻石/保险/航运），军工/农业退潮、北证跳水"。</p>
+<p><b>成因一 · 指数微涨而个股普跌（证据等级：高）。</b>上证+0.02%、创业板+0.01%，但超3500只下跌。因果机制：银行/保险等低估值权重护盘托底指数，而缺乏主线的中小题材与成长股缩圈下跌，形成"指数/个股背离"。这与前日"指数跌、结构防守"形成镜像——护盘资金从军工转向低估值权重。</p>
+<p><b>成因二 · 培育钻石/航运的题材爆发（证据等级：中）。</b>培育钻石+4.18%、航运BDI+4.26%（中远海能+8.77%）。培育钻石是纯情绪/主题的Low-beta弹性，航运受BDI指数上行催化（中远海能受益油运）。两者共同点是"低估值+低门槛+有局部催化"，在无主线空窗期成为资金短打的出口。</p>
+<p><b>成因三 · 军工主线未能延续 + 北证退潮（证据等级：高）。</b>上日领涨的军工装备当日-0.59%、军工电子领跌，说明地缘避险进攻只是存量高频换手而非趋势承接；北证50-1.61%回吐上日+2.5%套利涨幅，套利资金离场。两者共同印证"无持续主线、资金观望"的冰点状态。</p>
+<p><b>护盘资金参与度：</b>日内未见国家队明显护盘信号，宽基ETF未现异常放量；指数微涨更多来自低估值权重的自发防御配置而非政策性托底护盘。</p>
+</div>
+</div>
+
+<!-- 章六 -->
+<div class="section" id="sec6">
+<h2><span class="no">章六</span>叙事如何映射到不同资产</h2>
+<div class="prose">
+<p>同一"海外地缘 + 通胀韧性 + 无国内主催化"的宏观背景，在不同板块呈差异化定价。在<b>低估值防御</b>（保险/银行/贵金属/航运），被解读为"通胀+避险+低久期"，资金防御性持有；在<b>题材弹性</b>（培育钻石/液冷），被解读为"冰点期找短打出口"，资金短进短出；在<b>成长科技</b>（半导体/科创/港股科技），被"全球半导体传导+估值偏高"反噬，承压下跌；在<b>昨日进攻板块</b>（军工），因缺乏新增催化而退潮。同一日同一背景，资金沿"确定性/弹性/风险"三条线分化配置，无一致方向。</p>
+<p>反事实推演：若无隔夜美股反弹+美债回落的外部缓和，9/3大概率高开低走更弱、甚至翻绿，而非微涨收红；正因海外略缓和+国内缩量，才形成"指数护盘+个股缩圈"的十字星。这一格局既无趋势意义，也暂无明确风险释放。</p>
+</div>
+</div>
+
+<!-- 章七 -->
+<div class="section" id="sec7">
+<h2><span class="no">章七</span>多空力量对比（辩论式）</h2>
+<div class="bear">
+<h4>🐻 空头观点（熊市研究员）</h4>
+<ul>
+<li>成交连续两日创阶段新低（1.79→1.76万亿），地量无增量，缩圈整理缺乏上攻弹药</li>
+<li>超3500只个股下跌，指数红掩盖个股绿，赚钱效应寡淡、亏钱效应仍在</li>
+<li>军工避险主线失效、北证套利退潮，无主线可持续，情绪冰点未见反转信号</li>
+<li>全球债市抛售格局未变（日债破3%），成长估值压制仍在，科创/半导体弱势</li>
+</ul>
+</div>
+<div class="bull">
+<h4>🐂 多头观点（牛市研究员）</h4>
+<ul>
+<li>指数微涨站上5日线，低估值权重护盘企稳，地量往往临近变盘而非持续下跌</li>
+<li>隔夜美股反弹+美债回落，外部环境边际缓和，为风险偏好修复提供窗口</li>
+<li>培育钻石/航运/贵金属有局部赚钱效应，冰点期题材活跃度并未归零</li>
+<li>央行流动性维稳表态构成政策兜底，为后续放大提供潜在催化</li>
+</ul>
+</div>
+<div class="verdict"><b>⚖️ 综合判断（交易员）：</b>胜率倾向中性，胜率约 50%。地量缩圈既不支撑上攻也不支撑恐慌，处于变盘临界。关键验证（次日9/4）：①成交能否放大至2万亿上方并出现明确主线→多头胜，冰点反转；②若继续地量缩圈、培育钻石/航运等轮动一日游、上证跌破3930→空头胜，整理延续甚至下探。当前建议：轻仓观望为主，不追毫无逻辑的题材（培育钻石），重点等放量+主线确认后再谈加仓，留足现金应对不确定性。</div>
+</div>
+
+<!-- 8.7 -->
+<div class="section" id="sec87">
+<h2><span class="no">章8.7</span>持续性故事线追踪（增量更新）</h2>
+<table>
+<tr><th>故事线</th><th>起始日</th><th>当前状态（本日增量）</th><th>未来验证点</th><th>A股映射</th></tr>
+<tr><td>美伊以地缘冲突/霍尔木兹</td><td>8月中</td><td>军工避险主线9/3未延续(军工-0.59%)，地缘定价降温</td><td>冲突是否升级/和谈</td><td>军工/油气/航运/黄金</td></tr>
+<tr><td>全球债市抛售(日债破3%)</td><td>8月底</td><td>美债高位略回落，但日债30Y仍在30年高位</td><td>美/日债收益率见顶</td><td>防御>成长，银行保险强</td></tr>
+<tr><td>农业通胀链</td><td>8月</td><td class="down">延续退潮(新赛股份跌停、农林牧渔领跌)</td><td>粮食价格指数</td><td>农业回调确认</td></tr>
+<tr><td>AI/液冷硬件景气</td><td>8月中旬</td><td>液冷集泰股份4连板,局部活口</td><td>英伟达/存储现货价</td><td>液冷/算力待观察</td></tr>
+</table>
+</div>
+
+<!-- 章十 -->
+<div class="section" id="sec10">
+<h2><span class="no">章十</span>前瞻观察与风险（未来3日）</h2>
+<div class="prose">
+<p><b>主线延续情景：</b>地量冰点后需放量+新主线确认，观察低估值防御（保险/航运/贵金属）与液冷/AI硬件能否成势。</p>
+<p><b>主线反转情景：</b>若培育钻石/航运等轮动一日游、成交继续地量、上证跌破3930，则缩圈整理延续甚至下探。</p>
+<p><b>做空/防御触发条件：</b>上证跌破3930且成交维持1.7万亿下方，防御主导延续；美债/油价若再度上行则成长继续承压。</p>
+<p><b>宏观事件日历：</b>关注美/日债收益率方向、油价、央行流动性表态后续、及是否有新产业催化打破冰点缩圈。</p>
+</div>
+</div>
+
+<!-- 章十四 -->
+<div class="section" id="sec14">
+<h2><span class="no">章十四</span>仓位管理建议</h2>
+<div class="prose">
+<p>基于$2000-3000小资金适配原则，当前市场处"地量缩圈/情绪冰点"阶段，建议<b>轻仓4~5成</b>，以防御与局部观察为主，留足现金5~6成。地量冰点期是"等待确认"而非"急于重仓"的时点——没有明确主线+没有放量前，重仓押注任何方向赔率都不佳。10%止盈纪律：若持有低估值防御标的，目标收益10%达到即减仓至轻仓，情愿不亏；止损纪律：若持有个股跌破支撑且逻辑证伪（如航运BDI回落、液冷龙头断板），坚决止损；空仓条件：若成交持续<1.7万亿且涨停降至30家以下，进入观望空仓。绝不追涨停榜里无产业逻辑的纯情绪题材（培育钻石），优先等待放量+主线清晰后的确认机会。</p>
+</div>
+</div>
+
+<!-- 章十五 -->
+<div class="section" id="sec15">
+<h2><span class="no">章十五</span>结论式总结</h2>
+<div class="prose">
+<p>今天这场戏，指数演得很淡定，但底下的戏码其实挺冷。三大指数都是微涨，沪指+0.02%收在3942.09，创业板+0.01%，看起来四平八稳，可你看看涨跌家数——全市场超3500只下跌，这是典型的"只涨指数不涨钱"。为什么？权重扛了一把，银行保险这些低估值的大票护住指数，但下面大量中小票和题材在缩圈下跌，赚钱的没几个。成交更是冷到1.76万亿，比昨天又少323亿，连续两天创阶段地量，玩家们明显都在退场观望，没人愿意加仓。</p>
+<p>主线方面，今天是标准的"无主力、瞎轮动"。昨天地缘军工还在领涨，今天就熄火了，军工装备-0.59%、军工电子领跌——证明昨天那种避险进攻就是个存量短打，没有持续性。资金今天跑去买培育钻石（+4.18%）、航运（BDI指数发力、中远海能+8.77%）、保险（太保+3.69%）、贵金属（湖南白银+7.81%），全是些低门槛、有局部催化的短线矮子，没有一条能撑得起大局的产业链。唯一有点高度的就是液冷的集泰股份4连板，算是个孤胆英雄。</p>
+<p>说白了，现在市场处在一个"没种子可种"的休息期。地量不是要崩，而是大家在等——等新增资金、等新催化、等主线给方向。指数的低估值权重护了个底，创业板的3连阴也暂缓了，但你要说行情要启动，那是没影的事，得先看到成交放量到2万亿、主线浮出水面才行。</p>
+<p>外部的环境倒是比前两天缓了一点，隔夜美股反弹、美债收益率回落，给了一个喘息窗口，但日债30年还在3%上方的30年高位，全球那套"通胀+加息"的紧箍咒没摘掉，所以高科技、成长这类高估值的，还得继续夹着尾巴做人，半导体、科创今天就又跌了。</p>
+<p>操作上就一个字：等。轻仓、现金为王，别手痒去买培育钻石那种纯情绪炒作，也别追已经退潮的农业军工。盯两件事:成交能不能放出来、有没有真主线，信号来了再动手，没信号就歇着。冰点之后往往有情绪拐点，但那得等多个明确的买入确认才对。</p>
+</div>
+</div>
+
+<!-- 章十六 -->
+<div class="section" id="sec16">
+<h2><span class="no">章十六</span>预测台账与回归</h2>
+<div class="prose">
+<p><b>9/3 盘前预测回归验证（对今日9/3）：</b>今日复盘基于9/3盘前预测台账回归——<b>开盘方向 ✅命中（预测"平开至小幅高开+0.1%~+0.4%"，实际平开（开3952.79）+微涨+0.02%，方向对但幅度略弱）</b>；量能 ❌未命中（预测1.85万亿区间，实际1.76万亿继续地量，连续低估缩量）；涨停家数 ⌛部分命中（预测50~70家，实际涨停46家略低于下沿）；主线竞争 ❌未命中（预测"军工30%/存储AI硬件25%"，实际军工退潮、主线为培育钻石/保险/航运轮动，未见AI硬件承接）。</p>
+<p><b>今日复盘新预测 → 9/4（将同步台账）：</b>基于地量缩圈与冰点特征，判断9/4呈"缩量整理→等待放量变盘"格局，主线仍缺，重点观察成交能否放大及是否有新催化打破冰点。</p>
+<table>
+<tr><th>预测项</th><th>9/4预测值</th><th>置信度</th></tr>
+<tr><td>大盘方向</td><td>缩量整理为主，若放量2万亿+则冰点转向；否则延续缩圈（-0.3%~+0.4%）</td><td>中</td></tr>
+<tr><td>量能中位数</td><td>1.7~1.9万亿（关键：能否放大至2万亿）</td><td>低</td></tr>
+<tr><td>主线方向</td><td>低估值防御(保险/航运/贵金属)延续 + 观察液冷能否扩散；副线看是否有新产业催化</td><td>中</td></tr>
+<tr><td>情绪</td><td>冰点边缘，涨停家数40~60家；若回升至60上方则情绪修复</td><td>低</td></tr>
+<tr><td>情景概率</td><td>乐观(放量+主线确立)20 / 中性(继续地量缩圈)60 / 悲观(跌破3930下探)20</td><td>—</td></tr>
+</table>
+<p><b>学习校准：</b>连续第二日验证"在持续缩量/地量环境下，量能中位数预测持续低估"——本轮地量缩圈阶段，量能预测需主动下修；主线上，冰点期（无主催化）证券/军工等轮动极易一日反转，主线竞争概率应大幅调低对"前一日轮动方向"的延续权重。详细滚动命中率与两大弱项专项追踪见 <code>predictions_ledger.md</code>。</p>
+</div>
+</div>
+
+<div class="footer">以上分析基于公开数据，不构成投资建议 ｜ 2026-09-03 A股全景复盘 ｜ 数据要点含涨停统计等领域经公开财联社/东财来源双向核实</div>
+
+</body>
+</html>
