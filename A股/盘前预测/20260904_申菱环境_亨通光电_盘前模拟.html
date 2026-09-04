@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个股盘前模拟 · 申菱环境 + 亨通光电 | 2026-09-04</title>
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--rule:#e2e8f0;--ink:#1e293b;--muted:#64748b;--up:#dc2626;--down:#16a34a;--amber:#d97706;--primary:#1e40af;--accent:#1e3a5f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei',-apple-system,'Microsoft YaHei',sans-serif;line-height:1.7;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
+.head{background:linear-gradient(135deg,#eef2ff,#fff);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
+.head h1{font-size:24px;letter-spacing:1px;color:var(--primary);margin-bottom:6px}
+.head .sub{color:var(--muted);font-size:13px}
+.headmark{color:var(--amber);font-size:12px;margin-top:8px;font-weight:600}
+.badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:var(--primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.badge.amber{background:var(--amber)}
+.badge.green{background:#166534}
+.badge.red{background:#dc2626}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.card h2{font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.card h2 .no{background:var(--primary);color:#fff;font-size:12px;width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+h3{border-left:4px solid var(--primary);padding-left:10px;margin:16px 0 8px;font-size:15px;color:var(--accent)}
+h3.sub{border-left:4px solid var(--amber);color:var(--amber)}
+p{font-size:14px;color:#334155;margin-bottom:9px}
+p strong{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;color:var(--accent);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--rule)}
+td{padding:8px 12px;border:1px solid var(--rule);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.h{color:var(--amber);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin-right:6px;margin-bottom:4px;background:#eef2ff;color:var(--primary)}
+.pill.up{background:#fee2e2;color:var(--up)}
+.pill.hold{background:#dcfce7;color:#166534}
+.pill.warn{background:#fef3c7;color:#92400e}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mini{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 16px;min-height:100px}
+.mini h4{font-size:13px;color:var(--muted);margin-bottom:6px}
+.mini .v{font-size:22px;font-weight:800;margin-bottom:4px}
+.mini p{font-size:12.5px;margin-top:4px;color:#475569}
+ul{padding-left:22px;font-size:14px;color:#334155;line-height:2}
+.quote{background:#f8fafc;border-left:3px solid var(--amber);padding:10px 14px;margin:10px 0;font-size:13px;color:#475569;border-radius:6px}
+.warn{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400e;margin:12px 0}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 10px}
+.tag{font-size:11px;font-weight:500;border:1px solid var(--rule);color:var(--muted);padding:2px 10px;border-radius:20px;background:#f8fafc}
+.sub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.sub-item{text-align:center;padding:8px;background:#f8fafc;border-radius:8px;border:1px solid var(--rule)}
+.sub-item .dt{font-size:13px;color:var(--muted)}
+.sub-item .vl{font-size:16px;font-weight:700}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.card{padding:18px 15px}.sub-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <h1>个股盘前模拟 · 申菱环境 + 亨通光电</h1>
+  <div class="sub">预测日 2026-09-04（周五）· 模拟测试（不包含 9/4 09:00 后任何实际开盘信息）</div>
+  <div class="headmark">⚠️ 本分析为模拟推演，仅基于截至 9/4 07:50 的隔夜信息 + 本周市场复盘 + 个股本周走势，不包含任何 9/4 09:00 后的实际开盘/盘中数据。</div>
+  <div class="badges">
+    <span class="badge amber">申菱环境 昨收 112.74</span>
+    <span class="badge">亨通光电 昨收 65.29</span>
+    <span class="badge green">本周市场: 地量缩圈冰点</span>
+    <span class="badge">隔夜: 沃勒转鸽+美股大涨</span>
+  </div>
+  <div class="quote" style="border-left-color:var(--primary);background:#eef2ff;margin-top:14px">
+    <strong>模拟前提：</strong>9/4 盘前已知信息——① 9/3 A 股收盘（上证 3942 +0.02%、成交 1.76 万亿地量、涨停 46 家冰点、培育钻石/保险/航运/贵金属轮动领涨）② 隔夜美东 9/3 美联储沃勒转鸽（9 月加息概率 63%→50%）、美股大涨（道指 +1.18%、纳指 +1.40%）、英伟达约 130 亿美元收购 Hugging Face、黄金暴涨超 2% ③ 国内十部门《中小企业"十五五"规划》落地 ④ 9/4 盘前预期大盘高开 +0.2%~+0.6%，主线转向超跌成长修复（存储/AI/半导体）与黄金。
+  </div>
+</div>
+
+<!-- ════ 本周市场背景 ════ -->
+<div class="card">
+  <h2><span class="no">一</span>本周市场背景（9/1-9/3）<span class="tag">个股走势的大盘底色</span></h2>
+
+  <table>
+    <tr><th>日期</th><th>上证</th><th>成交额</th><th>涨停/跌停</th><th>情绪状态</th><th>最强主线</th></tr>
+    <tr><td><b>9/1（周一）</b></td><td class="down">-0.97% 报3941</td><td>2.03万亿</td><td>86/8</td><td>分化·农业银行走强</td><td>农业种植(+7.19%)/银行创新高</td></tr>
+    <tr><td><b>9/2（周二）</b></td><td class="down">-0.97% 报3941</td><td>1.79万亿（缩~2400亿）</td><td>55/9</td><td>转冷·防御</td><td>军工(地面兵装+6.48%)/银行逆势</td></tr>
+    <tr><td><b>9/3（周四）</b></td><td class="up">+0.02% 报3942</td><td>1.76万亿（再缩~300亿）</td><td>46/16</td><td>冰点·超3500只下跌</td><td>培育钻石+4%/保险+2.6%/航运+4.3%/贵金属+2.2%</td></tr>
+  </table>
+
+  <p><strong>本周市场定性：</strong>"地量缩圈+冰点轮动"——成交从 9/1 的 2.03 万亿持续缩至 9/3 的 1.76 万亿，涨停从 86 家降至 46 家，超 3500 只个股下跌。主线从 9/1 的"农业+银行"→9/2 的"军工"→9/3 的"培育钻石/保险/航运/贵金属"纯轮动，无持续主线。冰点期存量博弈特征明显，资金只在防御和超跌方向上短打，前日领涨板块次日退潮（如农业 9/1 领涨→9/2 暴跌、军工 9/2 领涨→9/3 退潮）。</p>
+
+  <p><strong>9/4 盘前最大变量：</strong>隔夜美联储沃勒转鸽（加息概率 63%→50%）+ 美股大涨（道指+1.18%/纳指+1.40%）+ 英伟达收购 Hugging Face + 国内中小科创规划，为近两周压制成长最强宏观锚点松绑。盘前预期大盘高开 +0.2%~+0.6%，主线从"冰点防御轮动"切换至"超跌成长修复（存储/AI/半导体）+ 黄金"，但冰点缩量环境下高开回落风险高。</p>
+</div>
+
+<!-- ════ 申菱环境 ════ -->
+<div class="card">
+  <h2><span class="no">二</span>申菱环境（301018）<span class="tag">液冷温控 · AI算力散热</span></h2>
+
+  <h3>本周走势：强势上行，累计 +12.9%</h3>
+  <div class="sub-grid">
+    <div class="sub-item"><div class="dt">8/31（周一）</div><div class="vl up">+8.80%</div><div class="dt">收 108.80</div></div>
+    <div class="sub-item"><div class="dt">9/1（周二）</div><div class="vl down">-2.53%</div><div class="dt">收 105.47</div></div>
+    <div class="sub-item"><div class="dt">9/2（周三）</div><div class="vl up">+2.78%</div><div class="dt">收 106.82</div></div>
+    <div class="sub-item"><div class="dt">9/3（周四）</div><div class="vl up">+3.83%</div><div class="dt">收 112.74</div></div>
+  </div>
+
+  <h3>基本面速览</h3>
+  <table>
+    <tr><th>维度</th><th>内容</th></tr>
+    <tr><td>核心定位</td><td>中国智算液冷数据中心市场厂商排名第一，专用性空调国家级制造业单项冠军</td></tr>
+    <tr><td>26H1 业绩</td><td>营收 17.6 亿元（+4.4%），归母净利润 5405 万元（-64.1%）；"增收不增利"——产能扩张/海外拓展/研发投入导致成本前置</td></tr>
+    <tr><td>关键亮点</td><td>26H1 液冷新增订单约 18 亿元（上年同期 2.3 倍），存货+发出商品高增（发出商品 11.9 亿元！），预计下半年陆续确认收入</td></tr>
+    <tr><td>盈利预测</td><td>国金证券预计 2026-2028 年净利润 5.0/22.0/43.9 亿元，对应 PE 77/18/9 倍，维持"买入"</td></tr>
+    <tr><td>概念标签</td><td>液冷/温控/数据中心散热 → 直接受益于 AI 算力扩张（算力→散热需求刚性增长）</td></tr>
+  </table>
+
+  <h3>本周走势分析</h3>
+  <p>申菱环境本周走出"强势上行"形态，从 8/31 低开 100 一路拉升至 9/3 收 112.74，周涨幅约 12.9%。<strong>核心驱动有三层：</strong>① 液冷方向自身有集泰股份 4 连板（9/3 连板龙头）带动板块情绪扩散；② 9/2 中报披露后虽"增收不增利"但液冷新增订单 18 亿元（2.3 倍）的预期差被市场解读为"利空出尽+下半年业绩释放"；③ 9/3 冰点期申菱仍逆势 +3.83%，说明资金并未在这个方向退潮，反而在持续流入。</p>
+  <p><strong>量价特征：</strong>9/3 成交额 3.21 亿元（较前日 1.93 亿显著放量 66%），属于"量价齐升"——在冰点缩量环境下逆势放量，说明有资金主动买入，非被动跟涨。但 9/3 科创板/半导体整体仍弱，申菱的强势更多是液冷板块自身逻辑，而非全市场成长修复。</p>
+
+  <h3 class="sub">9/4 开盘表现预测</h3>
+
+  <div class="grid">
+    <div class="mini" style="border-left:3px solid var(--up);background:#fef2f2">
+      <h4 style="color:var(--up)">📈 多头逻辑（支持上涨）</h4>
+      <ul style="font-size:12.5px;line-height:1.8;padding-left:16px;color:#475569">
+        <li><b>隔夜AI情绪催化：</b>英伟达约130亿美元收购Hugging Face，AI产业叙事强化，对A股AI硬件（含液冷散热）整体情绪提振</li>
+        <li><b>液冷板块扩散效应：</b>集泰股份4连板打开液冷方向空间，龙头效应带动申菱等中军跟涨</li>
+        <li><b>自身强势延续：</b>9/3逆势放量+3.83%，资金仍在流入，趋势未破</li>
+        <li><b>订单预期差：</b>液冷新增订单18亿（2.3倍）+发出商品11.9亿待确认，中报"利空出尽"预期</li>
+        <li><b>大盘环境：</b>隔夜美股大涨+沃勒转鸽，成长风格整体受益，高开环境利于强势股溢价</li>
+      </ul>
+    </div>
+    <div class="mini" style="border-left:3px solid var(--down);background:#f0fdf4">
+      <h4 style="color:var(--down)">📉 空头逻辑（压制因素）</h4>
+      <ul style="font-size:12.5px;line-height:1.8;padding-left:16px;color:#475569">
+        <li><b>本周累计涨幅大（+12.9%）：</b>冰点缩量环境下，高位股是高开兑现风险最高的方向</li>
+        <li><b>9/4盘前主线不是液冷：</b>盘前主线是"超跌成长修复（存储/AI/半导体）"，液冷是AI硬件子方向而非核心；成长修复第一口奶通常给"跌幅最大"的方向，液冷本周已涨，非超跌</li>
+        <li><b>PE 77倍估值偏贵：</b>即使按2026年盈利预测，当前PE仍高达77倍，对流动性敏感度高</li>
+        <li><b>冰点获利盘兑现：</b>9/3冰点环境下逆势走强的个股，次日高开后获利盘兑现概率大（本周军工/农业退潮即为前车之鉴）</li>
+        <li><b>增收不增利：</b>中报利润-64%，基本面无边际改善，短期是"预期炒"而非"业绩兑现"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote" style="border-left-color:var(--primary);background:#eef2ff">
+    <p><strong>综合判断：高开 +1.5%~+3.5%，开盘后大概率冲高回落</strong></p>
+    <p>申菱环境本周强势 +12.9% 且 9/3 逆势放量，隔夜 AI 情绪催化（英伟达收购）为今日再添一把火，<b>集合竞价阶段高开 1.5%~3.5% 是大概率事件</b>（112.74→约 114.5~116.7）。但关键在于开盘后 30 分钟：</p>
+    <p>① 若高开后量能配合（首小时申菱成交额 > 1.5 亿）且液冷板块（集泰股份）续板，则强势延续有望冲击 116-118 区间；</p>
+    <p>② 若高开后缩量震荡（首小时 < 1 亿），则获利盘兑现概率高，回踩 110-112 支撑位，走出"高开+冲高回落"格局。</p>
+    <p><b>核心判断倾向：</b>本周已涨 12.9% 的获利盘 + 冰点缩量环境 + 液冷非今日核心主线（存储/AI/半导体才是），三因素叠加下<b>高开回落是大概率路径</b>（概率约 60%），强势延续是小概率路径（约 25%），极端杀跌（< 5%）概率约 15%。</p>
+    <p><b>失效条件：</b>若高开 > 4% 则大概率开盘即兑现高点，全天走低；若高开 < 1% 则说明隔夜催化未被定价，市场认可度低，开盘即弱。</p>
+  </div>
+</div>
+
+<!-- ════ 亨通光电 ════ -->
+<div class="card">
+  <h2><span class="no">三</span>亨通光电（600487）<span class="tag">光通信 · CPO · 海缆</span></h2>
+
+  <h3>本周走势：先涨后跌，累计约平盘</h3>
+  <div class="sub-grid">
+    <div class="sub-item"><div class="dt">8/31（周一）</div><div class="vl up">+2.09%</div><div class="dt">收 67.38</div></div>
+    <div class="sub-item"><div class="dt">9/1（周二）</div><div class="vl down">-0.49%</div><div class="dt">收 67.34</div></div>
+    <div class="sub-item"><div class="dt">9/2（周三）</div><div class="vl up">+2.31%</div><div class="dt">收 66.90</div></div>
+    <div class="sub-item"><div class="dt">9/3（周四）</div><div class="vl down">-3.66%</div><div class="dt">收 65.29</div></div>
+  </div>
+
+  <h3>基本面速览</h3>
+  <table>
+    <tr><th>维度</th><th>内容</th></tr>
+    <tr><td>核心定位</td><td>光纤光缆全球前三、海缆全球前三，全球唯四（国内唯一）具备跨洋光缆工程能力的企业</td></tr>
+    <tr><td>华为合作</td><td>2026年3月与华为签署战略合作协议，覆盖空芯光纤、多芯光纤、400G/800G光模块联合商用、F5G-A万兆全光网络</td></tr>
+    <tr><td>CPO突破</td><td>2026年6月CPO保偏光纤技术突破（裸纤直径±0.1μm精度），解决CPO系统光信号偏振态核心命脉</td></tr>
+    <tr><td>在手订单</td><td>海缆约240亿元，海洋通信约70亿元，PEACE跨洋海缆在手订单超3亿美元</td></tr>
+    <tr><td>概念标签</td><td>CPO/光通信/光纤/海缆/6G/F5G → 直接受益于AI算力网络扩张（光模块→光互联→光纤海缆）</td></tr>
+  </table>
+
+  <h3>本周走势分析</h3>
+  <p>亨通光电本周走出"先涨后跌"形态，8/31-9/2 三日累计上涨约 +4%，但 9/3 单日大跌 -3.66% 几乎回吐全部涨幅，收 65.29。<strong>核心原因：</strong>① 9/3 是冰点缩圈日（全市场仅 1846 只上涨），光通信/CPO 板块整体承压（半导体 -0.27% 领跌），且 9/3 主线是"培育钻石/保险/航运/贵金属"纯轮动，科技成长方向全面失血；② 9/3 成交额 8.62 亿元（较前日 10.04 亿缩量 14%），属于"缩量下跌"，资金自然流出而非恐慌性抛售。</p>
+  <p><strong>技术位特征：</strong>亨通自 8/25 低点 58.2 启动，8/27 冲至 71.3 高点（+7.74%），此后连续 4 个交易日震荡走弱，9/3 已跌破 5 日线/10 日线，逼近 20 日线支撑（约 63-64 区间）。从"高位震荡→回调"的形态看，9/3 的大跌已跌至关键支撑位区间。</p>
+
+  <h3 class="sub">9/4 开盘表现预测</h3>
+
+  <div class="grid">
+    <div class="mini" style="border-left:3px solid var(--up);background:#fef2f2">
+      <h4 style="color:var(--up)">📈 多头逻辑（支持上涨）</h4>
+      <ul style="font-size:12.5px;line-height:1.8;padding-left:16px;color:#475569">
+        <li><b>隔夜AI情绪催化：</b>英伟达收购Hugging Face、美股科技大涨，CPO/光通信作为AI算力网络基础设施方向受益</li>
+        <li><b>超跌反弹需求：</b>本周已回调至20日线支撑位（63-64），9/3单日-3.66%后超跌反弹动能累积</li>
+        <li><b>9/4盘前主线是"超跌成长修复"：</b>亨通本周回调充分，符合"超跌"定义，有望承接修复资金</li>
+        <li><b>基本面扎实：</b>海缆在手订单240亿+CPO技术突破，中期逻辑未破</li>
+        <li><b>大盘高开环境：</b>隔夜美股大涨+沃勒转鸽，成长风格整体受益，亨通作为科技龙头有望跟涨</li>
+      </ul>
+    </div>
+    <div class="mini" style="border-left:3px solid var(--down);background:#f0fdf4">
+      <h4 style="color:var(--down)">📉 空头逻辑（压制因素）</h4>
+      <ul style="font-size:12.5px;line-height:1.8;padding-left:16px;color:#475569">
+        <li><b>9/3 放量大跌趋势未止：</b>8.62亿成交额说明出逃资金量不小，9/3 的抛压可能需要多日消化</li>
+        <li><b>CPO/光模块板块整体弱：</b>9/3 半导体领跌、CPO方向无龙头带动的背景下，板块短期颓势需新催化才能逆转</li>
+        <li><b>9/4盘前主线是"存储/AI/半导体"而非"光模块/CPO"：</b>成长修复的第一波通常流向"跌幅最大+弹性最高"的存储/算力，光模块/CPO作为第二波传导</li>
+        <li><b>均线压制：</b>5日线（约 66.5）和 10日线（约 67）均在上方，反弹需放量突破，缩量反弹易遇阻回落</li>
+        <li><b>冰点缩量环境：</b>全市场 1.76 万亿地量，存量博弈下资金有限，CPO方向能否分到成长修复的"第一口奶"存疑</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote" style="border-left-color:var(--primary);background:#eef2ff">
+    <p><strong>综合判断：平开至小幅高开 +0.5%~+1.5%，开盘后震荡偏弱</strong></p>
+    <p>亨通光电本周回调充分、已跌至 20 日线支撑（63-64），叠加隔夜美股科技大涨的 AI 情绪催化，<b>集合竞价阶段小幅高开 0.5%~1.5% 是大概率事件</b>（65.29→约 65.6~66.3）。但高开后的走势取决于两个验证信号：</p>
+    <p>① 高开后首小时能否放量突破 5 日线（66.5）——若放量站上 66.5 则 CPO 方向承接成立，可上探 67-68 区间；</p>
+    <p>② 若高开缩量、10:30 前仍低于 66 且量能 < 2 亿，则反弹力度弱，大概率回踩 64-65 区间，走出"高开微涨→震荡回落"格局。</p>
+    <p><b>核心判断倾向：</b>亨通本周回调趋势 + 9/3 放量大跌 + CPO 非今日第一主线（存储/AI/半导体才是），三因素下<b>平开至小幅高开后震荡偏弱</b>是大概率路径（概率约 55%），弱反弹修复（遇阻 5 日线后回落）概率约 30%，强势反弹（突破 5 日线站上 67）概率约 15%。</p>
+    <p><b>失效条件：</b>若高开 > 2% 则大概率打开即遇抛压，全天走低；若低开则说明市场对 CPO 方向认可度极低，全天弱势。</p>
+  </div>
+</div>
+
+<!-- ════ 对比总结 ════ -->
+<div class="card">
+  <h2><span class="no">四</span>两只对比 + 综合结论</h2>
+
+  <table>
+    <tr><th>对比维度</th><th>申菱环境（301018）</th><th>亨通光电（600487）</th></tr>
+    <tr><td><b>本周累计涨幅</b></td><td class="up">+12.9%（强势高位）</td><td class="down">约平盘（回调至支撑）</td></tr>
+    <tr><td><b>9/3 表现</b></td><td class="up">+3.83%（逆势放量）</td><td class="down">-3.66%（放量大跌）</td></tr>
+    <tr><td><b>所属方向</b></td><td>液冷温控（AI散热）</td><td>CPO/光通信/海缆（AI互联）</td></tr>
+    <tr><td><b>与9/4主线匹配度</b></td><td class="h">中（AI硬件子方向，非核心）</td><td class="h">中（超跌成长，匹配主线）</td></tr>
+    <tr><td><b>隔夜催化匹配度</b></td><td class="up">高（英伟达收购→AI硬件情绪）</td><td class="up">高（AI光互联基础设施）</td></tr>
+    <tr><td><b>技术位</b></td><td>强势高位，无均线压制</td><td>回调至20日线支撑，有均线压制</td></tr>
+    <tr><td><b>获利盘压力</b></td><td class="down">大（本周+12.9%）</td><td>小（本周平盘，无获利盘）</td></tr>
+    <tr><td><b>市场博弈焦点</b></td><td>"强势延续 vs 高位兑现"</td><td>"超跌反弹 vs 趋势延续"</td></tr>
+    <tr><td><b>9/4 开盘预测</b></td><td class="up">高开 +1.5%~+3.5%</td><td>平开至小幅高开 +0.5%~+1.5%</td></tr>
+    <tr><td><b>9/4 全天走势概率分布</b></td><td>冲高回落 60% / 强势延续 25% / 极端杀跌 15%</td><td>震荡偏弱 55% / 弱反弹修复 30% / 强势反弹 15%</td></tr>
+    <tr><td><b>核心观察信号</b></td><td>①首小时成交额>1.5亿②集泰股份是否续板③液冷板块涨停家数</td><td>①首小时能否突破66.5（5日线）②首小时成交额>2亿③CPO板块整体走势</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>⚠️ 模拟测试声明：</strong>本分析仅基于截至 2026-09-04 07:50（北京时间）的已知信息——9/3 收盘数据、隔夜美股/美债/宏观数据、个股本周 K 线走势与基本面，以及 9/4 盘前分析框架。不包含任何 9/4 09:00 后的实际开盘价、集合竞价、盘中数据。所有预测为模拟推演，用于验证预测框架的有效性，不构成投资建议。
+  </div>
+</div>
+
+</div>
+<footer>模拟测试 · 信息截止 2026-09-04 07:50（北京时间）· 不包含 09:00 后任何实际开盘/盘中数据</footer>
+</body>
+</html>
