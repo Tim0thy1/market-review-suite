@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前研判 · 9/10（周四）</title>
+<style>
+@font-face{font-family:'Tektur';src:url("./_shared/fonts/Tektur-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:'GeistMono';src:url("./_shared/fonts/GeistMono-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:'GeistMono';src:url("./_shared/fonts/GeistMono-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+@font-face{font-family:'InstrumentSans';src:url("./_shared/fonts/InstrumentSans-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+:root{
+--bg:#090c12;--bg2:#0e131c;--surface:#121a26;--surface2:#0b111b;
+--ink:#e7eef5;--muted:#8b96a5;--rule:#223042;--rule-soft:#1a2433;
+--accent:#4da3ff;--accent2:#a78bfa;--amber:#ffb454;--cyan:#2dd4bf;
+--up:#ff5c6c;--down:#1fc47a;
+--f-body:"Noto Sans CJK SC","WenQuanYi Micro Hei","PingFang SC",sans-serif;
+--f-head:'Instrument Sans',"Noto Sans CJK SC","WenQuanYi Micro Hei",sans-serif;
+--f-mono:'GeistMono','JetBrains Mono','SF Mono',monospace;
+--f-disp:'Tektur','GeistMono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;
+background-image:
+ radial-gradient(1100px 500px at 88% -8%, rgba(77,163,255,.10), transparent 60%),
+ radial-gradient(900px 460px at 4% -4%, rgba(167,138,250,.08), transparent 55%),
+ radial-gradient(700px 520px at 100% 55%, rgba(45,212,191,.045), transparent 60%);
+background-attachment:fixed}
+.wrap{max-width:900px;margin:0 auto;padding:26px 22px 70px}
+
+.termbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+border:1px solid var(--rule);border-radius:10px;padding:10px 16px;background:var(--bg2);margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .logo{font-family:var(--f-disp);font-size:17px;letter-spacing:.06em;font-weight:500;color:var(--accent)}
+.brand .logo b{color:var(--ink)}
+.cursor{width:8px;height:15px;background:var(--accent);animation:blink 1.1s step-end infinite}
+.termdate{font-family:var(--f-mono);font-size:12px;color:var(--muted);display:flex;gap:14px;letter-spacing:.02em}
+.termdate .dot{color:var(--down)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.tape{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 20px}
+.tchip{border:1px solid var(--rule);border-radius:8px;padding:8px 12px;background:var(--surface);position:relative;overflow:hidden}
+.tchip::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px}
+.tchip.up::after{background:var(--up)}.tchip.dn::after{background:var(--down)}
+.tchip .n{font-size:11px;color:var(--muted);letter-spacing:.05em}
+.tchip .v{font-family:var(--f-mono);font-size:16px;font-weight:700;line-height:1.3;margin-top:2px}
+.tchip .c{font-family:var(--f-mono);font-size:11.5px;font-weight:700}
+.tchip.up .v,.tchip.up .c{color:var(--up)}.tchip.dn .v,.tchip.dn .c{color:var(--down)}
+.tchip .dt{font-size:10.5px;color:var(--muted)}
+
+header{margin-bottom:6px}
+header h1{font-size:24px;font-weight:700;letter-spacing:.01em}
+header .date{color:var(--muted);font-size:13px;margin-top:6px;font-family:var(--f-mono)}
+
+.point{border:1px solid rgba(77,163,255,.28);border-radius:12px;padding:22px 24px;margin:18px 0 4px;
+background:linear-gradient(180deg,rgba(77,163,255,.08),rgba(77,163,255,.02));box-shadow:0 0 0 1px rgba(77,163,255,.06),0 8px 30px rgba(0,0,0,.35)}
+.point .tag{font-family:var(--f-disp);font-size:11px;color:var(--cyan);letter-spacing:.18em;margin-bottom:10px}
+.point p{font-size:16px;line-height:1.8}
+.point b{color:var(--accent)}
+.point .obs{margin-top:14px;font-size:14px;color:var(--muted);border-top:1px dashed var(--rule);padding-top:10px}
+.point .obs b{color:var(--amber)}
+
+h2{font-size:16px;font-weight:700;margin:34px 0 2px;display:flex;align-items:center;gap:11px;font-family:var(--f-head)}
+h2 .num{font-family:var(--f-mono);font-size:12px;color:var(--accent);border:1px solid var(--rule);padding:1px 7px;border-radius:5px;background:var(--bg2)}
+h2 .sub{font-size:12px;color:var(--muted);font-weight:400;display:block;margin-top:3px}
+h2::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
+.lead{color:var(--muted);font-size:13.5px;margin:8px 0 14px}
+.card{background:linear-gradient(180deg,var(--surface),var(--surface2));border:1px solid var(--rule);border-radius:11px;padding:14px 20px 12px;margin-bottom:10px}
+.card.hl{border-left:3px solid var(--accent)}
+.card.warn{border-left:3px solid var(--amber)}
+.card.kol{border-left:3px solid var(--accent2)}
+.card.biz{border-left:3px solid var(--cyan)}
+
+.table-wrap{width:100%;overflow:auto;max-height:600px;margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:420px}
+th{background:#0d1522;color:var(--accent);text-align:left;padding:8px 11px;font-size:12px;letter-spacing:.03em;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:8px 11px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+table tr:last-child td{border-bottom:none}
+tr:hover td{background:#141d2c22}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-weight:700}
+.up{color:var(--up)}.down{color:var(--down)}
+
+.pill{display:inline-block;padding:1px 9px;border-radius:5px;font-size:11px;font-weight:700;font-family:var(--f-mono)}
+.pill.accent{background:rgba(77,163,255,.14);color:var(--accent);border:1px solid rgba(77,163,255,.3)}
+.pill.up{background:rgba(255,92,108,.12);color:var(--up);border:1px solid rgba(255,92,108,.3)}
+.pill.dn{background:rgba(31,196,122,.12);color:var(--down);border:1px solid rgba(31,196,122,.3)}
+.src{display:inline-block;font-size:10.5px;font-weight:700;padding:0 7px;border-radius:4px;margin-right:6px;font-family:var(--f-mono);letter-spacing:.02em;vertical-align:1px}
+.src-off{background:rgba(255,92,108,.13);color:#ff8b96;border:1px solid rgba(255,92,108,.25)}
+.src-mkt{background:rgba(255,180,84,.12);color:#ffca7d;border:1px solid rgba(255,180,84,.25)}
+.src-ext{background:rgba(77,163,255,.13);color:#8fc2ff;border:1px solid rgba(77,163,255,.25)}
+.src-ima{background:rgba(45,212,191,.12);color:#5fe0cc;border:1px solid rgba(45,212,191,.28)}
+
+.h3{font-weight:700;font-size:14px;margin:14px 0 8px;color:var(--ink);display:flex;align-items:center;gap:8px}
+.h3::before{content:"";width:3px;height:13px;background:var(--accent);border-radius:1px}
+.nlist{font-size:14px}
+.nlist li{margin:9px 0;color:#cdd6e0;list-style:none;padding-left:17px;position:relative}
+.nlist li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-size:11px;top:2px}
+.nlist b{color:var(--ink)}
+
+.line{display:grid;grid-template-columns:58px 1fr;gap:16px;padding:17px 0;border-bottom:1px solid var(--rule-soft)}
+.line:last-child{border-bottom:none}
+.rank{width:58px;height:58px;border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--f-disp);flex-shrink:0;border:1px solid}
+.rank .n{font-size:17px;font-weight:500}.rank .t{font-size:9.5px;margin-top:2px;opacity:.85;letter-spacing:.06em}
+.rank.rp{background:rgba(167,138,250,.12);border-color:rgba(167,138,250,.4);color:var(--accent2)}
+.rank.rb{background:rgba(77,163,255,.12);border-color:rgba(77,163,255,.4);color:var(--accent)}
+.rank.rg{background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.35);color:var(--cyan)}
+.meta{flex:1}
+.meta h3{font-size:16px;margin-bottom:6px;font-family:var(--f-head)}
+.meta .why{font-size:14.5px;color:#c3ccd6;margin-bottom:8px}.meta .why b{color:var(--ink)}
+.meta .how{font-size:13.5px;font-weight:600;color:var(--amber);padding-left:13px;position:relative}
+.meta .how::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:2px;background:var(--amber)}
+
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pbox{border:1px solid var(--rule);border-radius:11px;padding:15px 18px;background:var(--surface)}
+.pbox h4{font-size:14px;margin-bottom:10px;color:var(--accent);display:flex;align-items:center;gap:7px}
+.pbox h4::before{content:"";width:3px;height:13px;background:var(--accent);border-radius:1px}
+.pbox ol{padding-left:18px}
+.pbox li{font-size:13px;margin:7px 0;color:#cdd6e0}
+.pbox li b{color:var(--ink)}
+.pbox.alt h4::before{background:var(--amber)}.pbox.alt h4{color:var(--amber)}
+
+.risk{border:1px solid rgba(255,180,84,.3);background:linear-gradient(180deg,rgba(255,180,84,.07),rgba(255,180,84,.02));border-radius:11px;padding:17px 20px;font-size:14px;color:#e9cbaa}
+.risk b{color:var(--amber)}
+footer{margin-top:30px;border-top:1px solid var(--rule);padding-top:14px;font-size:12px;color:var(--muted);font-family:var(--f-mono)}
+
+@media(max-width:660px){
+.tape{grid-template-columns:repeat(3,1fr)}
+.line{grid-template-columns:1fr}.rank{width:auto;height:auto;flex-direction:row;gap:9px;padding:7px 13px;justify-content:flex-start}
+.panel{grid-template-columns:1fr}.wrap{padding:20px 14px 50px}
+.termdate{gap:8px;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="termbar">
+  <div class="brand"><span class="logo"><b>AS</b>PRE</span><span class="cursor"></span><span class="logo" style="color:var(--ink)">盘前研判</span></div>
+  <div class="termdate"><span>09/10 <span class="dot">●</span> THU</span><span>PRE-MARKET</span><span>MODE:预测</span></div>
+</div>
+
+<div class="tape">
+  <div class="tchip up"><div class="n">上证 000001</div><div class="v">3,951.51</div><div class="c">+0.28%</div></div>
+  <div class="tchip up"><div class="n">深证 399001</div><div class="v">13,723.32</div><div class="c">+0.15%</div></div>
+  <div class="tchip dn"><div class="n">创业板 399006</div><div class="v">3,354.97</div><div class="c">-0.14%</div></div>
+  <div class="tchip dn"><div class="n">科创50 000688</div><div class="v">1,580.06</div><div class="c">-0.69%</div></div>
+  <div class="tchip up"><div class="n">沪深300 000300</div><div class="v">4,572.60</div><div class="c">+0.30%</div></div>
+</div>
+
+<header>
+  <h1>A股盘前研判 · 9/10 <span style="color:var(--accent)">周四</span></h1>
+  <div class="date">数据截至 9/9 收盘 · 隔夜美股 9/9 夜盘 · 机构研报取自 IMA（48h窗口）· 盘前 08:30 口径</div>
+</header>
+
+<section class="point">
+  <div class="tag">CORE THESIS · 核心判断</div>
+  <p>今天大概率是<b>"果链新题材点火 + 午后大金融政策脉冲"</b>的两条腿局面，但不追高、防兑现。<b>昨日已"指数红、账户绿"</b>（涨1794/跌3642、涨停骤减到49家、量能缩到1.86万亿），是冰点退潮日；今天靠<b>苹果折叠屏</b>这个产业新催化 + <b>下午3点四大金融巨头同台</b>这个政策催化来撑。<b>关键还是量</b>——成交回不到 2 万亿，冲得越热闹越容易回落。</p>
+  <div class="obs"><b>最值得盯的 3 个信号：</b> ① 苹果链（蓝思/领益/工业富联）高开后能否放量涨停扩散≥3家 ② 10:30前后大金融是否提前异动 ③ 午后发布会前后券商/银行/保险脉冲 + 两市成交能否回到 2 万亿</div>
+</section>
+
+<h2><span class="num">#01</span><span>今日预测<em class="sub">开盘前先把结论摆出来</em></span></h2>
+<div class="card">
+<div class="table-wrap">
+<table>
+<tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+<tr><td>9/10 开盘方向</td><td>平开至小幅低开：上证 -0.3%~+0.2%（隔夜美股普跌压制，但苹果链/存储高开对冲，结构分化明显）</td><td>中</td></tr>
+<tr><td>9/10 量能中位数</td><td>1.9 万亿（1.8~2.1 万亿）；发布会午后能否放大是关键，回到 2 万亿才升级</td><td>中</td></tr>
+<tr><td>9/10 涨停家数</td><td>60~100 家（昨日冰点 49 家，苹果链+大金融强催化下情绪回暖）</td><td>低</td></tr>
+<tr><td>9/10 情景概率</td><td>乐观 25% / 中性（结构分化、等发布会）50% / 悲观 25%</td><td>—</td></tr>
+<tr><td>创业板 vs 上证超额</td><td>-0.5%~+0.5%（科技高位兑现、权重护盘，超额中性偏弱）</td><td>低</td></tr>
+</table>
+</div>
+<div class="nlist" style="margin-top:8px">
+<li><b>时间节点：</b>09:45 看苹果链有无首板立锚；10:30 看大金融是否提前异动；11:00 看量能；14:00 发布会前后看券商/银行/保险脉冲 + 成交能否回 2 万亿。</li>
+</div>
+</div>
+
+<h2><span class="num">#02</span><span>情景推演 + 失效条件</span></h2>
+<div class="panel">
+  <div class="pbox">
+    <h4>情景推演</h4>
+    <ol>
+      <li><b>乐观 25%</b>：苹果链涨停扩散≥3家 + 午后发布会点燃大金融，量能上 2 万亿，指数放量上攻</li>
+      <li><b>中性 50%</b>：苹果链/存储结构性走强，大金融等发布会午后脉冲后回落，量能 1.8~2 万亿，分化震荡</li>
+      <li><b>悲观 25%</b>：苹果链"利好出尽"高开回落，存储高位兑现，发布会无超预期信号，缩量走弱</li>
+    </ol>
+  </div>
+  <div class="pbox alt">
+    <h4>失效条件 · 认错信号</h4>
+    <ol>
+      <li>苹果链高开&gt;3%但 10:30 前涨停&lt;2家 → "利好出尽"，果链主线降级兑现</li>
+      <li>量能跌破 1.8 万亿 + 涨停&lt;50 → 冰点延续，按防守处理</li>
+      <li>大金融午后发布会冲高后放量滞涨/跳水 → 兑现而非承接，只卖不买</li>
+    </ol>
+  </div>
+</div>
+
+<h2><span class="num">#03</span><span>盯盘 · 就三个点</span></h2>
+<div class="panel">
+  <div class="pbox">
+    <h4>早上 · 新题材认不认</h4>
+    <ol>
+      <li>苹果链（蓝思/领益/工业富联）有没有票放量涨停、扩散到 3 家以上</li>
+      <li>大金融有没有在 10:30 前提前异动抢跑</li>
+    </ol>
+  </div>
+  <div class="pbox alt">
+    <h4>午后 · 发布会怎么兑现</h4>
+    <ol>
+      <li>券商/银行/保险发布会前后是脉冲还是持续拉升</li>
+      <li>两市成交能不能回到 2 万亿（不放大一切皆短炒）</li>
+    </ol>
+  </div>
+</div>
+
+<h2><span class="num">#04</span><span>宏观与要闻<em class="sub">先看大环境</em></span></h2>
+<div class="lead">一句话：海外是压舱石（隔夜普跌，但科技内部分化、存储光通信逆势强），国内是最大变数（今天下午金融发布会）。</div>
+<div class="card hl">
+<div class="h3">海外 · 普跌但结构亮点</div>
+<div class="nlist">
+<li><span class="src src-ext">HOT</span><b>美股 9/9 三大指数全线收跌</b>：道指 -0.77%、纳指 -0.64%、标普 -0.48%，主因<b>原油大涨超3%</b>重创通胀预期与欧美市场。</li>
+<li><span class="src src-ext">HOT</span><b>但科技内部分化极强</b>：存储、光通信逆势走高——SK海力士 +7%、美光 +2%、闪迪 +1%、迈威尔 +4%、Lumentum +1%；半导体设备情绪高涨，Meta +6%。这是今天存储/算力硬件最直接的映射。</li>
+<li><span class="src src-ext">AI</span><b>AI 产业催化再升温</b>：OpenAI 推进与三星下一代芯片合作，三星与 SK 海力士就星际之门数据中心存储芯片供应签署意向，AI 对存储/带宽的需求被重新外推。</li>
+<li><span class="src src-mkt">GEO</span><b>中东冲突升级、油价破百美元</b>：美军 9/8 晚在波斯湾/阿曼湾袭击多艘伊朗油轮商船，伊朗谴责并回击；胡塞袭击沙特阿美多处能源设施、Jazan 炼厂约 40 万桶/日起火；伊朗拟在霍尔木兹设"海上禁区"、美追加对伊制裁。布伦特原油 9/9 盘中突破 100 美元/桶（时隔近6周），EIA 上调今明两年油价预测——这是今天油气链与全球风险偏好的决定变量。</li>
+</div>
+<div class="h3">国内 · 今天的主角是金融发布会</div>
+<div class="nlist">
+<li><span class="src src-off">官方</span><b>今天下午3点，国务院新闻办召开"金融领域贯彻落实'十五五'规划、推动金融强国建设"发布会</b>：央行副行长、金融监管总局副局长、证监会副主席、外汇局副局长罕见同台。市场在等降准降息、中长期资金入市等信号。</li>
+<li><span class="src src-mkt">宏观</span>需要泼冷水：<b>3600亿注资昨日已落地</b>，H股大行当日已跌2%+（摊薄担忧），机构普遍提示A股金融今天"冲高兑现为主、只卖不买"。</li>
+<li><span class="src src-mkt">宏观</span><b>苹果折叠屏 iPhone Duo 今晨全球发布</b>：中国大陆 256GB 起售价 15999 元，展开后为史上最薄 iPhone。供应链已实锤确认供应格局，这是今天最鲜的产业题材。</li>
+</div>
+</div>
+
+<div class="card kol">
+<div class="h3">KOL · 网红 / 机构 / 大嘴巴表态<span class="sub" style="color:var(--muted)">（特朗普、马斯克等）</span></div>
+<div class="nlist">
+<li><span class="src src-ext">TRUMP</span><b>施压美联储立即降息</b>：称鲍威尔"必须现在降息、且幅度要比他设想的更大"，还主张企业放弃季度业绩指引——放大宽松预期。</li>
+<li><span class="src src-ext">TRUMP</span><b>预告对伊战事时间线</b>：称对伊冲突预计 11 月中期选举后结束——给"油价见顶回落"留口子。</li>
+<li><span class="src src-ext">MUSK</span><b>狂吹人形机器人</b>：称 10 年后全球人形机器人将突破 10 亿台——直接催化今天的机器人板块。</li>
+<li><span class="src src-ext">RANK</span><b>埃里森一度超马斯克成全球首富</b>：甲骨文埃里森身家盘中飙至 3930 亿美元短暂登顶、收盘回吐——AI/云算力情绪高涨的侧面印证。</li>
+</div>
+</div>
+
+<div class="card warn">
+<div class="h3">24 小时资讯快讯<span class="sub" style="color:var(--muted)">（9/9 白天 → 9/10 早间）</span></div>
+<div class="nlist">
+<li><span class="src src-off">重磅</span><b>金融领域"十五五"发布会今日 15:00 举行</b>——四大金融部门首次同台（9/9 晚官宣）。</li>
+<li><span class="src src-ext">产业</span><b>苹果发布首款折叠屏 iPhone Duo</b>，大陆 256GB 起 15999 元；蓝思、领益、工业富联确认供货。</li>
+<li><span class="src src-ext">产业</span><b>苹果 iPhone 17 加单</b>，果链获订单信号（机构复盘尊标题级证据：IT之家消息）；3D 打印在苹果端从 "0 到 1"。</li>
+<li><span class="src src-ext">海外</span><b>美股三大指数普跌</b>但半导体逆势——SK海力士+7%、迈威尔+4%，映射 A 股存储/算力。</li>
+<li><span class="src src-ext">海外</span><b>国际油价创近期新高</b>，布伦特突破 100 美元/桶、原油单日涨约 3%。</li>
+<li><span class="src src-mkt">盘面</span><b>沪指收 3951.51 点（三连阳、连续第6日守住20日线）</b>，但深成指/创业板/科创50 仍被压制，量能缩至 1.86 万亿——权重独撑、结构分裂。</li>
+</div>
+</div>
+
+<h2><span class="num">#05</span><span>昨日盘面<span class="sub">昨天到底走成什么样</span></span></h2>
+<div class="lead">一句话：指数全红、个股惨绿，赚了指数亏了账户——典型的缩量冰点日。</div>
+<div class="card">
+<div class="table-wrap">
+<table>
+<tr><th>指数</th><th>昨收</th><th>涨跌</th><th>一句话</th></tr>
+<tr><td>上证指数</td><td class="mono">3,951.51</td><td class="mono up">+0.28%</td><td>权重护盘、守红</td></tr>
+<tr><td>深证成指</td><td class="mono">13,723.32</td><td class="mono up">+0.15%</td><td>微涨</td></tr>
+<tr><td>创业板指</td><td class="mono">3,354.97</td><td class="mono down">-0.14%</td><td>绿</td></tr>
+<tr><td>科创50</td><td class="mono">1,580.06</td><td class="mono down">-0.69%</td><td>高开低走、科技歇脚</td></tr>
+<tr><td>沪深300</td><td class="mono">4,572.60</td><td class="mono up">+0.30%</td><td>权重最强</td></tr>
+</table>
+</div>
+<div class="nlist" style="margin-top:8px">
+<li><b>广度极差：</b>上涨 1794 家 / 下跌 3642 家，上涨占比仅 32%——指数红靠权重硬撑。</li>
+<li><b>情绪骤冷：</b>涨停 49 家（较前一日 75 家骤减）、跌停 9 家；昨日涨停 76 只今天仅 51.32% 收红，接力质量降到 50% 出头。</li>
+<li><b>缩量：</b>两市成交 18556 亿，较前一日少约 1050 亿。</li>
+<li>领涨：<b>煤炭</b>（云煤能源、郑州煤电、大有能源涨停）、<b>航运</b>（海通发展5日3板）；高位 AI 硬件兑现。</li>
+</div>
+</div>
+
+<h2><span class="num">#06</span><span>长 / 中 / 短周期主线全景<span class="sub">结论来自主线跟踪 skill · 盘前只补充当日信息</span></span></h2>
+<div class="card" style="border-left:3px solid var(--cyan)">
+<p style="font-size:13px;color:#b9c4ce;background:rgba(45,212,191,.05);border-radius:6px;padding:8px 12px;margin:8px 0">三周期主线定性结论由「主线跟踪 skill + 主线台账」产出，盘前分析<b style="color:var(--ink)">不重复推导</b>，只把今天的新增信息挂到对应主线。</p>
+<div class="line">
+  <div class="rank rp"><div class="n">长</div><div class="t">年级趋势</div></div>
+  <div class="meta">
+    <h3>AI算力 ｜ 6G卫星 ｜ 人形机器人</h3>
+    <div class="why">既定结论：AI 算力全球资本开支周期、9月入业绩验证；6G/卫星因"十五五"规划首提点火；机器人从预期转订单。</div>
+    <div class="how">盘前补充：隔夜 AI 存储需求外推（OpenAI×三星）继续强化；48h 内华源/国金机械继续 call 机器人。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rb"><div class="n">中</div><div class="t">季级主线</div></div>
+  <div class="meta">
+    <h3>AI硬件（存储/光模块/PCB）｜ 大金融 ｜ 农业</h3>
+    <div class="why">既定结论：AI硬件确定性最强但位置偏高；大金融政策密集、9月主线；农业涨价硬但位高。</div>
+    <div class="how">盘前补充：① 隔夜 SK海力士+7% 强化存储承接；② 今日15点金融发布会是大金融当日新增催化。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rg"><div class="n">短</div><div class="t">周级博弈</div></div>
+  <div class="meta">
+    <h3>苹果折叠屏链 ｜ 大金融脉冲 ｜ 煤炭/航运</h3>
+    <div class="why">既定结论：苹果链供应实锤最鲜、大金融午后政策脉冲、煤炭/航运昨日预热。</div>
+    <div class="how">盘前补充：苹果 iPhone Duo 今晨发布为当日最强新增催化。</div>
+  </div>
+</div>
+</div>
+
+<h2><span class="num">#07</span><span>机构怎么看 + 公司动态<span class="sub">48h 内 IMA 研报 + 外搜要点</span></span></h2>
+<div class="lead">方向收敛：大金融兑现压力别追高；AI硬件看隔夜映射能否二次带涨；苹果链供应格局实锤 + 3D打印"0到1"。</div>
+
+<div class="card">
+<div class="h3">机构观点（券商共识）</div>
+<div class="nlist">
+<li><span class="src src-mkt">机构</span><b>大金融：</b>多家提示 3600亿注资已落地、H股已示摊薄，A股银行/保险今天"冲高兑现为主"，发布会别当无脑买点；券商并购（中金吸并东兴、信达获批）是主题性脉冲。</li>
+<li><span class="src src-ext">映射</span><b>存储/算力：</b>隔夜 SK海力士+7%、迈威尔+4%，高盛对中际旭创 H 股给买入+3267 港元目标价，重申 A股买入。</li>
+<li><span class="src src-mkt">机构</span><b>苹果链：</b>蓝思确认 Q2末已出货 UTG，领益超薄钛合金折叠支撑件已量产出货；但前序大涨后谨防"利好兑现"。</li>
+</div>
+</div>
+
+<div class="card biz">
+<div class="h3">48 小时机构研报信号<span class="sub" style="color:var(--muted)">（来源标注 [IMA] 机构研报库；正文要点经外网研报交叉核对）</span></div>
+<div class="table-wrap">
+<table>
+<tr><th>方向</th><th>机构研报 / 观点（48h内）</th><th>对今日的意义</th></tr>
+<tr><td><b>苹果链</b></td><td><span class="src src-ima">IMA</span>《苹果折叠屏正式登场·产业链配置方向梳理》(0910)、国联民生电子《苹果新机短评》(0910)、东吴电子《苹果秋季发布会推iPhone》(0910)、申万TMT《250910 苹果夜里发了啥》(0910)、果链加单推荐【隆利科技】(0909)</td><td>折叠屏+加单+3D打印"0到1"三重兑现，最鲜产业题材；范围从手机延伸至材料/机械</td></tr>
+<tr><td><b>机器人</b></td><td><span class="src src-ima">IMA</span>新时达《京东机器人量产链条启动·末端配送机器人预期》(0909)、国金机械《机器人板块更新·高切低或有超配机会》(0908)、华源机器人《坚定看多·Q4有望主升浪》(0908)</td><td>京东订单兑现末端配送预期，市场风格"高切低"下机器人获超配资金</td></tr>
+<tr><td><b>3D打印</b></td><td><span class="src src-ima">IMA</span>长城机械《3D打印设备·消费电子端大规模订单窗口期来临》(0908)</td><td>叠加苹果折叠屏铰链件的3D打印应用，消费电子端订单窗口打开</td></tr>
+<tr><td><b>半导体设备</b></td><td><span class="src src-ima">IMA</span>广发机械《半导体设备跟踪·短期扰动不改长期趋势·坚定看好》(0905)；<span class="src src-ext">外</span>SEMI Q2全球设备销售同比+23%、方正称台积电设备需求为2025末1.9倍、长电拟募65亿</td><td>设备景气延续，国产替代+先进制程双驱动，存储扩产是主逻辑</td></tr>
+<tr><td><b>光模块</b></td><td><span class="src src-ima">IMA</span>《光模块观点更新》(0909)、亨通光电《光模块重大更新·1.6T》(0909)；<span class="src src-ext">外</span>亨通 H1 净利+93%、卓昱光子 800G批量交付、1.6T三季度量产</td><td>1.6T 进入放量期，龙头业绩兑现强化算力硬件景气</td></tr>
+<tr><td><b>创新药/CXO</b></td><td><span class="src src-ima">IMA</span>山证医药《中国创新药已成为全球最重要参与者·仍以创新药及上游CXO为核心》(0908)、《关注港股创新药板块》(0909)</td><td>创新药海外地位提升，CXO 景气，今日或随风险偏好小幅修复</td></tr>
+<tr><td><b>光学/消费电子</b></td><td><span class="src src-ima">IMA</span>天风电子《蓝特光学·光通信&消费电子光学创新》(0910)</td><td>光学创新+苹果链共振，消费电子光学环节获机构覆盖</td></tr>
+</table>
+</div>
+<div class="nlist" style="margin-top:8px">
+<li><span class="src src-ima">说明</span>以上为 IMA 机构研报库 48h 内检索到的标题级证据，正文要点经公开研报/资讯交叉核对；IMA 订阅库正文受平台权限限制不展开全文。</li>
+</div>
+</div>
+
+<h2><span class="num">#08</span><span>今天三条主线<span class="sub">按证据和位置排了序</span></span></h2>
+<div class="lead">落到今天打板维度：先看有新催化的低位方向，再看政策脉冲，最后防高位兑现。</div>
+<div class="card">
+<div class="line">
+  <div class="rank rp"><div class="n">1</div><div class="t">最值得看</div></div>
+  <div class="meta">
+    <h3>苹果折叠屏链 <span class="pill accent">25%</span></h3>
+    <div class="why"><b>iPhone Duo 今晨发布 + A股供应实锤 + 48h 国联/东吴/申万密集覆盖</b>，唯一"新题材+有订单+位置不算太高"的方向。蓝思（UTG Q2末出货）、领益（铰链钛合金件量产）、工业富联（组装）。</div>
+    <div class="how">看有没有票放量涨停、扩散到3家以上；扩散了就是今天最硬的主线。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rb"><div class="n">2</div><div class="t">政策脉冲</div></div>
+  <div class="meta">
+    <h3>大金融（券商/银行/保险）<span class="pill up">22%</span></h3>
+    <div class="why"><b>今天下午3点四大金融巨头同台</b>讲"十五五"金融规划，市场盼降准降息、资金入市。弹性最大，但注资利好已兑现、H股已跌，<b>把发布会预期当买点风险高</b>。</div>
+    <div class="how">上午看券商是否提前异动；午后发布会是脉冲窗口，冲高即兑现，别追涨停。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rg"><div class="n">3</div><div class="t">防兑现</div></div>
+  <div class="meta">
+    <h3>存储 / 光通信（AI硬件）<span class="pill dn">18%</span></h3>
+    <div class="why">隔夜存储/光通信美股逆势新高、映射最直接，但<b>昨天科创50已高开低走、位置偏高</b>。逻辑最硬、也最容易高开兑现。</div>
+    <div class="how">已赚的拿稳；看亨通光电、太极实业等能否二次带涨，带不动就歇，别追高。</div>
+  </div>
+</div>
+</div>
+
+<h2><span class="num">#09</span><span>板块个股 · 证据链<span class="sub">按产业分组 · 每条挂了催化和个股</span></span></h2>
+<div class="lead">从"最新资讯 + 48h IMA研报 + 外搜要点"汇总，按 苹果链 / 存储AI硬件 / 机器人·3D打印 / 大金融·政策 / 医药·独立逻辑 五组拆分。缺失标 [MISSING]，不虚构个股证据。</div>
+
+<div class="card">
+<div class="h3" style="margin-top:4px">组一 · 苹果折叠屏链（今日最鲜催化）</div>
+<div class="table-wrap">
+<table>
+<tr><th style="width:15%">细分</th><th style="width:46%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>折叠结构件</b></td><td>蓝思确认：为折叠屏供 UTG 柔性玻璃、玻璃支撑板、PET膜、3D玻璃盖板，Q2末起对大客户出货交付</td><td>蓝思科技</td></tr>
+<tr><td><b>铰链模组</b></td><td>铰链价值量最大、需承超10万次折叠；领益向苹果供不锈钢/钛合金/碳纤维支撑件与铰链模组，超薄钛合金折叠支撑件已量产出货</td><td>领益智造</td></tr>
+<tr><td><b>整机组装</b></td><td>工业富联为 iPhone 核心整机组装厂，折叠屏放量直接受益单机价值提升</td><td>工业富联</td></tr>
+<tr><td><b>3D打印/材料</b></td><td>苹果铰链件引入 3D 打印"0到1"，长城机械提示消费电子端大规模订单窗口（0908）</td><td>铂力特、华曙高科</td></tr>
+<tr><td><b>果链低估值</b></td><td>苹果 iPhone 17 加单，机构推果链中业绩增速快、估值低、赔率高标的（0909）</td><td>[MISSING] 隆利科技等，待盘面确认</td></tr>
+</table>
+</div></div>
+
+<div class="card">
+<div class="h3" style="margin-top:4px">组二 · 存储 + AI 算力硬件（隔夜映射 + 48h研报）</div>
+<div class="table-wrap">
+<table>
+<tr><th style="width:15%">细分</th><th style="width:46%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>存储芯片</b></td><td>隔夜 SK海力士+7%、美光+2%；OpenAI×三星合作、三星与SK海力士就星际之门存储签意向，AI存储需求外推</td><td>太极实业、江波龙、香农芯创、聚辰股份</td></tr>
+<tr><td><b>光模块</b></td><td>亨通 H1 净利+93%、1.6T三季度放量；金融街：光模块封测设备 2030 市场 413.6 亿（CAGR 20.5%）</td><td>中际旭创、新易盛、亨通光电、剑桥科技</td></tr>
+<tr><td><b>半导体设备</b></td><td>SEMI Q2设备销售同比+23%；方正指台积电设备需求为2025末1.9倍；长电拟募65亿扩先进封装</td><td>北方华创、中微公司、拓荆科技</td></tr>
+<tr><td><b>PCB/算力硬件</b></td><td>北美AI服务器拉货、Q3-Q4业绩弹性；光通信&消费电子光学创新获天风覆盖</td><td>沪电股份、深南电路、生益电子</td></tr>
+</table>
+</div></div>
+
+<div class="card">
+<div class="h3" style="margin-top:4px">组三 · 机器人 + 3D打印（48h研报新信号）</div>
+<div class="table-wrap">
+<table>
+<tr><th style="width:15%">细分</th><th style="width:46%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>末端配送</b></td><td>新时达《京东机器人量产链条启动·末端配送机器人预期》(0909)；京东订单兑现</td><td>新时达</td></tr>
+<tr><td><b>风格切换</b></td><td>国金机械：AI 行情"高切低"，机器人或有超配机会(0908)；华源：Q4 有望迎主升浪(0908)</td><td>鸣志电器、爱仕达、三花智控</td></tr>
+<tr><td><b>3D打印</b></td><td>苹果铰链3D打印"0到1"+长城机械大订单窗口(0908)</td><td>铂力特、华曙高科</td></tr>
+</table>
+</div></div>
+
+<div class="card">
+<div class="h3" style="margin-top:4px">组四 · 大金融 + 政策受益</div>
+<div class="table-wrap">
+<table>
+<tr><th style="width:15%">细分</th><th style="width:46%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>券商（政策弹性）</b></td><td>今天下午3点金融发布会券商表态窗口；中金吸并东兴、信达获批</td><td>中金公司、东兴证券、低估值头部</td></tr>
+<tr><td><b>银行</b></td><td>3600亿注资已落地；注意利好兑现、摊薄担忧</td><td>农业银行、工商银行</td></tr>
+<tr><td><b>保险</b></td><td>财政部密集注资补资本，长线配置；H股已有波动</td><td>中国人寿、中国人保</td></tr>
+</table>
+</div></div>
+
+<div class="card">
+<div class="h3" style="margin-top:4px">组五 · 创新药 / 独立逻辑</div>
+<div class="table-wrap">
+<table>
+<tr><th style="width:15%">细分</th><th style="width:46%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>创新药/CXO</b></td><td>山证：中国创新药成全球最重要参与者，仍以创新药及上游CXO为核心(0908)</td><td>药明康德、恒瑞医药</td></tr>
+<tr><td><b>煤炭</b></td><td>昨日最强主线、今日是否续航；云煤能源/郑州煤电/大有能源涨停（已高位）</td><td>云煤能源、郑州煤电、大有能源</td></tr>
+<tr><td><b>航运</b></td><td>BDI/运价上行、海通发展5日3板连板龙头</td><td>海通发展、南京港、招商轮船</td></tr>
+<tr><td><b>油气</b></td><td>隔夜原油大涨、布伦特破百美元（地缘+库存）</td><td>中曼石油、中国海油</td></tr>
+</table>
+</div></div>
+
+<h2><span class="num">#10</span><span>风险提醒</span></h2>
+<div class="risk">
+昨日已是"赚指数不赚钱"的缩量冰点日，情绪在退潮。今天最大的两个坑：<b>① 把下午金融发布会预期当无脑买点</b>——注资利好已兑现、H股已跌，冲高兑现是大概率，别追涨停；<b>② 苹果链"利好出尽"</b>——发布即兑现、高开回落是常见剧本。缩量环境里，纯讲故事、没订单的方向最容易挨杀，量不回 2 万亿，再热闹也是短炒。IMA 机构研报为标题级证据（订阅库正文受平台权限限制），引用时留意与盘面的最终确认。
+</div>
+
+<footer>
+DATA 9/9交易所收盘 · 隔夜美股/苹果发布会(9/10凌晨) · 国新办发布会预告(官方) · 机构公开口径 · IMA机构研报库(48h标题级)。盘前研判·仅供参考·不构成投资建议。GEN 2026-09-10 PRE-MARKET
+</footer>
+
+</div>
+</body>
+</html>

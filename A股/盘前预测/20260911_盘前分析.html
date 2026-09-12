@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前研判 2026-09-11</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--red:#dc2626;--green:#16a34a;--accent:#1e40af;--dark:#1e3a5f;--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--txt:#1e293b;--sub:#64748b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;padding-bottom:60px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;padding:34px 0 28px;margin-bottom:24px}
+header .wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+h1{font-size:26px;font-weight:800;letter-spacing:.5px}
+header .sub{opacity:.85;font-size:12.5px;margin-top:8px}
+header .date{font-size:13px;font-weight:600;opacity:.9;text-align:right}
+.tldr{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:22px 24px;margin-bottom:26px;box-shadow:0 2px 12px rgba(15,23,42,.06)}
+.tldr h2{font-size:18px;color:var(--dark);margin-bottom:12px}
+.tldr .tag{display:inline-block;background:rgba(30,64,175,.1);color:var(--accent);font-weight:700;font-size:12.5px;padding:3px 10px;border-radius:20px;margin-right:8px;margin-bottom:6px}
+.tldr p{margin:8px 0;font-size:14.5px}
+.section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-bottom:20px;box-shadow:0 2px 10px rgba(15,23,42,.04)}
+.section>h2{font-size:19px;color:var(--dark);border-bottom:2px solid var(--accent);padding-bottom:8px;margin-bottom:16px}
+.section h3{font-size:15px;color:var(--accent);margin:18px 0 8px}
+.section h4{font-size:13.5px;color:var(--dark);margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0}
+th{background:rgba(30,64,175,.08);color:var(--dark);font-weight:700;text-align:left;padding:9px 12px;border:1px solid var(--line)}
+td{padding:8px 12px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#f8fafc}
+.up{color:#dc2626;font-weight:700}
+.dn{color:#16a34a;font-weight:700}
+.mid{color:#ea580c;font-weight:700}
+.pill{display:inline-block;padding:2px 9px;border-radius:4px;font-size:12px;font-weight:600;margin-right:4px}
+.p-bull{background:rgba(220,38,38,.12);color:#b91c1c}
+.p-bear{background:rgba(22,163,74,.12);color:#15803d}
+.p-center{background:rgba(234,88,12,.12);color:#c2410c}
+.prob{font-weight:800;color:var(--accent)}
+.chip{display:inline-block;background:#f1f5f9;border:1px solid var(--line);border-radius:6px;padding:3px 9px;font-size:12.5px;margin:3px 4px 3px 0}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:12px 14px;font-size:13px;color:#92400e;margin:12px 0}
+.bar{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;display:inline-block;vertical-align:middle;width:80px}
+.bar i{display:block;height:100%;background:var(--accent)}
+.flow{background:linear-gradient(90deg,rgba(30,64,175,.04),rgba(30,58,95,.06));border:1px solid rgba(30,64,175,.15);border-radius:10px;padding:14px 16px;margin:10px 0}
+.flow b{color:var(--dark)}
+.kill{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 14px;font-size:13px;color:#991b1b;margin:12px 0}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:24px 20px 8px}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:#1e40af;color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:#1e3a5f}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:240px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:var(--dark);padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#f1f5f9;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.mcard{background:linear-gradient(135deg,#f8fafc,#eef2ff);border:1px solid var(--line);border-radius:10px;padding:14px}
+.mcard .k{font-size:12px;color:var(--sub)}
+.mcard .v{font-size:20px;font-weight:800;margin-top:4px}
+.mcard .d{font-size:12px;margin-top:3px}
+</style>
+</head>
+<body>
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#sec0">S0 执行摘要</a>
+<a href="#sec1">S1 市场状态</a>
+<a href="#sec15">S1.5 盘前观点</a>
+<a href="#sec2">S2 隔夜冲击</a>
+<a href="#sec25">S2.5 行业快讯板</a>
+<a href="#sec26">S2.6 外媒小作文</a>
+<a href="#sec3">S3 定价与拥挤度</a>
+<a href="#sec4">S4 主线竞争</a>
+<a href="#sec45">S4.5 热点深追</a>
+<a href="#sec5">S5 今日预测</a>
+<a href="#sec6">S6 情景推演</a>
+<a href="#sec7">S7 失效条件</a>
+<a href="#sec8">S8 观察清单</a>
+<a href="#sec9">S9 预测台账</a>
+</nav>
+</div>
+
+<header>
+<div class="wrap">
+<div>
+<h1>A股盘前研判</h1>
+<div class="sub">通胀交易 vs AI硬件高位分化 · 五层模型视角</div>
+</div>
+<div class="date">2026-09-11 · 周五<br>数据时点 09:00 (盘前)</div>
+</div>
+</header>
+
+<div class="wrap">
+
+<!-- S0 -->
+<div class="tldr" id="sec0">
+<h2>S0 · 执行摘要</h2>
+<div>
+<span class="tag">市场状态</span><span class="tag">通胀交易主导·存量博弈</span><span class="tag">今日偏震荡偏多</span>
+</div>
+<p><b>一句话定性：</b>隔夜全球"通胀交易"（油价破百+PPI超预期+欧央行加息）强力发酵，但A股自身处缩量地量区间（1.65万亿）、情绪低（涨跌比1:4.7），今日大概率<b class="up">油气/资源/猪/农业通胀链高开承接</b>，而<b class="dn">AI硬件受"存储涨价松动"利空压制，高位分化加剧</b>。</p>
+<p><b>今日核心判断：</b><span class="prob">平开至小幅高开</span>上证+0.1%~+0.5%区间，通胀主线占优。</p>
+<p><b>最大变量：</b>油气资源能否放量承接（决定通胀交易是趋势还是脉冲）</p>
+<p><b>最大风险：</b>AI硬件（存储/光模块/PCB）隔夜利空+高位分化，高开竞价的科技兑现窗口</p>
+<p><b>三个观察信号：</b>①油气/石油开采板块高开幅度与封板扩散；②存储/光模块龙头（中际旭创/新易盛）是否低开杀跌；③两市成交能否放量突破1.8万亿打破地量。</p>
+</div>
+
+<!-- S1 -->
+<div class="section" id="sec1">
+<h2>S1 · 市场状态（Regime）</h2>
+<div class="grid">
+<div class="mcard"><div class="k">上证指数</div><div class="v">3934.40</div><div class="d dn">-0.43% · 收于MA20(3936)附近</div></div>
+<div class="mcard"><div class="k">深证成指</div><div class="v">13617.67</div><div class="d dn">-0.77%</div></div>
+<div class="mcard"><div class="k">创业板指</div><div class="v">3338.42</div><div class="d dn">-0.49%</div></div>
+<div class="mcard"><div class="k">两市成交</div><div class="v">1.65万亿</div><div class="d mid">缩量 · 5日均87% / 20日均81%</div></div>
+</div>
+
+<table>
+<tr><th>维度</th><th>状态</th><th>数据支撑</th></tr>
+<tr><td>趋势</td><td><span class="pill p-bear">震荡</span></td><td>上证收3934位于MA5(3938)/MA10(3949)下方，但站上MA20(3936)/MA30(3923)；近8日全在3920-3980箱体</td></tr>
+<tr><td>波动</td><td><span class="pill p-center">低</span></td><td>当日振幅约0.55%（3927-3949），连续低位窄幅</td></tr>
+<tr><td>情绪</td><td><span class="pill p-bear">冰点~低</span></td><td>涨955/跌4512、涨停40/跌停14、上涨占比17%（过去1年25%交易日处于该热度区间）</td></tr>
+<tr><td>风险偏好</td><td><span class="pill p-bear">risk-off</span></td><td>价值10日+1.32% vs 成长-2.61%；20日价值+3.62% vs 成长-2.48%，防御明显占优</td></tr>
+<tr><td>风格</td><td><span class="pill p-center">大价值</span></td><td>银行/油气/红利走强，科技小盘走弱；创业板60日-19.9%</td></tr>
+<tr><td>资金</td><td><span class="pill p-bear">存量博弈</span></td><td>成交1.65万亿为5日(1.89万亿)/20日(2.02万亿)下方，增量资金缺位</td></tr>
+<tr><td>估值</td><td><span class="pill p-center">中高位</span></td><td>中证全指PE_TTM 20.44，3Y分位66%/5Y分位80%——估值约束中期弹性，但极值缩量下短期方向解释力弱</td></tr>
+</table>
+
+<h3>昨日收盘速览（9/10 事实层）</h3>
+<p>三大指数集体小幅收跌，全市场近4500家飘绿，处典型<span class="pill p-bear">缩量整理</span>。结构上两条线索并存：<b class="up">油气开采（+3.64%）</b>受油价破百催化领涨，准油股份涨停、通源石油盘中+16%；<b class="up">PCB/覆铜板</b>受涨价函催化多股涨停（金安国纪/景旺/东山精密/超声电子）；银行逆势走强（高股息防御）；养殖企稳（京基智农涨停、猪价2连涨）。科技成长中<b class="dn">光模块龙头分化</b>（中际旭创跌2%、新易盛跌近1%、天孚+4%）。</p>
+
+<div class="note"><b>量价定性：</b>缩量下跌（1.65万亿）属<b>存量博弈/地量</b>，下跌伴随量能衰竭，杀跌动能有限但反弹缺增量；需放量（≥1.8万亿）才能定性为"增量转折"。</div>
+</div>
+
+<!-- S1.5 -->
+<div class="section" id="sec15">
+<h2>S1.5 · 盘前观点（Morning View）</h2>
+<p><b>第1段 · 海外锚点：</b>隔夜全球定价的主线只有一个——<b class="up">通胀交易回归</b>。美国8月PPI同比+5.4%大超预期（前值4.7%）、核心PPI+4.6%，叠加美油单日+8.2%破百、沙特产量骤降至1990年最低、30年美债收益率升至5.34%（2007年来最高）与欧央行加息25bp，市场对"全球重新通胀+加息预期升温"进行再定价，美联储9月加息概率从前日61%升至70%。这直接压制美股科技（费半-2.66%、英特尔-5.57%），对A股传导为<b class="up">利好油气/资源/猪/农业等通胀链</b>、<b class="dn">利空高位科技成长</b>。</p>
+<p><b>第2段 · 盘面定性：</b>上证收3934.40正好落在MA20（3936）一线，下沿MA30（3923）已连守多日，形成"3920-3950"的窄幅平台。量价定性为<b>缩量整理/存量博弈</b>（1.65万亿，量能衰竭）。技术上是"上有4000整数关与MA120(3998)、下有3930平台的夹板行情"——在地量状态下，方向选择高度依赖隔夜催化能否带来增量资金。五层视角看，当前指数处于"L3资金拥挤度极低+L4估值预期中性"阶段，属存量市场的结构性机会而非趋势行情。</p>
+<p><b>第3段 · 结构行为：</b>资金当前呈典型<b>高低切</b>：高位AI硬件（光模块/存储/PCB）在近两周大涨后，昨日已现龙头分化（"易中天"旭创/新易盛回落、天孚独强），叠加隔夜"存储涨价松动"利空，<b class="dn">高位科技进一步松动风险</b>；而低位价值（油气/银行/猪/资源/农业）因通胀催化与低拥挤度获资金回补。这是"通胀交易吸金、科技兑现退潮"的跷跷板格局。</p>
+<p><b>第4段 · 今日取向：</b>今日风格取向<b>偏"通胀链进攻 + 科技防御"</b>，重个股题材（油/气/资源/猪）轻指数权重。条件分支：<b>若油气放量涨停扩散（>5只）则通胀交易确立为主线</b>，可积极参与弹性油服/油气开采；<b>若高开后10:30前无涨停扩散且量能不破1.8万亿，则按存量脉冲处理</b>，不追高、等回踩。</p>
+</div>
+
+<!-- S2 -->
+<div class="section" id="sec2">
+<h2>S2 · 隔夜冲击（Overnight Shock）</h2>
+
+<h3>冲击一：全球通胀交易回归（油价破百+PPI超预期+加息预期）Surprise 8/10</h3>
+<div class="flow">
+<p><b>事实层：</b>①美国8月PPI同比+5.4%（预期<5.4，前值4.7，提速）；核心PPI+4.6%；②美油主力9/10收涨8.2%突破100美元、布油+7.98%约101-105美元，9/11早间进一步走高至约103.77；沙特向OPEC称产量骤降至1990年以来最低；③美联储9月加息概率升至69.8%（前日61.2%）；④欧央行加息25bp至2.5%；⑤30年美债收益率5.34%创2007年6月来最高。</p>
+<p><b>Surprise 判断：</b>油价破百+PPI超预期均<u>强于市场预期</u>，且欧央行抢跑加息放大"全球紧缩"信号——属于"利空预期的实质兑现"。</p>
+<p><b>资产反应：</b>美股四连跌（道-0.6%/标普-0.58%/纳指-0.65%），费半-2.66%，金银铜齐跳水，油价大涨——典型"滞胀交易"。</p>
+<p><b>传导链（四层）：</b>①改变预期：资金从"衰退降息"切向"滞胀加息"；②谁受益：油气上游（A股石油开采/油服/油运）、资源品、具备通胀传导能力的猪/农业、煤炭；③资金先手：昨日油气已启动（+3.64%），今日资金或继续流入但需防高开兑现；④能否持续：若油价站稳100+且地缘扰动延续，通胀交易可持续数日。<br><b>断裂点：</b>油价对A股油气股传导是"外盘→A股"直接映射、确定性较高，但若油价冲高回落，行情一日终结。</p>
+<p><b>A股映射：</b>油气开采/油服（准油股份、中曼石油、贝肯能源、通源石油）、煤炭、农业/猪（京基智农）、资源化工。<span class="mid">证据等级 高</span></p>
+</div>
+
+<h3>冲击二：存储涨价逻辑松动（AI硬件见顶信号）Surprise 7/10</h3>
+<div class="flow">
+<p><b>事实层：</b>日本存储巨头铠侠（Kioxia）CEO太田裕雄9/9发声"内存价格已涨够了"，要求业务团队<u>不要向数据中心客户大幅提价</u>，为本轮连带存储景气的首家"踩刹车"厂商。此前其NAND 6月均价环比+70%、前季涨幅超一倍；存储占终端成本已从20%升至30-35%。</p>
+<p><b>Surprise 判断：</b>首次有原厂主动为涨价降温，中高利空（对依赖涨价的A股存储/算力硬件链）。</p>
+<p><b>传导链：</b>①改变预期：存储"价格见顶"预期升温，AI硬件涨价叙事的持续性与斜率被质疑；②谁受损：A股存储/内存模组/光模块/PCB等涨幅透支的AI硬件；③资金先手：昨日光模块龙头已现分化（旭创-2%/新易盛-1%），今日或放大；④能否持续：原厂克制提价是"涨幅过大反噬需求"的正常表态，不一定立刻崩价，但足以松动高位叙事。<br><b>断裂点：</b>存储实际合约价尚未回落，若现货价维持高位则利空有限。</p>
+<p><b>A股映射：</b>存储（朗科/佰维）、PCB（金安国纪/超声电子/东山精密）、光模块CPO（中际旭创/新易盛/天孚）。<span class="mid">证据等级 中高</span></p>
+</div>
+
+<h3>冲击三：国内"十五五"金融汇报（政策护盘）Surprise 5/10</h3>
+<div class="flow">
+<p><b>事实层：</b>9/10国新办"开局起步'十五五'"发布会，央行副行长陆磊（"十五五"金融强国规划出台、完善基础货币投放、强化利率型调控）、证监会副主席李超（深化投融资改革、提高上市公司质量、严格减持退市监管、支持新质生产力）、金融监管总局、外汇局齐发声，多部门表态<b>维护资本市场平稳运行、引导中长期资金入市</b>。</p>
+<p><b>Surprise 判断：</b>政策面积极但属"稳预期"而非"强刺激"，中低利好，难以单独扭转缩量格局。</p>
+<p><b>传导链：</b>①稳定长期预期、利好券商/金融（但昨已部分反应）；②资金响应需"放量+涨停扩散"确认为前提，否则高开即兑现（学习点25）。<span class="mid">证据等级 中</span></p>
+</div>
+</div>
+
+<!-- S2.5 -->
+<div class="section" id="sec25">
+<h2>S2.5 · 行业快讯板（News Board）</h2>
+<div class="note">只收T日08:00前已公开信息；每条标注来源类型。排序按今日信息密度从高到低。</div>
+
+<h4>① 宏观政策（密度极高）</h4>
+<p>· 「十五五」金融强国规划出台，央行陆磊：淡化数量型中介目标、强化利率型调控【官方】</p>
+<p>· 证监会李超：深化投融资改革、提高上市公司质量、严格减持与退市监管、支持新质生产力【官方】</p>
+<p>· 上交所调整科创50样本，9/11收市后生效：调入睿创微纳、华丰科技、屹唐股份、影石创新、盛合晶微【官方】</p>
+<p>→ 映射：利好券商/科创硬科技指数</p>
+
+<h4>② 油气/大宗（密度极高，今日榜首）</h4>
+<p>· 美油+8.2%破百、布油+7.98%；9/11早间美油续涨至约103.77美元【外媒/产业】</p>
+<p>· 沙特原油产量骤降至1990年以来最低（对OPEC表）【外媒】</p>
+<p>· 美财政部对伊朗相关个人实体实施制裁；特朗普威胁打击伊"镐山"核设施【外媒】</p>
+<p>· 国内原油/纯苯/苯乙烯/乙二醇期货开盘大涨【公告/期货】</p>
+<p>→ 映射：油气开采、油服、油运、燃料化工</p>
+
+<h4>③ AI算力/半导体/存储（密度高，今日利空为主）</h4>
+<p>· 铠侠CEO：存储"价格已涨够"，要求克制数据中心提价——首家原厂踩刹车【产业】</p>
+<p>· 费半-2.66%、英特尔-5.57%、ARM-3.8%、NVDA走弱【外媒】</p>
+<p>· 国内算力光连接/PCB（超声电子4天2板、金安国纪涨停）近期异动，关注退潮风险【产业】</p>
+<p>→ 映射：存储、光模块CPO、PCB短线承压</p>
+
+<h4>④ 医药生物</h4>
+<p>· 华东医药HDM2005（ROR1 ADC）入选国家科技重大专项，并获FDA快速通道资格（MCL）【公告】</p>
+<p>· 第七批国家组织医用耗材集中带量采购启动【官方】</p>
+<p>· 国产创新药中美双IND延续热潮（RiboX获FDA RMAT认定）【公告】</p>
+<p>→ 映射：创新药/ADC、CXO结构性机会（集采对耗材略利空）</p>
+
+<h4>⑤ 消费/养殖/农业</h4>
+<p>· 猪价9/9~9/10连续2日上涨至约10.89元/公斤（同比-19.5%）、生意社10.87、行情宝标猪11.01/猪粮比4.60:1【产业】</p>
+<p>· 生猪市场处底部，供强需弱格局未改，上涨尚未确立【产业】</p>
+<p>→ 映射：猪企/养殖（京基智农已涨停）低位反弹，但确认性不足</p>
+
+<h4>⑥ 其他</h4>
+<p>· 中美正就300亿美元对等降税框架磋商【官方】</p>
+<p>· 8月国内CPI同比-0.4%、核心CPI+0.9%（连续第4个月扩大）——内需弱但价格端有韧性【官方】</p>
+<p>→ 映射：消费权重、进口链</p>
+</div>
+
+<!-- S2.6 -->
+<div class="section" id="sec26">
+<h2>S2.6 · 外媒小作文监测（Market Narrative Watch）</h2>
+<table>
+<tr><th>报道</th><th>类型</th><th>可信度</th><th>涉及/证伪路径</th></tr>
+<tr><td>路透：DeepSeek已委托中信证券筹备科创板IPO（进入尽调、证监局尚无可查备案）</td><td>知情人士型</td><td><span class="pill p-center">中·待证实</span>（尽调阶段，未签辅导协议）</td><td>利好国产大模型/算力情绪。证伪：若官方否认或长时间无备案则证伪</td></tr>
+<tr><td>外媒：美正评估铜关税应对方案（白宫官员：未定最终决定）</td><td>机构/知情型</td><td><span class="pill p-center">中低</span>（评估中，非定论）</td><td>利好A股铜/有色。若6/30前未落地则利多消退</td></tr>
+<tr><td>路透/华尔街见闻：发改委价格监测称存储芯片持续涨价并向下游传导（1-6月）</td><td>数据型</td><td><span class="pill p-center">中</span>（与铠侠表态相反，为旧数据）</td><td>与"存储涨价松动"利空对冲。看最新月度合同价定方向</td></tr>
+</table>
+<div class="note">今日无"外媒瞄准中国资产做空/看多"的强叙事性报道，多为产业层面信息，"DeepSeek上市"是唯一具情绪催化属性的传闻，可信度中等待证实。评级纪律：外媒品牌不加分，以上均以可查证事实为限。</div>
+</div>
+
+<!-- S3 -->
+<div class="section" id="sec3">
+<h2>S3 · 定价与拥挤度（Price-in）</h2>
+<div class="grid">
+<div class="mcard"><div class="k">油气开采（昨日）</div><div class="v up">+3.64%</div><div class="d">领涨 · 准油涨停</div></div>
+<div class="mcard"><div class="k">PCB/覆铜板</div><div class="v up">涨停潮</div><div class="d">金安国纪/景旺/东山</div></div>
+<div class="mcard"><div class="k">光模块龙头</div><div class="v mid">分化</div><div class="d">旭创-2%/天孚+4%</div></div>
+<div class="mcard"><div class="k">两市成交</div><div class="v">1.65万亿</div><div class="d dn">缩量 · 存量博弈</div></div>
+</div>
+
+<table>
+<tr><th>方向</th><th>相对强度</th><th>价格透支 vs 利好强度 → 盈亏比</th></tr>
+<tr><td>油气/资源通胀链</td><td class="up">强（已启动1日）</td><td>利好强(油价破百)<span class="up">8/10</span> 透支中<span class="mid">4/10</span> → <b class="up">盈亏比优</b>（低拥挤、催化刚起）</td></tr>
+<tr><td>AI硬件（存储/光模块/PCB）</td><td class="dn">分化（前期大涨）</td><td>利好转弱(涨价松动)<span class="dn">3/10</span> 透支高<span class="dn">8/10</span> → <b class="dn">盈亏比差</b>（高位+利空）</td></tr>
+<tr><td>猪/养殖</td><td class="up">企稳反弹</td><td>利好温和(猪价2连涨但同比-19.5%)<span class="mid">5/10</span> 透支低<span class="mid">3/10</span> → <b class="mid">盈亏比中性偏优</b>（低位低拥挤）</td></tr>
+</table>
+<p><b>Price-in 判断：</b>油气是"刚启动1日"的<u>低拥挤催化</u>，溢价空间大；AI硬件是"高位+隔夜利空"的<u>兑现风险区</u>，昨日已现分化迹象（属提前交易，非泄露——光模块分化源于涨价叙事降温+高位资金离场）；猪养殖处底部、低拥挤。</p>
+</div>
+
+<!-- S4 -->
+<div class="section" id="sec4">
+<h2>S4 · 主线竞争（Sector Competition）</h2>
+<table>
+<tr><th>主线候选</th><th>概率</th><th>驱动与承接</th></tr>
+<tr><td><b class="up">油气/资源/通胀链</b>（石油开采/油服/煤/化工涨价）</td><td class="prob">35%</td><td>油价破百+PPI超预期+沙特减产+地缘升级；昨日已启动1日、低拥挤；需放量涨停扩散确认</td></tr>
+<tr><td><b class="up">猪/农业/低位顺通胀</b></td><td class="prob">22%</td><td>猪价2连涨+通胀传导+低位低拥挤；但同比仍-19.5%、确认性不足</td></tr>
+<tr><td><b class="mid">存储/AI硬件（博弈企稳或补跌）</b></td><td class="prob">20%</td><td>昨日分化后处方向选择：若龙头低开杀跌则退潮、若抗跌则超跌反弹；隔夜"涨价松动"利空压制</td></tr>
+<tr><td><b class="up">创新药/医药</b></td><td class="prob">13%</td><td>华东医药ADC入选重大专项+FDA快速通道+中美IND热潮；业绩与估值支撑的中线主线</td></tr>
+<tr><td><b class="mid">券商/金融（政策护盘）</b></td><td class="prob">10%</td><td>"十五五"金融规划+中长期资金入市；但政策利好"高开即兑现"风险（学习点25）</td></tr>
+</table>
+<div class="note"><b>主线竞争要点：</b>今日第一分歧在"通胀链（油/资源/猪） vs 已运行主线（AI硬件）"。根据台账教训（学习点15/24/25），已运行主线若高位+利空则权重不宜高，通胀链因"新催化+低拥挤"应给第一权重。但地量环境下易一日轮动，需放量确认为前提。</div>
+</div>
+
+<!-- S4.5 -->
+<div class="section" id="sec45">
+<h2>S4.5 · 热点深追：油价破百下的通胀交易（产业链拐点诊断）</h2>
+
+<h3>1. 事件锚点</h3>
+<p>美油单日+8.2%突破100美元、布油+7.98%，叠加沙特产量骤降至1990年最低、欧央行意外加息（确认全球通胀非单点）+美对伊制裁升级与特朗普"打击伊核设施"威胁——这是<b>供给收缩（地缘+减产）+需求通胀预期（PPI）+"外围紧缩"</b>三重共振下的再通胀，具备产业级意义而非单一事件。</p>
+
+<h3>2. 产业链拆解</h3>
+<table>
+<tr><th>环节</th><th>代表标的</th><th>受益弹性/原因</th></tr>
+<tr><td>上游勘探开采</td><td>准油股份、中曼石油、贝肯能源、通源石油、潜能恒信</td><td class="up">极高·油价直接映射利润弹性</td></tr>
+<tr><td>油服工程</td><td>中曼石油、科力股份、通源</td><td class="up">高·景气+订单</td></tr>
+<tr><td>油运/储运</td><td>中远海能、招商轮船</td><td class="up">中·运价传导+地缘绕行</td></tr>
+<tr><td>化工涨价链</td><td>万华化学（MDI）、华鲁恒升、扬农化工</td><td class="mid">中·原料涨价成本与产品提价并存</td></tr>
+<tr><td>煤炭（替代能源）</td><td>中国神华、陕西煤业</td><td class="mid">中·能源涨价共振+高股息</td></tr>
+</table>
+
+<h3>3. 受益分层（四层映射）</h3>
+<table>
+<tr><th>层级</th><th>标的</th><th>映射</th></tr>
+<tr><td>L1 直接资产</td><td>石油开采/油服A股（准油/中曼/贝肯/通源）</td><td>A</td></tr>
+<tr><td>L2 同产业链</td><td>油运（中远海能/招商轮船）、化工涨价（万华/华鲁）</td><td>B</td></tr>
+<tr><td>L3 产业链服务/工具</td><td>油服设备、LNG</td><td>C</td></tr>
+<tr><td>L4 情绪Beta</td><td>油气ETF、煤炭ETF、资源主题</td><td>D</td></tr>
+</table>
+
+<h3>4. 板块位置诊断（拐点四要素）</h3>
+<table>
+<tr><th>要素</th><th>状态</th></tr>
+<tr><td>调整时长</td><td>油气板块前期沉寂/低位（昨日才启动1日），非高位</td></tr>
+<tr><td>机构持仓</td><td>数据源未覆盖，但板块低拥挤（昨日+3.64%仅1日）</td></tr>
+<tr><td>筹码出清</td><td>低价+前期回调充分，筹码沉淀好</td></tr>
+<tr><td>利空出尽</td><td>无新增利空；核心变量是油价能否站稳100</td></tr>
+</table>
+
+<h3>5. 拐点验证信号</h3>
+<p><b>确认（主升启动）：</b>油气板块成交额>200亿且涨停家数≥5家、准油/中曼续板、封单稳固、油价站稳100。<br><b>证伪（脉冲退潮）：</b>高开>3%但10:30前无涨停扩散、或油价盘中冲高回落跌破100——则降级为一日兑现行情，不追高。</p>
+</div>
+
+<!-- S5 -->
+<div class="section" id="sec5">
+<h2>S5 · 今日预测（Market Forecast）</h2>
+<table>
+<tr><th>预测项</th><th>预测值</th><th>置信度/依据</th></tr>
+<tr><td>开盘方向</td><td><b class="up">平开至小幅高开</b> 上证 +0.1%~+0.5%</td><td>中｜隔夜油价破百+PPI利多通胀链、政策护盘托底，但"高开即兑现"风险（学习点8）限制幅度</td></tr>
+<tr><td>量能中位数</td><td><b>1.75万亿</b>（1.65~1.88万亿）</td><td>低｜通胀催化或放量上探，但冰点惯性仍在；<0.1万亿增量则仍存量博弈</td></tr>
+<tr><td>涨停家数</td><td><b>45~65家</b></td><td>低｜冰点+隔夜催化日，若通胀链承接可回升至中位55；存量结构难上破80（学习点23）</td></tr>
+<tr><td>主线（第一）</td><td>油气/资源通胀链相对强度>0.5%</td><td>中｜放量涨停扩散为确认</td></tr>
+<tr><td>创业板vs上证超额</td><td><b class="dn">-0.5%~+0.3%</b>（科技承压）</td><td>低｜存储涨价松动+费半下跌压制成长</td></tr>
+<tr><td>关键位</td><td>上证支撑3920/3900、压力3950/3960；创业板支撑3300、压力3360</td><td>高｜箱体震荡延续</td></tr>
+<tr><td>时间节点</td><td>09:45油气相对超额；10:30油气涨停≥5→通胀确立；14:00量能占比检查</td><td>—</td></tr>
+</table>
+<div class="note"><b>量能推导：</b>昨日1.65万亿，5日均1.89万亿；近10日最小成交1.65万亿附近时次日常小幅回升。依历史缩量样本（冷启动）最接近前值+5%~+13%，中位看1.75万亿（区间1.65~1.88）。样本有限，仅作参考。</div>
+</div>
+
+<!-- S6 -->
+<div class="section" id="sec6">
+<h2>S6 · 情景推演（Scenario Tree）</h2>
+<table>
+<tr><th>情景</th><th>概率</th><th>触发条件</th></tr>
+<tr><td class="up"><b>乐观</b>：通胀链领涨+放量</td><td class="prob">30%</td><td>油气放量涨停扩散≥5家+两市放量≥1.88万亿+油价站稳100→通胀交易确立、指数红盘</td></tr>
+<tr><td class="mid"><b>中性</b>：结构性分化、指数震荡</td><td class="prob">50%</td><td>油气高开轮动但无放量确认+AI硬件分化/补跌对冲，指数量能1.65~1.85万亿窄幅</td></tr>
+<tr><td class="dn"><b>悲观</b>：科技兑现+通胀高开走弱</td><td class="prob">20%</td><td>高位科技补跌（存储/光模块杀跌）+油气高开即兑现回落，缩量跌破3920</td></tr>
+</table>
+<div class="note"><b>情景校准提示：</b>据台账，乐观情景在冰点缩量环境中出现的实际频率低于标注概率，故此处乐观保持30%中性为基准（若地量延续则乐观应下修至20%）。</div>
+</div>
+
+<!-- S7 -->
+<div class="section" id="sec7">
+<h2>S7 · 失效条件（Kill Conditions）</h2>
+<div class="kill">
+<p><b>今日核心判断的失效阈值：</b></p>
+<p>① 若 <b class="up">油气板块高开>3%但10:30前涨停<3家</b> →"通胀链主线"判断失效，降级为一日兑现行情。</p>
+<p>② 若 <b class="dn">中际旭创/新易盛低开>3%且存储板块无承接</b> →"科技高位分化"加剧为退潮，成长整体杀跌。</p>
+<p>③ 若两市成交 <b>跌破1.6万亿</b>且指数破3920 →"箱体震荡"失效，转入缩量阴跌。</p>
+<p>④ 若油价 <b>跌破100美元</b> →"通胀交易"驱动减弱，油气主线逻辑弱化。</p>
+</div>
+<h3>今日真实风险日历</h3>
+<p>· 油价走势（24h持续）— 通胀交易核心变量</p>
+<p>· 科创50指数样本调整今日收市后生效（调入睿创微纳/华丰/屹唐/影石/盛合晶微）— 尾盘调仓扰动</p>
+<p>· 美联储官员讲话/CPI预期发酵 — 中期锚点</p>
+</div>
+
+<!-- S8 -->
+<div class="section" id="sec8">
+<h2>S8 · 观察清单（Watchlist）</h2>
+<table>
+<tr><th>层级</th><th>标的</th><th>验证的逻辑</th></tr>
+<tr><td>L1 · 油气主线</td><td>准油股份、中曼石油、贝肯能源、通源石油</td><td>通胀交易能否确立：是否连板/放量涨停扩散</td></tr>
+<tr><td>L2 · 通胀链延伸</td><td>中远海能/招商轮船（油运）、万华化学/华鲁恒升（化工）、京基智农（猪）</td><td>通胀传导能否扩散至第二层</td></tr>
+<tr><td>L2 · 科技高位</td><td>中际旭创、新易盛、天孚通信（光模块）；朗科/佰维（存储）</td><td>存储涨价松动利空如何落地：低开杀跌or抗跌</td></tr>
+<tr><td>L1 · 创新药</td><td>华东医药（ADC重大专项）及相关CXO</td><td>医药中线主线能否承接</td></tr>
+<tr><td>L3 · 政策</td><td>券商ETF、银行板块</td><td>"十五五"金融汇报是否有放量资金确认</td></tr>
+</table>
+</div>
+
+<!-- S9 -->
+<div class="section" id="sec9">
+<h2>S9 · 预测台账（Forecast Ledger）</h2>
+<h3>上一期预测回归（9/8 盘前 → 9/8~9/10 实际）</h3>
+<table>
+<tr><th>预测项(9/8盘前)</th><th>预测值</th><th>实际(9/8-9/10)</th><th>结果</th><th>偏差归因</th></tr>
+<tr><td>量能中位</td><td>2.00万亿</td><td>9/8约1.86、9/10 1.65万亿持续缩量</td><td class="mid">部分</td><td>高估缩量后反弹量能，冰点延续（学习点1复发）</td></tr>
+<tr><td>涨停家数</td><td>90~140</td><td>9/10仅40家（9/7冰点后回落）</td><td class="dn">未命中</td><td>"冰点反攻日"仅一次性，随后回落地量（学习点24边界未捕获"反攻后回落"）</td></tr>
+<tr><td>主线(9/8)</td><td>光模块32%</td><td>9/8-9/9光模块/PCB续涨，9/10分化（旭创-2%）</td><td class="mid">部分</td><td>主线方向对、但延续性高估，高位1-2日后即兑现</td></tr>
+</table>
+<p class="note"><b>回归小结：</b>本期量能/涨停连续低估缩量强度，为9/4以来"冰点地量"持续期的共性偏差——<b>极值缩量环境下量能/涨停均需按历史缩量样本下修</b>。主线方向（AI硬件）判断对但"高位延续"权重过高。</p>
+
+<h3>本期（9/11）可验证预测（写入台账）</h3>
+<table>
+<tr><th>预测项</th><th>预测值</th><th>验证方式</th></tr>
+<tr><td>开盘方向</td><td>平开至小幅高开 +0.1%~+0.5%</td><td>09:25竞价上证</td></tr>
+<tr><td>量能</td><td>1.75万亿(1.65~1.88)</td><td>收盘两市成交</td></tr>
+<tr><td>涨停家数</td><td>45~65家</td><td>收盘涨停数</td></tr>
+<tr><td>主线</td><td>油气/资源通胀链第一</td><td>收盘板块涨幅/涨停数</td></tr>
+<tr><td>创业板vs上证</td><td>-0.5%~+0.3%</td><td>两指数对比</td></tr>
+</table>
+<div class="note">台账文件：<code>/workspace/repo/A股/predictions_ledger.md</code>（本期预测将于当日/次日回归追加）。</div>
+</div>
+
+<footer>以上分析基于公开数据与结构化行情，不构成投资建议。市场有风险，决策需谨慎。</footer>
+</div>
+</body>
+</html>

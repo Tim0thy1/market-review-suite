@@ -350,6 +350,10 @@ Level 0 泛概念主线（概念板块，如"光通信"）
 2. **升级/降级规则**：文档写明触发阈值 + 证据强度要求。
 3. **信息触发规则**：按催化剂等级 + 证据等级决定"观察 or 修改档案"。
 
+## 与其他 skill 协作（research-lines / five-route）
+
+本 skill 可经由共享 schema 与 `research-lines`（采集抽证出品）和 `five-route`（定档决策）协作：`mainline-research` 出主线身份块(A块)并定义 `主线ID` → `research-lines` 按子线补证据块(B块) → `five-route` 落决策块(C块) → 本 skill 汇总出 S0~S8 报告。字段全表、流转顺序见 `/workspace/A股策略助手/direction-schema.md`。数据采集仍自包含（不因此依赖外部 skill），协作仅限于"证据与决策的进出料"。
+
 ## 输出约定
 
 - 日更：增量更新 `mainline_ledger.md` + 聊天摘要。

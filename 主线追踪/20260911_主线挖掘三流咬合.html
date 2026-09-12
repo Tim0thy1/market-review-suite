@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主线挖掘 × 三流咬合分析报告 · 2026-09-11</title>
+<style>
+:root{--ink:#1e293b;--dark:#1e3a5f;--blue:#1e40af;--red:#b91c1c;--green:#15803d;--orange:#c2410c;--bg:#f7f5f0;--card:#fffdf9;--line:#e6e0d4;--paper:#fbf8f1}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding-bottom:60px}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+header{background:linear-gradient(135deg,#123048,#1e40af);color:#fff;padding:34px 0 28px;margin-bottom:24px}
+header .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:flex-end}
+h1{font-size:23px;font-weight:800;letter-spacing:.5px}
+header .sub{opacity:.88;font-size:12.5px;margin-top:8px}
+header .date{font-size:13px;font-weight:600;text-align:right;opacity:.92}
+.decl{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:10px;padding:16px 20px;margin-bottom:20px;font-size:13px}
+.decl b{color:var(--dark)}
+.decl .flow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center;font-size:12.3px}
+.decl .node{background:rgba(30,64,175,.08);border:1px solid rgba(30,64,175,.2);padding:4px 10px;border-radius:6px;font-weight:700;color:var(--blue)}
+.decl .arrow{color:#94a3b8}
+.tl{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:20px;box-shadow:0 2px 10px rgba(60,40,10,.04)}
+.tl>h2{font-size:18px;color:var(--dark);border-bottom:2px solid var(--blue);padding-bottom:8px;margin-bottom:14px}
+.tl h3{font-size:14.5px;color:var(--blue);margin:16px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:12.6px;margin:10px 0}
+th{background:rgba(30,64,175,.07);color:var(--dark);font-weight:700;text-align:left;padding:7px 9px;border:1px solid var(--line)}
+td{padding:6px 9px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fcfaf5}
+.up{color:#b91c1c;font-weight:700}
+.dn{color:#15803d;font-weight:700}
+.mid{color:#c2410c;font-weight:700}
+.pill{display:inline-block;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:700;margin-right:2px;white-space:nowrap}
+.p-a{background:rgba(185,28,28,.13);color:#991b1b}
+.p-b{background:rgba(30,64,175,.12);color:#1e40af}
+.p-c{background:#ede9fe;color:#6d28d9}
+.tagline{font-size:12px;color:#64748b;margin-bottom:6px}
+/* 三块字段卡片 */
+.card{border:1px solid var(--line);border-radius:12px;margin:16px 0;overflow:hidden}
+.card-head{padding:10px 16px;font-size:14px;font-weight:800;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.card-head.a{background:linear-gradient(90deg,#1e40af,#2b5bc8)}
+.card-head.b{background:linear-gradient(90deg,#b45309,#c8821f)}
+.card-head.c{background:linear-gradient(90deg,#6d28d9,#8b5cf6)}
+.card-body{padding:13px 16px;background:var(--paper);font-size:12.8px}
+.card-body .row{margin:5px 0}
+.card-body .k{font-weight:700;color:var(--dark);white-space:nowrap}
+.card-body .layer{display:inline-block;margin:2px 4px 2px 0;padding:2px 7px;border-radius:5px;font-size:11.5px;font-weight:600;background:#fff;border:1px solid var(--line)}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.bb .bull,.bb .bear{border-radius:10px;padding:12px 14px;font-size:12.6px}
+.bb .bull{background:#fef2f2;border:1px solid #fecaca}
+.bb .bear{background:#f0fdf4;border:1px solid #bbf7d0}
+.bb h5{font-size:12.6px;margin-bottom:5px}
+.bb .bull h5{color:#991b1b}
+.bb .bear h5{color:#15803d}
+.kill{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:11px 13px;font-size:12.5px;color:#92400e;margin:10px 0}
+.stock td:nth-child(2){font-weight:600}
+footer{text-align:center;color:#64748b;font-size:11.5px;padding:24px 20px 4px}
+.idx{font-family:"SF Mono",Menlo,Consolas,monospace;background:#f1f5f9;padding:1px 6px;border-radius:4px;font-size:11px}
+@media(max-width:640px){.bb{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap"><div>
+<h1>主线挖掘 × 三流咬合分析报告</h1>
+<div class="sub">research-lines（取证） · mainline-research（判断） · five-route（决策） 按 direction-schema 共字段咬合 · 全市场长中短主线</div>
+</div><div class="date">2026-09-11 · 周五<br>数据基准：09-10 收盘 + 隔夜</div></div>
+</header>
+<div class="wrap">
+
+<!-- 协作声明 -->
+<div class="decl">
+<b>本报告生产方式（direction-schema 三块字段）</b>
+<div>每条主线按「A 主线身份 → B 证据层 → C 决策层」三块字段流水咬合，三个 skill 各填各的、各读各的，靠 `主线ID` 联表拼接。</div>
+<div class="flow">
+<span class="node">mainline-research<br>出 A·身份块</span><span class="arrow">→</span>
+<span class="node">research-lines<br>补 B·证据块</span><span class="arrow">→</span>
+<span class="node">five-route<br>落 C·决策块</span><span class="arrow">→</span>
+<span class="node">汇总成报告</span>
+</div>
+</div>
+
+<!-- ============ S0 市场环境 ============ -->
+<div class="tl">
+<h2>S0 · 市场环境（双尺）</h2>
+<h3>A · 日线战术层（给节奏）</h3>
+<table>
+<tr><th>维度</th><th>读数(09-10)</th><th>战术含义</th></tr>
+<tr><td>指数</td><td>上证3934.40(-0.43%) 深成-0.77% 创业板3338.42(-0.49%)</td><td>集体收跌，箱体(3920-3980)下沿</td></tr>
+<tr><td>量能</td><td>1.65万亿（5日均87%）</td><td class="dn">地量·存量博弈，无增量难有板块趋势</td></tr>
+<tr><td>情绪</td><td>涨955/跌4512、涨停40/跌停14</td><td class="dn">冰点偏弱，赚钱效应差</td></tr>
+<tr><td>风格</td><td>价值占优（银行/油气/红利强，成长-2.61%）</td><td>防御价值占优</td></tr>
+</table>
+<h3>B · 全球战略层（给权重）</h3>
+<table>
+<tr><th>战略力量</th><th>隔夜动态</th><th>对主线权重</th></tr>
+<tr><td>全球通胀/紧缩</td><td>美PPI同比+5.4%超预期、欧央行加息25bp、30Y美债5.34%</td><td class="up">↑油气/资源/猪通胀链；↓高位科技</td></tr>
+<tr><td>地缘供给</td><td>中东突变、美对伊制裁、沙特产量1990年最低、美油+8.2%破百</td><td class="up">↑油气供给收缩型L0</td></tr>
+<tr><td>AI/算力</td><td>铠侠"存储价格涨够了"、SK海力士-5%/美光-5%</td><td class="dn">↓AI硬件涨价叙事，阶段证伪</td></tr>
+<tr><td>铜/贵金属</td><td>LME铜14768后-3.5%、COMEX金4420(-0.99%)、银-3%</td><td class="dn">短线回吐，供给逻辑未破</td></tr>
+</table>
+<div class="kill"><b>双尺结论：</b>节奏(给短线)=缩量冰点、追高性价比差，主攻"新催化点火+放量承接"；权重(给中长线)=通胀交易与地缘供给抬升油气/资源，AI硬件因"涨价松动"下调权重。</div>
+</div>
+
+<!-- ============ S1 主线总览（三块字段矩阵） ============ -->
+<div class="tl">
+<h2>S1 · 主线总览（A身份 + B证据密度 + C档位）</h2>
+<table>
+<tr><th>主线ID</th><th>A·身份（时域/真实性/阶段/评分）</th><th>B·证据密度</th><th>C·档位</th></tr>
+<tr>
+<td><span class="idx">ML-OIL</span></td>
+<td><b>油气通胀链</b> · 短(看长) · 强题材待验证 · 启动期 · <span class="up">22/30</span></td>
+<td>研报 2+ · S级1/A级2</td>
+<td><span class="pill p-a">A档</span></td>
+</tr>
+<tr>
+<td><span class="idx">ML-AI</span></td>
+<td><b>AI硬件材料链</b> · 长 · 真主线 · 高位整固 · <span class="mid">27/30</span></td>
+<td>研报 5+ · S级3/A级1</td>
+<td><span class="pill p-a">A档</span></td>
+</tr>
+<tr>
+<td><span class="idx">ML-RES</span></td>
+<td><b>全球资源·铜/金</b> · 长 · 真主线 · 高位整固 · <span class="mid">26/30</span></td>
+<td>S级1</td>
+<td><span class="pill p-a">A档</span></td>
+</tr>
+<tr>
+<td><span class="idx">ML-MED</span></td>
+<td><b>医药/CRO</b> · 中 · 真主线 · 高位整固 · <span class="mid">23/30</span></td>
+<td>研报 4+ · S级1/B级1/A级1</td>
+<td><span class="pill p-b">B档</span></td>
+</tr>
+<tr>
+<td><span class="idx">ML-BOT</span></td>
+<td><b>机器人</b> · 短 · 强题材 · 候选 · 未过验证</td>
+<td>C级(消息)</td>
+<td><span class="pill p-c">C档</span></td>
+</tr>
+</table>
+<p class="tagline">档位由 five-route 定：A=四根物理锚在（ML-OIL/AI/RES）；B=需代理锚替代 L0-L2（ML-MED）；C=纯故事/流动性驱动（ML-BOT）。</p>
+</div>
+
+<!-- ============ S2 逐主线三块字段卡片 ============ -->
+<div class="tl">
+<h2>S2 · 逐主线三块字段卡片</h2>
+
+<!-- 主线1 油气 -->
+<div class="card">
+<div class="card-head a">ML-OIL · 油气通胀链<span style="font-weight:400;font-size:11.5px">本期最优预期差 · 新点火</span></div>
+<div class="card-body">
+<div class="row"><span class="k">A·身份　</span>时域 短(看长)　点火源 基本面传导(地缘供给)　真实性 强题材(待验证)　生命周期 启动期　强度 22/30 · 拥挤 -1</div>
+<div class="row"><span class="k">B·证据　</span>油美+8.2%破百(S) · 沙特产量1990最低(A) · 美对伊制裁(A) · 油气开采09-10涨+3.64%准油涨停(S) · 中石油11.27未放量(S)</div>
+<div class="row"><span class="k">C·决策　</span>档位 <span class="pill p-a">A</span>（供给收缩真约束）
+<span class="layer">L0 硬·产量/制裁难短期反转</span><span class="layer">L1 油价未充分映射</span><span class="layer">L2 未兑现</span><span class="layer">L3 低拥挤</span><span class="layer">L4 预期未满</span></div>
+<div class="bb">
+<div class="bull"><h5>多头</h5>供给收缩型L0持续性强于需求型；油价破百+PPI确认全球通胀；刚启动1日、低拥挤。</div>
+<div class="bear"><h5>空头</h5>高开>3%无涨停扩散=一日脉冲；油价跌破100则通胀驱动弱化。</div>
+</div>
+<div class="row"><span class="k">买点　</span>回踩启动平台不破 + 涨停扩散≥5只确认（勿追连板）　<span class="k">卖点　</span>油价破100 / 高开无扩散</div>
+<div class="row"><span class="k">仓位　</span>中·弹性仓　<span class="k">证伪　</span>高开>3%但10:30前无涨停扩散 → 一日脉冲</div>
+</div>
+</div>
+
+<!-- 主线2 AI硬件 -->
+<div class="card">
+<div class="card-head a">ML-AI · AI硬件材料链<span style="font-weight:400;font-size:11.5px">首次涨价见顶信号</span></div>
+<div class="card-body">
+<div class="row"><span class="k">A·身份　</span>时域 长(年级)　点火源 基本面传导+涨价　真实性 真主线　生命周期 主升后段→高位整固　强度 27/30 · 拥挤 -4</div>
+<div class="row"><span class="k">B·证据　</span>铠侠"存储涨够了"克制提价(A) · SK海力士-5%/美光-5%(S) · 光模块回落旭创890/新易盛410/天孚269(S) · 研报：生益电子(中邮买入)/汉钟精机(山西)/麦格米特(国信AI电源)/禾望电气(西南) · 历史兑现:兆易创新H1+1091%(S)</div>
+<div class="row"><span class="k">C·决策　</span>档位 <span class="pill p-a">A</span>
+<span class="layer">L0 缺口在(存储至2027)</span><span class="layer">L1 涨价斜率拐头(铠侠)</span><span class="layer">L2 已兑现</span><span class="layer">L3 高位拥挤</span><span class="layer">L4 预期已满转负</span></div>
+<div class="kill"><b>五层关键：</b>L0 缺口未消失，但"缺口还在扩大"这件事消失了（铠侠抑制涨价）——L0 的见顶信号不是"缺口没了"，是"缺口不再扩大"，这一步通常领先价格见顶 2-3 个季度，正是现在。</div>
+<div class="bb">
+<div class="bull"><h5>多头</h5>中报集体兑现硬基本面；AI CAPEX 长期未破；MLCC/上游光芯片环节尚未充分定价。</div>
+<div class="bear"><h5>空头</h5>涨价见顶信号首现；光模块高位资金流出；PCB 主位预期已满。</div>
+</div>
+<div class="row"><span class="k">买卖　</span>A档主位已兑现不追高；看内部轮动接力的 MLCC/上游光芯片（未满环节），龙头破位(旭创<850)=整线降级</div>
+<div class="row"><span class="k">仓位　</span>中高→中（下调）　<span class="k">证伪　</span>光模块龙头放量破位 / 存储现货转跌</div>
+</div>
+</div>
+
+<!-- 主线3 资源 -->
+<div class="card">
+<div class="card-head a">ML-RES · 全球资源·铜/金<span style="font-weight:400;font-size:11.5px">高位整固 · 短线回吐</span></div>
+<div class="card-body">
+<div class="row"><span class="k">A·身份　</span>时域 长(年级)　点火源 基本面传导　真实性 真主线　生命周期 高位整固　强度 26/30 · 拥挤 -3</div>
+<div class="row"><span class="k">B·证据　</span>LME铜14768美元/吨后隔夜-3.5%(S) · COMEX金4420(-0.99%)/银-3%(S) · 紫金矿业09-10收34.11位窄幅(S)</div>
+<div class="row"><span class="k">C·决策　</span>档位 <span class="pill p-a">A</span>（矿端供给+绿电资本开支约束）
+<span class="layer">L0 供给约束在</span><span class="layer">L1 铜价新高后回吐</span><span class="layer">L2 基本面兑现</span><span class="layer">L3 高位回吐</span><span class="layer">L4 预期偏高</span></div>
+<div class="bb">
+<div class="bull"><h5>多头</h5>供给收缩型L0（矿端+关税预期）未破，长逻辑未动。</div>
+<div class="bear"><h5>空头</h5>短线已大幅兑现、隔夜-3.5%获利了结；等待企稳。</div>
+</div>
+<div class="row"><span class="k">买卖　</span>阶段证伪(第②级)→ 等企稳、不追高；铜重续新高则复苏，跌破前高则降级　<span class="k">仓位　</span>中高→中</div>
+</div>
+</div>
+
+<!-- 主线4 医药 -->
+<div class="card">
+<div class="card-head b">ML-MED · 医药/CRO（B档 · 需代理锚）<span style="font-weight:400;font-size:11.5px">高位整固 · 回调检验</span></div>
+<div class="card-body">
+<div class="row"><span class="k">A·身份　</span>时域 中(季级)　点火源 资金面切换+基本面　真实性 真主线　生命周期 高位整固　强度 23/30 · 拥挤 -2</div>
+<div class="row"><span class="k">B·证据　</span>药明康德H1净利110亿/市值5000亿+(S) · 上半年创新药BD997亿美元超全年(B) · 医保谈判124创新药入围(A) · 研报:迈瑞(华鑫买入)/百洋(华鑫)/老百姓(东海)/百迈科(华金新股)</div>
+<div class="row"><span class="k">C·决策　</span>档位 <span class="pill p-b">B</span>（BD授权对价≠CRO服务收入，量级错配）
+<span class="layer">L0 代理=全球研发回暖→订单</span><span class="layer">L1 代理=在手订单/新签</span><span class="layer">L2 药明扣非+90%已兑现</span><span class="layer">L3 高位整固</span><span class="layer">L4 预期中性</span></div>
+<div class="kill"><b>B档代理锚说明：</b>不能用"BD授权量"直接当 CRO 的 L1（主体与计量都不同）。正确代理锚 = 全球创新药研发回暖(利率下行→biotech融资→研发投入)→CXO订单 + 地缘订单转移。药明 H1 扣非 +90% 是 L2 兑现的实锤。</div>
+<div class="bb">
+<div class="bull"><h5>多头</h5>基本面底座硬（药明扣非+90%）；医保谈判+BD持续催化。</div>
+<div class="bear"><h5>空头</h5>高位已部分兑现；医保落地或"利好出尽"。</div>
+</div>
+<div class="row"><span class="k">买卖　</span>药明放量破157=主升重启，跌破152=回调加深；取向"回调企稳"不追高　<span class="k">仓位　</span>中·弹性仓</div>
+</div>
+</div>
+
+<!-- 主线5 机器人 -->
+<div class="card">
+<div class="card-head c">ML-BOT · 机器人（C档 · 纯题材）<span style="font-weight:400;font-size:11.5px">未过验证 · 候选</span></div>
+<div class="card-body">
+<div class="row"><span class="k">A·身份　</span>时域 短(周级)　点火源 政策+大厂　真实性 强题材(未过C/D/E)　生命周期 酝酿候选　评分 未定</div>
+<div class="row"><span class="k">B·证据　</span>特斯拉Optimus 2026底规模化量产确认(C级·消息)　无业绩/订单实锤</div>
+<div class="row"><span class="k">C·决策　</span>档位 <span class="pill p-c">C</span>（无"补货→涨价→进报表"链，只剩 L3/L4）
+<span class="layer">L0-L2 无</span><span class="layer">L3 资金接力</span><span class="layer">L4 叙事预期</span></div>
+<div class="kill"><b>C档纪律：</b>不看基本面、只看资金与叙事，纪律第一。买点=钱在进+预期没满；卖点=好消息不涨即撤。</div>
+<div class="row"><span class="k">仓位　</span>低·情绪仓　<span class="k">证伪　</span>无量扩散不足则退潮</div>
+</div>
+</div>
+</div>
+
+<!-- ============ S3 预期差 ============ -->
+<div class="tl">
+<h2>S3 · 预期差（谁是高价值主线）</h2>
+<table>
+<tr><th>主线</th><th>市场原有预期</th><th>最新实际/边际</th><th>预期差</th><th>价值判定</th></tr>
+<tr><td><span class="idx">ML-OIL</span></td><td>"油价波动、油气跟涨有限"</td><td>破百+减产+制裁，供给硬约束</td><td class="up">超预期(未充分映射)</td><td class="up">高价值(低预期+硬L0)</td></tr>
+<tr><td><span class="idx">ML-AI</span></td><td>"涨价+业绩双兑现，趋势延续"</td><td>铠侠"存储涨够了"</td><td class="dn">预期转负(涨价见顶)</td><td>高→中性偏低</td></tr>
+<tr><td><span class="idx">ML-RES</span></td><td>"铜价持续新高"</td><td>新高后隔夜-3.5%</td><td class="mid">短期回归</td><td>中，等企稳</td></tr>
+<tr><td><span class="idx">ML-MED</span></td><td>"业绩已兑现、高位"</td><td>医保谈判+BD持续、药明整固</td><td class="mid">中性</td><td>中，回调企稳有修复</td></tr>
+</table>
+<p class="up">本期最强预期差主线是 <b>ML-OIL 油气通胀链</b>：市场惯性认为"油价难持续"，但供给收缩型 L0 比需求型更硬、持续更强，且 A 股油气刚启动 1 日、预期未满——符合"基本面改善 + 市场预期还低 = 高价值主线"。</p>
+</div>
+
+<!-- ============ S4 标的池三明治 ============ -->
+<div class="tl">
+<h2>S4 · 标的池（三块字段三明治）</h2>
+<p class="tagline">每只票挂三块字段：身份(A)·证据(B)·决策(C)。归属列不进真实核心子线的直接剔除。</p>
+<table class="stock">
+<tr><th>主线/子线</th><th>标的(角色)</th><th>B·证据(标源)</th><th>C·决策(档位/买点/卖点)</th></tr>
+<tr><td rowspan="3">ML-OIL<br>勘探开采</td><td>准油股份(弹性)</td><td>油气开采领涨·准油涨停(S/行情)</td><td>A档·回踩不破平台·非追连板</td></tr>
+<tr><td>中曼石油(弹性)</td><td>油服景气(研报补)</td><td>A档·订单逻辑回踩介入</td></tr>
+<tr><td>中远海能(卡位)</td><td>地缘绕行+运价(观察)</td><td>A档·第二层传导，节奏靠后</td></tr>
+<tr><td rowspan="2">ML-AI<br>未满环节</td><td>三环集团(龙头)</td><td>MLCC景气上行(研报多)</td><td>A档·未满环节回踩介入</td></tr>
+<tr><td>源杰科技(上游)</td><td>CPO上游弹性(观察)</td><td>A档·预期差向上·卡启动</td></tr>
+<tr><td rowspan="2">ML-MED<br>CXO</td><td>药明康德(龙头)</td><td>H1净利110亿/扣非+90%(S)</td><td>B档·破157主升/破152加深</td></tr>
+<tr><td>康龙化成(中军)</td><td>回调未企稳(S)</td><td>B档·看资金回流确认</td></tr>
+</table>
+<div class="kill">以上为研究标注示例，非买卖指令。个股买卖须自行验证实时行情与风险。</div>
+</div>
+
+<!-- ============ S5 跟踪清单 ============ -->
+<div class="tl">
+<h2>S5 · 跟踪清单（证伪信号 + 节奏）</h2>
+<table>
+<tr><th>主线</th><th>追踪节奏</th><th>证伪信号(何时降级/出局)</th><th>升级信号</th></tr>
+<tr><td>ML-OIL</td><td>日更(优先)</td><td>油价破100 / 高开无涨停扩散</td><td>涨停≥5只+放量 / 油价站稳100</td></tr>
+<tr><td>ML-AI</td><td>日更</td><td>光模块龙头破位(旭创<850) / 存储现货转跌</td><td>MLCC/光芯片放量且龙头企稳</td></tr>
+<tr><td>ML-RES</td><td>日更</td><td>铜价跌破前高 / 金延续跳水</td><td>铜重续历史新高</td></tr>
+<tr><td>ML-MED</td><td>周更</td><td>BD授权放缓 / 药明跌破152</td><td>医保落地+BD持续 / 药明破157</td></tr>
+</table>
+</div>
+
+<footer>本报告由 research-lines(取证) · mainline-research(判断) · five-route(决策) 三 skill 按 direction-schema 共字段咬合生成。以上分析基于公开数据与结构化行情，不构成投资建议。仓位与操作须自行决策并自担风险。</footer>
+</div>
+</body>
+</html>

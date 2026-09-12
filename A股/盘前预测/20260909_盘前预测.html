@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股盘前研判 · 9/9（周三）</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#1f2937;--muted:#6b7280;--rule:#e5e7eb;--red:#dc2626;--green:#16a34a;--blue:#1d4ed8;--purple:#7c3aed;--amber:#b45309}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans CJK SC","WenQuanYi Micro Hei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:880px;margin:0 auto;padding:30px 22px 70px}
+header h1{font-size:25px;font-weight:700}
+header .date{color:var(--muted);font-size:13.5px;margin-top:6px}
+.point{background:var(--card);border:1px solid var(--rule);border-left:5px solid var(--blue);border-radius:14px;padding:20px 24px;margin:18px 0 6px;box-shadow:0 2px 10px rgba(15,23,42,.04)}
+.point .tag{font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:8px}
+.point p{font-size:16px;line-height:1.75}
+.point b{color:var(--blue)}
+.point .obs{margin-top:10px;font-size:14px;color:#3d4754;background:#eef3fc;border-radius:8px;padding:8px 12px}
+h2{font-size:17px;font-weight:700;margin:30px 0 4px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:5px;height:18px;background:var(--blue);border-radius:2px}
+h2 .sub{font-size:12.5px;color:var(--muted);font-weight:400}
+.lead{color:var(--muted);font-size:13.5px;margin:2px 0 14px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:6px 24px 8px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 6px}
+th{background:#eef1f6;text-align:left;padding:8px 11px;color:#3d4754}
+td{padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
+.mono{font-variant-numeric:tabular-nums;font-weight:600}
+.up{color:var(--red)}.down{color:var(--green)}
+.pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:600}
+.p-off{background:#fdeaea;color:#991b1b}.p-mkt{background:#fdf1d9;color:#92400e}.p-ext{background:#e8eefc;color:#1d4ed8}
+.h3{font-weight:700;font-size:14.5px;margin:14px 0 6px}
+.nlist{font-size:14px}
+.nlist li{margin:8px 0;color:#374151;list-style:none;padding-left:16px;position:relative}
+.nlist li::before{content:"·";position:absolute;left:0;color:var(--blue);font-weight:700}
+.src{display:inline-block;font-size:11px;font-weight:700;padding:0 6px;border-radius:4px;margin-right:6px}
+.src-off{background:#fdeaea;color:#991b1b}.src-mkt{background:#fdf1d9;color:#92400e}.src-ext{background:#e8eefc;color:#1d4ed8}
+.line{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.line:last-child{border-bottom:none}
+.rank{width:56px;height:56px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.rank .n{font-size:17px;font-weight:700}.rank .t{font-size:10.5px;margin-top:3px}
+.rp{background:var(--purple)}.rb{background:var(--blue)}.rg{background:var(--green)}
+.meta{flex:1}
+.meta h3{font-size:16px;margin-bottom:6px}
+.meta .why{font-size:14.5px;color:#374151;margin-bottom:8px}.meta .why b{color:var(--ink)}
+.meta .how{font-size:14px;font-weight:600;padding-left:14px;position:relative}
+.meta .how::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pbox{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px 20px}
+.pbox h4{font-size:14px;margin-bottom:8px}
+.pbox li{font-size:13.5px;margin:6px 0;color:#374151}
+.risk{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:16px 20px;font-size:14px;color:#7c2d12}
+.risk b{color:#9a3412}
+footer{margin-top:26px;border-top:1px solid var(--rule);padding-top:14px;font-size:12px;color:var(--muted)}
+@media(max-width:640px){.line{grid-template-columns:1fr}.rank{width:auto;height:auto;flex-direction:row;gap:10px;padding:8px 12px;justify-content:flex-start}.panel{grid-template-columns:1fr}.wrap{padding:22px 14px 50px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>A股盘前研判 · 9/9（周三）</h1>
+  <div class="date">数据截至 9/8 收盘 · 隔夜美股 9/8 夜盘 · 盘前更新</div>
+</header>
+
+<section class="point">
+  <div class="tag">核心判断</div>
+  <p>今天大概率是<b>"低位新方向接棒、高位老热点歇脚"</b>的高低切换。<b>海外偏紧</b>（美股跌、加息预期升温、美债高位），<b>国内有几个新催化</b>（6G 规划、外贸超预期）在撑。<b>关键看量</b>——两市成交放不到 2.1 万亿，盘面再热闹也是短炒。</p>
+  <div class="obs"><b>最值得盯的 3 个信号：</b>① 出口/6G 有无涨停扩散（3 家以上）② 两市成交能否上 2.1 万亿 ③ 光模块/农业高位龙头是否开板跳水</div>
+</section>
+
+<h2>宏观与要闻<span class="sub">先看大环境</span></h2>
+<div class="lead">一句话：海外是压舱石（偏紧），国内是变数（托底 + 新催化）。</div>
+<div class="card">
+<div class="h3">海外 · 偏紧</div>
+<div class="nlist">
+<li><span class="src src-ext">【海外】</span><b>美股 9/8 集体收跌</b>：道指 -1.18%、标普 -0.58%、纳指 -0.32%，但科技结构很强——光通信 Lumentum +11%、康宁 +7%，算力相关逆势大涨。</li>
+<li><span class="src src-ext">【海外】</span><b>加息预期升温</b>：8 月非农超预期后市场加大对 9 月议息紧缩的押注，2 年期美债收益率走高、黄金走弱——这是当前压制成长估值最大的外部因素。</li>
+<li><span class="src src-ext">【海外】</span>产业摩擦：美国考虑对进口半导体加征关税，意在逼芯片制造回流本土，短期扰动出海预期。</li>
+</div>
+<div class="h3">国内 · 托底 + 新催化</div>
+<div class="nlist">
+<li><span class="src src-off">【官方】</span><b>工信部"十五五"信息通信规划，首次明确"适时启动 6G 商用"</b>；上海同步发布规划，布局算力、6G、卫星——中央+地方双确认，催生今天最鲜的题材。</li>
+<li><span class="src src-off">【官方】</span><b>8 月外贸超预期：进出口 4.65 万亿、同比 +19.8%</b>（海关盘后公布）——今天是首轮反应窗口。</li>
+<li><span class="src src-mkt">【宏观】</span>流动性呵护没停：央行做 5000 亿买断式逆回购（3 个月）对冲政府债缴款；财政部密集向银行保险注资补资本（约 3160 亿）——利于银行放贷与保险长线配置。</li>
+<li><span class="src src-mkt">【宏观】</span>8 月制造业 PMI 环比回升至 49.8%，边际变好但还没过景气线，内需拐点还得看财政能否转向。</li>
+</div>
+</div>
+
+<h2>昨日盘面<span class="sub">昨天发生了什么</span></h2>
+<div class="lead">指数没大动静，但内部在换血：高位科技歇脚，资金躲进防御。</div>
+<div class="card">
+<table>
+<tr><th>指数</th><th>昨收</th><th>涨跌</th><th>一句话</th></tr>
+<tr><td>上证指数</td><td class="mono">3,940.55</td><td class="up mono">+0.20%</td><td>权重护盘、守住关键位</td></tr>
+<tr><td>创业板指</td><td class="mono">3,359.72</td><td class="down mono">-1.15%</td><td>科技高位兑现、回跌</td></tr>
+<tr><td>科创50</td><td class="mono">1,590.98</td><td class="down mono">-1.52%</td><td>高位科技回落最明显</td></tr>
+<tr><td>中证红利</td><td class="mono">5,652.71</td><td class="up mono">+1.30%</td><td>防御领涨、资金避险</td></tr>
+</table>
+<div class="nlist" style="margin-top:8px">
+<li>涨停 73 家（前天 148）、跌停 0，两市成交 1.96 万亿——赚钱广度回落，但没出现亏钱效应。</li>
+<li>主线切到防守：农业种业（亚盛集团连板、金健米业 8 月翻倍多）、出版传媒、消费零售；AI 硬件高开回吐，仅 PCB 分支逆势守强。</li>
+</div>
+</div>
+
+<h2>长 / 中 / 短周期主线全景<span class="sub">先看趋势骨架，再落到今天</span></h2>
+<div class="lead">单看今天是"只见树木不见森林"。长周期看年、中周期看季、短周期看周，今天的短线主线是这棵树上的"当日执行层"。</div>
+<div class="card" style="padding-top:2px">
+<div class="line">
+  <div class="rank rp"><div class="n">长</div><div class="t">年级趋势</div></div>
+  <div class="meta">
+    <h3>AI科技/算力 ｜ 6G卫星 ｜ 人形机器人</h3>
+    <div class="why"><b>AI 算力</b>是全球资本开支周期、长线震荡走强（9月入业绩验证）；<b>6G/卫星</b>因十五五规划首提刚点火；<b>人形机器人</b>特链数千台订单落地、从预期转订单。这三条是"赛道轴"，决定大方向。</div>
+    <div class="how">长线方向：AI 硬件越跌越有承接底、6G/机器人是新增量，回调即是布局窗口。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rb"><div class="n">中</div><div class="t">季级主线</div></div>
+  <div class="meta">
+    <h3>AI硬件 ｜ 农业/猪周期 ｜ 券商大金融</h3>
+    <div class="why"><b>AI 硬件</b>（光模块/PCB/存储/液冷）9月主升初期，"看得见订单摸得着涨价"；<b>农业</b>猪价+厄尔尼诺涨价硬但位置高；<b>券商</b>3100亿注资+中报高增长升级。这是"节奏轴"。</div>
+    <div class="how">季度主线跟随业绩验证做波段，AI 硬件是当前确定性最高的一条。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rg"><div class="n">短</div><div class="t">周级博弈</div></div>
+  <div class="meta">
+    <h3>出口链 ｜ 出版传媒 ｜ 消费零售</h3>
+    <div class="why"><b>出口链</b>8月外贸+19.8%数据点火、待龙头立锚；<b>出版</b>版权规划+国资整合、龙版6板续强；<b>消费</b>连板情绪但缺硬证据、位高。这些是"交易轴"，日内波动大。</div>
+    <div class="how">短线按当日资金轮动快进快出，不恋战不追高。</div>
+  </div>
+</div>
+</div>
+
+<h2>机构怎么看<span class="sub">券商共识</span></h2>
+<div class="lead">大方向一致：攻守均衡、先求稳，等业绩验证。</div>
+<div class="card">
+<table>
+<tr><th>机构</th><th>核心观点</th></tr>
+<tr><td>平安证券</td><td>轮动整固、攻守均衡——海外有扰、国内待验证，短期均衡配置</td></tr>
+<tr><td>中银证券</td><td>外部加息扰动没消，短期以守为攻</td></tr>
+<tr><td>天风证券</td><td>非农超预期、加息预期升——国内 PMI 边际回暖形成对冲</td></tr>
+<tr><td>国金证券</td><td>美国 AI 链内部分化：上游硬件强、下游模型弱</td></tr>
+<tr><td>长安投研</td><td>市场在找新定价锚，焦点从产业转向美联储、美债、国内财政实效</td></tr>
+</table>
+<div class="nlist" style="margin-top:8px"><li>共识一句话：从"讲预期"进入"验业绩"阶段，只有看得见订单、摸得着涨价的方向才有安全边际。</li></div>
+</div>
+
+<h2>今天三条主线（短周期当日执行）<span class="sub">按证据和位置排了序</span></h2>
+<div class="lead">把上面的"短周期"再落到今天这一天的具体打板维度：先看有真数据的低位方向，再防高位兑现。</div>
+<div class="card" style="padding-top:2px">
+<div class="line">
+  <div class="rank rp"><div class="n">1</div><div class="t">最值得看</div></div>
+  <div class="meta">
+    <h3>出口链 <span class="pill p-ext">20%</span></h3>
+    <div class="why"><b>8 月外贸 +19.8%，数据硬、位置低</b>，今天唯一的"有数据+还没涨"。短板是没有票站出来当龙头，还得看盘面自己选。家电/机械/纺织传导分散。</div>
+    <div class="how">看有没有放量涨停的带头票；有，就是今天的主线。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rb"><div class="n">2</div><div class="t">关注弹性</div></div>
+  <div class="meta">
+    <h3>6G / 通信 / 卫星 <span class="pill p-off">19%</span></h3>
+    <div class="why"><b>工信部规划首提"适时启动 6G 商用"</b> + 上海跟进，昨天已逆势起动（武汉凡谷、中京电子涨停）。还在炒预期、没订单。卫星/射频/PCB 都是受益环节。</div>
+    <div class="how">涨停扩散到 3 家以上才算主线；扩散不了是一日游，别追。</div>
+  </div>
+</div>
+<div class="line">
+  <div class="rank rg"><div class="n">3</div><div class="t">防兑现</div></div>
+  <div class="meta">
+    <h3>光模块 / 农业 <span class="pill p-mkt">16% / 15%</span></h3>
+    <div class="why">证据最实、但也涨最猛：光模块美股还在给映射，农业金健米业 8 月已翻倍多。<b>位置太高，涨越狠风险越大。</b></div>
+    <div class="how">已赚的先拿稳；光模块看能否二次带涨，带不动就歇，别追高。</div>
+  </div>
+</div>
+</div>
+
+<h2>板块个股 · 证据链<span class="sub">按产业分组 · 每条都挂了催化和个股</span></h2>
+<div class="lead">从各研报口径汇总，按 AI 硬件 / 机器人·资源 / 大金融·政策 / 独立逻辑 四组拆分。缺失标 [MISSING]，不虚构个股证据。</div>
+
+<div class="card">
+<div class="h3" style="margin-top:12px">组一 · AI 硬件</div>
+<table>
+<tr><th style="width:15%">细分</th><th style="width:42%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>光模块</b></td><td>美股映射（Lumentum +11%）；剑桥光电子毛利 45%+、1.6T Q3/Q4 出货；GPU 租金 H100 月 +12.5%、B200 月 +11.7%</td><td>剑桥科技、中际旭创、新易盛、天孚通信、源杰科技、太辰光、联特科技</td></tr>
+<tr><td><b>PCB / CCL</b></td><td>9 月进业绩旺季，北美 AI 服务器拉货；Q3-Q4 弹性利润；核心明年 19-21x PE 未泡沫化</td><td>沪电股份、深南电路、生益电子、兴森科技、中京电子、迅捷兴</td></tr>
+<tr><td><b>上游材料</b></td><td>ABF 载板/电子布/玻纤涨价，PCB 抢料战升级；铜箔、CCL 吃紧</td><td>中天精装（科睿斯）、华正新材、德福科技、东威科技、江南新材</td></tr>
+<tr><td><b>液冷</b></td><td>七部门定 800V HVDC+超百千瓦机柜+液冷</td><td>申菱环境、飞亚达、高澜股份、中石科技、盾安环境</td></tr>
+<tr><td><b>算力租赁</b></td><td>英伟达全系租赁价普涨；超节点+Token 工厂扩产</td><td>弘信电子、浪潮信息、宏景科技、软通动力、协创数据</td></tr>
+<tr><td><b>半导体/存储</b></td><td>SEMI Q2 设备出货 +23%；NAND 26Q2 +55%；国产设备向 2.5D/3D 封测本土化</td><td>长川科技、华峰测控、北方华创、聚辰股份、香农芯创、华兴源创</td></tr>
+</table></div>
+
+<div class="card">
+<div class="h3" style="margin-top:12px">组二 · 人形机器人 + 资源周期</div>
+<table>
+<tr><th style="width:15%">细分</th><th style="width:42%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>机器人 T链</b></td><td>特斯拉链首次数千台订单、10月周产1000/年底2000台</td><td>震裕科技、北特科技、恒勃（PEEK）、爱仕达（情绪）</td></tr>
+<tr><td><b>农业/猪</b></td><td>生猪价 10.58 元/公斤低于现金成本、能繁 -2.94%；鱼粉因秘鲁配额降涨价；厄尔尼诺"超强"</td><td>亚盛集团（连板）、金健米业（翻倍多）、敦煌种业、罗牛山、中水渔业</td></tr>
+<tr><td><b>小金属/稀土</b></td><td>氧化镨钕 73.65 万/吨（环比+1.34%）、氧化镝底部回升；出口增</td><td>盛和资源、北方稀土、中国稀土</td></tr>
+<tr><td><b>油运/航运</b></td><td>美伊地缘推油价、VLCC 指数创新高、BDI 年内新高</td><td>油运/干散龙头（航运链）</td></tr>
+<tr><td><b>红利/现金流</b></td><td>周期现金流改善，股息率有吸引力</td><td>中石化炼化工程（6.7-7.4%）、首钢资源、中国神华</td></tr>
+</table></div>
+
+<div class="card">
+<div class="h3" style="margin-top:12px">组三 · 大金融 + 政策受益</div>
+<table>
+<tr><th style="width:15%">细分</th><th style="width:42%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>银行补资本</b></td><td>财政密集注资（农行1600亿/工行1000亿/保险合计约3160亿）</td><td>农业银行、工商银行、中国人寿、中国太平、中国人保</td></tr>
+<tr><td><b>券商</b></td><td>中报净利+近50%、全年预计+36%；低估值+并购期权</td><td>低估值头部 + 并购重组标的</td></tr>
+<tr><td><b>6G/通信</b></td><td>工信部+上海"十五五"首提6G商用</td><td>武汉凡谷、中京电子（昨涨停）、亨通光电、相控阵/射频/卫星环节</td></tr>
+<tr><td><b>出版传媒</b></td><td>新华传媒并购界面财联社、版权"十五五"规划</td><td>龙版传媒（6板）、中国出版、凤凰传媒</td></tr>
+</table></div>
+
+<div class="card">
+<div class="h3" style="margin-top:12px">组四 · 独立逻辑与低位方向</div>
+<table>
+<tr><th style="width:15%">细分</th><th style="width:42%">催化 / 证据</th><th>代表个股</th></tr>
+<tr><td><b>出口链</b></td><td>8 月外贸 +19.8% 数据点火、位置低</td><td>家电/机械/纺织/代工出海，观察今日立锚</td></tr>
+<tr><td><b>创新药</b></td><td>ADC/IO 2.0 平台稀缺、CDMO 订单高增</td><td>映恩生物、康龙化成、新产业</td></tr>
+<tr><td><b>3D打印</b></td><td>1-7 月出口 421 万台（约+90%）</td><td>创想三维等打印链</td></tr>
+<tr><td><b>消费零售</b></td><td>连板情绪但缺硬证据、位高，兑现风险大</td><td>百大集团、爱仕达、酒店/食品链</td></tr>
+</table></div>
+
+<h2>今日预测<span class="sub">可验证的具体判断</span></h2>
+<div class="card">
+<table>
+<tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+<tr><td>9/9 开盘方向</td><td>平开至小幅低开：上证 -0.3%~+0.2%（隔夜美股跌拖累，6G/外贸对冲，多空对冲下平开偏低开）</td><td>中</td></tr>
+<tr><td>9/9 量能中位数</td><td>1.95 万亿（1.85~2.10 万亿）；放量≥2.1 万亿才升级增量行情</td><td>低</td></tr>
+<tr><td>9/9 涨停家数</td><td>50~90 家（高位科技兑现、低位新题材试探，情绪中位偏弱）</td><td>低</td></tr>
+<tr><td>9/9 情景概率</td><td>乐观 25% / 中性（分化震荡）50% / 悲观 25%</td><td>—</td></tr>
+<tr><td>创业板 vs 上证超额</td><td>-0.5%~+0.5%（成长高位兑现、价值防御，超额弱）</td><td>低</td></tr>
+</table>
+<div class="nlist" style="margin-top:8px">
+<li><b>时间节点：</b>09:45 看出口/6G 有无首板立锚；10:30 看高低位是否扩散成主线；14:00 看量能是否达标。</li>
+</div>
+</div>
+
+<h2>情景推演 + 失效条件</h2>
+<div class="panel">
+  <div class="pbox">
+    <h4>情景推演</h4>
+    <ol>
+      <li><b>乐观 25%</b>：出口/6G 放量涨停扩散≥3 家，量能上 2.1 万亿，题材升级增量行情</li>
+      <li><b>中性 50%</b>：量能 1.85~2.1 万亿，低位新题材与高位兑现并行，分化震荡</li>
+      <li><b>悲观 25%</b>：农业/光模块高位开板跳水，出口/6G 无承接，缩量回落</li>
+    </ol>
+  </div>
+  <div class="pbox">
+    <h4>失效条件（认错信号）</h4>
+    <ol>
+      <li>出口/6G 高开>3%但 10:30 前涨停<2 家 → 主线判断失效，降级兑现</li>
+      <li>量能跌破 1.85 万亿 + 涨停<40 → 存量博弈弱化，按防守处理</li>
+      <li>光模块被美股带强但高位放量滞涨 → 兑现而非承接</li>
+    </ol>
+  </div>
+</div>
+
+<h2>盯盘 · 就三个点</h2>
+<div class="panel">
+  <div class="pbox">
+    <h4>早上 · 有没有新主线</h4>
+    <ol>
+      <li>出口 / 6G 有没有票涨停扩散（3 家以上才算成立）</li>
+      <li>两市成交是不是往上走（上 2.1 万亿是关键）</li>
+    </ol>
+  </div>
+  <div class="pbox">
+    <h4>盘中 · 高位扛不扛得住</h4>
+    <ol>
+      <li>光模块是不是真被美股带起来、不冲高回落</li>
+      <li>农业、出版的老龙头有没有开板跳水</li>
+    </ol>
+  </div>
+</div>
+
+<h2>风险提醒</h2>
+<div class="risk">
+海外加息预期升温、美债利率偏高，这种环境下<b>纯讲故事、没业绩的方向最容易挨杀</b>。今天的关键是量，不是热点热闹——量不放大，忙活一天可能白忙。高位农业/光模块兑现、6G 一日游、出口被防御稀释，都是需要提防的走法。
+</div>
+
+<footer>数据来源：昨日收盘行情、隔夜美股（财联社/证券时报）、工信部及上海政策（官方）、海关外贸数据（官方）、券商周报观点（公开）。本页为盘前研判，仅供参考，不构成投资建议。</footer>
+
+</div>
+</body>
+</html>
