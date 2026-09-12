@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主线深度研究 · S0~S8 全市场重构 2026-09-12（周更）</title>
+<style>
+:root{--red:#b91c1c;--green:#15803d;--orange:#c2410c;--blue:#1e40af;--dark:#1e3a5f;--bg:#f5f7fa;--card:#fff;--line:#e2e8f0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:#1e293b;line-height:1.75;padding-bottom:60px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header{background:linear-gradient(135deg,#0f2a43,#1e40af);color:#fff;padding:36px 0 30px;margin-bottom:26px}
+header .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:flex-end}
+h1{font-size:24px;font-weight:800}
+header .sub{opacity:.85;font-size:12.5px;margin-top:8px}
+header .date{font-size:13px;font-weight:600;text-align:right;opacity:.9}
+.hero{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:12px;padding:22px 26px;margin-bottom:22px;box-shadow:0 2px 14px rgba(15,23,42,.06)}
+.hero h2{font-size:17px;color:var(--dark);margin-bottom:12px}
+.tl{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-bottom:22px;box-shadow:0 2px 10px rgba(15,23,42,.04)}
+.tl>h2{font-size:19px;color:var(--dark);border-bottom:2px solid var(--blue);padding-bottom:8px;margin-bottom:16px}
+.tl h3{font-size:15px;color:var(--blue);margin:18px 0 8px}
+.tl h4{font-size:13.5px;color:var(--dark);margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:12px 0}
+th{background:rgba(30,64,175,.08);color:var(--dark);font-weight:700;text-align:left;padding:8px 10px;border:1px solid var(--line)}
+td{padding:7px 10px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+.up{color:#b91c1c;font-weight:700}
+.dn{color:#15803d;font-weight:700}
+.mid{color:#c2410c;font-weight:700}
+.pill{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11.5px;font-weight:600;margin-right:3px}
+.p-ok{background:rgba(185,28,28,.12);color:#991b1b}
+.p-warn{background:rgba(194,65,12,.14);color:#9a3412}
+.p-gray{background:#f1f5f9;color:#475569}
+.score{font-weight:800;color:var(--blue)}
+.chain{background:linear-gradient(90deg,rgba(30,64,175,.04),rgba(30,58,95,.07));border:1px solid rgba(30,64,175,.16);border-radius:10px;padding:14px 16px;margin:12px 0}
+.chain b{color:var(--dark)}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.bb .bull,.bb .bear{border-radius:10px;padding:14px 16px;font-size:13px}
+.bb .bull{background:#fef2f2;border:1px solid #fecaca}
+.bb .bear{background:#f0fdf4;border:1px solid #bbf7d0}
+.bb h5{font-size:13px;margin-bottom:6px}
+.bb .bull h5{color:#991b1b}
+.bb .bear h5{color:#15803d}
+.kill{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:12px 14px;font-size:12.8px;color:#92400e;margin:12px 0}
+.tag{display:inline-block;margin:2px}
+table.stock td:nth-child(2){font-weight:600}
+footer{text-align:center;color:#64748b;font-size:12px;padding:26px 20px 6px}
+@media(max-width:640px){.bb{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap"><div>
+<h1>主线深度研究 · 全市场重构（周更）</h1>
+<div class="sub">mainline-research · 长/中/短三时域主线判定 · 真实性验证 · 拆分选票 · 台账刷新</div>
+</div><div class="date">2026-09-12 · 周六<br>数据基准：2026-09-11 收盘 + 隔夜外盘</div></div>
+</header>
+<div class="wrap">
+
+<!-- ============ S0 市场环境 ============ -->
+<div class="tl" id="S0">
+<h2>S0 · 市场环境层（双尺）</h2>
+<h3>A. 日线战术层（短线节奏 · 给"何时上车/下车"）</h3>
+<table>
+<tr><th>维度</th><th>读数(09-11)</th><th>战术含义</th></tr>
+<tr><td>指数</td><td>上证3888.11(-1.18%) 深成13471(-1.08%) 创业板3322(-0.49%) 科创50 1553(-1.01%) 沪深300 4510(-0.84%) 中证1000 7427(<b class="mid">-2.12%</b>)</td><td class="dn">大盘放量收跌；中小盘(中证1000)重挫，亏钱效应集中在成长/小盘</td></tr>
+<tr><td>量能</td><td>1.97万亿（较昨1.65万亿<b class="up">放量+3200亿</b>）</td><td>放量但下跌，属"存量切换+洗盘"而非增量普涨；主线逆势放量吸金</td></tr>
+<tr><td>情绪</td><td>涨643/跌4870、涨停40/跌停21、上涨占比<b class="mid">11%</b></td><td class="dn">冰点极端弱势（一年仅26%交易日更差），但涨停40家显示局部赚钱效应仍存</td></tr>
+<tr><td>风格</td><td>元件/通信设备/覆铜板/军工强、小盘成长弱</td><td>资金向"载板材料链(结构性)"集中，其余普跌</td></tr>
+</table>
+<h3>B. 全球战略层（中长线权重 · 给"能走多远/给多高权重"）</h3>
+<table>
+<tr><th>战略力量</th><th>最新动态(隔夜 09-11)</th><th>对A股主线权重影响</th></tr>
+<tr><td>海外风险偏好</td><td>美股三大指数创历史新高；中国资产大涨（阿里+8%）、中概强劲；费半+1%</td><td class="up">外围风险偏好回升，利好 A 股 AI 科技映射，给科技主线加权重</td></tr>
+<tr><td>美联储/通胀</td><td>美国8月CPI同比+3.4%（符合预期）、核心CPI回落至+2.4%；降息预期未被打消</td><td class="up">压制解除，利好流动性敏感成长；但尚未确认大幅降息</td></tr>
+<tr><td>AI/算力（主线特有）</td><td>高盛上调2026-28全球光模块出货20%+、1.6T上调更高；美光/花旗重申内存短缺2026缺1.8%/4.0%；电子布进入超级周期</td><td class="up">AI载板材料&光模块基本面持续兑现，主升燃料十足</td></tr>
+<tr><td>涨价超级周期（主线特有）</td><td>中国巨石9月电子布再涨（厚布+15%/薄布+20%）、建滔年内7封涨价函、FR-4覆铜板累计涨超100%</td><td class="up">覆铜板/电子布/玻纤<strong>涨价二次点火</strong>，直接推翻9/10"涨价见顶"担忧</td></tr>
+<tr><td>油价/地缘</td><td>油价11日回落2.4%至100.05美元（中东缓和信号、霍尔木兹消息缓解），布伦特104.61</td><td class="dn">油气短线降温，但仍在100美元上方，供给约束L0未破；避险溢价回吐</td></tr>
+<tr><td>贵金属</td><td>金银齐涨（资金回流避险+降息预期）</td><td class="up">黄金短线企稳回升，高位分歧后重新获得买盘</td></tr>
+</table>
+<div class="kill"><b>双尺结论：</b>A层“冰点+放量下跌+主线逆势吸金”——大盘无普涨beta，只有结构性主线（AI载板材料链）有独立行情，追买需严格锚主线、控仓防空头的普跌拖累；B层“海外风险偏好回升+CPI符合预期+载板材料涨价超级周期”——<strong>长线AI科技主线权重上调</strong>，地缘/油价短线降温油气、黄金企稳。市场在冰点与主线点火背离中运行，主线资金高度向“载板材料+光模块”集中。</div>
+</div>
+
+<!-- ============ S1 主线地图 ============ -->
+<div class="tl" id="S1">
+<h2>S1 · 主线地图（长中短全览）</h2>
+<table>
+<tr><th>层级</th><th>主线</th><th>点火源</th><th>真实性</th><th>生命周期</th><th>传导到环节</th><th>强度/30</th><th>拥挤</th><th>预期差</th></tr>
+<tr>
+<td>长(年级)</td><td><b>AI科技/算力·载板材料链</b></td><td>基本面传导+<b>涨价超级周期</b></td><td><span class="pill p-ok">真主线</span></td><td>主升段(涨价二次点火)</td>
+<td>玻纤/电子布/铜箔<span class="pill p-ok">重新点火</span>→覆铜板<span class="pill p-ok">+4.31%</span>→PCB[已兑现]→MLCC/陶瓷基板[进行中]→光模块CPO[资金回流]</td>
+<td class="score">28</td><td class="dn">-3(高位)</td><td>涨价超预期、二次上行</td>
+</tr>
+<tr>
+<td>长(年级)</td><td>全球资源·通胀链(铜/金/油气)</td><td>基本面传导+地缘</td><td><span class="pill p-ok">真主线</span></td><td>铜稳健/金企稳/油气降温</td>
+<td>铜[机构低吸]→金[回升]→油气[短线回落]</td><td class="score">26</td><td>-2</td><td>铜回归、油气预期回落</td>
+</tr>
+<tr>
+<td>中(季级)</td><td>医药/CRO(创新药出海)</td><td>资金面切换+基本面</td><td><span class="pill p-ok">真主线</span></td><td>高位整固(回调检验)</td>
+<td>创新药BD→CRO业绩→兑现</td><td class="score">23</td><td class="dn">-3</td><td>药明净流出5.2亿,承压</td>
+</tr>
+<tr>
+<td>短(周级)</td><td>军工/地面兵装<b class="up">(新点火)</b></td><td>资金切换+消息</td><td><span class="pill p-warn">强题材→待验证</span></td><td>启动期(异动次日)</td>
+<td>地面兵装+4.44%→光电股份涨停→扩散中</td><td class="score">22</td><td>-1</td><td>观察扩散持续性</td>
+</tr>
+<tr>
+<td>短(周级)</td><td>玻纤/电子布(载板材料上游)</td><td>涨价周期</td><td><span class="pill p-warn">强题材→真主线确认中</span></td><td>启动期(超级周期)</td>
+<td>巨石/建滔涨价→玻纤+2.63%→电子布+1.73%</td><td class="score">24</td><td>-1</td><td>涨价硬化测算</td>
+</tr>
+<tr>
+<td>短(周级)</td><td>机器人</td><td>政策+大厂</td><td><span class="pill p-gray">强题材</span></td><td>酝酿期候选</td>
+<td>特斯拉2026底量产未验证</td><td>候选</td><td>-1</td><td>无持续验证</td>
+</tr>
+</table>
+<div class="kill"><b>主线地图结论：</b>本期唯一<strong>逆势点火且逻辑硬核算</strong>的主线是 <b>AI载板材料链（覆盖玻纤/电子布/铜箔/覆铜板/MLCC/光模块）</b>，由“涨价超级周期+中报兑现+高盛上调出货”三引擎驱动；军工（地面兵装）为短线新点火题材，需扩散验证；医药/CRO、油气短线降温，黄金企稳，机器人仍处候选。</div>
+</div>
+
+<!-- ============ S2 长线主线 ============ -->
+<div class="tl" id="S2">
+<h2>S2 · 长线主线 · AI 科技/算力（载板材料链）</h2>
+<h3>主线成因档案（为什么它是A股最强AI主线 · 加厚）</h3>
+<p><b>一句话：</b>A股在整条AI链里被资本反复验证的，是“卖水卖布”的上游载板与材料——玻纤/电子布/铜箔 → 覆铜板(CCL) → PCB(高多层)，旁支 MLCC、光模块CPO，本轮新增“<b>涨价超级周期</b>”作为第二硬引擎，与中报业绩合流。</p>
+<h4>① 起源与点火</h4>
+<p>2023 大模型 → 算力军备竞赛；A股不在“芯片/应用”抢龙头，而在“卖铲卖截卖布”上游卡位。点火源=基本面传导（最硬），本轮叠加<b>涨价周期</b>——电子布/覆铜板/玻纤进入涨价超级周期。</p>
+<h4>② 周期定位</h4>
+<p>叙事 → <b>业绩兑现段</b>，且涨价二次点火：中报10家翻倍后，9月电子布再涨价（巨石厚布+15%/薄布+20%）、建滔年7封涨价函FR-4累计+100%、中国巨石确认供应紧张、下半年无明显新增产能。</p>
+<h4>③ 全球定价锚</h4>
+<p>英伟达CAPEX/费半（9/11费半+1%）；高盛上调2026-28全球光模块出货20%+、1.6T超高速上调更高；美光/花旗重申内存2026短缺1.8%/4.0%——AI硬件需求全球确认向上，非A股单方面叙事。</p>
+<h4>④ 为什么一直在传导（A股资金节奏）</h4>
+<p>价值量放大（AI服务器PCB价值量近传统10倍）+ 涨价周期（电子布/覆铜板调价函不断）+ 扩产 → 逐环节点燃。传导以<strong>A股实际资金验证</strong>为骨架：本期机构龙虎榜明确买入覆铜板（超声电子净占比30.75%）、铜箔（逸豪新材5.08亿）、铜（北方铜业1.32亿），旭创主力净流入全市场第一。</p>
+<h4>⑤ 利润/估值结构变化</h4>
+<p>利润最确定在上游“卖布/卖料”：中国巨石机构一致预测2026净利+122.66%、宏和科技+353.97%、国际复材+484.82%；估值重估沿“涨价最紧环节 → 扩散环节 → 待启动”顺序。</p>
+<h4>⑥ 当前阶段与回调原因（本期修正）</h4>
+<p>上周(9/10)曾因铠侠“存储价格涨够了”担忧涨价见顶、下调权重。<b>9/11 被证伪为短期噪音</b>：真正的载板材料涨价（电子布/覆铜板/玻纤）不但没停，反而二次上调；覆铜板+4.31%（5日+22.54%）重新点火，光模块资金回流。修正为<b>主升段 · 涨价二次点火</b>。</p>
+
+<h4>传导进度（已兑现 vs 待启动）</h4>
+<table>
+<tr><th>环节</th><th>传导进度(09-11)</th><th>当日/资金证据</th></tr>
+<tr><td>玻纤/电子布/铜箔</td><td><span class="pill p-ok">重新点火·超强</span></td><td>玻纤+2.63%、电子布+1.73%(5日+9.22%)；巨石/建滔涨价函(S级)</td></tr>
+<tr><td>覆铜板 CCL</td><td><span class="pill p-ok">+4.31% 最强</span></td><td>超声电子涨停、机构龙虎榜净占比30.75%(5日+22.54%)</td></tr>
+<tr><td>PCB(高多层/HDI)</td><td><span class="pill p-ok">已兑现·强者恒强</span></td><td>胜宏229、机构看好2027高端基材景气</td></tr>
+<tr><td>MLCC/陶瓷基板</td><td><span class="pill p-warn">进行中</span></td><td>MLCC+1.76%、陶瓷基板+1.74%(5日+9.12%)</td></tr>
+<tr><td>光模块/CPO</td><td><span class="pill p-ok">资金回流</span></td><td>旭创926主力净流入31.66亿全市场第1、5日+5.2%；高盛上调出货</td></tr>
+<tr><td>半导体设备/更上游</td><td><span class="pill p-gray">未启动·候补</span></td><td>北方华创634，AI传导下一棒潜伏候选</td></tr>
+</table>
+<div class="bb">
+<div class="bull"><h5>多头（上涨依据）</h5>①涨价超级周期硬核算（巨石/建滔调价函=S级）；②中报集体兑现+机构预测2026高增长；③高盛/花旗上调AI硬件出货；④机构龙虎榜真金买入（超声/逸豪/北铜）；⑤9/11冰点日逆势放量上行，资金高度集中。</div>
+<div class="bear"><h5>空头（反转/证伪）</h5>①板块高位拥挤（-3）；②大盘冰点普跌，需防补跌拖累；③涨价若见顶或云厂商CAPEX转弱→阶段证伪；④光模块龙头旭创20日仍净流出63亿，资金是否持续回流待观察；⑤中小盘重挫(中证1000-2.12%)。开关：覆铜板龙头放量破位、涨价函停发。</div>
+</div>
+</div>
+
+<!-- ============ S3 中线主线 ============ -->
+<div class="tl" id="S3">
+<h2>S3 · 中线主线 · 全球资源通胀链 + 医药/CRO</h2>
+<h3>全球资源·通胀链（铜/金/油气）</h3>
+<table>
+<tr><th>子链</th><th>状态(09-11)</th><th>证据</th><th>预期差</th></tr>
+<tr><td>铜</td><td><span class="pill p-warn">高位回吐后机构低吸</span></td><td>LME铜前高14768回吐后隔夜企稳；龙虎榜机构买北方铜业1.32亿、净占比7.6%</td><td>铜价回归但供给逻辑未破</td></tr>
+<tr><td>金</td><td><span class="pill p-ok">企稳回升</span></td><td>隔夜金银齐涨，避险+降息预期回流</td><td>高位分歧后重新买盘</td></tr>
+<tr><td>油气</td><td><span class="pill p-gray">短线降温</span></td><td>油价11日跌2.4%至100.05美元（中东缓和）、布伦特104.61</td><td>油价仍破百但避险溢价回吐，A股映射未放量</td></tr>
+</table>
+<p><b>成因档案锚：</b>铜/油气由“供给约束L0+全球通胀交易”驱动；本期油价虽回落但仍在100上方，霍尔木兹博弈未终局，L0逻辑未破，属<b>高位回吐非逻辑证伪</b>；金获避险+宽松双支撑。三子链共同驱动=“实物资产抗通胀”。</p>
+<div class="bb">
+<div class="bull"><h5>多头</h5>油价破百、供给约束硬；铜机构低吸；金银避险+降息；全球再通胀交易未结束。</div>
+<div class="bear"><h5>空头</h5>原油短线降温、地缘缓和；高位回吐；油气A股映射(e.g.中国石油11.24)未放量；全球需求担忧。</div>
+</div>
+<h3>医药/CRO（创新药出海）</h3>
+<table>
+<tr><th>标的</th><th>读数(09-11)</th><th>状态</th></tr>
+<tr><td>药明康德</td><td>151.24（较昨154.5回落）</td><td class="dn">主力净流出5.17亿，高位整固承压</td></tr>
+<tr><td>CXO 中军</td><td>凯莱英/泰格</td><td>跟随龙头，回调未企稳</td></tr>
+<tr><td>创新药BD</td><td>百济神州</td><td>高位兑现，BD放缓风险</td></tr>
+</table>
+<p><b>更新：</b>药明净流出5.17亿、股价跌破155箱体下沿，中线主线进入<b>回调检验期</b>；2026医保谈判124个创新药入围+复宏汉霖全球化等基本面车辆仍在，但资金端短线倾向于先撤回高确定性（载板材料）。属<b>阶段/交易证伪观望</b>，逻辑未坏。</p>
+</div>
+
+<!-- ============ S4 短线主线 ============ -->
+<div class="tl" id="S4">
+<h2>S4 · 短线主线（周级）</h2>
+<h3>军工/地面兵装（本期新点火）</h3>
+<td>地面兵装Ⅱ <b class="up">+4.44%</b>（5日+5.40%、20日+12.99%）、光电股份<b class="up">+10.02%</b>涨停、中兵系+1.61%</td>
+<p><b>催化/情绪：</b>资金面切换 + 消息驱动，龙头光电股份涨停开板。真实性鉴定：属<b>强题材→待验证</b>，仅1日异动、历史5日才+5.4%，<b>尚未过C/D/E验证</b>。证伪信号：若次日无涨停扩散（≥5只）、龙头打开，则定性一日脉冲。</p>
+<h3>玻纤/电子布（载板材料上游 · 超级周期）</h3>
+<p>电子布+1.73%(5日+9.22%)、玻纤+2.63%(5日+10.18%)；中国巨石9月再涨厚布+15%/薄布+20%、机构一致预测巨石2026净利+122.66%。<b>真实催化强（涨价函=S级）</b>，可升级观察为“真主线确认中”。</p>
+<h3>机器人（候选）</h3>
+<p>特斯拉Optimus 2026底规模化量产确认，但A股量能仍不足、无持续验证，维持<b>酝酿期候选</b>。</p>
+</div>
+
+<!-- ============ S5 预期差 ============ -->
+<div class="tl" id="S5">
+<h2>S5 · 预期差（谁是高价值主线）</h2>
+<table>
+<tr><th>主线</th><th>市场原有预期</th><th>最新实际</th><th>预期变化</th><th>结论</th></tr>
+<tr><td>AI载板材料链</td><td>9/10曾传“涨价见顶”担忧</td><td>电子布/覆铜板9月<b>二次涨价</b>、巨石/建滔调价函、高盛上调出货</td><td><span class="up">超预期</span></td><td><b class="up">高价值主线·涨价二次点火，资金逆势回流</b></td></tr>
+<tr><td>光模块/CPO</td><td>高位分化</td><td>高盛上调2026-28出货20%+；旭创净流入全市场第一；52/82家半年报净增</td><td><span class="up">超预期</span></td><td class="up">业绩持续兑现，资金回流</td></tr>
+<tr><td>全球资源通胀链</td><td>高位回吐</td><td>铜机构低吸、金企稳、油价仍破百</td><td><span class="mid">符合~略超</span></td><td>铜/金高价值，油气短线降温</td></tr>
+<tr><td>医药/CRO</td><td>回调承压</td><td>药明净流出5.2亿、跌破155</td><td><span class="dn">低于/符合</span></td><td>阶段性弱势，资金短线离场</td></tr>
+<tr><td>军工(地面兵装)</td><td>—</td><td>首日+4.44%</td><td>—</td><td>待扩散验证，非高价值</td></tr>
+</table>
+<div class="kill"><b>结论：</b>当前<strong>预期差最大、最值得跟的是 AI 载板材料链</strong>——市场一度担忧涨价见顶，但9月调价函实证二次点火，这是“位置已高但预期仍欠账”的高价值结构；其次铜/金资源链。医药/CRO预期差转负，资金短线离场。</div>
+</div>
+
+<!-- ============ S6 拆分·标的池 ============ -->
+<div class="tl" id="S6">
+<h2>S6 · 拆分 · 真实子线 + 标的分档（载板材料链）</h2>
+<p><b>拆分原则：</b>泛概念“AI硬件”→按核心产品/竞争力拆真实子线，聚焦本轮<strong>被资金验证的载板材料+光模块</strong>，屏蔽蹭概念贴牌；每子线标轮动阶段+买卖情景框架（非指令）。</p>
+<table>
+<tr><th>真实子线</th><th>标的(代码)</th><th>档位/轮动</th><th>当日资金(09-11)</th><th>多空亮点</th><th>买卖情景框架</th></tr>
+<tr><td>电子布/玻纤</td><td>中国巨石(600176)、宏和科技(603256)、国际复材</td><td>龙头·重新点火</td><td>玻纤板块5日+10.18%</td><td>多:巨石9月厚布+15%/薄布+20%、全年无新增产能、机构预测净利+122.66%；空:高位、涨价兑现后易滞涨</td><td>涨价函为催化；回踩5日线不破跟随；调价函停发/龙头破位即退</td></tr>
+<tr><td>覆铜板 CCL</td><td>超声电子(000823)、生益科技(600183)、建滔(HK)</td><td>龙头·+4.31%最强</td><td>超声涨停、机构龙虎榜净占比30.75%、上榜3日</td><td>多:FR-4累计+100%、年7封涨价函；空:连板后震荡、高位</td><td>机构抢筹托底；回踩不破20.5一带持有；放量破位/涨停打开即阶段降温</td></tr>
+<tr><td>PCB/HDI</td><td>胜宏科技(300476)、沪电股份(002463)、深南电路(002916)</td><td>龙头·已兑现</td><td>胜宏229(-1.6%)</td><td>多:中报翻倍、高盛看好2027高端基材；空:主位预期满、高位</td><td>强者恒强；回调企稳/板块不坏作为旗手观察</td></tr>
+<tr><td>MLCC/陶瓷基板</td><td>三环集团(300408)、风华高科(000636)</td><td>卡位·进行中</td><td>MLCC+1.76%、陶瓷基板+1.74%</td><td>多:AI服务器单台用量5-10倍、涨价周期；空:跟随主链、弹性分化</td><td>主链强则跟随补涨；主链破位则退</td></tr>
+<tr><td>光模块/CPO</td><td>中际旭创(300308)、新易盛(300502)、天孚通信(300394)</td><td>龙头·资金回流</td><td>旭创926、主力净流入31.66亿全市场第1</td><td>多:高盛上调出货20%+、52/82家半年报净增、净流入第一；空:20日仍净流出63亿、高位</td><td>净流入回流为信号；旭创放量破位=整线阶段证伪；不追单日急拉</td></tr>
+<tr><td>铜/铜箔</td><td>北方铜业(000737)、逸豪新材(301176)</td><td>弹性·机构低吸</td><td>龙虎榜机构买北铜1.32亿/逸豪5.08亿</td><td>多:铜价支撑+铜箔稼动率；空:原油回落拖累资源情绪</td><td>机构真金为锚；回踩放量平台跟随；资源链整体走弱即退</td></tr>
+</table>
+<div class="bb">
+<div class="bull"><h5>主线多头综合（看清上升依据）</h5>涨价超级周期(S级调价函) + 中报兑现 + 机构龙虎榜真金 vs 高盛/花旗上调出货；9/11唯一逆势放量主线，资金高度集中。</div>
+<div class="bear"><h5>主线空头综合（看清反转开关）</h5>高位拥挤(-3) + 大盘冰点普跌 + 中证1000重挫；覆铜板/电子布连涨后或歇；"涨价见顶/云CAPEX转弱"若现则阶段证伪。主开关:龙头(超声/巨石/旭创)放量破位或调价函停发。</div>
+</div>
+</div>
+
+<!-- ============ S7 跟踪清单 ============ -->
+<div class="tl" id="S7">
+<h2>S7 · 跟踪清单（证伪信号 + 追踪节奏）</h2>
+<table>
+<tr><th>主线</th><th>证伪信号（触发即复核）</th><th>追踪节奏</th></tr>
+<tr><td>AI载板材料链</td><td>①覆铜板/电子布/玻纤<b>调价函停发</b>或返降价；②龙头(超声/巨石/旭创)放量破位；③云厂商CAPEX指引转弱；④PCB中报后接单转弱</td><td>日更·盯涨价函+龙头资金+板块扩散</td></tr>
+<tr><td>光模块/CPO</td><td>旭创20日净流出转扩大/破位；高盛出货上调证伪</td><td>日更·盯主力资金+海外费半</td></tr>
+<tr><td>铜/金</td><td>铜跌破前高强支撑/机构转卖；金高位回落失5日线</td><td>日更·盯LME/COMEX+龙虎榜</td></tr>
+<tr><td>油气</td><td>油价跌破100关口/地缘彻底缓和</td><td>日更·盯WTI/布伦特+地缘</td></tr>
+<tr><td>医药/CRO</td><td>药明跌破前期低点/资金持续大幅流出</td><td>周更·企稳前不抄底</td></tr>
+<tr><td>军工(地面兵装)</td><td>次日无涨停扩散(≥5)/龙头开板</td><td>日更·验证是否一日脉冲</td></tr>
+</table>
+<div class="kill"><b>追踪优先级：</b>本期<b>只重仓跟踪 AI 载板材料链</b>（唯一强核算主线），军工按题材波验证、不追高，医药/CRO等待企稳，油气/铜金按资源锚跟踪。所有判断以S/A级证据（财报/涨价函/官方）为准，C/D级仅作观察。</div>
+</div>
+
+<!-- ============ S8 台账落库 ============ -->
+<div class="tl" id="S8">
+<h2>S8 · 台账落库（催化剂/证据库/升降级）</h2>
+<h4>催化剂台账（本期新增 · 09-11）</h4>
+<table>
+<tr><th>日期</th><th>事件</th><th>催化等级</th><th>影响环节</th><th>证据等级</th></tr>
+<tr><td>09-11</td><td>中国巨石9月电子布再涨价（厚布+15%/薄布+20%）、供应紧张、全年无明显新增产能</td><td class="up">S级</td><td>玻纤/电子布→覆铜板</td><td>S级(公司确认)</td></tr>
+<tr><td>09-11</td><td>超声电子涨停、机构龙虎榜净占比30.75%、上榜3日</td><td>A级</td><td>覆铜板</td><td>S级(交易数据)</td></tr>
+<tr><td>09-11</td><td>高盛上调2026-28全球光模块出货20%+、1.6T更高</td><td class="up">B级</td><td>光模块/CPO</td><td>B级(机构)</td></tr>
+<tr><td>09-11</td><td>美股三大指数新高、中国资产大涨(阿里+8%)、费半+1%</td><td>B级</td><td>全局/AI科技</td><td>B级</td></tr>
+<tr><td>09-11</td><td>美国8月CPI+3.4%符合预期、核心回落2.4%</td><td>B级</td><td>全局流动性</td><td>S级(官方)</td></tr>
+<tr><td>09-11</td><td>旭创主力净流入31.66亿(全市场第1)、5日+5.2%</td><td>B级</td><td>光模块</td><td>S级(资金)</td></tr>
+<tr><td>09-11</td><td>油价回落2.4%至100.05美元(中东缓和)</td><td>B级</td><td>油气</td><td>S级</td></tr>
+<tr><td>09-11</td><td>地面兵装+4.44%、光电股份涨停</td><td>C级</td><td>军工</td><td>C级(题材)</td></tr>
+</table>
+<h4>证据库摘要（evidence_lib 增量）</h4>
+<p>载板材料链由“涨价函(S)+中报业绩(S)+机构龙虎榜(S)+高盛/花旗(B)+板块资金(S)”五级证据闭环交叉验证，为<b>当前证据密度最高的主线</b>。</p>
+<h4>升级/降级记录</h4>
+<table>
+<tr><th>主线</th><th>本次动作</th><th>依据</th></tr>
+<tr><td>AI载板材料链</td><td><span class="pill p-ok">权重上调 27→28</span>（9/10曾下调，本期因涨价二次点火回调上调）</td><td>巨石/建滔调价函(S)+机构龙虎榜+高盛上调</td></tr>
+<tr><td>光模块/CPO</td><td><span class="pill p-ok">资格恢复·资金回流</span></td><td>旭创净流入全市场第一(S)+52/82家净增</td></tr>
+<tr><td>油气</td><td><span class="pill p-gray">权重下调·短线降温</span></td><td>油价回落、地缘缓和</td></tr>
+<tr><td>医药/CRO</td><td><span class="pill p-gray">维持观望</span></td><td>药明净流出5.2亿、跌破155</td></tr>
+<tr><td>军工(地面兵装)</td><td><span class="pill p-warn">新增候选</span></td><td>异动+4.44%，待扩散验证</td></tr>
+</table>
+</div>
+
+<footer>
+主线深度研究 · 周更(2026-09-12) | 数据基准 2026-09-11 收盘+隔夜外盘 | 证据分级: 财报/官方(S)、龙头公告/交易(A)、机构/权威(B)、研报(C)、传闻(D)<br>
+本文基于公开数据整理，不构成投资建议。仓位与操作须自行决策并自担风险。
+</footer>
+</div>
+</body>
+</html>
