@@ -26,3 +26,6 @@
 !主线追踪/
 !主线追踪/**/
 !主线追踪/**/*.html
+!stock-screener/
+!stock-screener/**/
+!stock-screener/**/*.md
