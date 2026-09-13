@@ -197,6 +197,7 @@ L7 应用层          Agent/办公/多模态/端侧AI（AI手机·眼镜·玩具
 
 ## 七、与既有模块的接口
 
+- 各层"怎么证实/证伪"（三支柱验证表+转正/证伪阈值+计量陷阱）→ `ai-chain-verification.md`
 - L1 材料 → `ai-upstream-verification.md`（独立验证三张表）
 - L0 大宗 → `macro-darkline.md` 家族④（AI 基建→有色/电力）
 - 利率锚 → `macro-darkline.md` §6.4（利率双受体：黄金 + AI 长久期）

@@ -3,7 +3,7 @@ name: "mainline-research"
 description: >
   A股主线深度研究：长/中/短主线判断、建档、信息跟踪、标的筛选与跟踪。双节奏运行（日更=信息冲刷增量更新存档，周更=全市场主线重构出S0~S8深度报告）。含宏观传导暗线（利率/气候/地缘/技术资本开支对大宗与实物资产的长中线影响、尚未定价的埋伏链）与AI/算力全产业链环节级跟踪（L0~L7分层指标+话语层投行研报/高管/KOL+利率分层久期传导）。触发词：主线研究、主线深度、长线主线、短线主线、主线判断、主线挖掘、跟踪主线、筛查主线、这个主线值不值得跟、暗线、长中远影响、AI产业链跟踪、算力链、话语层。Invoke when user asks to analyze mainline themes (long/medium/short), track, screen or 深度 research a market mainline, identify macro dark-lines, or track the AI/computing chain by segment.
 agent_created: true
-version: 1.6.0
+version: 1.6.1
 display_name: "主线深度研究"
 display_name_en: "Mainline Deep Research"
 description_zh: "A股主线深度研究：长中短主线判断、建档、信息跟踪、标的筛选跟踪，双节奏运行。"
@@ -318,6 +318,8 @@ Level 0 泛概念主线（概念板块，如"光通信"）
 
 **AI 链不能当"一个板块"看，必须拆层跟踪**：L0 算力资源/大宗 → L1 材料元件 → L2 芯片硬件 → L3 网络互连 → L4 基建/IDC → L5 算力云/租赁 → L6 模型平台 → L7 应用。每层给独立于 K 线的跟踪指标（核心矛盾/主指标/节奏/证伪信号）。详见 `references/ai-chain-tracking.md`。
 
+- **各环节独立验证指标**：每层按"需求/供需/盈利"三支柱验证（谁付钱、供给真紧吗、钱赚到了吗），配转正/证伪阈值与计量陷阱总表（主体不一致/计量错配/量级错配/时点错配/蹭概念）；另有链级三指标（capex 资金来源、token 收入覆盖率、L1→L3 传导顺畅度）。详见 `references/ai-chain-verification.md`。
+
 - **话语层（跨层横切）**：投行研报（B/C 级）、高管意见（财报会指引 A/吹风 B）、KOL/网红（D 级）三类分级使用——前瞻确认 / 预期差校准 / 情绪温度计（反向拥挤预警）三种用法。硬纪律：话语只改预期不改事实，与产业数据背离以产业为准；D 级永不改档；高管行为 > 高管语言。"网红都在讲算力 + L1 材料普涨 + 蹭概念满天飞" = 末段组合证据。
 - **利率锚（跨层横切）**：利率对 AI 链按环节久期分层传导（L7 应用/L5 租赁最敏感 → L1 材料最钝化），四条机制（估值贴现/融资成本/资金分流/capex 门槛）+ 2000 年思科教训（利率是触发器不是死因，盯 capex 资金来源与 token 收入覆盖率）。
 - **价值层与股价层分开记**：需求信号自上而下（云厂 capex → L3 订单 → L2 芯片 → L1 材料 → L7 应用）；A 股资金扩散常反向（叙事 → 硬件 → 材料 → 补涨）。两层错位处即前瞻布局/减仓决策点。
@@ -419,4 +421,5 @@ Level 0 泛概念主线（概念板块，如"光通信"）
 | **宏观传导暗线识别与跟踪 + 宏观事件长期跟踪(地缘/气候/美债)** | `references/macro-darkline.md` |
 | **AI产业链上游材料独立验证指标(PCB/覆铜板/铜箔/电子布)** | `references/ai-upstream-verification.md` |
 | **AI/算力全产业链环节级跟踪(L0~L7) + 话语层(投行/高管/KOL) + 利率分层久期** | `references/ai-chain-tracking.md` |
+| **AI产业链各环节独立验证指标(三支柱+阈值+计量陷阱+链级三指标)** | `references/ai-chain-verification.md` |
 | S0~S8 报告/HTML 风格/成因论证要求 | `references/report-template.md` |
