@@ -6,13 +6,13 @@
 <title>A股盘前分析 · 2026-09-03</title>
 <style>
 :root{
-  --bg:#f7f8fa;--card:#ffffff;--rule:#e2e8f0;--ink:#1e293b;--muted:#64748b;
-  --up:#dc2626;--down:#16a34a;--amber:#d97706;--primary:#1e40af;--accent:#1e3a5f;
+  --bg:#f7f8fa;--card:#ffffff;--rule:#EBE7E2;--ink:#403C38;--muted:#66615A;
+  --up:#dc2626;--down:#16a34a;--amber:#d97706;--primary:#D97706;--accent:#C2410C;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQuanYi Micro Hei',-apple-system,'Microsoft YaHei',sans-serif;line-height:1.7;font-size:14px}
 .wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
-.head{background:linear-gradient(135deg,#eef2ff,#ffffff);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
+.head{background:linear-gradient(135deg,#fff8ef,#ffffff);border:1px solid var(--rule);border-radius:14px;padding:26px;margin-bottom:20px}
 .head h1{font-size:24px;letter-spacing:1px;color:var(--primary);margin-bottom:6px}
 .head .sub{color:var(--muted);font-size:13px}
 .headmark{color:var(--amber);font-size:12px;margin-top:8px}
@@ -20,17 +20,17 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans CJK SC','WenQu
 .badge{background:var(--primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600}
 .badge.amber{background:var(--amber)}
 .badge.green{background:#166534}
-.tagline{margin-top:14px;background:#eef2ff;border-left:4px solid var(--primary);padding:10px 14px;font-size:13px;color:var(--accent);border-radius:0 8px 8px 0}
-.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.tagline{margin-top:14px;background:#fff8ef;border-left:4px solid var(--primary);padding:10px 14px;font-size:13px;color:var(--accent);border-radius:0 8px 8px 0}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(64,60,56,.04)}
 .card h2{font-size:18px;color:var(--primary);display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .card h2 .no{background:var(--primary);color:#fff;font-size:12px;width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:none}
-.card h2 .tag{font-size:11px;font-weight:500;border:1px solid var(--rule);color:var(--muted);padding:2px 10px;border-radius:20px;background:#f8fafc}
+.card h2 .tag{font-size:11px;font-weight:500;border:1px solid var(--rule);color:var(--muted);padding:2px 10px;border-radius:20px;background:#F5F2EE}
 h3{border-left:4px solid var(--primary);padding-left:10px;margin:16px 0 8px;font-size:15px;color:var(--accent)}
 h3.sub{border-left:4px solid var(--amber);color:var(--amber)}
-p{font-size:14px;color:#334155;margin-bottom:9px}
+p{font-size:14px;color:#403C38;margin-bottom:9px}
 p strong{color:var(--ink)}
 table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
-th{background:#f1f5f9;color:var(--accent);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--rule)}
+th{background:#F5F2EE;color:var(--accent);font-weight:600;text-align:left;padding:8px 12px;border:1px solid var(--rule)}
 td{padding:8px 12px;border:1px solid var(--rule);vertical-align:top}
 tr:nth-child(even) td{background:#fafbfc}
 .up{color:var(--up);font-weight:600}
@@ -38,19 +38,19 @@ tr:nth-child(even) td{background:#fafbfc}
 .h{color:var(--amber);font-weight:600}
 .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;margin-right:6px;margin-bottom:4px}
 .pill.up{background:#fee2e2;color:var(--up)}
-.pill.flat{background:#eef2ff;color:var(--primary)}
+.pill.flat{background:#fff8ef;color:var(--primary)}
 .pill.hold{background:#dcfce7;color:#166534}
 .pill.warn{background:#fef3c7;color:#92400e}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.mini{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.mini{background:#F5F2EE;border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
 .mini h4{font-size:13px;color:var(--muted);margin-bottom:6px}
 .mini .v{font-size:18px;font-weight:800}
 .mini p{font-size:12.5px;margin-top:4px}
-ul{padding-left:22px;font-size:14px;color:#334155;line-height:2}
-.quote{background:#f8fafc;border-left:3px solid var(--amber);padding:10px 14px;margin:10px 0;font-size:13px;color:#475569;border-radius:6px}
+ul{padding-left:22px;font-size:14px;color:#403C38;line-height:2}
+.quote{background:#F5F2EE;border-left:3px solid var(--amber);padding:10px 14px;margin:10px 0;font-size:13px;color:#8A847C;border-radius:6px}
 .warn{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400e;margin:12px 0}
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 10px}
-.toc{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin-bottom:18px;font-size:13px;color:var(--muted)}
+.toc{background:#F5F2EE;border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin-bottom:18px;font-size:13px;color:var(--muted)}
 .toc b{color:var(--accent)}
 @media(max-width:640px){.grid{grid-template-columns:1fr}.card{padding:18px 15px}}
 </style>
@@ -73,7 +73,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 10px
   <h2><span class="no">S0</span>执行摘要 + 盘前观点 <span class="tag">第一屏 · 3分钟建立全貌</span></h2>
 
   <h3>执行摘要（5行）</h3>
-  <div class="quote" style="border-left-color:var(--primary);background:#eef2ff">
+  <div class="quote" style="border-left-color:var(--primary);background:#fff8ef">
     ① <b>市场定性：平开至小幅高开——"超跌修复+地缘扰动"型整理。</b>9/2 上证 3941.39（-0.97%）破 5 日线、创业板 -2.39% 留跳空缺口，成交缩至 1.79 万亿（10日均值 90.5%），涨 1541/跌 3901、涨停 55/跌停 9，情绪转冷但恐慌未扩散；军工（地面兵装 +6.48%）逆势独强、农业高位崩塌、银行防御承接；<br>
     ② <b>核心矛盾：隔夜修复窗口 vs 地缘/政策压制。</b>美股结束三连跌反弹 + 美债收益率回落 + 戴尔财报超预期（AI服务器）+ 央行维稳宣言（流动性充裕）构成修复催化；但美伊二度空袭（油价曾跳上94）、印巴誓言报复、美联储理事巴尔放鹰、美考虑加码半导体关税构成压制——多空对冲下难有单边行情；<br>
     ③ <b>主线格局：</b>军工（地缘长期化·已启动主线）30%＞存储/AI硬件（戴尔财报+费半上涨）25%＞银行高股息（央行维稳+防御）15%＞油气/资源（油价95+美伊升级）15%＞创新药（FDA获批+百济神州）10%＞其他（农业修复/消费/超跌科技）5%；<br>

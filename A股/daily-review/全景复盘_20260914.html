@@ -6,63 +6,63 @@
 <title>2026-09-14 A股全景复盘</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
-:root{--accent:#1e40af;--accent-dark:#1e3a5f;--red:#dc2626;--green:#16a34a;--bg:#f8fafc;--card-bg:#fff;--border:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--section-gap:20px}
+:root{--accent:#D97706;--accent-dark:#C2410C;--red:#dc2626;--green:#16a34a;--bg:#F5F2EE;--card-bg:#fff;--border:#EBE7E2;--text:#403C38;--text-muted:#66615A;--section-gap:20px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}
 .container{max-width:980px;margin:0 auto;padding:20px 16px 60px}
-.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(217,119,6,.35);display:flex;align-items:center;justify-content:center}
 .toc-btn:hover{background:var(--accent-dark)}
-.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:240px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:240px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 30px rgba(64,60,56,.18);padding:12px;display:none}
 .toc-panel.open{display:block}
 .toc-head{font-weight:700;font-size:14px;color:var(--accent-dark);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:8px}
-.toc-nav a{display:block;padding:5px 8px;font-size:12px;color:#334155;text-decoration:none;border-radius:4px;border-left:3px solid transparent;margin-bottom:2px}
-.toc-nav a:hover{background:#f1f5f9;color:var(--accent);border-left-color:var(--accent)}
+.toc-nav a{display:block;padding:5px 8px;font-size:12px;color:#403C38;text-decoration:none;border-radius:4px;border-left:3px solid transparent;margin-bottom:2px}
+.toc-nav a:hover{background:#F5F2EE;color:var(--accent);border-left-color:var(--accent)}
 .report-header{text-align:center;padding:30px 0 10px}
 .report-header h1{font-size:26px;font-weight:800;color:var(--accent-dark);letter-spacing:1px}
 .report-header .date{font-size:13px;color:var(--text-muted);margin-top:4px}
 .report-header .subtitle{font-size:13px;color:var(--text-muted);margin-top:2px}
-.tldr{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border:1px solid #c7d2fe;border-radius:14px;padding:20px 24px;margin:16px 0 24px}
+.tldr{background:linear-gradient(135deg,#fff8ef,#fdeedb);border:1px solid #DDD7D0;border-radius:14px;padding:20px 24px;margin:16px 0 24px}
 .tldr h2{font-size:16px;color:var(--accent);margin-bottom:10px;font-weight:700}
 .tldr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:13px;line-height:1.6}
 .tldr-grid .label{color:var(--text-muted);font-weight:600}
 .tldr-grid .val{color:var(--text);font-weight:500}
-.tldr .tldr-summary{margin-top:10px;padding-top:10px;border-top:1px solid #c7d2fe;font-size:13px;color:#1e293b;line-height:1.7}
+.tldr .tldr-summary{margin-top:10px;padding-top:10px;border-top:1px solid #DDD7D0;font-size:13px;color:#403C38;line-height:1.7}
 .section{margin-bottom:var(--section-gap);background:var(--card-bg);border-radius:12px;border:1px solid var(--border);overflow:hidden}
-.section-header{cursor:pointer;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;user-select:none;background:linear-gradient(135deg,rgba(30,64,175,0.03),rgba(30,58,95,0.05))}
-.section-header:hover{background:linear-gradient(135deg,rgba(30,64,175,0.06),rgba(30,58,95,0.08))}
+.section-header{cursor:pointer;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;user-select:none;background:linear-gradient(135deg,rgba(217,119,6,0.03),rgba(192,66,12,0.05))}
+.section-header:hover{background:linear-gradient(135deg,rgba(217,119,6,0.06),rgba(192,66,12,0.08))}
 .section-header h2{font-size:15px;font-weight:700;color:var(--accent-dark);margin:0}
 .section-header .toggle-icon{font-size:14px;color:var(--accent);transition:transform .3s;font-weight:700}
 .section-body{padding:16px 18px 18px;border-top:1px solid var(--border)}
-.section-body p{font-size:13.5px;line-height:1.8;margin-bottom:10px;color:#334155;text-align:justify}
+.section-body p{font-size:13.5px;line-height:1.8;margin-bottom:10px;color:#403C38;text-align:justify}
 .section-body p:last-child{margin-bottom:0}
-.data-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin:10px 0}
+.data-card{background:#F5F2EE;border:1px solid #EBE7E2;border-radius:8px;padding:12px;margin:10px 0}
 .data-card .row{display:flex;justify-content:space-between;padding:3px 0;font-size:13px}
 .data-card .row .label{color:var(--text-muted)}
 .data-card .row .val{font-weight:600}
 .up{color:var(--red)}.down{color:var(--green)}.flat{color:var(--text-muted)}
 .data-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
-.data-table th{background:#f1f5f9;padding:7px 8px;text-align:left;font-weight:600;color:var(--accent-dark)}
-.data-table td{padding:6px 8px;border-bottom:1px solid #e2e8f0;vertical-align:top}
-.data-table tr:hover{background:#f8fafc}
+.data-table th{background:#F5F2EE;padding:7px 8px;text-align:left;font-weight:600;color:var(--accent-dark)}
+.data-table td{padding:6px 8px;border-bottom:1px solid #EBE7E2;vertical-align:top}
+.data-table tr:hover{background:#F5F2EE}
 .timeline{position:relative;padding-left:22px;margin:12px 0}
-.timeline:before{content:'';position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:#e0e7ff}
-.tline-item{position:relative;margin-bottom:12px;font-size:12.5px;line-height:1.6;color:#334155}
+.timeline:before{content:'';position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:#fdeedb}
+.tline-item{position:relative;margin-bottom:12px;font-size:12.5px;line-height:1.6;color:#403C38}
 .tline-item b.t-time{display:inline-block;min-width:52px;color:var(--accent);font-weight:700}
 .tline-item:before{content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
 .tline-item.t-warn:before{background:var(--red)}
 .tline-item.t-ok:before{background:#16a34a}
 .tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:4px}
-.tag-red{background:#fee2e2;color:#dc2626}.tag-green{background:#dcfce7;color:#166534}.tag-blue{background:#dbeafe;color:#1e40af}.tag-amber{background:#fef3c7;color:#92400e}.tag-gray{background:#f1f5f9;color:#475569}
-.debate-bull{border-left:4px solid var(--red)}.debate-bear{border-left:4px solid var(--green)}.debate-final{border-left:4px solid var(--accent);background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
-.media-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin:8px 0;border-left:3px solid var(--accent)}
+.tag-red{background:#fee2e2;color:#dc2626}.tag-green{background:#dcfce7;color:#166534}.tag-blue{background:#FDEEDB;color:#D97706}.tag-amber{background:#fef3c7;color:#92400e}.tag-gray{background:#F5F2EE;color:#8A847C}
+.debate-bull{border-left:4px solid var(--red)}.debate-bear{border-left:4px solid var(--green)}.debate-final{border-left:4px solid var(--accent);background:linear-gradient(135deg,#fff8ef,#fdeedb)}
+.media-card{background:#F5F2EE;border:1px solid #EBE7E2;border-radius:8px;padding:12px;margin:8px 0;border-left:3px solid var(--accent)}
 .media-card .media-title{font-weight:700;font-size:13px;color:var(--accent-dark)}
 .media-card .media-meta{font-size:11px;color:var(--text-muted);margin:2px 0 4px}
 .hint{margin-top:6px;border-left:1px solid #cbd5e1;padding-left:10px;color:#a0aec0;font-size:12.5px}
 .chart-box{width:100%;height:320px;margin:8px 0}
-#goTop{position:fixed;right:16px;bottom:16px;z-index:1000;width:40px;height:40px;border-radius:50%;background:var(--accent-dark);color:#fff;border:none;cursor:pointer;font-size:16px;box-shadow:0 4px 14px rgba(15,23,42,.25)}
-.storyline{border-left:3px solid var(--accent);background:#f8fafc;border-radius:8px;padding:10px 14px;margin:10px 0}
+#goTop{position:fixed;right:16px;bottom:16px;z-index:1000;width:40px;height:40px;border-radius:50%;background:var(--accent-dark);color:#fff;border:none;cursor:pointer;font-size:16px;box-shadow:0 4px 14px rgba(64,60,56,.25)}
+.storyline{border-left:3px solid var(--accent);background:#F5F2EE;border-radius:8px;padding:10px 14px;margin:10px 0}
 .storyline .sl-tag{font-weight:700;color:var(--accent-dark);font-size:13px}
-.storyline .sl-body{font-size:12.5px;color:#334155;margin-top:3px}
+.storyline .sl-body{font-size:12.5px;color:#403C38;margin-top:3px}
 @media(max-width:640px){.tldr-grid{grid-template-columns:1fr}.container{padding:12px 10px 50px}}
 </style>
 </head>
@@ -398,7 +398,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
       <tr><td>创业板 vs 上证</td><td>-0.3%~+0.5%</td><td>创业板 -1.10% vs 上证 -0.07%</td><td class="down">❌ 低估</td><td>创业板/科创杀估值比预期更剧烈</td></tr>
     </table>
     <p><b>学习点（本期校正）</b></p>
-    <ul style="font-size:13px;padding-left:20px;color:#334155">
+    <ul style="font-size:13px;padding-left:20px;color:#403C38">
       <li><b>量能预测是核心短板</b>：盘前按"9/11 放量 1.97 万亿破位后或有承接"给 1.85 万亿，实际塌缩至 9691 亿。校正：主升行情后的缩量破位，若无新增量催化，量能回落斜率可能远超线性预期，"破万亿"是明确的存量博弈警戒线，盘前应给 1.2~1.8 万亿的下修更合理区间。</li>
       <li><b>主线优先级判断有效</b>：盘前把④创新药/CXO 列为"回调充分+催化密集"的承接位（10%），今日全面兑现；①载板给 45% 以"低位补涨"形式兑现而非权重主升，说明盘前对"高估透支"的提示（5日+27%）是对的——权重兑现、题材补涨。此判断模式值得保留。</li>
       <li><b>军工/油气需更强验证门槛</b>：周末圈点军工（短线候选）今日 -2.47% 证伪，说明"待验证"题材不熟不参与，验证没有兑现即放弃，符合"宁可错过不做无把握"纪律。</li>

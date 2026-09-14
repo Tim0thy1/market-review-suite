@@ -6,52 +6,52 @@
 <title>2026-09-14 A股盘前分析 · 国常会算力网×AI载板涨价 高标兑现风险</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
-:root{--red:#dc2626;--green:#16a34a;--accent:#1e40af;--dark:#1e3a5f;--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--txt:#1e293b;--sub:#64748b}
+:root{--red:#dc2626;--green:#16a34a;--accent:#D97706;--dark:#C2410C;--bg:#F5F2EE;--card:#fff;--line:#EBE7E2;--txt:#403C38;--sub:#66615A}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:24px 16px 60px}
 .wrap{max-width:1080px;margin:0 auto}
-header{background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:20px}
+header{background:linear-gradient(135deg,#C2410C,#D97706);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:20px}
 header h1{font-size:24px;margin-bottom:8px}
 header .meta{font-size:13px;opacity:.85;display:flex;gap:16px;flex-wrap:wrap}
 .tldr{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:20px 24px;margin-bottom:24px}
 .tldr h2{color:var(--dark);font-size:17px;margin-bottom:12px}
 .tldr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.tldr-item{background:#f1f5f9;border-radius:8px;padding:10px 14px}
+.tldr-item{background:#F5F2EE;border-radius:8px;padding:10px 14px}
 .tldr-item .k{font-size:12px;color:var(--sub)}
 .tldr-item .v{font-size:14px;font-weight:600;margin-top:2px}
 .section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:18px}
-.section h2{color:var(--dark);font-size:18px;border-bottom:2px solid #e0e7ff;padding-bottom:10px;margin-bottom:14px}
+.section h2{color:var(--dark);font-size:18px;border-bottom:2px solid #fdeedb;padding-bottom:10px;margin-bottom:14px}
 .section h3{color:var(--accent);font-size:15px;margin:14px 0 8px}
 table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
-th{background:#f1f5f9;color:var(--dark);padding:8px 10px;text-align:left;font-weight:600}
+th{background:#F5F2EE;color:var(--dark);padding:8px 10px;text-align:left;font-weight:600}
 td{padding:8px 10px;border-bottom:1px solid var(--line)}
-tr:hover td{background:#f8fafc}
+tr:hover td{background:#F5F2EE}
 .up{color:var(--red)}.dn{color:var(--green)}.mid{color:#d97706}
 .note{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:6px;font-size:13px;color:#78350f;margin:10px 0}
 .kill{background:#fef2f2;border-left:4px solid #dc2626;padding:12px 14px;border-radius:6px;font-size:13px;color:#7f1d1d;margin:10px 0}
 .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:6px}
-.tag-s{background:#dcfce7;color:#166534}.tag-a{background:#dbeafe;color:#1e40af}.tag-b{background:#fef3c7;color:#92400e}.tag-c{background:#e2e8f0;color:#475569}.tag-d{background:#fce7f3;color:#9d174d}
+.tag-s{background:#dcfce7;color:#166534}.tag-a{background:#FDEEDB;color:#D97706}.tag-b{background:#fef3c7;color:#92400e}.tag-c{background:#EBE7E2;color:#8A847C}.tag-d{background:#fce7f3;color:#9d174d}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
-.card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card{background:#F5F2EE;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .card .num{font-size:22px;font-weight:700}
 .card .lbl{font-size:12px;color:var(--sub)}
 .prob{font-weight:700}
 .scenario{border-left:4px solid var(--line);padding:10px 14px;margin:8px 0;border-radius:6px}
 .scenario.bull{background:#f0fdf4;border-color:#22c55e}
-.scenario.base{background:#f8fafc;border-color:#64748b}
+.scenario.base{background:#F5F2EE;border-color:#66615A}
 .scenario.bear{background:#fef2f2;border-color:#ef4444}
 .watch{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-.watch-item{background:#f8fafc;border-radius:8px;padding:10px 12px;border:1px solid var(--line)}
+.watch-item{background:#F5F2EE;border-radius:8px;padding:10px 12px;border:1px solid var(--line)}
 .watch-item .t{font-weight:700;font-size:13px;color:var(--dark)}
 .watch-item .d{font-size:12px;color:var(--sub);margin-top:2px}
 footer{color:var(--sub);font-size:12px;text-align:center;margin-top:30px}
-.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(217,119,6,.35);display:flex;align-items:center;justify-content:center}
 .toc-btn:hover{background:var(--dark)}
-.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(64,60,56,.18);padding:12px;display:none}
 .toc-panel.open{display:block}
 .toc-head{font-weight:700;font-size:14px;color:var(--dark);padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:8px}
-.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
-.toc-nav a:hover{background:#f1f5f9;color:var(--accent)}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#403C38;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#F5F2EE;color:var(--accent)}
 .chart-box{width:100%;height:320px;margin:10px 0}
 @media(max-width:640px){header{padding:20px}header h1{font-size:19px}.section{padding:16px}}
 </style>
