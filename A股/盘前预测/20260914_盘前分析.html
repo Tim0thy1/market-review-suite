@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-09-14 A股盘前分析 · 国常会算力网×AI载板涨价 高标兑现风险</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--red:#dc2626;--green:#16a34a;--accent:#1e40af;--dark:#1e3a5f;--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--txt:#1e293b;--sub:#64748b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:24px 16px 60px}
+.wrap{max-width:1080px;margin:0 auto}
+header{background:linear-gradient(135deg,#1e3a5f,#1e40af);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:20px}
+header h1{font-size:24px;margin-bottom:8px}
+header .meta{font-size:13px;opacity:.85;display:flex;gap:16px;flex-wrap:wrap}
+.tldr{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:20px 24px;margin-bottom:24px}
+.tldr h2{color:var(--dark);font-size:17px;margin-bottom:12px}
+.tldr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.tldr-item{background:#f1f5f9;border-radius:8px;padding:10px 14px}
+.tldr-item .k{font-size:12px;color:var(--sub)}
+.tldr-item .v{font-size:14px;font-weight:600;margin-top:2px}
+.section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:18px}
+.section h2{color:var(--dark);font-size:18px;border-bottom:2px solid #e0e7ff;padding-bottom:10px;margin-bottom:14px}
+.section h3{color:var(--accent);font-size:15px;margin:14px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#f1f5f9;color:var(--dark);padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid var(--line)}
+tr:hover td{background:#f8fafc}
+.up{color:var(--red)}.dn{color:var(--green)}.mid{color:#d97706}
+.note{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 14px;border-radius:6px;font-size:13px;color:#78350f;margin:10px 0}
+.kill{background:#fef2f2;border-left:4px solid #dc2626;padding:12px 14px;border-radius:6px;font-size:13px;color:#7f1d1d;margin:10px 0}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:6px}
+.tag-s{background:#dcfce7;color:#166534}.tag-a{background:#dbeafe;color:#1e40af}.tag-b{background:#fef3c7;color:#92400e}.tag-c{background:#e2e8f0;color:#475569}.tag-d{background:#fce7f3;color:#9d174d}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card .num{font-size:22px;font-weight:700}
+.card .lbl{font-size:12px;color:var(--sub)}
+.prob{font-weight:700}
+.scenario{border-left:4px solid var(--line);padding:10px 14px;margin:8px 0;border-radius:6px}
+.scenario.bull{background:#f0fdf4;border-color:#22c55e}
+.scenario.base{background:#f8fafc;border-color:#64748b}
+.scenario.bear{background:#fef2f2;border-color:#ef4444}
+.watch{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.watch-item{background:#f8fafc;border-radius:8px;padding:10px 12px;border:1px solid var(--line)}
+.watch-item .t{font-weight:700;font-size:13px;color:var(--dark)}
+.watch-item .d{font-size:12px;color:var(--sub);margin-top:2px}
+footer{color:var(--sub);font-size:12px;text-align:center;margin-top:30px}
+.toc-btn{position:fixed;right:16px;top:16px;z-index:1000;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(30,64,175,.35);display:flex;align-items:center;justify-content:center}
+.toc-btn:hover{background:var(--dark)}
+.toc-panel{position:fixed;right:16px;top:70px;z-index:999;width:230px;max-height:calc(100vh - 100px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.18);padding:12px;display:none}
+.toc-panel.open{display:block}
+.toc-head{font-weight:700;font-size:14px;color:var(--dark);padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.toc-nav a{display:block;padding:6px 10px;font-size:12.5px;color:#334155;text-decoration:none;border-radius:6px;border-left:3px solid transparent}
+.toc-nav a:hover{background:#f1f5f9;color:var(--accent)}
+.chart-box{width:100%;height:320px;margin:10px 0}
+@media(max-width:640px){header{padding:20px}header h1{font-size:19px}.section{padding:16px}}
+</style>
+</head>
+<body>
+<button class="toc-btn" onclick="document.getElementById('tocPanel').classList.toggle('open')" aria-label="章节导航">☰</button>
+<div class="toc-panel" id="tocPanel">
+<div class="toc-head">章节导航</div>
+<nav class="toc-nav">
+<a href="#sec0">S0 执行摘要</a><a href="#sec1">S1 市场状态</a><a href="#sec15">S1.5 盘前观点</a>
+<a href="#sec2">S2 隔夜冲击</a><a href="#sec25">S2.5 行业快讯板</a><a href="#sec26">S2.6 外媒小作文</a>
+<a href="#sec3">S3 定价与拥挤度</a><a href="#sec4">S4 主线竞争</a><a href="#sec45">S4.5 热点深追</a>
+<a href="#sec5">S5 今日预测</a><a href="#sec6">S6 情景推演</a><a href="#sec7">S7 失效条件</a>
+<a href="#sec8">S8 观察清单</a><a href="#sec9">S9 预测台账</a>
+</nav>
+</div>
+
+<div class="wrap">
+
+<header>
+<h1>2026-09-14 周一 A股盘前分析</h1>
+<div class="meta"><span>📅 数据时点：09-14 07:35 盘前</span><span>🎯 模式：盘前预测</span><span>📊 T-1：09-11 周五</span></div>
+</header>
+
+<!-- S0 -->
+<div class="tldr" id="sec0">
+<h2>S0 · 执行摘要</h2>
+<div class="tldr-grid">
+<div class="tldr-item"><div class="k">市场状态</div><div class="v">大盘破位弱势 vs 主线高标背离</div></div>
+<div class="tldr-item"><div class="k">今日判断</div><div class="v mid">震荡偏弱 · 结构分化</div></div>
+<div class="tldr-item"><div class="k">最大变量</div><div class="v">AI载板高标能否承接国常会+涨价催化</div></div>
+<div class="tldr-item"><div class="k">最大风险</div><div class="v dn">金安国纪/超声电子澄清传闻 · 高开兑现</div></div>
+<div class="tldr-item"><div class="k">观察信号</div><div class="v">①上证能否收复3940(MA20) ②AI载板涨停扩散 ③量能是否>1.9万亿</div></div>
+</div>
+</div>
+
+<!-- S1 -->
+<div class="section" id="sec1">
+<h2>S1 · 市场状态（Market Regime）</h2>
+<h3>六维状态标签（9/11 收盘为基准）</h3>
+<table>
+<tr><th>维度</th><th>状态</th><th>数据支撑</th></tr>
+<tr><td>趋势</td><td class="dn">下降·破位</td><td>上证收3888(-1.18%)跌破MA20(3935)；全部8大指数跌破20日线</td></tr>
+<tr><td>波动</td><td class="mid">中</td><td>创业板-0.49%相对抗跌，中证1000-2.12%小盘杀跌重，分化明显</td></tr>
+<tr><td>情绪</td><td class="mid">退潮</td><td>周五向下变盘（前4日缩量震荡后选方向向下）；两市成交约1.97万亿（放量下跌）</td></tr>
+<tr><td>风险偏好</td><td class="dn">risk-off</td><td>小盘(中证1000 -2.12%)领跌>大盘(上证50 -1.24%)，防御占优</td></tr>
+<tr><td>风格</td><td>大盘 > 小盘</td><td>上证50(-1.24%) > 中证1000(-2.12%)，价值/权重相对抗跌</td></tr>
+<tr><td>资金</td><td class="mid">存量博弈</td><td>9/11放量至1.97万亿属"变盘放量"，需观察是增量进场还是恐慌出逃</td></tr>
+</table>
+<div class="note"><b>估值分位决策变量：</b>指数层面无需估值锚——当前是"趋势破位+情绪退潮"的短期博弈环境，估值分位对3日方向解释力弱（历史超跌反弹阶段亦然），决策核心在量能与主线承接。</div>
+<h3>昨日（9/11）收盘速览</h3>
+<p>上证 3888(-1.18%)、深成 13471(-1.08%)、创业板 3322(-0.49%)、科创50 1553(-1.01%)、沪深300 4510(-0.84%)、中证1000 7427(<b class="dn">-2.12%</b>)。两市成交约1.97万亿，较前日放量。下跌主因：小盘高标股兑现+高位科技分歧，但<b class="up">AI载板材料主线逆势走强</b>（沃尔核材+4.43%、金安国纪+7.86%、三环+5.66%、南亚新材+5.65%、中际旭创+4.03%），形成"指数跌、主线涨"的背离结构。</p>
+</div>
+
+<!-- S1.5 -->
+<div class="section" id="sec15">
+<h2>S1.5 · 盘前观点（Morning View）</h2>
+<p><b>海外锚点。</b>上周五美股止跌反弹（道指+0.98%、纳指+0.96%、费半+1.81%），但周线仍累跌（道指-1.57%），8月CPI核心回落至2.4%符合预期，CME仍定价9月加息25bp概率约87%——通胀降温但远未到宽松，美债10Y接近5%仍是悬顶。叠加周末沙特输油管道中断传闻、油价暗盘涨超1.5%重回100美元上方，海外对A股的传导方向<b>偏中性偏谨慎</b>：短期情绪不拖累，但成长估值与输入性通胀压力未解。</p>
+<p><b>盘面定性。</b>9/11放量下跌（1.97万亿）破位20日线，量价定性为<b class="dn">"放量破位"</b>——按词典属风险确认、防守优先。技术位锚定：上证5日线约3929、10日线约3943、20日线约3935，三线粘合于3929-3943，昨收3888已跌破，形成上方密集压力区；下方第一支撑看3870（9/8低点）、第二支撑3840。创业板5日线3355/20日线3431，昨收3322已破位，3300为关键心理位。</p>
+<p><b>结构行为。</b>资金在板块间的行为是"高低切换+主线抱团"：高位小盘（机器人/存储/部分AI应用）失血，资金向<b class="up">AI载板材料（PCB/覆铜板/MLCC/铜箔）</b>与<b class="up">油气通胀链</b>集中。半导体ETF(-1.64%)、创新药ETF(-2.19%)走弱，但覆铜板/PCB个股逆势新高，主线与权重显著对冲——这是典型的存量资金"弃弱留强"结构。</p>
+<p><b>今日取向。</b>重个股轻指数、结构进攻与总量防守并存。若今日放量收复3940并站稳，AI载板二波可期、可回进攻态势；若缩量跌破3870，则整固延长、高标需防兑现。垃圾时间多看少动，等待主线二波确认信号。</p>
+</div>
+
+<!-- S2 -->
+<div class="section" id="sec2">
+<h2>S2 · 隔夜冲击（Overnight Shock）</h2>
+<h3>事件1：国常会专题部署算力网建设（政策 · 重大）</h3>
+<table>
+<tr><th>项</th><th>内容</th></tr>
+<tr><td>事实层</td><td>9/11国常会研究算力网建设，指出"算力网是AI发展的基础支撑"，要求完善算力基础设施、推进算电协同/算网融合/骨干光纤网络建设（来源：中国政府网，<span class="tag tag-s">官方S级</span>）</td></tr>
+<tr><td>Surprise</td><td>重要性 8/10 ｜ 市场预期：中（算力政策此前已多次提及，但"国常会级专项部署"超预期）｜ 偏离：偏正</td></tr>
+<tr><td>资产反应</td><td>9/12 A股未交易（周末）；周五盘面AI载板已逆势走强，存在政策发布前抢跑迹象</td></tr>
+<tr><td>传导链</td><td>算力网建设 → 算力基础设施/数据中心/液冷/光通信/骨干光纤受益 → 与AI载板材料链形成产业共振 → <b>传导链断裂点：</b>政策落地后需看到算力基建（中际旭创/沪电/浪潮信息）放量承接，否则仅情绪脉冲</td></tr>
+</table>
+<h3>事件2：AI载板材料涨价潮延续（产业 · 重大）</h3>
+<table>
+<tr><th>项</th><th>内容</th></tr>
+<tr><td>事实层</td><td>建滔积层板年内第7次涨价函，FR-4覆铜板累计涨幅超100%；松下/南亚塑胶9/1起调价25-30%；电子布9月均价再涨15-20%创新高；花旗预期建滔10月初或第8轮提价（来源：产业函件/媒体，<span class="tag tag-a">产业A级</span>）；MLCC涨价周期延续（三星电机签1.07万亿韩元AI服务器MLCC长约）；英伟达Vera Rubin确认进入客户数据中心</td></tr>
+<tr><td>Surprise</td><td>重要性 7/10 ｜ 预期：中高（涨价已有前6轮）｜ 偏离：方向正、强度超预期（100%累计涨幅）</td></tr>
+<tr><td>资产反应</td><td>9/11 金安国纪+7.86%、南亚新材+5.65%、三环+5.66%、沃尔核材+4.43%——涨价逻辑已被高标充分定价</td></tr>
+<tr><td>传导链</td><td>涨价 → 上游覆铜板/铜箔/玻纤量价齐升 → 中游PCB毛利承压但转嫁能力各异 → <b>断裂点：</b>涨价已计入股价，若10月提价落空或下游抵制，高标将剧烈回撤</td></tr>
+</table>
+<h3>事件3：沙特输油管道中断传闻 + 油价高位（宏观 · 中高）</h3>
+<table>
+<tr><th>项</th><th>内容</th></tr>
+<tr><td>事实层</td><td>周末报道：沙特关键输油管道中断，延布港库存仅能维持5-7天出口，油价暗盘涨超1.5%；WTI周五收100.05美元/桶（周累涨10%），布伦特104.61（周累涨8.6%）（来源：路透/红星新闻，<span class="tag tag-c">外媒转述C级</span>）</td></tr>
+<tr><td>Surprise</td><td>重要性 7/10 ｜ 预期：低（突发）｜ 偏离：显著偏正（若证实）</td></tr>
+<tr><td>资产反应</td><td>国际油价暗盘已涨；A股油气/油运板块9/11已异动，周一或高开</td></tr>
+<tr><td>传导链</td><td>管道中断 → 供应减少→油价↑ → 油气/油运/煤炭受益，航空/化工成本承压 → 推升通胀预期→压制宽松 → <b>断裂点：</b>"中断"是否属实、持续多久，需官方确认；若证伪油价回吐，油气高开即兑现</td></tr>
+</table>
+<h3>事件4：美股反弹+CPI符合预期（海外 · 中性）</h3>
+<p>9/11美股三大指数止跌反弹，费半+1.81%对A股科技情绪有支撑；8月CPI核心2.4%回落缓解"通胀立刻恶化"恐慌，但9月加息25bp概率约87%仍压制成长估值（<span class="tag tag-a">权威机构A级</span>）。中概：KWEB+0.65%、金龙指数+0.4%（周累跌4.03%）。传导：对A股开盘方向影响偏中性，不构成强Trigger。</p>
+</div>
+
+<!-- S2.5 -->
+<div class="section" id="sec25">
+<h2>S2.5 · 行业快讯板（News Board）</h2>
+<h3>宏观政策</h3>
+<p>· 三部门印发《数字乡村高质量发展行动计划(2026-2030)》，攻坚农业传感器/机器人/专用芯片（<span class="tag tag-s">官方</span>）→ 映射：农业机器人/智慧农业</p>
+<p>· 下周超级央行周：9/16美联储、9/17英央行、9/18日央行（<span class="tag tag-s">官方</span>）→ 映射：全市场风险偏好，成长承压</p>
+<h3>AI算力</h3>
+<p>· 智谱完成约50亿美元融资（含30亿美元可转债），投GLM与算力基建（<span class="tag tag-b">产业</span>）→ 映射：AI大模型/算力</p>
+<p>· 浪潮信息拟定增募资不超90亿投AI基础设施/液冷（<span class="tag tag-s">公告</span>）→ 映射：AI服务器/液冷</p>
+<p>· 中国电信研究院：我国Token需求爆发式增长（<span class="tag tag-b">产业</span>）→ 映射：AI基础设施/光通信</p>
+<h3>半导体/载板材料</h3>
+<p>· 超声电子、金安国纪澄清"英伟达供货"不实传闻（<span class="tag tag-s">公告</span>）→ 映射：PCB/覆铜板高标<b class="dn">情绪降温信号</b></p>
+<p>· 商务部二氯二氢硅反倾销初裁落地，晶圆厂加快国产化验证（<span class="tag tag-s">官方</span>）→ 映射：半导体特种气体</p>
+<h3>医药</h3>
+<p>· 先声药业SIM0660授权罗氏（7500万美元首付+最高14.55亿美元里程碑）（<span class="tag tag-s">公告</span>）→ 映射：创新药出海/CXO</p>
+<p>· 迪哲医药舒沃哲授权阿斯利康协议生效；CXO龙头迎戴维斯双击（<span class="tag tag-s">公告</span>）→ 映射：创新药/CXO</p>
+<h3>新能源/其他</h3>
+<p>· 阳光电源光储产品9/20起涨价5-15%（<span class="tag tag-b">产业</span>）→ 映射：光伏逆变器/储能</p>
+<p>· 折叠屏新机密集发布（华为秒罄/苹果入局）（<span class="tag tag-b">产业</span>）→ 映射：消费电子/面板</p>
+</div>
+
+<!-- S2.6 -->
+<div class="section" id="sec26">
+<h2>S2.6 · 外媒小作文监测（Market Narrative Watch）</h2>
+<table>
+<tr><th>条目</th><th>类型</th><th>可信度</th><th>涉及标的</th><th>证伪/证实路径</th></tr>
+<tr><td>沙特输油管道中断，延布港库存5-7天（路透/红星）</td><td>知情人士型</td><td class="mid">中（待证实）</td><td>油气/油运（A股）：中曼/准油/中远海能</td><td>沙特阿美官方回应/周初油价是否站稳100</td></tr>
+<tr><td>市场"英伟达供货"传闻发酵（多平台）</td><td>纯传闻型</td><td class="dn">低（已澄清）</td><td>金安国纪/超声电子（A股）</td><td>公司公告已证伪——<b>情绪释放但需防高开兑现</b></td></tr>
+<tr><td>花旗预期建滔10月初或启动第8轮提价</td><td>机构观点型</td><td class="mid">中低（机构预测）</td><td>覆铜板链：生益/南亚新材（A股）</td><td>10月初是否出现新一轮涨价函</td></tr>
+</table>
+<div class="note"><b>今日小作文核心观察：</b>上述3条中，第2条已被公司公告证伪（风险释放），第1条若证实将强化通胀交易，第3条决定涨价链持续性。小作文本身不构成买入依据，仅作为高标风险与通胀逻辑的辅助变量。</div>
+</div>
+
+<!-- S3 -->
+<div class="section" id="sec3">
+<h2>S3 · 定价与拥挤度（Positioning / Price-in）</h2>
+<table>
+<tr><th>板块/主线</th><th>9/11涨幅</th><th>5日累计</th><th>利好强度</th><th>价格透支</th><th>盈亏比</th></tr>
+<tr><td class="up">AI载板材料（覆铜板/MLCC）</td><td>金安+7.9%/南亚+5.7%</td><td>金安+27.6%/南亚+22.4%</td><td>9/10（涨价+国常会）</td><td class="dn">8/10（5日大涨+RSI74）</td><td class="dn">差</td></tr>
+<tr><td class="up">光模块/CPO</td><td>旭创+4.0%/新易盛+2.9%</td><td>旭创+13.8%/新易盛+9.6%</td><td>7/10（1.6T订单排到明年+CPO量产）</td><td class="mid">5/10（RSI61尚健康）</td><td class="mid">一般</td></tr>
+<tr><td>油气/通胀链</td><td>板块异动</td><td>周油价+10%</td><td>7/10（管道中断传闻）</td><td class="mid">4/10（刚启动）</td><td class="mid">一般（事件未证实）</td></tr>
+<tr><td>创新药/CXO</td><td>ETF-2.19%</td><td>分化</td><td>5/10（出海授权回暖）</td><td class="up">2/10（药明空头RSI42）</td><td class="up">优（回调充分）</td></tr>
+</table>
+<div class="note"><b>Price-in 结论：</b>AI载板材料链"利好强度9 vs 价格透支8"——涨价+政策双催化真实，但5日+27%的涨幅已把大部分利好计入，处于<b>高拥挤区</b>；金安国纪/超声电子澄清传闻更是高标透支的确认信号。光模块相对健康（透支5/10）；创新药回调充分（透支2/10）是潜在线下承接位。昨日相关板块已大涨，今日须量化"高开兑现"风险——<b>若AI载板高开>3%但10:30前无新增涨停，即为兑现</b>。</div>
+</div>
+
+<!-- S4 -->
+<div class="section" id="sec4">
+<h2>S4 · 主线竞争（Sector Competition）</h2>
+<table>
+<tr><th>候选主线</th><th>概率</th><th>驱动</th><th>承接逻辑</th></tr>
+<tr><td class="up">① AI载板材料（PCB/覆铜板/MLCC/铜箔）</td><td class="prob">45%</td><td>建滔第7轮涨价+国常会算力网+MLCC长约</td><td>最强产业逻辑，但高标已透支，二波需新增量能+龙头不滞涨；若澄清传闻引发兑现则概率下调</td></tr>
+<tr><td class="mid">② 光模块/CPO（AI硬件二线）</td><td class="prob">25%</td><td>1.6T订单排到明年+CPO量产元年+中报高增（旭创+182%）</td><td>相对载板更健康（RSI61），AI算力二波承接位</td></tr>
+<tr><td>③ 油气/通胀链</td><td class="prob">15%</td><td>沙特管道中断传闻+油价破100</td><td>事件驱动，未证实，若官方确认升级可冲20%</td></tr>
+<tr><td>④ 创新药/CXO</td><td class="prob">10%</td><td>先声/迪哲出海授权+BD回暖+药明回调充分</td><td>中线承接，短线资金未聚焦（ETF-2.19%），需新催化</td></tr>
+<tr><td>其他（军工/绿电/半导体设备）</td><td class="prob">5%</td><td>数字乡村/反倾销/周末人气</td><td>轮动候选，无强催化不参与主线竞争</td></tr>
+</table>
+<div class="note"><b>主线映射四层（以AI载板为例，强制标注等级+上市地）：</b>L1直接受益=金安国纪/生益科技/南亚新材/华正新材（A股）；L2平台Beta=三环集团/洁美科技/风华高科（MLCC，A股）；L3产业链=沪电股份/胜宏科技（PCB制造，A股）+电子布/玻纤（中国巨石，A股）；L4情绪Beta=AI算力ETF/PCB指数。所有受益标的均为A股，无港股混装。</div>
+</div>
+
+<!-- S4.5 -->
+<div class="section" id="sec45">
+<h2>S4.5 · 热点深追：AI载板材料链 — 涨价主升的"最后一棒"还是"二波起点"？</h2>
+<h3>1. 事件锚点</h3>
+<p>建滔积层板年内第7次涨价函（FR-4累计涨幅超100%）+ 国常会算力网专项部署 + 三星电机1.07万亿韩元MLCC长约，三事件共振确认"AI算力→载板材料"的产业景气传导，是本轮最强产业级催化。</p>
+<h3>2. 产业链拆解（受益弹性排序）</h3>
+<table>
+<tr><th>环节</th><th>代表标的</th><th>受益弹性</th><th>逻辑</th></tr>
+<tr><td>上游铜箔/玻纤</td><td>铜陵有色/中国巨石</td><td class="up">高</td><td>铜价+电子布涨价双驱动，量价齐升</td></tr>
+<tr><td>中游覆铜板</td><td>金安国纪/生益科技/南亚新材</td><td class="up">最高</td><td>涨价函直接受益，毛利率弹性最大</td></tr>
+<tr><td>中游MLCC</td><td>三环集团/风华高科</td><td class="up">高</td><td>AI服务器需求+涨价周期，三星长约验证</td></tr>
+<tr><td>下游PCB制造</td><td>沪电股份/胜宏科技</td><td class="mid">中</td><td>涨价可部分转嫁，毛利分化</td></tr>
+</table>
+<h3>3. 板块位置诊断（拐点四要素）</h3>
+<p>① 调整时长：本轮主升自8月中启动，已持续约1个月；② 机构持仓：数据源未覆盖（不做推测）；③ 筹码出清：金安国纪5日+27.6%/RSI74/换手15.5%——<b class="dn">典型加速末段特征</b>，筹码未出清、浮盈盘巨大；④ 利空是否出尽：<b class="dn">未出尽</b>——超声电子/金安国纪周末刚澄清供货传闻，说明监管与公司层面已在为过热降温。</p>
+<h3>4. 拐点验证/证伪信号</h3>
+<div class="kill"><p><b>确认二波信号：</b>板块龙头（金安国纪/沃尔核材）缩量回调不破5日线后重新放量、涨停家数扩散≥5家、覆铜板指数成交额>昨日1.2倍。</p><p><b>证伪信号（最后一棒）：</b>高开>3%但10:30前无新涨停、金安/南亚炸板、沃尔核材放量滞涨跌破MA5(17.36)——出现即降级为兑现行情。</p></div>
+</div>
+
+<!-- S5 -->
+<div class="section" id="sec5">
+<h2>S5 · 今日预测（Market Forecast）</h2>
+<table>
+<tr><th>预测项</th><th>预测值</th><th>置信度/依据</th></tr>
+<tr><td>开盘方向</td><td><b class="dn">小幅低开</b> 上证 -0.3%~+0.1%</td><td>中｜周末无重大新增利好、美股反弹有限、高标澄清传闻压制；国常会利好与油价支撑形成对冲，低开概率略高（学习点9：海外+国内双向输入时低开优先）</td></tr>
+<tr><td>量能中位数</td><td><b>1.85万亿</b>（1.7~2.0万亿）</td><td>中｜9/11放量1.97万亿破位后，若主线二波放量可维持高位；缩量则回落至1.7万亿</td></tr>
+<tr><td>涨停家数</td><td><b>50~75家</b></td><td>低｜高标澄清降温+存量博弈，AI载板若能扩散可冲75；板块指数与个股背离限制上限（学习点24：冰点反攻上修）</td></tr>
+<tr><td>主线（第一）</td><td>AI载板材料 45% / 光模块 25%</td><td>中｜产业逻辑最强但高标透支，需看承接；若载板兑现则光模块补位</td></tr>
+<tr><td>创业板vs上证超额</td><td><b>-0.3%~+0.5%</b></td><td>低｜小盘超跌反抽与高位兑现对冲，超额空间有限</td></tr>
+<tr><td>关键位</td><td>上证支撑3870/3840、压力3940/3960；创业板支撑3300、压力3360</td><td>高｜三线粘合3940为多空分界</td></tr>
+<tr><td>时间节点</td><td>09:45 AI载板相对超额；10:30载板涨停≥5→二波确立；14:00量能是否>昨日80%</td><td>—</td></tr>
+</table>
+<div class="note"><b>量能推导：</b>9/11放量1.97万亿（破位放量），5日均约1.9万亿。破位后次日常见两种路径：放量承接（资金换手）维持1.9万亿+，或缩量阴跌回落至1.7万亿。中位取1.85万亿（区间1.7~2.0）。样本有限，仅作参考。</div>
+</div>
+
+<!-- S6 -->
+<div class="section" id="sec6">
+<h2>S6 · 情景推演（Scenario Tree）</h2>
+<div class="scenario bull">
+<b class="up">乐观（30%）</b>：AI载板二波确立+放量修复<br>
+触发：载板龙头高开后不炸板且涨停扩散≥5家、两市放量≥1.95万亿、上证收复3940 → 主线延续、指数翻红
+</div>
+<div class="scenario base">
+<b class="mid">中性（45%）</b>：结构分化、指数弱势震荡<br>
+触发：AI载板高标分化（金安/南亚滞涨、沃尔核材抗跌）、光模块补位、油气高开回落，指数1.7~1.95万亿窄幅运行于3870-3940
+</div>
+<div class="scenario bear">
+<b class="dn">悲观（25%）</b>：高标兑现+补跌<br>
+触发：金安/南亚高开>3%后10:30前无涨停、炸板率上升、沃尔核材跌破MA5(17.36)、量能萎缩至1.7万亿下、指数跌破3870 → 载板主升终结，全市场情绪退潮
+</div>
+<div class="note"><b>情景校准：</b>台账显示放量破位后乐观情景频率低于标注（学习点：破位当日乐观应保守），故乐观维持30%为上限，中性为基准。</div>
+</div>
+
+<!-- S7 -->
+<div class="section" id="sec7">
+<h2>S7 · 失效条件（Kill Conditions）</h2>
+<div class="kill">
+<p><b>今日核心判断的失效阈值：</b></p>
+<p>① 若 <b class="up">AI载板高开>3%但10:30前涨停<3家</b> →"载板二波"判断失效，降级为兑现行情，高标不追。</p>
+<p>② 若 <b class="dn">沃尔核材跌破MA5(17.36)且放量</b> → 载板主升趋势破坏，情绪面同步转弱。</p>
+<p>③ 若上证 <b>跌破3870</b>且量能<1.7万亿 →"震荡"失效，转入缩量阴跌，防守优先。</p>
+<p>④ 若 <b class="up">油气板块高开>3%但沙特管道中断被官方否认</b> → 通胀交易证伪，油气高开即兑现。</p>
+</div>
+<h3>今日真实风险日历</h3>
+<p>· 沙特管道中断官方回应（24h内）— 通胀交易核心变量</p>
+<p>· AI载板高标澄清传闻消化（金安国纪/超声电子）— 高开兑现风险</p>
+<p>· 超级央行周（9/16美联储）前夜，外盘波动放大</p>
+<p>· 9/15中国8月宏观数据公布前夜，资金或观望</p>
+</div>
+
+<!-- S8 -->
+<div class="section" id="sec8">
+<h2>S8 · 观察清单（Watchlist）</h2>
+<div class="watch">
+<div class="watch-item"><div class="t">L1 · AI载板龙头</div><div class="d">金安国纪、沃尔核材、南亚新材（A股）：看二波确认——是否缩量回踩不破MA5后重新放量，涨停是否扩散</div></div>
+<div class="watch-item"><div class="t">L2 · MLCC/铜箔</div><div class="d">三环集团、风华高科（A股）：涨价周期Beta，三环5日+14.7%健康度优于金安</div></div>
+<div class="watch-item"><div class="t">L1 · 光模块补位</div><div class="d">中际旭创、新易盛（A股）：若载板兑现，光模块(RSI61)为二波承接位</div></div>
+<div class="watch-item"><div class="t">L1 · 油气通胀链</div><div class="d">中曼石油、准油股份、中远海能（A股）：验证沙特管道中断——官方确认+油价站稳100才成立</div></div>
+<div class="watch-item"><div class="t">L3 · 创新药承接</div><div class="d">药明康德、凯莱英（A股）：回调充分(RSI42)，看BD出海催化能否引来资金</div></div>
+<div class="watch-item"><div class="t">L3 · 指数防线</div><div class="d">上证3870/3940、创业板3300：破位与否决定仓位取向</div></div>
+</div>
+</div>
+
+<!-- S9 -->
+<div class="section" id="sec9">
+<h2>S9 · 预测台账（Forecast Ledger）</h2>
+<h3>上一期（9/11）预测回归</h3>
+<table>
+<tr><th>预测项</th><th>9/11预测</th><th>9/11实际</th><th>结果</th></tr>
+<tr><td>开盘方向</td><td>平开至小幅高开 +0.1%~+0.5%</td><td>低开并收跌-1.18%（上证3888）</td><td class="dn">❌ 未命中（低估油价高企+高位兑现压力，高开外推再次失效）</td></tr>
+<tr><td>量能</td><td>1.75万亿（1.65~1.88）</td><td>约1.97万亿（放量破位）</td><td class="mid">⌛ 部分命中（方向对、量级超上沿，破位放量未预判）</td></tr>
+<tr><td>涨停家数</td><td>45~65家</td><td>待验证（数据源未覆盖精确值）</td><td class="mid">— 无法验证</td></tr>
+<tr><td>主线（第一）</td><td>油气/资源通胀链</td><td>AI载板材料（金安+7.9%/南亚+5.7%逆势领涨）</td><td class="dn">❌ 未命中（过度押注油价事件，低估AI载板产业主线韧性）</td></tr>
+<tr><td>创业板vs上证</td><td>-0.5%~+0.3%</td><td>创业板-0.49% vs 上证-1.18%（创强于沪）</td><td class="mid">⌛ 方向反（预判科技弱，实际创指相对抗跌）</td></tr>
+<tr><td>关键位</td><td>支撑3920/3900</td><td>收3888跌破3920支撑</td><td class="dn">❌ 支撑失守</td></tr>
+</table>
+<div class="note"><b>回归结论：</b>9/11整体命中偏差——<b>高开外推连续第3期失效</b>（8/27、8/28、9/11），核心教训：破位风险信号（前4日缩量+高位背离）比隔夜利好权重更高时，应给"低开"而非"高开"；主线判断过度押注未证实的事件催化（油气），低估了有真实涨价函+产业数据的AI载板韧性。→ <b>修正：事件型催化（未证实）权重下调，产业型催化（涨价函/订单/政策文件）权重上调。</b></div>
+<h3>本期（9/14）新预测（已可验证项）</h3>
+<table>
+<tr><th>预测项</th><th>预测值</th><th>置信度</th></tr>
+<tr><td>开盘方向</td><td class="dn">小幅低开 -0.3%~+0.1%</td><td>中</td></tr>
+<tr><td>量能</td><td>1.85万亿（1.7~2.0）</td><td>中</td></tr>
+<tr><td>涨停家数</td><td>50~75家</td><td>低</td></tr>
+<tr><td>主线第一</td><td>AI载板45% / 光模块25%</td><td>中</td></tr>
+<tr><td>关键位</td><td>支撑3870/3840 压力3940/3960</td><td>高</td></tr>
+<tr><td>时间节点</td><td>10:30载板涨停≥5=二波确认</td><td>—</td></tr>
+</table>
+</div>
+
+<footer>以上分析基于公开数据，不构成投资建议。市场有风险，决策自负。</footer>
+</div>
+</body>
+</html>
