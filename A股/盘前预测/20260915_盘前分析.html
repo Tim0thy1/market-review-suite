@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-09-15 A股盘前分析</title>
+<style>
+:root{--bg:#FBFAF8;--bg2:#fff;--bg3:#F5F2EE;--ink:#403C38;--muted:#66615A;--faint:#8A847C;--rule:#EBE7E2;--rule2:#DDD7D0;--orange:#D97706;--amber:#F59E0B;--accent:#0D9488;--accent2:#D97706;--red:#DC2626;--green:#16A34A;--shadow:0 1px 2px rgba(64,60,56,.05),0 4px 16px rgba(64,60,56,.06);--shadow-lg:0 12px 40px rgba(64,60,56,.16);--radius:10px;--radius-lg:14px;--font:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Micro Hei",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.75;font-size:14px}
+.container{max-width:960px;margin:0 auto;padding:0 16px 60px}
+/* 页眉 */
+.hero{background:linear-gradient(160deg,#fff8ef,#fdeedb);border-radius:0 0 22px 22px;padding:34px 26px 22px;margin-bottom:22px;box-shadow:var(--shadow)}
+.hero .kicker{font-size:12px;color:var(--orange);font-weight:700;letter-spacing:1px}
+.hero h1{font-size:26px;margin:6px 0 4px;color:var(--ink)}
+.hero .date{font-size:13px;color:var(--muted);margin-bottom:14px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;padding:3px 10px;border-radius:20px;background:#fff;border:1px solid var(--rule2);color:var(--ink)}
+.tag.hot{background:linear-gradient(135deg,#C2410C,#D97706);color:#fff;border:none;font-weight:700}
+.tag.green{color:var(--green);border-color:rgba(22,163,74,.35);background:#F2FBF5}
+.tag.red{color:var(--red);border-color:rgba(220,38,38,.35);background:#FDF4F4}
+/* tldr 结论卡 */
+.tldr{background:var(--bg2);border:1px solid var(--rule);border-left:4px solid var(--orange);border-radius:var(--radius);padding:18px 20px;margin:0 0 18px;box-shadow:var(--shadow)}
+.tldr h2{font-size:15px;color:var(--orange);margin-bottom:10px}
+.tldr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px 16px}
+.tldr-grid .label{color:var(--muted);font-size:12px}
+.tldr-grid .val{font-weight:600;color:var(--ink)}
+.tldr-grid .val b{color:var(--orange)}
+/* 章节 */
+.section{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:20px 22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.section-header{display:flex;align-items:center;gap:10px;cursor:pointer;margin-bottom:12px;user-select:none}
+.sec-num{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#C2410C,#D97706);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.section-header h2{font-size:17px;color:var(--ink)}
+.section-body{font-size:14px;color:var(--ink)}
+.section-body p{margin-bottom:10px}
+b{font-weight:700}
+.orange{color:var(--orange);font-weight:700}
+.red{color:var(--red);font-weight:700}
+.green{color:var(--green);font-weight:700}
+/* 数据表格 */
+.data-card{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius);padding:12px 14px;margin:10px 0;font-size:13px}
+.row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--rule)}
+.row:last-child{border-bottom:none}
+.row .label{color:var(--muted)}
+.row .val{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:#fff;border-radius:var(--radius);overflow:hidden}
+th{background:var(--bg3);color:var(--ink);font-weight:700;text-align:left;padding:8px 10px;border-bottom:2px solid var(--rule2)}
+td{padding:8px 10px;border-bottom:1px solid var(--rule)}
+tr:last-child td{border-bottom:none}
+/* 快讯板 */
+.news-block{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius);padding:12px 14px;margin:10px 0}
+.news-block h3{font-size:13px;color:var(--orange);margin-bottom:8px}
+.news-item{font-size:13px;padding:4px 0;border-bottom:1px dashed var(--rule)}
+.news-item:last-child{border-bottom:none}
+.news-item .src{font-size:11px;color:var(--faint);margin-left:6px}
+.news-item .map{display:block;font-size:12px;color:var(--green);margin-top:2px}
+/* 小作文评级 */
+.narr-card{background:var(--bg2);border:1px solid var(--rule2);border-left:4px solid var(--amber);border-radius:var(--radius);padding:12px 14px;margin:10px 0;font-size:13px}
+.narr-card .head{font-weight:700;color:var(--ink);margin-bottom:4px}
+.narr-card .meta{font-size:11px;color:var(--faint);margin-bottom:6px}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:12px;background:var(--bg3);border:1px solid var(--rule2);margin-right:6px}
+.badge.low{color:var(--muted)}
+/* 预测卡 */
+.forecast-card{background:linear-gradient(160deg,#fff,#fff8ef);border:1px solid var(--rule2);border-radius:var(--radius);padding:14px 16px;margin:10px 0}
+.forecast-card .num{color:var(--orange);font-weight:800;font-size:18px}
+.forecast-card .conf{font-size:12px;color:var(--muted)}
+.forecast-item{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed var(--rule)}
+.forecast-item:last-child{border-bottom:none}
+/ * 情景树 */
+.scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:10px 0}
+.scen-card{border-radius:var(--radius);padding:14px 16px;font-size:13px;border:1px solid var(--rule2)}
+.scen-card.opt{background:#F0FBF4;border-color:rgba(22,163,74,.3)}
+.scen-card.neu{background:#F5F2EE}
+.scen-card.pes{background:#FBF1F1;border-color:rgba(220,38,38,.3)}
+.scen-card h4{font-size:14px;margin-bottom:6px}
+.scen-card.opt h4{color:var(--green)} .scen-card.pes h4{color:var(--red)} .scen-card.neu h4{color:var(--ink)}
+/* 观察清单 */
+.watchlist .row .val{font-size:12px}
+.footer{text-align:center;color:var(--faint);font-size:12px;margin-top:10px}
+.hidden{display:none}
+ul{padding-left:20px;margin-bottom:10px}
+li{margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="kicker">A股 · 盘前预测模式</div>
+  <h1>2026-09-15（二）A股盘前分析</h1>
+  <div class="date">参考数据：T-1=9/14 收盘 &nbsp;|&nbsp; 生成于 9/15 盘前 &nbsp;|&nbsp; 时间窗：9/14 盘后 → 9/15 开盘前</div>
+  <div class="tag-row">
+    <span class="tag hot">央行降准0.25%+5000亿买断逆回购</span>
+    <span class="tag red">隔夜费半暴跌近6%</span>
+    <span class="tag green">医药/CXO主升承接</span>
+    <span class="tag">结构分化</span>
+  </div>
+</div>
+
+<!-- ================= S0 执行摘要 ================= -->
+<div class="section" id="s0">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S0</span><h2>执行摘要</h2></div>
+  <div class="section-body">
+    <div class="tldr-grid">
+      <div><span class="label">市场状态</span><span class="val">降准流动性利好 vs 隔夜科技杀跌，多空对冲</span></div>
+      <div><span class="label">今日核心判断</span><span class="val"><b>低开震荡 · 结构分化</b></span></div>
+      <div><span class="label">最大变量</span><span class="val">降准利好多头 vs 半导体/算力杀跌空头</span></div>
+      <div><span class="label">最大风险</span><span class="val">AI硬件/存储/光模块高开即出货（隔夜映射）</span></div>
+    </div>
+    <p style="margin-top:10px"><b>最重要的 3 个观察信号：</b></p>
+    <ul>
+      <li>① 降准利好是否带来<b class="orange">放量</b>（成交换手能否突破昨日约1.63万亿）——放量下跌=利好出货，放量上涨=增量进场</li>
+      <li>② <b class="green">医药/CXO 承接</b>：凯莱英/药明能否在昨日涨停/大涨后继续或高开不炸（高开兑现风险核心）</li>
+      <li>③ <b class="red">半导体/存储/光模块</b>低开幅度与是否企稳——隔夜费半-6%的直接映射</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= S1 市场状态 ================= -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S1</span><h2>市场状态（Market Regime · 昨日收盘速览）</h2></div>
+  <div class="section-body">
+    <div class="data-card">
+      <div class="row"><span class="label">上证指数</span><span class="val">3885.33 <span class="green">-0.07%</span></span></div>
+      <div class="row"><span class="label">深证成指</span><span class="val">13384.57 <span class="green">-0.64%</span></span></div>
+      <div class="row"><span class="label">创业板指</span><span class="val">3285.58 <span class="green">-1.10%</span></span></div>
+      <div class="row"><span class="label">科创50</span><span class="val">1528.27 <span class="green">-1.62%</span></span></div>
+      <div class="row"><span class="label">沪深300</span><span class="val">4480.08 <span class="green">-0.67%</span></span></div>
+      <div class="row"><span class="label">两市成交额（正确口径）</span><span class="val"><b class="orange">约 1.63 万亿</b>（沪7792.8亿+深8498.9亿）</span></div>
+      <div class="row"><span class="label">行业领涨</span><span class="val">医疗服务+3.99% / 生物制品+2.96% / 汽车整车+2.95%</span></div>
+      <div class="row"><span class="label">行业领跌</span><span class="val">种植业-3.19% / 军工装备-2.47% / 教育-2.21%</span></div>
+    </div>
+    <p><b>状态画像</b>：昨日（9/14）市场呈"指数微跌、结构分化"的存量博弈格局——权重走弱但医药（医疗服务+3.99%、生物制品+2.96%）与汽车（+2.95%）走出独立行情，CXO/创新药在高盛复苏研报（药明目标价220.1港元）+中报验证下全面开花（凯莱英超10%、泰格+6%、康龙+5%）；PCB 内部高低切（权重回调、小微PCB涨停）。量能约 1.63 万亿较 9/11 温和收窄，属"存量腾挪、缺席增量"。</p>
+    <p><b>六维状态</b>：<b>趋势</b>＝震荡（上证在20日线附近整理）｜<b>波动</b>＝中｜<b>情绪</b>＝修复期（涨停55/跌停16，高度断层最高4板闽东电力）｜<b>风险偏好</b>＝risk-off偏中性（资金向医药避险+降准预期对冲）｜<b>风格</b>＝小盘/医药占优、大盘/科技回调｜<b>资金</b>＝存量博弈（量能未放大）。</p>
+    <p><b>估值/技术锚</b>：上证关键位——支撑 3870/3840，压力 3940/3960。科创50 已从7月高点回撤约三成、半导体为前期抛售重灾区，估值分位仍偏高，隔夜杀跌将进一步压缩估值弹性。<b class="red">此处估值约束对科技是实质压制</b>：费半暴跌+科创50回撤三成，短期科技方向拉估值难度大，资金更可能流向流动性受益+估值合理的医药。</p>
+  </div>
+</div>
+
+<!-- ================= S1.5 盘前观点 ================= -->
+<div class="section" id="s1p5">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S1.5</span><h2>盘前观点（Morning View）</h2></div>
+  <div class="section-body">
+    <p><b>海外锚点</b>——隔夜美股三大指数收跌（道指-0.29%/标普-0.48%/纳指-0.56%），但真正的冲击是<b class="red">费城半导体指数暴跌近6%</b>：英伟达-2.6%、博通-4%、英特尔-6.6%、阿斯麦-5.6%、Arm-9%，存储（美光-6%、SK海力士-7.5%、闪迪-6%）、光通信（康宁-13%、Coherent-12%、Lumentum）集体重挫。导火索是多家AI巨头CEO公开呼吁"放缓AI开发"、头部厂商限制使用OpenAI/Anthropic最先进模型，点燃"AI繁荣见顶"的估值重估。这对A股是确定的结构利空，尤其压制半导体、存储、光模块、高速PCB。</p>
+    <p><b>盘面定性</b>——今日量价形态取决于"降准利好"vs"隔夜杀跌"谁占主导。若<b class="orange">放量上涨</b>＝增量进场（降准资金与情绪共振）；若<b class="orange">放量滞涨先涨后跌</b>＝利好出货（结构顶部候选）；若缩量仍强＝存量避险。技术位：上证支撑 3870（昨日低点3867上沿），<b>5日/10日线位于约3890-3910</b>，昨日收3885已运行于均线下方，属"指数在5日线与20日线之间"的整固形态；突破3910则转强，跌破3870则调整延长。</p>
+    <p><b>结构行为</b>——资金正处于"弃科技、取医药+低位补涨"的高低切通道中：昨日医药（CXO/创新药/器械）与汽车/电池/元件吸金，军工/种植/煤炭失血。今日关键看两点：①隔夜费半杀跌是否把资金进一步从半导体/光模块挤出，逼向医药/红利/汽车；②降准落地（今日盘前公告，今年第二次、超预期）能否开启真正的"增量进场"切换，将存量博弈升级为流动性格局。</p>
+    <p><b>今日取向</b>——重结构、轻指数，进攻偏防守的混合取向。<b class="orange">若高开且放量突破3910 → 降准主导，回补攻势</b>；<b class="red">若低开后半导体/存储惯性下跌且量能萎缩 → 隔夜杀跌主导，整固延长、守住3870为主</b>。医药是"降准受益+估值合理+承接昨日"的最佳交集，但仍要防高开兑现一日游。</p>
+  </div>
+</div>
+
+<!-- ================= S2 隔夜冲击 ================= -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S2</span><h2>隔夜冲击（Overnight Shock）</h2></div>
+  <div class="section-body">
+    <!-- 事件1 降准 -->
+    <div class="news-block">
+      <h3>事件一 · 央行降准0.25% + 5000亿买断式逆回购（重大利好 · 流动性）</h3>
+      <div class="news-item"><b>事实层</b>：9/15 央行宣布降准0.25个百分点（今年第二次，下调后加权平均存款准备金率约7.4%），同时开展5000亿元买断式逆回购（6个月/181天期）。市场解读为"超预期"——此前未见以总理或国常会提前"吹风"，属2019年以来首次。<span class="src">【官方】</span></div>
+      <div class="news-item"><b>Surprise 评分</b>：重要性 9/10；市场预期=中低（无吹风）；实际超预期。利好方向确定，但需防"利好出尽"。</div>
+      <div class="news-item"><b>传导链四层</b>：改变预期（流动性充裕、资金利率下行、估值压力减轻）→ 谁受益（成长股/科技对利率敏感，但半导体被隔夜利空压制；银行/地产/周期股直接受益；创新药Biotech价值靠远期现金流贴现，贴现率下行抬升定价中枢）→ 资金先手还是跟风（降准消息是9/15盘前公告，资金无法提前埋伏，属盘前新Trigger）→ 逻辑能持续否（中期利好流动性环境，但单日能否抵消隔夜科技杀跌需观察量能）。<br><b class="orange">断裂点：若高开放量滞涨，说明增量资金未真进场，利好或已被情绪透支。</b></div>
+    </div>
+    <!-- 事件2 费半暴跌 -->
+    <div class="news-block">
+      <h3>事件二 · 隔夜美股费城半导体暴跌近6%（重大利空 · AI硬件/存储/光通信）</h3>
+      <div class="news-item"><b>事实层</b>：美股三大指数收跌，费城半导体指数暴跌近6%（7月初以来最大跌幅），30只成分股全线收跌。英伟达-2.6%、台积电ADR-3.5%、博通-4%、英特尔-6.6%、安森美-5%、阿斯麦-5.6%、Arm-9%；存储（美光-6%、SK海力士-7.5%、闪迪-6%、西部数据-6%）；光通信（康宁-13%、Coherent-12%、Lumentum/迈威尔超10%）。<span class="src">【外媒】</span></div>
+      <div class="news-item"><b>Surprise 评分</b>：重要性 8/10；市场预期=AAI硬件本已在高位分歧；实际=AI开发降速引发估值重估。虽是"减速信号"非业绩爆雷，但对"AI繁荣见顶"的叙事冲击强。</div>
+      <div class="news-item"><b>传导链四层</b>：改变预期（AI资本开支→模型训练放缓→算力需求增速担忧）→ 谁受损（A股半导体、存储、光模块、高速PCB、算力硬件海外链）→ 资金动作（美股盘面已先抛售，A股隔夜只能盘前反应，无法提前埋伏，属纯盘前利空Trigger）→ 逻辑能否持续（若AI降温叙事延续，科技回调未结束；但康宁/Coherent暴跌主要是前期涨幅过大获利了结）。<br><b class="red">断裂点：A股科创50已达回撤三成，短线或已在低估值消化部分，需观察低开幅度判断是否恐慌延续。</b></div>
+    </div>
+    <!-- 事件3 医药主升催化延续 -->
+    <div class="news-block">
+      <h3>事件三 · CXO/创新药主升催化（利好 · 医药承接）</h3>
+      <div class="news-item"><b>事实层</b>：高盛研报"中国CRO/CDMO行业正明确复苏——盈利超预期、上调指引、订单强劲"，对药明康德/药明合联/凯莱英/康龙化成给"买入"，药明康德目标价220.1港元；昨日CXO全线大涨（凯莱英超10%、泰格+6%、康龙+5%、药明+5%）。<span class="src">【卖方】</span></div>
+      <div class="news-item"><b>Surprise 评分</b>：重要性 7/10；市场预期=复苏已发酵（中报验证）；今日变量=高开承接与分歧。</div>
+      <div class="news-item"><b>传导链</b>：中药价值重估+降准贴现率下行+业绩验证 → 创新药/CXO 持续受益；资金昨日已先手，今日面临兑现与续涨之争。<br><b class="orange">断裂点：若医药高开>3%但10:30前涨停<3家，则兑现行情，追高即套。</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= S2.5 行业快讯板 ================= -->
+<div class="section" id="s2p5">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S2.5</span><h2>行业快讯板（News Board）</h2></div>
+  <div class="section-body">
+    <div class="news-block">
+      <h3>宏观 / 政策（信息密度最高）</h3>
+      <div class="news-item">9/15 央行降准0.25%（第二次）+5000亿买断式逆回购（6个月）<span class="src">【官方】</span><span class="map">→ 利好银行/地产/周期，流动性受益成长方向</span></div>
+      <div class="news-item">8月社融存量464.8万亿、同比+7.2%；M2余额356.81万亿、同比+7.5%；债券+股票占社融增量已超50%<span class="src">【官方】</span><span class="map">→ 信用扩张不弱，资本市场融资占比提升</span></div>
+      <div class="news-item">证监会副主席李超：健全"长钱长投"生态，拓宽中长期资金入市渠道<span class="src">【官方】</span><span class="map">→ 中长期利好险资/养老金入市标的</span></div>
+      <div class="news-item">商务部等8部门印发《促进智能家居消费行动方案》<span class="src">【官方】</span><span class="map">→ 利好智能家居/家电消费链</span></div>
+    </div>
+    <div class="news-block">
+      <h3>AI 算力 / 半导体（利空为主）</h3>
+      <div class="news-item">隔夜费半暴跌近6%，存储/光模块全线重挫——AI巨头CEO呼吁放缓AI开发<a class="src"></a><span class="src">【外媒】</span><span class="map">→ 利空A股半导体/存储/光模块/高速PCB</span></div>
+      <div class="news-item">首批创业板算力ETF成立（天弘/华夏/易方达），创业板算力ETF天弘9/16、华夏9/17上市<span class="src">【产业】</span><span class="map">→ 资金利好算力链，但上市期或遇板块调整</span></div>
+    </div>
+    <div class="news-block">
+      <h3>医药生物</h3>
+      <div class="news-item">港股通生物科技ETF、恒生生物科技ETF盘中强势，指数一度+2.66%，聚焦创新药+CXO权重近90%<span class="src">【产业】</span><span class="map">→ 利好创新药/CXO，A/H共振</span></div>
+      <div class="news-item">国内首款AI辅助创新药（艾普司韦）获批；医保局将每年调整药品目录、创新药更多纳入医保<span class="src">【产业】</span><span class="map">→ 利好创新药政策端</span></div>
+    </div>
+    <div class="news-block">
+      <h3>金融 / 地产</h3>
+      <div class="news-item">保利发展拟发50亿定向可转债（楼市新政后A股房企首单再融资）<span class="src">【公告】</span><span class="map">→ 利好优质地产龙头并购重组主线</span></div>
+      <div class="news-item">港股通调入百度/群核科技/潼关黄金/歌礼制药等54股（下一港股通交易日生效）<span class="src">【官方】</span><span class="map">→ 受益调入标的有增量资金</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= S2.6 外媒小作文 ================= -->
+<div class="section" id="s2p6">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S2.6</span><h2>外媒小作文监测（Market Narrative Watch）</h2></div>
+  <div class="section-body">
+    <div class="narr-card">
+      <div class="head">AI巨头急刹车：英伟达/OpenAI/微软限制最先进模型使用 → 费半暴跌<small> · 财联社/新浪 · 9/15 AM</small></div>
+      <div class="meta"><span class="badge">机构观点型</span><span class="badge low">可信度：中</span>驱动"AI繁荣见顶"叙事，属高热度观点性报道</div>
+      <p>核心摘要：英伟达、Palantir限制使用OpenAI/Anthropic最先进AI模型，微软亦为未来模型设限；多家AI领袖呼吁放缓技术开发。<br><b>可查证事实：</b>费半指数当日实际暴跌近6%（可查）｜<b>媒体叙事框架：</b>"AI股市繁荣将结束"属主观判断（分析师观点）。</p>
+      <p><b>涉及板块：</b>A股半导体/存储/光模块/算力硬件（已由美股映射，具直接价格反应）｜<b>证伪/证实路径：</b>观察A股半导体板块是否跟随杀跌、及费半能否次日企稳——若A股低开幅度<美股映射（如半导体跌幅明显小于预期），则叙事或已部分消化。</p>
+    </div>
+    <p style="font-size:12px;color:var(--muted)">其余外媒对中国资产的叙事性报道今日无重大新条目，不入此版。</p>
+  </div>
+</div>
+
+<!-- ================= S3 定价与拥挤度 ================= -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S3</span><h2>定价与拥挤度（Positioning / Price-in）</h2></div>
+  <div class="section-body">
+    <table>
+      <tr><th>方向</th><th>昨日表现 + 累计涨幅</th><th>利好强度/价格透支</th><th>盈亏比</th></tr>
+      <tr><td>医药/CXO</td><td>医疗服务+3.99%，凯莱英超10%/泰格+6%/康龙+5%，高盛背书</td><td class="orange">利好8/10 vs 透支7/10</td><td class="red">一般（高开兑现风险高）</td></tr>
+      <tr><td>汽车整车</td><td>+2.95%，安凯客车+10%涨停</td><td class="green">利好6/10 vs 透支4/10</td><td class="green">优（低位补涨+题材延续）</td></tr>
+      <tr><td>半导体/存储/光模块</td><td>前期高位，隔夜费半-6%映射</td><td class="red">透支高，新增利空</td><td class="red">差（高开即出货）</td></tr>
+      <tr><td>银行/地产/周期</td><td>昨日回落（多元金融-1.18%），降准直接受益</td><td class="green">利好7/10 vs 透支2/10</td><td class="green">优（低位+直接催化）</td></tr>
+    </table>
+    <p><b class="red">高开兑现风险量化</b>：医药昨日已大涨（医疗服务+3.99%），若今日高开>3%，按历史高位题材+隔夜利好不缺·但缺新增资金的情形，高开兑现概率偏高。CXO龙头的资金在昨日涨停后已有获利盘，缺乏"新增承接"时易回吐。</p>
+    <p><b>提前交易表述</b>：医药昨日上涨主要兑现高盛研报与降准预期（存在政策预期抢跑），此处仅表述为"存在提前交易迹象"，不推断具体泄露渠道。</p>
+  </div>
+</div>
+
+<!-- ================= S4 主线竞争 ================= -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S4</span><h2>主线竞争（Sector Competition）</h2></div>
+  <div class="section-body">
+    <div class="forecast-card">
+      <div class="row"><span class="label">第一主线 · 医药/CXO+创新药</span><span class="val"><span class="num">38%</span></span></div>
+      <div class="row"><span class="label">驱动</span><span class="val">高盛复苏研报 + 降准贴现率下行 + 中报业绩验证</span></div>
+      <div class="row"><span class="label">承接逻辑</span><span class="val">流动性格局受益，昨日已主升，今日关键在承接而非续涨</span></div>
+    </div>
+    <div class="forecast-card">
+      <div class="row"><span class="label">第二主线 · 降准受益周期/金融（银行/地产/周期）</span><span class="val"><span class="num">27%</span></span></div>
+      <div class="row"><span class="label">驱动</span><span class="val">降准0.25%+5000亿逆回购直接利好，低位补涨</span></div>
+      <div class="row"><span class="label">承接逻辑</span><span class="val">指数权重有望借流动性企稳，攻守兼备</span></div>
+    </div>
+    <div class="forecast-card">
+      <div class="row"><span class="label">第三主线 · 汽车整车/低位补涨</span><span class="val"><span class="num">20%</span></span></div>
+      <div class="row"><span class="label">驱动</span><span class="val">昨日+2.95%，安凯涨停，题材延续+低位</span></div>
+      <div class="row"><span class="label">承接逻辑</span><span class="val">弃科技资金流向的低位高性价比方向</span></div>
+    </div>
+    <div class="forecast-card">
+      <div class="row"><span class="label">第四主线 · AI 算力/半导体/光模块反弹</span><span class="val"><span class="num">15%</span></span></div>
+      <div class="row"><span class="label">驱动</span><span class="val">降准利好成长 + 超跌反弹潜力</span></div>
+      <div class="row"><span class="label">承接逻辑</span><span class="val">虽有降准支撑，但隔夜费半-6%压制，反弹需先低开企稳</span></div>
+    </div>
+    <p><b>板块映射四层（以隔夜AI降速为例）</b>：L1直接资产＝A股光模块（中际旭创/新易盛/天孚通信，A股）｜L2同平台＝存储/高速PCB（兆易创新/澜起/SK海力士链，A股+海外）｜L3产业链＝半导体设备/封测（A股）｜L4情绪Beta＝科创50、半导体ETF、创业板（A股）。各标的已按上市地标注，港股映射（信达/药明生物等）单列不混入A股受益清单。</p>
+  </div>
+</div>
+
+<!-- ================= S4.5 热点深追 ================= -->
+<div class="section" id="s4p5">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S4.5</span><h2>热点深追 · CXO/创新药主升（拐点诊断）</h2></div>
+  <div class="section-body">
+    <p><b>事件锚点</b>：高盛确认中国CRO/CDMO行业复苏（订单强劲/上调指引）+ 昨日CXO全线大涨 + 央行降准贴现率下行。这是"产业基本面（复苏）+政策流动性（贴现率）"双驱动的产业级催化，非单一消息噪音。</p>
+    <p><b>产业链拆解</b>：上游（原料药/中间体/CGT上游）→ 中游（CXO：CRO药明康德/康龙化成、CDMO凯莱英/药明合联/博腾）→ 下游（创新药：生物科技企业）。<b class="orange">最受益环节=中游CXO/CDMO</b>（直接承接海外订单转移+国内复苏），弹性排序：创新药龙头（高成长）&gt; CXO（确定性强）&gt; 原料药（跟随）。</p>
+    <p><b>板块位置诊断（拐点四要素）</b>：①本轮调整时长——CXO自年初调整后近期底部回升；②机构持仓——中报验证盈利转正、机构回流（据市场反馈，数据源未覆盖精确分位）；③筹码出清——昨日放量大涨后短期有获利盘，需换手消化；④利空——美国关税/制裁担忧已阶段性缓解（高盛复苏判断含该背景）。</p>
+    <p><b>拐点验证信号</b>：确认=医药板块成交额放大（>200亿）+ 龙头（药明/凯莱英）不炸板、10:30前涨停≥3家；<b class="red">证伪=高开>3%但10:30前涨停&lt;3家 → 降级为兑现行情。</b></p>
+  </div>
+</div>
+
+<!-- ================= S5 今日预测 ================= -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S5</span><h2>今日预测（Market Forecast）</h2></div>
+  <div class="section-body">
+    <div class="forecast-card">
+      <div class="row"><span class="label">开盘方向</span><span class="val"><span class="num">低开 -0.5%~+0.2%</span> <span class="conf">置信度中高</span></span></div>
+      <div class="row"><span class="label">依据</span><span class="val">隔夜费半暴跌压制，但降准利好对冲；预期低开后分化（学习点30：破位后隔夜利好不构成高开第一输入→平开低开优先）</span></div>
+      <div class="row"><span class="label">关键技术位</span><span class="val">上证支撑 3870/3840，压力 3910（5/10日线）/3960</span></div>
+    </div>
+    <table>
+      <tr><th>时间节点</th><th>预测</th><th>验证点</th></tr>
+      <tr><td>09:45 前</td><td>半导体/存储低开，医药相对超额收益 +0.5~1%</td><td>半导体与医药相对强弱</td></tr>
+      <tr><td>10:30</td><td>医药板块涨停数达到 4~7 家</td><td>医药涨停家数（高开兑现判定）</td></tr>
+      <tr><td>11:30</td><td>创业板 vs 上证：-0.3%~-0.8%（科创/半导体拖累）</td><td>创业板超额</td></tr>
+      <tr><td>14:00</td><td>成交额达全天预测 55~65%</td><td>量能节奏</td></tr>
+      <tr><td>14:30</td><td>主线相对强弱：医药若续涨则强于银行；若回落则银行/地产接力</td><td>高低切方向</td></tr>
+    </table>
+    <p><b>量能预测统计化</b>：昨日约1.63万亿；5日/20日均值约1.5~1.75万亿区间；隔夜降准释放5000亿流动性。可比情形＝降准落地每日多温和放量。输出<b class="orange">中位数约1.75万亿，80%区间 1.55~2.0万亿</b>（放量但幅度温和，降准增量需时间传导）。若实测破2.0万亿且放量上涨，则降准资金进场强度超预期；若持续&lt;1.5万亿，则仍存量博弈。</p>
+    <p><b>涨停家数区间</b>：预测 50~75 家（降准利好+医药主升，但半导体杀跌对冲）。判断依据＝昨日55家+降准催化 vs 隔夜科技利空。</p>
+  </div>
+</div>
+
+<!-- ================= S6 情景推演 ================= -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S6</span><h2>情景推演（Scenario Tree）</h2></div>
+  <div class="section-body">
+    <div class="scen">
+      <div class="scen-card opt"><h4>乐观（25%）</h4>降准放量+医药续涨，上证放量站稳3910上方，回补缺口向3940；增量资金进场，科技企稳。<br><b>触发：成交换手&gt;1.9万亿且银行/地产/医药同涨。</b></div>
+      <div class="scen-card neu"><h4>中性（50%）</h4>低开后分化，医药高开兑现回落、银行/地产接力，上证在3870-3910整固。<br><b>触发：量能1.5~1.8万亿、半导体低开企稳、医药高开低走。</b></div>
+      <div class="scen-card pes"><h4>悲观（25%）</h4>降准利好被隔夜科技杀跌压制，半导体/存储/光模块放量下杀，医药高开兑现，上证跌破3870。<br><b>触发：量能随科创放量下跌、主板跌破3870、跌停&gt;25家。</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= S7 失效条件 ================= -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S7</span><h2>失效条件（Kill Conditions）</h2></div>
+  <div class="section-body">
+    <ul>
+      <li><b>医药主线失效</b>＝高开&gt;3%但10:30前涨停&lt;3家，或CXO龙头炸板放量 → 降级兑现行情，午后防跳水</li>
+      <li><b>大盘判断失效</b>＝低开跌破3840（昨低3870下方）且量能放大 → 调整延长，今日非进场日，防守优先</li>
+      <li><b>降准利好证伪</b>＝高开放量滞涨（量&lt;1.9万亿但指数翻绿）→ 利好出货，警惕"利好落地即见光死"</li>
+    </ul>
+    <p><b>今日风险日历</b>：降准政策落地（盘前）为主；隔夜美股AI叙事发酵影响半导体/光模块；关注港股通调入生效对相关标的的脉冲。<b class="red">反身性风险</b>：昨日医药已+3.99%，今日高开即触发获利兑现/追高套牢的双向反身，需严格按承接信号操作。</p>
+  </div>
+</div>
+
+<!-- ================= S8 观察清单 ================= -->
+<div class="section" id="s8">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S8</span><h2>观察清单（Watchlist · 非荐股）</h2></div>
+  <div class="section-body">
+    <table class="watchlist">
+      <tr><th>层级</th><th>标的</th><th>上市地</th><th>验证什么逻辑</th></tr>
+      <tr><td>L1 直接</td><td>凯莱英 / 药明康德 / 泰格医药 / 康龙化成</td><td>A股</td><td>CXO承接：能否高开不炸、续涨</td></tr>
+      <tr><td>L2 同平台</td><td>中际旭创 / 新易盛 / 天孚通信</td><td>A股</td><td>光模块是否跟随费半调整、跌幅</td></tr>
+      <tr><td>L3 产业链</td><td>兆易创新 / 澜起科技（存储）</td><td>A股</td><td>存储板块对隔夜大跌的消化程度</td></tr>
+      <tr><td>L4 情绪</td><td>科创50 / 半导体ETF / 创业板</td><td>A股</td><td>科技整体情绪是否退潮</td></tr>
+      <tr><td>降准受益</td><td>招商银行 / 保利发展/<span>地产链</span></td><td>A股</td><td>降准资金是否流向银行/地产权重托底</td></tr>
+      <tr><td>题材延续</td><td>安凯客车（汽车整车）</td><td>A股</td><td>昨日涨停今日能否延续（防一日游）</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================= S9 预测台账 ================= -->
+<div class="section" id="s9">
+  <div class="section-header" onclick="this.parentElement.querySelector('.section-body').classList.toggle('hidden')"><span class="sec-num">S9</span><h2>预测台账（Forecast Ledger）</h2></div>
+  <div class="section-body">
+    <p><b>上一期（9/14 盘前）预测回归：</b></p>
+    <table>
+      <tr><th>预测项</th><th>预测值</th><th>9/14实际</th><th>结果</th></tr>
+      <tr><td>开盘方向</td><td>小幅低开 -0.3%~+0.1%</td><td>上证 -0.07%</td><td class="green">✅ 命中</td></tr>
+      <tr><td>量能</td><td>1.85万亿(1.7~2.0)</td><td>约1.63万亿（温和缩量）</td><td class="red">🟡 温和偏高</td></tr>
+      <tr><td>涨停家数</td><td>50~75</td><td>55</td><td class="green">✅ 命中</td></tr>
+      <tr><td>主线竞争</td><td>④创新药/CXO 10%</td><td>医药主升（完全兑现）</td><td class="green">✅ 命中</td></tr>
+      <tr><td>创业板vs上证</td><td>-0.3%~+0.5%</td><td>创业板-1.10% vs 上证-0.07%</td><td class="red">❌ 低估</td></tr>
+      <tr><td>关键位</td><td>支撑3870</td><td>收3885站稳3870</td><td class="green">✅ 命中</td></tr>
+    </table>
+    <p style="margin-top:10px"><b>本期（9/15）写入台账的预测：</b></p>
+    <ul>
+      <li>开盘低开 -0.5%~+0.2%（置信中高）</li>
+      <li>量能中位数 1.75 万亿，区间 1.55~2.0 万亿</li>
+      <li>医药承接：高开不炸且10:30前涨停≥3家则延续；否则兑现</li>
+      <li>第一主线概率：医药38% / 降准周期27% / 汽车20% / 半导体反弹15%</li>
+      <li>情景：乐观25% / 中性50% / 悲观25%</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">※ 以上分析基于公开数据，不构成投资建议</div>
+</div>
+</body>
+</html>
