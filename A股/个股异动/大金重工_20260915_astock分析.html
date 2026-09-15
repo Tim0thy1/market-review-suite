@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大金重工(002487) 个股异动归因 · astock-stock-analysis</title>
+<style>
+:root{--bg:#FBFAF8;--bg2:#fff;--bg3:#F5F2EE;--bg4:#EFEBE6;--ink:#403C38;--muted:#66615A;--faint:#8A847C;--rule:#EBE7E2;--rule2:#DDD7D0;--orange:#D97706;--amber:#F59E0B;--red:#DC2626;--green:#16A34A;--shadow:0 1px 2px rgba(64,60,56,.05),0 4px 16px rgba(64,60,56,.06);--radius:10px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Micro Hei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:14px;padding-bottom:60px}
+.ctn{max-width:920px;margin:0 auto;padding:20px 16px}
+.hdr{background:linear-gradient(135deg,#fff8ef,#fdeedb);border:1px solid var(--rule2);border-radius:14px;padding:26px 28px;margin-bottom:20px}
+.hdr h1{font-size:23px;color:var(--orange);font-weight:800;letter-spacing:.5px}
+.hdr .sub{color:var(--muted);font-size:13px;margin-top:6px}
+.badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600;margin:8px 4px 0 0}
+.badge.live{background:var(--red);color:#fff}
+.badge.path{background:var(--bg4);color:var(--ink)}
+.tldr{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow)}
+.tldr h2{font-size:16px;color:var(--orange);margin-bottom:10px;font-weight:700}
+.tldr .verdict{font-size:14px;line-height:1.8;margin-bottom:8px}
+.tldr .verdict b.k{color:var(--orange)}
+.section{margin-bottom:18px;background:var(--bg2);border-radius:var(--radius);border:1px solid var(--rule);overflow:hidden;box-shadow:var(--shadow)}
+.sh{padding:13px 20px;background:linear-gradient(135deg,rgba(217,119,6,.04),rgba(192,66,12,.06));border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between}
+.sh h2{font-size:15px;color:var(--orange);font-weight:700}
+.sh .tag{font-size:12px;color:var(--muted)}
+.sb{padding:16px 20px 18px}
+.sb p{font-size:13.5px;line-height:1.85;margin-bottom:10px;text-align:justify}
+.sb p:last-child{margin-bottom:0}
+.sb b.k{color:var(--orange)}
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:var(--bg4);color:var(--ink);padding:7px 8px;text-align:left;font-weight:600;border-bottom:1px solid var(--rule2)}
+td{padding:7px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+tr:nth-child(even) td{background:var(--bg3)}
+.up{color:var(--red);font-weight:600}.dn{color:var(--green);font-weight:600}.flat{color:var(--muted)}
+.note{background:var(--bg3);border-left:3px solid var(--amber);padding:10px 14px;font-size:12.5px;border-radius:0 8px 8px 0;margin:10px 0;color:var(--muted)}
+.card2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0}
+.cd{background:var(--bg3);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+.cd h4{font-size:13.5px;margin-bottom:8px;color:var(--ink)}
+.barrowrow{display:grid;grid-template-columns:110px 1fr 84px;align-items:center;gap:10px;margin:6px 0;font-size:12.5px}
+.barrowrow .lbl{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar{height:14px;background:var(--bg4);border-radius:3px;position:relative}
+.bar>i{position:absolute;left:0;top:0;height:100%;border-radius:3px;background:var(--orange)}
+.bar>i.red{background:var(--red)}.bar>i.grn{background:var(--green)}
+.barrowrow .num{text-align:right;font-weight:600}
+.thermo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.th-item{display:flex;justify-content:space-between;padding:6px 10px;background:var(--bg3);border-radius:6px;font-size:12.5px;border:1px solid var(--rule)}
+.th-item .t{color:var(--muted)}.th-item .v{font-weight:600}
+.foot{margin-top:24px;padding:18px 20px;background:var(--bg3);border:1px solid var(--rule);border-radius:10px;font-size:12.5px;color:var(--muted);line-height:1.8}
+.foot h3{font-size:13.5px;color:var(--ink);margin-bottom:8px}
+.foot .disc{font-size:12px;color:var(--faint);margin-top:12px;border-top:1px solid var(--rule);padding-top:10px}
+.timeline{margin:10px 0}
+.tl-item{display:flex;gap:12px;margin-bottom:10px}
+.tl-date{flex:0 0 92px;font-size:12px;color:var(--orange);font-weight:600;padding-top:1px}
+.tl-txt{font-size:13px;line-height:1.7}
+.warn{background:#FDECEA;border-left:3px solid var(--red);padding:10px 14px;font-size:12.5px;border-radius:0 8px 8px 0;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="ctn">
+
+<div class="hdr">
+  <span class="badge live">盘中快照 · 非收盘数据</span>
+  <span class="badge path">个股异动归因</span>
+  <h1>大金重工 (002487) · 涨停异动归因</h1>
+  <div class="sub">数据时点：2026-09-15 早盘 | 分析框架：astock-stock-analysis · 两把尺子 + 缅A情绪定价层 | 数据源：westock CLI</div>
+</div>
+
+<div class="tldr">
+  <h2>TL;DR 结论</h2>
+  <div class="verdict">今日涨停 <b class="k">+10.01% 收 39.44 元</b>，主力净流入 <b class="k">5.07 亿（全市场第 9）</b>，超大单 <b class="k">+5.14 亿</b>。定性：<b class="k">欧洲海风景气（政策+订单+造船）驱动的低位放量反弹</b>，处于"风电设备板块共振中的放量启动第一棒"，但自身处<b class="k">高位深度回调后的低位，非新高主升</b>。</div>
+  <div class="verdict">两把尺子结论不一致：<b class="k">业绩尺偏中性偏弱</b>（H1 营收 -20.87%、扣非 2.35 亿远低于归母 5.89 亿、单季净利同比 -49%），<b class="k">筹码资金尺偏强</b>（主力 5/10/20 日净流入、机构单边吸筹、南向 3 日增持）。市场当前按<b class="k">"资金+叙事"尺子定价</b>，而非业绩尺。</div>
+  <div class="verdict"><b class="k">风险提示</b>：KDJ_J 122 / RSI6 84 双双超买，筹码获利盘 64.9%，一致预期目标价 44.41 仅 +12.6% 空间且机构覆盖为 0——短线情绪偏热、目标价锚不足，追高风险显著。</div>
+  <div class="note">本报告回答"大金今天为什么涨停、可不可信、值多少"，其中一致预期目标价空间有限 + 机构覆盖为 0，标的定价参考意义弱于筹码信号，不构成买入依据。</div>
+</div>
+
+<div class="section">
+  <div class="sh"><h2>个股速览</h2><span class="tag">westock quote / fund flow / technical</span></div>
+  <div class="sb">
+    <div class="table-wrap">
+    <table>
+      <tr><th>指标</th><th>数值</th><th>指标</th><th>数值</th></tr>
+      <tr><td>现价 / 涨跌幅</td><td class="up">39.44 / +10.01%</td><td>换手 / 量比</td><td>11.63% / 4.01</td></tr>
+      <tr><td>振幅 / 今开-高-低</td><td>11.46% / 36.80-39.44-35.33</td><td>总市值 / 流通市值</td><td>291.9亿 / 248.8亿</td></tr>
+      <tr><td>PE(TTM) / PB</td><td>25.22 / 2.02</td><td>年初至今 / 近60日</td><td class="dn">-23.92% / -34.04%</td></tr>
+      <tr><td>主力今日 / 5日 / 20日</td><td class="up">+5.07亿 / +5.79亿 / +0.50亿</td><td>超大单 / 中单 / 小单</td><td class="up">+5.14亿</td></tr>
+      <tr><td>· 中单 / 小单净额</td><td class="dn">-2.39亿 / -2.68亿</td><td>· 全市场主力排名</td><td class="up">第 9</td></tr>
+      <tr><td>DIF / DEA / MACD</td><td>-1.428 / -2.188 / +1.519</td><td>KDJ_J / RSI6 / RSI24</td><td>122.1(超买) / 84.1(超买) / 47.7</td></tr>
+      <tr><td>筹码成本 / 获利盘</td><td>37.04 / 64.9%</td><td>股东户数(9/10)</td><td>7.51 万户</td></tr>
+    </table>
+    </div>
+    <p><b class="k">位置定性</b>：股价上行突破筹码成本线 37.04 并站上 MA20(35.32)，但仍在 MA60(41.68) 之下（现价距 MA60 还有 5.7%），呈现<b class="k">破脚均线修复</b>而非趋势反转确认。DIF/DEA 仍在零轴下方，属零轴下金叉，切勿误读为"零轴上二次金叉"。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h2>位置与启动结构（K线复盘）</h2><span class="tag">westock kline 45日</span></div>
+  <div class="sb">
+    <div class="table-wrap">
+    <table>
+      <tr><th>区间</th><th>表现</th><th>含义</th></tr>
+      <tr><td>7月中旬</td><td>高位约 43-44 元</td><td>阶段高点（累计涨幅兑现）</td></tr>
+      <tr><td>7月中下 → 9/10</td><td class="dn">一路阴跌至 32.04 元（约 -25%）</td><td>高位深度回调，筹码出清</td></tr>
+      <tr><td>9/11 起</td><td class="up">放量启动，9/15 涨停（较低点 +23%）</td><td>低点放量吸筹 → 板块共振推动</td></tr>
+      <tr><td>今日</td><td class="up">39.44 涨停，换手 11.63%</td><td>放量第一棒，量能较前期显著放大</td></tr>
+    </table>
+    </div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-date">7月中</div><div class="tl-txt">高位 43 元附近，区间累计涨幅已兑现</div></div>
+      <div class="tl-item"><div class="tl-date">7月→9/9</div><div class="tl-txt">连续阴跌，缩量磨底，9/9 收 32.57（低点区）</div></div>
+      <div class="tl-item"><div class="tl-date">9/11</div><div class="tl-txt"><b>放量启动</b>，量能较前期放大（首阳）</div></div>
+      <div class="tl-item"><div class="tl-date">9/14</div><div class="tl-txt">继续堆量，欧洲海风+造船订单催化发酵</div></div>
+      <div class="tl-item"><div class="tl-date">9/15</div><div class="tl-txt"><b>+10.01% 涨停</b>，主力净流入 5.07 亿，突破筹码成本线</div></div>
+    </div>
+    <div class="warn"><b>关键判断</b>：这是"高位深度回调后的低位放量反弹"，不是趋势反转、更不是新高主升。当前位置在 MA60 之下、DIF 零轴下方，技术上是超跌修复叠加板块beta。真正的趋势反转需等待"站上 MA60 + DIF 上零轴"双确认。</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h2>尺子 A · 业绩尺（赚的是不是真钱、贵不贵）</h2><span class="tag">westock finance / consensus</span></div>
+  <div class="sb">
+    <div class="table-wrap">
+    <table>
+      <tr><th>指标 (H1 2026)</th><th>数值</th><th>看点</th></tr>
+      <tr><td>营业收入</td><td>32.53 亿</td><td class="dn">同比 -20.87%（营收承压）</td></tr>
+      <tr><td>归母净利</td><td>5.89 亿</td><td>单季同比 <span class="dn">-49%</span>（受汇率汇兑损失拖累）</td></tr>
+      <tr><td>扣非净利</td><td>2.35 亿</td><td class="warn">仅归母的 40%</td>，非经常性损益占比高 → 净利含金量存疑</td></tr>
+      <tr><td>毛利率 / 净利率</td><td>37.53% / 16.42%</td><td>毛利率健康，净利率受费用侵蚀</td></tr>
+      <tr><td>ROE / 净现比</td><td>8.02% / 经营现金流15.3亿</td><td>净现比&gt;1，现金流质量好</td></tr>
+      <tr><td>一致预期 26E/27E 净利</td><td>14.51亿 / 22.59亿 (+31%/+56%)</td><td>机构看未来高增，但当前覆盖 institutionCnt=0</td></tr>
+      <tr><td>一致目标价 / 现价空间</td><td>44.41 元 / <span class="up">+12.6%</span></td><td class="warn">空间有限 + 覆盖 0，锚不足</td></tr>
+    </table>
+    </div>
+    <p><b class="k">尺子A结论：中性偏弱。</b>现金流质量好（净现比&gt;1）是唯一亮点，但营收负增长、单季净利转弱、<b class="k">扣非仅归母 40%</b>（净利含金量大打折扣）——当前 PE 25 倍对"负增长+扣非弱"的标的谈不上便宜。机构一致预期给未来高增，但覆盖家数为 0，参考价值低。</p>
+    <div class="note">非经常性损益高（归母 5.89 vs 扣非 2.35 亿）——需查是否含一次性资产处置/政府补助。按本框架规则，&gt;40% 净利非常态收益时，估值锚应优先用扣非，即当前并不便宜。</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h2>尺子 B · 筹码资金尺（谁在抬价、抬得动不动）</h2><span class="tag">westock fund flow / margin / news</span></div>
+  <div class="sb">
+    <div class="card2">
+      <div class="cd">
+        <h4>主力资金多周期（亿元）</h4>
+        <div class="barrowrow"><span class="lbl">今日主力</span><div class="bar"><i class="red" style="width:88%"></i></div><span class="num up">+5.07</span></div>
+        <div class="barrowrow"><span class="lbl">5日主力</span><div class="bar"><i class="red" style="width:100%"></i></div><span class="num up">+5.79</span></div>
+        <div class="barrowrow"><span class="lbl">10日主力</span><div class="bar"><i class="red" style="width:77%"></i></div><span class="num up">+4.45</span></div>
+        <div class="barrowrow"><span class="lbl">20日主力</span><div class="bar"><i style="width:9%"></i></div><span class="num up">+0.50</span></div>
+      </div>
+      <div class="cd">
+        <h4>资金结构（今日）</h4>
+        <div class="barrowrow"><span class="lbl">超大单</span><div class="bar"><i class="red" style="width:100%"></i></div><span class="num up">+5.14亿</span></div>
+        <div class="barrowrow"><span class="lbl">大单</span><div class="bar"><i class="red" style="width:9%"></i></div><span class="num up">-0.07</span></div>
+        <div class="barrowrow"><span class="lbl">中单</span><div class="bar"><i class="grn" style="width:46%"></i></div><span class="num dn">-2.39亿</span></div>
+        <div class="barrowrow"><span class="lbl">小单</span><div class="bar"><i class="grn" style="width:52%"></i></div><span class="num dn">-2.68亿</span></div>
+      </div>
+    </div>
+    <p><b class="k">资金结构解读：机构单边吸筹、散户在卖。</b>超大单净流入 5.14 亿而中单 -2.39 亿、小单 -2.68 亿——大资金进场、散户离场，是相对健康的"机构接力"形态。且主力 <b class="k">5日 +5.79 亿 &gt; 10日 +4.45 亿 &gt; 20日 +0.50 亿</b>（近期加速流入），配合今日全市场排名第 9，是<b class="k">短中期同向流入</b>（非"短多长空"高位博弈）。</p>
+    <p>边际资金：<b class="k">南向连续 3 日增持</b>（9/11 净买 19.19 万股）、9/11 融资净买入 2345 万（环比 +61%）。筹码成本 37.04，现价已突破，获利盘 64.9%——低位换手抬升浮盈，为后续提供缓冲但也累积短线抛压。</p>
+    <div class="note">量比 4.01 + 换手 11.63% = 放量且高换手，属"放量大涨 = 有效"（非"放量滞涨"）。但冲高至收盘封涨停，情绪偏热，需警惕次日高开回吐。</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h2>缅A 情绪定价层（市场愿意付多少）</h2><span class="tag">情绪温度计 + 目标价离散度</span></div>
+  <div class="sb">
+    <h4 style="margin-bottom:8px;color:var(--ink)">情绪温度计（8 项）</h4>
+    <div class="thermo">
+      <div class="th-item"><span class="t">叙事强度</span><span class="v">欧元海风盛世（政策+订单+造船）高</span></div>
+      <div class="th-item"><span class="t">符号属性</span><span class="v">风电塔筒龙头·中度</span></div>
+      <div class="th-item"><span class="t">杠杆情绪</span><span class="v">融资环比+61%、南向3日增持</span></div>
+      <div class="th-item"><span class="t">机构拥挤度</span><span class="v">覆盖0、机构参与度低</span></div>
+      <div class="th-item"><span class="t">信息扩散度</span><span class="v">主流媒体已报道→边际买盘在衰减</span></div>
+      <div class="th-item"><span class="t">事件脉冲</span><span class="v">订单+政策=持续性签证，但借零艘船已释放</span></div>
+      <div class="th-item"><span class="t">监管温度</span><span class="v">无问询·无股价异动风险提示</span></div>
+      <div class="th-item"><span class="t">概念标签</span><span class="v">风电/海风/塔筒/造船（中等）</span></div>
+    </div>
+    <p style="margin-top:10px"><b class="k">目标价离散度</b>：一致预期目标价 44.41 元，仅一家口径、institutionCnt=0，<b class="k">无法计算离散度，也不构成有效锚</b>。此标的当前锚只能落在筹码（成本 37.04、前高 43-44、均线）而非任何机构目标价。</p>
+    <h4 style="margin:12px 0 8px;color:var(--ink)">多空两把尺子交叉</h4>
+    <div class="table-wrap">
+    <table>
+      <tr><th>尺子</th><th>结论</th><th>市场当前按哪把定价</th></tr>
+      <tr><td>业绩尺</td><td class="flat">中性偏弱（负增长+扣非弱）</td><td rowspan="2">按 <b class="k">筹码+资金+叙事</b> 尺：市场在为"欧洲海风新一轮景气"的故事与筹码信号付钱，业绩尚未兑现</td></tr>
+      <tr><td>筹码资金尺</td><td class="up">偏强（机构单边吸筹+短中期同向）</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px"><b class="k">一句话叙事</b>：市场此刻给大金的标签是"<b class="k">海风出海+叠加自家造船能力的第一绑定纯正标的</b>"。这个叙事短期不可证伪（订单/招标不断），支撑其放量启动；但<b class="k">扣非弱 + 目标价无锚</b>决定了它现在是"资金驱动的交易品种"，不是价值品种。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h2>事件归因（四象限）</h2><span class="tag">westock news9/10-9/14</span></div>
+  <div class="sb">
+    <div class="table-wrap">
+    <table>
+      <tr><th>象限</th><th>证据</th><th>权重</th></tr>
+      <tr><td>产业景气</td><td>9/14 十五五绿色低碳转型+海风催化密集落地；9/11 风电放量启动</td><td class="up">核心</td></tr>
+      <tr><td>订单/事件</td><td>参与海外多个海风投标、在手订单充沛；第二艘自有船 King Two 首航交付欧洲单桩</td><td class="up">核心</td></tr>
+      <tr><td>造船能力</td><td>9/14 豪氏威马获大金 4 台 1200 吨基座式起重机订单（自有运输+吊装重资产壁垒）</td><td class="up">重要</td></tr>
+      <tr><td>板块共振</td><td>风电设备板块 +3.31%、涨27/30；龙头海力风电 +13.12%</td><td class="up">重要</td></tr>
+      <tr><td>资金</td><td>主力+5.07亿 全市场#9、超大单+5.14亿；南向3日增持、融资环比+61%</td><td class="up">核心</td></tr>
+      <tr><td>技术</td><td>放量突破筹码成本线37.04 + MA20，站上零轴下金叉（误读风险已标注）</td><td>促成</td></tr>
+    </table>
+    </div>
+    <div class="warn"><b>反向声音</b>：市场已定价"欧洲海风出海+造船能力"这个故事，一致性很高；但<b class="k">尚未定价/可能被忽略的是</b>：① 扣非大幅低于归母（非经常性收益占比高）的利润质量问题；② 单季净利同比 -49% 的业绩回落趋势；③ 一致预期仅有 12.6% 空间且零机构覆盖。这些正是"资金在买、业绩未兑现"的哑铃风险。</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h2>判断与跟踪清单</h2><span class="tag">赔率 + 失效信号</span></div>
+  <div class="sb">
+    <div class="table-wrap">
+    <table>
+      <tr><th>情形</th><th>该看什么</th></tr>
+      <tr><td>想跟"资金主攻"</td><td>盯主力是否连续净流入（今日#9）与板块是否持续扩散；仅 1 日脉冲不足为凭</td></tr>
+      <tr><td>想跟"趋势反转"</td><td>必须等 <b class="k">站上 MA60(41.68) + DIF 上零轴</b> 双确认，当前仍是修复非反转</td></tr>
+      <tr><td>要盯的退潮信号</td><td>龙头脑海力风电断板、或大金放量滞涨（量比&gt;4 却收平/阴线）、或主力单日净流出转负</td></tr>
+      <tr><td>不要做的</td><td>KDJ_J 122 / RSI6 84 超买 + 获利盘 64.9% 追高；一致预期仅 +12.6% 空间下重仓</td></tr>
+    </table>
+    </div>
+    <h4 style="margin:12px 0 8px;color:var(--ink)">多价位赔率表（上行锚=一致预期44.41，下行锚=筹码成本37.04/前低）</h4>
+    <div class="table-wrap">
+    <table>
+      <tr><th>触发价位</th><th>上行(至44.41)</th><th>下行(认错位)</th><th>赔率</th><th>结论</th></tr>
+      <tr><td>现价 39.44</td><td>+12.6%</td><td>-6.1%（至37.04成本线）</td><td class="flat">~2:1 区间</td><td>中性，追高性价比一般</td></tr>
+      <tr><td>MA20/成本线 36.8-37.0</td><td>+20%</td><td>-8%（至34前低）</td><td class="up">≥2.5:1</td><td>相对可接受的回落买档</td></tr>
+      <tr><td>前低 34 元区</td><td>+30%</td><td>-7%</td><td class="up">~4:1</td><td>赔率最佳档，但需等回调</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:10px"><b class="k">决定性判断</b>：大金"这个标的好不好"取决于欧洲海风景气能否延续（这是真逻辑，赔率上存在）;但"现在这个价能不能买"取决于情绪能否消化超买——两者是两件事。<b class="k">等不到合适价位就不做</b>，不与超买追高情绪和解。</p>
+  </div>
+</div>
+
+<div class="foot">
+  <h3>数据缺口说明</h3>
+  <div>· 盘中快照：全部数据为 2026-09-15 早盘读数，当日最终结果可能大幅偏离；正文含盘中口径。涨停为 9/15 当日盘中涨停（收盘是否封死需收盘确认）。</div>
+  <div>· 龙虎榜席位（游资 vs 机构）为收盘后披露，本报告机构/散户判断基于超大单/中单/小单资金结构<b>推断</b>，属推断非实证。</div>
+  <div>· 机构覆盖数 institutionCnt=0，目标价离散度无法计算、不构成有效锚，已显式标注。</div>
+  <div>· 非经常性损益构成未逐项核实，扣非/归母 40% 的差异为待查方向。</div>
+  <div>· 数据源：westock CLI（quote/fund flow/technical/chip/finance/consensus/kline/news）。</div>
+  <div class="disc"><b>免责声明</b>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。</div>
+</div>
+
+</div>
+</body>
+</html>
