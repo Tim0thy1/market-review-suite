@@ -424,4 +424,5 @@ Level 0 泛概念主线（概念板块，如"光通信"）
 | **AI产业链上游材料独立验证指标(PCB/覆铜板/铜箔/电子布)** | `references/ai-upstream-verification.md` |
 | **AI/算力全产业链环节级跟踪(L0~L7) + 话语层(投行/高管/KOL) + 利率分层久期** | `references/ai-chain-tracking.md` |
 | **AI产业链各环节独立验证指标(三支柱+阈值+计量陷阱+链级三指标)** | `references/ai-chain-verification.md` |
+| **半导体设备零部件·卡位子线跟踪(EFEM/真空件/静电卡盘/泵阀·产能vs卡位+调研纪要存管)** | `references/semiconductor-parts-tracking.md` |
 | S0~S8 报告/HTML 风格/成因论证要求 | `references/report-template.md` |
