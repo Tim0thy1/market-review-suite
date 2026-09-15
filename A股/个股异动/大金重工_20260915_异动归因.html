@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大金重工(002487) · 涨停异动归因</title>
+<title>大金重工(002487) · 两条链异动归因</title>
 <style>
 :root{--bg:#FBFAF8;--bg2:#fff;--bg3:#F5F2EE;--ink:#403C38;--muted:#66615A;--faint:#8A847C;--rule:#EBE7E2;--rule2:#DDD7D0;--orange:#D97706;--amber:#F59E0B;--accent:#0D9488;--red:#DC2626;--green:#16A34A;--shadow:0 1px 2px rgba(64,60,56,.05),0 4px 16px rgba(64,60,56,.06);--radius:10px;--radius-lg:14px;--font:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Micro Hei",sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -24,12 +24,20 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1
 .tldr-grid .label{color:var(--muted);font-size:12px}
 .tldr-grid .val{font-weight:600}
 .tldr-grid .val b{color:var(--orange)}
-.verdict{background:#F2FBF5;border:1px solid rgba(22,163,74,.35);border-radius:var(--radius);padding:12px 16px;margin-top:12px;font-size:13.5px}
+.verdict{background:#F2FBF5;border:1px solid rgba(22,163,74,.35);border-radius:var(--radius);padding:13px 16px;margin-top:12px;font-size:13.5px}
 .verdict b{color:var(--green)}
+.twochain{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media(max-width:640px){.twochain{grid-template-columns:1fr}}
+.chain-card{background:var(--bg3);border-radius:var(--radius);padding:14px 16px;border-left:4px solid var(--accent)}
+.chain-card.b{border-left-color:var(--amber)}
+.chain-card h3{font-size:13.5px;margin-bottom:8px;color:var(--ink)}
+.chain-card h3 span{color:var(--orange);font-size:11px;font-weight:700}
+.chain-card p{font-size:12.5px;color:var(--muted)}
+.chain-card .k{font-weight:700;color:var(--ink)}
 .section{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:20px 22px;margin-bottom:18px;box-shadow:var(--shadow)}
 .section h2{font-size:16px;color:var(--ink);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
 .section h2 .sub{font-size:12px;color:var(--faint);font-weight:400;margin-left:8px}
-table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0}
 th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--rule)}
 th{background:var(--bg3);color:var(--muted);font-weight:600;font-size:12px}
 tr:hover td{background:#FBF7F1}
@@ -37,125 +45,121 @@ tr:hover td{background:#FBF7F1}
 .down{color:var(--green)}
 .val-note{color:var(--faint);font-size:12px}
 .chain{background:var(--bg3);border-radius:var(--radius);padding:16px;margin:10px 0}
-.chain h3{font-size:13.5px;color:var(--orange);margin-bottom:10px}
-.node{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0}
-.box{background:#fff;border:1px solid var(--rule2);border-radius:8px;padding:6px 12px;font-size:13px}
+.chain h3{font-size:13.5px;color:var(--ink);margin-bottom:10px}
+.node{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:5px 0}
+.box{background:#fff;border:1px solid var(--rule2);border-radius:8px;padding:6px 12px;font-size:12.5px}
 .box b{color:var(--ink)}
 .box.tag-up{border-color:var(--red);background:#FDF4F4}
 .box.tag-up b{color:var(--red)}
+.box.hot{border-color:var(--orange);background:#fff8ef}
+.box.hot b{color:var(--orange)}
 .arrow{color:var(--faint);font-weight:700}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:640px){.grid2{grid-template-columns:1fr}}
-.mini{background:var(--bg3);border-radius:8px;padding:12px 14px;font-size:13px;margin:6px 0}
-.mini .t{font-weight:700;margin-bottom:4px;font-size:13px}
 .bs-box{background:#FDF4F4;border:1px solid rgba(220,38,38,.25);border-radius:var(--radius);padding:16px 18px;font-size:13px;margin-top:14px}
 .bs-box b{color:var(--red)}
 .foot{color:var(--faint);font-size:12px;border-top:1px solid var(--rule);padding-top:14px;margin-top:6px}
+.ladder td b{display:block}
 </style>
 </head>
 <body>
 <div class="container">
   <div class="hero">
-    <div class="kicker">个股异动归因 · 盘中</div>
-    <h1>大金重工 002487 — 涨停 +10.01% 归因</h1>
-    <div class="date">数据时点：2026-09-15 10:27（盘中快照）｜ 来源：腾讯/新浪实时行情 + akshare + 公开检索</div>
+    <div class="kicker">个股异动归因 · 两条链深度拆解</div>
+    <h1>大金重工 002487 — 涨停 +10.01% 双链归因</h1>
+    <div class="date">数据时点：2026-09-15 10:35（盘中快照）｜ 来源：腾讯实时行情 + akshare + 公开检索</div>
     <div class="tag-row">
       <span class="tag hot">海上风电</span>
-      <span class="tag">A+H两地上市</span>
-      <span class="tag green">海工订单</span>
-      <span class="tag red">3日放量</span>
+      <span class="tag green">产业链传导</span>
+      <span class="tag green">资金情绪</span>
+      <span class="tag red">板块龙一</span>
     </div>
   </div>
 
   <div class="tldr">
-    <h2>TL;DR · 结论先行</h2>
+    <h2>TL;DR · 双链交叉结论</h2>
     <div class="tldr-grid">
-      <div class="grid-item"><div class="label">现价 / 涨跌幅</div><div class="val">39.44 / <b>+10.01% 涨停</b></div></div>
-      <div class="grid-item"><div class="label">量比 / 换手</div><div class="val">6.65 / 10.55%</div></div>
-      <div class="grid-item"><div class="label">成交额(盘中)</div><div class="val">24.9 亿</div></div>
-      <div class="grid-item"><div class="label">PE(TTM) / 分位</div><div class="val">22.9x / <b>近5年4.3%</b></div></div>
-      <div class="grid-item"><div class="label">流通市值</div><div class="val">约 249 亿</div></div>
+      <div class="grid-item"><div class="label">现价 / 涨跌</div><div class="val">39.44 / <b>+10.01% 涨停</b></div></div>
+      <div class="grid-item"><div class="label">量比 / 换手</div><div class="val">6.29 / 11.36%</div></div>
+      <div class="grid-item"><div class="label">成交额(盘中)</div><div class="val">26.9 亿</div></div>
+      <div class="grid-item"><div class="label">盘内/盘外资金</div><div class="val">内盘351903 &lt; 外盘364720（略偏多）</div></div>
+      <div class="grid-item"><div class="label">PE(TTM)/分位</div><div class="val">22.9x / <b>近5年4.3%</b></div></div>
     </div>
-    <div class="verdict"><b>定性：基本面催化 + 板块景气共振的「低位启动」，非孤立异动。</b>三大催化共振——①海上风电新一轮景气（7月全国风机招标同比+186%）；②公司完成 H 股发行实现 A+H，资本金与海外品牌力双升；③近 30 亿国际船东海工订单 + 唐山海工基地投产。叠加 2025 净利同比 +132.8% 的高景气业绩底，正在 4.3% 的估值分位低位放量启动。</div>
-  </div>
-
-  <div class="section">
-    <h2>① 异动确认：不是今天突然，是三天连续放量<span class="sub">来源：腾讯日线(2026-09-01~09-14)</span></h2>
-    <table>
-      <tr><th>日期</th><th>收盘</th><th>涨跌</th><th>成交量(万股)</th><th>成交额</th><th>换手</th><th>量能特征</th></tr>
-      <tr><td>09-08</td><td>33.11</td><td class="down">-0.4%</td><td>1,269</td><td>4.21 亿</td><td>2.0%</td><td>缩量</td></tr>
-      <tr><td>09-09</td><td>32.57</td><td class="down">-1.6%</td><td>1,660</td><td>5.44 亿</td><td>2.6%</td><td>缩量整理</td></tr>
-      <tr><td>09-10</td><td>33.54</td><td class="up">+3.0%</td><td>2,744</td><td>9.09 亿</td><td>4.4%</td><td class="up">放量首阳</td></tr>
-      <tr><td>09-11</td><td>35.30</td><td class="up">+5.2%</td><td>7,225</td><td>24.7 亿</td><td>11.5%</td><td class="up">爆量 2.6x</td></tr>
-      <tr><td>09-14</td><td>35.85</td><td class="up">+1.6%</td><td>7,823</td><td>27.9 亿</td><td>12.4%</td><td class="up">继续堆量</td></tr>
-      <tr><td>09-15(今)</td><td class="up">39.44</td><td class="up">+10.01%</td><td>—</td><td class="up">24.9 亿(盘中)</td><td>10.55%</td><td class="up">涨停</td></tr>
-    </table>
-    <p>近 5 个交易日量能从 4.2 亿放至 27.9 亿，放大近 6.6 倍；今日开盘即封涨停。这是<b>筹码从低位放量承接、多日堆量上攻</b>的典型启动形态，底部特征明确（启动前 32.5 元，处于近 5 年 PE 分位 4.3%）。</p>
-  </div>
-
-  <div class="section">
-    <h2>② 四象限归因：为什么现在启动<span class="sub">多重催化共振</span></h2>
-    <div class="grid2">
-      <div class="mini">
-        <div class="t">催化一 · 产业景气（最核心）</div>
-        海上风电进入新一轮景气通道：2026 年 7 月全国风机招标规模<b>同比暴增 186%</b>；中广核江门川岛400MW、明阳湛江徐闻 500MW 等项目密集招标/中标。国内海上风电大型化、远海化提速，海外装机需求持续释放。<span class="val-note">来源：新浪财经/证券时报</span>
+    <div class="twochain">
+      <div class="chain-card">
+        <h3>链一 · 产业链传导 <span>价值层</span></h3>
+        <p>大金处于海上风电<b class="k">上游核心装备（塔筒/管桩/海工基础）</b>——全链涨价/景气传导中<b>订单弹性最直接的一环</b>。7月全国风机招标同比<b class="k">+186%</b>，装机动能沿<b class="k">整机招标 → 塔筒管桩 → 海缆轴承</b>向下传导，大金在传导次序中靠前。</p>
       </div>
-      <div class="mini">
-        <div class="t">催化二 · 个股事件 A+H</div>
-        公司近期完成 <b>H 股发行及超额配售</b>（基础发行约 8696.6 万股，招股价 66.40 港元），实现 A+H 两地上市。资本金充实 + 海外海工品牌力提升，估值体系对标国际。<span class="val-note">来源：深交所 H股公告</span>
-      </div>
-      <div class="mini">
-        <div class="t">催化三 · 海工订单落地</div>
-        累计拿到<b>超 30 亿元国际船东海工订单</b>；主动终止低盈利旧募投、聚焦高附加海工赛道；<b>唐山海工基地已投产</b>；上半年风电装备收入占比超九成。<span class="val-note">来源：新浪财经/R公司涨停分析</span>
-      </div>
-      <div class="mini">
-        <div class="t">估值底 + 业绩兑现</div>
-        现价 PE(TTM) 22.9x，处于<b>近 5 年 4.3%</b>分位（极低）；2025 全年净利 11.03 亿 <b>同比 +132.8%</b>、2026H1 营收 32.5 亿同比 +14.5%、净利 6.01 亿同比 +9.9%。"低估值 + 高业绩弹性"双击。<span class="val-note">来源：akshare 财务</span>
+      <div class="chain-card b">
+        <h3>链二 · 资金与情绪 <span>价格层</span></h3>
+        <p>今日全板块<b class="k">龙一</b>：涨幅/量比/换手三冠王（+10.01%/6.29/11.36%），中材科技(+4%)、海力(+5.9%)、天顺(+5.5%)、新强联(+5.3%)多环节<b class="k">同步放量扩散</b>——典型<b class="k">龙头领涨+题材扩散</b>的主升结构，非孤立异动。<span class="val-note">档位资金流[MISSING，免费源限制]</span></p>
       </div>
     </div>
+    <div class="verdict"><b>定性：链一（产业景气+A/H资本运作）向上 × 链二（板块龙一+多环节资金扩散）向上，双链共振的低位启动。</b>PE 处于近 5 年 4.3% 分位，2025 净利 +132.8%，属"低估值+高弹性"主升启动；但换手超 11%、量比近 6.3，短线情绪阶段性偏热。</div>
   </div>
 
   <div class="section">
-    <h2>③ 板块联动：不是孤军，是整条链启动</h2>
+    <h2>链一 · 产业链传导：大金在链条哪一环、为什么最受益</h2>
     <div class="chain">
-      <h3>海上风电产业链 · 传导结构</h3>
-      <div class="node"><span class="box">上游<br><b>塔筒/管桩</b><br>大金重工▲涨停</span><span class="arrow">→</span><span class="box">中游<br><b>整机</b><br>明阳智能▲</span><span class="arrow">→</span><span class="box">下游<br><b>发电</b><br>闽东电力(4板)</span></div>
-      <div class="node" style="margin-top:8px"><span class="box">配套<br><b>海缆/基础</b><br>海力风电▲</span><span class="arrow">→</span><span class="box">风塔<br><b>天顺风能▲</b>(9/10涨停)</span><span class="arrow">→</span><span class="box">轴承<br><b>新强联▲</b></span></div>
-      <div class="val-note" style="margin-top:8px">9/10 天顺风能午盘涨停时，海力风电/大金重工/新强联/泰胜风能/明阳智能已集体跟涨；今日大金涨停领涨，属板块内<b>核心设备卡位 + 高辨识度标的</b>接力。</div>
+      <h3>海上风电景气传导链（箭头=订单/需求向下传导）</h3>
+      <div class="node"><span class="box hot"><b>上游：塔筒/管桩/海工基础</b><br>大金重工 ▲涨停（最受益）</span><span class="arrow">→</span><span class="box">整机<br>明阳/金风/东电<br>+0.3%~+2.1%</span><span class="arrow">→</span><span class="box">下游<br>发电运营<br>闽东电力等</span></div>
+      <div class="node" style="margin-top:8px"><span class="box">配套<br><b>中材科技</b>(叶片+4%)<br><b>天顺</b>(风塔+5.5%)</span><span class="arrow">→</span><span class="box">海缆/轴承<br><b>海力+5.9%</b> <b>新强联+5.3%</b></span></div>
+      <div class="val-note" style="margin-top:8px">红色 = 产业链上游、订单弹性最直接；大金是红色环中今日涨幅/量能最强标的。</div>
     </div>
+    <table>
+      <tr><th>环节</th><th>大金所处位置</th><th>受益逻辑</th><th>今日表现</th></tr>
+      <tr><td><b>塔筒/管桩/海工</b></td><td>上游核心装备</td><td>海上风电装机 +，塔筒/基础是<b>单位GW用量最大、最先承接订单</b>的环节</td><td class="up">+10.01% 涨停</td></tr>
+      <tr><td>A+H上市</td><td>资本运作</td><td>H股发行(66.4港元)充实资本、提升海外品牌力</td><td>事件催化</td></tr>
+      <tr><td>海工订单</td><td>高附加赛道</td><td>近30亿国际船东订单+唐山海工基地投产</td><td>订单储备</td></tr>
+    </table>
+    <p><b>为什么是这一环领涨</b>：海上风电景气提升时，塔筒/管桩是<b>技术壁垒+资本开支最重、供给响应最慢</b>的环节，装机放量直接转化为公司订单与收入，弹性全链最大。这就是链一定位给大金高分的原因。</p>
   </div>
 
   <div class="section">
-    <h2>④ 位置决定含义：低位放量 = 吸筹启动</h2>
+    <h2>链二 · 资金与情绪：板块龙一 + 多环节扩散</h2>
+    <h3 style="font-size:13.5px;color:var(--ink);margin:10px 0 6px">2.1 情绪背景：题材在升温而非退潮</h3>
     <table>
-      <tr><th>维度</th><th>数值</th><th>解读</th></tr>
-      <tr><td>PE(TTM)</td><td>22.9x</td><td>近5年分位 <b>4.3%</b>（极低成本区）</td></tr>
-      <tr><td>启动前收盘(9/9)</td><td>32.57</td><td>处长期底部箱体</td></tr>
-      <tr><td>今日量比</td><td>6.65</td><td>资金显著涌入</td></tr>
-      <tr><td>换手率</td><td>10.55%</td><td>筹码开始活跃</td></tr>
-      <tr><td>2025净利增速</td><td class="up">+132.8%</td><td>高景气业绩托底</td></tr>
+      <tr><th>指标</th><th>数值</th><th>含义</th></tr>
+      <tr><td>大金量比</td><td class="up">6.29</td><td>资金显著涌入，板块内最高</td></tr>
+      <tr><td>大金换手</td><td class="up">11.36%</td><td>筹码高度活跃</td></tr>
+      <tr><td>内外盘</td><td>外盘364,720 &gt; 内盘351,903</td><td>主动性买盘略占优</td></tr>
+      <tr><td>多环节涨幅</td><td class="up">4%~5.9%</td><td>题材向中材/海力/天顺/新强联扩散</td></tr>
+      <tr><td>风塔龙头天顺</td><td class="up">+5.49%（量比4.32）</td><td>9/10曾涨停，今日持续放量</td></tr>
     </table>
-    <p><b>位置判断：低位 + 首次放量 + 板块共振 = 启动初期特征</b>，而非高位出货。但需提示：换手率已 10%+、量比近 7，短线情绪阶段性偏热，需防冲高回吐。</p>
+    <h3 style="font-size:13.5px;color:var(--ink);margin:14px 0 6px">2.2 涨停/领涨梯队分层（判断扩散度）</h3>
+    <table>
+      <tr><th>层级</th><th>标的</th><th>涨幅</th><th>量比</th><th>状态</th></tr>
+      <tr><td><b>龙头涨停</b></td><td>大金重工(002487)</td><td class="up">+10.01%</td><td>6.29</td><td>全板块最强者，卡位塔筒/海工</td></tr>
+      <tr><td><b>中位放量</b></td><td>海力风电(301155)</td><td class="up">+5.92%</td><td>3.55</td><td>海缆/基础方向</td></tr>
+      <tr><td><b>中位放量</b></td><td>天顺风能(002531)</td><td class="up">+5.49%</td><td>4.32</td><td>风塔，9/10曾涨停</td></tr>
+      <tr><td><b>中位放量</b></td><td>新强联(300850)</td><td class="up">+5.26%</td><td>3.47</td><td>轴承</td></tr>
+      <tr><td><b>首板/跟涨扩散</b></td><td>中材科技(002080)</td><td class="up">+4.00%</td><td>3.47</td><td>叶片/玻纤</td></tr>
+      <tr><td><b>首板/跟涨扩散</b></td><td>天能重工(300569)</td><td class="up">+4.29%</td><td>4.77</td><td>塔筒（低市值弹性）</td></tr>
+      <tr><td><b>跟涨</b></td><td>泰胜(300129)/明阳(601615)/通裕(300185)</td><td class="up">+2.1%~2.3%</td><td>1.8~2.7</td><td>梯队尾部仍在</td></tr>
+    </table>
+    <div class="mini" style="background:var(--bg3);border-radius:8px;padding:12px 14px;margin-top:8px">
+      <b style="color:var(--ink)">扩散度判断：强。</b>龙头涨停 + 4个及以上环节同时放量（量比&gt;3）+ 梯队从塔筒到海缆轴承叶片完整——符合"题材扩散而非退潮"特征，说明这是<b>产业链级别的资金行为</b>，大金是其中最强的资金承接点。
+    </div>
+    <div class="val-note" style="margin-top:8px"><b>数据缺口</b>：免费数据源（沙箱内）无法获取东财/交易所的<b>档位资金流（超大单/大单/中单/小单）</b>，故无法给出"机构单边买 vs 游资接盘"的逐笔拆解。链二世以量比/换手/内外盘/板块梯队扩散间接推演，此为推断非实证，龙虎榜为收盘后数据。</div>
   </div>
 
   <div class="section">
-    <h2>⑤ 启动信号的可信度评估</h2>
+    <h2>双链交叉 · 位置与可信度</h2>
     <table>
-      <tr><th>检验项</th><th>结果</th><th>可信度</th></tr>
-      <tr><td>业绩是否支撑</td><td>2025 净利 +132.8%、2026H1 双增，订单充足</td><td class="up">强</td></tr>
-      <tr><td>板块是否共振</td><td>海上风电景气上行，产业链多标的同时启动</td><td class="up">强</td></tr>
-      <tr><td>位置是否低位</td><td>PE 5年分位 4.3%，底部起量</td><td class="up">强</td></tr>
-      <tr><td>催化是否明确</td><td>A+H + 30亿海外订单 + 产业链景气</td><td class="up">强</td></tr>
-      <tr><td>风险点</td><td>换手10%+短线偏热、海风装机兑现节奏、海外订单毛利率</td><td class="red">中</td></tr>
+      <tr><th>维度</th><th>数值</th><th>双链解读</th></tr>
+      <tr><td>PE(TTM)</td><td>22.9x</td><td>近5年分位<b>4.3%</b>——链一给高景气、链二给低位，双链共振点</td></tr>
+      <tr><td>2025净利</td><td class="up">+132.8%</td><td>链一业绩底层扎实，非纯题材</td></tr>
+      <tr><td>2026H1营收/净利</td><td class="up">+14.5% / +9.9%</td><td>高基数下仍保持双增</td></tr>
+      <tr><td>板块扩散</td><td>≥4环节放量</td><td>链二证实资金做的是"赛道级"配置，非单票</td></tr>
+      <tr><td>短线温度</td><td class="red">换手11%+/量比6.3</td><td>链二短线偏热，防冲高回吐</td></tr>
     </table>
+    <p><b>综合</b>：这是两条链<b>方向一致</b>的标的——链一（产业最受益环节）和链二（板块最强资金承接）同时给高分，历史上这类"双链共振"标的的启动可信度最高。反向信号：短线情绪已热、累计两日大涨后回吐风险、海风装机兑现节奏、海外订单毛利率需公司公告确认。</p>
   </div>
 
   <div class="bs-box">
-    <b>风险提示与免责声明：</b>以上为基于公开数据与盘面快照的分析，不构成投资建议。盘中快照（10:27）非收盘终值，当日可能大幅变化；换手率高、量比大说明短线情绪偏热，存在冲高回落与高标分歧风险；海上风电装机、订单毛利率、海外需求存在兑现不及预期风险。股市有风险，投资需谨慎。据此操作，风险自担。
+    <b>风险提示与免责声明：</b>以上基于公开数据与盘中快照分析，不构成投资建议。数据为 2026-09-15 盘中快照（10:35）非收盘终值；档位资金流因免费源限制不可得，板块扩散为盘口推断非龙虎榜实证；换手/量比偏高说明短线情绪偏热，存在冲高回落与高标分歧风险。股市有风险，投资需谨慎，据此操作风险自担。
   </div>
 
   <div class="foot">
-    <b>数据缺口与来源说明：</b>行情为 2026-09-15 盘中快照（腾讯/新浪），日线为腾讯后复权口径；财务为新浪系 akshare 最新报告期；涨停催化来自公开财经媒体报道（非一手公告，需以公司公告为准）。资金流/龙虎榜为收盘后数据，盘中无法获取，未在本文使用。
+    <b>数据来源与缺口说明：</b>行情/量比/换手/内外盘/板块梯队 = 腾讯实时行情(2026-09-15 10:35)；净利/PE = akshare·新浪 fe行最新报告期；PE分位 = akshare·百度近5年；涨停催化 = 公开财经媒体报道（非一手公告，需以公司公告为准）。<b>档位资金流（超大/大/中/小单）与龙虎榜[MISSING]</b>——沙箱内东财系接口不可达，此为免费源已知限制，故链二资金层以板块扩散间接推演。
   </div>
 </div>
 </body>
